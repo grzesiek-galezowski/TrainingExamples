@@ -9,7 +9,7 @@ namespace AutomatedRefactorings.MethodsAndParameters
   //TODO remove duplication of title casing (extract method)
   //TODO sender, recipient and content as parameters (introduce parameters)
   //TODO allow using different formattings (extract method => introduce field => introduce parameter)
-  //TODO remove unnecessary Send
+  //TODO get rid of destination dependency and inline Send() method (introduce field, inline field, introduce parameter, inline method)
 
   public class MethodsAndParameters
   {
@@ -31,7 +31,7 @@ namespace AutomatedRefactorings.MethodsAndParameters
 
     }
 
-    private static FriendlyMessage CreateFriendlyMessageFrom(string sender)
+    private FriendlyMessage CreateFriendlyMessageFrom(string sender)
     {
       var message = new FriendlyMessage();
 
@@ -48,10 +48,12 @@ namespace AutomatedRefactorings.MethodsAndParameters
         "Content: " + message.Content);
     }
 
+    #region hidden code
     public void Main()
     {
       ProcessInvitationMessage();
     }
+    #endregion
   }
 
 
