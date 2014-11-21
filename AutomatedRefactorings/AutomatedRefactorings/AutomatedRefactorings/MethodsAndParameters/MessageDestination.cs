@@ -1,6 +1,6 @@
 ﻿namespace AutomatedRefactorings.MethodsAndParameters
 {
-  internal interface IMessageDestination
+  internal interface MessageDestination
   {
     void Send(string s);
   }

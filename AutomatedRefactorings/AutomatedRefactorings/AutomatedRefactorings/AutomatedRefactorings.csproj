@@ -42,7 +42,7 @@
     <Compile Include="Basic\BasicRefactorings.cs" />
     <Compile Include="MethodsAndParameters\ConsoleDestination.cs" />
     <Compile Include="MethodsAndParameters\FriendlyMessage.cs" />
-    <Compile Include="MethodsAndParameters\IMessageDestination.cs" />
+    <Compile Include="MethodsAndParameters\MessageDestination.cs" />
     <Compile Include="MethodsAndParameters\MethodsAndParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

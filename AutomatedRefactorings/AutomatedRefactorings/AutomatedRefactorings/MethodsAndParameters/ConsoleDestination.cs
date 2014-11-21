@@ -2,7 +2,7 @@
 
 namespace AutomatedRefactorings.MethodsAndParameters
 {
-  internal class ConsoleDestination : IMessageDestination
+  internal class ConsoleDestination : MessageDestination
   {
     public void Send(string s)
     {

@@ -7,13 +7,14 @@ namespace AutomatedRefactorings.MethodsAndParameters
   //TODO encapsulate fields of message (encapsulate fields)
   //TODO deal with unclear responsibility in CreateFriendlyMessageFrom() (inline method)
   //TODO remove duplication of title casing (extract method)
-  //TODO sender, recipient and content as parameters (introduce parameters)
+  //TODO in this order, content, recipient and sender as parameters (introduce parameters)
   //TODO allow using different formattings (extract method => introduce field => introduce parameter)
   //TODO get rid of destination dependency and inline Send() method (introduce field, inline field, introduce parameter, inline method)
+  //TODO rearrange ProcessInvitationMessage() parameters in from-to-what fashion
 
   public class MethodsAndParameters
   {
-    private readonly IMessageDestination _destination = new ConsoleDestination();
+    private readonly MessageDestination _destination = new ConsoleDestination();
 
     public void ProcessInvitationMessage()
     {
@@ -25,7 +26,7 @@ namespace AutomatedRefactorings.MethodsAndParameters
       message.To = Char.IsLower(recipient.First()) ?
         CultureInfo.CurrentCulture.TextInfo.ToTitleCase(recipient.ToLower()) : recipient;
 
-      message.Content = "Hey, dude, let's we hit the streets!";
+      message.Content = "Hey, dude, let's hit the streets!";
 
       Send(message);
 
@@ -55,7 +56,6 @@ namespace AutomatedRefactorings.MethodsAndParameters
     }
     #endregion
   }
-
 
   //TODO add example with if statement
 }
