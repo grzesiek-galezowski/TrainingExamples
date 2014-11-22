@@ -39,13 +39,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Basic\BasicRefactorings.cs" />
-    <Compile Include="MethodsAndParameters\ConsoleDestination.cs" />
-    <Compile Include="MethodsAndParameters\FriendlyMessage.cs" />
-    <Compile Include="MethodsAndParameters\MessageDestination.cs" />
-    <Compile Include="MethodsAndParameters\MethodsAndParameters.cs" />
+    <Compile Include="1_Basic\BasicRefactorings.cs" />
+    <Compile Include="2_MethodsAndParameters\ConsoleDestination.cs" />
+    <Compile Include="2_MethodsAndParameters\FriendlyMessage.cs" />
+    <Compile Include="2_MethodsAndParameters\MessageDestination.cs" />
+    <Compile Include="2_MethodsAndParameters\MethodsAndParameters.cs" />
+    <Compile Include="3_LessUsed\FactoryMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
