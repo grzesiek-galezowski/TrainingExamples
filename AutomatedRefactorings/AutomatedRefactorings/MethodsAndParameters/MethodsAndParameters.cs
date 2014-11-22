@@ -55,6 +55,11 @@ namespace AutomatedRefactorings.MethodsAndParameters
       ProcessInvitationMessage();
     }
     #endregion
+
+    public static void FitsSomewhereElse()
+    {
+      
+    }
   }
 
   //TODO add example with if statement

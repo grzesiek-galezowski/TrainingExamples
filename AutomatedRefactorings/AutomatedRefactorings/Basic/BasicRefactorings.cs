@@ -33,8 +33,16 @@ namespace AutomatedRefactorings.Basic
 
   public class DontWantToBeHere //TODO move it to another namespace and another file
   {
-    
-  }
+    public void Lol()
+    {
+      FitsSomewhereElse();
+    }
 
-  //TODO add some real code for refactoring
+    private static void FitsSomewhereElse() //TODO move to another type and make instance method
+    {
+      
+    }
+  }
 }
+
+//TODO add some real code for refactoring
