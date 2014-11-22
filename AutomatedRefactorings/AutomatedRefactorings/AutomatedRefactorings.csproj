@@ -44,7 +44,9 @@
     <Compile Include="2_MethodsAndParameters\FriendlyMessage.cs" />
     <Compile Include="2_MethodsAndParameters\MessageDestination.cs" />
     <Compile Include="2_MethodsAndParameters\MethodsAndParameters.cs" />
+    <Compile Include="3_LessUsed\CompositionRoot.cs" />
     <Compile Include="3_LessUsed\FactoryMethods.cs" />
+    <Compile Include="3_LessUsed\MyMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

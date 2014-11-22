@@ -6,6 +6,17 @@ using System.Threading.Tasks;
 
 namespace AutomatedRefactorings._3_LessUsed
 {
+  //TODO replace constructor with factory method
+  //TODO copy type MyMessage with factory method / move static method
+  //TODO replace static method with instance one (not automated)
+  //TODO change returned type and rename to MyMessageFactory
+  //TODO use MyMessageFactory
+  //TODO inline method
+  //TODO for factory - introduce field (initialized from constructor)
+  //TODO for factory constructor invocation - introduce parameter
+  //TODO for factory - extract interface
+  //TODO for factory - use base type where possible
+
   public class Object1
   {
     public void DoSomething()
@@ -27,28 +38,6 @@ namespace AutomatedRefactorings._3_LessUsed
     public void DoSomething()
     {
       var message = new MyMessage(5,6);
-    }
-  }
-
-  public class MyMessage
-  {
-    private readonly int _i;
-    private readonly int _i1;
-
-    public MyMessage(int i, int i1)
-    {
-      _i = i;
-      _i1 = i1;
-    }
-
-    public int Prop1
-    {
-      get { return _i; }
-    }
-
-    public int Prop2
-    {
-      get { return _i1; }
     }
   }
 }
