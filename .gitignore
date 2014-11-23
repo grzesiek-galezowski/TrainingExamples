@@ -43,7 +43,11 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-*/AutoTest.Net/*
+*\AutoTest.Net\*
 *.pdb
 *.dll
-
+*\Debug\*
+*\Release\*
+*/obj/Debug/*
+*/packages/*
+*.cache
