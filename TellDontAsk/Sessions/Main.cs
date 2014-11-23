@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace TellDontAsk
+namespace Sessions
 {
   public class Main
   {
@@ -42,7 +42,7 @@ namespace TellDontAsk
       }
     }
 
-    private static void Fill(Sessions sessions)
+    static void Fill(Sessions sessions)
     {
       sessions.Add(new Session()
       {

@@ -7,8 +7,8 @@
     <ProjectGuid>{52E08F2E-1575-4121-9565-359B299A2BBA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TellDontAsk</RootNamespace>
-    <AssemblyName>TellDontAsk</AssemblyName>
+    <RootNamespace>Sessions</RootNamespace>
+    <AssemblyName>Sessions</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

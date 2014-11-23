@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TellDontAsk
+namespace Sessions
 {
 /*
 “zapaszki” do wyeliminowania:
@@ -15,7 +15,7 @@ b.   [Opcjonalne] kolejność wpisywania danych do pliku/konsoli/ramki ma być m
 
   public class Sessions
   {
-    private readonly List<Session> _sessions = new List<Session>();
+    readonly List<Session> _sessions = new List<Session>();
     public void Add(Session session)
     {
       _sessions.Add(session);
@@ -26,4 +26,4 @@ b.   [Opcjonalne] kolejność wpisywania danych do pliku/konsoli/ramki ma być m
     }
   }
 }
-}
+

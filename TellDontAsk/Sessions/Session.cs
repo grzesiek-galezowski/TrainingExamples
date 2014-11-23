@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TellDontAsk
+namespace Sessions
 {
   public class Session
   {

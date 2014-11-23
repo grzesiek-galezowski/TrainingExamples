@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TellDontAsk", "TellDontAsk\TellDontAsk.csproj", "{52E08F2E-1575-4121-9565-359B299A2BBA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sessions", "Sessions\Sessions.csproj", "{52E08F2E-1575-4121-9565-359B299A2BBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayrollSystem", "PayrollSystem\PayrollSystem.csproj", "{8F31E429-FC90-4541-9C83-E82E352734DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +15,13 @@ Global
 		{52E08F2E-1575-4121-9565-359B299A2BBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52E08F2E-1575-4121-9565-359B299A2BBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52E08F2E-1575-4121-9565-359B299A2BBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F31E429-FC90-4541-9C83-E82E352734DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F31E429-FC90-4541-9C83-E82E352734DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F31E429-FC90-4541-9C83-E82E352734DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F31E429-FC90-4541-9C83-E82E352734DE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = TellDontAsk\Sessions.csproj
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
