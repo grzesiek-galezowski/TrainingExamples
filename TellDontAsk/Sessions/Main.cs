@@ -42,7 +42,7 @@ namespace Sessions
       }
     }
 
-    static void Fill(Sessions sessions)
+    private static void Fill(Sessions sessions)
     {
       sessions.Add(new Session()
       {

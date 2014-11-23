@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace PayrollSystem
 {
-	public class Employee
-	{
+  public class Employee
+  {
     public void Save()
     {
       Console.WriteLine("Saving");
@@ -15,7 +15,7 @@ namespace PayrollSystem
       Console.WriteLine(string.Format("Setting for {0} to {1}", i, oneTimeBonus));
     }
 
-    public int GetYearseOfService()
+    public int GetYearsOfService()
     {
       return 123;
     }
@@ -34,7 +34,7 @@ namespace PayrollSystem
     {
       return new decimal(44.4);
     }
-	}
+  }
 
 
 }
