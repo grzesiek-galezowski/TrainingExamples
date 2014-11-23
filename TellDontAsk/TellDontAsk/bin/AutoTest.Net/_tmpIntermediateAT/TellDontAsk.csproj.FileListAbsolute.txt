@@ -1,0 +1,5 @@
+C:\Users\astral\Documents\GitHub\TrainingExamples\TellDontAsk\TellDontAsk\bin\AutoTest.Net\_tmpIntermediateAT\TellDontAsk.csprojResolveAssemblyReference.cache
+C:\Users\astral\Documents\GitHub\TrainingExamples\TellDontAsk\TellDontAsk\bin\AutoTest.Net\_tmpIntermediateAT\TellDontAsk.dll
+C:\Users\astral\Documents\GitHub\TrainingExamples\TellDontAsk\TellDontAsk\bin\AutoTest.Net\_tmpIntermediateAT\TellDontAsk.pdb
+C:\Users\astral\Documents\GitHub\TrainingExamples\TellDontAsk\TellDontAsk\bin\AutoTest.Net\TellDontAsk.dll
+C:\Users\astral\Documents\GitHub\TrainingExamples\TellDontAsk\TellDontAsk\bin\AutoTest.Net\TellDontAsk.pdb
