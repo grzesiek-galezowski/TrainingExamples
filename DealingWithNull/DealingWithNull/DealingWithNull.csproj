@@ -44,11 +44,15 @@
   <ItemGroup>
     <Compile Include="Maybe\MaybeSpecification.cs" />
     <Compile Include="Maybe\Maybe.cs" />
-    <Compile Include="Maybe\TODO_ADD_SCENARIO.cs" />
+    <Compile Include="Maybe\Problem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Exceptions\" />
+    <Folder Include="NullObject\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

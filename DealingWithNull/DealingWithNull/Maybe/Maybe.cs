@@ -2,6 +2,14 @@
 
 namespace DealingWithNull.Maybe
 {
+  public static class Maybe
+  {
+    public static Maybe<T> Wrap<T>(T instance)
+    {
+      return new Maybe<T>(instance);
+    }
+  }
+
   public struct Maybe<T>
   {
     private readonly T _value;
@@ -33,25 +41,45 @@ namespace DealingWithNull.Maybe
       return new Maybe<T>(value);
     }
 
+    public T ValueOr(T alternativeValue)
+    {
+      return HasValue ? Value : alternativeValue;
+    }
+
+    public override string ToString()
+    {
+      return HasValue ? Value.ToString() : "<Nothing>";
+    }
   }
 
   public static class MaybeExtensions
   {
     public static Maybe<TB> Bind<T, TB>(this Maybe<T> maybe, Func<T, Maybe<TB>> func)
     {
-      return maybe.HasValue ?
-        func(maybe.Value) : default(Maybe<TB>);
+      if (maybe.HasValue)
+      {
+        return func(maybe.Value);
+      }
+      else
+      {
+        return default(Maybe<TB>);
+      }
     }
 
-
-    public static Maybe<TC> SelectMany<TA, TB, TC>(this Maybe<TA> a, Func<TA, Maybe<TB>> func, Func<TA, TB, TC> selectFunction)
+    public static Maybe<TFResult> SelectMany<TSource, TB, TFResult>(this Maybe<TSource> a, Func<TSource, Maybe<TB>> func, Func<TSource, TB, TFResult> selectFunction)
     {
-      return a.Bind(aval => func(aval).Bind<TB, TC>(bval => selectFunction(aval, bval)));
+      return a.Bind(aval => 
+      {
+        var result = func(aval);
+        return result.Bind<TB, TFResult>(bval => selectFunction(aval, bval));
+      });
     }
 
     public static Maybe<TB> Select<TA, TB>(this Maybe<TA> a, Func<TA, TB> select)
     {
-      return a.Bind<TA, TB>(aval => select(aval));
+      return a.Bind<TA, TB>(
+        aval => select(aval)
+      );
     }
   }
 }

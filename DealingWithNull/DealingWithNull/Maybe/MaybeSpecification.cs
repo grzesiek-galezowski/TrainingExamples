@@ -8,12 +8,16 @@ namespace DealingWithNull.Maybe
   public class MaybeSpecification
   {
     [Test]
-    public void ShouldBEHAVIOR()
+    public void ShouldBeEmptyWhenReturnedAsNull()
     {
       var maybeNothing = ReturnNull();
       Assert.AreEqual(false, maybeNothing.HasValue);
       Assert.AreEqual(default(Maybe<string>), maybeNothing);
+    }
 
+    [Test]
+    public void ShouldNotBeEmptyWhenReturnedAsRealValue()
+    {
       var maybeString = ReturnEmptyString();
       Assert.AreEqual(true, maybeString.HasValue);
       Assert.AreNotEqual(default(Maybe<string>), maybeString);
@@ -31,9 +35,9 @@ namespace DealingWithNull.Maybe
     public void ShouldSupportLinqSelectMany()
     {
       //TODO show coverage from NCrunch
-      var result = from a in new Maybe<string>("Hello World!")
+      var result = from a in Maybe.Wrap("Hello World!")
                    from b in GetCustomer()
-                   from c in new Maybe<DateTime>(new DateTime(2010, 1, 14))
+                   from c in Maybe.Wrap(new DateTime(2010, 1, 14))
                    select a + " " + b + c.ToShortDateString();
 
       Assert.AreEqual(false, result.HasValue);
@@ -51,7 +55,12 @@ namespace DealingWithNull.Maybe
     public void ShouldSupportLinqSelect2()
     {
       var name = from customers in GetCustomers() //returns null!!!
-                 select customers.First().Name.ToArray();
+                 select customers
+                 .Where(c => c.Name == string.Empty)
+                 .First()
+                 .Name
+                 .Replace('a','b')
+                 .ToArray();
 
       Assert.False(name.HasValue);
     }
