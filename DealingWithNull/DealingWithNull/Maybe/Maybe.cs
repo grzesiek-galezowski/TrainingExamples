@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 
-namespace DealingWithNull
+namespace DealingWithNull.Maybe
 {
-  public struct Maybe<T> : IEnumerable<T> where T : class
+  public struct Maybe<T>
   {
     private readonly T _value;
 
@@ -30,20 +28,6 @@ namespace DealingWithNull
       get { return _value != null; }
     }
 
-
-    public IEnumerator<T> GetEnumerator()
-    {
-      if (HasValue)
-      {
-        yield return _value;
-      }
-    }
-
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-      return GetEnumerator();
-    }
-
     public static implicit operator Maybe<T>(T value)
     {
       return new Maybe<T>(value);
@@ -53,21 +37,21 @@ namespace DealingWithNull
 
   public static class MaybeExtensions
   {
-    public static Maybe<B> Bind<T, B>(this Maybe<T> maybe, Func<T, Maybe<B>> func)
-      where B : class
-      where T : class
+    public static Maybe<TB> Bind<T, TB>(this Maybe<T> maybe, Func<T, Maybe<TB>> func)
     {
       return maybe.HasValue ?
-        func(maybe.Value) : default(Maybe<B>);
+        func(maybe.Value) : default(Maybe<TB>);
     }
 
 
     public static Maybe<TC> SelectMany<TA, TB, TC>(this Maybe<TA> a, Func<TA, Maybe<TB>> func, Func<TA, TB, TC> selectFunction)
-      where TA : class
-      where TB : class
-      where TC : class
     {
-      return a.Bind(aval => func(aval).Bind<TA, TB>(bval => selectFunction(aval, bval)));
+      return a.Bind(aval => func(aval).Bind<TB, TC>(bval => selectFunction(aval, bval)));
+    }
+
+    public static Maybe<TB> Select<TA, TB>(this Maybe<TA> a, Func<TA, TB> select)
+    {
+      return a.Bind<TA, TB>(aval => select(aval));
     }
   }
 }

@@ -42,8 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MaybeSpecification.cs" />
-    <Compile Include="Maybe.cs" />
+    <Compile Include="Maybe\MaybeSpecification.cs" />
+    <Compile Include="Maybe\Maybe.cs" />
+    <Compile Include="Maybe\TODO_ADD_SCENARIO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
