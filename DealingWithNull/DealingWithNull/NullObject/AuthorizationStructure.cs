@@ -1,6 +1,6 @@
 ﻿namespace DealingWithNull.NullObject
 {
-  public class Frame
+  public interface AuthorizationStructure
   {
   }
 }

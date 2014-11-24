@@ -26,7 +26,7 @@ namespace DealingWithNull.Maybe
     [Test]
     public void ShouldBeOkForPrimitiveAndStructTypes()
     {
-      var maybeInt = new Maybe<int>(default(int));
+      var maybeInt = default(Maybe<int>);
 
       Assert.True(maybeInt.HasValue);
     }
@@ -56,9 +56,8 @@ namespace DealingWithNull.Maybe
     {
       var name = from customers in GetCustomers() //returns null!!!
                  select customers
-                 .Where(c => c.Name == string.Empty)
-                 .First()
-                 .Name
+                 .First(c => c.Name == string.Empty)  //throws exception!
+                 .Name  //throws exception!
                  .Replace('a','b')
                  .ToArray();
 
