@@ -48,5 +48,26 @@ namespace DealingWithNull
     {
       return new Maybe<T>(value);
     }
+
+  }
+
+  public static class MaybeExtensions
+  {
+    public static Maybe<B> Bind<T, B>(this Maybe<T> maybe, Func<T, Maybe<B>> func)
+      where B : class
+      where T : class
+    {
+      return maybe.HasValue ?
+        func(maybe.Value) : default(Maybe<B>);
+    }
+
+
+    public static Maybe<TC> SelectMany<TA, TB, TC>(this Maybe<TA> a, Func<TA, Maybe<TB>> func, Func<TA, TB, TC> selectFunction)
+      where TA : class
+      where TB : class
+      where TC : class
+    {
+      return a.Bind(aval => func(aval).Bind<TA, TB>(bval => selectFunction(aval, bval)));
+    }
   }
 }
