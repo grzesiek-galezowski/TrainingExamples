@@ -45,6 +45,9 @@
     <Compile Include="Maybe\MaybeSpecification.cs" />
     <Compile Include="Maybe\Maybe.cs" />
     <Compile Include="Maybe\Problem.cs" />
+    <Compile Include="NullObject\Frame.cs" />
+    <Compile Include="NullObject\CommandFactory.cs" />
+    <Compile Include="NullObject\MessageProcessing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -52,7 +55,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Exceptions\" />
-    <Folder Include="NullObject\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

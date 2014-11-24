@@ -1,14 +1,4 @@
-﻿#region File Header & Copyright Notice
-//Copyright 2014 Motorola Solutions, Inc.
-//All Rights Reserved.
-//Motorola Solutions Confidential Restricted
-#endregion
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace DealingWithNull.Maybe
 {
@@ -19,31 +9,45 @@ namespace DealingWithNull.Maybe
     {
       var cache = new Cache();
       
+      __1(cache);
+      __2(cache);
+      __3(cache);
+    }
+
+    private static void __1(Cache cache)
+    {
       //1
       var value = Get(cache, 123, new RealLog());
       if (value != null)
       {
-        Console.WriteLine("Got: " + value);
+        Console.WriteLine("Got: " + value + " of length " + value.Length);
       }
+    }
 
+    private static void __2(Cache cache)
+    {
       //2
       AddTo(cache, 333);
+    }
 
+    private static void __3(Cache cache)
+    {
       //3
       var value2 = FindFirstOf(new[] {33, 44, 66}, cache);
       if (value2 != null)
       {
-        Console.WriteLine("Doing something more with found value");
+        Console.WriteLine("Doing something more with found value of length: " + value2.Length);
       }
-
     }
+
+
 
     private static string Get(Cache cache, int deviceId1, Log log)
     {
       var result = cache.Retrieve(deviceId1);
       if (result != null)
       {
-        log.Write("Item found : " + result);
+        log.Write("Item found : " + result + " with length " + result.Length);
       }
       return result;
     }
