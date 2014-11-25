@@ -42,20 +42,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\Connection.cs" />
+    <Compile Include="Exceptions\ConnectionFactory.cs" />
+    <Compile Include="Exceptions\HttpConnection.cs" />
+    <Compile Include="Exceptions\Problem.cs" />
     <Compile Include="Maybe\MaybeSpecification.cs" />
     <Compile Include="Maybe\Maybe.cs" />
     <Compile Include="Maybe\Problem.cs" />
-    <Compile Include="NullObject\Frame.cs" />
-    <Compile Include="NullObject\CommandFactory.cs" />
-    <Compile Include="NullObject\MessageProcessing.cs" />
+    <Compile Include="NullObject\AuthorizationChange.cs" />
+    <Compile Include="NullObject\Changes\AuthorizationChangeFactory.cs" />
+    <Compile Include="NullObject\AuthorizationStructure.cs" />
+    <Compile Include="NullObject\RawData\ChangeData.cs" />
+    <Compile Include="NullObject\ChangeFactory.cs" />
+    <Compile Include="NullObject\RawData\ChangeTypes.cs" />
+    <Compile Include="NullObject\Changes\Creation.cs" />
+    <Compile Include="NullObject\Changes\Deletion.cs" />
+    <Compile Include="NullObject\IncomingChangeProcessing.cs" />
+    <Compile Include="NullObject\MyApplicationAuthorizationStructure.cs" />
+    <Compile Include="NullObject\Problem.cs" />
+    <Compile Include="NullObject\Changes\Update.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Exceptions\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
