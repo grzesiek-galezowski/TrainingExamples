@@ -6,7 +6,7 @@ namespace AutomatedRefactorings.MethodsAndParameters
 {
   //TODO encapsulate fields of message (encapsulate fields)
   //TODO deal with unclear responsibility in CreateFriendlyMessageFrom() (inline method)
-  //TODO remove duplication of title casing (extract method)
+  //TODO remove duplication of title casing (extract both methods, make one delegate to other, inline method)
   //TODO in this order, content, recipient and sender as parameters (introduce parameters)
   //TODO allow using different formattings (extract method => introduce field => introduce parameter)
   //TODO get rid of destination dependency and inline Send() method (introduce field, inline field, introduce parameter, inline method)
