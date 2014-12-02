@@ -2,10 +2,10 @@
 
 namespace AutomatedRefactorings.Basic
 {
-  // 1. rename
-  // 2. move
-  // 3. copy type
-  // 4. safe delete
+  //TODO 1. rename
+  //TODO 2. move
+  //TODO 3. copy type
+  //TODO 4. safe delete
   public class BasicRefactorings
   {
     public void Start()

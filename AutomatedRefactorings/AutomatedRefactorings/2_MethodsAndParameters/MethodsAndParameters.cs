@@ -5,12 +5,13 @@ using System.Linq;
 namespace AutomatedRefactorings.MethodsAndParameters
 {
   //TODO encapsulate fields of message (encapsulate fields)
+  //TODO assume the encapsulated type is third party. Copy type -> generate delegating members
   //TODO deal with unclear responsibility in CreateFriendlyMessageFrom() (inline method)
   //TODO remove duplication of title casing (extract both methods, make one delegate to other, inline method)
   //TODO in this order, content, recipient and sender as parameters (introduce parameters)
   //TODO allow using different formattings (extract method => introduce field => introduce parameter)
   //TODO get rid of destination dependency and inline Send() method (introduce field, inline field, introduce parameter, inline method)
-  //TODO rearrange ProcessInvitationMessage() parameters in from-to-what fashion
+  //TODO rearrange ProcessInvitationMessage() signature parameters in from-to-what fashion
 
   public class MethodsAndParameters
   {
