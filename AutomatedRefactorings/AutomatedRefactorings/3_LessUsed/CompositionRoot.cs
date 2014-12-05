@@ -26,6 +26,13 @@ namespace AutomatedRefactorings._3_LessUsed
       _object2 = object2;
       _object3 = object3;
     }
+
+    public void Lol()
+    {
+      _object1.DoSomething();
+      _object2.DoSomething();
+      _object3.DoSomething();
+    }
   }
 
   interface MySystem

@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sessions", "Sessions\Sessio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayrollSystem", "PayrollSystem\PayrollSystem.csproj", "{8F31E429-FC90-4541-9C83-E82E352734DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validations", "Validations\Validations.csproj", "{794003BF-4199-4FA5-A15F-1E8AD054C04D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,11 +21,15 @@ Global
 		{8F31E429-FC90-4541-9C83-E82E352734DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F31E429-FC90-4541-9C83-E82E352734DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F31E429-FC90-4541-9C83-E82E352734DE}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = TellDontAsk\Sessions.csproj
+		{794003BF-4199-4FA5-A15F-1E8AD054C04D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{794003BF-4199-4FA5-A15F-1E8AD054C04D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{794003BF-4199-4FA5-A15F-1E8AD054C04D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{794003BF-4199-4FA5-A15F-1E8AD054C04D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = TellDontAsk\Sessions.csproj
 	EndGlobalSection
 EndGlobal
