@@ -9,7 +9,9 @@ namespace Sessions
     public void Program()
     {
       var sessions = new Sessions();
-      Fill(sessions);
+      AddExemplaryDataTo(sessions);
+
+      //1
       foreach (var session in sessions.GetAll())
       {
         Console.WriteLine("==> BEGIN SESSION");
@@ -19,6 +21,7 @@ namespace Sessions
         Console.WriteLine("==> END SESSION");
       }
 
+      //2
       using (var writer = File.CreateText("lolek.txt"))
       {
         foreach (var session1 in sessions.GetAll())
@@ -31,6 +34,7 @@ namespace Sessions
         }
       }
 
+      //3
       var frames = new List<SessionInformationMessage>();
       foreach (var session2 in sessions.GetAll())
       {
@@ -42,7 +46,7 @@ namespace Sessions
       }
     }
 
-    private static void Fill(Sessions sessions)
+    private static void AddExemplaryDataTo(Sessions sessions)
     {
       sessions.Add(new Session()
       {

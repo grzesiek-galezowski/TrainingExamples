@@ -28,10 +28,8 @@ namespace PayrollSystem
      
       foreach(var employee in employees)
       {
-        var payGrade = employee.GetPayGrade();
-
         //evaluate raise
-        if(employee.GetSalary() < payGrade.Maximum)
+        if(employee.GetSalary() < employee.GetPayGrade().Maximum)
         {
           var newSalary = decimal.Add(employee.GetSalary(), decimal.Multiply(employee.GetSalary(), new decimal(0.1)));
              
@@ -45,6 +43,7 @@ namespace PayrollSystem
           employee.SetBonusForYear(2014, oneTimeBonus);
         }
 
+        //store the employee
         employee.Save();
       }
     }
