@@ -25,5 +25,10 @@
     {
       get { return _i1; }
     }
+
+    public void Send()
+    {
+      throw new System.NotImplementedException();
+    }
   }
 }

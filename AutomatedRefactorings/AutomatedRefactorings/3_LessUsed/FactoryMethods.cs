@@ -22,6 +22,7 @@ namespace AutomatedRefactorings._3_LessUsed
     public void DoSomething()
     {
       var message = new MyMessage(1, 2);
+      message.Send();
     }
   }
 
@@ -30,6 +31,7 @@ namespace AutomatedRefactorings._3_LessUsed
     public void DoSomething()
     {
       var message = new MyMessage(7,8);
+      message.Send();
     }
   }
 
@@ -38,6 +40,7 @@ namespace AutomatedRefactorings._3_LessUsed
     public void DoSomething()
     {
       var message = new MyMessage(5,6);
+      message.Send();
     }
   }
 }

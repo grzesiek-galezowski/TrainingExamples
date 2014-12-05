@@ -47,6 +47,7 @@
     <Compile Include="3_LessUsed\CompositionRoot.cs" />
     <Compile Include="3_LessUsed\FactoryMethods.cs" />
     <Compile Include="3_LessUsed\MyMessage.cs" />
+    <Compile Include="4_DealingWithSingleton\CompositionRoot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
