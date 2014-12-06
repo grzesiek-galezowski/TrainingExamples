@@ -48,12 +48,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="_1_ControlFreak\Interfaces\AcmeMessage.cs" />
+    <Compile Include="_1_ControlFreak\Core\AcmeProcessingWorkflow.cs" />
+    <Compile Include="_1_ControlFreak\Services\ActiveDirectoryBasedAuthorization.cs" />
+    <Compile Include="_1_ControlFreak\Inbound\BinaryParsing.cs" />
+    <Compile Include="_1_ControlFreak\Inbound\BinaryUdpInbound.cs" />
+    <Compile Include="_1_ControlFreak\ApplicationRoot.cs" />
+    <Compile Include="_1_ControlFreak\Interfaces\DataDestination.cs" />
+    <Compile Include="_1_ControlFreak\Services\MsSqlBasedRepository.cs" />
+    <Compile Include="_1_ControlFreak\InMessages\NullMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="_1_ControlFreak\Services\SqlDataDestination.cs" />
+    <Compile Include="_1_ControlFreak\InMessages\StartMessage.cs" />
+    <Compile Include="_1_ControlFreak\InMessages\StopMessage.cs" />
+    <Compile Include="_1_ControlFreak\Outbound\TcpSocket.cs" />
+    <Compile Include="_1_ControlFreak\Core\TeleComSystem.cs" />
+    <Compile Include="_1_ControlFreak\Inbound\UdpSocket.cs" />
+    <Compile Include="_1_ControlFreak\Outbound\XmlMarshalling.cs" />
+    <Compile Include="_1_ControlFreak\Outbound\XmlOutboundMessage.cs" />
+    <Compile Include="_1_ControlFreak\Outbound\XmlTcpOutbound.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

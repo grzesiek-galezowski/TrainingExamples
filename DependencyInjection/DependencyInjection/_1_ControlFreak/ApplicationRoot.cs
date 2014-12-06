@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DependencyInjection._1_ControlFreak.Core;
 
-namespace DependencyInjection
+namespace DependencyInjection._1_ControlFreak
 {
-    public class Class1
+    public class ApplicationRoot
     {
+      public void Main()
+      {
+        var sys = new TeleComSystem();
+
+        sys.Start();
+      }
     }
 
   //TODO 3rd Party Connect
