@@ -39,10 +39,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BasicRequestValidation.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="InMemoryConfig.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestProcessing.cs" />
     <Compile Include="RequestValidation.cs" />
     <Compile Include="RequestValidationException.cs" />
     <Compile Include="ThirdParty\SubscriptionStartRequest.cs" />

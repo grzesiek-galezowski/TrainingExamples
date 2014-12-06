@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Validations.ThirdParty;
+﻿using Validations.ThirdParty;
 
 namespace Validations
 {
@@ -10,15 +6,12 @@ namespace Validations
     {
       public void Program()
       {
-        var requestProcessing = new RequestProcessing(
-          new BasicRequestValidation(
-            new InMemoryConfig()
-            {
-              MaxDuration = 4000
-            }));
+        var requestProcessing = Resolve();
+        ActOn(requestProcessing);
+      }
 
-
-
+      private static void ActOn(RequestProcessing requestProcessing)
+      {
         var subscriptionStartRequest = new SubscriptionStartRequest()
         {
           Owner = "Zenek",
@@ -27,50 +20,16 @@ namespace Validations
         };
 
         requestProcessing.PerformFor(subscriptionStartRequest);
-
       }
-    }
 
-  public class RequestProcessing
-  {
-    private readonly RequestValidation _basicRequestValidation;
-
-    public RequestProcessing(BasicRequestValidation basicRequestValidation)
-    {
-      _basicRequestValidation = basicRequestValidation;
-    }
-
-    public void PerformFor(SubscriptionStartRequest subscriptionStartRequest)
-    {
-      _basicRequestValidation.PerformFor(subscriptionStartRequest);
-    }
-  }
-
-  public class BasicRequestValidation : RequestValidation
-  {
-    private readonly Config _config;
-
-    public BasicRequestValidation(Config config)
-    {
-      _config = config;
-    }
-
-    public void PerformFor(SubscriptionStartRequest request)
-    {
-      if (string.IsNullOrEmpty(request.Owner.Trim()))
+      private static RequestProcessing Resolve()
       {
-        throw new RequestValidationException();
-      }
-
-      if (string.IsNullOrEmpty(request.Target.Trim()))
-      {
-        throw new RequestValidationException();
-      }
-
-      if (request.Duration < _config.MaxDuration)
-      {
-        throw new RequestValidationException();
+        return new RequestProcessing(
+          new BasicRequestValidation(
+            new InMemoryConfig()
+            {
+              MaxDuration = 4000
+            }));
       }
     }
-  }
 }
