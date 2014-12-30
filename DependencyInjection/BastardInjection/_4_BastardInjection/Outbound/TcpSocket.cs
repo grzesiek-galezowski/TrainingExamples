@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ServiceLocatorDIAntipattern._2_ServiceLocator.Outbound
+namespace BastardInjection._4_BastardInjection.Outbound
 {
   public interface IOutputSocket
   {

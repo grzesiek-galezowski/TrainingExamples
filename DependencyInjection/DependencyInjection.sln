@@ -5,6 +5,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyInjection", "Depe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceLocatorDIAntipattern", "ServiceLocatorDIAntipattern\ServiceLocatorDIAntipattern.csproj", "{ABD6A39F-9BBB-4FBC-800D-34E004834544}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConformingContainerAntipattern", "ConformingContainerAntipattern\ConformingContainerAntipattern.csproj", "{54AE2D4E-DF8B-4569-B1B1-5A42A22A5A1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BastardInjection", "BastardInjection\BastardInjection.csproj", "{D72B425B-9950-4738-AC46-A3FABA32986F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +23,14 @@ Global
 		{ABD6A39F-9BBB-4FBC-800D-34E004834544}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABD6A39F-9BBB-4FBC-800D-34E004834544}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABD6A39F-9BBB-4FBC-800D-34E004834544}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54AE2D4E-DF8B-4569-B1B1-5A42A22A5A1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54AE2D4E-DF8B-4569-B1B1-5A42A22A5A1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54AE2D4E-DF8B-4569-B1B1-5A42A22A5A1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54AE2D4E-DF8B-4569-B1B1-5A42A22A5A1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D72B425B-9950-4738-AC46-A3FABA32986F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D72B425B-9950-4738-AC46-A3FABA32986F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D72B425B-9950-4738-AC46-A3FABA32986F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D72B425B-9950-4738-AC46-A3FABA32986F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

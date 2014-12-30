@@ -1,7 +1,6 @@
-﻿using ServiceLocatorDIAntipattern._2_ServiceLocator.Interfaces;
-using Microsoft.Practices.Unity;
+﻿using ConformingContainerAntipattern._3_ConformingContainer.Interfaces;
 
-namespace ServiceLocatorDIAntipattern._2_ServiceLocator.Outbound
+namespace ConformingContainerAntipattern._3_ConformingContainer.Outbound
 {
   public interface IOutboundMessage : DataDestination
   {

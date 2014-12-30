@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ServiceLocatorDIAntipattern._2_ServiceLocator.Outbound
+namespace ConformingContainerAntipattern._3_ConformingContainer.Outbound
 {
   public interface IOutputSocket
   {

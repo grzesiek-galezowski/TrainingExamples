@@ -1,7 +1,6 @@
-﻿using ServiceLocatorDIAntipattern._2_ServiceLocator.Interfaces;
-using Microsoft.Practices.Unity;
+﻿using BastardInjection._4_BastardInjection.Interfaces;
 
-namespace ServiceLocatorDIAntipattern._2_ServiceLocator.Outbound
+namespace BastardInjection._4_BastardInjection.Outbound
 {
   public interface IOutboundMessage : DataDestination
   {
@@ -13,9 +12,14 @@ namespace ServiceLocatorDIAntipattern._2_ServiceLocator.Outbound
     private readonly IMarshalling _marshalling;
     private string _content = string.Empty;
 
-    public OutboundMessage()
+    public OutboundMessage() : this(new XmlMarshalling())
     {
-      _marshalling = ApplicationRoot.Context.Resolve<IMarshalling>();
+      
+    }
+
+    public OutboundMessage(IMarshalling marshalling)
+    {
+      _marshalling = marshalling;
     }
 
     public void SendVia(IOutputSocket outputOutputSocket)

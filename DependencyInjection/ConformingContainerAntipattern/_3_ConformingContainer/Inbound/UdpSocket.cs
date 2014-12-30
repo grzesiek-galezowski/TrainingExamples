@@ -1,7 +1,6 @@
 ﻿using System;
-using Microsoft.Practices.Unity;
 
-namespace ServiceLocatorDIAntipattern._2_ServiceLocator.Inbound
+namespace ConformingContainerAntipattern._3_ConformingContainer.Inbound
 {
   internal interface IInputSocket
   {

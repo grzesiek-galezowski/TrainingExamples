@@ -10,6 +10,16 @@ namespace DependencyInjection._1_ControlFreak
 
         sys.Start();
       }
+
+      public void Main_IoC_Container()
+      {
+        //TODO mention RRR pattern
+
+        var sys = new TeleComSystem();
+
+        sys.Start();
+      }
+
     }
 
 }
