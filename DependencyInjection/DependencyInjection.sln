@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConformingContainerAntipatt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BastardInjection", "BastardInjection\BastardInjection.csproj", "{D72B425B-9950-4738-AC46-A3FABA32986F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChangingBehaviorThroughComposition", "ChangingBehaviorThroughComposition\ChangingBehaviorThroughComposition.csproj", "{A3A72133-1E75-402D-81F6-52A8386D88AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{D72B425B-9950-4738-AC46-A3FABA32986F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D72B425B-9950-4738-AC46-A3FABA32986F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D72B425B-9950-4738-AC46-A3FABA32986F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3A72133-1E75-402D-81F6-52A8386D88AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3A72133-1E75-402D-81F6-52A8386D88AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3A72133-1E75-402D-81F6-52A8386D88AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3A72133-1E75-402D-81F6-52A8386D88AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
