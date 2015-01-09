@@ -1,10 +1,4 @@
-﻿#region File Header & Copyright Notice
-//Copyright 2015 Motorola Solutions, Inc.
-//All Rights Reserved.
-//Motorola Solutions Confidential Restricted
-#endregion
-
-namespace ChangingBehaviorThroughComposition
+﻿namespace ChangingBehaviorThroughComposition
 {
   public class CompositionRoot
   {
