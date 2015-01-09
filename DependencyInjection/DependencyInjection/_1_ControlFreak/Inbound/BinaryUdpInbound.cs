@@ -1,6 +1,6 @@
-﻿using DependencyInjection._1_ControlFreak.Core;
+﻿using DependencyInjectionBefore._1_ControlFreak.Core;
 
-namespace DependencyInjection._1_ControlFreak.Inbound
+namespace DependencyInjectionBefore._1_ControlFreak.Inbound
 {
   class BinaryUdpInbound
   {

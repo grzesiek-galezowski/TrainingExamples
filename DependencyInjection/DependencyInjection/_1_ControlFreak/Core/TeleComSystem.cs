@@ -1,7 +1,7 @@
-﻿using DependencyInjection._1_ControlFreak.Inbound;
-using DependencyInjection._1_ControlFreak.Outbound;
+﻿using DependencyInjectionBefore._1_ControlFreak.Inbound;
+using DependencyInjectionBefore._1_ControlFreak.Outbound;
 
-namespace DependencyInjection._1_ControlFreak.Core
+namespace DependencyInjectionBefore._1_ControlFreak.Core
 {
   class TeleComSystem
   {

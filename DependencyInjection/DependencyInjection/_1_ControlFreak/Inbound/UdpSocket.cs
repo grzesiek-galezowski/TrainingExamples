@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DependencyInjection._1_ControlFreak.Inbound
+namespace DependencyInjectionBefore._1_ControlFreak.Inbound
 {
   class UdpSocket
   {

@@ -1,8 +1,15 @@
 ﻿using System;
 
-namespace DependencyInjectionBefore._1_ControlFreak.Outbound
+namespace DependencyInjectionAfter._1_ControlFreakRefactoredToDependencyInjection.Outbound
 {
-  class TcpSocket
+  public interface ISocket
+  {
+    void Open();
+    void Close();
+    void Send(string lol);
+  }
+
+  public class TcpSocket : ISocket
   {
     public void Open()
     {

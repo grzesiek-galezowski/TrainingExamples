@@ -1,7 +1,7 @@
-﻿using DependencyInjection._1_ControlFreak.InMessages;
-using DependencyInjection._1_ControlFreak.Interfaces;
+﻿using DependencyInjectionBefore._1_ControlFreak.InMessages;
+using DependencyInjectionBefore._1_ControlFreak.Interfaces;
 
-namespace DependencyInjection._1_ControlFreak.Inbound
+namespace DependencyInjectionBefore._1_ControlFreak.Inbound
 {
   class BinaryParsing
   {

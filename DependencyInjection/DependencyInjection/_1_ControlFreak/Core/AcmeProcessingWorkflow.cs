@@ -1,8 +1,8 @@
-﻿using DependencyInjection._1_ControlFreak.Interfaces;
-using DependencyInjection._1_ControlFreak.Outbound;
-using DependencyInjection._1_ControlFreak.Services;
+﻿using DependencyInjectionBefore._1_ControlFreak.Interfaces;
+using DependencyInjectionBefore._1_ControlFreak.Outbound;
+using DependencyInjectionBefore._1_ControlFreak.Services;
 
-namespace DependencyInjection._1_ControlFreak.Core
+namespace DependencyInjectionBefore._1_ControlFreak.Core
 {
   class AcmeProcessingWorkflow
   {

@@ -1,4 +1,4 @@
-﻿namespace DependencyInjection._1_ControlFreak.Outbound
+﻿namespace DependencyInjectionBefore._1_ControlFreak.Outbound
 {
   class XmlMarshalling
   {

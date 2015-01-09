@@ -1,6 +1,6 @@
-﻿using DependencyInjection._1_ControlFreak.Interfaces;
+﻿using DependencyInjectionBefore._1_ControlFreak.Interfaces;
 
-namespace DependencyInjection._1_ControlFreak.Outbound
+namespace DependencyInjectionBefore._1_ControlFreak.Outbound
 {
   class XmlTcpOutbound
   {

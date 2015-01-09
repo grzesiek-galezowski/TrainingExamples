@@ -1,6 +1,6 @@
-﻿using DependencyInjection._1_ControlFreak.Services;
+﻿using DependencyInjectionBefore._1_ControlFreak.Services;
 
-namespace DependencyInjection._1_ControlFreak.Interfaces
+namespace DependencyInjectionBefore._1_ControlFreak.Interfaces
 {
   interface AcmeMessage
   {

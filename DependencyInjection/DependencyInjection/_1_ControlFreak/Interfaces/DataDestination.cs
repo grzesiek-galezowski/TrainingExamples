@@ -1,4 +1,4 @@
-﻿namespace DependencyInjection._1_ControlFreak.Interfaces
+﻿namespace DependencyInjectionBefore._1_ControlFreak.Interfaces
 {
   interface DataDestination
   {

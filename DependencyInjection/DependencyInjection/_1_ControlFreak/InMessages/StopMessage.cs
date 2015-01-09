@@ -1,8 +1,8 @@
 ﻿using System;
-using DependencyInjection._1_ControlFreak.Interfaces;
-using DependencyInjection._1_ControlFreak.Services;
+using DependencyInjectionBefore._1_ControlFreak.Interfaces;
+using DependencyInjectionBefore._1_ControlFreak.Services;
 
-namespace DependencyInjection._1_ControlFreak.InMessages
+namespace DependencyInjectionBefore._1_ControlFreak.InMessages
 {
   class StopMessage : AcmeMessage
   {

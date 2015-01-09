@@ -1,4 +1,4 @@
-﻿namespace DependencyInjection._1_ControlFreak.Services
+﻿namespace DependencyInjectionBefore._1_ControlFreak.Services
 {
   class ActiveDirectoryBasedAuthorization
   {
