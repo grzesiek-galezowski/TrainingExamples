@@ -1,15 +1,11 @@
 ﻿using System;
 
-namespace Sessions
+namespace SessionsRefactored
 {
-  [DataContract]
-  public class SessionInformationMessage
+  public class SessionData
   {
-    [DataMember]
     public string Owner { get; set; }
-    [DataMember]
     public string Target { get; set; }
-    [DataMember]
     public TimeSpan Duration { get; set; }
   }
 }

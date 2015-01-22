@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Sessions
+namespace SessionsRefactored.Network
 {
   [DataContract]
   public class SessionInformationMessage
