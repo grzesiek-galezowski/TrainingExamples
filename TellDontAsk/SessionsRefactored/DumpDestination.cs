@@ -5,7 +5,7 @@ namespace SessionsRefactored
   public interface DumpDestination
   {
     void BeginNewSessionDump();
-    void AddDuration(TimeSpan duration);
+    void AddId(int id);
     void AddOwner(string owner);
     void AddTarget(string target);
     void EndCurrentSessionDump();

@@ -14,7 +14,7 @@ namespace SessionsRefactored.SessionsTypes
     public void DumpTo(DumpDestination destination)
     {
       destination.BeginNewSessionDump();
-      destination.AddDuration(_sessionData.Duration);
+      destination.AddId(_sessionData.Id);
       destination.AddOwner(_sessionData.Owner);
       destination.AddTarget(_sessionData.Target);
       destination.EndCurrentSessionDump();

@@ -32,11 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Destinations\ConsoleDestination.cs" />
@@ -46,6 +42,7 @@
     <Compile Include="Destinations\NetworkConnection.cs" />
     <Compile Include="Destinations\NetworkPacketBuilder.cs" />
     <Compile Include="Destinations\PopulationOfOwnersListOnGui.cs" />
+    <Compile Include="Destinations\DevNull.cs" />
     <Compile Include="DumpDestination.cs" />
     <Compile Include="GUI\WpfBasedOwnersList.cs" />
     <Compile Include="Main.cs" />

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace SessionsRefactored.Network
 {
@@ -10,6 +11,6 @@ namespace SessionsRefactored.Network
     [DataMember]
     public string Target { get; set; }
     [DataMember]
-    public TimeSpan Duration { get; set; }
+    public int Id { get; set; }
   }
 }

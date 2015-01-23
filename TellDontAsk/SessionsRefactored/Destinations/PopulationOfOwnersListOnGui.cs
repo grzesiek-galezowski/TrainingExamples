@@ -17,7 +17,7 @@ namespace SessionsRefactored.Destinations
       //not interested
     }
 
-    public void AddDuration(TimeSpan duration)
+    public void AddId(int id)
     {
       //not interested
     }

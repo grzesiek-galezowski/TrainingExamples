@@ -11,9 +11,9 @@ namespace SessionsRefactored.Destinations
       Console.WriteLine("==> BEGIN SESSION");
     }
 
-    public void AddDuration(TimeSpan duration)
+    public void AddId(int id)
     {
-      Console.WriteLine(duration);
+      Console.WriteLine(id);
     }
 
     public void AddOwner(string owner)

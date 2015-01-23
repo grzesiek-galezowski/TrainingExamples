@@ -17,9 +17,9 @@ namespace SessionsRefactored.Destinations
       _message = new SessionInformationMessage();
     }
 
-    public void AddDuration(TimeSpan duration)
+    public void AddId(int id)
     {
-      _message.Duration = duration;
+      _message.Id = id;
     }
 
     public void AddOwner(string owner)

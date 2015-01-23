@@ -8,20 +8,20 @@ namespace SessionsRefactored.Destinations
   // if they really, really want to.
   public class FileStorageFormat2 : DumpDestination
   {
-    private TimeSpan? _duration;
+    private int? _id;
     private string _owner;
     private string _target;
 
     public void BeginNewSessionDump()
     {
-      _duration = null;
+      _id = null;
       _owner = null;
       _target = null;
     }
 
-    public void AddDuration(TimeSpan duration)
+    public void AddId(int id)
     {
-      _duration = duration;
+      _id = id;
     }
 
     public void AddOwner(string owner)
@@ -38,11 +38,11 @@ namespace SessionsRefactored.Destinations
     {
       using (var writer = File.AppendText("lolek.txt"))
       {
-        //the original order was duration, order, target
+        //the original order was id, order, target
         writer.WriteLine("<SESSION>");
         writer.WriteLine(_target ?? "No Target");
         writer.WriteLine(_owner ?? "No Owner");
-        writer.WriteLine(_duration.HasValue ? _duration.Value.ToString() : "No duration");
+        writer.WriteLine(_id.HasValue ? _id.Value.ToString() : "No ID!!");
         writer.WriteLine("</SESSION>");
       }
     }

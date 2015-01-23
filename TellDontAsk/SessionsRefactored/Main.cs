@@ -18,6 +18,7 @@ namespace SessionsRefactored
       var networkPacketBuilder = new NetworkPacketBuilder();
       var fileDestination1 = new FileStorageFormat1();
       var fileDestination2 = new FileStorageFormat2();
+      var devNull = new DevNull();
       var populationOfOwnersListOnGui = new PopulationOfOwnersListOnGui(new WpfBasedOwnersList());
 
       ///////////////////////////////////////
@@ -38,6 +39,7 @@ namespace SessionsRefactored
       networkPacketBuilder.SendBuiltPacketsThrough(networkConnection);
 
       sessions.DumpTo(populationOfOwnersListOnGui);
+      sessions.DumpTo(devNull);
     }
 
     private static void AddExemplaryDataTo(Sessions sessions)
@@ -45,7 +47,7 @@ namespace SessionsRefactored
       //basic session
       sessions.Add(new BasicSession(new SessionData()
       {
-        Duration = TimeSpan.FromDays(12),
+        Id = 1,
         Owner = "Zenek",
         Target = "Astro device"
       }));
@@ -54,7 +56,7 @@ namespace SessionsRefactored
       // by dumping only if session is not expired
       sessions.Add(new ExpirableSession(new BasicSession(new SessionData()
       {
-        Duration = TimeSpan.FromDays(11),
+        Id = 2,
         Owner = "Janek",
         Target = "Dimetra device"
       }), DateTime.Now.AddDays(3)));
@@ -63,7 +65,7 @@ namespace SessionsRefactored
       // by not dumping at all
       sessions.Add(new HiddenSession(new BasicSession(new SessionData()
       {
-        Duration = TimeSpan.FromDays(1),
+        Id = 3,
         Owner = "Czesiek",
         Target = "LTE device"
       })));
