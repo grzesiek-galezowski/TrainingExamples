@@ -10,7 +10,7 @@ namespace SessionsRefactored
   {
     public void Program()
     {
-      var sessions = new Sessions();
+      Sessions sessions = new SynchronizedSessions(new BasicSessions());
       AddExemplaryDataTo(sessions);
 
       //different destinations where sessions can be dumped:
