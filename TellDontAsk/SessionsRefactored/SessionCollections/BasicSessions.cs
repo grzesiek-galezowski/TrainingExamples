@@ -2,12 +2,6 @@
 
 namespace SessionsRefactored
 {
-  public interface Sessions
-  {
-    void Add(Session session);
-    void DumpTo(DumpDestination destination);
-  }
-
   public class BasicSessions : Sessions
   {
     readonly List<Session> _sessions = new List<Session>();

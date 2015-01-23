@@ -10,10 +10,13 @@ namespace SessionsRefactored
   {
     public void Program()
     {
+      ///////////////////////////////////////
+      // 1. Hiding access to sessions allows protecting the collection against
+      //    concurrent additions
       Sessions sessions = new SynchronizedSessions(new BasicSessions());
       AddExemplaryDataTo(sessions);
 
-      //different destinations where sessions can be dumped:
+      // different destinations where sessions can be dumped:
       var consoleDestination = new ConsoleDestination();
       var networkPacketBuilder = new NetworkPacketBuilder();
       var fileDestination1 = new FileStorageFormat1();
@@ -22,17 +25,16 @@ namespace SessionsRefactored
       var populationOfOwnersListOnGui = new PopulationOfOwnersListOnGui(new WpfBasedOwnersList());
 
       ///////////////////////////////////////
-      // 1. These two prove that we have eliminated redundancy in:
-      // a) what data belongs to session
-      // b) in which order they are dumped
+      // 2. These two prove that we have eliminated redundancy in:
+      //    a) what data belongs to session
+      //    b) in which order they are dumped
       sessions.DumpTo(consoleDestination);
       sessions.DumpTo(fileDestination1);
 
       ///////////////////////////////////////
-      // 2. These three prove that we have not lost any of the flexibility we had
-      // with the getters approach:
+      // 3. These three prove that we have not lost flexibility we had with the getters approach:
 
-      //additionally these two always want to write _all_ of the session fields, so they belong to 1.a. as well
+      //    additionally these two always want to write _all_ of the session fields, so they belong to 2.a. as well
       sessions.DumpTo(fileDestination2); 
       sessions.DumpTo(networkPacketBuilder);
       var networkConnection = new BogusNetworkConnection();

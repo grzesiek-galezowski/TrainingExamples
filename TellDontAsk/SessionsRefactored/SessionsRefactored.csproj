@@ -51,11 +51,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Session.cs" />
     <Compile Include="SessionData.cs" />
-    <Compile Include="BasicSessions.cs" />
+    <Compile Include="SessionCollections\BasicSessions.cs" />
+    <Compile Include="Sessions.cs" />
     <Compile Include="SessionsTypes\BasicSession.cs" />
     <Compile Include="SessionsTypes\ExpirableSession.cs" />
     <Compile Include="SessionsTypes\HiddenSession.cs" />
-    <Compile Include="SynchronizedSessions.cs" />
+    <Compile Include="SessionCollections\SynchronizedSessions.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
