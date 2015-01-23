@@ -10,12 +10,6 @@ namespace SessionsRefactored
   {
     public void Program()
     {
-      ///////////////////////////////////////
-      // 1. Hiding access to sessions allows protecting the collection against
-      //    concurrent additions
-      Sessions sessions = new SynchronizedSessions(new BasicSessions());
-      AddExemplaryDataTo(sessions);
-
       // different destinations where sessions can be dumped:
       var consoleDestination = new ConsoleDestination();
       var networkPacketBuilder = new NetworkPacketBuilder();
@@ -23,6 +17,12 @@ namespace SessionsRefactored
       var fileDestination2 = new FileStorageFormat2();
       var devNull = new DevNull();
       var populationOfOwnersListOnGui = new PopulationOfOwnersListOnGui(new WpfBasedOwnersList());
+
+      ///////////////////////////////////////
+      // 1. Hiding access to sessions allows protecting the collection against
+      //    concurrent additions with synchronized wrapper
+      Sessions sessions = new SynchronizedSessions(new BasicSessions());
+      AddExemplaryDataTo(sessions);
 
       ///////////////////////////////////////
       // 2. These two prove that we have eliminated redundancy in:
