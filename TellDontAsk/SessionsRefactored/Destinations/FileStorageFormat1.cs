@@ -16,17 +16,17 @@ namespace SessionsRefactored.Destinations
 
     public void AddId(int id)
     {
-      _writer.WriteLine(id);
+      _writer.Write('|' + id + '|');
     }
 
     public void AddOwner(string owner)
     {
-      _writer.WriteLine(owner);
+      _writer.Write('_' + owner + '_');
     }
 
     public void AddTarget(string target)
     {
-      _writer.WriteLine(target);
+      _writer.Write("'" + target + "'");
     }
 
     public void EndCurrentSessionDump()
