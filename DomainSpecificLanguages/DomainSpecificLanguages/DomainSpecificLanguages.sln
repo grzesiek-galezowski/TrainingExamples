@@ -13,6 +13,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CombosExtensionMethods", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CombosMethodChaining", "CombosMethodChaining\CombosMethodChaining.csproj", "{D0D61023-E5BB-43F8-ACB8-AA70E065FF1D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CombosDynamicParsingOfNonExistentMethod", "CombosDynamicParsingOfNonExistentMethod\CombosDynamicParsingOfNonExistentMethod.csproj", "{626C0B41-A8F5-4C0D-AF98-4BB2CEAD8070}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelecomSystemNestedFunctions", "AlarmsNestedFunctions\TelecomSystemNestedFunctions.csproj", "{D08646EF-08EC-49EA-984C-83AAD62A995F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlarmsWithNestedFunctions", "AlarmsWithNestedFunctions\AlarmsWithNestedFunctions.csproj", "{F8D55F40-8AEB-4AB7-B089-1FA0234FDAF5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +49,18 @@ Global
 		{D0D61023-E5BB-43F8-ACB8-AA70E065FF1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0D61023-E5BB-43F8-ACB8-AA70E065FF1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0D61023-E5BB-43F8-ACB8-AA70E065FF1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{626C0B41-A8F5-4C0D-AF98-4BB2CEAD8070}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{626C0B41-A8F5-4C0D-AF98-4BB2CEAD8070}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{626C0B41-A8F5-4C0D-AF98-4BB2CEAD8070}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{626C0B41-A8F5-4C0D-AF98-4BB2CEAD8070}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D08646EF-08EC-49EA-984C-83AAD62A995F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D08646EF-08EC-49EA-984C-83AAD62A995F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D08646EF-08EC-49EA-984C-83AAD62A995F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D08646EF-08EC-49EA-984C-83AAD62A995F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8D55F40-8AEB-4AB7-B089-1FA0234FDAF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8D55F40-8AEB-4AB7-B089-1FA0234FDAF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8D55F40-8AEB-4AB7-B089-1FA0234FDAF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8D55F40-8AEB-4AB7-B089-1FA0234FDAF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

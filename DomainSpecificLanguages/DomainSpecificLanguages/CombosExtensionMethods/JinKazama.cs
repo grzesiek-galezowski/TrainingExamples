@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,6 @@ namespace CombosNestedFunctions
 
 
   //TODO alarms both nested functions and extension methods, and method chaining
-  //TODO methods chaining
 
+  
 }
