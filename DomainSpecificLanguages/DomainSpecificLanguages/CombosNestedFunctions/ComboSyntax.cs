@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CombosNestedFunctions
 {
@@ -49,30 +50,80 @@ namespace CombosNestedFunctions
       get { return new KeyPress(0x09); }
     }
 
-    public class KeyPress
+    protected static ComboData Combo(string name, params KeyPress[] keySequence)
     {
-      private readonly int _keyCode;
-
-      public KeyPress(int keyCode)
+      var data = new ComboData(name);
+      foreach (var keyPress in keySequence)
       {
-        _keyCode = keyCode;
+        data.Add(keyPress);
       }
 
-      public static KeyPress operator+(KeyPress press1, KeyPress press2)
-      {
-        return new KeyPress(press1._keyCode | press2._keyCode);
-      }
-
-      public static KeyPress operator/(KeyPress press1, KeyPress press2)
-      {
-        return new KeyPress(press1._keyCode | press2._keyCode);
-      }
-        
+      return data;
     }
 
-    protected static void Combo(string name, params KeyPress[] keySequence)
+    public List<ComboData> MoveList(params ComboData[] combos)
     {
-      throw new NotImplementedException();
+      return new List<ComboData>(combos);
     }
   }
+
+  public class KeyPress
+  {
+    private readonly int _keyCode;
+
+    public KeyPress(int keyCode)
+    {
+      _keyCode = keyCode;
+    }
+
+    public KeyPress(KeyPress lastKeyPress, KeyPress keyPress)
+    {
+      _keyCode = lastKeyPress._keyCode | keyPress._keyCode;
+    }
+
+    public static KeyPress operator+(KeyPress press1, KeyPress press2)
+    {
+      return new KeyPress(press1._keyCode | press2._keyCode);
+    }
+
+    public static KeyPress operator/(KeyPress press1, KeyPress press2)
+    {
+      return new KeyPress(press1._keyCode | press2._keyCode);
+    }
+        
+  }
+
+  public class ComboData
+  {
+    public ComboData(string name)
+    {
+      Name = name;
+    }
+
+    private readonly List<KeyPress> _keys = new List<KeyPress>();
+    private string Name { get; set; }
+
+    private List<KeyPress> Keys
+    {
+      get { return _keys; }
+    }
+
+    private KeyPress LastKeyPress
+    {
+      get { return _keys[_keys.Count - 1]; }
+      set { _keys[_keys.Count - 1] = value; }
+    }
+
+
+    public void Add(KeyPress keyPress)
+    {
+      _keys.Add(keyPress);
+    }
+
+    public void AddPressedTogetherWithPrevious(int keyCode)
+    {
+      LastKeyPress = new KeyPress(LastKeyPress, new KeyPress(keyCode));
+    }
+  }
+
 }
