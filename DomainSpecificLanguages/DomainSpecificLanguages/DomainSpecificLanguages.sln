@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainSpecificLanguages", "DomainSpecificLanguages\DomainSpecificLanguages.csproj", "{3C584153-E936-4832-B504-3BF92C9E23B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CombosNestedFunctions", "CombosNestedFunctions\CombosNestedFunctions.csproj", "{CA147010-5447-464C-B0D3-C7D9387F6579}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CombosFancyNestedFunctionsAndOperators", "CombosNestedFunctions\CombosFancyNestedFunctionsAndOperators.csproj", "{CA147010-5447-464C-B0D3-C7D9387F6579}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CombosFunctionSequence", "CombosFunctionSequence\CombosFunctionSequence.csproj", "{0F26B540-5678-406B-8111-54A9D63566A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CombosClassicNestedFunctions", "CombosClassicNestedFunctions\CombosClassicNestedFunctions.csproj", "{760ECD08-4A1D-41FA-BA06-DC0005252FDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CombosExtensionMethods", "CombosExtensionMethods\CombosExtensionMethods.csproj", "{7B6216D5-C35E-4BC4-9ECF-586383B5A6C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CombosMethodChaining", "CombosMethodChaining\CombosMethodChaining.csproj", "{D0D61023-E5BB-43F8-ACB8-AA70E065FF1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +31,18 @@ Global
 		{0F26B540-5678-406B-8111-54A9D63566A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F26B540-5678-406B-8111-54A9D63566A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F26B540-5678-406B-8111-54A9D63566A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{760ECD08-4A1D-41FA-BA06-DC0005252FDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{760ECD08-4A1D-41FA-BA06-DC0005252FDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{760ECD08-4A1D-41FA-BA06-DC0005252FDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{760ECD08-4A1D-41FA-BA06-DC0005252FDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B6216D5-C35E-4BC4-9ECF-586383B5A6C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B6216D5-C35E-4BC4-9ECF-586383B5A6C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B6216D5-C35E-4BC4-9ECF-586383B5A6C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B6216D5-C35E-4BC4-9ECF-586383B5A6C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0D61023-E5BB-43F8-ACB8-AA70E065FF1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0D61023-E5BB-43F8-ACB8-AA70E065FF1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0D61023-E5BB-43F8-ACB8-AA70E065FF1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0D61023-E5BB-43F8-ACB8-AA70E065FF1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
