@@ -121,6 +121,11 @@ namespace CombosNestedFunctions
       get { return _combos; }
     }
 
+    public static implicit operator List<ComboData>(ComboBuilder builder)
+    {
+      return builder.End;
+    }
+
     public class KeyPress
     {
       private readonly int _keyCode;
