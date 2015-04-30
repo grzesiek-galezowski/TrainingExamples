@@ -64,5 +64,5 @@ namespace AtmaFileSystem
 
   }
 
-  //TODO empty strings everywhere
+  //TODO validate against using empty strings everywhere
 }

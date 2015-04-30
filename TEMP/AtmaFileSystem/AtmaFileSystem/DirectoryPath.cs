@@ -67,5 +67,14 @@ namespace AtmaFileSystem
       return _path;
     }
 
+    public DirectoryInfo Info()
+    {
+      return new DirectoryInfo(_path);
+    }
+
+    public DirectoryPath Root()
+    {
+      return new DirectoryPath(Path.GetPathRoot(_path));
+    }
   }
 }

@@ -62,7 +62,65 @@ namespace AtmaFileSystemSpecification
       Assert.Equal(Path.Combine(dirPath.ToString(), fileName.ToString()), convertedToString);
     }
 
+    [Fact]
+    public void ShouldAllowAccessingDirectoryOfThePath()
+    {
+      //GIVEN
+      var dirPath = Any.Instance<DirectoryPath>();
+      var fileName = Any.Instance<FileName>();
+      var pathWithFileName = PathWithFileName.From(dirPath, fileName);
+      
+      //WHEN
+      var dirObtainedFromPath = pathWithFileName.Directory();
 
+      //THEN
+      Assert.Equal(dirPath, dirObtainedFromPath);
+    }
+
+    [Fact]
+    public void ShouldAllowAccessingFileNameOfThePath()
+    {
+      //GIVEN
+      var dirPath = Any.Instance<DirectoryPath>();
+      var fileName = Any.Instance<FileName>();
+      var pathWithFileName = PathWithFileName.From(dirPath, fileName);
+
+      //WHEN
+      var fileNameObtainedFromPath = pathWithFileName.FileName();
+
+      //THEN
+      Assert.Equal(fileName, fileNameObtainedFromPath);
+    }
+
+    [Fact]
+    public void ShouldBeConvertibleToFileInfo()
+    {
+      //GIVEN
+      var pathWithFilename = PathWithFileName.To(@"C:\lolek\lol.txt");
+
+      //WHEN
+      var fileInfo = pathWithFilename.Info();
+
+      //THEN
+      Assert.Equal(fileInfo.FullName, pathWithFilename.ToString());
+    }
+
+    [Fact]
+    public void ShouldAllowGettingPathRoot()
+    {
+      //GIVEN
+      var pathString = @"C:\lolek\lol.txt";
+      var pathWithFilename = PathWithFileName.To(pathString);
+
+      //WHEN
+      var root = pathWithFilename.Root();
+
+      //THEN
+      Assert.Equal(new DirectoryPath(Path.GetPathRoot(pathString)), root);
+    }
+
+
+    //TODO add the rest of the methods from Path, introduce class extension and path segment
 
   }
 }

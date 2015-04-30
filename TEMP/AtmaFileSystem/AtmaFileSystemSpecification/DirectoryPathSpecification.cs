@@ -60,8 +60,36 @@ namespace AtmaFileSystemSpecification
 
       //THEN
       Assert.Equal(Path.Combine(path.ToString(), fileName.ToString()), convertedToString);
-
     }
+
+
+    [Fact]
+    public void ShouldBeConvertibleToDirectoryInfo()
+    {
+      //GIVEN
+      var directoryPath = DirectoryPath.To(@"C:\lolek\");
+
+      //WHEN
+      DirectoryInfo directoryInfo = directoryPath.Info();
+
+      //THEN
+      Assert.Equal(directoryInfo.FullName, directoryPath.ToString());
+    }
+
+    [Fact]
+    public void ShouldAllowGettingPathRoot()
+    {
+      //GIVEN
+      var pathString = @"C:\lolek\";
+      var pathWithFilename = DirectoryPath.To(pathString);
+
+      //WHEN
+      DirectoryPath root = pathWithFilename.Root();
+
+      //THEN
+      Assert.Equal(new DirectoryPath(Path.GetPathRoot(pathString)), root);
+    }
+
 
 
   }
