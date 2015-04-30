@@ -1,45 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+using System;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TddEbook.TddToolkit;
-using Xunit;
 
-namespace AtmaFileSystemSpecification
+namespace AtmaFileSystem
 {
-  public class PathWithFileNameSpecification
-  {
-
-    [Fact]
-    public void ShouldNotAllowToBeCreatedWithNullValue()
-    {
-      Assert.Throws<ArgumentNullException>(() => PathWithFileName.To(null));
-    }
-
-    [Fact]
-    public void ShouldReturnNonNullPathToFileNameWhenCreatedWithWellFormedPathString()
-    {
-      Assert.NotNull(PathWithFileName.To(@"c:\\lolek\\lolki2.txt"));
-    }
-
-    [Fact]
-    public void ShouldThrowArgumentExceptionWhenTryingToCreateInstanceWithNotWellFormedUri()
-    {
-      Assert.Throws<ArgumentException>(() => PathWithFileName.To(@"C:\?||\|\\|\"));
-    }
-
-    [Fact]
-    public void ShouldBehaveLikeValueObject()
-    {
-      XAssert.IsValue<PathWithFileName>();
-    }
-
-
-
-  }
-
   public class PathWithFileName : IEquatable<PathWithFileName>
   {
     public bool Equals(PathWithFileName other)
@@ -79,6 +42,11 @@ namespace AtmaFileSystemSpecification
       _path = path;
     }
 
+    public PathWithFileName(DirectoryPath dirPath, FileName fileName)
+    {
+      _path = Path.Combine(dirPath.ToString(), fileName.ToString());
+    }
+
     public static PathWithFileName To(string path)
     {
       if (null == path)
@@ -92,6 +60,16 @@ namespace AtmaFileSystemSpecification
       }
 
       else return new PathWithFileName(path);
+    }
+
+    public override string ToString()
+    {
+      return _path;
+    }
+
+    public static PathWithFileName From(DirectoryPath dirPath, FileName fileName)
+    {
+      return new PathWithFileName(dirPath, fileName);
     }
   }
 }
