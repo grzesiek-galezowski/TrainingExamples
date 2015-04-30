@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using AtmaFileSystem;
 using TddEbook.TddToolkit;
 using Xunit;
@@ -46,7 +47,21 @@ namespace AtmaFileSystemSpecification
       Assert.Equal(initialValue, convertedToString);
     }
 
+    [Fact]
+    public void ShouldAllowUsingTheDivisionOperatorToConcatenateFileName()
+    {
+      //GIVEN
+      var path = Any.Instance<DirectoryPath>();
+      var fileName = Any.Instance<FileName>();
+      PathWithFileName pathWithFileName = path / fileName;
 
+      //WHEN
+      var convertedToString = pathWithFileName.ToString();
+
+      //THEN
+      Assert.Equal(Path.Combine(path.ToString(), fileName.ToString()), convertedToString);
+
+    }
 
 
   }

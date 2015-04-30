@@ -35,6 +35,11 @@ namespace AtmaFileSystem
       return !Equals(left, right);
     }
 
+    public static PathWithFileName operator /(DirectoryPath path, FileName fileName)
+    {
+      return PathWithFileName.From(path, fileName);
+    }
+
     private readonly string _path;
 
     public DirectoryPath(string path)
