@@ -81,18 +81,48 @@ namespace AtmaFileSystemSpecification
     {
       //GIVEN
       var pathString = @"C:\lolek\";
-      var pathWithFilename = DirectoryPath.To(pathString);
+      var dir = DirectoryPath.To(pathString);
 
       //WHEN
-      DirectoryPath root = pathWithFilename.Root();
+      DirectoryPath root = dir.Root();
 
       //THEN
       Assert.Equal(new DirectoryPath(Path.GetPathRoot(pathString)), root);
     }
 
+    [Theory, 
+      InlineData(@"C:\parent\child\", @"C:\parent"),
+      InlineData(@"C:\parent\", @"C:\")]
+    public void ShouldAllowGettingProperParentDirectoryWhenItExists(string input, string expected)
+    {
+      //GIVEN
+      var dir = DirectoryPath.To(input);
+
+      //WHEN
+      var parent = dir.Parent();
+
+      //THEN
+      Assert.True(parent.Found);
+      Assert.Equal(new DirectoryPath(expected), parent.Value());
+    }
+
+    [Fact]
+    public void ShouldProduceParentWithoutValueThatThrowsOnAccessWhenThereIsNoParentInPath()
+    {
+      //GIVEN
+      const string pathString = @"C:\";
+      var dir = DirectoryPath.To(pathString);
+
+      //WHEN
+      var parent = dir.Parent();
+
+      //THEN
+      Assert.False(parent.Found);
+      Assert.Throws<InvalidOperationException>(() => parent.Value());
+    }
+
+  //bug introduce class DirectoryName
 
 
   }
-
-
 }

@@ -5,41 +5,6 @@ namespace AtmaFileSystem
 {
   public class DirectoryPath : IEquatable<DirectoryPath>
   {
-    public bool Equals(DirectoryPath other)
-    {
-      if (ReferenceEquals(null, other)) return false;
-      if (ReferenceEquals(this, other)) return true;
-      return string.Equals(_path, other._path);
-    }
-
-    public override bool Equals(object obj)
-    {
-      if (ReferenceEquals(null, obj)) return false;
-      if (ReferenceEquals(this, obj)) return true;
-      if (obj.GetType() != this.GetType()) return false;
-      return Equals((DirectoryPath) obj);
-    }
-
-    public override int GetHashCode()
-    {
-      return _path.GetHashCode();
-    }
-
-    public static bool operator ==(DirectoryPath left, DirectoryPath right)
-    {
-      return Equals(left, right);
-    }
-
-    public static bool operator !=(DirectoryPath left, DirectoryPath right)
-    {
-      return !Equals(left, right);
-    }
-
-    public static PathWithFileName operator /(DirectoryPath path, FileName fileName)
-    {
-      return PathWithFileName.From(path, fileName);
-    }
-
     private readonly string _path;
 
     public DirectoryPath(string path)
@@ -72,9 +37,51 @@ namespace AtmaFileSystem
       return new DirectoryInfo(_path);
     }
 
+    public MaybeDirectoryPath Parent()
+    {
+      var directoryName = new DirectoryInfo(_path).Parent;
+      return new MaybeDirectoryPath(directoryName != null ? directoryName.FullName : null);
+    }
+
     public DirectoryPath Root()
     {
       return new DirectoryPath(Path.GetPathRoot(_path));
     }
+
+    public static PathWithFileName operator /(DirectoryPath path, FileName fileName)
+    {
+      return PathWithFileName.From(path, fileName);
+    }
+
+    public bool Equals(DirectoryPath other)
+    {
+      if (ReferenceEquals(null, other)) return false;
+      if (ReferenceEquals(this, other)) return true;
+      return string.Equals(_path, other._path);
+    }
+
+    public override bool Equals(object obj)
+    {
+      if (ReferenceEquals(null, obj)) return false;
+      if (ReferenceEquals(this, obj)) return true;
+      if (obj.GetType() != this.GetType()) return false;
+      return Equals((DirectoryPath)obj);
+    }
+
+    public override int GetHashCode()
+    {
+      return _path.GetHashCode();
+    }
+
+    public static bool operator ==(DirectoryPath left, DirectoryPath right)
+    {
+      return Equals(left, right);
+    }
+
+    public static bool operator !=(DirectoryPath left, DirectoryPath right)
+    {
+      return !Equals(left, right);
+    }
+
   }
 }

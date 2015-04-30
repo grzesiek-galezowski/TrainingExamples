@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="DirectoryPathSpecification.cs" />
+    <Compile Include="MaybeDirectoryNameSpecification.cs" />
     <Compile Include="PathWithFileNameSpecification.cs" />
     <Compile Include="FileNameSpecification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -46,6 +46,15 @@ namespace AtmaFileSystemSpecification
     }
 
 
-
+/* TODO    
+Public methodStatic memberSupported by the XNA Framework GetExtension  Returns the extension of the specified path string.
+Public methodStatic memberSupported by the XNA Framework GetFileName Returns the file name and extension of the specified path string.
+Public methodStatic memberSupported by the XNA Framework GetFileNameWithoutExtension Returns the file name of the specified path string without the extension.
+Public methodStatic member GetRandomFileName Returns a random folder name or file name.
+Public methodStatic member GetTempFileName Creates a uniquely named, zero-byte temporary file on disk and returns the full path of that file.
+Public methodStatic member GetTempPath Returns the path of the current user's temporary folder.
+Public methodStatic memberSupported by the XNA Framework HasExtension  Determines whether a path includes a file name extension.
+Public methodStatic memberSupported by the XNA Framework IsPathRooted
+*/
   }
 }

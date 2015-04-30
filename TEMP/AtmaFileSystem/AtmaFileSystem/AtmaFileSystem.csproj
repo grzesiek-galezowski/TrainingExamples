@@ -30,14 +30,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CallMeMaybe, Version=0.4.5515.37902, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CallMeMaybe.0.5.0\lib\CallMeMaybe.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DirectoryPath.cs" />
     <Compile Include="FileName.cs" />
+    <Compile Include="MaybeDirectoryPath.cs" />
     <Compile Include="PathWithFileName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
