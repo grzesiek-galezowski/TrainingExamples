@@ -65,4 +65,5 @@ namespace AtmaFileSystem
   }
 
   //TODO validate against using empty strings everywhere
+  //TODO check Pri.LongPath to handle long paths
 }
