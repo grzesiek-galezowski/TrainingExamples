@@ -39,8 +39,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DirectoryPath.cs" />
+    <Compile Include="FileExtension.cs" />
     <Compile Include="FileName.cs" />
     <Compile Include="MaybeDirectoryPath.cs" />
+    <Compile Include="MaybeFileExtension.cs" />
     <Compile Include="PathWithFileName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

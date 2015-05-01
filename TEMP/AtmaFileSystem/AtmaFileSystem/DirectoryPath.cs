@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using CallMeMaybe;
 
 namespace AtmaFileSystem
 {
@@ -40,7 +41,12 @@ namespace AtmaFileSystem
     public MaybeDirectoryPath Parent()
     {
       var directoryName = new DirectoryInfo(_path).Parent;
-      return new MaybeDirectoryPath(directoryName != null ? directoryName.FullName : null);
+      return new MaybeDirectoryPath(DependingOn(directoryName));
+    }
+
+    private static Maybe<DirectoryPath> DependingOn(DirectoryInfo directoryName)
+    {
+      return directoryName != null ? Maybe.From(new DirectoryPath(directoryName.FullName)) : null;
     }
 
     public DirectoryPath Root()

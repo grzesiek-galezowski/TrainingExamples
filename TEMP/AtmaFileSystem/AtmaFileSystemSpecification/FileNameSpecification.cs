@@ -45,16 +45,49 @@ namespace AtmaFileSystemSpecification
       Assert.Equal(initialValue, convertedToString);
     }
 
+    [Fact]
+    public void ShouldAllowGettingExtensionWhenItExists()
+    {
+      //GIVEN
+      var fileNameWithoutExtensionString = Any.String();
+      var extensionString =  "." + Any.String();
+      var fileNameWithExtensionString = fileNameWithoutExtensionString + extensionString;
 
-/* TODO    
-Public methodStatic memberSupported by the XNA Framework GetExtension  Returns the extension of the specified path string.
-Public methodStatic memberSupported by the XNA Framework GetFileName Returns the file name and extension of the specified path string.
-Public methodStatic memberSupported by the XNA Framework GetFileNameWithoutExtension Returns the file name of the specified path string without the extension.
-Public methodStatic member GetRandomFileName Returns a random folder name or file name.
-Public methodStatic member GetTempFileName Creates a uniquely named, zero-byte temporary file on disk and returns the full path of that file.
-Public methodStatic member GetTempPath Returns the path of the current user's temporary folder.
-Public methodStatic memberSupported by the XNA Framework HasExtension  Determines whether a path includes a file name extension.
-Public methodStatic memberSupported by the XNA Framework IsPathRooted
-*/
+      var fileNameWithExtension = new FileName(fileNameWithExtensionString);
+
+      //WHEN
+      var maybeExtension = fileNameWithExtension.Extension();
+
+      //THEN
+      Assert.True(maybeExtension.Found);
+      Assert.Equal(new FileExtension(extensionString), maybeExtension.Value());
+    }
+
+    [Fact]
+    public void ShouldYieldNoExtensionWhenThePathHasNoExtension()
+    {
+      //GIVEN
+      var fileNameWithoutExtensionString = Any.String();
+
+      var fileNameWithoutExtension = new FileName(fileNameWithoutExtensionString);
+
+      //WHEN
+      var maybeExtension = fileNameWithoutExtension.Extension();
+
+      //THEN
+      Assert.False(maybeExtension.Found);
+      Assert.Throws<InvalidOperationException>(() => maybeExtension.Value());
+    }
+
+
+    /* 
+    TODO GetExtension Returns the extension of the specified path string.
+    TODO GetFileNameWithoutExtension Returns the file name of the specified path string without the extension.
+    TODO GetRandomFileName Returns a random folder name or file name.
+    TODO GetTempFileName Creates a uniquely named, zero-byte temporary file on disk and returns the full path of that file.
+    TODO GetTempPath Returns the path of the current user's temporary folder.
+    TODO HasExtension  Determines whether a path includes a file name extension.
+    TODO IsPathRooted
+    */
   }
 }

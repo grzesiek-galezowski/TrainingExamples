@@ -7,9 +7,9 @@ namespace AtmaFileSystem
   {
     private readonly Maybe<DirectoryPath> _maybeDirectoryPath;
 
-    public MaybeDirectoryPath(string value)
+    public MaybeDirectoryPath(Maybe<DirectoryPath> value)
     {
-      _maybeDirectoryPath = value == null ? Maybe.Not : new Maybe<DirectoryPath>(new DirectoryPath(value));
+      _maybeDirectoryPath = value;
     }
 
     public DirectoryPath Value()

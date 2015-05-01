@@ -34,6 +34,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="DirectoryPathSpecification.cs" />
+    <Compile Include="FileExtensionSpecification.cs" />
+    <Compile Include="MaybeFileExtensionSpecification.cs" />
     <Compile Include="MaybeDirectoryNameSpecification.cs" />
     <Compile Include="PathWithFileNameSpecification.cs" />
     <Compile Include="FileNameSpecification.cs" />
@@ -43,6 +45,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="System" />
     <Reference Include="TddToolkit, Version=1.0.5493.1038, Culture=neutral, PublicKeyToken=7b96bed4fdcd799b, processorArchitecture=MSIL">
       <HintPath>..\packages\Tdd-Toolkit.1.0.21\lib\net40\TddToolkit.dll</HintPath>
       <Private>True</Private>

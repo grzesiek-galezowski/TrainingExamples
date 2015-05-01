@@ -1,11 +1,11 @@
 using System;
 using System.IO;
+using CallMeMaybe;
 
 namespace AtmaFileSystem
 {
   public class FileName : IEquatable<FileName>
   {
-
     private readonly string _path;
 
     public FileName(string path)
@@ -63,7 +63,19 @@ namespace AtmaFileSystem
       return !Equals(left, right);
     }
 
+    public MaybeFileExtension Extension()
+    {
+      var extension = Path.GetExtension(_path);
+      return new MaybeFileExtension(DependingOn(extension));
+    }
+
+    private static Maybe<FileExtension> DependingOn(string extension)
+    {
+      return extension == string.Empty ? Maybe<FileExtension>.Not : Maybe.From(new FileExtension(extension));
+    }
   }
+
+  //TODO implement ValueOr()
 
   //TODO validate against using empty strings everywhere
   //TODO check Pri.LongPath to handle long paths
