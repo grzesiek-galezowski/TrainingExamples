@@ -35,6 +35,7 @@
   <ItemGroup>
     <Compile Include="DirectoryPathSpecification.cs" />
     <Compile Include="FileExtensionSpecification.cs" />
+    <Compile Include="FileNameWithoutExtensionSpecification.cs" />
     <Compile Include="MaybeFileExtensionSpecification.cs" />
     <Compile Include="MaybeDirectoryNameSpecification.cs" />
     <Compile Include="PathWithFileNameSpecification.cs" />

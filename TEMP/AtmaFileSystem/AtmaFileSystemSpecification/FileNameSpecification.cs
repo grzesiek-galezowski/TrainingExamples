@@ -50,7 +50,7 @@ namespace AtmaFileSystemSpecification
     {
       //GIVEN
       var fileNameWithoutExtensionString = Any.String();
-      var extensionString =  "." + Any.String();
+      var extensionString = "." + Any.String();
       var fileNameWithExtensionString = fileNameWithoutExtensionString + extensionString;
 
       var fileNameWithExtension = new FileName(fileNameWithExtensionString);
@@ -79,9 +79,27 @@ namespace AtmaFileSystemSpecification
       Assert.Throws<InvalidOperationException>(() => maybeExtension.Value());
     }
 
+    [Fact]
+    public void ShouldAllowAccessingFileNameWithoutExtension()
+    {
+      //GIVEN
+      var fileNameWithoutExtensionString = Any.String();
+      var extensionString = "." + Any.String();
+      var fileNameWithExtensionString = fileNameWithoutExtensionString + extensionString;
+
+      var fileNameWithExtension = new FileName(fileNameWithExtensionString);
+
+      //WHEN
+      var fileNameWithoutExtension = fileNameWithExtension.WithoutExtension();
+
+      //THEN
+      Assert.Equal(new FileNameWithoutExtension(fileNameWithoutExtensionString), fileNameWithoutExtension);
+
+    }
+
+
 
     /* 
-    TODO GetExtension Returns the extension of the specified path string.
     TODO GetFileNameWithoutExtension Returns the file name of the specified path string without the extension.
     TODO GetRandomFileName Returns a random folder name or file name.
     TODO GetTempFileName Creates a uniquely named, zero-byte temporary file on disk and returns the full path of that file.

@@ -41,6 +41,7 @@
     <Compile Include="DirectoryPath.cs" />
     <Compile Include="FileExtension.cs" />
     <Compile Include="FileName.cs" />
+    <Compile Include="FileNameWithoutExtension.cs" />
     <Compile Include="MaybeDirectoryPath.cs" />
     <Compile Include="MaybeFileExtension.cs" />
     <Compile Include="PathWithFileName.cs" />

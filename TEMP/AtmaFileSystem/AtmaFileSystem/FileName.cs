@@ -73,6 +73,11 @@ namespace AtmaFileSystem
     {
       return extension == string.Empty ? Maybe<FileExtension>.Not : Maybe.From(new FileExtension(extension));
     }
+
+    public FileNameWithoutExtension WithoutExtension()
+    {
+      return new FileNameWithoutExtension(Path.GetFileNameWithoutExtension(_path));
+    }
   }
 
   //TODO implement ValueOr()
