@@ -48,7 +48,7 @@ namespace AtmaFileSystemSpecification
     }
 
     [Fact]
-    public void ShouldAllowUsingTheDivisionOperatorToConcatenateFileName()
+    public void ShouldAllowUsingTheAdditionOperatorToConcatenateFileName()
     {
       //GIVEN
       var path = Any.Instance<DirectoryPath>();
@@ -121,7 +121,25 @@ namespace AtmaFileSystemSpecification
       Assert.Throws<InvalidOperationException>(() => parent.Value());
     }
 
-  //bug introduce class DirectoryName
+    [Theory,
+      InlineData(@"F:\Segment1\Segment2\", "Segment2"),
+      InlineData(@"F:\Segment1\", "Segment1"),
+      InlineData(@"F:\", @"F:\"), //bug is this OK? Directory names will be added, so "F:\" + "F:\"... maybe introduce a root element?
+      ]
+    public void ShouldAllowGettingTheNameOfCurrentDirectory(string fullPath, string expectedDirectoryName)
+    {
+      //GIVEN
+      var directoryPath = new DirectoryPath(fullPath);
+
+      //WHEN
+      DirectoryName dirName = directoryPath.DirectoryName();
+      
+      //THEN
+      Assert.Equal(expectedDirectoryName, dirName.ToString());
+    }
+
+
+  //bug directoryName should be value
 
 
   }

@@ -34,6 +34,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DirectoryName.cs" />
     <Compile Include="DirectoryPath.cs" />
     <Compile Include="FileExtension.cs" />
     <Compile Include="FileName.cs" />

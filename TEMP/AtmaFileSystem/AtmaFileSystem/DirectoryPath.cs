@@ -6,10 +6,12 @@ namespace AtmaFileSystem
   public class DirectoryPath : IEquatable<DirectoryPath>
   {
     private readonly string _path;
+    private readonly DirectoryInfo _directoryInfo;
 
     public DirectoryPath(string path)
     {
       _path = path;
+      _directoryInfo = new DirectoryInfo(_path);
     }
 
     public static DirectoryPath To(string path)
@@ -34,12 +36,12 @@ namespace AtmaFileSystem
 
     public DirectoryInfo Info()
     {
-      return new DirectoryInfo(_path);
+      return _directoryInfo;
     }
 
     public Maybe<DirectoryPath> Parent()
     {
-      var directoryName = new DirectoryInfo(_path).Parent;
+      var directoryName = _directoryInfo.Parent;
       return AsMaybe(directoryName);
     }
 
@@ -88,5 +90,9 @@ namespace AtmaFileSystem
       return !Equals(left, right);
     }
 
+    public DirectoryName DirectoryName()
+    {
+      return new DirectoryName(_directoryInfo.Name);
+    }
   }
 }
