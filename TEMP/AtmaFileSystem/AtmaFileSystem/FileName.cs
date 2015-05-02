@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using CallMeMaybe;
 
 namespace AtmaFileSystem
 {
@@ -63,15 +62,15 @@ namespace AtmaFileSystem
       return !Equals(left, right);
     }
 
-    public MaybeFileExtension Extension()
+    public Maybe<FileExtension> Extension()
     {
       var extension = Path.GetExtension(_path);
-      return new MaybeFileExtension(DependingOn(extension));
+      return AsMaybe(extension);
     }
 
-    private static Maybe<FileExtension> DependingOn(string extension)
+    private static Maybe<FileExtension> AsMaybe(string extension)
     {
-      return extension == string.Empty ? Maybe<FileExtension>.Not : Maybe.From(new FileExtension(extension));
+      return extension == string.Empty ? Maybe<FileExtension>.Not : Maybe.Wrap(new FileExtension(extension));
     }
 
     public FileNameWithoutExtension WithoutExtension()

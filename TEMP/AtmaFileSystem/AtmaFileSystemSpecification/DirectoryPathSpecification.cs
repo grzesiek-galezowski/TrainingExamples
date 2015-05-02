@@ -53,7 +53,7 @@ namespace AtmaFileSystemSpecification
       //GIVEN
       var path = Any.Instance<DirectoryPath>();
       var fileName = Any.Instance<FileName>();
-      PathWithFileName pathWithFileName = path / fileName;
+      PathWithFileName pathWithFileName = path + fileName;
 
       //WHEN
       var convertedToString = pathWithFileName.ToString();

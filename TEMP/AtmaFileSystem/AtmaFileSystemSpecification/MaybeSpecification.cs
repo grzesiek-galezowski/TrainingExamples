@@ -4,12 +4,12 @@ using Xunit;
 
 namespace AtmaFileSystemSpecification
 {
-  public class MaybeFileExtensionSpecification
+  public class MaybeSpecification
   {
     [Fact]
     public void ShouldBehaveLikeValue()
     {
-      XAssert.IsValue<MaybeFileExtension>();
+      XAssert.IsValue<AtmaFileSystem.Maybe<DirectoryPath>>();
     }
   }
 }

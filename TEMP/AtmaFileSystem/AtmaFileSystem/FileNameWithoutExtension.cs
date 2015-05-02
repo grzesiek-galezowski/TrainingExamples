@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace AtmaFileSystem
 {
@@ -44,6 +45,11 @@ namespace AtmaFileSystem
     public override string ToString()
     {
       return _fileNameWithoutExtensionString;
+    }
+
+    public FileName With(FileExtension extension)
+    {
+      return new FileName(Path.ChangeExtension(_fileNameWithoutExtensionString, extension.ToString()));
     }
   }
 }

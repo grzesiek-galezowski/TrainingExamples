@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AtmaFileSystem;
+﻿using AtmaFileSystem;
 using TddEbook.TddToolkit;
 using Xunit;
 
@@ -31,6 +26,21 @@ namespace AtmaFileSystemSpecification
       Assert.Equal(fileName, nameObtainedFromConversion);
     }
 
+    [Fact]
+    public void ShouldConvertIntoFileNameWhenExtensionIsAdded()
+    {
+      //GIVEN
+      var fileNameWithoutExtensionString = Any.String();
+      var extensionString = "." + Any.String();
+      var fileNameWithoutExtension = new FileNameWithoutExtension(fileNameWithoutExtensionString);
+      var extension = new FileExtension(extensionString);
+
+      //WHEN
+      FileName nameObtainedFromConversion = fileNameWithoutExtension.With(extension);
+
+      //THEN
+      Assert.Equal(fileNameWithoutExtensionString + extensionString, nameObtainedFromConversion.ToString());
+    }
 
   }
 }

@@ -34,10 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="DirectoryPathSpecification.cs" />
+    <Compile Include="Examples.cs" />
     <Compile Include="FileExtensionSpecification.cs" />
     <Compile Include="FileNameWithoutExtensionSpecification.cs" />
-    <Compile Include="MaybeFileExtensionSpecification.cs" />
-    <Compile Include="MaybeDirectoryNameSpecification.cs" />
+    <Compile Include="MaybeSpecification.cs" />
     <Compile Include="PathWithFileNameSpecification.cs" />
     <Compile Include="FileNameSpecification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
