@@ -13,7 +13,7 @@ namespace AtmaFileSystemSpecification
       ////////////////////////
       
       PathWithFileName fullPath = PathWithFileName.To(@"C:\Program Files\Lolokimono\Config.txt");
-      DirectoryPath directoryPath = fullPath.Directory();
+      DirectoryPath directoryPath = fullPath.WithoutFileName();
       FileName fileName = fullPath.FileName();
       FileNameWithoutExtension fileNameWithoutExtension = fileName.WithoutExtension();
       Maybe<FileExtension> extension = fileName.Extension();
@@ -30,13 +30,16 @@ namespace AtmaFileSystemSpecification
       //TODO
       // - add directory names
       // - add relative paths
+      // - add WithoutRoot() to PathWithFileName method that returns relative directory
+      // - add WithoutRoot() to PathToDirectory method that returns relative directory
 
     }
+
     [Fact]
     public void Example1_ParentDirectories()
     {
       PathWithFileName fullPath = PathWithFileName.To(@"C:\Program Files\Lolokimono\Config.txt");
-      DirectoryPath directoryPath = fullPath.Directory();
+      DirectoryPath directoryPath = fullPath.WithoutFileName();
 
       Maybe<DirectoryPath> parent = directoryPath.Parent();
 

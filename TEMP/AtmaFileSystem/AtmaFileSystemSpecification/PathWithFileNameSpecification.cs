@@ -71,7 +71,7 @@ namespace AtmaFileSystemSpecification
       var pathWithFileName = PathWithFileName.From(dirPath, fileName);
       
       //WHEN
-      var dirObtainedFromPath = pathWithFileName.Directory();
+      var dirObtainedFromPath = pathWithFileName.WithoutFileName();
 
       //THEN
       Assert.Equal(dirPath, dirObtainedFromPath);

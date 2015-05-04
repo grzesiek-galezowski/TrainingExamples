@@ -72,7 +72,7 @@ namespace AtmaFileSystem
       return new PathWithFileName(dirPath, fileName);
     }
 
-    public DirectoryPath Directory()
+    public DirectoryPath WithoutFileName()
     {
       return new DirectoryPath(Path.GetDirectoryName(_path));
     }
