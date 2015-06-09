@@ -5,11 +5,6 @@
     private readonly int _i;
     private readonly int _i1;
 
-    public static MyMessage CreateMyMessage()
-    {
-      return null;
-    }
-
     public MyMessage(int i, int i1)
     {
       _i = i;

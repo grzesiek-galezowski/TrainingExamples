@@ -9,7 +9,8 @@ namespace AutomatedRefactorings._2_MethodsAndParameters
   //TODO deal with unclear responsibility in CreateFriendlyMessageFrom() (inline method)
   //TODO remove duplication of title casing (extract both methods, make one delegate to other, inline method)
   //TODO in this order, content, recipient and sender as parameters (introduce parameters)
-  //TODO allow using different formattings (extract method => introduce field => introduce parameter)
+  //TODO allow using different formattings in Send (extract method => introduce field => introduce parameter)
+  //     optionally: get to Format(from, to, content), make method non static, extract again to make Format(message), non static again, extract class
   //TODO get rid of destination dependency and inline Send() method (introduce field, inline field, introduce parameter, inline method)
   //TODO rearrange ProcessInvitationMessage() signature parameters in from-to-what fashion
 
