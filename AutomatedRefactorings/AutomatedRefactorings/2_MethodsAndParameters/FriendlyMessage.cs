@@ -1,4 +1,4 @@
-﻿namespace AutomatedRefactorings.MethodsAndParameters
+﻿namespace AutomatedRefactorings._2_MethodsAndParameters
 {
   public class FriendlyMessage
   {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AutomatedRefactorings.MethodsAndParameters
+namespace AutomatedRefactorings._2_MethodsAndParameters
 {
   internal class ConsoleDestination : MessageDestination
   {

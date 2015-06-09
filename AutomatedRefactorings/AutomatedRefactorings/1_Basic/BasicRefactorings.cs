@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AutomatedRefactorings.Basic
+namespace AutomatedRefactorings._1_Basic
 {
   //TODO 1. rename
   //TODO 2. move
