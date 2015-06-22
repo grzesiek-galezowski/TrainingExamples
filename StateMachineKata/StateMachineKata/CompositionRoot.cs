@@ -24,14 +24,6 @@ namespace StateMachineKata
     }
   }
 
-  internal class Casette : ICasette
-  {
-    public Casette(string title)
-    {
-      throw new System.NotImplementedException();
-    }
-  }
-
   public interface IMp3Player
   {
     void Choose(string album, string track);
@@ -40,21 +32,28 @@ namespace StateMachineKata
     void Stop();
   }
 
-  public class Mp3Player : IMp3Player
+  internal interface Mp3PlayerContext
   {
+  }
+
+
+  public class Mp3Player : IMp3Player, Mp3PlayerContext
+  {
+    Mp3PlayerState _currentState = new Mp3PlayerState();
+    
     public void Choose(string album, string track)
     {
-      throw new System.NotImplementedException();
+      _currentState.Choose(album, track, this);
     }
 
     public void Play()
     {
-      throw new System.NotImplementedException();
+      _currentState.Play(this);
     }
 
     public void Pause()
     {
-      throw new System.NotImplementedException();
+      _currentState.Pause(this);
     }
 
     public void Stop()
@@ -62,4 +61,23 @@ namespace StateMachineKata
       throw new System.NotImplementedException();
     }
   }
+
+  internal class Mp3PlayerState
+  {
+    public void Play(Mp3PlayerContext mp3Player)
+    {
+      throw new System.NotImplementedException();
+    }
+
+    public void Pause(Mp3PlayerContext mp3PlayerContext)
+    {
+      throw new System.NotImplementedException();
+    }
+
+    public void Choose(string album, string track, Mp3PlayerContext mp3PlayerContext)
+    {
+      throw new System.NotImplementedException();
+    }
+  }
+
 }
