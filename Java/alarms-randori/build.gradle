@@ -1,0 +1,18 @@
+group 'alarms-randori'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile group: 'com.google.guava', name: 'guava', version: '18.0'
+    compile group: 'com.github.autofixture', name: 'autofixturegenerator', version: '1.0.5'
+    testCompile group: 'pl.pragmatists', name: 'JUnitParams', version: '1.0.4'
+    testCompile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
+}
