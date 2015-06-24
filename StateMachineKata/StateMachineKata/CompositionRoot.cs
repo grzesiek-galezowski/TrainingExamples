@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using StateMachineKata.PlayerStates;
 
 namespace StateMachineKata
 {
@@ -9,7 +10,7 @@ namespace StateMachineKata
   {
     public void Main()
     {
-      var boomBox = new Mp3Player();
+      var boomBox = new Mp3Player(new MusicStorage(), new States(new PlayingState(), new OnState(), new PausedState()));
       WorkWith(boomBox);
     }
 
@@ -23,61 +24,4 @@ namespace StateMachineKata
       mp3Player.Play();
     }
   }
-
-  public interface IMp3Player
-  {
-    void Choose(string album, string track);
-    void Play();
-    void Pause();
-    void Stop();
-  }
-
-  internal interface Mp3PlayerContext
-  {
-  }
-
-
-  public class Mp3Player : IMp3Player, Mp3PlayerContext
-  {
-    Mp3PlayerState _currentState = new Mp3PlayerState();
-    
-    public void Choose(string album, string track)
-    {
-      _currentState.Choose(album, track, this);
-    }
-
-    public void Play()
-    {
-      _currentState.Play(this);
-    }
-
-    public void Pause()
-    {
-      _currentState.Pause(this);
-    }
-
-    public void Stop()
-    {
-      throw new System.NotImplementedException();
-    }
-  }
-
-  internal class Mp3PlayerState
-  {
-    public void Play(Mp3PlayerContext mp3Player)
-    {
-      throw new System.NotImplementedException();
-    }
-
-    public void Pause(Mp3PlayerContext mp3PlayerContext)
-    {
-      throw new System.NotImplementedException();
-    }
-
-    public void Choose(string album, string track, Mp3PlayerContext mp3PlayerContext)
-    {
-      throw new System.NotImplementedException();
-    }
-  }
-
 }

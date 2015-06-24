@@ -44,12 +44,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompositionRoot.cs" />
-    <Compile Include="ICasette.cs" />
+    <Compile Include="IMp3Player.cs" />
+    <Compile Include="IMp3PlayerContext.cs" />
+    <Compile Include="IMp3PlayerState.cs" />
+    <Compile Include="IMusicTrack.cs" />
+    <Compile Include="Mp3Player.cs" />
+    <Compile Include="MusicStorage.cs" />
+    <Compile Include="MusicTrack.cs" />
+    <Compile Include="NoMusicTrack.cs" />
+    <Compile Include="PlayerStates\PausedState.cs" />
+    <Compile Include="PlayerStates\OnState.cs" />
+    <Compile Include="PlayerStates\PlayingState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="States.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
