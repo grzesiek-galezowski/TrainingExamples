@@ -1,3 +1,6 @@
+using System;
+using NSubstitute;
+using NUnit.Framework;
 using StateMachineKata.PlayerStates;
 
 namespace StateMachineKata
@@ -52,4 +55,5 @@ namespace StateMachineKata
       _currentTrack.Play();
     }
   }
+
 }

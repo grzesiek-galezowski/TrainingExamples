@@ -13,4 +13,6 @@ namespace StateMachineKata
     public IMp3PlayerState Initial { get; private set; }
     public IMp3PlayerState Paused { get; private set; }
   }
+
+  t
 }
