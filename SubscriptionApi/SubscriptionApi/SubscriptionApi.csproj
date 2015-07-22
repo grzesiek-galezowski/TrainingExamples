@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2BDBB2EF-3CE5-4500-A578-6B5ABAA3026D}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SubscriptionApi</RootNamespace>
+    <AssemblyName>SubscriptionApi</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Api.cs" />
+    <Compile Include="Authorization\AssetQueryResolution.cs" />
+    <Compile Include="Commands\AssetAccessAuthorization.cs" />
+    <Compile Include="Commands\UserAuthorization.cs" />
+    <Compile Include="ResponseBuilders\AssetAuthorizationEvents.cs" />
+    <Compile Include="Exceptions\FatalErrorOccuredDuringValidationsException.cs" />
+    <Compile Include="DummyLog.cs" />
+    <Compile Include="Queries\AssetQuery.cs" />
+    <Compile Include="Authorization\AuthorizationStructure.cs" />
+    <Compile Include="Commands\AssetQueriesFactory.cs" />
+    <Compile Include="Commands\CommandFactory.cs" />
+    <Compile Include="Commands\CommandFromApiProcessing.cs" />
+    <Compile Include="ResponseBuilders\SubscriptionResponseBuilder.cs" />
+    <Compile Include="Exceptions\FatalErrorOccuredDuringAuthorizationException.cs" />
+    <Compile Include="Exceptions\FatalErrorOccuredDuringQueryResolutionException.cs" />
+    <Compile Include="Dto\AssetKind.cs" />
+    <Compile Include="Dto\AssetRequestDto.cs" />
+    <Compile Include="Dto\NewSubscriptionParametersDto.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Dto\StartSubscriptionResponseDto.cs" />
+    <Compile Include="Dto\StoppedSubscriptionParametersDto.cs" />
+    <Compile Include="Dto\StopSubscriptionResponseDto.cs" />
+    <Compile Include="Queries\HardwareQuery.cs" />
+    <Compile Include="Queries\OrganizationalUnitQuery.cs" />
+    <Compile Include="Queries\QueryResolutionEvents.cs" />
+    <Compile Include="Queries\UserQuery.cs" />
+    <Compile Include="Subscriptions\Subscription.cs" />
+    <Compile Include="Subscriptions\SubscriptionDataCorrectnessCriteria.cs" />
+    <Compile Include="Subscriptions\SubscriptionFactory.cs" />
+    <Compile Include="Subscriptions\Subscriptions.cs" />
+    <Compile Include="Commands\SubscriptionStartCommandFromApi.cs" />
+    <Compile Include="ResponseBuilders\SubscriptionStartResponseBuilder.cs" />
+    <Compile Include="Commands\SubscriptionStopCommandFromApi.cs" />
+    <Compile Include="ResponseBuilders\SubscriptionStopEvents.cs" />
+    <Compile Include="ResponseBuilders\SubscriptionStopResponseBuilder.cs" />
+    <Compile Include="ResponseBuilders\SubscriptionValidationResults.cs" />
+    <Compile Include="ResponseBuilders\UserAuthorizationEvents.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
