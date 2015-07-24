@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SubscriptionApi.Authorization;
 using SubscriptionApi.Commands;
+using SubscriptionApi.Dto;
 using SubscriptionApi.ResponseBuilders;
 using SubscriptionApi.Subscriptions;
 
@@ -15,19 +16,24 @@ namespace SubscriptionApi
     {
       var structure = new AuthorizationStructure();
 
+      var dummyLog = new DummyLog();
       var api = new Api(
         new CommandFactory(
-          new SubscriptionResponseBuilder(), 
-          new Subscriptions.Subscriptions(), 
+          new Subscriptions.Subscriptions(),
           structure, 
           new SubscriptionFactory(), 
           new SubscriptionDataCorrectnessCriteria(), 
           new AssetQueriesFactory(
             structure
-          )
+          ),
+          dummyLog
         ), 
-        new CommandFromApiProcessing(), 
-        new DummyLog());
+        new DefaultResponseBuilderFactory(), 
+        dummyLog
+      );
+
+      var response1 = api.StartSubscription(new NewSubscriptionParametersDto());
+      var response2 = api.StopSubscription(new StoppedSubscriptionParametersDto());
     }
   }
 }

@@ -8,55 +8,61 @@ namespace SubscriptionApi.Commands
 {
   public interface ICommandFactory
   {
-    SubscriptionStartCommand CreateFrom(NewSubscriptionParametersDto parameters);
-    SubscriptionStopCommand CreateFrom(StoppedSubscriptionParametersDto parameters);
+    Command CreateFrom(NewSubscriptionParametersDto parameters, SubscriptionStartResponseBuilder responseBuilder);
+    Command CreateFrom(StoppedSubscriptionParametersDto parameters, SubscriptionStopResponseBuilder responseBuilder);
   }
 
   public class CommandFactory : ICommandFactory
   {
-    private readonly SubscriptionResponseBuilder _responseBuilder;
     private readonly SubscriptionsModifyOperations _subscriptions;
     private readonly AuthorizationStructure _authorizationStructure;
     private readonly ISubscriptionFactory _subscriptionFactory;
     private readonly IAssetQueriesFactory _assetQueriesFactory;
+    private readonly Log _log;
     private readonly SubscriptionDataCorrectnessCriteria _dataCorrectnessCriteria;
 
     public CommandFactory(
-      SubscriptionResponseBuilder responseBuilder, 
       SubscriptionsModifyOperations subscriptions, 
       AuthorizationStructure authorizationStructure, 
       ISubscriptionFactory subscriptionFactory, 
       SubscriptionDataCorrectnessCriteria dataCorrectnessCriteria, 
-      IAssetQueriesFactory assetQueriesFactory)
+      IAssetQueriesFactory assetQueriesFactory, 
+      Log log)
     {
-      _responseBuilder = responseBuilder;
       _subscriptions = subscriptions;
       _authorizationStructure = authorizationStructure;
       _subscriptionFactory = subscriptionFactory;
       _dataCorrectnessCriteria = dataCorrectnessCriteria;
       _assetQueriesFactory = assetQueriesFactory;
+      _log = log;
     }
 
-    public SubscriptionStartCommand CreateFrom(NewSubscriptionParametersDto parameters)
+    public Command CreateFrom(NewSubscriptionParametersDto parameters, SubscriptionStartResponseBuilder responseBuilder)
     {
       var assetQueries = _assetQueriesFactory.CreateFrom(parameters.Requests);
-      return new SubscriptionStartCommandFromApi(
-        parameters, 
-        _authorizationStructure, 
-        _responseBuilder, 
-        _subscriptionFactory, 
-        _subscriptions,
-        assetQueries);
+      return 
+        new ExceptionLoggedCommand(_log,
+          new AdapterFromSubscriptionCommandToCommand(
+            new SubscriptionStartCommandFromApi(
+              parameters, 
+              _authorizationStructure, 
+              responseBuilder, 
+              _subscriptionFactory, 
+              _subscriptions,
+              assetQueries)));
     }
 
-    public SubscriptionStopCommand CreateFrom(StoppedSubscriptionParametersDto parameters)
+    public Command CreateFrom(StoppedSubscriptionParametersDto parameters, SubscriptionStopResponseBuilder responseBuilder)
     {
-      return new SubscriptionStopCommandFromApi(
-        parameters, 
-        _responseBuilder, 
-        _subscriptions, 
-        _dataCorrectnessCriteria, 
-        _authorizationStructure);
+      return 
+        new ExceptionLoggedCommand(_log,
+          new AdapterFromSubscriptionCommandToCommand(
+            new SubscriptionStopCommandFromApi(
+              parameters, 
+              responseBuilder, 
+              _subscriptions, 
+              _dataCorrectnessCriteria, 
+              _authorizationStructure)));
     }
   }
 }

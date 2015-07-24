@@ -5,15 +5,7 @@ using SubscriptionApi.Subscriptions;
 
 namespace SubscriptionApi.Commands
 {
-  public interface SubscriptionStopCommand
-  {
-    StopSubscriptionResponseDto Response(); //bug is this used?
-    void ValidateData();
-    void Authorize();
-    void Invoke();
-  }
-
-  public class SubscriptionStopCommandFromApi : SubscriptionStopCommand
+  public class SubscriptionStopCommandFromApi : SubscriptionCommand
   {
     private readonly StoppedSubscriptionParametersDto _parameters;
     private readonly SubscriptionStopResponseBuilder _responseBuilder;
@@ -55,6 +47,11 @@ namespace SubscriptionApi.Commands
     public void Invoke()
     {
       _subscriptions.Remove(_parameters.SubscriptionId, _responseBuilder);
+    }
+
+    public void Resolve()
+    {
+      
     }
   }
 }

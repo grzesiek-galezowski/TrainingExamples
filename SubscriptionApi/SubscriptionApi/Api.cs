@@ -7,49 +7,35 @@ namespace SubscriptionApi
   public class Api
   {
     private readonly ICommandFactory _commandFactory;
-    private readonly CommandProcessing _commandProcessing;
-    private readonly Log _log;
+    private readonly ResponseBuilderFactory _responseBuildersFactory;
 
     public Api(
       ICommandFactory commandFactory, 
-      CommandProcessing commandProcessing,
+      ResponseBuilderFactory responseBuildersFactory,
       Log log)
     {
       _commandFactory = commandFactory;
-      _commandProcessing = commandProcessing;
-      _log = log;
+      _responseBuildersFactory = responseBuildersFactory;
     }
 
     public StartSubscriptionResponseDto StartSubscription(NewSubscriptionParametersDto parameters)
     {
-      var subscriptionStartCommand = _commandFactory.CreateFrom(parameters);
-      
-      try
-      {
-        _commandProcessing.ApplyTo(subscriptionStartCommand);
-      }
-      catch (Exception e)
-      {
-        //bug log error
-      }
+      var responseBuilder = _responseBuildersFactory.ForStartSubscriptionResponse();
+      var subscriptionStartCommand = _commandFactory.CreateFrom(parameters, responseBuilder);
 
-      return subscriptionStartCommand.Response();
+      subscriptionStartCommand.Invoke();
+      
+      return responseBuilder.Build();
     }
 
     public StopSubscriptionResponseDto StopSubscription(StoppedSubscriptionParametersDto parameters)
     {
-      var subscriptionStopCommand = _commandFactory.CreateFrom(parameters);
+      var responseBuilder = _responseBuildersFactory.ForStopSubscriptionResponse();
+      var subscriptionStopCommand = _commandFactory.CreateFrom(parameters, responseBuilder);
 
-      try
-      {
-        _commandProcessing.ApplyTo(subscriptionStopCommand);
-      }
-      catch (Exception e)
-      {
-        _log.Error(e);
-      }
+      subscriptionStopCommand.Invoke();
 
-      return subscriptionStopCommand.Response();
+      return responseBuilder.Build();
     }
   }
 }

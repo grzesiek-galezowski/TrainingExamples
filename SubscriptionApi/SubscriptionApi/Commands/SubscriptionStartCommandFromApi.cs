@@ -7,16 +7,7 @@ using SubscriptionApi.Subscriptions;
 
 namespace SubscriptionApi.Commands
 {
-  public interface SubscriptionStartCommand
-  {
-    void ValidateData();
-    void Resolve();
-    void Authorize();
-    void Invoke();
-    StartSubscriptionResponseDto Response();
-  }
-
-  public class SubscriptionStartCommandFromApi : SubscriptionStartCommand
+  public class SubscriptionStartCommandFromApi : SubscriptionCommand
   {
     private readonly NewSubscriptionParametersDto _parameters;
     private readonly List<string> _requestedAssetNames = new List<string>();

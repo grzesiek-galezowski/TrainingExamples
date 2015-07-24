@@ -44,7 +44,10 @@
     <Compile Include="Api.cs" />
     <Compile Include="Authorization\AssetQueryResolution.cs" />
     <Compile Include="Commands\AssetAccessAuthorization.cs" />
+    <Compile Include="Commands\SubscriptionCommand.cs" />
     <Compile Include="Commands\UserAuthorization.cs" />
+    <Compile Include="Commands\ExceptionLoggedCommand.cs" />
+    <Compile Include="ResponseBuilderFactory.cs" />
     <Compile Include="ResponseBuilders\AssetAuthorizationEvents.cs" />
     <Compile Include="Exceptions\FatalErrorOccuredDuringValidationsException.cs" />
     <Compile Include="DummyLog.cs" />
@@ -52,7 +55,7 @@
     <Compile Include="Authorization\AuthorizationStructure.cs" />
     <Compile Include="Commands\AssetQueriesFactory.cs" />
     <Compile Include="Commands\CommandFactory.cs" />
-    <Compile Include="Commands\CommandFromApiProcessing.cs" />
+    <Compile Include="Commands\AdapterFromSubscriptionCommandToCommand.cs" />
     <Compile Include="ResponseBuilders\SubscriptionResponseBuilder.cs" />
     <Compile Include="Exceptions\FatalErrorOccuredDuringAuthorizationException.cs" />
     <Compile Include="Exceptions\FatalErrorOccuredDuringQueryResolutionException.cs" />
