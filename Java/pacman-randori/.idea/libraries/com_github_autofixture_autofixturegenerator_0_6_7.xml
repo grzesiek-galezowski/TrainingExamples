@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="com.github.autofixture:autofixturegenerator:0.6.7" type="repository">
+    <properties maven-id="com.github.autofixture:autofixturegenerator:0.6.7" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/autofixturegenerator-0.6.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/guava-17.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -60,3 +60,6 @@ Temporary Items
 TellDontAsk/Validations/obj/*
 *.user
 *.ncrunchproject
+
+# Java 
+*.class
