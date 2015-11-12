@@ -1,7 +1,5 @@
 package interfaces;
 
-import other.Ghost;
-
 /**
  * Created by astral on 11.11.2015.
  */

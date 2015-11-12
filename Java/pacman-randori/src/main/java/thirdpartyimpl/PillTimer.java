@@ -1,6 +1,6 @@
 package thirdpartyimpl;
 
-import other.Ghost;
+import main.Ghost;
 import thirdparty.InGameTimer;
 
 /**
@@ -8,19 +8,22 @@ import thirdparty.InGameTimer;
  */
 public class PillTimer implements InGameTimer {
     private Ghost g;
+    private boolean isRunning = false;
 
     @Override
     public void restart() {
+        isRunning = true;
+        //some time after:
         g.onPillTimerFinished();
+        isRunning = false;
     }
 
     @Override
     public boolean isRunning() {
-        return false;
+        return isRunning;
     }
 
     public void reportExpiryTo(Ghost g) {
-
         this.g = g;
     }
 }

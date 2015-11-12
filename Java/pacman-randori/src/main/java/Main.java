@@ -1,5 +1,5 @@
 import interfaces.GhostStates;
-import other.*;
+import main.*;
 import states.AnimatedGhostStates;
 import thirdpartyimpl.*;
 
@@ -17,7 +17,7 @@ public class Main {
                 pillTimer,
                 new OnStageRestorePoint(),
                 restoreTimer);
-        Ghost ghost = new Ghost(states.chasing(), states);
+        Ghost ghost = new GhostStateMachine(states.chasing(), states);
 
         pillTimer.reportExpiryTo(ghost);
         restoreTimer.reportExpiryTo(ghost);
