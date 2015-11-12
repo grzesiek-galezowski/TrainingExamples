@@ -17,9 +17,10 @@ public class Main {
                 pillTimer,
                 new OnStageRestorePoint(),
                 restoreTimer);
-        Ghost ghost = new GhostStateMachine(states.chasing(), states);
+        Ghost ghost = GhostFactory.createGhost(states);
 
         pillTimer.reportExpiryTo(ghost);
         restoreTimer.reportExpiryTo(ghost);
     }
+
 }
