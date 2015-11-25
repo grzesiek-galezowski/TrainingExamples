@@ -14,11 +14,6 @@ public class PillTimer implements InGameTimer {
         g.onPillTimerFinished();
     }
 
-    @Override
-    public boolean isRunning() {
-        return false;
-    }
-
     public void reportExpiryTo(Ghost g) {
 
         this.g = g;

@@ -27,9 +27,6 @@ public class Chasing implements GhostState {
     @Override
     public void onEnter(GhostContext context) {
         appearance.red();
-        if(pillTimer.isRunning()) {
-            context.changeStateTo(states.runningAway());
-        }
     }
 
     @Override

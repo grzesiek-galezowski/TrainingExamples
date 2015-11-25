@@ -5,5 +5,4 @@ package thirdparty;
  */
 public interface InGameTimer {
     void restart();
-    boolean isRunning();
 }

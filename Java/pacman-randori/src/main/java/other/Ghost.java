@@ -1,49 +1,18 @@
-package other;//TODO synchronization
-
-import interfaces.GhostContext;
-import interfaces.GhostState;
-import interfaces.GhostStates;
+package other;
 
 /**
- * Created by astral on 11.11.2015.
+ * Created by ftw637 on 11/25/2015.
  */
-public class Ghost implements GhostContext {
+public interface Ghost {
+    void onUpdateMovement();
 
-    private GhostState currentState;
-    private GhostStates states;
+    void onCollisionWithPacman();
 
-    public Ghost(GhostState currentState, GhostStates states) {
-        this.currentState = currentState;
-        this.states = states;
-    }
+    void onPowerPillConsumedByPacman();
 
-    public void onUpdateMovement() {
-        currentState.onUpdateMovement(this);
-    }
+    void onPillTimerFinished();
 
-    public void onCollisionWithPacman() {
-        currentState.onCollisionWithPacman(this);
-    }
+    void onRestoreTimerFinished();
 
-    public void onPowerPillConsumedByPacman() {
-        currentState.onPowerPillConsumedByPacman(this);
-    }
-
-    public void onPillTimerFinished() {
-        currentState.onPillTimerFinished(this);
-    }
-
-    public void onRestoreTimerFinished() {
-        currentState.onRestoreTimerFinished(this);
-    }
-
-    public void onRestorePointReached() {
-        currentState.onRestorePointReached(this);
-    }
-
-    @Override
-    public void changeStateTo(GhostState ghostState) {
-        this.currentState = ghostState;
-        currentState.onEnter(this);
-    }
+    void onRestorePointReached();
 }

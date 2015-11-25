@@ -17,7 +17,7 @@ public class Main {
                 pillTimer,
                 new OnStageRestorePoint(),
                 restoreTimer);
-        Ghost ghost = new Ghost(states.chasing(), states);
+        Ghost ghost = new AnimatedGhost(states.chasing());
 
         pillTimer.reportExpiryTo(ghost);
         restoreTimer.reportExpiryTo(ghost);

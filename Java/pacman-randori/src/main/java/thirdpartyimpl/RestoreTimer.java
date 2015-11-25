@@ -14,11 +14,6 @@ public class RestoreTimer implements InGameTimer {
         g.onRestoreTimerFinished();
     }
 
-    @Override
-    public boolean isRunning() {
-        return false;
-    }
-
     public void reportExpiryTo(Ghost g) {
 
         this.g = g;
