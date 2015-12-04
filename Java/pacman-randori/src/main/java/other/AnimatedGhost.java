@@ -31,7 +31,7 @@ public class AnimatedGhost implements GhostContext, Ghost {
     }
 
     @Override
-    public void onPillTimerFinished() {
+    public void onPillEffectExpired() {
         currentState.onPillTimerFinished(this);
     }
 
