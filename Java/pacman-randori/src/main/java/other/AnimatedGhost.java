@@ -47,7 +47,7 @@ public class AnimatedGhost implements GhostContext, Ghost {
 
     @Override
     public void changeStateTo(GhostState ghostState) {
+        ghostState.onEnter(this);
         this.currentState = ghostState;
-        currentState.onEnter(this);
     }
 }

@@ -15,13 +15,11 @@ public class Chasing implements GhostState {
     private GhostStates states;
     private GhostAppearance appearance;
     private Pacman pacman;
-    private InGameTimer pillTimer;
 
-    public Chasing(GhostStates states, GhostAppearance appearance, Pacman pacman, InGameTimer pillTimer) {
+    public Chasing(GhostStates states, GhostAppearance appearance, Pacman pacman) {
         this.states = states;
         this.appearance = appearance;
         this.pacman = pacman;
-        this.pillTimer = pillTimer;
     }
 
     @Override

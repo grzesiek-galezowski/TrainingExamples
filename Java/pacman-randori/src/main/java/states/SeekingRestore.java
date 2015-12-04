@@ -3,7 +3,6 @@ package states;
 import interfaces.GhostContext;
 import interfaces.GhostState;
 import interfaces.GhostStates;
-import thirdparty.InGameTimer;
 import thirdparty.GhostAppearance;
 import thirdparty.Location;
 
@@ -13,13 +12,12 @@ import thirdparty.Location;
 public class SeekingRestore implements GhostState {
     private GhostAppearance appearance;
     private Location location;
-    private InGameTimer pillTimer;
     private GhostStates states;
 
-    public SeekingRestore(GhostAppearance appearance, Location location, InGameTimer pillTimer) {
+    public SeekingRestore(GhostAppearance appearance, Location location, GhostStates states) {
         this.appearance = appearance;
         this.location = location;
-        this.pillTimer = pillTimer;
+        this.states = states;
     }
 
     @Override
@@ -39,7 +37,7 @@ public class SeekingRestore implements GhostState {
 
     @Override
     public void onPowerPillConsumedByPacman(GhostContext ghost) {
-        pillTimer.restart();
+
     }
 
     @Override

@@ -10,7 +10,7 @@ public class RestoreTimer implements InGameTimer {
     private Ghost g;
 
     @Override
-    public void restart() {
+    public void start() {
         g.onRestoreTimerFinished();
     }
 

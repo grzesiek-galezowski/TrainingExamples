@@ -10,18 +10,16 @@ import interfaces.GhostStates;
  */
 public class Restoring implements GhostState {
     private InGameTimer restoreTimer;
-    private InGameTimer pillTimer;
     private GhostStates states;
 
-    public Restoring(InGameTimer restoreTimer, InGameTimer pillTimer, GhostStates states) {
+    public Restoring(InGameTimer restoreTimer, GhostStates states) {
         this.restoreTimer = restoreTimer;
-        this.pillTimer = pillTimer;
         this.states = states;
     }
 
     @Override
     public void onEnter(GhostContext context) {
-        restoreTimer.restart();
+        restoreTimer.start();
     }
 
     @Override
@@ -36,7 +34,7 @@ public class Restoring implements GhostState {
 
     @Override
     public void onPowerPillConsumedByPacman(GhostContext ghost) {
-        pillTimer.restart();
+
     }
 
     @Override

@@ -10,20 +10,17 @@ import thirdparty.Pacman;
 public class RunningAway implements GhostState {
     private Pacman pacman;
     private GhostAppearance appearance;
-    private InGameTimer pillTimer;
     private GhostStates states;
 
-    public RunningAway(Pacman pacman, GhostAppearance appearance, InGameTimer pillTimer, GhostStates states) {
+    public RunningAway(Pacman pacman, GhostAppearance appearance, GhostStates states) {
         this.pacman = pacman;
         this.appearance = appearance;
-        this.pillTimer = pillTimer;
         this.states = states;
     }
 
     @Override
     public void onEnter(GhostContext context) {
         appearance.blue();
-        pillTimer.restart();
     }
 
     @Override
@@ -38,7 +35,7 @@ public class RunningAway implements GhostState {
 
     @Override
     public void onPowerPillConsumedByPacman(GhostContext ghost) {
-        pillTimer.restart();
+
     }
 
     @Override
