@@ -18,27 +18,27 @@ public class Restoring implements GhostState {
     }
 
     @Override
-    public void onEnter(GhostContext context) {
+    public void onEnter() {
         restoreTimer.start();
     }
 
     @Override
-    public void onUpdateMovement(GhostContext ghost) {
+    public void onUpdateMovement() {
         //nothing
     }
 
     @Override
-    public void onCollisionWithPacman(GhostContext ghost) {
+    public void onCollisionWithPacman(GhostContext context) {
         throw new RuntimeException("impossible");
     }
 
     @Override
-    public void onPowerPillConsumedByPacman(GhostContext ghost) {
+    public void onPowerPillConsumedByPacman(GhostContext context) {
 
     }
 
     @Override
-    public void onPillTimerFinished(GhostContext ghost) {
+    public void onPillTimerFinished(GhostContext context) {
         //N/A
     }
 
@@ -48,7 +48,7 @@ public class Restoring implements GhostState {
     }
 
     @Override
-    public void onRestorePointReached(GhostContext ghost) {
+    public void onRestorePointReached(GhostContext context) {
         throw new RuntimeException("Imporssible");
     }
 }

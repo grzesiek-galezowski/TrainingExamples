@@ -2,7 +2,6 @@ package other;//TODO synchronization
 
 import interfaces.GhostContext;
 import interfaces.GhostState;
-import interfaces.GhostStates;
 
 /**
  * Created by astral on 11.11.2015.
@@ -13,12 +12,15 @@ public class AnimatedGhost implements GhostContext, Ghost {
 
     public AnimatedGhost(GhostState currentState) {
         this.currentState = currentState;
-        //bug should have onEnter somewhere...
+    }
+
+    public void start() {
+        currentState.onEnter();
     }
 
     @Override
     public void onUpdateMovement() {
-        currentState.onUpdateMovement(this);
+        currentState.onUpdateMovement();
     }
 
     @Override
@@ -48,7 +50,7 @@ public class AnimatedGhost implements GhostContext, Ghost {
 
     @Override
     public void changeStateTo(GhostState ghostState) {
-        ghostState.onEnter(this);
+        ghostState.onEnter();
         this.currentState = ghostState;
     }
 }

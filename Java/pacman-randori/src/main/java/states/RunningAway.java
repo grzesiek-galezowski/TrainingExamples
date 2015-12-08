@@ -19,22 +19,22 @@ public class RunningAway implements GhostState {
     }
 
     @Override
-    public void onEnter(GhostContext context) {
+    public void onEnter() {
         appearance.blue();
     }
 
     @Override
-    public void onUpdateMovement(GhostContext ghost) {
+    public void onUpdateMovement() {
         pacman.moveAwayFrom();
     }
 
     @Override
-    public void onCollisionWithPacman(GhostContext ghost) {
-        ghost.changeStateTo(states.seekingRestore());
+    public void onCollisionWithPacman(GhostContext context) {
+        context.changeStateTo(states.seekingRestore());
     }
 
     @Override
-    public void onPowerPillConsumedByPacman(GhostContext ghost) {
+    public void onPowerPillConsumedByPacman(GhostContext context) {
 
     }
 
@@ -44,12 +44,12 @@ public class RunningAway implements GhostState {
     }
 
     @Override
-    public void onRestoreTimerFinished(GhostContext ghost) {
+    public void onRestoreTimerFinished(GhostContext context) {
         throw new RuntimeException("cannot happen");
     }
 
     @Override
-    public void onRestorePointReached(GhostContext ghost) {
+    public void onRestorePointReached(GhostContext context) {
         throw new RuntimeException("Imporssible");
     }
 }

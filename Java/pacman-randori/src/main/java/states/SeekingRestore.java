@@ -21,32 +21,32 @@ public class SeekingRestore implements GhostState {
     }
 
     @Override
-    public void onEnter(GhostContext context) {
+    public void onEnter() {
         appearance.transparent();
     }
 
     @Override
-    public void onUpdateMovement(GhostContext ghost) {
+    public void onUpdateMovement() {
         location.moveTowards();
     }
 
     @Override
-    public void onCollisionWithPacman(GhostContext ghost) {
+    public void onCollisionWithPacman(GhostContext context) {
         //do nothing
     }
 
     @Override
-    public void onPowerPillConsumedByPacman(GhostContext ghost) {
+    public void onPowerPillConsumedByPacman(GhostContext context) {
 
     }
 
     @Override
-    public void onPillTimerFinished(GhostContext ghost) {
+    public void onPillTimerFinished(GhostContext context) {
         //nothing
     }
 
     @Override
-    public void onRestoreTimerFinished(GhostContext ghost) {
+    public void onRestoreTimerFinished(GhostContext context) {
         throw new RuntimeException("impossible");
     }
 
