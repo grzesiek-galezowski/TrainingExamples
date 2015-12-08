@@ -13,6 +13,7 @@ public class AnimatedGhost implements GhostContext, Ghost {
 
     public AnimatedGhost(GhostState currentState) {
         this.currentState = currentState;
+        //bug should have onEnter somewhere...
     }
 
     @Override
