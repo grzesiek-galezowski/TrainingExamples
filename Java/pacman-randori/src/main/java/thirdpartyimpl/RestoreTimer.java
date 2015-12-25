@@ -8,15 +8,11 @@ import thirdparty.InGameTimer;
  */
 public class RestoreTimer implements InGameTimer {
     private Ghost g;
-    private boolean isRunning = false;
 
     @Override
     public void start() {
-        isRunning = true;
         //some time after:
         g.onRestoreTimerFinished();
-        isRunning = false;
-        return isRunning;
     }
 
     public void reportExpiryTo(Ghost g) {

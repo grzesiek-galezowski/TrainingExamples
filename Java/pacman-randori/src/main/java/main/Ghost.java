@@ -10,7 +10,7 @@ public interface Ghost {
 
     void onPowerPillConsumedByPacman();
 
-    void onPillTimerFinished();
+    void onPillEffectExpired();
 
     void onRestoreTimerFinished();
 

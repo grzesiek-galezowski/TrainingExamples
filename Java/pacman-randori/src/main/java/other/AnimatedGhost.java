@@ -2,6 +2,7 @@ package other;//TODO synchronization
 
 import interfaces.GhostContext;
 import interfaces.GhostState;
+import main.Ghost;
 
 /**
  * Created by astral on 11.11.2015.
