@@ -15,30 +15,25 @@ public class Chasing implements GhostState {
     private GhostStates states;
     private GhostAppearance appearance;
     private Pacman pacman;
-    private InGameTimer pillTimer;
 
-    public Chasing(GhostStates states, GhostAppearance appearance, Pacman pacman, InGameTimer pillTimer) {
+    public Chasing(GhostStates states, GhostAppearance appearance, Pacman pacman) {
         this.states = states;
         this.appearance = appearance;
         this.pacman = pacman;
-        this.pillTimer = pillTimer;
     }
 
     @Override
-    public void onEnter(GhostContext context) {
+    public void onEnter() {
         appearance.red();
-        if(pillTimer.isRunning()) {
-            context.changeStateTo(states.runningAway());
-        }
     }
 
     @Override
-    public void onUpdateMovement(GhostContext ghost) {
+    public void onUpdateMovement() {
         pacman.moveTowards();
     }
 
     @Override
-    public void onCollisionWithPacman(GhostContext ghost) {
+    public void onCollisionWithPacman(GhostContext context) {
         pacman.die();
     }
 
@@ -48,17 +43,17 @@ public class Chasing implements GhostState {
     }
 
     @Override
-    public void onPillTimerFinished(GhostContext ghost) {
+    public void onPillTimerFinished(GhostContext context) {
         throw new RuntimeException("impossible!");
     }
 
     @Override
-    public void onRestoreTimerFinished(GhostContext ghost) {
+    public void onRestoreTimerFinished(GhostContext context) {
         throw new RuntimeException("impossible!");
     }
 
     @Override
-    public void onRestorePointReached(GhostContext ghost) {
+    public void onRestorePointReached(GhostContext context) {
         throw new RuntimeException("Imporssible");
     }
 }

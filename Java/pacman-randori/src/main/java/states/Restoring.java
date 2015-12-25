@@ -10,37 +10,35 @@ import interfaces.GhostStates;
  */
 public class Restoring implements GhostState {
     private InGameTimer restoreTimer;
-    private InGameTimer pillTimer;
     private GhostStates states;
 
-    public Restoring(InGameTimer restoreTimer, InGameTimer pillTimer, GhostStates states) {
+    public Restoring(InGameTimer restoreTimer, GhostStates states) {
         this.restoreTimer = restoreTimer;
-        this.pillTimer = pillTimer;
         this.states = states;
     }
 
     @Override
-    public void onEnter(GhostContext context) {
-        restoreTimer.restart();
+    public void onEnter() {
+        restoreTimer.start();
     }
 
     @Override
-    public void onUpdateMovement(GhostContext ghost) {
+    public void onUpdateMovement() {
         //nothing
     }
 
     @Override
-    public void onCollisionWithPacman(GhostContext ghost) {
+    public void onCollisionWithPacman(GhostContext context) {
         throw new RuntimeException("impossible");
     }
 
     @Override
-    public void onPowerPillConsumedByPacman(GhostContext ghost) {
-        pillTimer.restart();
+    public void onPowerPillConsumedByPacman(GhostContext context) {
+
     }
 
     @Override
-    public void onPillTimerFinished(GhostContext ghost) {
+    public void onPillTimerFinished(GhostContext context) {
         //N/A
     }
 
@@ -50,7 +48,7 @@ public class Restoring implements GhostState {
     }
 
     @Override
-    public void onRestorePointReached(GhostContext ghost) {
+    public void onRestorePointReached(GhostContext context) {
         throw new RuntimeException("Imporssible");
     }
 }

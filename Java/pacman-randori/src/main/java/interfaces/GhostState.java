@@ -4,17 +4,17 @@ package interfaces;
  * Created by astral on 11.11.2015.
  */
 public interface GhostState {
-    void onEnter(GhostContext context);
+    void onEnter();
 
-    void onUpdateMovement(GhostContext ghost);
+    void onUpdateMovement();
 
-    void onCollisionWithPacman(GhostContext ghost);
+    void onCollisionWithPacman(GhostContext context);
 
-    void onPowerPillConsumedByPacman(GhostContext ghost);
+    void onPowerPillConsumedByPacman(GhostContext context);
 
-    void onPillTimerFinished(GhostContext ghost);
+    void onPillTimerFinished(GhostContext context);
 
-    void onRestoreTimerFinished(GhostContext ghost);
+    void onRestoreTimerFinished(GhostContext context);
 
-    void onRestorePointReached(GhostContext ghost);
+    void onRestorePointReached(GhostContext context);
 }

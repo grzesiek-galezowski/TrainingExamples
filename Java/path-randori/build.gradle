@@ -1,4 +1,4 @@
-group 'pacman-randori'
+group 'paths-randori'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
@@ -15,4 +15,5 @@ dependencies {
     testCompile 'com.github.autofixture:autofixturegenerator:1.0.5'
     testCompile 'com.google.guava:guava:19.0-rc2'
     testCompile 'pl.pragmatists:JUnitParams:1.0.4'
+
 }

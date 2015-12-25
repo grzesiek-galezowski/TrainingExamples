@@ -11,15 +11,11 @@ public class RestoreTimer implements InGameTimer {
     private boolean isRunning = false;
 
     @Override
-    public void restart() {
+    public void start() {
         isRunning = true;
         //some time after:
         g.onRestoreTimerFinished();
         isRunning = false;
-    }
-
-    @Override
-    public boolean isRunning() {
         return isRunning;
     }
 

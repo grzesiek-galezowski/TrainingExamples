@@ -10,35 +10,32 @@ import thirdparty.Pacman;
 public class RunningAway implements GhostState {
     private Pacman pacman;
     private GhostAppearance appearance;
-    private InGameTimer pillTimer;
     private GhostStates states;
 
-    public RunningAway(Pacman pacman, GhostAppearance appearance, InGameTimer pillTimer, GhostStates states) {
+    public RunningAway(Pacman pacman, GhostAppearance appearance, GhostStates states) {
         this.pacman = pacman;
         this.appearance = appearance;
-        this.pillTimer = pillTimer;
         this.states = states;
     }
 
     @Override
-    public void onEnter(GhostContext context) {
+    public void onEnter() {
         appearance.blue();
-        pillTimer.restart();
     }
 
     @Override
-    public void onUpdateMovement(GhostContext ghost) {
+    public void onUpdateMovement() {
         pacman.moveAwayFrom();
     }
 
     @Override
-    public void onCollisionWithPacman(GhostContext ghost) {
-        ghost.changeStateTo(states.seekingRestore());
+    public void onCollisionWithPacman(GhostContext context) {
+        context.changeStateTo(states.seekingRestore());
     }
 
     @Override
-    public void onPowerPillConsumedByPacman(GhostContext ghost) {
-        pillTimer.restart();
+    public void onPowerPillConsumedByPacman(GhostContext context) {
+
     }
 
     @Override
@@ -47,12 +44,12 @@ public class RunningAway implements GhostState {
     }
 
     @Override
-    public void onRestoreTimerFinished(GhostContext ghost) {
+    public void onRestoreTimerFinished(GhostContext context) {
         throw new RuntimeException("cannot happen");
     }
 
     @Override
-    public void onRestorePointReached(GhostContext ghost) {
+    public void onRestorePointReached(GhostContext context) {
         throw new RuntimeException("Imporssible");
     }
 }
