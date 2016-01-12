@@ -9,7 +9,7 @@ using TddEbook.TddToolkit;
 
 namespace PathValueObjectsRandori
 {
-    public class Class1
+    public class Main
     {
       [Test]
       public void ShouldDOWHAT()
