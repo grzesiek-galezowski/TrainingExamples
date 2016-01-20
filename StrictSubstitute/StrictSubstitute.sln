@@ -1,10 +1,16 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StrictNSubstitute", "StrictSubstitute\StrictNSubstitute.csproj", "{FE09CE97-2445-480E-BE14-FEE7DDA42CBA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StrictNSubstituteSpecification", "StrictSubstituteSpecification\StrictNSubstituteSpecification.csproj", "{DD21BBC6-1D07-48C0-ACBE-296D5E0A8C68}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EB802F83-E581-4C4B-9B16-7D00D66C9329}"
+ProjectSection(SolutionItems) = preProject
+GCop.json = GCop.json
+EndProjectSection
+EndProject
+
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
