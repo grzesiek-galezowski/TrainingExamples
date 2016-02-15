@@ -13,7 +13,8 @@ namespace ComponentSpecification
     public void ShouldSaveEmployeeInDatabaseWhenTriggeredFromView()
       {
         //GIVEN
-        var persistentStorage = Substitute.For<IPersistentStorage>();
+        var persistentStorage 
+           = Substitute.For<IPersistentStorage>();
         var app = new DomainLogic(persistentStorage);
 
         //THEN

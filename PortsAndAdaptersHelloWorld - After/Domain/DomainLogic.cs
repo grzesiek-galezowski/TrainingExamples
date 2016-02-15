@@ -6,7 +6,8 @@ namespace Domain
     {
       readonly IPersistentStorage _storage;
 
-      public DomainLogic(IPersistentStorage persistentStorage)
+      public DomainLogic(
+        IPersistentStorage persistentStorage)
       {
         _storage = persistentStorage;
       }
