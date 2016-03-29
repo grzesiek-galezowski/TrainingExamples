@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.mutabilitydetector:MutabilityDetector:0.9.5">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.mutabilitydetector/MutabilityDetector/0.9.5/80d5bb253f6c0a01862e420252cc89d3cb3c6ca6/MutabilityDetector-0.9.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.mutabilitydetector/MutabilityDetector/0.9.5/fb5555209a60dd67b0b9a592c9e28e3a14462dfe/MutabilityDetector-0.9.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
