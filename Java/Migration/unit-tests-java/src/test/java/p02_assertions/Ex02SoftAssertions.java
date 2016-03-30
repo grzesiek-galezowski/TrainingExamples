@@ -24,7 +24,7 @@ public class Ex02SoftAssertions {
       softly.assertThat(6).isEqualTo(6);
     });
 
-    //static import
+    //with static import
     assertAll(softly -> {
       softly.assertThat(2).isEqualTo(2);
       softly.assertThat(4).isEqualTo(4);

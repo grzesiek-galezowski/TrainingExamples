@@ -55,6 +55,7 @@
     <Compile Include="P01CoreRunner\Ex01RememberingDataBetweenTests.cs" />
     <Compile Include="P01CoreRunner\Ex02CategoriesGroups.cs" />
     <Compile Include="P01CoreRunner\Ex03ParameterizedTests.cs" />
+    <Compile Include="P01CoreRunner\Ex04RepeatedTests.cs" />
     <Compile Include="P02Assertions\Ex01AssertThat.cs" />
     <Compile Include="P02Assertions\Ex02SoftAssertions.cs" />
     <Compile Include="P02Assertions\Ex03ExceptionAssertions.cs" />
