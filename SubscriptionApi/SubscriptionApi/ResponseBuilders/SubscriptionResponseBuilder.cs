@@ -36,6 +36,7 @@ namespace SubscriptionApi.ResponseBuilders
         Errors = _errors.ToArray()
       };
     }
+
     public StopSubscriptionResponseDto Build()
     {
       return new StopSubscriptionResponseDto()
