@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace unit_tests_csharp
+namespace unit_tests_csharp.P01CoreRunner
 {
   //Questions:
   //1. Which one runs first?

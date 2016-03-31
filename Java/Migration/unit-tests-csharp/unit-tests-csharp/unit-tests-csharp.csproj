@@ -59,11 +59,24 @@
     <Compile Include="P02Assertions\Ex01AssertThat.cs" />
     <Compile Include="P02Assertions\Ex02SoftAssertions.cs" />
     <Compile Include="P02Assertions\Ex03ExceptionAssertions.cs" />
+    <Compile Include="P03Any\MyClass.cs" />
+    <Compile Include="P04NSubstitute\ProductionCode\CopyOperation.cs" />
+    <Compile Include="P04NSubstitute\ProductionCode\Data.cs" />
+    <Compile Include="P04NSubstitute\ProductionCode\IDataDestination.cs" />
+    <Compile Include="P04NSubstitute\ProductionCode\IDataSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="P03Any\Ex01PrimitiveTypesAndCollections.cs" />
+    <Compile Include="P03Any\Ex02GenericAny.cs" />
+    <Compile Include="P04NSubstitute\Ex01BasicStubbingAndMocking.cs" />
+    <Compile Include="P04NSubstitute\Ex02MultipleReturnsAndOrderVerification.cs" />
+    <Compile Include="P04NSubstitute\Ex03ThrowingExceptionsFromMocks.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
