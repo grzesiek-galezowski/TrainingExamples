@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Command line suite" duration-ms="53" started-at="2016-03-30T07:15:57Z" finished-at="2016-03-30T07:15:57Z">
+  <suite name="Command line suite" duration-ms="0" started-at="2016-03-30T07:21:33Z" finished-at="2016-03-30T07:21:33Z">
     <groups>
     </groups>
-    <test name="Command line test" duration-ms="53" started-at="2016-03-30T07:15:57Z" finished-at="2016-03-30T07:15:57Z">
+    <test name="Command line test" duration-ms="0" started-at="2016-03-30T07:21:33Z" finished-at="2016-03-30T07:21:33Z">
       <class name="p01_core_runner.Ex04RepeatedTests">
-        <test-method status="PASS" signature="shouldBeGreaterThan10()[pri:0, instance:p01_core_runner.Ex04RepeatedTests@161cd475]" name="shouldBeGreaterThan10" duration-ms="39" started-at="2016-03-30T09:15:57Z" finished-at="2016-03-30T09:15:57Z">
+        <test-method status="PASS" signature="shouldBeGreaterThan10()[pri:0, instance:p01_core_runner.Ex04RepeatedTests@1d082e88]" name="shouldBeGreaterThan10" duration-ms="0" started-at="2016-03-30T09:21:33Z" finished-at="2016-03-30T09:21:33Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- shouldBeGreaterThan10 -->

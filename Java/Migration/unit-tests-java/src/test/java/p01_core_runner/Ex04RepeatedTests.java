@@ -13,7 +13,7 @@ public class Ex04RepeatedTests {
   @Test//(invocationCount = 100) //running multiple times helps in diagnosis:
   public void shouldBeGreaterThan10() {
     //GIVEN
-    int buggyVariable = current.nextInt(0, 100);
+    int buggyVariable = current.nextInt(0, 101);
 
     //THEN
     assertThat(buggyVariable).isGreaterThan(10); //low chance of happening
