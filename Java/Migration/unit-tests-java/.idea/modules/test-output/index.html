@@ -91,7 +91,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">2 methods,   2 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -102,7 +102,12 @@
                     <div class="method-list-content passed suite-Command_line_suite">
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Command_line_suite" title="p01_core_runner.Ex04RepeatedTests" hash-for-method="shouldBeGreaterThan10">shouldBeGreaterThan10</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Command_line_suite" title="p04_mockito.Ex03ThrowingExceptionsFromMocks" hash-for-method="shouldThrowExceptionWhenReadingFromSourceThrowsException">shouldThrowExceptionWhenReadingFromSourceThrowsException</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Command_line_suite" title="p04_mockito.Ex03ThrowingExceptionsFromMocks" hash-for-method="shouldThrowExceptionWhenSavingToDestinationThrowsException">shouldThrowExceptionWhenSavingToDestinationThrowsException</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Command_line_suite -->
@@ -120,14 +125,21 @@
           <div class="suite-Command_line_suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
-              <span class="class-name">p01_core_runner.Ex04RepeatedTests</span>
+              <span class="class-name">p04_mockito.Ex03ThrowingExceptionsFromMocks</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="shouldBeGreaterThan10">
-                  </a> <!-- shouldBeGreaterThan10 -->
-                  <span class="method-name">shouldBeGreaterThan10</span>
+                  <a name="shouldThrowExceptionWhenReadingFromSourceThrowsException">
+                  </a> <!-- shouldThrowExceptionWhenReadingFromSourceThrowsException -->
+                  <span class="method-name">shouldThrowExceptionWhenReadingFromSourceThrowsException</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="shouldThrowExceptionWhenSavingToDestinationThrowsException">
+                  </a> <!-- shouldThrowExceptionWhenSavingToDestinationThrowsException -->
+                  <span class="method-name">shouldThrowExceptionWhenSavingToDestinationThrowsException</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -143,7 +155,7 @@
 &lt;suite name=&quot;Command line suite&quot;&gt;
   &lt;test name=&quot;Command line test&quot; preserve-order=&quot;false&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;p01_core_runner.Ex04RepeatedTests&quot;/&gt;
+      &lt;class name=&quot;p04_mockito.Ex03ThrowingExceptionsFromMocks&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Command line test --&gt;
 &lt;/suite&gt; &lt;!-- Command line suite --&gt;
@@ -183,16 +195,20 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(2);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'shouldBeGreaterThan10')
-data.setCell(0, 2, 'p01_core_runner.Ex04RepeatedTests')
-data.setCell(0, 3, 0);
+data.setCell(0, 1, 'shouldThrowExceptionWhenReadingFromSourceThrowsException')
+data.setCell(0, 2, 'p04_mockito.Ex03ThrowingExceptionsFromMocks')
+data.setCell(0, 3, 342);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'shouldThrowExceptionWhenSavingToDestinationThrowsException')
+data.setCell(1, 2, 'p04_mockito.Ex03ThrowingExceptionsFromMocks')
+data.setCell(1, 3, 5);
 window.suiteTableData['Command_line_suite']= { tableData: data, tableDiv: 'times-div-Command_line_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 0 ms</span>
+              <span class="suite-total-time">Total running time: 347 ms</span>
               <div id="times-div-Command_line_suite">
               </div> <!-- times-div-Command_line_suite -->
             </div> <!-- times-div -->
@@ -218,10 +234,14 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">p01_core_runner.Ex04RepeatedTests</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">p04_mockito.Ex03ThrowingExceptionsFromMocks</div> <!-- chronological-class-name -->
               <div class="test-method">
-                <span class="method-name">shouldBeGreaterThan10</span>
+                <span class="method-name">shouldThrowExceptionWhenReadingFromSourceThrowsException</span>
                 <span class="method-start">0 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">shouldThrowExceptionWhenSavingToDestinationThrowsException</span>
+                <span class="method-start">343 ms</span>
               </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

@@ -2,6 +2,7 @@ package p02_assertions;
 
 import org.assertj.core.api.Condition;
 import org.testng.annotations.Test;
+import p02_assertions.custom_conditions.AdultPersonCondition;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -65,14 +66,3 @@ public class Ex01AssertThat {
 
 }
 
-class Person {
-  private int age;
-
-  public int getAge() {
-    return age;
-  }
-
-  public void setAge(int age) {
-    this.age = age;
-  }
-}

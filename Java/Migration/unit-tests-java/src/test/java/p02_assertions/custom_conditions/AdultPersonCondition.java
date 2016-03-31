@@ -1,6 +1,7 @@
-package p02_assertions;
+package p02_assertions.custom_conditions;
 
 import org.assertj.core.api.Condition;
+import p02_assertions.Person;
 
 public class AdultPersonCondition extends Condition<Person> {
 
