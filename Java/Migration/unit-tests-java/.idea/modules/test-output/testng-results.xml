@@ -2,20 +2,54 @@
 <testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Command line suite" duration-ms="358" started-at="2016-03-31T13:48:21Z" finished-at="2016-03-31T13:48:22Z">
+  <suite name="Command line suite" duration-ms="1" started-at="2016-04-01T13:32:30Z" finished-at="2016-04-01T13:32:30Z">
     <groups>
     </groups>
-    <test name="Command line test" duration-ms="358" started-at="2016-03-31T13:48:21Z" finished-at="2016-03-31T13:48:22Z">
-      <class name="p04_mockito.Ex03ThrowingExceptionsFromMocks">
-        <test-method status="PASS" signature="shouldThrowExceptionWhenReadingFromSourceThrowsException()[pri:0, instance:p04_mockito.Ex03ThrowingExceptionsFromMocks@161cd475]" name="shouldThrowExceptionWhenReadingFromSourceThrowsException" duration-ms="342" started-at="2016-03-31T15:48:21Z" finished-at="2016-03-31T15:48:22Z">
+    <test name="Command line test" duration-ms="1" started-at="2016-04-01T13:32:30Z" finished-at="2016-04-01T13:32:30Z">
+      <class name="p01_core_runner.Ex03ParameterizedTests">
+        <test-method status="PASS" signature="testPrimeNumberChecker(int, int, java.lang.String)[pri:0, instance:p01_core_runner.Ex03ParameterizedTests@5890e879]" name="testPrimeNumberChecker" duration-ms="0" started-at="2016-04-01T15:32:30Z" data-provider="shouldUseExternalValuesData" finished-at="2016-04-01T15:32:30Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[3]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[3]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Surprised?]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- shouldThrowExceptionWhenReadingFromSourceThrowsException -->
-        <test-method status="PASS" signature="shouldThrowExceptionWhenSavingToDestinationThrowsException()[pri:0, instance:p04_mockito.Ex03ThrowingExceptionsFromMocks@161cd475]" name="shouldThrowExceptionWhenSavingToDestinationThrowsException" duration-ms="5" started-at="2016-03-31T15:48:22Z" finished-at="2016-03-31T15:48:22Z">
+        </test-method> <!-- testPrimeNumberChecker -->
+        <test-method status="PASS" signature="testPrimeNumberChecker(int, int, java.lang.String)[pri:0, instance:p01_core_runner.Ex03ParameterizedTests@5890e879]" name="testPrimeNumberChecker" duration-ms="0" started-at="2016-04-01T15:32:30Z" data-provider="shouldUseExternalValuesData" finished-at="2016-04-01T15:32:30Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[3]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[3]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[What did you expect?]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- shouldThrowExceptionWhenSavingToDestinationThrowsException -->
-      </class> <!-- p04_mockito.Ex03ThrowingExceptionsFromMocks -->
+        </test-method> <!-- testPrimeNumberChecker -->
+      </class> <!-- p01_core_runner.Ex03ParameterizedTests -->
     </test> <!-- Command line test -->
   </suite> <!-- Command line suite -->
 </testng-results>

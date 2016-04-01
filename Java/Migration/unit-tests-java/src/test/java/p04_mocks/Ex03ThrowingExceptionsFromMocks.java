@@ -1,7 +1,11 @@
-package p04_mockito;
+package p04_mocks;
 
 import autofixture.publicinterface.Any;
 import org.testng.annotations.Test;
+import p04_mockito.CopyOperation;
+import p04_mockito.Data;
+import p04_mockito.DataDestination;
+import p04_mockito.DataSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.mockito.Mockito.*;
