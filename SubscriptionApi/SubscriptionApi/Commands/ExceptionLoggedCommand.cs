@@ -1,27 +1,28 @@
 using System;
-using SubscriptionApi;
-using SubscriptionApi.Commands;
 
-public class ExceptionLoggedCommand : Command
+namespace SubscriptionApi.Commands
 {
-  private readonly Log _log;
-  private readonly Command _wrappedCommand;
-
-  public ExceptionLoggedCommand(Log log, Command wrappedCommand)
+  public class ExceptionLoggedCommand : Command
   {
-    _log = log;
-    _wrappedCommand = wrappedCommand;
-  }
+    private readonly Log _log;
+    private readonly Command _wrappedCommand;
 
-  public void Invoke()
-  {
-    try
+    public ExceptionLoggedCommand(Log log, Command wrappedCommand)
     {
-      _wrappedCommand.Invoke();
+      _log = log;
+      _wrappedCommand = wrappedCommand;
     }
-    catch (Exception e)
+
+    public void Invoke()
     {
-      _log.Error(e);
+      try
+      {
+        _wrappedCommand.Invoke();
+      }
+      catch (Exception e)
+      {
+        _log.Error(e);
+      }
     }
   }
 }
