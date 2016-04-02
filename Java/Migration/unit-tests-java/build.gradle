@@ -10,5 +10,5 @@ repositories {
 }
 
 dependencies {
-    testCompile 'com.github.grzesiek-galezowski:tdd-toolkit-java:1.0.12'
+    testCompile 'com.github.grzesiek-galezowski:tdd-toolkit-java:1.0.13'
 }

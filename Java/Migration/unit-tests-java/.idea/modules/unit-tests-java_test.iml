@@ -5,7 +5,8 @@
       <configuration />
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="true">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
+    <output-test url="file://$MODULE_DIR$/../../build/classes/test" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../src/test">
       <sourceFolder url="file://$MODULE_DIR$/../../src/test/java" isTestSource="true" />
@@ -14,17 +15,17 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="unit-tests-java_main" />
-    <orderEntry type="library" name="Gradle: com.github.grzesiek-galezowski:tdd-toolkit-java:1.0.12" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.grzesiek-galezowski:tdd-toolkit-java:1.0.13" level="project" />
     <orderEntry type="library" name="Gradle: com.google.guava:guava:19.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.autofixture:autofixturegenerator:1.0.8" level="project" />
     <orderEntry type="library" name="Gradle: org.testng:testng:6.9.10" level="project" />
-    <orderEntry type="library" name="Gradle: org.assertj:assertj-core:3.3.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.assertj:assertj-core:3.4.0" level="project" />
     <orderEntry type="library" name="Gradle: org.reflections:reflections:0.9.10" level="project" />
     <orderEntry type="library" name="Gradle: nl.jqno.equalsverifier:equalsverifier:2.0.1" level="project" />
     <orderEntry type="library" name="Gradle: org.mutabilitydetector:MutabilityDetector:0.9.5" level="project" />
     <orderEntry type="library" name="Gradle: org.mockito:mockito-core:1.10.19" level="project" />
     <orderEntry type="library" name="Gradle: com.google.code.gson:gson:2.6.2" level="project" />
     <orderEntry type="library" name="Gradle: com.sharneng:jsr305defaults:2.0.3" level="project" />
-    <orderEntry type="library" name="Gradle: com.github.autofixture:autofixturegenerator:1.0.6" level="project" />
     <orderEntry type="library" name="Gradle: com.beust:jcommander:1.48" level="project" />
     <orderEntry type="library" name="Gradle: org.beanshell:bsh:2.0b4" level="project" />
     <orderEntry type="library" name="Gradle: org.javassist:javassist:3.18.2-GA" level="project" />
