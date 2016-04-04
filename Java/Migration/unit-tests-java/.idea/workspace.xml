@@ -2,41 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9abdec7a-846f-4b8c-9d23-dc4f0491f203" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/p04_mocks/Ex04NoMoreInteractions.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/p04_mockito/Command.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/p04_mockito/CommandInterpreter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/p04_mockito/NullCommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/p04_mockito/ExecutionEngine.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/p04_mocks/Ex05ZeroInteractions.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/p04_mockito/SharedCore.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/old/Command line suite/methods.html" afterPath="$PROJECT_DIR$/.idea/modules/test-output/old/Command line suite/methods.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/p04_mockito/Ex03ThrowingExceptionsFromMocks.java" afterPath="$PROJECT_DIR$/src/test/java/p04_mocks/Ex03ThrowingExceptionsFromMocks.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p04_mockito.Ex01BasicStubbingAndMocking.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p04_mockito.Ex01BasicStubbingAndMocking.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/Command line suite/Command line test.html" afterPath="$PROJECT_DIR$/.idea/modules/test-output/Command line suite/Command line test.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p02_assertions.Ex03ExceptionAssertions.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p02_assertions.Ex03ExceptionAssertions.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/testng-results.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/testng-results.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p03_any.Ex02GenericAny.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p03_any.Ex02GenericAny.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p01_core_runner.Ex01RememberingDataBetweenTests.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p01_core_runner.Ex01RememberingDataBetweenTests.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p01_core_runner.Ex02CategoriesGroups.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p01_core_runner.Ex02CategoriesGroups.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/old/Command line suite/toc.html" afterPath="$PROJECT_DIR$/.idea/modules/test-output/old/Command line suite/toc.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/index.html" afterPath="$PROJECT_DIR$/.idea/modules/test-output/index.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/p04_mockito/Ex01BasicStubbingAndMocking.java" afterPath="$PROJECT_DIR$/src/test/java/p04_mocks/Ex01BasicStubbingAndMocking.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p03_any.Ex01PrimitiveTypesAndCollections.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p03_any.Ex01PrimitiveTypesAndCollections.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p01_core_runner.Ex03ParameterizedTests.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p01_core_runner.Ex03ParameterizedTests.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p01_core_runner.Ex04RepeatedTests.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p01_core_runner.Ex04RepeatedTests.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p02_assertions.Ex02SoftAssertions.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p02_assertions.Ex02SoftAssertions.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p04_mockito.Ex03ThrowingExceptionsFromMocks.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p04_mockito.Ex03ThrowingExceptionsFromMocks.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/p04_mockito/Ex02MultipleReturnsAndOrderVerification.java" afterPath="$PROJECT_DIR$/src/test/java/p04_mocks/Ex02MultipleReturnsAndOrderVerification.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/testng-failed.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/testng-failed.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p02_assertions.Ex01AssertThat.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p02_assertions.Ex01AssertThat.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/old/Command line suite/testng.xml.html" afterPath="$PROJECT_DIR$/.idea/modules/test-output/old/Command line suite/testng.xml.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/old/Command line suite/classes.html" afterPath="$PROJECT_DIR$/.idea/modules/test-output/old/Command line suite/classes.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/Command line suite/testng-failed.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/Command line suite/testng-failed.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p04_mockito.Ex02MultipleReturnsAndOrderVerification.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p04_mockito.Ex02MultipleReturnsAndOrderVerification.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/Command line suite/Command line test.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/Command line suite/Command line test.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/emailable-report.html" afterPath="$PROJECT_DIR$/.idea/modules/test-output/emailable-report.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/index.html" afterPath="$PROJECT_DIR$/.idea/modules/test-output/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p01_core_runner.Ex01RememberingDataBetweenTests.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p01_core_runner.Ex01RememberingDataBetweenTests.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p01_core_runner.Ex02CategoriesGroups.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p01_core_runner.Ex02CategoriesGroups.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p01_core_runner.Ex03ParameterizedTests.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p01_core_runner.Ex03ParameterizedTests.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p01_core_runner.Ex04RepeatedTests.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p01_core_runner.Ex04RepeatedTests.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p02_assertions.Ex01AssertThat.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p02_assertions.Ex01AssertThat.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p02_assertions.Ex02SoftAssertions.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p02_assertions.Ex02SoftAssertions.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p02_assertions.Ex03ExceptionAssertions.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p02_assertions.Ex03ExceptionAssertions.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p03_any.Ex01PrimitiveTypesAndCollections.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p03_any.Ex01PrimitiveTypesAndCollections.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p03_any.Ex02GenericAny.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p03_any.Ex02GenericAny.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p04_mocks.Ex01BasicStubbingAndMocking.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p04_mocks.Ex01BasicStubbingAndMocking.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p04_mocks.Ex02MultipleReturnsAndOrderVerification.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p04_mocks.Ex02MultipleReturnsAndOrderVerification.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p04_mocks.Ex03ThrowingExceptionsFromMocks.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p04_mocks.Ex03ThrowingExceptionsFromMocks.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p04_mocks.Ex04NoMoreInteractions.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p04_mocks.Ex04NoMoreInteractions.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p04_mocks.Ex05ZeroInteractions.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p04_mocks.Ex05ZeroInteractions.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/old/Command line suite/classes.html" afterPath="$PROJECT_DIR$/.idea/modules/test-output/old/Command line suite/classes.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/old/Command line suite/methods-alphabetical.html" afterPath="$PROJECT_DIR$/.idea/modules/test-output/old/Command line suite/methods-alphabetical.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/old/Command line suite/methods.html" afterPath="$PROJECT_DIR$/.idea/modules/test-output/old/Command line suite/methods.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/old/Command line suite/toc.html" afterPath="$PROJECT_DIR$/.idea/modules/test-output/old/Command line suite/toc.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/testng-results.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/testng-results.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="unit-tests-java.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -81,9 +70,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="552">
               <caret line="31" column="7" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -91,8 +78,8 @@
       <file leaf-file-name="Ex05ZeroInteractions.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/p04_mocks/Ex05ZeroInteractions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="20" column="50" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
+            <state relative-caret-position="264">
+              <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -130,11 +117,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Ex04NoMoreInteractions.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Ex04NoMoreInteractions.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/p04_mocks/Ex04NoMoreInteractions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="742">
-              <caret line="51" column="30" selection-start-line="51" selection-start-column="30" selection-end-line="51" selection-end-column="30" />
+            <state relative-caret-position="306">
+              <caret line="47" column="48" selection-start-line="47" selection-start-column="48" selection-end-line="47" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -142,11 +129,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommandInterpreter.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CommandInterpreter.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/p04_mockito/CommandInterpreter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+            <state relative-caret-position="432">
+              <caret line="24" column="5" selection-start-line="14" selection-start-column="4" selection-end-line="24" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -168,8 +155,48 @@
             <state relative-caret-position="39504">
               <caret line="1673" column="23" selection-start-line="1673" selection-start-column="23" selection-end-line="1673" selection-end-column="23" />
               <folding>
-                <element signature="e#74485#74486#0" expanded="true" />
-                <element signature="e#74545#74546#0" expanded="true" />
+                <element signature="e#0#101264#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#53399#53400#0" expanded="false" />
+                <element signature="e#53460#53461#0" expanded="false" />
+                <element signature="e#64796#64797#0" expanded="false" />
+                <element signature="e#64848#64849#0" expanded="false" />
+                <element signature="e#67773#67774#0" expanded="false" />
+                <element signature="e#67825#67826#0" expanded="false" />
+                <element signature="e#69145#69146#0" expanded="false" />
+                <element signature="e#69203#69204#0" expanded="false" />
+                <element signature="e#70159#70160#0" expanded="false" />
+                <element signature="e#70213#70214#0" expanded="false" />
+                <element signature="e#71751#71752#0" expanded="false" />
+                <element signature="e#71792#71793#0" expanded="false" />
+                <element signature="e#73684#73685#0" expanded="false" />
+                <element signature="e#73744#73745#0" expanded="false" />
+                <element signature="e#75800#75801#0" expanded="false" />
+                <element signature="e#75850#75851#0" expanded="false" />
+                <element signature="e#79158#79159#0" expanded="false" />
+                <element signature="e#79226#79227#0" expanded="false" />
+                <element signature="e#80138#80139#0" expanded="false" />
+                <element signature="e#80190#80191#0" expanded="false" />
+                <element signature="e#81477#81478#0" expanded="false" />
+                <element signature="e#81540#81541#0" expanded="false" />
+                <element signature="e#83550#83551#0" expanded="false" />
+                <element signature="e#83621#83622#0" expanded="false" />
+                <element signature="e#84916#84917#0" expanded="false" />
+                <element signature="e#84966#84967#0" expanded="false" />
+                <element signature="e#88028#88029#0" expanded="false" />
+                <element signature="e#88082#88083#0" expanded="false" />
+                <element signature="e#89245#89246#0" expanded="false" />
+                <element signature="e#89276#89277#0" expanded="false" />
+                <element signature="e#89667#89668#0" expanded="false" />
+                <element signature="e#89727#89728#0" expanded="false" />
+                <element signature="e#92061#92062#0" expanded="false" />
+                <element signature="e#92111#92112#0" expanded="false" />
+                <element signature="e#99470#99471#0" expanded="false" />
+                <element signature="e#99521#99522#0" expanded="false" />
+                <element signature="e#100935#100936#0" expanded="false" />
+                <element signature="e#101012#101013#0" expanded="false" />
+                <element signature="e#101212#101213#0" expanded="false" />
+                <element signature="e#101260#101261#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -180,7 +207,14 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2640">
               <caret line="146" column="29" selection-start-line="146" selection-start-column="29" selection-end-line="146" selection-end-column="29" />
-              <folding />
+              <folding>
+                <element signature="e#0#7368#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#2033#2034#0" expanded="false" />
+                <element signature="e#2091#2092#0" expanded="false" />
+                <element signature="e#6291#6292#0" expanded="false" />
+                <element signature="e#6338#6339#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -552,6 +586,7 @@
         <option value="$PROJECT_DIR$/src/test/java/p04_mockito/Ex05ZeroInteractions.java" />
         <option value="$PROJECT_DIR$/src/test/java/p04_mockito/Ex04NoMoreInteractions.java" />
         <option value="$PROJECT_DIR$/src/test/java/p04_mocks/Ex04NoMoreInteractions.java" />
+        <option value="$PROJECT_DIR$/src/test/java/p04_mocks/Ex05ZeroInteractions.java" />
       </list>
     </option>
   </component>
@@ -563,9 +598,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="70" />
+    <option name="x" value="67" />
     <option name="y" value="-8" />
-    <option name="width" value="1858" />
+    <option name="width" value="1861" />
     <option name="height" value="1096" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -687,6 +722,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -896,8 +933,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1400,8 +1435,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="70" y="-8" width="1858" height="1096" extended-state="6" />
-    <editor active="false" />
+    <frame x="67" y="-8" width="1861" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1410,11 +1445,12 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286334" sideWeight="0.5044843" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32987553" sideWeight="0.49777532" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32987553" sideWeight="0.49583563" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="unit-tests-java_test" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32987553" sideWeight="0.5022247" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="unit-tests-java_test" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32987553" sideWeight="0.50416434" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3381535" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33814546" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1430,7 +1466,6 @@
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" x="170" y="92" width="1658" height="884" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32780084" sideWeight="0.48887652" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Analysis" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1738,7 +1773,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2640">
           <caret line="146" column="29" selection-start-line="146" selection-start-column="29" selection-end-line="146" selection-end-column="29" />
-          <folding />
+          <folding>
+            <element signature="e#0#7368#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#2033#2034#0" expanded="false" />
+            <element signature="e#2091#2092#0" expanded="false" />
+            <element signature="e#6291#6292#0" expanded="false" />
+            <element signature="e#6338#6339#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1754,9 +1796,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="552">
           <caret line="31" column="7" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1773,8 +1813,48 @@
         <state relative-caret-position="39504">
           <caret line="1673" column="23" selection-start-line="1673" selection-start-column="23" selection-end-line="1673" selection-end-column="23" />
           <folding>
-            <element signature="e#74485#74486#0" expanded="true" />
-            <element signature="e#74545#74546#0" expanded="true" />
+            <element signature="e#0#101264#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#53399#53400#0" expanded="false" />
+            <element signature="e#53460#53461#0" expanded="false" />
+            <element signature="e#64796#64797#0" expanded="false" />
+            <element signature="e#64848#64849#0" expanded="false" />
+            <element signature="e#67773#67774#0" expanded="false" />
+            <element signature="e#67825#67826#0" expanded="false" />
+            <element signature="e#69145#69146#0" expanded="false" />
+            <element signature="e#69203#69204#0" expanded="false" />
+            <element signature="e#70159#70160#0" expanded="false" />
+            <element signature="e#70213#70214#0" expanded="false" />
+            <element signature="e#71751#71752#0" expanded="false" />
+            <element signature="e#71792#71793#0" expanded="false" />
+            <element signature="e#73684#73685#0" expanded="false" />
+            <element signature="e#73744#73745#0" expanded="false" />
+            <element signature="e#75800#75801#0" expanded="false" />
+            <element signature="e#75850#75851#0" expanded="false" />
+            <element signature="e#79158#79159#0" expanded="false" />
+            <element signature="e#79226#79227#0" expanded="false" />
+            <element signature="e#80138#80139#0" expanded="false" />
+            <element signature="e#80190#80191#0" expanded="false" />
+            <element signature="e#81477#81478#0" expanded="false" />
+            <element signature="e#81540#81541#0" expanded="false" />
+            <element signature="e#83550#83551#0" expanded="false" />
+            <element signature="e#83621#83622#0" expanded="false" />
+            <element signature="e#84916#84917#0" expanded="false" />
+            <element signature="e#84966#84967#0" expanded="false" />
+            <element signature="e#88028#88029#0" expanded="false" />
+            <element signature="e#88082#88083#0" expanded="false" />
+            <element signature="e#89245#89246#0" expanded="false" />
+            <element signature="e#89276#89277#0" expanded="false" />
+            <element signature="e#89667#89668#0" expanded="false" />
+            <element signature="e#89727#89728#0" expanded="false" />
+            <element signature="e#92061#92062#0" expanded="false" />
+            <element signature="e#92111#92112#0" expanded="false" />
+            <element signature="e#99470#99471#0" expanded="false" />
+            <element signature="e#99521#99522#0" expanded="false" />
+            <element signature="e#100935#100936#0" expanded="false" />
+            <element signature="e#101012#101013#0" expanded="false" />
+            <element signature="e#101212#101213#0" expanded="false" />
+            <element signature="e#101260#101261#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1795,18 +1875,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/p04_mockito/CommandInterpreter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/p04_mocks/Ex05ZeroInteractions.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="50" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
+        <state relative-caret-position="264">
+          <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1815,11 +1887,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/p04_mocks/Ex04NoMoreInteractions.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="742">
-          <caret line="51" column="30" selection-start-line="51" selection-start-column="30" selection-end-line="51" selection-end-column="30" />
+        <state relative-caret-position="306">
+          <caret line="47" column="48" selection-start-line="47" selection-start-column="48" selection-end-line="47" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/p04_mockito/CommandInterpreter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="24" column="5" selection-start-line="14" selection-start-column="4" selection-end-line="24" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>

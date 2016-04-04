@@ -60,6 +60,9 @@
     <Compile Include="P02Assertions\Ex02SoftAssertions.cs" />
     <Compile Include="P02Assertions\Ex03ExceptionAssertions.cs" />
     <Compile Include="P03Any\MyClass.cs" />
+    <Compile Include="P04NSubstitute\Ex04ProductionCode\CommandInterpreter.cs" />
+    <Compile Include="P04NSubstitute\Ex04NoMoreInteractions.cs" />
+    <Compile Include="P04NSubstitute\Ex04ProductionCode\IExecutionEngine.cs" />
     <Compile Include="P04NSubstitute\ProductionCode\CopyOperation.cs" />
     <Compile Include="P04NSubstitute\ProductionCode\Data.cs" />
     <Compile Include="P04NSubstitute\ProductionCode\IDataDestination.cs" />

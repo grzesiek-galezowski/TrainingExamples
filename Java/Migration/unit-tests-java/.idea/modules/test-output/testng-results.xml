@@ -2,33 +2,12 @@
 <testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Command line suite" duration-ms="1" started-at="2016-04-01T13:32:30Z" finished-at="2016-04-01T13:32:30Z">
+  <suite name="Command line suite" duration-ms="3" started-at="2016-04-04T13:24:29Z" finished-at="2016-04-04T13:24:29Z">
     <groups>
     </groups>
-    <test name="Command line test" duration-ms="1" started-at="2016-04-01T13:32:30Z" finished-at="2016-04-01T13:32:30Z">
+    <test name="Command line test" duration-ms="3" started-at="2016-04-04T13:24:29Z" finished-at="2016-04-04T13:24:29Z">
       <class name="p01_core_runner.Ex03ParameterizedTests">
-        <test-method status="PASS" signature="testPrimeNumberChecker(int, int, java.lang.String)[pri:0, instance:p01_core_runner.Ex03ParameterizedTests@5890e879]" name="testPrimeNumberChecker" duration-ms="0" started-at="2016-04-01T15:32:30Z" data-provider="shouldUseExternalValuesData" finished-at="2016-04-01T15:32:30Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[3]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[3]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[Surprised?]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testPrimeNumberChecker -->
-        <test-method status="PASS" signature="testPrimeNumberChecker(int, int, java.lang.String)[pri:0, instance:p01_core_runner.Ex03ParameterizedTests@5890e879]" name="testPrimeNumberChecker" duration-ms="0" started-at="2016-04-01T15:32:30Z" data-provider="shouldUseExternalValuesData" finished-at="2016-04-01T15:32:30Z">
+        <test-method status="PASS" signature="testPrimeNumberChecker(int, int, java.lang.String)[pri:0, instance:p01_core_runner.Ex03ParameterizedTests@5890e879]" name="testPrimeNumberChecker" duration-ms="0" started-at="2016-04-04T15:24:29Z" data-provider="shouldUseExternalValuesData" finished-at="2016-04-04T15:24:29Z">
           <params>
             <param index="0">
               <value>
@@ -43,6 +22,27 @@
             <param index="2">
               <value>
                 <![CDATA[What did you expect?]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testPrimeNumberChecker -->
+        <test-method status="PASS" signature="testPrimeNumberChecker(int, int, java.lang.String)[pri:0, instance:p01_core_runner.Ex03ParameterizedTests@5890e879]" name="testPrimeNumberChecker" duration-ms="0" started-at="2016-04-04T15:24:29Z" data-provider="shouldUseExternalValuesData" finished-at="2016-04-04T15:24:29Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[3]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[3]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Surprised?]]>
               </value>
             </param>
           </params>
