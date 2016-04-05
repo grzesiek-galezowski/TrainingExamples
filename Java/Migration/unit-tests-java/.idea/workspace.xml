@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9abdec7a-846f-4b8c-9d23-dc4f0491f203" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../unit-tests-csharp/unit-tests-csharp/P04NSubstitute/Ex01BasicStubbingAndMocking.cs" afterPath="$PROJECT_DIR$/../unit-tests-csharp/unit-tests-csharp/P04NSubstitute/Ex01BasicStubbingAndMocking.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../unit-tests-csharp/unit-tests-csharp/P04NSubstitute/Ex03ThrowingExceptionsFromMocks.cs" afterPath="$PROJECT_DIR$/../unit-tests-csharp/unit-tests-csharp/P04NSubstitute/Ex03ThrowingExceptionsFromMocks.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../unit-tests-csharp/unit-tests-csharp/unit-tests-csharp.csproj" afterPath="$PROJECT_DIR$/../unit-tests-csharp/unit-tests-csharp/unit-tests-csharp.csproj" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/Command line suite/Command line test.html" afterPath="$PROJECT_DIR$/.idea/modules/test-output/Command line suite/Command line test.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/Command line suite/Command line test.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/Command line suite/Command line test.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/Command line suite/testng-failed.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/Command line suite/testng-failed.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/emailable-report.html" afterPath="$PROJECT_DIR$/.idea/modules/test-output/emailable-report.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/index.html" afterPath="$PROJECT_DIR$/.idea/modules/test-output/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p01_core_runner.Ex01RememberingDataBetweenTests.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/junitreports/TEST-p01_core_runner.Ex01RememberingDataBetweenTests.xml" />
@@ -23,9 +27,13 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/old/Command line suite/classes.html" afterPath="$PROJECT_DIR$/.idea/modules/test-output/old/Command line suite/classes.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/old/Command line suite/methods-alphabetical.html" afterPath="$PROJECT_DIR$/.idea/modules/test-output/old/Command line suite/methods-alphabetical.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/old/Command line suite/methods.html" afterPath="$PROJECT_DIR$/.idea/modules/test-output/old/Command line suite/methods.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/old/Command line suite/testng.xml.html" afterPath="$PROJECT_DIR$/.idea/modules/test-output/old/Command line suite/testng.xml.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/old/Command line suite/toc.html" afterPath="$PROJECT_DIR$/.idea/modules/test-output/old/Command line suite/toc.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/old/index.html" afterPath="$PROJECT_DIR$/.idea/modules/test-output/old/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/testng-failed.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/testng-failed.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/test-output/testng-results.xml" afterPath="$PROJECT_DIR$/.idea/modules/test-output/testng-results.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/p04_mockito/CommandInterpreter.java" afterPath="$PROJECT_DIR$/src/main/java/p04_mockito/CommandInterpreter.java" />
     </list>
     <ignored path="unit-tests-java.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -75,11 +83,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Ex05ZeroInteractions.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Ex05ZeroInteractions.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/p04_mocks/Ex05ZeroInteractions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+            <state relative-caret-position="312">
+              <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -90,8 +98,8 @@
       <file leaf-file-name="SharedCore.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/p04_mockito/SharedCore.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+            <state relative-caret-position="72">
+              <caret line="3" column="2" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -110,8 +118,8 @@
       <file leaf-file-name="Command.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/p04_mockito/Command.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="3" column="34" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
+            <state relative-caret-position="48">
+              <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -120,7 +128,7 @@
       <file leaf-file-name="Ex04NoMoreInteractions.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/p04_mocks/Ex04NoMoreInteractions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
+            <state relative-caret-position="984">
               <caret line="47" column="48" selection-start-line="47" selection-start-column="48" selection-end-line="47" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -129,11 +137,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommandInterpreter.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CommandInterpreter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/p04_mockito/CommandInterpreter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="24" column="5" selection-start-line="14" selection-start-column="4" selection-end-line="24" selection-end-column="5" />
+            <state relative-caret-position="216">
+              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -155,8 +163,6 @@
             <state relative-caret-position="39504">
               <caret line="1673" column="23" selection-start-line="1673" selection-start-column="23" selection-end-line="1673" selection-end-column="23" />
               <folding>
-                <element signature="e#0#101264#0" expanded="false" />
-                <element signature="imports" expanded="false" />
                 <element signature="e#53399#53400#0" expanded="false" />
                 <element signature="e#53460#53461#0" expanded="false" />
                 <element signature="e#64796#64797#0" expanded="false" />
@@ -171,6 +177,8 @@
                 <element signature="e#71792#71793#0" expanded="false" />
                 <element signature="e#73684#73685#0" expanded="false" />
                 <element signature="e#73744#73745#0" expanded="false" />
+                <element signature="e#74485#74486#0" expanded="false" />
+                <element signature="e#74545#74546#0" expanded="false" />
                 <element signature="e#75800#75801#0" expanded="false" />
                 <element signature="e#75850#75851#0" expanded="false" />
                 <element signature="e#79158#79159#0" expanded="false" />
@@ -208,8 +216,6 @@
             <state relative-caret-position="2640">
               <caret line="146" column="29" selection-start-line="146" selection-start-column="29" selection-end-line="146" selection-end-column="29" />
               <folding>
-                <element signature="e#0#7368#0" expanded="false" />
-                <element signature="imports" expanded="false" />
                 <element signature="e#2033#2034#0" expanded="false" />
                 <element signature="e#2091#2092#0" expanded="false" />
                 <element signature="e#6291#6292#0" expanded="false" />
@@ -576,7 +582,6 @@
         <option value="$PROJECT_DIR$/src/test/java/p04_mockito/Ex02MultipleReturnsAndOrderVerification.java" />
         <option value="$PROJECT_DIR$/src/test/java/p04_mockito/Ex03ThrowingExceptionsFromMocks.java" />
         <option value="$PROJECT_DIR$/src/main/java/p04_mockito/ExecutionEngine.java" />
-        <option value="$PROJECT_DIR$/src/main/java/p04_mockito/CommandInterpreter.java" />
         <option value="$PROJECT_DIR$/src/test/java/p04_mockito/Ex04NoInteractions.java" />
         <option value="$PROJECT_DIR$/src/main/java/p04_mockito/SharedCode.java" />
         <option value="$PROJECT_DIR$/src/main/java/p04_mockito/SharedCore.java" />
@@ -587,6 +592,7 @@
         <option value="$PROJECT_DIR$/src/test/java/p04_mockito/Ex04NoMoreInteractions.java" />
         <option value="$PROJECT_DIR$/src/test/java/p04_mocks/Ex04NoMoreInteractions.java" />
         <option value="$PROJECT_DIR$/src/test/java/p04_mocks/Ex05ZeroInteractions.java" />
+        <option value="$PROJECT_DIR$/src/main/java/p04_mockito/CommandInterpreter.java" />
       </list>
     </option>
   </component>
@@ -598,9 +604,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="67" />
+    <option name="x" value="70" />
     <option name="y" value="-8" />
-    <option name="width" value="1861" />
+    <option name="width" value="1858" />
     <option name="height" value="1096" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -644,6 +650,9 @@
             <id>Error handlingJava</id>
           </State>
           <State>
+            <id>GeneralJava</id>
+          </State>
+          <State>
             <id>GeneralScala</id>
           </State>
           <State>
@@ -662,6 +671,12 @@
             <id>Java</id>
           </State>
           <State>
+            <id>Kotlin</id>
+          </State>
+          <State>
+            <id>Options CollectionsScala</id>
+          </State>
+          <State>
             <id>Portability issuesJava</id>
           </State>
           <State>
@@ -672,6 +687,9 @@
           </State>
           <State>
             <id>Serialization issuesJava</id>
+          </State>
+          <State>
+            <id>Simplifications: other CollectionsScala</id>
           </State>
           <State>
             <id>Threading issuesGroovy</id>
@@ -722,8 +740,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -932,11 +948,13 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.folding" />
     <property name="settings.editor.splitter.proportion" value="0.25244617" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -952,7 +970,7 @@
       <recent name="p02_assertions" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG.Ex02MultipleReturnsAndOrderVerification.shouldCopyDataFromSourceToDestination">
+  <component name="RunManager" selected="PIT Runner.mutations">
     <configuration default="false" name="Ex04RepeatedTests.shouldBeGreaterThan10" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -1095,24 +1113,24 @@
       <module name="unit-tests-java_test" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
+      <option name="SUITE_NAME" value="" />
       <option name="PACKAGE_NAME" value="p04_mockito" />
       <option name="MAIN_CLASS_NAME" value="p04_mockito.Ex02MultipleReturnsAndOrderVerification" />
       <option name="METHOD_NAME" value="shouldCopyDataFromSourceToDestination" />
-      <option name="GROUP_NAME" />
+      <option name="GROUP_NAME" value="" />
       <option name="TEST_OBJECT" value="METHOD" />
       <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
+      <option name="PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="OUTPUT_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" value="" />
       <option name="ANNOTATION_TYPE" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
+        <value defaultName="moduleWithDependencies" />
       </option>
       <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
+      <option name="PROPERTIES_FILE" value="" />
       <envs />
       <properties />
       <listeners />
@@ -1245,6 +1263,9 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="PIT" factoryName="PIT Runner" REPORT_DIR="" SOURCE_DIRS="" TARGET_CLASSES="" otherParams="">
+      <method />
+    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -1354,12 +1375,16 @@
       <envs />
       <method />
     </configuration>
-    <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="TestNG.Ex04RepeatedTests.shouldBeGreaterThan10" />
-      <item index="1" class="java.lang.String" itemvalue="TestNG.Ex01PrimitiveTypesAndCollections.constrainedGenerators" />
-      <item index="2" class="java.lang.String" itemvalue="TestNG.Ex02GenericAny.shouldCreateGenericInstances" />
-      <item index="3" class="java.lang.String" itemvalue="TestNG.Ex02MultipleReturnsAndOrderVerification.shouldReturnMultipleDataElements" />
-      <item index="4" class="java.lang.String" itemvalue="TestNG.Ex02MultipleReturnsAndOrderVerification.shouldCopyDataFromSourceToDestination" />
+    <configuration default="false" name="mutations" type="PIT" factoryName="PIT Runner" REPORT_DIR="$PROJECT_DIR$/build/reports/pit" SOURCE_DIRS="$PROJECT_DIR$/src/main/java" TARGET_CLASSES="p03_any.*" otherParams="--outputFormats XML,HTML">
+      <method />
+    </configuration>
+    <list size="6">
+      <item index="0" class="java.lang.String" itemvalue="PIT Runner.mutations" />
+      <item index="1" class="java.lang.String" itemvalue="TestNG.Ex04RepeatedTests.shouldBeGreaterThan10" />
+      <item index="2" class="java.lang.String" itemvalue="TestNG.Ex01PrimitiveTypesAndCollections.constrainedGenerators" />
+      <item index="3" class="java.lang.String" itemvalue="TestNG.Ex02GenericAny.shouldCreateGenericInstances" />
+      <item index="4" class="java.lang.String" itemvalue="TestNG.Ex02MultipleReturnsAndOrderVerification.shouldReturnMultipleDataElements" />
+      <item index="5" class="java.lang.String" itemvalue="TestNG.Ex02MultipleReturnsAndOrderVerification.shouldCopyDataFromSourceToDestination" />
     </list>
     <recent_temporary>
       <list size="5">
@@ -1435,37 +1460,37 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="-8" width="1861" height="1096" extended-state="6" />
+    <frame x="70" y="-8" width="1858" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.49775785" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286334" sideWeight="0.5044843" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32987553" sideWeight="0.49583563" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32780084" sideWeight="0.48665184" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.4916574" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="unit-tests-java_test" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32987553" sideWeight="0.50416434" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="unit-tests-java_test" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32780084" sideWeight="0.51334816" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33814546" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33759734" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" x="170" y="92" width="1658" height="884" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32780084" sideWeight="0.48887652" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Analysis" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1774,8 +1799,6 @@
         <state relative-caret-position="2640">
           <caret line="146" column="29" selection-start-line="146" selection-start-column="29" selection-end-line="146" selection-end-column="29" />
           <folding>
-            <element signature="e#0#7368#0" expanded="false" />
-            <element signature="imports" expanded="false" />
             <element signature="e#2033#2034#0" expanded="false" />
             <element signature="e#2091#2092#0" expanded="false" />
             <element signature="e#6291#6292#0" expanded="false" />
@@ -1800,21 +1823,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/p04_mockito/SharedCore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.mockito/mockito-core/1.10.19/8269667b73d9616600359a9b0ba1b1c7d0cf7a97/mockito-core-1.10.19-sources.jar!/org/mockito/Mockito.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="39504">
           <caret line="1673" column="23" selection-start-line="1673" selection-start-column="23" selection-end-line="1673" selection-end-column="23" />
           <folding>
-            <element signature="e#0#101264#0" expanded="false" />
-            <element signature="imports" expanded="false" />
             <element signature="e#53399#53400#0" expanded="false" />
             <element signature="e#53460#53461#0" expanded="false" />
             <element signature="e#64796#64797#0" expanded="false" />
@@ -1829,6 +1842,8 @@
             <element signature="e#71792#71793#0" expanded="false" />
             <element signature="e#73684#73685#0" expanded="false" />
             <element signature="e#73744#73745#0" expanded="false" />
+            <element signature="e#74485#74486#0" expanded="false" />
+            <element signature="e#74545#74546#0" expanded="false" />
             <element signature="e#75800#75801#0" expanded="false" />
             <element signature="e#75850#75851#0" expanded="false" />
             <element signature="e#79158#79159#0" expanded="false" />
@@ -1859,10 +1874,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/p04_mocks/Ex04NoMoreInteractions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="984">
+          <caret line="47" column="48" selection-start-line="47" selection-start-column="48" selection-end-line="47" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/p04_mockito/CommandInterpreter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/p04_mockito/Command.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="3" column="34" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
+        <state relative-caret-position="48">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -1875,31 +1908,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/p04_mockito/SharedCore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="3" column="2" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/p04_mocks/Ex05ZeroInteractions.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+        <state relative-caret-position="312">
+          <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/p04_mocks/Ex04NoMoreInteractions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="47" column="48" selection-start-line="47" selection-start-column="48" selection-end-line="47" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/p04_mockito/CommandInterpreter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="24" column="5" selection-start-line="14" selection-start-column="4" selection-end-line="24" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>

@@ -63,10 +63,14 @@
     <Compile Include="P04NSubstitute\Ex04ProductionCode\CommandInterpreter.cs" />
     <Compile Include="P04NSubstitute\Ex04NoMoreInteractions.cs" />
     <Compile Include="P04NSubstitute\Ex04ProductionCode\IExecutionEngine.cs" />
-    <Compile Include="P04NSubstitute\ProductionCode\CopyOperation.cs" />
-    <Compile Include="P04NSubstitute\ProductionCode\Data.cs" />
-    <Compile Include="P04NSubstitute\ProductionCode\IDataDestination.cs" />
-    <Compile Include="P04NSubstitute\ProductionCode\IDataSource.cs" />
+    <Compile Include="P04NSubstitute\Ex05ZeroInteractions.cs" />
+    <Compile Include="P04NSubstitute\Ex05ProductionCode\ICommand.cs" />
+    <Compile Include="P04NSubstitute\Ex05ProductionCode\ISharedCore.cs" />
+    <Compile Include="P04NSubstitute\Ex05ProductionCode\NullCommand.cs" />
+    <Compile Include="P04NSubstitute\Ex010203ProductionCode\CopyOperation.cs" />
+    <Compile Include="P04NSubstitute\Ex010203ProductionCode\Data.cs" />
+    <Compile Include="P04NSubstitute\Ex010203ProductionCode\IDataDestination.cs" />
+    <Compile Include="P04NSubstitute\Ex010203ProductionCode\IDataSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

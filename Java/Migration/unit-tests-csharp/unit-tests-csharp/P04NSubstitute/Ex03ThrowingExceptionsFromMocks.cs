@@ -31,19 +31,19 @@ public class Ex03ThrowingExceptionsFromMocks
   public void ShouldThrowExceptionWhenSavingToDestinationThrowsException()
   {
     //GIVEN
-    CopyOperation copyOperation = new CopyOperation();
-    IDataDestination destination = Substitute.For<IDataDestination>();
-    IDataSource source = Substitute.For<IDataSource>();
-    Data data = Any.Instance<Data>();
-    Exception exception = Any.Exception();
+    var copyOperation = new CopyOperation();
+    var destination = Substitute.For<IDataDestination>();
+    var source = Substitute.For<IDataSource>();
+    var data = Any.Instance<Data>();
+    var exception = Any.Exception();
 
     source.RetrieveData().Returns(data);
     destination.When(d => d.Save(data)).Throw(exception);
 
     //WHEN - THEN
-    var e = Assert.Throws<Exception>(
+    var thrownException = Assert.Throws<Exception>(
       () => copyOperation.ApplyTo(source, destination));
-    Assert.AreEqual(exception, e);
+    Assert.AreEqual(exception, thrownException);
   }
 
 
