@@ -42,7 +42,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
@@ -71,6 +70,7 @@
     <Compile Include="P04NSubstitute\Ex010203ProductionCode\Data.cs" />
     <Compile Include="P04NSubstitute\Ex010203ProductionCode\IDataDestination.cs" />
     <Compile Include="P04NSubstitute\Ex010203ProductionCode\IDataSource.cs" />
+    <Compile Include="P04NSubstitute\Ex06MockingRealClasses.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

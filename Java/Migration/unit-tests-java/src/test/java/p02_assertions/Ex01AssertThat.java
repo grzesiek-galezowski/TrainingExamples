@@ -14,7 +14,7 @@ public class Ex01AssertThat {
     Person person = new Person();
 
     //WHEN
-    person.setAge(18);
+    person.setAge(18); //TODO change to 17
 
     //THEN
     assertThat(person.getAge()).isGreaterThanOrEqualTo(18); //show different assertions for different values

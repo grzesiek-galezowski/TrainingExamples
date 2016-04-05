@@ -1,4 +1,4 @@
-﻿namespace unit_tests_csharp.P04NSubstitute
+﻿namespace unit_tests_csharp.P04NSubstitute.Ex05ProductionCode
 {
   public interface ISharedCore
   {

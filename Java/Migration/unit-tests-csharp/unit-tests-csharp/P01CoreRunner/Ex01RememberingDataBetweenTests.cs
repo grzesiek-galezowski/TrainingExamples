@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace unit_tests_csharp
+namespace unit_tests_csharp.P01CoreRunner
 {
   //Questions:
   //1. Which one runs first?
@@ -13,14 +13,14 @@ namespace unit_tests_csharp
     public void ShouldIncrementANumberOneTime()
     {
       _i++;
-      Assert.AreEqual(1, _i);
+      //Assert.AreEqual(1, _i); //TODO incomment
     }
 
     [Test]
     public void ShouldAlsoIncrementANumberOneTime()
     {
       _i++;
-      Assert.AreEqual(1, _i);
+      //Assert.AreEqual(1, _i); //TODO incomment
     }
   }
 }
