@@ -1,7 +1,7 @@
 using NSubstitute;
 using NUnit.Framework;
 using TddEbook.TddToolkit;
-using unit_tests_csharp.P04NSubstitute.ProductionCode;
+using unit_tests_csharp.P04NSubstitute.Ex010203ProductionCode;
 
 namespace unit_tests_csharp.P04NSubstitute
 {
@@ -13,8 +13,8 @@ namespace unit_tests_csharp.P04NSubstitute
       //GIVEN
       var copyOperation = new CopyOperation();
       var destination = Substitute.For<IDataDestination>();
-      IDataSource source = Substitute.For<IDataSource>();
-      Data data = Any.Instance<Data>();
+      var source = Substitute.For<IDataSource>();
+      var data = Any.Instance<Data>();
 
       source.RetrieveData().Returns(data);
 

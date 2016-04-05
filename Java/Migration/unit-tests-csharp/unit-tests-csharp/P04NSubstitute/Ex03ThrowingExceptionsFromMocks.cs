@@ -3,48 +3,51 @@ using NSubstitute;
 using NSubstitute.ExceptionExtensions;
 using NUnit.Framework;
 using TddEbook.TddToolkit;
-using unit_tests_csharp.P04NSubstitute.ProductionCode;
+using unit_tests_csharp.P04NSubstitute.Ex010203ProductionCode;
 
-public class Ex03ThrowingExceptionsFromMocks
+namespace unit_tests_csharp.P04NSubstitute
 {
-
-  [Test]
-  public void ShouldThrowExceptionWhenReadingFromSourceThrowsException()
+  public class Ex03ThrowingExceptionsFromMocks
   {
-    //GIVEN
-    var copyOperation = new CopyOperation();
-    var destination = Substitute.For<IDataDestination>();
-    var source = Substitute.For<IDataSource>();
-    var exception = Any.Exception();
 
-    source.RetrieveData().Throws(exception);
+    [Test]
+    public void ShouldThrowExceptionWhenReadingFromSourceThrowsException()
+    {
+      //GIVEN
+      var copyOperation = new CopyOperation();
+      var destination = Substitute.For<IDataDestination>();
+      var source = Substitute.For<IDataSource>();
+      var exception = Any.Exception();
 
-    //WHEN - THEN
-    var e = Assert.Throws<Exception>(
-      () => copyOperation.ApplyTo(source, destination));
-    Assert.AreEqual(exception, e);
-    //never verification
-    destination.DidNotReceive().Save(Arg.Any<Data>());
+      source.RetrieveData().Throws(exception);
+
+      //WHEN - THEN
+      var e = Assert.Throws<Exception>(
+        () => copyOperation.ApplyTo(source, destination));
+      Assert.AreEqual(exception, e);
+      //never verification
+      destination.DidNotReceive().Save(Arg.Any<Data>());
+    }
+
+    [Test]
+    public void ShouldThrowExceptionWhenSavingToDestinationThrowsException()
+    {
+      //GIVEN
+      var copyOperation = new CopyOperation();
+      var destination = Substitute.For<IDataDestination>();
+      var source = Substitute.For<IDataSource>();
+      var data = Any.Instance<Data>();
+      var exception = Any.Exception();
+
+      source.RetrieveData().Returns(data);
+      destination.When(d => d.Save(data)).Throw(exception);
+
+      //WHEN - THEN
+      var thrownException = Assert.Throws<Exception>(
+        () => copyOperation.ApplyTo(source, destination));
+      Assert.AreEqual(exception, thrownException);
+    }
+
+
   }
-
-  [Test]
-  public void ShouldThrowExceptionWhenSavingToDestinationThrowsException()
-  {
-    //GIVEN
-    CopyOperation copyOperation = new CopyOperation();
-    IDataDestination destination = Substitute.For<IDataDestination>();
-    IDataSource source = Substitute.For<IDataSource>();
-    Data data = Any.Instance<Data>();
-    Exception exception = Any.Exception();
-
-    source.RetrieveData().Returns(data);
-    destination.When(d => d.Save(data)).Throw(exception);
-
-    //WHEN - THEN
-    var e = Assert.Throws<Exception>(
-      () => copyOperation.ApplyTo(source, destination));
-    Assert.AreEqual(exception, e);
-  }
-
-
 }

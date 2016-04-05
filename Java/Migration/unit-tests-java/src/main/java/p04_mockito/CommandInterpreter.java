@@ -7,7 +7,6 @@ public class CommandInterpreter {
   private final ExecutionEngine executionEngine;
 
   public CommandInterpreter(ExecutionEngine executionEngine) {
-
     this.executionEngine = executionEngine;
   }
 

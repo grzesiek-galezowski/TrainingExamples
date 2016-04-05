@@ -30,7 +30,7 @@ namespace unit_tests_csharp.P02Assertions
       var person = new Person();
 
       //WHEN
-      person.Age = 17;
+      person.Age = 18; //TODO change to 17
 
       //THEN
       Assert.That(person, IsAdult());

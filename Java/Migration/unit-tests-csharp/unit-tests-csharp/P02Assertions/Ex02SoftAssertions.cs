@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using TddEbook.TddToolkit;
 
 namespace unit_tests_csharp.P02Assertions
@@ -13,17 +8,17 @@ namespace unit_tests_csharp.P02Assertions
     [Test]
     public void ShouldSoftlyMatchWithNUnitApi()
     {
-      Assert.That(12, Is.EqualTo(15).And.LessThan(99).Or.GreaterThan(13));
+      Assert.That(12, Is.EqualTo(15).And.LessThan(13).Or.GreaterThan(11)); //TODO change both
     }
 
     [Test]
     public void ShouldSoftlyMatchWithTddToolkitApi()
     {
       XAssert.All(assert =>
-      {
-        assert.Equal(1, 2);
-        assert.Equal(3, 4);
-        assert.Equal(5, 6);
+      { //TODO change all
+        assert.Equal(2, 2);
+        assert.Equal(4, 4);
+        assert.Equal(6, 6);
       });
     }
 
