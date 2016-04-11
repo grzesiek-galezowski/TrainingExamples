@@ -21,4 +21,5 @@ public class Ex03ParameterizedTests {
   }
 
   //TODO show how tests can be generated using live templates
+
 }

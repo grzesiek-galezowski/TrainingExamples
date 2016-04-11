@@ -7,13 +7,13 @@ import static org.mockito.Mockito.mock;
 public class Ex06MockingRealClasses {
   @Test //please don't mock real classes!
   public void shouldCreateMockOfRealClasses() {
-    Lolek mock1 = mock(Lolek.class);
-    //Lolek mock2 = mock(Lolek.class, withSettings().useConstructor());
+    CannotCreateThis mock1 = mock(CannotCreateThis.class);
+    //CannotCreateThis mock2 = mock(CannotCreateThis.class, withSettings().useConstructor());
 
   }
 
-  class Lolek {
-    public Lolek() {
+  class CannotCreateThis {
+    public CannotCreateThis() {
       throw new RuntimeException("a");
     }
   }

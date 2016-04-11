@@ -13,13 +13,13 @@ namespace unit_tests_csharp.P04NSubstitute
     [Test]  //please don't mock real classes!
     public void ShouldCreateMockOfRealClass()
     {
-      //TODO uncomment later:// Substitute.ForPartsOf<Lolek>();
+      //TODO uncomment later:// Substitute.ForPartsOf<CannotInstantiateThis>();
     }
   }
 
-  public class Lolek
+  public class CannotInstantiateThis
   {
-    public Lolek()
+    public CannotInstantiateThis()
     {
       throw new NotFiniteNumberException("a");
     }

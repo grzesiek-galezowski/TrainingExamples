@@ -50,12 +50,10 @@ namespace unit_tests_csharp.P02Assertions
 
   public class AdultConstraint : Constraint
   {
-    private int _age;
-
-    public override bool Matches(object actual)
+    public override bool Matches(object other)
     {
-      var age = ((Person)actual).Age;
-      this.actual = age;
+      var age = ((Person)other).Age;
+      actual = age;
       return age >= 18;
     }
 

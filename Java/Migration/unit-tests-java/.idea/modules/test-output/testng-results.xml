@@ -1,25 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="3" passed="3">
+<testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Command line suite" duration-ms="163" started-at="2016-04-05T07:34:55Z" finished-at="2016-04-05T07:34:56Z">
+  <suite name="Command line suite" duration-ms="22" started-at="2016-04-11T08:14:52Z" finished-at="2016-04-11T08:14:52Z">
     <groups>
     </groups>
-    <test name="Command line test" duration-ms="163" started-at="2016-04-05T07:34:55Z" finished-at="2016-04-05T07:34:56Z">
-      <class name="p04_mocks.Ex04NoMoreInteractions">
-        <test-method status="PASS" signature="shouldTranslateIncidentCommandToIncidentReport()[pri:0, instance:p04_mocks.Ex04NoMoreInteractions@77afea7d]" name="shouldTranslateIncidentCommandToIncidentReport" duration-ms="148" started-at="2016-04-05T09:34:56Z" finished-at="2016-04-05T09:34:56Z">
+    <test name="Command line test" duration-ms="22" started-at="2016-04-11T08:14:52Z" finished-at="2016-04-11T08:14:52Z">
+      <class name="p01_core_runner.Ex03ParameterizedTests">
+        <test-method status="PASS" signature="testPrimeNumberChecker(int, int, java.lang.String)[pri:0, instance:p01_core_runner.Ex03ParameterizedTests@532760d8]" name="testPrimeNumberChecker" duration-ms="6" started-at="2016-04-11T10:14:52Z" data-provider="shouldUseExternalValuesData" finished-at="2016-04-11T10:14:52Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[3]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[3]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[What did you expect?]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- shouldTranslateIncidentCommandToIncidentReport -->
-        <test-method status="PASS" signature="shouldTranslateRobberyCommandToRobberyReport()[pri:0, instance:p04_mocks.Ex04NoMoreInteractions@77afea7d]" name="shouldTranslateRobberyCommandToRobberyReport" duration-ms="0" started-at="2016-04-05T09:34:56Z" finished-at="2016-04-05T09:34:56Z">
+        </test-method> <!-- testPrimeNumberChecker -->
+        <test-method status="PASS" signature="testPrimeNumberChecker(int, int, java.lang.String)[pri:0, instance:p01_core_runner.Ex03ParameterizedTests@532760d8]" name="testPrimeNumberChecker" duration-ms="0" started-at="2016-04-11T10:14:52Z" data-provider="shouldUseExternalValuesData" finished-at="2016-04-11T10:14:52Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[3]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[3]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Surprised?]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- shouldTranslateRobberyCommandToRobberyReport -->
-        <test-method status="PASS" signature="shouldTranslateShootingCommandToShootingReport()[pri:0, instance:p04_mocks.Ex04NoMoreInteractions@77afea7d]" name="shouldTranslateShootingCommandToShootingReport" duration-ms="0" started-at="2016-04-05T09:34:56Z" finished-at="2016-04-05T09:34:56Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- shouldTranslateShootingCommandToShootingReport -->
-      </class> <!-- p04_mocks.Ex04NoMoreInteractions -->
+        </test-method> <!-- testPrimeNumberChecker -->
+      </class> <!-- p01_core_runner.Ex03ParameterizedTests -->
     </test> <!-- Command line test -->
   </suite> <!-- Command line suite -->
 </testng-results>
