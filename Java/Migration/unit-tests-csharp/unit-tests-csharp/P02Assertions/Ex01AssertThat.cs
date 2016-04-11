@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using NUnit.Framework.Constraints;
 
 namespace unit_tests_csharp.P02Assertions
@@ -20,8 +15,9 @@ namespace unit_tests_csharp.P02Assertions
       person.Age = 18;
 
       //THEN
+      Assert.GreaterOrEqual(person.Age, 18);
       Assert.That(person.Age, Is.GreaterThanOrEqualTo(18));
-    }
+    } //show Java counterpart now
 
     [Test]
     public void ShouldBeAdultUsingExtensionPoints()

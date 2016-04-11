@@ -1,55 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="2" passed="2">
+<testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Command line suite" duration-ms="22" started-at="2016-04-11T08:14:52Z" finished-at="2016-04-11T08:14:52Z">
+  <suite name="Command line suite" duration-ms="62" started-at="2016-04-11T09:48:47Z" finished-at="2016-04-11T09:48:47Z">
     <groups>
     </groups>
-    <test name="Command line test" duration-ms="22" started-at="2016-04-11T08:14:52Z" finished-at="2016-04-11T08:14:52Z">
-      <class name="p01_core_runner.Ex03ParameterizedTests">
-        <test-method status="PASS" signature="testPrimeNumberChecker(int, int, java.lang.String)[pri:0, instance:p01_core_runner.Ex03ParameterizedTests@532760d8]" name="testPrimeNumberChecker" duration-ms="6" started-at="2016-04-11T10:14:52Z" data-provider="shouldUseExternalValuesData" finished-at="2016-04-11T10:14:52Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[3]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[3]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[What did you expect?]]>
-              </value>
-            </param>
-          </params>
+    <test name="Command line test" duration-ms="62" started-at="2016-04-11T09:48:47Z" finished-at="2016-04-11T09:48:47Z">
+      <class name="p01_core_runner.Ex04RepeatedTests">
+        <test-method status="PASS" signature="shouldBeGreaterThan10()[pri:0, instance:p01_core_runner.Ex04RepeatedTests@161cd475]" name="shouldBeGreaterThan10" duration-ms="51" started-at="2016-04-11T11:48:47Z" finished-at="2016-04-11T11:48:47Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testPrimeNumberChecker -->
-        <test-method status="PASS" signature="testPrimeNumberChecker(int, int, java.lang.String)[pri:0, instance:p01_core_runner.Ex03ParameterizedTests@532760d8]" name="testPrimeNumberChecker" duration-ms="0" started-at="2016-04-11T10:14:52Z" data-provider="shouldUseExternalValuesData" finished-at="2016-04-11T10:14:52Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[3]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[3]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[Surprised?]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testPrimeNumberChecker -->
-      </class> <!-- p01_core_runner.Ex03ParameterizedTests -->
+        </test-method> <!-- shouldBeGreaterThan10 -->
+      </class> <!-- p01_core_runner.Ex04RepeatedTests -->
     </test> <!-- Command line test -->
   </suite> <!-- Command line suite -->
 </testng-results>
