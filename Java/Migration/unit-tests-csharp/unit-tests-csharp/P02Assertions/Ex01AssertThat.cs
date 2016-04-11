@@ -6,7 +6,7 @@ namespace unit_tests_csharp.P02Assertions
   class Ex01AssertThat
   {
     [Test]
-    public void ShouldBeAdult1()
+    public void ShouldBeAdult()
     {
       //GIVEN
       var person = new Person();
@@ -17,6 +17,22 @@ namespace unit_tests_csharp.P02Assertions
       //THEN
       Assert.GreaterOrEqual(person.Age, 18);
       Assert.That(person.Age, Is.GreaterThanOrEqualTo(18));
+    } //show Java counterpart now
+
+    [Test]
+    public void ShouldBeAdultWithLinkedAssertions()
+    {
+      //GIVEN
+      var person = new Person();
+      
+      //WHEN
+      person.Age = 18;
+
+      //THEN
+      Assert.That(person.Age,
+        Is.GreaterThanOrEqualTo(18)
+          .And.Not.EqualTo(0)
+          .And.GreaterThanOrEqualTo(18));
     } //show Java counterpart now
 
     [Test]

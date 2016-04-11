@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class Ex01AssertThat {
 
   @Test
-  public void shouldBeAdult1() {
+  public void shouldBeAdult() {
     //GIVEN
     Person person = new Person();
 
