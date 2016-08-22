@@ -64,9 +64,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="_1_Downcasting\_1_ImplementationUsingDowncasting.cs" />
-    <Compile Include="_3_Visitor\_3_ImplementationUsingVisitor.cs" />
-    <Compile Include="_2_CourtesyMethod\_2_ImplementationUsingCourtesyMethod.cs" />
+    <Compile Include="_1_Downcasting\Box.cs" />
+    <Compile Include="_1_Downcasting\Test.cs" />
+    <Compile Include="_1_Downcasting\Node.cs" />
+    <Compile Include="_1_Downcasting\Elephant.cs" />
+    <Compile Include="_2_CourtesyMethod\Box.cs" />
+    <Compile Include="_2_CourtesyMethod\Test.cs" />
+    <Compile Include="_2_CourtesyMethod\Node.cs" />
+    <Compile Include="_3_Visitor\Box.cs" />
+    <Compile Include="_3_Visitor\CountingVisitor.cs" />
+    <Compile Include="_3_Visitor\Test.cs" />
+    <Compile Include="_3_Visitor\Node.cs" />
+    <Compile Include="_3_Visitor\NodeVisitor.cs" />
+    <Compile Include="_3_Visitor\Elephant.cs" />
+    <Compile Include="_2_CourtesyMethod\Elephant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
