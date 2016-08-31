@@ -1,4 +1,4 @@
-namespace CourtesyImplementation._3_Visitor
+namespace CourtesyImplementation._4_Visitor
 {
   public class CountingVisitor : NodeVisitor
   {

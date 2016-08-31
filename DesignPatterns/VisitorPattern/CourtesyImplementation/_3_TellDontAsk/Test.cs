@@ -9,7 +9,6 @@ namespace CourtesyImplementation._3_TellDontAsk
     public void Whatever_Anything()
     {
       //GIVEN
-      var elephantCounter = new ElephantCounter();
       var box = new Box(
         new Box(
           new Elephant()
@@ -24,6 +23,7 @@ namespace CourtesyImplementation._3_TellDontAsk
           new Elephant()
         )
       );
+      var elephantCounter = new ElephantCounter();
 
       //WHEN
       box.AddTo(elephantCounter);
