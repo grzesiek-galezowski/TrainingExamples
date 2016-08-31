@@ -71,12 +71,18 @@
     <Compile Include="_2_CourtesyMethod\Box.cs" />
     <Compile Include="_2_CourtesyMethod\Test.cs" />
     <Compile Include="_2_CourtesyMethod\Node.cs" />
-    <Compile Include="_3_Visitor\Box.cs" />
-    <Compile Include="_3_Visitor\CountingVisitor.cs" />
-    <Compile Include="_3_Visitor\Test.cs" />
-    <Compile Include="_3_Visitor\Node.cs" />
-    <Compile Include="_3_Visitor\NodeVisitor.cs" />
-    <Compile Include="_3_Visitor\Elephant.cs" />
+    <Compile Include="_3_TellDontAsk\Box.cs" />
+    <Compile Include="_3_TellDontAsk\Elephant.cs" />
+    <Compile Include="_3_TellDontAsk\ElephantCounter.cs" />
+    <Compile Include="_3_TellDontAsk\Melon.cs" />
+    <Compile Include="_3_TellDontAsk\Node.cs" />
+    <Compile Include="_3_TellDontAsk\Test.cs" />
+    <Compile Include="_4_Visitor\Box.cs" />
+    <Compile Include="_4_Visitor\CountingVisitor.cs" />
+    <Compile Include="_4_Visitor\Test.cs" />
+    <Compile Include="_4_Visitor\Node.cs" />
+    <Compile Include="_4_Visitor\NodeVisitor.cs" />
+    <Compile Include="_4_Visitor\Elephant.cs" />
     <Compile Include="_2_CourtesyMethod\Elephant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
