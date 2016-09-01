@@ -68,9 +68,9 @@
     <Compile Include="_1_Downcasting\Test.cs" />
     <Compile Include="_1_Downcasting\Node.cs" />
     <Compile Include="_1_Downcasting\Elephant.cs" />
-    <Compile Include="_2_CourtesyMethod\Box.cs" />
-    <Compile Include="_2_CourtesyMethod\Test.cs" />
-    <Compile Include="_2_CourtesyMethod\Node.cs" />
+    <Compile Include="_2_CourtesyImplementation\Box.cs" />
+    <Compile Include="_2_CourtesyImplementation\Test.cs" />
+    <Compile Include="_2_CourtesyImplementation\Node.cs" />
     <Compile Include="_3_TellDontAsk\Box.cs" />
     <Compile Include="_3_TellDontAsk\Elephant.cs" />
     <Compile Include="_3_TellDontAsk\ElephantCounter.cs" />
@@ -83,7 +83,7 @@
     <Compile Include="_4_Visitor\Node.cs" />
     <Compile Include="_4_Visitor\NodeVisitor.cs" />
     <Compile Include="_4_Visitor\Elephant.cs" />
-    <Compile Include="_2_CourtesyMethod\Elephant.cs" />
+    <Compile Include="_2_CourtesyImplementation\Elephant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

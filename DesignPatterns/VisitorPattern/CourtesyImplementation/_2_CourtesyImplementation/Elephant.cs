@@ -1,4 +1,4 @@
-﻿namespace CourtesyImplementation._2_CourtesyMethod
+﻿namespace CourtesyImplementation._2_CourtesyImplementation
 {
   public class Elephant : Node
   {

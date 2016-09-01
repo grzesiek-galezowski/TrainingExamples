@@ -14,7 +14,7 @@ namespace CourtesyImplementation._4_Visitor
           new Elephant()
         ), 
         new Box(
-          new Box(
+          new Box( //what if we add melons?
             new Elephant(),
             new Elephant(),
             new Elephant()

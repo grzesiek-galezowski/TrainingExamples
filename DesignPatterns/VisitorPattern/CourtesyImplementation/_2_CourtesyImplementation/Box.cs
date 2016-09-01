@@ -1,6 +1,6 @@
 using System.Linq;
 
-namespace CourtesyImplementation._2_CourtesyMethod
+namespace CourtesyImplementation._2_CourtesyImplementation
 {
   public class Box : Node
   {

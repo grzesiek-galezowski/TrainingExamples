@@ -1,7 +1,7 @@
 using FluentAssertions;
 using Xunit;
 
-namespace CourtesyImplementation._2_CourtesyMethod
+namespace CourtesyImplementation._2_CourtesyImplementation
 {
   public class Lol
   {
