@@ -83,13 +83,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\ConcreteResult.cs" />
+    <Compile Include="Results\ConcreteResult.cs" />
     <Compile Include="Commands\AddGroupCommand.cs" />
+    <Compile Include="Results\ConcreteAggregateResult.cs" />
     <Compile Include="Factories\DefaultGroupCommandFactory.cs" />
     <Compile Include="Commands\GetGroupCommand.cs" />
     <Compile Include="Commands\GetGroupsCommand.cs" />
     <Compile Include="Commands\ModifyGroupCommand.cs" />
     <Compile Include="Commands\DeleteGroupCommand.cs" />
+    <Compile Include="GroupsController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />

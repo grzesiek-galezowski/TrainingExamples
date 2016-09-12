@@ -4,16 +4,17 @@ namespace Command.Commands
 {
   public class GetGroupsCommand : InboundCommand
   {
-    private readonly Result<IEnumerable<string>> _result;
+    private readonly AggregateResult<string> _result;
 
-    public GetGroupsCommand(Result<IEnumerable<string>> result)
+    public GetGroupsCommand(AggregateResult<string> result)
     {
       _result = result;
     }
 
     public void Execute()
     {
-      _result.Value = new List<string>() { "Grupa1", "Grupa2" };
+      _result.Value.Add("Grupa1");
+      _result.Value.Add("Grupa2");
     }
   }
 }

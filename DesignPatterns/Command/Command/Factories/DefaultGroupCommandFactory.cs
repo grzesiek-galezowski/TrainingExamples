@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using Command.Commands;
+using Command.Results;
 
 namespace Command.Factories
 {
   public class DefaultGroupCommandFactory : GroupCommandFactory, ResultFactory
   {
-    public InboundCommand CreateGetGroupsCommand(Result<IEnumerable<string>> result)
+    public InboundCommand CreateGetGroupsCommand(AggregateResult<string> result)
     {
       return new GetGroupsCommand(result);
     }
@@ -33,6 +34,11 @@ namespace Command.Factories
     public Result<T> CreateResult<T>()
     {
       return new ConcreteResult<T>();
+    }
+
+    public AggregateResult<T> CreateAggregateResult<T>()
+    {
+      return new ConcreteAggregateResult<T>();
     }
   }
 }
