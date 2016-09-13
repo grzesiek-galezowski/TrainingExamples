@@ -83,6 +83,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\AggregateCommand.cs" />
+    <Compile Include="Commands\LogAndSwallowExceptionsCommand.cs" />
     <Compile Include="Results\ConcreteResult.cs" />
     <Compile Include="Commands\AddGroupCommand.cs" />
     <Compile Include="Results\ConcreteAggregateResult.cs" />
@@ -103,7 +105,9 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="README.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -23,12 +23,14 @@ namespace Command.Factories
 
     public InboundCommand CreateModifyGroupCommand(int id, string value)
     {
-      return new ModifyGroupCommand(id, value);
+      return new AggregateCommand(
+        new LogAndSwallowExceptionsCommand(new DeleteGroupCommand(id)),
+        new LogAndSwallowExceptionsCommand(new AddGroupCommand(value)));
     }
 
     public InboundCommand CreateDeleteGroupCommand(int id)
     {
-      return new DeleteGroupCommand(id);
+      return new LogAndSwallowExceptionsCommand(new DeleteGroupCommand(id));
     }
 
     public Result<T> CreateResult<T>()
