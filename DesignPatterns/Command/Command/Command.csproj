@@ -85,6 +85,12 @@
   <ItemGroup>
     <Compile Include="Commands\AggregateCommand.cs" />
     <Compile Include="Commands\LogAndSwallowExceptionsCommand.cs" />
+    <Compile Include="DummyCode\Dep1.cs" />
+    <Compile Include="DummyCode\Dep2.cs" />
+    <Compile Include="DummyCode\Dep3.cs" />
+    <Compile Include="DummyCode\Dep4.cs" />
+    <Compile Include="DummyCode\Dep5.cs" />
+    <Compile Include="DummyCode\DummyDep.cs" />
     <Compile Include="Results\ConcreteResult.cs" />
     <Compile Include="Commands\AddGroupCommand.cs" />
     <Compile Include="Results\ConcreteAggregateResult.cs" />
