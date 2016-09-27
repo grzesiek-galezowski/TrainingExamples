@@ -1,4 +1,7 @@
-﻿using State.OtherServices;
+﻿using System;
+using State.Interfaces;
+using State.OtherServices;
+using State.Synchronization;
 
 namespace State
 {
@@ -21,8 +24,8 @@ namespace State
       var consoleOutput = new ConsoleOutput();
       var light = new DiningRoomLight();
       var lightSwitchStatesFactory = new LightSwitchStatesFactory(light);
-      var lightSwitchStateMachine = new LightSwitchStateMachine(
-        lightSwitchStatesFactory.SwitchedOff());
+      var lightSwitchStateMachine = 
+        CreateLightSwitchStateMachine(lightSwitchStatesFactory.SwitchedOff());
       lightSwitchStateMachine.SwitchOn();
       lightSwitchStateMachine.SwitchOff();
       lightSwitchStateMachine.SwitchOn();
@@ -32,6 +35,13 @@ namespace State
       lightSwitchStateMachine.SwitchOn();
       lightSwitchStateMachine.SwitchOff();
       lightSwitchStateMachine.ShowSwitchesCountOn(consoleOutput);
+    }
+
+    private static SynchronizedLightSwitch CreateLightSwitchStateMachine(
+      LightSwitchState lightSwitchState)
+    {
+      return new SynchronizedLightSwitch(new LightSwitchStateMachine(
+        lightSwitchState));
     }
   }
 }
