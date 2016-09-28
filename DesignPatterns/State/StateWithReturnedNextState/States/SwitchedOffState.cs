@@ -1,8 +1,8 @@
 ﻿using System;
-using State.Interfaces;
-using State.OtherServices;
+using StateWithReturnedNextState.Interfaces;
+using StateWithReturnedNextState.OtherServices;
 
-namespace State.States
+namespace StateWithReturnedNextState.States
 { 
   public class SwitchedOffState : LightSwitchState
   {
@@ -15,15 +15,15 @@ namespace State.States
       _light = light;
     }
 
-    public void SwitchOn(LightSwitchContext context)
+    public LightSwitchState SwitchOn()
     {
-      context.MoveTo(_lightSwitchStates.SwitchedOn());
+      return _lightSwitchStates.SwitchedOn();
     }
 
-    public void SwitchOff(LightSwitchContext context)
+    public LightSwitchState SwitchOff()
     {
       Console.WriteLine("It's already dark");
-      //TODO context.MoveTo(_lightSwitchStates.SwitchedOff()); //transition to self. What happens?
+      return this;
     }
 
     public void OnEnter(LightSwitchContext context)
