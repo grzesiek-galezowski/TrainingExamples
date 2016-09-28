@@ -10,8 +10,7 @@ namespace State
 
     public LightSwitchStateMachine(LightSwitchState initialState)
     {
-      _currentState = initialState;
-      _currentState.OnEnter(this); //has to be the last line!!! Alternative - Start() method
+      MoveTo(initialState); //has to be the last line!!! Alternative - Start() method
     }
 
     public void SwitchOn()
@@ -24,7 +23,7 @@ namespace State
       _currentState.SwitchOff(this);
     }
 
-    void LightSwitchContext.MoveTo(LightSwitchState nextState)
+    public void MoveTo(LightSwitchState nextState)
     {
       _currentState = nextState;
       _currentState.OnEnter(this); //what about OnExit()?
