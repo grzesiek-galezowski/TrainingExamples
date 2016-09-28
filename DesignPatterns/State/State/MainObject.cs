@@ -7,9 +7,9 @@ namespace State
 {
   public class MainObject
   {
-    //states are stateless - all fields read only
-    //state machine should be protected from threaded access
+    //states are stateless - all fields read only - all state delegated to context or shared external services
     //state machine should be thin - delegate all functionality (how much should be delegated to context?)
+    //state machine should be protected from threaded access
     //if multithreaded, SM should be tell don't ask
     //different ways of passing context
     // - through setter
