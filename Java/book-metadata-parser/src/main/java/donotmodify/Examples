@@ -23,3 +23,11 @@ ISBN-10: 2356874410
 ISBN-13: 978-2356874412
 Product Dimensions: 20 x 1.7 x 13 cm
 
+parser = new BookMetadataParser(
+  new PagesParser(),
+  new PublisherParser(
+    new SurnameParser(),
+    new DateParser()
+  )
+
+BookMetadata metadata = parser.parse("asas........");
