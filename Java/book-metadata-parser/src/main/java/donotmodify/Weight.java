@@ -1,6 +1,7 @@
 package donotmodify;
 
+//ignore for now
 public class Weight {
-    public int amount;
+    public double amount;
     public String unit; //e.g. ounces
 }
