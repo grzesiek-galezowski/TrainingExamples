@@ -1,3 +1,7 @@
+Increment 1: assume all data are valid (even isbn)
+Increment 2: Detect when piece of info is missing
+Increment 3: introduce some inner data validations (e.g. for isbn)
+
 Paperback: 236 pages
 Publisher: Emily Bache (2013-10-29)
 Language: en
@@ -12,6 +16,10 @@ ISBN-10: 0321889061
 ISBN-13: 978-0321889065
 Product Dimensions: 17.5 x 2.5 x 22.9 cm
 
-Increment 1: assume all data are valid
-Increment 2: Detect when piece of info is missing
-Increment 3: introduce some inner data validations
+Paperback: 211 pages
+Publisher: Editions Le Bord de l'eau (2016-09-15)
+Language: fr
+ISBN-10: 2356874410
+ISBN-13: 978-2356874412
+Product Dimensions: 20 x 1.7 x 13 cm
+
