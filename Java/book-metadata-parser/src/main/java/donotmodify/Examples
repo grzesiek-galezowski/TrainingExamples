@@ -1,0 +1,17 @@
+Paperback: 236 pages
+Publisher: Emily Bache (2013-10-29)
+Language: en
+ISBN-10: 919811803X
+ISBN-13: 978-9198118032
+Product Dimensions: 6 x 0.6 x 9 inches
+
+Paperback: 448 pages
+Publisher: Addison Wesley (2008-02-27)
+Language: en
+ISBN-10: 0321889061
+ISBN-13: 978-0321889065
+Product Dimensions: 17.5 x 2.5 x 22.9 cm
+
+Increment 1: assume all data are valid
+Increment 2: Detect when piece of info is missing
+Increment 3: introduce some inner data validations
