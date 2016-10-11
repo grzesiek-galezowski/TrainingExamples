@@ -40,8 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="LightSwitchState.cs" />
     <Compile Include="LightSwitchStateMachine.cs" />
     <Compile Include="MainObject.cs" />
     <Compile Include="OtherServices\ConsoleOutput.cs" />
