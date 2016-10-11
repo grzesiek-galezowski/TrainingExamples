@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingStatePattern", "Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionalState", "FunctionalState\FunctionalState.csproj", "{CFEC11F1-ABB9-429D-AB6D-D0E723058960}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProceduralStateMachine", "ProceduralStateMachine\ProceduralStateMachine.csproj", "{B92F18F6-2543-4EB0-8C86-787A0F5C7EAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{CFEC11F1-ABB9-429D-AB6D-D0E723058960}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFEC11F1-ABB9-429D-AB6D-D0E723058960}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFEC11F1-ABB9-429D-AB6D-D0E723058960}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B92F18F6-2543-4EB0-8C86-787A0F5C7EAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B92F18F6-2543-4EB0-8C86-787A0F5C7EAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B92F18F6-2543-4EB0-8C86-787A0F5C7EAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B92F18F6-2543-4EB0-8C86-787A0F5C7EAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
