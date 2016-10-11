@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StateWithReturnedNextState"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StateWithImplicitContextPassing", "StateWithImplicitContextPassing\StateWithImplicitContextPassing.csproj", "{B4A36BB5-9862-4278-9421-BBA48F51A889}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingStatePattern", "TestingStatePattern\TestingStatePattern.csproj", "{2792FA3D-F57D-4991-A8BE-F4E11EF609A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionalState", "FunctionalState\FunctionalState.csproj", "{CFEC11F1-ABB9-429D-AB6D-D0E723058960}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{B4A36BB5-9862-4278-9421-BBA48F51A889}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4A36BB5-9862-4278-9421-BBA48F51A889}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4A36BB5-9862-4278-9421-BBA48F51A889}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2792FA3D-F57D-4991-A8BE-F4E11EF609A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2792FA3D-F57D-4991-A8BE-F4E11EF609A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2792FA3D-F57D-4991-A8BE-F4E11EF609A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2792FA3D-F57D-4991-A8BE-F4E11EF609A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFEC11F1-ABB9-429D-AB6D-D0E723058960}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFEC11F1-ABB9-429D-AB6D-D0E723058960}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFEC11F1-ABB9-429D-AB6D-D0E723058960}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFEC11F1-ABB9-429D-AB6D-D0E723058960}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
