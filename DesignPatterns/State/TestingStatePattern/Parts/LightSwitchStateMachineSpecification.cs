@@ -45,7 +45,6 @@ namespace TestingStatePattern.Parts
     {
       //GIVEN
       var initialState = Substitute.For<LightSwitchState>();
-      ;
       var machine = new LightSwitchStateMachine(initialState);
 
       //WHEN
@@ -53,11 +52,12 @@ namespace TestingStatePattern.Parts
 
       //THEN
       initialState.Received(1).SwitchOn(machine);
+      AssertMachineIsIn(initialState, machine);
     }
 
     //etc. etc.
 
-    private static void AssertMachineIsIn(LightSwitchState nextState, LightSwitchStateMachine machine)
+    private static void AssertMachineIsIn(LightSwitchState nextState, LightSwitchContext machine)
     {
       nextState.Received(1).SwitchOn(machine);
     }

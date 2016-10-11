@@ -19,7 +19,7 @@ namespace TestingStatePattern.BlackBox
       //GIVEN
       Light light = Substitute.For<Light>();
       var lightSwitchStateMachine = CreateSwitchedOffStateMachine(light);
-      
+
       light.Received(1).PowerDown();
       AssertSwitchesCount(0, lightSwitchStateMachine);
     }
@@ -32,13 +32,37 @@ namespace TestingStatePattern.BlackBox
       var lightSwitchStateMachine = CreateSwitchedOffStateMachine(light);
 
       //WHEN
-      //bug improve
+      lightSwitchStateMachine.SwitchOn();
+
+      //THEN
+      light.Received(1).PowerUp();
+      AssertSwitchesCount(1, lightSwitchStateMachine);
+    }
+
+    [Test]
+    public void ShouldDOWHAT4()
+    {
+      //GIVEN
+      var light = Substitute.For<Light>();
+      var lightSwitchStateMachine = CreateSwitchedOnStateMachine(light);
+      
+
+      lightSwitchStateMachine.SwitchOff();
 
       //THEN
       light.Received(1).PowerDown();
-      AssertSwitchesCount(0, lightSwitchStateMachine);
+      AssertSwitchesCount(1, lightSwitchStateMachine);
     }
 
+    private static LightSwitchStateMachine CreateSwitchedOnStateMachine(Light light)
+    {
+      var lightSwitchStateMachine = CreateSwitchedOffStateMachine(light);
+
+      //WHEN
+      lightSwitchStateMachine.SwitchOn();
+      light.ClearReceivedCalls();
+      return lightSwitchStateMachine;
+    }
 
     private static void AssertSwitchesCount(int numSwitches, LightSwitch lightSwitchStateMachine)
     {
@@ -49,7 +73,8 @@ namespace TestingStatePattern.BlackBox
 
     private static LightSwitchStateMachine CreateSwitchedOffStateMachine(Light light)
     {
-      return new LightSwitchStateMachine(new LightSwitchStatesFactory(light).SwitchedOff());
+      var switchedOffStateMachine = new LightSwitchStateMachine(new LightSwitchStatesFactory(light).SwitchedOff());
+      return switchedOffStateMachine;
     }
   }
 }
