@@ -1,4 +1,4 @@
-﻿namespace FunctionalState.Interfaces
+﻿namespace FunctionalState
 {
   public enum LightSwitchState
   {

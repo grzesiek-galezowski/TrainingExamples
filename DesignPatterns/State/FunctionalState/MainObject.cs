@@ -1,5 +1,4 @@
 ﻿using System;
-using FunctionalState.Interfaces;
 using FunctionalState.OtherServices;
 using static FunctionalState.LightSwitchStateMachine;
 
