@@ -16,19 +16,19 @@ namespace FunctionalState
       var powerDownLight = new Func<object>(() => PowerDownLight(light));
       var machine = new LightSwitchStateMachine(LightSwitchState.SwitchedOff, 0, powerUpLight, powerDownLight);
 
-      machine = Handle(machine,
-        SwitchedOnSignal.HandleInSwitchedOnState,
-        SwitchedOnSignal.HandleInSwitchedOffState
+      machine = DispatchSignalTo(machine,
+        whenSwitchedOn: SwitchedOnSignal.DoesNothing,
+        whenSwitchedOff: SwitchedOnSignal.PowersDownTheLight
       );
 
-      machine = Handle(machine,
-        SwitchedOffSignal.HandleInSwitchedOnState,
-        SwitchedOffSignal.HandleInSwitchedOffState
+      machine = DispatchSignalTo(machine,
+        SwitchedOffSignal.PowersDownTheLight,
+        SwitchedOffSignal.DoesNothing
       );
 
-      machine = Handle(machine,
-        SwitchedOffSignal.HandleInSwitchedOnState,
-        SwitchedOffSignal.HandleInSwitchedOffState
+      machine = DispatchSignalTo(machine,
+        whenSwitchedOn: SwitchedOffSignal.PowersDownTheLight,
+        whenSwitchedOff: SwitchedOffSignal.DoesNothing
       );
 
       var whatever = ShowOutput(consoleOutput, machine.NumSwitches);
@@ -55,7 +55,7 @@ namespace FunctionalState
 
   public class SwitchedOffSignal
   {
-    public static LightSwitchStateMachine HandleInSwitchedOnState(LightSwitchStateMachine arg)
+    public static LightSwitchStateMachine PowersDownTheLight(LightSwitchStateMachine arg)
     {
       var result = arg.PowerDownLight(); //impure
       return new LightSwitchStateMachine(LightSwitchState.SwitchedOff, 
@@ -64,7 +64,7 @@ namespace FunctionalState
         arg.PowerDownLight);
     }
 
-    public static LightSwitchStateMachine HandleInSwitchedOffState(LightSwitchStateMachine arg)
+    public static LightSwitchStateMachine DoesNothing(LightSwitchStateMachine arg)
     {
       return arg;
     }
@@ -72,12 +72,12 @@ namespace FunctionalState
 
   public static class SwitchedOnSignal
   {
-    public static LightSwitchStateMachine HandleInSwitchedOnState(LightSwitchStateMachine arg)
+    public static LightSwitchStateMachine DoesNothing(LightSwitchStateMachine arg)
     {
       return arg;
     }
 
-    public static LightSwitchStateMachine HandleInSwitchedOffState(LightSwitchStateMachine arg)
+    public static LightSwitchStateMachine PowersDownTheLight(LightSwitchStateMachine arg)
     {
       var result = arg.PowerUpLight(); //impure
       return new LightSwitchStateMachine(LightSwitchState.SwitchedOn, 

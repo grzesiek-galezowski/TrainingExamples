@@ -21,17 +21,17 @@ namespace FunctionalState
       PowerDownLight = powerDownLight;
     }
 
-    public static LightSwitchStateMachine Handle(
+    public static LightSwitchStateMachine DispatchSignalTo(
       LightSwitchStateMachine machine,
-      Func<LightSwitchStateMachine, LightSwitchStateMachine> inSwitchedOnHandling, 
-      Func<LightSwitchStateMachine, LightSwitchStateMachine> inSwitchedOffHandling)
+      Func<LightSwitchStateMachine, LightSwitchStateMachine> whenSwitchedOn, 
+      Func<LightSwitchStateMachine, LightSwitchStateMachine> whenSwitchedOff)
     {
       switch (machine.CurrentState)
       {
         case LightSwitchState.SwitchedOn:
-          return inSwitchedOnHandling(machine);
+          return whenSwitchedOn(machine);
         case LightSwitchState.SwitchedOff:
-          return inSwitchedOffHandling(machine);
+          return whenSwitchedOff(machine);
         default:
           throw new ArgumentOutOfRangeException();
       }
