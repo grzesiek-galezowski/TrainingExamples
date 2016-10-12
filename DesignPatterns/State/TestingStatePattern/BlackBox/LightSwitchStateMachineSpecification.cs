@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NSubstitute;
+﻿using NSubstitute;
 using NUnit.Framework;
 using State;
 using State.Interfaces;
@@ -14,18 +9,27 @@ namespace TestingStatePattern.BlackBox
   class LightSwitchStateMachineSpecification
   {
     [Test]
-    public void ShouldDOWHAT()
+    public void ShouldPowerDownTheLightWhenSwitchedOffInSwitchedOffState()
     {
       //GIVEN
-      Light light = Substitute.For<Light>();
+      var light = Substitute.For<Light>();
       var lightSwitchStateMachine = CreateSwitchedOffStateMachine(light);
 
       light.Received(1).PowerDown();
+    }
+
+    [Test]
+    public void ShouldNotRegisterAnySwitchesWhenSwitchedOffInSwitchedOffState()
+    {
+      //GIVEN
+      var light = Substitute.For<Light>();
+      var lightSwitchStateMachine = CreateSwitchedOffStateMachine(light);
+
       AssertSwitchesCount(0, lightSwitchStateMachine);
     }
 
     [Test]
-    public void ShouldDOWHAT2()
+    public void ShouldPowerUpTheLightWhenSwitchedOnInSwitchedOffState()
     {
       //GIVEN
       var light = Substitute.For<Light>();
@@ -38,9 +42,22 @@ namespace TestingStatePattern.BlackBox
       light.Received(1).PowerUp();
       AssertSwitchesCount(1, lightSwitchStateMachine);
     }
+    [Test]
+    public void ShouldRegisterASingleSwitchWhenSwitchedOnInSwitchedOffState()
+    {
+      //GIVEN
+      var light = Substitute.For<Light>();
+      var lightSwitchStateMachine = CreateSwitchedOffStateMachine(light);
+
+      //WHEN
+      lightSwitchStateMachine.SwitchOn();
+
+      //THEN
+      AssertSwitchesCount(1, lightSwitchStateMachine);
+    }
 
     [Test]
-    public void ShouldDOWHAT4()
+    public void ShouldPowerDownTheLightWhenSwitchedOffWhileInSwitchedOnState()
     {
       //GIVEN
       var light = Substitute.For<Light>();
@@ -51,7 +68,6 @@ namespace TestingStatePattern.BlackBox
 
       //THEN
       light.Received(1).PowerDown();
-      AssertSwitchesCount(1, lightSwitchStateMachine);
     }
 
     private static LightSwitchStateMachine CreateSwitchedOnStateMachine(Light light)
