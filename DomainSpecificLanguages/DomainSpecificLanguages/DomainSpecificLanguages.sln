@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainSpecificLanguages", "DomainSpecificLanguages\DomainSpecificLanguages.csproj", "{3C584153-E936-4832-B504-3BF92C9E23B7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CombosFancyNestedFunctionsAndOperators", "CombosNestedFunctions\CombosFancyNestedFunctionsAndOperators.csproj", "{CA147010-5447-464C-B0D3-C7D9387F6579}"
@@ -20,6 +22,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlarmsWithNestedFunctions", "AlarmsWithNestedFunctions\AlarmsWithNestedFunctions.csproj", "{F8D55F40-8AEB-4AB7-B089-1FA0234FDAF5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClosuresXhtmlBuilder", "ClosuresXhtmlBuilder\ClosuresXhtmlBuilder.csproj", "{E768C3A3-A6F9-40A7-9936-CCA41E0D47CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandQuerySeparation", "CommandQuerySeparation\CommandQuerySeparation.csproj", "{2DF85682-99F4-4A71-A798-85D9B69D7348}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +71,10 @@ Global
 		{E768C3A3-A6F9-40A7-9936-CCA41E0D47CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E768C3A3-A6F9-40A7-9936-CCA41E0D47CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E768C3A3-A6F9-40A7-9936-CCA41E0D47CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DF85682-99F4-4A71-A798-85D9B69D7348}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DF85682-99F4-4A71-A798-85D9B69D7348}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DF85682-99F4-4A71-A798-85D9B69D7348}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DF85682-99F4-4A71-A798-85D9B69D7348}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
