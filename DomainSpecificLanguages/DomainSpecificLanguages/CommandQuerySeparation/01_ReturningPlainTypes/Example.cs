@@ -8,7 +8,7 @@ namespace CommandQuerySeparation._01_ReturningPlainTypes
       {
         FileListDestination guiWidget = new FileListWidget();
         var fileSystem = new FileSystem();
-
+        
         DoWork(fileSystem, guiWidget, new DeletedFilesFactory());
       }
 

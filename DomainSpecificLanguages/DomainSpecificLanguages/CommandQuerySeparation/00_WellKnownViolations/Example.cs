@@ -55,11 +55,13 @@ namespace CommandQuerySeparation._00_WellKnownViolations
 
     private static void TraverseList()
     {
-      var l = new List<int>() {1, 2, 3, 4};
-      var enumerator = l.GetEnumerator();
-      while (enumerator.MoveNext())
+      var l = new List<int> {1, 2, 3, 4};
+      using (var enumerator = l.GetEnumerator())
       {
-        Console.WriteLine(enumerator.Current);
+        while (enumerator.MoveNext())
+        {
+          Console.WriteLine(enumerator.Current);
+        }
       }
     }
   }
