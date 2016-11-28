@@ -1,8 +1,11 @@
 ﻿package com.github.grzesiek_galezowski.BastardInjection._4_BastardInjection.Core;
 
 import com.github.grzesiek_galezowski.BastardInjection._4_BastardInjection.Core.IDisposable;
+import com.github.grzesiek_galezowski.BastardInjection._4_BastardInjection.Outbound.Outbound;
 
-class TeleComSystem implements IDisposable
+import java.io.Closeable;
+
+class TeleComSystem implements Closeable
   {
     private final IProcessingWorkflow _processingWorkflow;
     private final IInbound _inbound;
@@ -31,7 +34,7 @@ class TeleComSystem implements IDisposable
       _inbound.StartListening();
     }
 
-    public void Dispose()
+    public void close()
     {
       _inbound.Dispose();
     }
