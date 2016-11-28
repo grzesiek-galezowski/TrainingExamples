@@ -3,12 +3,24 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/bastard-injection.iml" filepath="$PROJECT_DIR$/.idea/modules/bastard-injection.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bastard-injection_main.iml" filepath="$PROJECT_DIR$/.idea/modules/bastard-injection_main.iml" group="bastard-injection" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bastard-injection_test.iml" filepath="$PROJECT_DIR$/.idea/modules/bastard-injection_test.iml" group="bastard-injection" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/changing-behavior-through-composition.iml" filepath="$PROJECT_DIR$/.idea/modules/changing-behavior-through-composition.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/changing-behavior-through-composition_main.iml" filepath="$PROJECT_DIR$/.idea/modules/changing-behavior-through-composition_main.iml" group="changing-behavior-through-composition" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/changing-behavior-through-composition_test.iml" filepath="$PROJECT_DIR$/.idea/modules/changing-behavior-through-composition_test.iml" group="changing-behavior-through-composition" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/conforming-container-antipattern.iml" filepath="$PROJECT_DIR$/.idea/modules/conforming-container-antipattern.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/conforming-container-antipattern_main.iml" filepath="$PROJECT_DIR$/.idea/modules/conforming-container-antipattern_main.iml" group="conforming-container-antipattern" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/conforming-container-antipattern_test.iml" filepath="$PROJECT_DIR$/.idea/modules/conforming-container-antipattern_test.iml" group="conforming-container-antipattern" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/control-freak.iml" filepath="$PROJECT_DIR$/.idea/modules/control-freak.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/control-freak-refactored.iml" filepath="$PROJECT_DIR$/.idea/modules/control-freak-refactored.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/control-freak_main.iml" filepath="$PROJECT_DIR$/.idea/modules/control-freak_main.iml" group="control-freak" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/control-freak_test.iml" filepath="$PROJECT_DIR$/.idea/modules/control-freak_test.iml" group="control-freak" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/dependency-injection.iml" filepath="$PROJECT_DIR$/.idea/modules/dependency-injection.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dependency-injection_main.iml" filepath="$PROJECT_DIR$/.idea/modules/dependency-injection_main.iml" group="dependency-injection" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dependency-injection_test.iml" filepath="$PROJECT_DIR$/.idea/modules/dependency-injection_test.iml" group="dependency-injection" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/service-locator.iml" filepath="$PROJECT_DIR$/.idea/modules/service-locator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/service-locator_main.iml" filepath="$PROJECT_DIR$/.idea/modules/service-locator_main.iml" group="service-locator" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/service-locator_test.iml" filepath="$PROJECT_DIR$/.idea/modules/service-locator_test.iml" group="service-locator" />
     </modules>
   </component>
 </project>

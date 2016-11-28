@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module type="JAVA_MODULE" version="4">
+<module external.linked.project.id="control-freak" external.linked.project.path="$MODULE_DIR$/../../control-freak" external.root.project.path="$MODULE_DIR$/../../control-freak" external.system.id="GRADLE" external.system.module.group="dependency-injection" external.system.module.version="1.0-SNAPSHOT" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$/../../control-freak" />
+    <content url="file://$MODULE_DIR$/../../control-freak">
+      <excludeFolder url="file://$MODULE_DIR$/../../control-freak/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../control-freak/build" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

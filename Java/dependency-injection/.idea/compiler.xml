@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="bastard-injection_main" target="1.5" />
+      <module name="bastard-injection_test" target="1.5" />
+      <module name="changing-behavior-through-composition_main" target="1.5" />
+      <module name="changing-behavior-through-composition_test" target="1.5" />
+      <module name="conforming-container-antipattern_main" target="1.5" />
+      <module name="conforming-container-antipattern_test" target="1.5" />
+      <module name="control-freak-refactored_main" target="1.5" />
+      <module name="control-freak-refactored_test" target="1.5" />
+      <module name="control-freak_main" target="1.5" />
+      <module name="control-freak_test" target="1.5" />
+      <module name="dependency-injection_main" target="1.5" />
+      <module name="dependency-injection_test" target="1.5" />
+      <module name="service-locator_main" target="1.5" />
+      <module name="service-locator_test" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
