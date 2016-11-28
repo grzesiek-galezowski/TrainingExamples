@@ -2,170 +2,58 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd11a49d-e99b-4ce3-8cf6-c64471da4157" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Properties/AssemblyInfo.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/packages.config" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/ImmutableCondition.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/Main.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/ValueObjectBehaviorCondition.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/XAssert.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/XJAssertConditions.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertions.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsErrorMessages.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForMonitor.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantLock.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantReadLock.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantWriteLock.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/StepsForSynchronizingOnCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/StepsForSynchronizingOnFunction.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertDsl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertDsl2.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertionSteps.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertionWorkflow.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/ImmutableCondition.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/Main.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/ValueObjectBehaviorCondition.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/XAssert.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/XJAssertConditions.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertions.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsErrorMessages.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForMonitor.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantLock.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantReadLock.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantWriteLock.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/StepsForSynchronizingOnCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/StepsForSynchronizingOnFunction.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertDsl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertDsl2.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertionSteps.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertionWorkflow.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/ImmutableCondition.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/Main.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/ValueObjectBehaviorCondition.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/XAssert.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/XJAssertConditions.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertions.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsErrorMessages.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForMonitor.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantLock.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantReadLock.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantWriteLock.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/StepsForSynchronizingOnCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/StepsForSynchronizingOnFunction.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertDsl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertDsl2.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertionSteps.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertionWorkflow.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/package-info.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/_4_BastardInjection/Core/TeleComSystem.java" afterPath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/_4_BastardInjection/Core/TeleComSystem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarm.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarm.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/CompoundAlarm.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/CompoundAlarm.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/LoudAlarm.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/LoudAlarm.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/NoAlarm.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/NoAlarm.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/ParallelCompoundAlarm.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/ParallelCompoundAlarm.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/SilentAlarm.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/SilentAlarm.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/SwitchableAlarm.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/SwitchableAlarm.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Building.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Building.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/ChangingBehaviorThroughComposition.csproj" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/ChangingBehaviorThroughComposition.csproj" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/CompositionRoot.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/CompositionRoot.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Properties/AssemblyInfo.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Properties/AssemblyInfo.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriteria.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriteria.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriterias/CompoundSwitchCriteria.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriterias/CompoundSwitchCriteria.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriterias/MetDuringTheDayCriteria.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriterias/MetDuringTheDayCriteria.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriterias/MetOnWorkDayCriteria.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriterias/MetOnWorkDayCriteria.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/Class1.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/Class1.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/ConformingContainerAntipattern.csproj" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/ConformingContainerAntipattern.csproj" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/Properties/AssemblyInfo.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/Properties/AssemblyInfo.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/ApplicationRoot.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/ApplicationRoot.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/ConformingContainer.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/ConformingContainer.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Core/AcmeProcessingWorkflow.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Core/AcmeProcessingWorkflow.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Core/TeleComSystem.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Core/TeleComSystem.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/InMessages/NullMessage.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/InMessages/NullMessage.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/InMessages/StartMessage.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/InMessages/StartMessage.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/InMessages/StopMessage.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/InMessages/StopMessage.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Inbound/BinaryParsing.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Inbound/BinaryParsing.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Inbound/BinaryUdpInbound.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Inbound/BinaryUdpInbound.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Inbound/UdpSocket.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Inbound/UdpSocket.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Interfaces/AcmeMessage.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Interfaces/AcmeMessage.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Interfaces/DataDestination.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Interfaces/DataDestination.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Outbound/Outbound.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Outbound/Outbound.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Outbound/OutboundMessage.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Outbound/OutboundMessage.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Outbound/TcpSocket.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Outbound/TcpSocket.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Outbound/XmlMarshalling.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Outbound/XmlMarshalling.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Services/ActiveDirectoryBasedAuthorization.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Services/ActiveDirectoryBasedAuthorization.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Services/MsSqlBasedRepository.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Services/MsSqlBasedRepository.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Services/SqlDataDestination.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Services/SqlDataDestination.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/packages.config" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/packages.config" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/DependencyInjectionBefore.csproj" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/DependencyInjectionBefore.csproj" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/DependencyInjectionBefore.csproj.ccexclude" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/DependencyInjectionBefore.csproj.ccexclude" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/Properties/AssemblyInfo.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/Properties/AssemblyInfo.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/ApplicationRoot.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/ApplicationRoot.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Core/AcmeProcessingWorkflow.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Core/AcmeProcessingWorkflow.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Core/TeleComSystem.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Core/TeleComSystem.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/InMessages/NullMessage.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/InMessages/NullMessage.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/InMessages/StartMessage.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/InMessages/StartMessage.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/InMessages/StopMessage.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/InMessages/StopMessage.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Inbound/BinaryParsing.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Inbound/BinaryParsing.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Inbound/BinaryUdpInbound.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Inbound/BinaryUdpInbound.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Inbound/UdpSocket.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Inbound/UdpSocket.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Interfaces/AcmeMessage.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Interfaces/AcmeMessage.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Interfaces/DataDestination.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Interfaces/DataDestination.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Outbound/TcpSocket.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Outbound/TcpSocket.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Outbound/XmlMarshalling.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Outbound/XmlMarshalling.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Outbound/XmlOutboundMessage.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Outbound/XmlOutboundMessage.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Outbound/XmlTcpOutbound.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Outbound/XmlTcpOutbound.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Services/ActiveDirectoryBasedAuthorization.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Services/ActiveDirectoryBasedAuthorization.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Services/MsSqlBasedRepository.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Services/MsSqlBasedRepository.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Services/SqlDataDestination.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Services/SqlDataDestination.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/packages.config" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/packages.config" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/DependencyInjectionAfter.csproj" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/DependencyInjectionAfter.csproj" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Properties/AssemblyInfo.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/Properties/AssemblyInfo.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/ApplicationRoot.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/ApplicationRoot.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Core/AcmeProcessingWorkflow.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Core/AcmeProcessingWorkflow.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Core/TeleComSystem.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Core/TeleComSystem.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/InMessages/NullMessage.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/InMessages/NullMessage.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/InMessages/StartMessage.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/InMessages/StartMessage.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/InMessages/StopMessage.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/InMessages/StopMessage.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Inbound/BinaryParsing.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Inbound/BinaryParsing.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Inbound/MessageInbound.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Inbound/MessageInbound.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Inbound/UdpSocket.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Inbound/UdpSocket.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Interfaces/AcmeMessage.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Interfaces/AcmeMessage.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Interfaces/DataDestination.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Interfaces/DataDestination.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Outbound/MessageOutbound.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Outbound/MessageOutbound.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Outbound/TcpSocket.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Outbound/TcpSocket.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Outbound/XmlMarshalling.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Outbound/XmlMarshalling.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Outbound/XmlOutboundMessage.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Outbound/XmlOutboundMessage.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Outbound/XmlOutboundMessageFactory.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Outbound/XmlOutboundMessageFactory.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Services/ActiveDirectoryBasedAuthorization.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Services/ActiveDirectoryBasedAuthorization.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Services/MsSqlBasedRepository.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Services/MsSqlBasedRepository.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Services/SqlDataDestination.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Services/SqlDataDestination.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/packages.config" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/packages.config" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/Class1.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/Class1.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/Properties/AssemblyInfo.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/Properties/AssemblyInfo.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/ServiceLocatorDIAntipattern.csproj" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/ServiceLocatorDIAntipattern.csproj" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/ApplicationRoot.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/ApplicationRoot.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/Core/AcmeProcessingWorkflow.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Core/AcmeProcessingWorkflow.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/Core/TeleComSystem.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Core/TeleComSystem.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/InMessages/NullMessage.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/InMessages/NullMessage.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/InMessages/StartMessage.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/InMessages/StartMessage.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/InMessages/StopMessage.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/InMessages/StopMessage.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/Inbound/BinaryParsing.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Inbound/BinaryParsing.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/Inbound/BinaryUdpInbound.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Inbound/BinaryUdpInbound.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/Inbound/UdpSocket.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Inbound/UdpSocket.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/Interfaces/AcmeMessage.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Interfaces/AcmeMessage.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/Interfaces/DataDestination.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Interfaces/DataDestination.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/Outbound/Outbound.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Outbound/Outbound.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/Outbound/OutboundMessage.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Outbound/OutboundMessage.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/Outbound/TcpSocket.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Outbound/TcpSocket.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/Outbound/XmlMarshalling.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Outbound/XmlMarshalling.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/Services/ActiveDirectoryBasedAuthorization.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Services/ActiveDirectoryBasedAuthorization.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/Services/MsSqlBasedRepository.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Services/MsSqlBasedRepository.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/Services/SqlDataDestination.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Services/SqlDataDestination.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/packages.config" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/packages.config" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Core/IProcessingWorkflow.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Inbound/IInbound.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Inbound/IInputSocket.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Inbound/IPacketParsing.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Outbound/IMarshalling.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Outbound/IOutbound.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Outbound/IOutboundMessage.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Outbound/IOutputSocket.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Services/IAuthorization.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Services/IRepository.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/BastardInjection.csproj" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Class1.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Properties/AssemblyInfo.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/_4_BastardInjection/Core/IDisposable.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/ChangingBehaviorThroughComposition.csproj" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Properties/AssemblyInfo.cs" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/changing-behavior-through-composition_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/changing-behavior-through-composition_main.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/changing-behavior-through-composition_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/changing-behavior-through-composition_test.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/build.gradle" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/build.gradle" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/_4_BastardInjection/ApplicationRoot.cs" afterPath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/ApplicationRoot.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/_4_BastardInjection/Core/AcmeProcessingWorkflow.java" afterPath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Core/AcmeProcessingWorkflow.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/_4_BastardInjection/Core/TeleComSystem.java" afterPath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Core/TeleComSystem.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/_4_BastardInjection/InMessages/NullMessage.java" afterPath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/InMessages/NullMessage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/_4_BastardInjection/InMessages/StartMessage.java" afterPath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/InMessages/StartMessage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/_4_BastardInjection/InMessages/StopMessage.java" afterPath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/InMessages/StopMessage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/_4_BastardInjection/Inbound/BinaryParsing.java" afterPath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Inbound/BinaryParsing.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/_4_BastardInjection/Inbound/BinaryUdpInbound.java" afterPath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Inbound/BinaryUdpInbound.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/_4_BastardInjection/Inbound/UdpSocket.java" afterPath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Inbound/UdpSocket.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/_4_BastardInjection/Interfaces/AcmeMessage.java" afterPath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Interfaces/AcmeMessage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/_4_BastardInjection/Interfaces/DataDestination.java" afterPath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Interfaces/DataDestination.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/_4_BastardInjection/Outbound/Outbound.java" afterPath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Outbound/Outbound.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/_4_BastardInjection/Outbound/OutboundMessage.java" afterPath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Outbound/OutboundMessage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/_4_BastardInjection/Outbound/TcpSocket.java" afterPath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Outbound/TcpSocket.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/_4_BastardInjection/Outbound/XmlMarshalling.java" afterPath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Outbound/XmlMarshalling.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/_4_BastardInjection/Services/ActiveDirectoryBasedAuthorization.java" afterPath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Services/ActiveDirectoryBasedAuthorization.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/_4_BastardInjection/Services/MsSqlBasedRepository.java" afterPath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Services/MsSqlBasedRepository.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/_4_BastardInjection/Services/SqlDataDestination.java" afterPath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Services/SqlDataDestination.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarm.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarm.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/CompoundAlarm.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/CompoundAlarm.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/LoudAlarm.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/LoudAlarm.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/NoAlarm.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/NoAlarm.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/ParallelCompoundAlarm.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/ParallelCompoundAlarm.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/SilentAlarm.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/SilentAlarm.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/SwitchableAlarm.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/SwitchableAlarm.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Building.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Building.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/CompositionRoot.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/CompositionRoot.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriteria.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriteria.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriterias/CompoundSwitchCriteria.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriterias/CompoundSwitchCriteria.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriterias/MetDuringTheDayCriteria.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriterias/MetDuringTheDayCriteria.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriterias/MetOnWorkDayCriteria.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriterias/MetOnWorkDayCriteria.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -227,81 +115,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bastard-injection/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/conforming-container-antipattern/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/control-freak/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/control-freak-refactored/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/service-locator/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="14" lean-forward="false" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IDisposable.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/_4_BastardInjection/Core/IDisposable.java">
+      <file leaf-file-name="SwitchableAlarm.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/SwitchableAlarm.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
-              <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TeleComSystem.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/_4_BastardInjection/Core/TeleComSystem.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="35" column="1" lean-forward="false" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
+              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -309,7 +127,123 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="CompoundSwitchCriteria.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriterias/CompoundSwitchCriteria.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="27" lean-forward="false" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#400#401#0" expanded="true" />
+                <element signature="e#448#449#0" expanded="true" />
+                <element signature="e#485#486#0" expanded="true" />
+                <element signature="e#579#580#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MetDuringTheDayCriteria.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriterias/MetDuringTheDayCriteria.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="34" lean-forward="false" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Alarm.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarm.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="1" lean-forward="false" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Building.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Building.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="13" column="30" lean-forward="false" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MetOnWorkDayCriteria.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriterias/MetOnWorkDayCriteria.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="27" lean-forward="false" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#329#330#0" expanded="true" />
+                <element signature="e#357#358#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CompositionRoot.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/CompositionRoot.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="766">
+              <caret line="121" column="0" lean-forward="false" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3389#3390#0" expanded="true" />
+                <element signature="e#3419#3420#0" expanded="true" />
+                <element signature="e#3645#3646#0" expanded="true" />
+                <element signature="e#3695#3696#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CompoundAlarm.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/CompoundAlarm.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="21" lean-forward="false" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoudAlarm.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/LoudAlarm.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="38" lean-forward="false" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SwitchCriteria.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriteria.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="1" lean-forward="false" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -1384,7 +1318,7 @@
         <entry key="$PROJECT_DIR$/../../../AutoFixtureGenerator" value="2959675563058" />
         <entry key="$PROJECT_DIR$" value="2960674800521" />
         <entry key="$PROJECT_DIR$/bastard-injection" value="2960674799893" />
-        <entry key="$PROJECT_DIR$/changing-behavior-through-composition" value="2960674800319" />
+        <entry key="$PROJECT_DIR$/changing-behavior-through-composition" value="2960685101152" />
         <entry key="$PROJECT_DIR$/conforming-container-antipattern" value="2960674800417" />
         <entry key="$PROJECT_DIR$/control-freak" value="2960674800625" />
         <entry key="$PROJECT_DIR$/control-freak-refactored" value="2960674800518" />
@@ -2306,6 +2240,46 @@
       <list>
         <option value="$PROJECT_DIR$/service-locator/src/main/java/com/github/grzesiek_galezowski/test_environment/ImmutableCondition.java" />
         <option value="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/_4_BastardInjection/Core/TeleComSystem.java" />
+        <option value="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Services/SqlDataDestination.java" />
+        <option value="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Inbound/UdpSocket.java" />
+        <option value="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Outbound/Outbound.java" />
+        <option value="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Outbound/OutboundMessage.java" />
+        <option value="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Outbound/TcpSocket.java" />
+        <option value="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Outbound/XmlMarshalling.java" />
+        <option value="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Services/IAuthorization.java" />
+        <option value="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Interfaces/AcmeMessage.java" />
+        <option value="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/InMessages/StartMessage.java" />
+        <option value="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/InMessages/StopMessage.java" />
+        <option value="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Services/IRepository.java" />
+        <option value="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Core/IProcessingWorkflow.java" />
+        <option value="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Services/ActiveDirectoryBasedAuthorization.java" />
+        <option value="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Inbound/IInbound.java" />
+        <option value="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Core/AcmeProcessingWorkflow.java" />
+        <option value="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Core/TeleComSystem.java" />
+        <option value="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/ApplicationRoot.java" />
+        <option value="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Inbound/BinaryParsing.java" />
+        <option value="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Inbound/BinaryUdpInbound.java" />
+        <option value="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Inbound/IInputSocket.java" />
+        <option value="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/InMessages/NullMessage.java" />
+        <option value="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Interfaces/DataDestination.java" />
+        <option value="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Outbound/IOutbound.java" />
+        <option value="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Outbound/IOutboundMessage.java" />
+        <option value="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Outbound/IOutputSocket.java" />
+        <option value="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Services/MsSqlBasedRepository.java" />
+        <option value="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriteria.java" />
+        <option value="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarm.java" />
+        <option value="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/LoudAlarm.java" />
+        <option value="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/NoAlarm.java" />
+        <option value="$PROJECT_DIR$/changing-behavior-through-composition/build.gradle" />
+        <option value="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/ParallelCompoundAlarm.java" />
+        <option value="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/SwitchableAlarm.java" />
+        <option value="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/SilentAlarm.java" />
+        <option value="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/CompoundAlarm.java" />
+        <option value="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriterias/CompoundSwitchCriteria.java" />
+        <option value="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriterias/MetDuringTheDayCriteria.java" />
+        <option value="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriterias/MetOnWorkDayCriteria.java" />
+        <option value="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Building.java" />
+        <option value="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/CompositionRoot.java" />
       </list>
     </option>
   </component>
@@ -2331,6 +2305,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -2340,254 +2315,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service-locator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service-locator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service-locator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="control-freak-refactored" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="control-freak-refactored" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="control-freak-refactored" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="control-freak-refactored" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="control-freak-refactored" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="control-freak" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="control-freak" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="control-freak" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="control-freak" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2615,31 +2342,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="bastard-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bastard-injection" />
+              <option name="myItemId" value="changing-behavior-through-composition" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -2651,7 +2360,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="bastard-injection" />
+              <option name="myItemId" value="changing-behavior-through-composition" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -2673,7 +2382,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="bastard-injection" />
+              <option name="myItemId" value="changing-behavior-through-composition" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -2688,13 +2397,100 @@
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChangingBehaviorThroughComposition" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dependency-injection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dependency-injection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="changing-behavior-through-composition" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChangingBehaviorThroughComposition" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SwitchCriterias" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dependency-injection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dependency-injection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="changing-behavior-through-composition" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ChangingBehaviorThroughComposition" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Alarms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_directory_selection" value="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Services" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.github.grzesiek_galezowski.BastardInjection.Services" />
+      <recent name="com.github.grzesiek_galezowski.BastardInjection.Outbound" />
+      <recent name="com.github.grzesiek_galezowski.BastardInjection.Inbound" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\grzes\Documents\GitHub\TrainingExamples\Java\dependency-injection\bastard-injection\src\main\java\com\github\grzesiek_galezowski\BastardInjection" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -2864,26 +2660,26 @@
     <frame x="54" y="-8" width="1634" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24969098" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24969098" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3294979" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32937685" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32937685" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294979" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -2899,139 +2695,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/bastard-injection/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/conforming-container-antipattern/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control-freak/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/control-freak-refactored/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-locator/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bastard-injection/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/conforming-container-antipattern/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control-freak/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control-freak-refactored/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-locator/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bastard-injection/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/conforming-container-antipattern/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control-freak/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control-freak-refactored/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3039,36 +2706,421 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="14" lean-forward="false" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/service-locator/src/main/java/com/github/grzesiek_galezowski/test_environment/ImmutableCondition.java" />
-    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/_4_BastardInjection/Core/IDisposable.java">
+    <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/test_environment/ImmutableCondition.java" />
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Properties/AssemblyInfo.cs" />
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Class1.cs" />
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/BastardInjection.csproj" />
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Inbound/UdpSocket.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding />
+        <state relative-caret-position="153">
+          <caret line="11" column="1" lean-forward="false" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/test_environment/ImmutableCondition.java">
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/InMessages/StopMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="47" lean-forward="false" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Core/IDisposable.java" />
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Core/AcmeProcessingWorkflow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="30" column="15" lean-forward="false" selection-start-line="30" selection-start-column="15" selection-end-line="30" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Core/IProcessingWorkflow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Core/TeleComSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Inbound/BinaryParsing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="30" lean-forward="false" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Inbound/BinaryUdpInbound.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="22" column="30" lean-forward="false" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Inbound/IInbound.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
-          <caret line="14" column="43" lean-forward="true" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
+          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Inbound/IPacketParsing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="10" lean-forward="false" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Inbound/IInputSocket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="19" lean-forward="false" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/InMessages/NullMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="21" lean-forward="false" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/InMessages/StartMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="7" lean-forward="false" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Interfaces/AcmeMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/ApplicationRoot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="4" lean-forward="false" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Services/SqlDataDestination.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="14" lean-forward="false" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Services/MsSqlBasedRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="17" column="18" lean-forward="false" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Services/IRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Services/IAuthorization.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="1" lean-forward="false" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Services/ActiveDirectoryBasedAuthorization.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Outbound/XmlMarshalling.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Outbound/TcpSocket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Outbound/OutboundMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Outbound/Outbound.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="21" column="1" lean-forward="false" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Outbound/IOutputSocket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="21" lean-forward="false" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Outbound/IOutboundMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="14" lean-forward="false" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Outbound/IOutbound.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="11" lean-forward="false" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Outbound/IMarshalling.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="10" lean-forward="false" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Interfaces/DataDestination.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="10" lean-forward="false" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/ChangingBehaviorThroughComposition.csproj" />
+    <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="25" lean-forward="false" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/_4_BastardInjection/Core/TeleComSystem.java">
+    <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/NoAlarm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="35" column="1" lean-forward="false" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
+        <state relative-caret-position="68">
+          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/ParallelCompoundAlarm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="72" lean-forward="true" selection-start-line="18" selection-start-column="72" selection-end-line="18" selection-end-column="72" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#326#327#0" expanded="true" />
+            <element signature="e#352#353#0" expanded="true" />
+            <element signature="e#379#380#0" expanded="true" />
+            <element signature="e#456#457#0" expanded="true" />
+            <element signature="e#483#484#0" expanded="true" />
+            <element signature="e#560#561#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/SilentAlarm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="24" lean-forward="false" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+          <folding>
+            <element signature="e#297#298#0" expanded="true" />
+            <element signature="e#337#338#0" expanded="true" />
+            <element signature="e#370#371#0" expanded="true" />
+            <element signature="e#429#430#0" expanded="true" />
+            <element signature="e#462#463#0" expanded="true" />
+            <element signature="e#525#526#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/SwitchableAlarm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/CompoundAlarm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="21" lean-forward="false" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/LoudAlarm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="38" lean-forward="false" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriterias/CompoundSwitchCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="27" lean-forward="false" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#400#401#0" expanded="true" />
+            <element signature="e#448#449#0" expanded="true" />
+            <element signature="e#485#486#0" expanded="true" />
+            <element signature="e#579#580#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriterias/MetDuringTheDayCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="34" lean-forward="false" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriterias/MetOnWorkDayCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="27" lean-forward="false" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#329#330#0" expanded="true" />
+            <element signature="e#357#358#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="1" lean-forward="false" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Building.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="13" column="30" lean-forward="false" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/CompositionRoot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="766">
+          <caret line="121" column="0" lean-forward="false" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3389#3390#0" expanded="true" />
+            <element signature="e#3419#3420#0" expanded="true" />
+            <element signature="e#3645#3646#0" expanded="true" />
+            <element signature="e#3695#3696#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="1" lean-forward="false" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>changing-behavior-through-composition</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Gradle: junit:junit:4.11</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
