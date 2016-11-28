@@ -2,107 +2,170 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd11a49d-e99b-4ce3-8cf6-c64471da4157" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules/control-freak-refactored_main.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules/control-freak-refactored_test.iml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bastard-injection/src/test/java/com/github/grzesiek_galezowski/test_environment/LockingFunctionsAssertionsSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bastard-injection/src/test/java/com/github/grzesiek_galezowski/test_environment/LockingFunctionsWithGenericReturnTypeAssertionsSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bastard-injection/src/test/java/com/github/grzesiek_galezowski/test_environment/LockingVoidMethodAssertionsSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bastard-injection/src/test/java/com/github/grzesiek_galezowski/test_environment/XAssertAllSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bastard-injection/src/test/java/com/github/grzesiek_galezowski/test_environment/XAssertSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bastard-injection/src/test/java/com/github/grzesiek_galezowski/test_environment/fixtures/InterfaceToBeSynchronized.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bastard-injection/src/test/java/com/github/grzesiek_galezowski/test_environment/fixtures/SyncAssertFixture.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bastard-injection/src/test/java/com/github/grzesiek_galezowski/test_environment/fixtures/SynchronizedWrapperOverInterfaceToBeSynchronized.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bastard-injection/src/test/java/com/github/grzesiek_galezowski/test_environment/fixtures/ValueObjectWithoutFinalFields.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bastard-injection/src/test/java/com/github/grzesiek_galezowski/test_environment/fixtures/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bastard-injection/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForMonitorSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bastard-injection/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantLockSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bastard-injection/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantReadLockSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bastard-injection/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantWriteLockSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bastard-injection/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertionWorkflowSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bastard-injection/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/fixtures/LockAssertionsFixture.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bastard-injection/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/fixtures/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bastard-injection/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bastard-injection/src/test/java/com/github/grzesiek_galezowski/test_environment/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/test_environment/ImmutableCondition.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/test_environment/Main.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/test_environment/ValueObjectBehaviorCondition.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/test_environment/XAssert.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/test_environment/XJAssertConditions.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertions.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsErrorMessages.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForMonitor.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantLock.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantReadLock.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantWriteLock.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/StepsForSynchronizingOnCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/StepsForSynchronizingOnFunction.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertDsl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertDsl2.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertionSteps.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertionWorkflow.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/test_environment/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/test/java/com/github/grzesiek_galezowski/test_environment/LockingFunctionsAssertionsSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/test/java/com/github/grzesiek_galezowski/test_environment/LockingFunctionsWithGenericReturnTypeAssertionsSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/test/java/com/github/grzesiek_galezowski/test_environment/LockingVoidMethodAssertionsSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/test/java/com/github/grzesiek_galezowski/test_environment/XAssertAllSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/test/java/com/github/grzesiek_galezowski/test_environment/XAssertSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/test/java/com/github/grzesiek_galezowski/test_environment/fixtures/InterfaceToBeSynchronized.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/test/java/com/github/grzesiek_galezowski/test_environment/fixtures/SyncAssertFixture.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/test/java/com/github/grzesiek_galezowski/test_environment/fixtures/SynchronizedWrapperOverInterfaceToBeSynchronized.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/test/java/com/github/grzesiek_galezowski/test_environment/fixtures/ValueObjectWithoutFinalFields.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/test/java/com/github/grzesiek_galezowski/test_environment/fixtures/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForMonitorSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantLockSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantReadLockSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantWriteLockSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertionWorkflowSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/fixtures/LockAssertionsFixture.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/fixtures/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/test/java/com/github/grzesiek_galezowski/test_environment/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/test/java/com/github/grzesiek_galezowski/test_environment/LockingFunctionsAssertionsSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/test/java/com/github/grzesiek_galezowski/test_environment/LockingFunctionsWithGenericReturnTypeAssertionsSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/test/java/com/github/grzesiek_galezowski/test_environment/LockingVoidMethodAssertionsSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/test/java/com/github/grzesiek_galezowski/test_environment/XAssertAllSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/test/java/com/github/grzesiek_galezowski/test_environment/XAssertSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/test/java/com/github/grzesiek_galezowski/test_environment/fixtures/InterfaceToBeSynchronized.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/test/java/com/github/grzesiek_galezowski/test_environment/fixtures/SyncAssertFixture.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/test/java/com/github/grzesiek_galezowski/test_environment/fixtures/SynchronizedWrapperOverInterfaceToBeSynchronized.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/test/java/com/github/grzesiek_galezowski/test_environment/fixtures/ValueObjectWithoutFinalFields.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/test/java/com/github/grzesiek_galezowski/test_environment/fixtures/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForMonitorSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantLockSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantReadLockSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantWriteLockSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertionWorkflowSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/fixtures/LockAssertionsFixture.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/fixtures/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/test/java/com/github/grzesiek_galezowski/test_environment/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/test/java/com/github/grzesiek_galezowski/test_environment/LockingFunctionsAssertionsSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/test/java/com/github/grzesiek_galezowski/test_environment/LockingFunctionsWithGenericReturnTypeAssertionsSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/test/java/com/github/grzesiek_galezowski/test_environment/LockingVoidMethodAssertionsSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/test/java/com/github/grzesiek_galezowski/test_environment/XAssertAllSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/test/java/com/github/grzesiek_galezowski/test_environment/XAssertSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/test/java/com/github/grzesiek_galezowski/test_environment/fixtures/InterfaceToBeSynchronized.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/test/java/com/github/grzesiek_galezowski/test_environment/fixtures/SyncAssertFixture.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/test/java/com/github/grzesiek_galezowski/test_environment/fixtures/SynchronizedWrapperOverInterfaceToBeSynchronized.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/test/java/com/github/grzesiek_galezowski/test_environment/fixtures/ValueObjectWithoutFinalFields.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/test/java/com/github/grzesiek_galezowski/test_environment/fixtures/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForMonitorSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantLockSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantReadLockSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantWriteLockSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertionWorkflowSpecification.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/fixtures/LockAssertionsFixture.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/fixtures/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/test/java/com/github/grzesiek_galezowski/test_environment/implementation_details/package-info.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/test/java/com/github/grzesiek_galezowski/test_environment/package-info.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/control-freak-refactored.iml" afterPath="$PROJECT_DIR$/.idea/modules/control-freak-refactored.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Properties/AssemblyInfo.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/packages.config" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/ImmutableCondition.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/Main.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/ValueObjectBehaviorCondition.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/XAssert.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/XJAssertConditions.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertions.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsErrorMessages.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForMonitor.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantLock.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantReadLock.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantWriteLock.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/StepsForSynchronizingOnCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/StepsForSynchronizingOnFunction.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertDsl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertDsl2.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertionSteps.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertionWorkflow.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/package-info.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/test_environment/package-info.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/ImmutableCondition.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/Main.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/ValueObjectBehaviorCondition.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/XAssert.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/XJAssertConditions.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertions.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsErrorMessages.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForMonitor.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantLock.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantReadLock.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantWriteLock.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/StepsForSynchronizingOnCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/StepsForSynchronizingOnFunction.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertDsl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertDsl2.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertionSteps.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertionWorkflow.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/package-info.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/test_environment/package-info.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/ImmutableCondition.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/Main.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/ValueObjectBehaviorCondition.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/XAssert.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/XJAssertConditions.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertions.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsErrorMessages.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForMonitor.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantLock.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantReadLock.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/LockAssertionsForReentrantWriteLock.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/StepsForSynchronizingOnCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/StepsForSynchronizingOnFunction.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertDsl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertDsl2.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertionSteps.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/SynchronizationAssertionWorkflow.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/implementation_details/package-info.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/test_environment/package-info.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/_4_BastardInjection/Core/TeleComSystem.java" afterPath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/_4_BastardInjection/Core/TeleComSystem.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarm.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarm.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/CompoundAlarm.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/CompoundAlarm.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/LoudAlarm.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/LoudAlarm.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/NoAlarm.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/NoAlarm.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/ParallelCompoundAlarm.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/ParallelCompoundAlarm.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/SilentAlarm.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/SilentAlarm.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/SwitchableAlarm.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/SwitchableAlarm.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Building.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Building.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/ChangingBehaviorThroughComposition.csproj" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/ChangingBehaviorThroughComposition.csproj" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/CompositionRoot.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/CompositionRoot.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Properties/AssemblyInfo.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Properties/AssemblyInfo.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriteria.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriteria.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriterias/CompoundSwitchCriteria.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriterias/CompoundSwitchCriteria.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriterias/MetDuringTheDayCriteria.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriterias/MetDuringTheDayCriteria.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriterias/MetOnWorkDayCriteria.cs" afterPath="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriterias/MetOnWorkDayCriteria.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/Class1.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/Class1.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/ConformingContainerAntipattern.csproj" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/ConformingContainerAntipattern.csproj" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/Properties/AssemblyInfo.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/Properties/AssemblyInfo.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/ApplicationRoot.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/ApplicationRoot.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/ConformingContainer.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/ConformingContainer.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Core/AcmeProcessingWorkflow.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Core/AcmeProcessingWorkflow.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Core/TeleComSystem.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Core/TeleComSystem.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/InMessages/NullMessage.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/InMessages/NullMessage.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/InMessages/StartMessage.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/InMessages/StartMessage.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/InMessages/StopMessage.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/InMessages/StopMessage.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Inbound/BinaryParsing.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Inbound/BinaryParsing.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Inbound/BinaryUdpInbound.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Inbound/BinaryUdpInbound.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Inbound/UdpSocket.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Inbound/UdpSocket.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Interfaces/AcmeMessage.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Interfaces/AcmeMessage.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Interfaces/DataDestination.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Interfaces/DataDestination.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Outbound/Outbound.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Outbound/Outbound.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Outbound/OutboundMessage.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Outbound/OutboundMessage.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Outbound/TcpSocket.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Outbound/TcpSocket.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Outbound/XmlMarshalling.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Outbound/XmlMarshalling.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Services/ActiveDirectoryBasedAuthorization.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Services/ActiveDirectoryBasedAuthorization.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Services/MsSqlBasedRepository.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Services/MsSqlBasedRepository.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Services/SqlDataDestination.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Services/SqlDataDestination.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/packages.config" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/packages.config" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/DependencyInjectionBefore.csproj" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/DependencyInjectionBefore.csproj" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/DependencyInjectionBefore.csproj.ccexclude" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/DependencyInjectionBefore.csproj.ccexclude" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/Properties/AssemblyInfo.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/Properties/AssemblyInfo.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/ApplicationRoot.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/ApplicationRoot.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Core/AcmeProcessingWorkflow.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Core/AcmeProcessingWorkflow.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Core/TeleComSystem.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Core/TeleComSystem.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/InMessages/NullMessage.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/InMessages/NullMessage.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/InMessages/StartMessage.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/InMessages/StartMessage.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/InMessages/StopMessage.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/InMessages/StopMessage.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Inbound/BinaryParsing.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Inbound/BinaryParsing.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Inbound/BinaryUdpInbound.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Inbound/BinaryUdpInbound.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Inbound/UdpSocket.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Inbound/UdpSocket.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Interfaces/AcmeMessage.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Interfaces/AcmeMessage.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Interfaces/DataDestination.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Interfaces/DataDestination.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Outbound/TcpSocket.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Outbound/TcpSocket.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Outbound/XmlMarshalling.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Outbound/XmlMarshalling.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Outbound/XmlOutboundMessage.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Outbound/XmlOutboundMessage.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Outbound/XmlTcpOutbound.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Outbound/XmlTcpOutbound.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Services/ActiveDirectoryBasedAuthorization.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Services/ActiveDirectoryBasedAuthorization.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Services/MsSqlBasedRepository.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Services/MsSqlBasedRepository.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Services/SqlDataDestination.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Services/SqlDataDestination.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/packages.config" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/packages.config" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/DependencyInjectionAfter.csproj" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/DependencyInjectionAfter.csproj" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Properties/AssemblyInfo.cs" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/Properties/AssemblyInfo.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/ApplicationRoot.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/ApplicationRoot.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Core/AcmeProcessingWorkflow.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Core/AcmeProcessingWorkflow.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Core/TeleComSystem.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Core/TeleComSystem.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/InMessages/NullMessage.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/InMessages/NullMessage.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/InMessages/StartMessage.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/InMessages/StartMessage.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/InMessages/StopMessage.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/InMessages/StopMessage.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Inbound/BinaryParsing.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Inbound/BinaryParsing.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Inbound/MessageInbound.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Inbound/MessageInbound.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Inbound/UdpSocket.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Inbound/UdpSocket.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Interfaces/AcmeMessage.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Interfaces/AcmeMessage.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Interfaces/DataDestination.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Interfaces/DataDestination.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Outbound/MessageOutbound.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Outbound/MessageOutbound.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Outbound/TcpSocket.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Outbound/TcpSocket.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Outbound/XmlMarshalling.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Outbound/XmlMarshalling.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Outbound/XmlOutboundMessage.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Outbound/XmlOutboundMessage.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Outbound/XmlOutboundMessageFactory.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Outbound/XmlOutboundMessageFactory.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Services/ActiveDirectoryBasedAuthorization.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Services/ActiveDirectoryBasedAuthorization.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Services/MsSqlBasedRepository.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Services/MsSqlBasedRepository.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Services/SqlDataDestination.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Services/SqlDataDestination.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/packages.config" afterPath="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/packages.config" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/Class1.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/Class1.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/Properties/AssemblyInfo.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/Properties/AssemblyInfo.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/ServiceLocatorDIAntipattern.csproj" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/ServiceLocatorDIAntipattern.csproj" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/ApplicationRoot.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/ApplicationRoot.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/Core/AcmeProcessingWorkflow.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Core/AcmeProcessingWorkflow.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/Core/TeleComSystem.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Core/TeleComSystem.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/InMessages/NullMessage.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/InMessages/NullMessage.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/InMessages/StartMessage.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/InMessages/StartMessage.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/InMessages/StopMessage.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/InMessages/StopMessage.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/Inbound/BinaryParsing.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Inbound/BinaryParsing.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/Inbound/BinaryUdpInbound.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Inbound/BinaryUdpInbound.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/Inbound/UdpSocket.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Inbound/UdpSocket.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/Interfaces/AcmeMessage.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Interfaces/AcmeMessage.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/Interfaces/DataDestination.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Interfaces/DataDestination.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/Outbound/Outbound.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Outbound/Outbound.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/Outbound/OutboundMessage.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Outbound/OutboundMessage.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/Outbound/TcpSocket.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Outbound/TcpSocket.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/Outbound/XmlMarshalling.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Outbound/XmlMarshalling.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/Services/ActiveDirectoryBasedAuthorization.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Services/ActiveDirectoryBasedAuthorization.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/Services/MsSqlBasedRepository.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Services/MsSqlBasedRepository.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/_2_ServiceLocator/Services/SqlDataDestination.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Services/SqlDataDestination.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/ServiceLocatorDIAntipattern/packages.config" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/packages.config" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -237,8 +300,8 @@
       <file leaf-file-name="TeleComSystem.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/_4_BastardInjection/Core/TeleComSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="38" column="6" lean-forward="false" selection-start-line="38" selection-start-column="6" selection-end-line="38" selection-end-column="6" />
+            <state relative-caret-position="468">
+              <caret line="35" column="1" lean-forward="false" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -2333,6 +2396,10 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -2411,6 +2478,130 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dependency-injection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dependency-injection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="control-freak-refactored" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dependency-injection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dependency-injection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="control-freak" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dependency-injection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dependency-injection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="control-freak" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dependency-injection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dependency-injection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="control-freak" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dependency-injection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dependency-injection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="control-freak" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dependency-injection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dependency-injection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="changing-behavior-through-composition" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2495,10 +2686,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="grzesiek_galezowski" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2675,7 +2862,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-8" width="1634" height="1066" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2684,7 +2871,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24969098" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24969098" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3294979" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -2865,21 +3052,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/_4_BastardInjection/Core/TeleComSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="38" column="6" lean-forward="false" selection-start-line="38" selection-start-column="6" selection-end-line="38" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/test_environment/ImmutableCondition.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="14" column="43" lean-forward="true" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/_4_BastardInjection/Core/TeleComSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="35" column="1" lean-forward="false" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
