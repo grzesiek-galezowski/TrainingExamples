@@ -6,9 +6,9 @@ namespace ServiceLocatorDIAntipattern._2_ServiceLocator.Core
 {
   class TeleComSystem
   {
-    private readonly IProcessingWorkflow _processingWorkflow;
-    private readonly IInbound _inbound;
-    private readonly IOutbound _outbound;
+    private final IProcessingWorkflow _processingWorkflow;
+    private final IInbound _inbound;
+    private final IOutbound _outbound;
 
     public TeleComSystem()
     {

@@ -5,7 +5,7 @@ namespace ConformingContainerAntipattern._3_ConformingContainer
 {
   public class ConformingContainer : IDisposable
   {
-    readonly IUnityContainer _container = new UnityContainer();
+    final IUnityContainer _container = new UnityContainer();
 
     public For<T> For<T>()
     {
@@ -35,8 +35,8 @@ namespace ConformingContainerAntipattern._3_ConformingContainer
 
   public class For<T>
   {
-    private readonly IUnityContainer _container;
-    private readonly ConformingContainer _conformingContainer;
+    private final IUnityContainer _container;
+    private final ConformingContainer _conformingContainer;
 
     public For(IUnityContainer container, ConformingContainer conformingContainer)
     {

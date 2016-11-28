@@ -10,7 +10,7 @@ namespace ServiceLocatorDIAntipattern._2_ServiceLocator.Services
 
   public class MsSqlBasedRepository : IRepository
   {
-    private readonly DataDestination _sqlDataDestination = ApplicationRoot.Context.Resolve<SqlDataDestination>();
+    private final DataDestination _sqlDataDestination = ApplicationRoot.Context.Resolve<SqlDataDestination>();
 
     public void Save(AcmeMessage message)
     {

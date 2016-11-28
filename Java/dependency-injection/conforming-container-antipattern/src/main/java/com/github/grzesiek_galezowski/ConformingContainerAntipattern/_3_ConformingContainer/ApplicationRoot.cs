@@ -46,7 +46,7 @@ namespace ConformingContainerAntipattern._3_ConformingContainer
       }
 
       //simplified
-      public static readonly ConformingContainer Context = new ConformingContainer();
+      public static final ConformingContainer Context = new ConformingContainer();
     }
 
 

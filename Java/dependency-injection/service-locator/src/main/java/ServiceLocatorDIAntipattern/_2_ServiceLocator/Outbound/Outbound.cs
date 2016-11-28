@@ -10,7 +10,7 @@ namespace ServiceLocatorDIAntipattern._2_ServiceLocator.Outbound
 
   public class Outbound : IOutbound
   {
-    private readonly IOutputSocket _outputOutputSocket;
+    private final IOutputSocket _outputOutputSocket;
 
     public Outbound()
     {

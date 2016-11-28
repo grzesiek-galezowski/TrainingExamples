@@ -47,7 +47,7 @@ namespace ServiceLocatorDIAntipattern._2_ServiceLocator
       }
 
       //simplified
-      public static readonly UnityContainer Context = new UnityContainer();
+      public static final UnityContainer Context = new UnityContainer();
     }
 
 

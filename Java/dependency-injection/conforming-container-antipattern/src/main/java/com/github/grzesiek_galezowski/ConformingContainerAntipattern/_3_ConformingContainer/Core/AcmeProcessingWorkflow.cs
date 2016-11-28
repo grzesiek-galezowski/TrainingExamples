@@ -12,8 +12,8 @@ namespace ConformingContainerAntipattern._3_ConformingContainer.Core
 
   class AcmeProcessingWorkflow : IProcessingWorkflow
   {
-    private readonly IRepository _repository;
-    private readonly IAuthorization _authorizationRules;
+    private final IRepository _repository;
+    private final IAuthorization _authorizationRules;
     private IOutbound _outbound;
 
     public AcmeProcessingWorkflow()

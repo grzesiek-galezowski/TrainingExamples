@@ -11,4 +11,7 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
+    // https://mvnrepository.com/artifact/org.picocontainer/picocontainer
+    compile group: 'org.picocontainer', name: 'picocontainer', version: '2.15'
+
 }

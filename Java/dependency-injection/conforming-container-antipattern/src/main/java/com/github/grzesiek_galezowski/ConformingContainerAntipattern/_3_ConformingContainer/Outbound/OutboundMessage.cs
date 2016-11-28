@@ -9,7 +9,7 @@ namespace ConformingContainerAntipattern._3_ConformingContainer.Outbound
 
   class OutboundMessage : IOutboundMessage
   {
-    private readonly IMarshalling _marshalling;
+    private final IMarshalling _marshalling;
     private string _content = string.Empty;
 
     public OutboundMessage()

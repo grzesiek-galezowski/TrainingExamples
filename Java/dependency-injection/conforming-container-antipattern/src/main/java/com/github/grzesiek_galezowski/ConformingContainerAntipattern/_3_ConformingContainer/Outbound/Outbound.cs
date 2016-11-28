@@ -9,7 +9,7 @@ namespace ConformingContainerAntipattern._3_ConformingContainer.Outbound
 
   public class Outbound : IOutbound
   {
-    private readonly IOutputSocket _outputOutputSocket;
+    private final IOutputSocket _outputOutputSocket;
 
     public Outbound()
     {

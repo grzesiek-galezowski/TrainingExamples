@@ -11,8 +11,8 @@ namespace ConformingContainerAntipattern._3_ConformingContainer.Inbound
   class BinaryUdpInbound : IInbound
   {
     private IProcessingWorkflow _processingWorkflow;
-    private readonly IInputSocket _socket;
-    private readonly IPacketParsing _parsing;
+    private final IInputSocket _socket;
+    private final IPacketParsing _parsing;
 
     public BinaryUdpInbound()
     {
