@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module type="JAVA_MODULE" version="4">
+<module external.linked.project.id="conforming-container-antipattern" external.linked.project.path="$MODULE_DIR$/../../conforming-container-antipattern" external.root.project.path="$MODULE_DIR$/../../conforming-container-antipattern" external.system.id="GRADLE" external.system.module.group="dependency-injection" external.system.module.version="1.0-SNAPSHOT" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$/../../conforming-container-antipattern" />
+    <content url="file://$MODULE_DIR$/../../conforming-container-antipattern">
+      <excludeFolder url="file://$MODULE_DIR$/../../conforming-container-antipattern/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../conforming-container-antipattern/build" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

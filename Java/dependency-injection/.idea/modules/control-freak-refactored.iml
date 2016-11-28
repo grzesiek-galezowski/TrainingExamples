@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module type="JAVA_MODULE" version="4">
+<module external.linked.project.id="control-freak-refactored" external.linked.project.path="$MODULE_DIR$/../../control-freak-refactored" external.root.project.path="$MODULE_DIR$/../../control-freak-refactored" external.system.id="GRADLE" external.system.module.group="dependency-injection" external.system.module.version="1.0-SNAPSHOT" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$/../../control-freak-refactored" />
+    <content url="file://$MODULE_DIR$/../../control-freak-refactored">
+      <sourceFolder url="file://$MODULE_DIR$/../../control-freak-refactored/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../control-freak-refactored/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../control-freak-refactored/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../control-freak-refactored/src/test/resources" type="java-test-resource" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
