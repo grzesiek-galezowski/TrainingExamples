@@ -13,6 +13,8 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/conforming-container-antipattern_test.iml" filepath="$PROJECT_DIR$/.idea/modules/conforming-container-antipattern_test.iml" group="conforming-container-antipattern" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/control-freak.iml" filepath="$PROJECT_DIR$/.idea/modules/control-freak.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/control-freak-refactored.iml" filepath="$PROJECT_DIR$/.idea/modules/control-freak-refactored.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/control-freak-refactored_main.iml" filepath="$PROJECT_DIR$/.idea/modules/control-freak-refactored_main.iml" group="control-freak-refactored" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/control-freak-refactored_test.iml" filepath="$PROJECT_DIR$/.idea/modules/control-freak-refactored_test.iml" group="control-freak-refactored" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/control-freak_main.iml" filepath="$PROJECT_DIR$/.idea/modules/control-freak_main.iml" group="control-freak" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/control-freak_test.iml" filepath="$PROJECT_DIR$/.idea/modules/control-freak_test.iml" group="control-freak" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/dependency-injection.iml" filepath="$PROJECT_DIR$/.idea/modules/dependency-injection.iml" />

@@ -3,10 +3,8 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../control-freak-refactored">
-      <sourceFolder url="file://$MODULE_DIR$/../../control-freak-refactored/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../control-freak-refactored/src/test/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/../../control-freak-refactored/src/main/resources" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/../../control-freak-refactored/src/test/resources" type="java-test-resource" />
+      <excludeFolder url="file://$MODULE_DIR$/../../control-freak-refactored/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../control-freak-refactored/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
