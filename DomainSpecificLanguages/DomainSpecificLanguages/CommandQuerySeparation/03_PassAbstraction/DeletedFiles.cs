@@ -2,6 +2,6 @@
 {
   public interface DeletedFilesObserver
   {
-    void Add(string file);
+    void Notify(string file);
   }
 }

@@ -12,7 +12,7 @@ namespace CommandQuerySeparation._03_PassAbstraction
       //bla bla bla
       foreach (var fileName in deletedFilesList)
       {
-        operationObserver.Add(fileName);
+        operationObserver.Notify(fileName);
       }
     }
   }

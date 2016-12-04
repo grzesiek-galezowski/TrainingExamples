@@ -11,11 +11,13 @@ namespace CommandQuerySeparation._00_WellKnownViolations
   {
     public void WellKnownViolations()
     {
+      Person p = new Person();
+      p.SetName("lol");
+
       TraverseList();
       PopFromStack();
       ReadFromStream();
       WhatAboutRandomAndGuidsAndTimeAndAny();
-
     }
 
     private void WhatAboutRandomAndGuidsAndTimeAndAny()
@@ -63,6 +65,19 @@ namespace CommandQuerySeparation._00_WellKnownViolations
           Console.WriteLine(enumerator.Current);
         }
       }
+    }
+  }
+
+  internal class Person
+  {
+    public void SetName(string zenek)
+    {
+      throw new NotImplementedException();
+    }
+
+    public string GetName()
+    {
+      throw new NotImplementedException();
     }
   }
 }

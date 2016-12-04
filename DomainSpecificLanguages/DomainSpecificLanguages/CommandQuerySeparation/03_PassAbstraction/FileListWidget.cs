@@ -2,7 +2,7 @@
 {
   public class FileListWidget : DeletedFilesObserver
   {
-    public void Add(string file)
+    public void Notify(string file)
     {
       throw new System.NotImplementedException();
     }
