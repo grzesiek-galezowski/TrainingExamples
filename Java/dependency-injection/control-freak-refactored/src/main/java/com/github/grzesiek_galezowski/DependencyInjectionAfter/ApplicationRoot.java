@@ -4,6 +4,7 @@ import com.github.grzesiek_galezowski.DependencyInjectionAfter.Core.TeleComSyste
 import com.github.grzesiek_galezowski.DependencyInjectionAfter.Inbound.*;
 import com.github.grzesiek_galezowski.DependencyInjectionAfter.Outbound.*;
 import com.github.grzesiek_galezowski.DependencyInjectionAfter.Services.*;
+import org.picocontainer.ComponentMonitor;
 import org.picocontainer.DefaultPicoContainer;
 import org.picocontainer.MutablePicoContainer;
 import org.picocontainer.lifecycle.ReflectionLifecycleStrategy;
@@ -13,7 +14,7 @@ import static org.picocontainer.Characteristics.CACHE;
 
 public class ApplicationRoot {
 
-  public void Main_BareConstructors() {
+  public void mainBareConstructors() {
     TeleComSystem sys = new TeleComSystem(
         new MessageInbound(
             new UdpSocket(),
@@ -29,27 +30,31 @@ public class ApplicationRoot {
     sys.Start();
   }
 
-  public void Main_FluentInterfaceWay() {
+  public void mainFluentInterfaceWay() {
     //Growing Object Oriented Software Guided By Tests
     //Building on SOLID Foundations
-    TeleComSystem sys = ASystemThat(
-        ReceivesMessages(
-            ViaUdp(),
-            InBinaryFormat()),
-        AndThen(
-            AuthenticatesThemViaActiveDirectory(),
-            PersistsInSqlDatabase()),
-        AndSendsThem(ViaTcp(), AsXml()));
+    TeleComSystem sys = aSystemThat(
+        receivesMessages(
+            viaUdp(),
+            inBinaryFormat()),
+        andThen(
+            authenticatesThemViaActiveDirectory(),
+            persistsInSqlDatabase()),
+        andSendsThem(viaTcp(), asXml()));
 
     sys.Start();
   }
 
-  public void Main_IoC_Container() {
+  public void mainIoCContainer() {
     MutablePicoContainer pico = null;
 
     try
     {
-      pico = new DefaultPicoContainer().as(CACHE); //todo add ReflectionLifecycleStrategy
+      ComponentMonitor monitor = new NullComponentMonitor();
+      pico = new DefaultPicoContainer(
+          monitor,
+          new ReflectionLifecycleStrategy(monitor),
+          null).as(CACHE);
 
       //Register
       pico
@@ -62,7 +67,7 @@ public class ApplicationRoot {
           .addComponent(IParsing.class, BinaryParsing.class)
           .addComponent(IInbound.class, MessageInbound.class)
           .addComponent(TeleComSystem.class);
-      //////// Only one Resolve() call after this line! ////////////
+      //////// Only one getComponent() call after this line! ////////////
 
       //Resolve
       TeleComSystem system = pico.getComponent(TeleComSystem.class);
@@ -77,44 +82,44 @@ public class ApplicationRoot {
   }
 
 
-  private static MsSqlBasedRepository PersistsInSqlDatabase() {
+  private static MsSqlBasedRepository persistsInSqlDatabase() {
     return new MsSqlBasedRepository(
         new SqlDataDestination());
   }
 
-  private static ActiveDirectoryBasedAuthorization AuthenticatesThemViaActiveDirectory() {
+  private static ActiveDirectoryBasedAuthorization authenticatesThemViaActiveDirectory() {
     return new ActiveDirectoryBasedAuthorization();
   }
 
-  private AcmeProcessingWorkflow AndThen(ActiveDirectoryBasedAuthorization activeDirectoryBasedAuthorization, MsSqlBasedRepository msSqlBasedRepository) {
+  private AcmeProcessingWorkflow andThen(ActiveDirectoryBasedAuthorization activeDirectoryBasedAuthorization, MsSqlBasedRepository msSqlBasedRepository) {
     return new AcmeProcessingWorkflow(activeDirectoryBasedAuthorization, msSqlBasedRepository);
   }
 
-  private static XmlOutboundMessageFactory AsXml() {
+  private static XmlOutboundMessageFactory asXml() {
     return new XmlOutboundMessageFactory();
   }
 
-  private static TcpSocket ViaTcp() {
+  private static TcpSocket viaTcp() {
     return new TcpSocket();
   }
 
-  private MessageOutbound AndSendsThem(TcpSocket tcpSocket, XmlOutboundMessageFactory xmlOutboundMessageFactory) {
+  private MessageOutbound andSendsThem(TcpSocket tcpSocket, XmlOutboundMessageFactory xmlOutboundMessageFactory) {
     return new MessageOutbound(tcpSocket, xmlOutboundMessageFactory);
   }
 
-  private static BinaryParsing InBinaryFormat() {
+  private static BinaryParsing inBinaryFormat() {
     return new BinaryParsing();
   }
 
-  private static UdpSocket ViaUdp() {
+  private static UdpSocket viaUdp() {
     return new UdpSocket();
   }
 
-  private MessageInbound ReceivesMessages(UdpSocket udpSocket, BinaryParsing binaryParsing) {
+  private MessageInbound receivesMessages(UdpSocket udpSocket, BinaryParsing binaryParsing) {
     return new MessageInbound(udpSocket, binaryParsing);
   }
 
-  private TeleComSystem ASystemThat(MessageInbound messageInbound, AcmeProcessingWorkflow acmeProcessingWorkflow, MessageOutbound messageOutbound) {
+  private TeleComSystem aSystemThat(MessageInbound messageInbound, AcmeProcessingWorkflow acmeProcessingWorkflow, MessageOutbound messageOutbound) {
     return new TeleComSystem(messageInbound, messageOutbound, acmeProcessingWorkflow);
   }
 

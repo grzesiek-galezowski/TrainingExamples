@@ -1,15 +1,10 @@
-﻿using ServiceLocatorDIAntipattern._2_ServiceLocator.Core;
-using Microsoft.Practices.Unity;
-
-namespace ServiceLocatorDIAntipattern._2_ServiceLocator.Inbound
-{
-  internal interface IInbound
+﻿public interface IInbound
   {
     void SetDomainLogic(IProcessingWorkflow processingWorkflow);
     void StartListening();
   }
 
-  class BinaryUdpInbound : IInbound
+public class BinaryUdpInbound : IInbound
   {
     private IProcessingWorkflow _processingWorkflow;
     private final IInputSocket _socket;

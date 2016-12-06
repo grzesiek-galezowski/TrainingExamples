@@ -1,10 +1,5 @@
-﻿using ServiceLocatorDIAntipattern._2_ServiceLocator.Inbound;
-using ServiceLocatorDIAntipattern._2_ServiceLocator.Outbound;
-using Microsoft.Practices.Unity;
-
-namespace ServiceLocatorDIAntipattern._2_ServiceLocator.Core
-{
-  class TeleComSystem
+﻿
+public class TeleComSystem
   {
     private final IProcessingWorkflow _processingWorkflow;
     private final IInbound _inbound;
@@ -24,4 +19,3 @@ namespace ServiceLocatorDIAntipattern._2_ServiceLocator.Core
       _inbound.StartListening();
     }
   }
-}

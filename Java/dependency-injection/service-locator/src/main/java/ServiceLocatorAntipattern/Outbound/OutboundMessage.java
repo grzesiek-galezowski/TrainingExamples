@@ -1,14 +1,10 @@
-﻿using ServiceLocatorDIAntipattern._2_ServiceLocator.Interfaces;
-using Microsoft.Practices.Unity;
-
-namespace ServiceLocatorDIAntipattern._2_ServiceLocator.Outbound
-{
+﻿
   public interface IOutboundMessage : DataDestination
   {
     void SendVia(IOutputSocket outputOutputSocket);
   }
 
-  class OutboundMessage : IOutboundMessage
+  public class OutboundMessage : IOutboundMessage
   {
     private final IMarshalling _marshalling;
     private string _content = string.Empty;

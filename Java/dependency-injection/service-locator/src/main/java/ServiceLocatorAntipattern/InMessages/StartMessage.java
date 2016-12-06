@@ -1,10 +1,5 @@
-﻿using System;
-using ServiceLocatorDIAntipattern._2_ServiceLocator.Interfaces;
-using ServiceLocatorDIAntipattern._2_ServiceLocator.Services;
-
-namespace ServiceLocatorDIAntipattern._2_ServiceLocator.InMessages
-{
-  class StartMessage : AcmeMessage
+﻿
+public class StartMessage : AcmeMessage
   {
     public void AuthorizeUsing(IAuthorization authorizationRules)
     {
@@ -16,4 +11,3 @@ namespace ServiceLocatorDIAntipattern._2_ServiceLocator.InMessages
       dataDestination.Add("Writing Start to " + dataDestination);
     }
   }
-}

@@ -1,15 +1,10 @@
-﻿using ServiceLocatorDIAntipattern._2_ServiceLocator.InMessages;
-using ServiceLocatorDIAntipattern._2_ServiceLocator.Interfaces;
-using Microsoft.Practices.Unity;
-
-namespace ServiceLocatorDIAntipattern._2_ServiceLocator.Inbound
-{
-  internal interface IPacketParsing
+﻿
+public interface IPacketParsing
   {
     AcmeMessage ResultFor(byte[] frameData);
   }
 
-  class BinaryParsing : IPacketParsing
+public class BinaryParsing : IPacketParsing
   {
     public AcmeMessage ResultFor(byte[] frameData)
     {
@@ -28,4 +23,3 @@ namespace ServiceLocatorDIAntipattern._2_ServiceLocator.Inbound
       
     }
   }
-}

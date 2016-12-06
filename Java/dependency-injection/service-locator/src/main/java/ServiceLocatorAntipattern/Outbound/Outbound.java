@@ -1,8 +1,4 @@
-﻿using ServiceLocatorDIAntipattern._2_ServiceLocator.Interfaces;
-using Microsoft.Practices.Unity;
-
-namespace ServiceLocatorDIAntipattern._2_ServiceLocator.Outbound
-{
+﻿
   public interface IOutbound
   {
     void Send(AcmeMessage message);
@@ -24,4 +20,3 @@ namespace ServiceLocatorDIAntipattern._2_ServiceLocator.Outbound
       outboundMessage.SendVia(_outputOutputSocket);
     }
   }
-}

@@ -1,17 +1,11 @@
-﻿using Microsoft.Practices.Unity;
-using ServiceLocatorDIAntipattern._2_ServiceLocator.Interfaces;
-using ServiceLocatorDIAntipattern._2_ServiceLocator.Outbound;
-using ServiceLocatorDIAntipattern._2_ServiceLocator.Services;
-
-namespace ServiceLocatorDIAntipattern._2_ServiceLocator.Core
-{
-  internal interface IProcessingWorkflow
+﻿
+  public interface IProcessingWorkflow
   {
     void SetOutbound(IOutbound outbound);
     void ApplyTo(AcmeMessage message);
   }
 
-  class AcmeProcessingWorkflow : IProcessingWorkflow
+  public class AcmeProcessingWorkflow : IProcessingWorkflow
   {
     private final IRepository _repository;
     private final IAuthorization _authorizationRules;
@@ -35,4 +29,3 @@ namespace ServiceLocatorDIAntipattern._2_ServiceLocator.Core
       _outbound.Send(message);
     }
   }
-}

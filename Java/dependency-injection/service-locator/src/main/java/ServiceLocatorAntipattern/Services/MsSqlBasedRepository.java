@@ -1,9 +1,4 @@
-﻿using ServiceLocatorDIAntipattern._2_ServiceLocator.Interfaces;
-using Microsoft.Practices.Unity;
-
-namespace ServiceLocatorDIAntipattern._2_ServiceLocator.Services
-{
-  public interface IRepository
+﻿  public interface IRepository
   {
     void Save(AcmeMessage message);
   }
@@ -17,4 +12,3 @@ namespace ServiceLocatorDIAntipattern._2_ServiceLocator.Services
       message.WriteTo(_sqlDataDestination);
     }
   }
-}

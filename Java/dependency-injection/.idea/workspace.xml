@@ -2,59 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd11a49d-e99b-4ce3-8cf6-c64471da4157" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_picocontainer_picocontainer_2_15.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Core/IAcmeProcessingWorkflow.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Inbound/IInbound.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Inbound/IInboundSocket.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Inbound/IParsing.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Outbound/IMarshalling.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Outbound/IOutbound.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Outbound/IOutboundMessage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Outbound/IOutboundMessageFactory.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Outbound/ISocket.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Services/IAuthorization.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Services/IRepository.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/DependencyInjectionAfter.csproj" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Properties/AssemblyInfo.cs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/packages.config" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/control-freak-refactored_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/control-freak-refactored_main.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/control-freak-refactored_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/control-freak-refactored_test.iml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/Class1.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/Properties/AssemblyInfo.cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/ServiceLocatorDIAntipattern.csproj" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/packages.config" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/dependency-injection_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/dependency-injection_main.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/dependency-injection_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/dependency-injection_test.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/ApplicationRoot.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/ApplicationRoot.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/ConformingContainer.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/ConformingContainer.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Core/AcmeProcessingWorkflow.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Core/AcmeProcessingWorkflow.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Core/TeleComSystem.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Core/TeleComSystem.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Inbound/BinaryUdpInbound.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Inbound/BinaryUdpInbound.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Outbound/Outbound.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Outbound/Outbound.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Outbound/OutboundMessage.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Outbound/OutboundMessage.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Services/MsSqlBasedRepository.cs" afterPath="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/Services/MsSqlBasedRepository.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/control-freak-refactored/build.gradle" afterPath="$PROJECT_DIR$/control-freak-refactored/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/ApplicationRoot.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/ApplicationRoot.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Core/AcmeProcessingWorkflow.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Core/AcmeProcessingWorkflow.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Core/TeleComSystem.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Core/TeleComSystem.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Inbound/BinaryUdpInbound.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Inbound/BinaryUdpInbound.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Outbound/Outbound.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Outbound/Outbound.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Outbound/OutboundMessage.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Outbound/OutboundMessage.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Services/MsSqlBasedRepository.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Services/MsSqlBasedRepository.cs" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/ApplicationRoot.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/ApplicationRoot.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Core/AcmeProcessingWorkflow.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Core/AcmeProcessingWorkflow.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Core/TeleComSystem.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Core/TeleComSystem.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/InMessages/NullMessage.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/InMessages/NullMessage.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/InMessages/StartMessage.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/InMessages/StartMessage.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/InMessages/StopMessage.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/InMessages/StopMessage.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Inbound/BinaryParsing.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Inbound/BinaryParsing.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Inbound/MessageInbound.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Inbound/MessageInbound.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Inbound/UdpSocket.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Inbound/UdpSocket.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Interfaces/AcmeMessage.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Interfaces/AcmeMessage.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Interfaces/DataDestination.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Interfaces/DataDestination.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Outbound/MessageOutbound.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Outbound/MessageOutbound.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Outbound/TcpSocket.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Outbound/TcpSocket.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Outbound/XmlMarshalling.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Outbound/XmlMarshalling.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Outbound/XmlOutboundMessage.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Outbound/XmlOutboundMessage.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Outbound/XmlOutboundMessageFactory.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Outbound/XmlOutboundMessageFactory.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Services/ActiveDirectoryBasedAuthorization.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Services/ActiveDirectoryBasedAuthorization.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Services/MsSqlBasedRepository.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Services/MsSqlBasedRepository.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/_1_ControlFreakRefactoredToDependencyInjection/Services/SqlDataDestination.cs" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Services/SqlDataDestination.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/ApplicationRoot.java" afterPath="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/ApplicationRoot.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/ApplicationRoot.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/ApplicationRoot.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Core/AcmeProcessingWorkflow.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Core/AcmeProcessingWorkflow.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Core/TeleComSystem.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Core/TeleComSystem.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/InMessages/NullMessage.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/InMessages/NullMessage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/InMessages/StartMessage.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/InMessages/StartMessage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/InMessages/StopMessage.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/InMessages/StopMessage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Inbound/BinaryParsing.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Inbound/BinaryParsing.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Inbound/BinaryUdpInbound.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Inbound/BinaryUdpInbound.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Inbound/UdpSocket.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Inbound/UdpSocket.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Interfaces/AcmeMessage.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Interfaces/AcmeMessage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Interfaces/DataDestination.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Interfaces/DataDestination.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Outbound/Outbound.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Outbound/Outbound.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Outbound/OutboundMessage.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Outbound/OutboundMessage.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Outbound/TcpSocket.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Outbound/TcpSocket.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Outbound/XmlMarshalling.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Outbound/XmlMarshalling.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Services/ActiveDirectoryBasedAuthorization.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Services/ActiveDirectoryBasedAuthorization.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Services/MsSqlBasedRepository.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Services/MsSqlBasedRepository.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorDIAntipattern/_2_ServiceLocator/Services/SqlDataDestination.cs" afterPath="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Services/SqlDataDestination.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -164,97 +138,63 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="XmlOutboundMessageFactory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Outbound/XmlOutboundMessageFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="24" lean-forward="false" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
-              <folding>
-                <element signature="e#201#202#0" expanded="true" />
-                <element signature="e#262#263#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="XmlOutboundMessage.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Outbound/XmlOutboundMessage.java">
+      <file leaf-file-name="TcpSocket.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Outbound/TcpSocket.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
               <caret line="8" column="9" lean-forward="false" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
-              <folding>
-                <element signature="e#386#387#0" expanded="true" />
-                <element signature="e#428#429#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IOutboundMessage.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Outbound/IOutboundMessage.java">
+      <file leaf-file-name="XmlMarshalling.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Outbound/XmlMarshalling.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="57" lean-forward="false" selection-start-line="4" selection-start-column="57" selection-end-line="4" selection-end-column="57" />
+            <state relative-caret-position="102">
+              <caret line="6" column="7" lean-forward="false" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ActiveDirectoryBasedAuthorization.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Services/ActiveDirectoryBasedAuthorization.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="9" lean-forward="false" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MsSqlBasedRepository.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Services/MsSqlBasedRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SqlDataDestination.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Services/SqlDataDestination.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="3" lean-forward="false" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="ApplicationRoot.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/ApplicationRoot.java">
+        <entry file="file://$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/ApplicationRoot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="51" column="57" lean-forward="false" selection-start-line="51" selection-start-column="57" selection-end-line="51" selection-end-column="57" />
+            <state relative-caret-position="119">
+              <caret line="7" column="43" lean-forward="true" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReflectionLifecycleStrategy.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.picocontainer/picocontainer/2.15/5cd68f54f9d6cf19ac62c7281ac729401f167fc5/picocontainer-2.15-sources.jar!/org/picocontainer/lifecycle/ReflectionLifecycleStrategy.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="64" column="11" lean-forward="false" selection-start-line="64" selection-start-column="11" selection-end-line="64" selection-end-column="11" />
-              <folding>
-                <element signature="e#2253#2254#0" expanded="true" />
-                <element signature="e#2310#2311#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefaultPicoContainer.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.picocontainer/picocontainer/2.15/5cd68f54f9d6cf19ac62c7281ac729401f167fc5/picocontainer-2.15-sources.jar!/org/picocontainer/DefaultPicoContainer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="266" column="11" lean-forward="false" selection-start-line="266" selection-start-column="11" selection-end-line="266" selection-end-column="11" />
-              <folding>
-                <element signature="e#10604#10605#0" expanded="true" />
-                <element signature="e#10654#10655#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MutablePicoContainer.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.picocontainer/picocontainer/2.15/5cd68f54f9d6cf19ac62c7281ac729401f167fc5/picocontainer-2.15-sources.jar!/org/picocontainer/MutablePicoContainer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="24" column="79" lean-forward="false" selection-start-line="24" selection-start-column="79" selection-end-line="24" selection-end-column="79" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Disposable.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.picocontainer/picocontainer/2.15/5cd68f54f9d6cf19ac62c7281ac729401f167fc5/picocontainer-2.15-sources.jar!/org/picocontainer/Disposable.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="25" column="9" lean-forward="false" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
-              <folding>
-                <element signature="n#!!doc" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -263,21 +203,41 @@
       <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/control-freak-refactored/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="62" lean-forward="false" selection-start-line="13" selection-start-column="62" selection-end-line="13" selection-end-column="62" />
+            <state relative-caret-position="238">
+              <caret line="14" column="78" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="78" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TeleComSystem.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Core/TeleComSystem.java">
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+            <state relative-caret-position="221">
+              <caret line="13" column="78" lean-forward="false" selection-start-line="13" selection-start-column="78" selection-end-line="13" selection-end-column="78" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ApplicationRoot.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/ApplicationRoot.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="833">
+              <caret line="82" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AcmeProcessingWorkflow.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Core/AcmeProcessingWorkflow.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="9" lean-forward="false" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1371,7 +1331,7 @@
     <option name="modificationStamps">
       <map>
         <entry key="$PROJECT_DIR$/../../../AutoFixtureGenerator" value="2959675563058" />
-        <entry key="$PROJECT_DIR$" value="2960674800521" />
+        <entry key="$PROJECT_DIR$" value="2960822385648" />
         <entry key="$PROJECT_DIR$/bastard-injection" value="2960674799893" />
         <entry key="$PROJECT_DIR$/changing-behavior-through-composition" value="2960685101152" />
         <entry key="$PROJECT_DIR$/conforming-container-antipattern" value="2960674800417" />
@@ -2293,26 +2253,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/CompositionRoot.java" />
-        <option value="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Services/SqlDataDestination.java" />
-        <option value="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Services/ActiveDirectoryBasedAuthorization.java" />
-        <option value="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/InMessages/StopMessage.java" />
-        <option value="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Interfaces/AcmeMessage.java" />
-        <option value="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/InMessages/StartMessage.java" />
-        <option value="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Inbound/BinaryUdpInbound.java" />
-        <option value="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Core/AcmeProcessingWorkflow.java" />
-        <option value="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Core/TeleComSystem.java" />
-        <option value="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Inbound/BinaryParsing.java" />
-        <option value="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Inbound/UdpSocket.java" />
-        <option value="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/InMessages/NullMessage.java" />
-        <option value="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Interfaces/DataDestination.java" />
-        <option value="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Outbound/TcpSocket.java" />
-        <option value="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Outbound/XmlTcpOutbound.java" />
-        <option value="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Outbound/XmlMarshalling.java" />
-        <option value="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Outbound/XmlOutboundMessage.java" />
-        <option value="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Services/MsSqlBasedRepository.java" />
-        <option value="$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/ApplicationRoot.java" />
-        <option value="$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/ApplicationRoot.cs" />
         <option value="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Inbound/IInbound.java" />
         <option value="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Inbound/IInboundSocket.java" />
         <option value="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Inbound/UdpSocket.java" />
@@ -2343,7 +2283,27 @@
         <option value="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Outbound/IOutboundMessage.java" />
         <option value="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Core/TeleComSystem.java" />
         <option value="$PROJECT_DIR$/control-freak-refactored/build.gradle" />
+        <option value="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Core/AcmeProcessingWorkflow.cs" />
+        <option value="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Core/AcmeProcessingWorkflow.java" />
+        <option value="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Core/TeleComSystem.java" />
+        <option value="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Inbound/BinaryParsing.java" />
+        <option value="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Inbound/BinaryUdpInbound.java" />
+        <option value="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Inbound/UdpSocket.java" />
+        <option value="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/InMessages/NullMessage.java" />
+        <option value="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/InMessages/StartMessage.java" />
+        <option value="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/InMessages/StopMessage.java" />
+        <option value="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Interfaces/AcmeMessage.java" />
+        <option value="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Interfaces/DataDestination.java" />
+        <option value="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Outbound/Outbound.java" />
+        <option value="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Outbound/OutboundMessage.java" />
+        <option value="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Outbound/TcpSocket.java" />
+        <option value="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Outbound/XmlMarshalling.java" />
+        <option value="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Services/ActiveDirectoryBasedAuthorization.java" />
+        <option value="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Services/MsSqlBasedRepository.java" />
+        <option value="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Services/SqlDataDestination.java" />
         <option value="$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/ApplicationRoot.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/ApplicationRoot.java" />
       </list>
     </option>
   </component>
@@ -2369,75 +2329,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Gradle: org.picocontainer:picocontainer:2.15" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="picocontainer-2.15.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="picocontainer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Gradle: org.picocontainer:picocontainer:2.15" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="picocontainer-2.15.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="picocontainer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lifecycle" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Gradle: org.picocontainer:picocontainer:2.15" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="picocontainer-2.15.jar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="dependency-injection" />
@@ -2482,21 +2377,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="control-freak-refactored" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="control-freak-refactored" />
+              <option name="myItemId" value="service-locator" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -2514,7 +2395,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="control-freak-refactored" />
+              <option name="myItemId" value="service-locator" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -2536,7 +2417,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="control-freak-refactored" />
+              <option name="myItemId" value="service-locator" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -2552,7 +2433,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="DependencyInjectionAfter" />
+              <option name="myItemId" value="ServiceLocatorAntipattern" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2566,7 +2447,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="control-freak-refactored" />
+              <option name="myItemId" value="service-locator" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -2582,177 +2463,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="DependencyInjectionAfter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="control-freak-refactored" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DependencyInjectionAfter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Outbound" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="control-freak-refactored" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DependencyInjectionAfter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Interfaces" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="control-freak-refactored" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DependencyInjectionAfter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="InMessages" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="control-freak-refactored" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DependencyInjectionAfter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Inbound" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="control-freak-refactored" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DependencyInjectionAfter" />
+              <option name="myItemId" value="ServiceLocatorAntipattern" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -2770,61 +2481,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="conforming-container-antipattern" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="conforming-container-antipattern" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="conforming-container-antipattern" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="conforming-container-antipattern" />
+              <option name="myItemId" value="service-locator" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -2840,7 +2497,29 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ConformingContainerAntipattern" />
+              <option name="myItemId" value="ServiceLocatorAntipattern" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AcmeProcessingWorkflow.java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dependency-injection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dependency-injection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="control-freak-refactored" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2854,7 +2533,47 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="conforming-container-antipattern" />
+              <option name="myItemId" value="control-freak-refactored" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dependency-injection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dependency-injection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="control-freak-refactored" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dependency-injection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dependency-injection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="control-freak-refactored" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -2870,50 +2589,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ConformingContainerAntipattern" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_3_ConformingContainer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bastard-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bastard-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="DependencyInjectionAfter" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -3125,29 +2807,29 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-8" width="1634" height="1066" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24969098" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32937685" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294979" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24969098" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24969098" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294979" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941905" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32937685" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294979" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24969098" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294979" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -3162,178 +2844,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Inbound/UdpSocket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="24" lean-forward="false" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/InMessages/NullMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="23" lean-forward="false" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/InMessages/StartMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="35" lean-forward="false" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#683#684#0" expanded="false" />
-            <element signature="e#755#756#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Interfaces/AcmeMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="43" lean-forward="false" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Interfaces/DataDestination.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="10" lean-forward="false" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Outbound/TcpSocket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Outbound/XmlMarshalling.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="18" lean-forward="false" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Outbound/XmlOutboundMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" column="21" lean-forward="false" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
-          <folding>
-            <element signature="e#647#648#0" expanded="false" />
-            <element signature="e#670#671#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Outbound/XmlTcpOutbound.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Services/ActiveDirectoryBasedAuthorization.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="40" lean-forward="false" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Services/MsSqlBasedRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="18" lean-forward="false" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Services/SqlDataDestination.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="30" lean-forward="false" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/ApplicationRoot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="53" lean-forward="false" selection-start-line="12" selection-start-column="53" selection-end-line="12" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Properties/AssemblyInfo.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/DependencyInjectionAfter.csproj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/_3_ConformingContainer/ApplicationRoot.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="741">
-          <caret line="48" column="19" lean-forward="false" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Inbound/IInbound.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="1" lean-forward="false" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Inbound/IInboundSocket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Inbound/UdpSocket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="20" lean-forward="false" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Interfaces/DataDestination.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="21" lean-forward="false" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
-          <folding>
-            <marker date="1480368138994" expanded="true" signature="75:136" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3341,7 +2855,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="1" lean-forward="false" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3349,7 +2862,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3357,14 +2869,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="20" lean-forward="false" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-          <folding>
-            <element signature="e#140#141#0" expanded="true" />
-            <element signature="e#176#177#0" expanded="true" />
-            <element signature="e#201#202#0" expanded="true" />
-            <element signature="e#240#241#0" expanded="true" />
-            <element signature="e#274#275#0" expanded="true" />
-            <element signature="e#307#308#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3372,7 +2876,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="1" lean-forward="true" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3380,10 +2883,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding>
-            <element signature="e#160#161#0" expanded="true" />
-            <element signature="e#192#193#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3391,7 +2890,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="1" lean-forward="false" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3399,7 +2897,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3407,7 +2904,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3417,10 +2913,10 @@
           <caret line="3" column="90" lean-forward="false" selection-start-line="3" selection-start-column="90" selection-end-line="3" selection-end-column="90" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#433#434#0" expanded="true" />
-            <element signature="e#483#484#0" expanded="true" />
-            <element signature="e#526#527#0" expanded="true" />
-            <element signature="e#572#573#0" expanded="true" />
+            <element signature="e#433#434#0" expanded="false" />
+            <element signature="e#483#484#0" expanded="false" />
+            <element signature="e#526#527#0" expanded="false" />
+            <element signature="e#572#573#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3429,12 +2925,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="27" lean-forward="true" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
-          <folding>
-            <element signature="e#329#330#0" expanded="true" />
-            <element signature="e#380#381#0" expanded="true" />
-            <marker date="1480369299700" expanded="true" signature="166:384" ph="{...}" />
-            <marker date="1480369299700" expanded="true" signature="297:382" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3442,7 +2932,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3460,9 +2949,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="26" lean-forward="true" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3470,9 +2956,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="39" lean-forward="false" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3480,11 +2963,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="56" lean-forward="false" selection-start-line="11" selection-start-column="56" selection-end-line="11" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#603#604#0" expanded="true" />
-            <element signature="e#677#678#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3492,11 +2970,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#601#602#0" expanded="true" />
-            <element signature="e#673#674#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3504,7 +2977,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="14" lean-forward="false" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3522,7 +2994,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="7" lean-forward="false" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3540,7 +3011,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="26" lean-forward="false" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3548,10 +3018,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="9" lean-forward="false" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
-          <folding>
-            <element signature="e#386#387#0" expanded="true" />
-            <element signature="e#428#429#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3559,10 +3025,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="24" lean-forward="false" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
-          <folding>
-            <element signature="e#201#202#0" expanded="true" />
-            <element signature="e#262#263#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3570,7 +3032,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="57" lean-forward="false" selection-start-line="4" selection-start-column="57" selection-end-line="4" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3584,19 +3045,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/control-freak-refactored/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="62" lean-forward="false" selection-start-line="13" selection-start-column="62" selection-end-line="13" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.picocontainer/picocontainer/2.15/5cd68f54f9d6cf19ac62c7281ac729401f167fc5/picocontainer-2.15-sources.jar!/org/picocontainer/MutablePicoContainer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="24" column="79" lean-forward="false" selection-start-line="24" selection-start-column="79" selection-end-line="24" selection-end-column="79" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.picocontainer/picocontainer/2.15/5cd68f54f9d6cf19ac62c7281ac729401f167fc5/picocontainer-2.15-sources.jar!/org/picocontainer/lifecycle/ReflectionLifecycleStrategy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="901">
+          <caret line="64" column="11" lean-forward="false" selection-start-line="64" selection-start-column="11" selection-end-line="64" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.picocontainer/picocontainer/2.15/5cd68f54f9d6cf19ac62c7281ac729401f167fc5/picocontainer-2.15-sources.jar!/org/picocontainer/DefaultPicoContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="266" column="11" lean-forward="false" selection-start-line="266" selection-start-column="11" selection-end-line="266" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -3604,38 +3070,172 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="25" column="9" lean-forward="false" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.picocontainer/picocontainer/2.15/5cd68f54f9d6cf19ac62c7281ac729401f167fc5/picocontainer-2.15-sources.jar!/org/picocontainer/lifecycle/ReflectionLifecycleStrategy.java">
+    <entry file="file://$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Core/TeleComSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="64" column="11" lean-forward="false" selection-start-line="64" selection-start-column="11" selection-end-line="64" selection-end-column="11" />
-          <folding>
-            <element signature="e#2253#2254#0" expanded="true" />
-            <element signature="e#2310#2311#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="357">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.picocontainer/picocontainer/2.15/5cd68f54f9d6cf19ac62c7281ac729401f167fc5/picocontainer-2.15-sources.jar!/org/picocontainer/DefaultPicoContainer.java">
+    <entry file="file://$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Inbound/BinaryParsing.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="266" column="11" lean-forward="false" selection-start-line="266" selection-start-column="11" selection-end-line="266" selection-end-column="11" />
-          <folding>
-            <element signature="e#10604#10605#0" expanded="true" />
-            <element signature="e#10654#10655#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="425">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Inbound/BinaryUdpInbound.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="7" lean-forward="false" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Inbound/UdpSocket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="7" lean-forward="false" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/InMessages/NullMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="7" lean-forward="false" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/InMessages/StartMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="7" lean-forward="false" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/InMessages/StopMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="7" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Interfaces/AcmeMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Interfaces/DataDestination.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="7" lean-forward="false" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Outbound/Outbound.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="2" lean-forward="false" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Outbound/OutboundMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="9" lean-forward="false" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Outbound/TcpSocket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="9" lean-forward="false" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Outbound/XmlMarshalling.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="7" lean-forward="false" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Services/ActiveDirectoryBasedAuthorization.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="9" lean-forward="false" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Services/MsSqlBasedRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Services/SqlDataDestination.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="3" lean-forward="false" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/Core/AcmeProcessingWorkflow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="9" lean-forward="false" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/ApplicationRoot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="51" column="57" lean-forward="false" selection-start-line="51" selection-start-column="57" selection-end-line="51" selection-end-column="57" />
+        <state relative-caret-position="833">
+          <caret line="82" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/control-freak-refactored/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="78" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="78" lean-forward="false" selection-start-line="13" selection-start-column="78" selection-end-line="13" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-locator/src/main/java/ServiceLocatorAntipattern/ApplicationRoot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="43" lean-forward="true" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

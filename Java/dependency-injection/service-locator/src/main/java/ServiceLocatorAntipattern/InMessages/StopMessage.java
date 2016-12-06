@@ -1,10 +1,4 @@
-﻿using System;
-using ServiceLocatorDIAntipattern._2_ServiceLocator.Interfaces;
-using ServiceLocatorDIAntipattern._2_ServiceLocator.Services;
-
-namespace ServiceLocatorDIAntipattern._2_ServiceLocator.InMessages
-{
-  class StopMessage : AcmeMessage
+﻿public class StopMessage : AcmeMessage
   {
     public void AuthorizeUsing(IAuthorization authorizationRules)
     {

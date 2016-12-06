@@ -1,14 +1,9 @@
-﻿using System;
-using Microsoft.Practices.Unity;
-
-namespace ServiceLocatorDIAntipattern._2_ServiceLocator.Inbound
-{
-  internal interface IInputSocket
+﻿public interface IInputSocket
   {
     bool Receive(out byte[] frameData);
   }
 
-  class UdpSocket : IInputSocket
+public class UdpSocket : IInputSocket
   {
     public bool Receive(out byte[] frameData)
     {

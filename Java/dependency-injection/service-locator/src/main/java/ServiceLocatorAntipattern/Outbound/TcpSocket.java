@@ -1,7 +1,4 @@
-﻿using System;
-
-namespace ServiceLocatorDIAntipattern._2_ServiceLocator.Outbound
-{
+﻿
   public interface IOutputSocket
   {
     void Open();
@@ -9,7 +6,7 @@ namespace ServiceLocatorDIAntipattern._2_ServiceLocator.Outbound
     void Send(string lol);
   }
 
-  class TcpSocket : IOutputSocket
+  public class TcpSocket : IOutputSocket
   {
     public void Open()
     {
@@ -26,4 +23,3 @@ namespace ServiceLocatorDIAntipattern._2_ServiceLocator.Outbound
       Console.WriteLine(lol);
     }
   }
-}
