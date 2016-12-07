@@ -12,8 +12,8 @@ namespace CombosFunctionSequence
 
     protected void d(bool hold = false)
     {
-      _hold = hold;
       RegisterKeyPress(0x01);
+      _hold = hold;
     }
 
     protected void N()
@@ -28,14 +28,14 @@ namespace CombosFunctionSequence
 
     protected void b(bool hold = false)
     {
-      _hold = hold;
       RegisterKeyPress(0x03);
+      _hold = hold;
     }
 
     protected void f(bool hold = false)
     {
-      _hold = hold;
       RegisterKeyPress(0x05);
+      _hold = hold;
     }
 
     protected void RP()
@@ -50,8 +50,8 @@ namespace CombosFunctionSequence
 
     protected void LP(bool hold = false)
     {
-      _hold = hold;
       RegisterKeyPress(0x08);
+      _hold = hold;
     }
 
     protected void Combo(string name)
