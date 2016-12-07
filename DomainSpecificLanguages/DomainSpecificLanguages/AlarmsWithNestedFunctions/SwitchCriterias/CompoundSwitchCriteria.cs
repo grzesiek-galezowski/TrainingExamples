@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace ChangingBehaviorThroughComposition
+namespace AlarmsWithNestedFunctions.SwitchCriterias
 {
   public class CompoundSwitchCriteria : SwitchCriteria
   {

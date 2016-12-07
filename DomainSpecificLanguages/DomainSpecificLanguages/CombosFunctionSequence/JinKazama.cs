@@ -1,14 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CombosNestedFunctions
+﻿namespace CombosFunctionSequence
 {
-  public class JinKazama// : ComboSyntax
-    {
-    private const bool Hold = true;
 
+
+  public class JinKazama : ComboSyntax
+  {
     public void Combos()
     {
       Combo("White Heron")               ; LP(Hold); RK(); RP(); RK();
@@ -22,51 +17,6 @@ namespace CombosNestedFunctions
       Combo("Spinning Blade")            ; d(Hold); b(Hold); RK();
       Combo("Axe Kick->Kazama Fury")     ; f(); f(Hold); LK(); LP(); LK(); RP(); LP(); RK();
     }
-
-    private void d(bool hold = false)
-    {
-      throw new System.NotImplementedException();
-    }
-
-    private void N()
-    {
-      throw new System.NotImplementedException();
-    }
-
-    private void LK()
-    {
-      throw new System.NotImplementedException();
-    }
-
-    private void b(bool hold = false)
-    {
-      throw new System.NotImplementedException();
-    }
-
-    private void f(bool hold = false)
-    {
-      throw new System.NotImplementedException();
-    }
-
-    private void RP()
-    {
-      throw new System.NotImplementedException();
-    }
-
-    private void RK()
-    {
-      throw new System.NotImplementedException();
-    }
-
-    private void LP(bool hold = false)
-    {
-      throw new System.NotImplementedException();
-    }
-
-    private void Combo(string name)
-      {
-        throw new System.NotImplementedException();
-      }
-    }
+  }
 
 }

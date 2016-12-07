@@ -1,78 +1,52 @@
-﻿using System;
-
-namespace CombosNestedFunctions
+﻿namespace CombosFunctionSequence
 {
   public class ComboSyntax
   {
-    protected static KeyPress RP
+    protected const bool Hold = true;
+
+    protected void d(bool hold = false)
     {
-      get { return new KeyPress(0x01); }
+      throw new System.NotImplementedException();
     }
 
-    protected static KeyPress RK
+    protected void N()
     {
-      get { return new KeyPress(0x02); }
+      throw new System.NotImplementedException();
     }
 
-    protected static KeyPress LP
+    protected void LK()
     {
-      get { return new KeyPress(0x03); }
+      throw new System.NotImplementedException();
     }
 
-    protected static KeyPress LK
+    protected void b(bool hold = false)
     {
-      get { return new KeyPress(0x04); }
+      throw new System.NotImplementedException();
     }
 
-    protected static KeyPress f
+    protected void f(bool hold = false)
     {
-      get { return new KeyPress(0x05); }
+      throw new System.NotImplementedException();
     }
 
-    protected static KeyPress b
+    protected void RP()
     {
-      get { return new KeyPress(0x06); }
+      throw new System.NotImplementedException();
     }
 
-    protected static KeyPress u
+    protected void RK()
     {
-      get { return new KeyPress(0x07); }
+      throw new System.NotImplementedException();
     }
 
-    protected static KeyPress d
+    protected void LP(bool hold = false)
     {
-      get { return new KeyPress(0x08); }
+      throw new System.NotImplementedException();
     }
 
-    protected static KeyPress N
+    protected void Combo(string name)
     {
-      get { return new KeyPress(0x09); }
-    }
-
-    public class KeyPress
-    {
-      private readonly int _keyCode;
-
-      public KeyPress(int keyCode)
-      {
-        _keyCode = keyCode;
-      }
-
-      public static KeyPress operator+(KeyPress press1, KeyPress press2)
-      {
-        return new KeyPress(press1._keyCode | press2._keyCode);
-      }
-
-      public static KeyPress operator/(KeyPress press1, KeyPress press2)
-      {
-        return new KeyPress(press1._keyCode | press2._keyCode);
-      }
-        
-    }
-
-    protected static void Combo(string name, params KeyPress[] keySequence)
-    {
-      throw new NotImplementedException();
+      throw new System.NotImplementedException();
     }
   }
 }

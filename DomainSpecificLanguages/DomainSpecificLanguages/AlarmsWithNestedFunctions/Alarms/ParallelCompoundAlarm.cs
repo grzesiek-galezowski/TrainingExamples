@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace ChangingBehaviorThroughComposition
+namespace AlarmsWithNestedFunctions.Alarms
 {
   public class ParallelCompoundAlarm : Alarm
   {

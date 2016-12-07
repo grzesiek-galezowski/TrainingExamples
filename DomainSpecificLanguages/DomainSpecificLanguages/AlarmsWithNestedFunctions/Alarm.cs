@@ -1,4 +1,4 @@
-﻿namespace ChangingBehaviorThroughComposition
+﻿namespace AlarmsWithNestedFunctions
 {
   public interface Alarm
   {

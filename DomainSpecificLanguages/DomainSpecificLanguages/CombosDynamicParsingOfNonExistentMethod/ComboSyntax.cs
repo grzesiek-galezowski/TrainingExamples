@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Dynamic;
-using NUnit.Framework;
 
-namespace CombosNestedFunctions
+namespace CombosDynamicParsingOfNonExistentMethod
 {
   public class ComboSyntax
   {
@@ -23,13 +21,6 @@ namespace CombosNestedFunctions
         return true;
       }
 
-    }
-
-    [Test]
-    public void ShouldBEHAVIOR()
-    {
-      new JinKazama().Combos();
-      Assert.Fail("Unfinished");
     }
   }
 }
