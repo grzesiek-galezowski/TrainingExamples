@@ -1,52 +1,79 @@
-﻿namespace CombosFunctionSequence
+﻿using System.Collections.Generic;
+
+namespace CombosFunctionSequence
 {
   public class ComboSyntax
   {
+    private bool _hold;
+    private ComboData _currentCombo;
+    private List<ComboData> _combos;
+
     protected const bool Hold = true;
 
     protected void d(bool hold = false)
     {
-      throw new System.NotImplementedException();
+      _hold = hold;
+      RegisterKeyPress(0x01);
     }
 
     protected void N()
     {
-      throw new System.NotImplementedException();
+      RegisterKeyPress(0x00);
     }
 
     protected void LK()
     {
-      throw new System.NotImplementedException();
+      RegisterKeyPress(0x02);
     }
 
     protected void b(bool hold = false)
     {
-      throw new System.NotImplementedException();
+      _hold = hold;
+      RegisterKeyPress(0x03);
     }
 
     protected void f(bool hold = false)
     {
-      throw new System.NotImplementedException();
+      _hold = hold;
+      RegisterKeyPress(0x05);
     }
 
     protected void RP()
     {
-      throw new System.NotImplementedException();
+      RegisterKeyPress(0x06);
     }
 
     protected void RK()
     {
-      throw new System.NotImplementedException();
+      RegisterKeyPress(0x07);
     }
 
     protected void LP(bool hold = false)
     {
-      throw new System.NotImplementedException();
+      _hold = hold;
+      RegisterKeyPress(0x08);
     }
 
     protected void Combo(string name)
     {
-      throw new System.NotImplementedException();
+      _currentCombo = new ComboData(name);
+      _combos.Add(_currentCombo);
     }
+
+    private void RegisterKeyPress(int keyCode)
+    {
+      var keyPress = new KeyPress(keyCode);
+      if (_hold)
+      {
+        _currentCombo.AddPressedTogetherWithPrevious(keyCode);
+        _hold = false;
+      }
+      else
+      {
+        _currentCombo.Add(keyPress);
+      }
+
+    }
+
   }
 }
