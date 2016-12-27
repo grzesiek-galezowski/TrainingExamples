@@ -50,8 +50,14 @@ namespace _01_SmallImprovements
         , PowerOf2::fourth
         , PowerOf2::fifth
       };
-
+      
       print(constexpr_powers);
+
+      Assert().AreEqual(PowerOf2::first, constexpr_powers[0]);
+      Assert().AreEqual(PowerOf2::second, constexpr_powers[1]);
+      Assert().AreEqual(PowerOf2::third, constexpr_powers[2]);
+      Assert().AreEqual(PowerOf2::fourth, constexpr_powers[3]);
+      Assert().AreEqual(PowerOf2::fifth, constexpr_powers[4]);
     }
 
   };

@@ -2,6 +2,7 @@
 
 #include "MetaPow.hh"
 
+
 struct MetaPowerOf2
 {
   enum
