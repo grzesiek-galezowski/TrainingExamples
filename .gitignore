@@ -105,3 +105,4 @@ fabric.properties
 *.ipch
 *.opendb
 Cpp/Cpp11/Cpp11.sdf
+*.sdf
