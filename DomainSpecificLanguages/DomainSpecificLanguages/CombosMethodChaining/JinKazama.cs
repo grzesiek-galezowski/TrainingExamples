@@ -1,9 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace CombosNestedFunctions
+namespace CombosMethodChaining
 {
   public class JinKazama
   {

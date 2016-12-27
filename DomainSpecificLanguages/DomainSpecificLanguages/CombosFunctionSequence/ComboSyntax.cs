@@ -1,78 +1,79 @@
-﻿using System;
+﻿using System.Collections.Generic;
 
-namespace CombosNestedFunctions
+namespace CombosFunctionSequence
 {
   public class ComboSyntax
   {
-    protected static KeyPress RP
+    private bool _hold;
+    private ComboData _currentCombo;
+    private List<ComboData> _combos;
+
+    protected const bool Hold = true;
+
+    protected void d(bool hold = false)
     {
-      get { return new KeyPress(0x01); }
+      _hold = hold;
+      RegisterKeyPress(0x01);
     }
 
-    protected static KeyPress RK
+    protected void N()
     {
-      get { return new KeyPress(0x02); }
+      RegisterKeyPress(0x00);
     }
 
-    protected static KeyPress LP
+    protected void LK()
     {
-      get { return new KeyPress(0x03); }
+      RegisterKeyPress(0x02);
     }
 
-    protected static KeyPress LK
+    protected void b(bool hold = false)
     {
-      get { return new KeyPress(0x04); }
+      _hold = hold;
+      RegisterKeyPress(0x03);
     }
 
-    protected static KeyPress f
+    protected void f(bool hold = false)
     {
-      get { return new KeyPress(0x05); }
+      _hold = hold;
+      RegisterKeyPress(0x05);
     }
 
-    protected static KeyPress b
+    protected void RP()
     {
-      get { return new KeyPress(0x06); }
+      RegisterKeyPress(0x06);
     }
 
-    protected static KeyPress u
+    protected void RK()
     {
-      get { return new KeyPress(0x07); }
+      RegisterKeyPress(0x07);
     }
 
-    protected static KeyPress d
+    protected void LP(bool hold = false)
     {
-      get { return new KeyPress(0x08); }
+      _hold = hold;
+      RegisterKeyPress(0x08);
     }
 
-    protected static KeyPress N
+    protected void Combo(string name)
     {
-      get { return new KeyPress(0x09); }
+      _currentCombo = new ComboData(name);
+      _combos.Add(_currentCombo);
     }
 
-    public class KeyPress
+    private void RegisterKeyPress(int keyCode)
     {
-      private readonly int _keyCode;
-
-      public KeyPress(int keyCode)
+      var keyPress = new KeyPress(keyCode);
+      if (_hold)
       {
-        _keyCode = keyCode;
+        _currentCombo.AddPressedTogetherWithPrevious(keyCode);
+        _hold = false;
+      }
+      else
+      {
+        _currentCombo.Add(keyPress);
       }
 
-      public static KeyPress operator+(KeyPress press1, KeyPress press2)
-      {
-        return new KeyPress(press1._keyCode | press2._keyCode);
-      }
-
-      public static KeyPress operator/(KeyPress press1, KeyPress press2)
-      {
-        return new KeyPress(press1._keyCode | press2._keyCode);
-      }
-        
     }
 
-    protected static void Combo(string name, params KeyPress[] keySequence)
-    {
-      throw new NotImplementedException();
-    }
   }
 }

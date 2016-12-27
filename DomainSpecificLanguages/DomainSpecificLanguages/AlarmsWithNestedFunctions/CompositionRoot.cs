@@ -1,4 +1,7 @@
-﻿namespace ChangingBehaviorThroughComposition
+﻿using AlarmsWithNestedFunctions.Alarms;
+using AlarmsWithNestedFunctions.SwitchCriterias;
+
+namespace AlarmsWithNestedFunctions
 {
   public class CompositionRoot
   {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ChangingBehaviorThroughComposition
+namespace AlarmsWithNestedFunctions.SwitchCriterias
 {
   public class MetDuringTheDayCriteria : SwitchCriteria
   {

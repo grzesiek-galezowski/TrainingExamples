@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CombosNestedFunctions
+namespace CombosExtensionMethods
 {
   public static class ComboSyntaxExtensions
   {

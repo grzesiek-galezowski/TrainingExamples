@@ -1,4 +1,4 @@
-﻿namespace ChangingBehaviorThroughComposition
+﻿namespace AlarmsWithNestedFunctions.Alarms
 {
   public class SwitchableAlarm : Alarm
   {

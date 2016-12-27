@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ChangingBehaviorThroughComposition
+namespace AlarmsWithNestedFunctions.Alarms
 {
   public class SilentAlarm : Alarm
   {
