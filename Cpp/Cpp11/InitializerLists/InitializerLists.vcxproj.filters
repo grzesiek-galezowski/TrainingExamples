@@ -26,13 +26,10 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="unittest1.cpp">
+    <ClCompile Include="ConstructorNotation.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="02 - InitializerList - ConstructorNotation.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="03 - InitializerList - SequenceConstructor.cc">
+    <ClCompile Include="SequenceConstructor.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
