@@ -154,9 +154,9 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="07 - Lambdas.cc" />
-    <ClCompile Include="08 - Closures.cc" />
-    <ClCompile Include="09 - Futures.cc" />
+    <ClCompile Include="01_Lambdas.cc" />
+    <ClCompile Include="02_Closures.cc" />
+    <ClCompile Include="03_Futures.cc" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

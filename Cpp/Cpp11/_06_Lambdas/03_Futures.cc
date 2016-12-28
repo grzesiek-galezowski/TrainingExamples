@@ -1,7 +1,5 @@
 #include "stdafx.h"
 
-#if 0
-
 #include <future>
 #include <iostream>
 #include <cstdio>
@@ -9,7 +7,7 @@
 
 using namespace std;
 
-int main()
+int main123()
 {
 	std::vector<int> v = {1, 2, 3, 4, 5, 6};
 
@@ -33,4 +31,3 @@ int main()
 
 	return 0;
 }
-#endif

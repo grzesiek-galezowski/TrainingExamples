@@ -1,9 +1,9 @@
 #include "stdafx.h"
 
-#if 0
 #include<iostream>
 #include<algorithm>
 #include<chrono>
+#include<vector>
 using namespace std::chrono;
 using namespace std;
 
@@ -16,9 +16,9 @@ namespace std
 
 struct Task
 {
-	Task(const date& initStartDate
-			, const date& initEndDate
-			, const string initName)
+	Task(const system_clock::time_point& initStartDate
+			, const system_clock::time_point& initEndDate
+			, const string& initName)
 	: startDate(initStartDate)
 	, endDate(initEndDate)
 	, name(initName) { }
@@ -29,12 +29,13 @@ struct Task
 };
 
 
-int main()
+int main789()
 {
 	std::vector<Task> tasks = {
-			  Task(NOW - minutes(30), NOW - minutes(20), "Clean the toilet")
-			, Task(NOW              , NOW + minutes(50), "Finish this presentation")
-			, Task(NOW - minutes(99), NOW + minutes(99), "Dance")
+			  Task(NOW - 30min, NOW - 20min, "Clean the toilet")
+			, Task(NOW        , NOW + 50min, "Finish this presentation")
+			, Task(NOW - 99min, NOW + 99min, "Dance")
+      , Task(NOW - minutes(1), NOW + minutes(9), "Whatever")
 	};
 
 	auto printTaskName =
@@ -77,4 +78,3 @@ int main()
 
 	return 0;
 }
-#endif

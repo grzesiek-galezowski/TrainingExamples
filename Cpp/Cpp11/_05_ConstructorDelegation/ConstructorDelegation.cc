@@ -2,13 +2,16 @@
 #include <iostream>
 #include <string>
 #include <random>
+#include <chrono>
 #include <ctime>
 #include "CppUnitTest.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace std;
+using namespace std::chrono;
 
-mt19937 random(time(0));
+auto seed = high_resolution_clock::now().time_since_epoch().count();
+mt19937 random(seed);
 
 class ObjectWithTwoConstructors
 {

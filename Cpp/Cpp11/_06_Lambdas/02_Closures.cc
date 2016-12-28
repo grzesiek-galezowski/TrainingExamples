@@ -12,7 +12,7 @@ std::function<int ()> sequencer(int start)
     };
 }
 
-int main()
+int main456()
 {
     auto s1 = sequencer(2);
     std::cout << s1();

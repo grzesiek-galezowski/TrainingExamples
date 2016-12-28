@@ -29,13 +29,13 @@
     <ClCompile Include="unittest1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="07 - Lambdas.cc">
+    <ClCompile Include="01_Lambdas.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="08 - Closures.cc">
+    <ClCompile Include="02_Closures.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="09 - Futures.cc">
+    <ClCompile Include="03_Futures.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
