@@ -26,10 +26,7 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="unittest1.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="06 - WrongConstructorDelegation.cc">
+    <ClCompile Include="ConstructorDelegation.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

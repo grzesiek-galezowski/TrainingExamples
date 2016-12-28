@@ -20,4 +20,3 @@ namespace Microsoft
 }
 
 
-int main();

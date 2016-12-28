@@ -10,4 +10,18 @@
 // Headers for CppUnitTest
 #include "CppUnitTest.h"
 
-// TODO: reference additional headers your program requires here
+using namespace Microsoft::VisualStudio::CppUnitTestFramework;
+using namespace std;
+
+namespace Microsoft
+{
+  namespace VisualStudio
+  {
+    namespace CppUnitTestFramework
+    {
+      template<> static std::wstring ToString<long long>(const long long& t) {
+        RETURN_WIDE_STRING(t);
+      }
+    }
+  }
+}
