@@ -29,7 +29,19 @@
     <ClCompile Include="unittest1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="05 - StaticAssertions.cc">
+    <ClCompile Include="01_SimpleSizeOfs.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="02_CheckingSizeOfTemplateArguments.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="03_CheckingSizeOfStructs.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="04_TestingConstexprs.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="05_CheckingEnumSize.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
