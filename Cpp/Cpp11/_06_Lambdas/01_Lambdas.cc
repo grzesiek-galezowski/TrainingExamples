@@ -2,6 +2,8 @@
 
 #include<iostream>
 #include<algorithm>
+#include<functional>
+#include<numeric>
 #include<chrono>
 #include<vector>
 #include "CppUnitTest.h"
@@ -10,14 +12,13 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace std::chrono;
 using namespace std;
 
-auto now = []() { return system_clock::now(); };
-/* //equivalent of:
 system_clock::time_point now()
 {
   return system_clock::now();
 }
+/* //equivalent of:
+auto now = []() { return system_clock::now(); };
 */
-
 
 struct Task
 {
@@ -35,11 +36,13 @@ struct Task
 	string name;
 };
 
-auto printTaskName =
-[](const Task& t)
+auto appendTaskNameTo(string& str)
 {
-  cout << t.name << std::endl;
-};
+  return [&str](const Task& t)
+  {
+    str.append(t.name);
+  };
+}
 
 vector<Task> createTasks()
 {
@@ -142,33 +145,28 @@ namespace _06_Lambdas
         reschedulesTasks[3].endDate - tasks[3].endDate == 1_d);
     }
 
+    TEST_METHOD(AppendingTaskNamesUsingForeach)
+    {
+      vector<Task> tasks = createTasks();
+      string str;
+      for_each(tasks.begin(), tasks.end(), appendTaskNameTo(str));
 
+      Assert().AreEqual(
+        "Clean the toiletFinish this presentationDanceWhatever"s, str);
+    }
+
+    TEST_METHOD(AppendingTaskNamesUsingAccumulate)
+    {
+      vector<Task> tasks = createTasks();
+      
+      string str = std::accumulate(tasks.begin(), tasks.end(),
+        ""s, [](string aggregatedValue, Task currentTask) 
+      {
+        return aggregatedValue + currentTask.name;
+      });
+
+      Assert().AreEqual(
+        "Clean the toiletFinish this presentationDanceWhatever"s, str);
+    }
   };
-}
-
-
-
-
-
-int main789()
-{
-	
-  vector<Task> tasks = createTasks();
-
-	for_each(tasks.begin(), tasks.end(), printTaskName);
-	for_each(tasks.begin(), tasks.end(), printTaskName);
-
-	///////// by name
-	sort(tasks.begin(), tasks.end(),
-			[](const Task& t1, const Task& t2)
-			{
-				return t1.name < t2.name;
-			}
-	);
-
-	for_each(tasks.begin(), tasks.end(), printTaskName);
-
-
-
-	return 0;
 }
