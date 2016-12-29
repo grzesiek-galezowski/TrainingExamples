@@ -3,7 +3,7 @@
 #include "MetaPow.hh"
 
 
-struct MetaPowerOf2
+struct MetaPowersOf2
 {
   enum
   {

@@ -12,7 +12,7 @@ namespace Microsoft
   {
     namespace CppUnitTestFramework
     {
-      template<> static std::wstring ToString<PowerOf2>(const PowerOf2& t) {
+      template<> static std::wstring ToString<PowersOf2>(const PowersOf2& t) {
         RETURN_WIDE_STRING(static_cast<int>(t));
       }
     }

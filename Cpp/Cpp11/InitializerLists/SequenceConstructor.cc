@@ -19,7 +19,7 @@ public:
 	}
 };
 
-TEST_CLASS(SequenceConstructorNotation)
+TEST_CLASS(_02_SequenceConstructorNotation)
 {
 public:
 

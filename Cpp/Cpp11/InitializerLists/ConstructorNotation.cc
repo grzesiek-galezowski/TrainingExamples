@@ -16,7 +16,7 @@ public:
 	explicit Object(int a, double b, char c) : a(a), b(b), c(c) {	}
 };
 
-TEST_CLASS(ConstructorNotation)
+TEST_CLASS(_02_ConstructorNotation)
 {
 public:
 

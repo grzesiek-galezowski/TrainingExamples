@@ -2,7 +2,7 @@
 
 #include "Pow.hh"
 
-enum class PowerOf2 : int
+enum class PowersOf2 : int
 {
   first = constexpr_pow(2, 1),
   second = constexpr_pow(2, 2),
