@@ -3,8 +3,8 @@
 #include "MetaPow.hh"
 
 
-struct MetaPowersOf2
-{
+struct MetaPowersOf2 
+{ 
   enum
   {
     first = MetaPow<2, 1>::value,
@@ -13,5 +13,5 @@ struct MetaPowersOf2
     fourth = MetaPow<2, 4>::value,
     fifth = MetaPow<2, 5>::value,
     sixth = MetaPow<2, 6>::value
-  };
+  }; 
 };

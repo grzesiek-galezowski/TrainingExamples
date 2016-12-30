@@ -24,16 +24,16 @@
     <ClInclude Include="Pow.hh">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PowerOf2.hh">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="constexpr.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MetaPow.hh">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MetaPowerOf2.hh">
+    <ClInclude Include="MetaPowersOf2.hh">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PowersOf2.hh">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

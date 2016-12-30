@@ -4,7 +4,7 @@
 #include<vector>
 #include<iostream>
 #include "Pow.hh"
-#include "PowerOf2.hh"
+#include "PowersOf2.hh"
 #include "constexpr.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;

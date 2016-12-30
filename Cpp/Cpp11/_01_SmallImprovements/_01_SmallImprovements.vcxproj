@@ -152,9 +152,9 @@
   <ItemGroup>
     <ClInclude Include="constexpr.h" />
     <ClInclude Include="MetaPow.hh" />
-    <ClInclude Include="MetaPowerOf2.hh" />
+    <ClInclude Include="MetaPowersOf2.hh" />
     <ClInclude Include="Pow.hh" />
-    <ClInclude Include="PowerOf2.hh" />
+    <ClInclude Include="PowersOf2.hh" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>

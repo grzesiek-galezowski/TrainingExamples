@@ -29,8 +29,6 @@ struct Task
 	, endDate(initEndDate)
 	, name(initName) { }
 
-  Task(const Task& other) = default;
-
 	system_clock::time_point startDate;
 	system_clock::time_point endDate;
 	string name;

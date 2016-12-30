@@ -1,34 +1,43 @@
 #include "stdafx.h"
-
 #include <functional>
 #include <iostream>
+#include "CppUnitTest.h"
+
+using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 std::function<int ()> sequencer(int start)
 {
-    return [=]() mutable
+    return [=]() mutable //return [&start]()
     {
         start++;
         return start;
     };
 }
 
-int main456()
+namespace _06_Lambdas
 {
-    auto s1 = sequencer(2);
-    std::cout << s1();
-    std::cout << s1();
-    std::cout << s1();
-    std::cout << s1();
-    std::cout << s1();
+  TEST_CLASS(_06_Closures)
+  {
+  public:
 
-    std::cout << std::endl;
+    TEST_METHOD(SequencerStartingWith2)
+    {
+      auto s1 = sequencer(2);
+      Assert().AreEqual(3, s1());
+      Assert().AreEqual(4, s1());
+      Assert().AreEqual(5, s1());
+      Assert().AreEqual(6, s1());
+      Assert().AreEqual(7, s1());
+    }
 
-    auto s2 = sequencer(2);
-    std::cout << s2();
-    std::cout << s2();
-    std::cout << s2();
-    std::cout << s2();
-    std::cout << s2();
-
-    return 0;
+    TEST_METHOD(SequencerStartingWith3)
+    {
+      auto s1 = sequencer(3);
+      Assert().AreEqual(4, s1());
+      Assert().AreEqual(5, s1());
+      Assert().AreEqual(6, s1());
+      Assert().AreEqual(7, s1());
+      Assert().AreEqual(8, s1());
+    }
+  };
 }
