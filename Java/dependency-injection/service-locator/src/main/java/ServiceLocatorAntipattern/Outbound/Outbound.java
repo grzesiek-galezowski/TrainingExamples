@@ -1,22 +1,7 @@
-﻿
-  public interface IOutbound
-  {
-    void Send(AcmeMessage message);
-  }
+package ServiceLocatorAntipattern.Outbound;
 
-  public class Outbound : IOutbound
-  {
-    private final IOutputSocket _outputOutputSocket;
+import ServiceLocatorAntipattern.Interfaces.AcmeMessage;
 
-    public Outbound()
-    {
-      _outputOutputSocket = ApplicationRoot.Context.Resolve<IOutputSocket>();
-    }
-
-    public void Send(AcmeMessage message)
-    {
-      var outboundMessage = ApplicationRoot.Context.Resolve<IOutboundMessage>();
-      message.WriteTo(outboundMessage);
-      outboundMessage.SendVia(_outputOutputSocket);
-    }
-  }
+public interface Outbound {
+  void send(AcmeMessage message);
+}

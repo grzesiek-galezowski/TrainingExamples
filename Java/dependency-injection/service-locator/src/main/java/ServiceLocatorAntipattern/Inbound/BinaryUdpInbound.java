@@ -1,38 +1,30 @@
-﻿public interface IInbound
-  {
-    void SetDomainLogic(IProcessingWorkflow processingWorkflow);
-    void StartListening();
+﻿package ServiceLocatorAntipattern.Inbound;
+
+import ServiceLocatorAntipattern.ApplicationRoot;
+import ServiceLocatorAntipattern.Core.ProcessingWorkflow;
+import ServiceLocatorAntipattern.Interfaces.AcmeMessage;
+
+public class BinaryUdpInbound implements IInbound {
+  private final IInputSocket _socket;
+  private final PacketParsing _parsing;
+  private ProcessingWorkflow _processingWorkflow;
+
+  public BinaryUdpInbound() {
+    _socket = ApplicationRoot.context.getComponent(IInputSocket.class);
+    _parsing = ApplicationRoot.context.getComponent(PacketParsing.class);
   }
 
-public class BinaryUdpInbound : IInbound
-  {
-    private IProcessingWorkflow _processingWorkflow;
-    private final IInputSocket _socket;
-    private final IPacketParsing _parsing;
+  public void setDomainLogic(ProcessingWorkflow processingWorkflow) {
+    _processingWorkflow = processingWorkflow;
+  }
 
-    public BinaryUdpInbound()
-    {
-      _socket = ApplicationRoot.Context.Resolve<IInputSocket>();
-      _parsing = ApplicationRoot.Context.Resolve<IPacketParsing>();
-    }
-
-    public void SetDomainLogic(IProcessingWorkflow processingWorkflow)
-    {
-      _processingWorkflow = processingWorkflow;
-    }
-    
-    public void StartListening()
-    {
-      byte[] frameData;
-      while (_socket.Receive(out frameData))
-      {
-        var message = _parsing.ResultFor(frameData);
-        if (message != null)
-        {
-          if (_processingWorkflow != null)
-          {
-            _processingWorkflow.ApplyTo(message);
-          }
+  public void startListening() { //todo look at earlier examples
+    byte[] frameData = new byte[100];
+    while (_socket.receive(frameData)) {
+      AcmeMessage message = _parsing.resultFor(frameData);
+      if (message != null) {
+        if (_processingWorkflow != null) {
+          _processingWorkflow.applyTo(message);
         }
       }
     }

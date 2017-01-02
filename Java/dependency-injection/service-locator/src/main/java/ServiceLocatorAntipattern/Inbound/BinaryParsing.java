@@ -1,25 +1,19 @@
-﻿
-public interface IPacketParsing
-  {
-    AcmeMessage ResultFor(byte[] frameData);
-  }
+﻿package ServiceLocatorAntipattern.Inbound;
 
-public class BinaryParsing : IPacketParsing
-  {
-    public AcmeMessage ResultFor(byte[] frameData)
-    {
-      if (frameData == null)
-      {
-        return ApplicationRoot.Context.Resolve<NullMessage>();
-      }
-      else if (frameData[0] == 1)
-      {
-        return ApplicationRoot.Context.Resolve<StartMessage>();
-      }
-      else
-      {
-        return ApplicationRoot.Context.Resolve<StopMessage>();
-      }
-      
+import ServiceLocatorAntipattern.ApplicationRoot;
+import ServiceLocatorAntipattern.InMessages.NullMessage;
+import ServiceLocatorAntipattern.InMessages.StartMessage;
+import ServiceLocatorAntipattern.InMessages.StopMessage;
+import ServiceLocatorAntipattern.Interfaces.AcmeMessage;
+
+public class BinaryParsing implements PacketParsing {
+  public AcmeMessage resultFor(byte[] frameData) {
+    if (frameData == null) {
+      return ApplicationRoot.context.getComponent(NullMessage.class);
+    } else if (frameData[0] == 1) {
+      return ApplicationRoot.context.getComponent(StartMessage.class);
+    } else {
+      return ApplicationRoot.context.getComponent(StopMessage.class);
     }
   }
+}

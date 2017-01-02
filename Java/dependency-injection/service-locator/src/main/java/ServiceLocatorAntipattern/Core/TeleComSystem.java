@@ -1,21 +1,23 @@
-﻿
-public class TeleComSystem
-  {
-    private final IProcessingWorkflow _processingWorkflow;
-    private final IInbound _inbound;
-    private final IOutbound _outbound;
+﻿package ServiceLocatorAntipattern.Core;
 
-    public TeleComSystem()
-    {
-      _inbound = ApplicationRoot.Context.Resolve<IInbound>();
-      _outbound = ApplicationRoot.Context.Resolve<IOutbound>();
-      _processingWorkflow = ApplicationRoot.Context.Resolve<IProcessingWorkflow>();
-    }
+import ServiceLocatorAntipattern.ApplicationRoot;
+import ServiceLocatorAntipattern.Inbound.IInbound;
+import ServiceLocatorAntipattern.Outbound.Outbound;
 
-    public void Start()
-    {
-      _inbound.SetDomainLogic(_processingWorkflow);
-      _processingWorkflow.SetOutbound(_outbound);
-      _inbound.StartListening();
-    }
+public class TeleComSystem {
+  private final ProcessingWorkflow _processingWorkflow;
+  private final IInbound _inbound;
+  private final Outbound _outbound;
+
+  public TeleComSystem() {
+    _inbound = ApplicationRoot.context.getComponent(IInbound.class);
+    _outbound = ApplicationRoot.context.getComponent(Outbound.class);
+    _processingWorkflow = ApplicationRoot.context.getComponent(ProcessingWorkflow.class);
   }
+
+  public void start() {
+    _inbound.setDomainLogic(_processingWorkflow);
+    _processingWorkflow.setOutbound(_outbound);
+    _inbound.startListening();
+  }
+}

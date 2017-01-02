@@ -1,25 +1,15 @@
-﻿
-  public interface IOutputSocket
-  {
-    void Open();
-    void Close();
-    void Send(string lol);
+﻿package ServiceLocatorAntipattern.Outbound;
+
+public class TcpSocket implements OutputSocket {
+  public void open() {
+    System.out.println("open");
   }
 
-  public class TcpSocket : IOutputSocket
-  {
-    public void Open()
-    {
-      Console.WriteLine("open");
-    }
-
-    public void Close()
-    {
-      Console.WriteLine("closing");
-    }
-
-    public void Send(string lol)
-    {
-      Console.WriteLine(lol);
-    }
+  public void close() {
+    System.out.println("closing");
   }
+
+  public void send(String content) {
+    System.out.println(content);
+  }
+}

@@ -1,14 +1,7 @@
-﻿
-public interface IMarshalling
-  {
-    string Of(string arg);
-  }
+﻿package ServiceLocatorAntipattern.Outbound;
 
-public class XmlMarshalling : IMarshalling
-  {
-    public string Of(string arg)
-    {
-      return "<" + arg + ">";
-    }
+public class XmlMarshalling implements IMarshalling {
+  public String of(String arg) {
+    return "<" + arg + ">";
   }
 }

@@ -1,31 +1,28 @@
-﻿
-  public interface IProcessingWorkflow
-  {
-    void SetOutbound(IOutbound outbound);
-    void ApplyTo(AcmeMessage message);
+﻿package ServiceLocatorAntipattern.Core;
+
+import ServiceLocatorAntipattern.ApplicationRoot;
+import ServiceLocatorAntipattern.Interfaces.AcmeMessage;
+import ServiceLocatorAntipattern.Outbound.Outbound;
+import ServiceLocatorAntipattern.Services.IAuthorization;
+import ServiceLocatorAntipattern.Services.IRepository;
+
+public class AcmeProcessingWorkflow implements ProcessingWorkflow {
+  private final IRepository _repository;
+  private final IAuthorization _authorizationRules;
+  private Outbound _outbound;
+
+  public AcmeProcessingWorkflow() {
+    _authorizationRules = ApplicationRoot.context.getComponent(IAuthorization.class);
+    _repository = ApplicationRoot.context.getComponent(IRepository.class);
   }
 
-  public class AcmeProcessingWorkflow : IProcessingWorkflow
-  {
-    private final IRepository _repository;
-    private final IAuthorization _authorizationRules;
-    private IOutbound _outbound;
-
-    public AcmeProcessingWorkflow()
-    {
-      _authorizationRules = ApplicationRoot.Context.Resolve<IAuthorization>();
-      _repository = ApplicationRoot.Context.Resolve<IRepository>();
-    }
-
-    public void SetOutbound(IOutbound outbound)
-    {
-      _outbound = outbound;
-    }
-
-    public void ApplyTo(AcmeMessage message)
-    {
-      message.AuthorizeUsing(_authorizationRules);
-      _repository.Save(message);
-      _outbound.Send(message);
-    }
+  public void setOutbound(Outbound outbound) {
+    _outbound = outbound;
   }
+
+  public void applyTo(AcmeMessage message) {
+    message.authorizeUsing(_authorizationRules);
+    _repository.save(message);
+    _outbound.send(message);
+  }
+}

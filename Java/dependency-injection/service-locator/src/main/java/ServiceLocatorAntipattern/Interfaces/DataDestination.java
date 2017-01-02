@@ -1,5 +1,5 @@
-﻿
-public public interface DataDestination
-  {
-    void Add(string s);
-  }
+﻿package ServiceLocatorAntipattern.Interfaces;
+
+public interface DataDestination {
+  void add(String content);
+}

@@ -1,13 +1,15 @@
-﻿
-public class StartMessage : AcmeMessage
-  {
-    public void AuthorizeUsing(IAuthorization authorizationRules)
-    {
-      Console.WriteLine("Authorizing Start with " + authorizationRules);
-    }
+﻿package ServiceLocatorAntipattern.InMessages;
 
-    public void WriteTo(DataDestination dataDestination)
-    {
-      dataDestination.Add("Writing Start to " + dataDestination);
-    }
+import ServiceLocatorAntipattern.Interfaces.AcmeMessage;
+import ServiceLocatorAntipattern.Interfaces.DataDestination;
+import ServiceLocatorAntipattern.Services.IAuthorization;
+
+public class StartMessage implements AcmeMessage {
+  public void authorizeUsing(IAuthorization authorizationRules) {
+    System.out.println("Authorizing start with " + authorizationRules);
   }
+
+  public void writeTo(DataDestination dataDestination) {
+    dataDestination.add("Writing start to " + dataDestination);
+  }
+}

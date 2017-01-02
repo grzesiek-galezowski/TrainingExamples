@@ -1,15 +1,12 @@
-﻿public interface IInputSocket
-  {
-    bool Receive(out byte[] frameData);
-  }
+﻿package ServiceLocatorAntipattern.Inbound;
 
-public class UdpSocket : IInputSocket
-  {
-    public bool Receive(out byte[] frameData)
-    {
-      frameData = new byte[100];
-      ApplicationRoot.Context.Resolve<Random>().NextBytes(frameData); //stable dependency!
-      return true;
-    }
+import ServiceLocatorAntipattern.ApplicationRoot;
+
+import java.util.Random;
+
+public class UdpSocket implements IInputSocket {
+  public boolean receive(byte[] frameData) {
+    ApplicationRoot.context.getComponent(Random.class).nextBytes(frameData); //stable dependency!
+    return true;
   }
 }

@@ -1,30 +1,23 @@
-﻿
-  public interface IOutboundMessage : DataDestination
-  {
-    void SendVia(IOutputSocket outputOutputSocket);
+﻿package ServiceLocatorAntipattern.Outbound;
+
+import ServiceLocatorAntipattern.ApplicationRoot;
+
+public class OutboundMessage implements IOutboundMessage {
+  private final IMarshalling _marshalling;
+  private String _content = "";
+
+  public OutboundMessage() {
+    _marshalling = ApplicationRoot.context.getComponent(IMarshalling.class);
   }
 
-  public class OutboundMessage : IOutboundMessage
-  {
-    private final IMarshalling _marshalling;
-    private string _content = string.Empty;
+  public void sendVia(OutputSocket outputOutputSocket) {
+    String marshalledContent = _marshalling.of(_content);
+    outputOutputSocket.open();
+    outputOutputSocket.send(marshalledContent);
+    outputOutputSocket.close();
+  }
 
-    public OutboundMessage()
-    {
-      _marshalling = ApplicationRoot.Context.Resolve<IMarshalling>();
-    }
-
-    public void SendVia(IOutputSocket outputOutputSocket)
-    {
-      var marshalledContent = _marshalling.Of(_content);
-      outputOutputSocket.Open();
-      outputOutputSocket.Send(marshalledContent);
-      outputOutputSocket.Close();
-    }
-
-    public void Add(string s)
-    {
-      _content += s;
-    }
+  public void add(String content) {
+    _content += content;
   }
 }

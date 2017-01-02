@@ -1,8 +1,4 @@
-﻿
-  public interface IAuthorization
-  {
-  }
+﻿package ServiceLocatorAntipattern.Services;
 
-  public class ActiveDirectoryBasedAuthorization : IAuthorization
-  {
-  }
+public class ActiveDirectoryBasedAuthorization implements IAuthorization {
+}
