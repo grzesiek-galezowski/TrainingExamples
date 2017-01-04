@@ -1,22 +1,10 @@
 package com.github.grzesiek_galezowski.BastardInjection.Outbound;
 
-import com.github.grzesiek_galezowski.BastardInjection.Interfaces.AcmeMessage;
+import com.github.grzesiek_galezowski.BastardInjection.Interfaces.Message;
 
-public class Outbound implements IOutbound {
-  private final IOutputSocket _outputSocket;
-
-  public Outbound() {
-    this(new TcpSocket());
-  }
-
-  //for tests
-  public Outbound(IOutputSocket outputSocket) {
-    _outputSocket = outputSocket;
-  }
-
-  public void send(AcmeMessage message) {
-    OutboundMessage outboundMessage = new OutboundMessage();
-    message.writeTo(outboundMessage);
-    outboundMessage.sendVia(_outputSocket);
-  }
+/**
+ * Created by grzes on 28.11.2016.
+ */
+public interface Outbound {
+  void send(Message message);
 }

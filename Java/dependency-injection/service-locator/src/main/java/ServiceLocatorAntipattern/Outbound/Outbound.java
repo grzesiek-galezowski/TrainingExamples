@@ -1,7 +1,7 @@
 package ServiceLocatorAntipattern.Outbound;
 
-import ServiceLocatorAntipattern.Interfaces.AcmeMessage;
+import ServiceLocatorAntipattern.Interfaces.Message;
 
 public interface Outbound {
-  void send(AcmeMessage message);
+  void send(Message message);
 }

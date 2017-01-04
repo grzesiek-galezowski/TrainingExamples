@@ -1,10 +1,10 @@
 package com.github.grzesiek_galezowski.BastardInjection.InMessages;
 
-import com.github.grzesiek_galezowski.BastardInjection.Interfaces.AcmeMessage;
+import com.github.grzesiek_galezowski.BastardInjection.Interfaces.Message;
 import com.github.grzesiek_galezowski.BastardInjection.Interfaces.DataDestination;
 import com.github.grzesiek_galezowski.BastardInjection.Services.IAuthorization;
 
-public class StartMessage implements AcmeMessage {
+public class StartMessage implements Message {
   public void authorizeUsing(IAuthorization authorizationRules) {
     System.out.println("Authorizing start with " + authorizationRules);
   }

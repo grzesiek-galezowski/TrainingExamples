@@ -4,7 +4,7 @@ import com.github.grzesiek_galezowski.BastardInjection.Interfaces.DataDestinatio
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 class SqlDataDestination implements DataDestination {
-  public void add(String s) {
+  public void add(String content) {
     throw new NotImplementedException();
   }
 }

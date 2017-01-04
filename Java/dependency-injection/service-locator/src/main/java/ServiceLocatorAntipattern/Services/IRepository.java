@@ -1,7 +1,7 @@
 package ServiceLocatorAntipattern.Services;
 
-import ServiceLocatorAntipattern.Interfaces.AcmeMessage;
+import ServiceLocatorAntipattern.Interfaces.Message;
 
 public interface IRepository {
-  void save(AcmeMessage message);
+  void save(Message message);
 }

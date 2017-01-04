@@ -1,16 +1,16 @@
 package ServiceLocatorAntipattern.Core;
 
 import ServiceLocatorAntipattern.ApplicationRoot;
-import ServiceLocatorAntipattern.Inbound.IInbound;
+import ServiceLocatorAntipattern.Inbound.Inbound;
 import ServiceLocatorAntipattern.Outbound.Outbound;
 
 public class TeleComSystem {
   private final ProcessingWorkflow _processingWorkflow;
-  private final IInbound _inbound;
+  private final Inbound _inbound;
   private final Outbound _outbound;
 
   public TeleComSystem() {
-    _inbound = ApplicationRoot.context.getComponent(IInbound.class);
+    _inbound = ApplicationRoot.context.getComponent(Inbound.class);
     _outbound = ApplicationRoot.context.getComponent(Outbound.class);
     _processingWorkflow = ApplicationRoot.context.getComponent(ProcessingWorkflow.class);
   }

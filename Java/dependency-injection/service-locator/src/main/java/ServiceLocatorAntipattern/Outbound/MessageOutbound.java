@@ -1,7 +1,7 @@
 package ServiceLocatorAntipattern.Outbound;
 
 import ServiceLocatorAntipattern.ApplicationRoot;
-import ServiceLocatorAntipattern.Interfaces.AcmeMessage;
+import ServiceLocatorAntipattern.Interfaces.Message;
 
 public class MessageOutbound implements Outbound {
   private final OutputSocket _outputOutputSocket;
@@ -10,8 +10,8 @@ public class MessageOutbound implements Outbound {
     _outputOutputSocket = ApplicationRoot.context.getComponent(OutputSocket.class);
   }
 
-  public void send(AcmeMessage message) {
-    IOutboundMessage outboundMessage = ApplicationRoot.context.getComponent(IOutboundMessage.class);
+  public void send(Message message) {
+    OutboundMessage outboundMessage = ApplicationRoot.context.getComponent(OutboundMessage.class);
     message.writeTo(outboundMessage);
     outboundMessage.sendVia(_outputOutputSocket);
   }

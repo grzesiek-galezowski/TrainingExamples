@@ -1,6 +1,6 @@
 package com.github.grzesiek_galezowski.BastardInjection.Outbound;
 
-class TcpSocket implements IOutputSocket {
+class TcpSocket implements OutputSocket {
   public void open() {
     System.out.println("open");
   }

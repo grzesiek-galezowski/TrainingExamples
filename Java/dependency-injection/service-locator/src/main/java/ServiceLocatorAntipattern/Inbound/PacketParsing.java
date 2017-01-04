@@ -1,7 +1,7 @@
 package ServiceLocatorAntipattern.Inbound;
 
-import ServiceLocatorAntipattern.Interfaces.AcmeMessage;
+import ServiceLocatorAntipattern.Interfaces.Message;
 
 public interface PacketParsing {
-  AcmeMessage resultFor(byte[] frameData);
+  Message resultFor(byte[] frameData);
 }

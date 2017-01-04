@@ -1,33 +1,33 @@
 package com.github.grzesiek_galezowski.BastardInjection.Inbound;
 
-import com.github.grzesiek_galezowski.BastardInjection.Core.IProcessingWorkflow;
-import com.github.grzesiek_galezowski.BastardInjection.Interfaces.AcmeMessage;
+import com.github.grzesiek_galezowski.BastardInjection.Core.ProcessingWorkflow;
+import com.github.grzesiek_galezowski.BastardInjection.Interfaces.Message;
 
 import java.io.IOException;
 
-public class BinaryUdpInbound implements IInbound {
-    private IProcessingWorkflow _processingWorkflow;
-    private final IInputSocket _socket;
-    private final IPacketParsing _parsing;
+public class BinaryUdpInbound implements Inbound {
+    private ProcessingWorkflow _processingWorkflow;
+    private final InputSocket _socket;
+    private final PacketParsing _parsing;
 
     public BinaryUdpInbound() {
       this(new UdpSocket(), new BinaryParsing());
     }
 
     //for tests
-    public BinaryUdpInbound(IInputSocket socket, IPacketParsing parsing) {
+    public BinaryUdpInbound(InputSocket socket, PacketParsing parsing) {
       _socket = socket;
       _parsing = parsing;
     }
 
-    public void setDomainLogic(IProcessingWorkflow processingWorkflow) {
+    public void setDomainLogic(ProcessingWorkflow processingWorkflow) {
       _processingWorkflow = processingWorkflow;
     }
 
     public void startListening() {
       byte[] frameData = new byte[100];
       while (_socket.receive(frameData)) {
-        AcmeMessage message = _parsing.resultFor(frameData);
+        Message message = _parsing.resultFor(frameData);
         if (message != null) {
           if (_processingWorkflow != null) {
             _processingWorkflow.applyTo(message);

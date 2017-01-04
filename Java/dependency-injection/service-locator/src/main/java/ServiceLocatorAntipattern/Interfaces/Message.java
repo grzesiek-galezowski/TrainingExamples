@@ -2,7 +2,7 @@ package ServiceLocatorAntipattern.Interfaces;
 
 import ServiceLocatorAntipattern.Services.IAuthorization;
 
-public interface AcmeMessage {
+public interface Message {
   void authorizeUsing(IAuthorization authorizationRules);
 
   void writeTo(DataDestination dataDestination);

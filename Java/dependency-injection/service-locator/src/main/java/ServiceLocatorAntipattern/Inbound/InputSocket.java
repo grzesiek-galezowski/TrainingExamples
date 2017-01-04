@@ -1,5 +1,5 @@
 package ServiceLocatorAntipattern.Inbound;
 
-public interface IInputSocket {
+public interface InputSocket {
   boolean receive(byte[] frameData);
 }

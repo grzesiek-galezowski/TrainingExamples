@@ -2,15 +2,15 @@ package ServiceLocatorAntipattern.Inbound;
 
 import ServiceLocatorAntipattern.ApplicationRoot;
 import ServiceLocatorAntipattern.Core.ProcessingWorkflow;
-import ServiceLocatorAntipattern.Interfaces.AcmeMessage;
+import ServiceLocatorAntipattern.Interfaces.Message;
 
-public class BinaryUdpInbound implements IInbound {
-  private final IInputSocket _socket;
+public class BinaryUdpInbound implements Inbound {
+  private final InputSocket _socket;
   private final PacketParsing _parsing;
   private ProcessingWorkflow _processingWorkflow;
 
   public BinaryUdpInbound() {
-    _socket = ApplicationRoot.context.getComponent(IInputSocket.class);
+    _socket = ApplicationRoot.context.getComponent(InputSocket.class);
     _parsing = ApplicationRoot.context.getComponent(PacketParsing.class);
   }
 
@@ -21,7 +21,7 @@ public class BinaryUdpInbound implements IInbound {
   public void startListening() { //todo look at earlier examples
     byte[] frameData = new byte[100];
     while (_socket.receive(frameData)) {
-      AcmeMessage message = _parsing.resultFor(frameData);
+      Message message = _parsing.resultFor(frameData);
       if (message != null) {
         if (_processingWorkflow != null) {
           _processingWorkflow.applyTo(message);

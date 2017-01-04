@@ -1,5 +1,5 @@
 package ServiceLocatorAntipattern.Outbound;
 
-public interface IMarshalling {
+public interface Marshalling {
   String of(String arg);
 }

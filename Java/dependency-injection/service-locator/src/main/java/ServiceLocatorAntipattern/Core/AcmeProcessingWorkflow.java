@@ -1,7 +1,7 @@
 package ServiceLocatorAntipattern.Core;
 
 import ServiceLocatorAntipattern.ApplicationRoot;
-import ServiceLocatorAntipattern.Interfaces.AcmeMessage;
+import ServiceLocatorAntipattern.Interfaces.Message;
 import ServiceLocatorAntipattern.Outbound.Outbound;
 import ServiceLocatorAntipattern.Services.IAuthorization;
 import ServiceLocatorAntipattern.Services.IRepository;
@@ -20,7 +20,7 @@ public class AcmeProcessingWorkflow implements ProcessingWorkflow {
     _outbound = outbound;
   }
 
-  public void applyTo(AcmeMessage message) {
+  public void applyTo(Message message) {
     message.authorizeUsing(_authorizationRules);
     _repository.save(message);
     _outbound.send(message);
