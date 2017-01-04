@@ -1,4 +1,4 @@
-﻿package ServiceLocatorAntipattern.InMessages;
+package ServiceLocatorAntipattern.InMessages;
 
 import ServiceLocatorAntipattern.Interfaces.AcmeMessage;
 import ServiceLocatorAntipattern.Interfaces.DataDestination;

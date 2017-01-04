@@ -1,4 +1,4 @@
-﻿package com.github.grzesiek_galezowski.ChangingBehaviorThroughComposition;
+package com.github.grzesiek_galezowski.ChangingBehaviorThroughComposition;
 
 import com.github.grzesiek_galezowski.ChangingBehaviorThroughComposition.Alarms.*;
 import com.github.grzesiek_galezowski.ChangingBehaviorThroughComposition.SwitchCriterias.CompoundSwitchCriteria;

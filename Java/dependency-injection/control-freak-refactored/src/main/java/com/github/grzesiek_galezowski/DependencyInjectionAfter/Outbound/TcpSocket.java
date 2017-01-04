@@ -1,4 +1,4 @@
-﻿package com.github.grzesiek_galezowski.DependencyInjectionAfter.Outbound;
+package com.github.grzesiek_galezowski.DependencyInjectionAfter.Outbound;
 
 public class TcpSocket implements ISocket {
   public void Open() {

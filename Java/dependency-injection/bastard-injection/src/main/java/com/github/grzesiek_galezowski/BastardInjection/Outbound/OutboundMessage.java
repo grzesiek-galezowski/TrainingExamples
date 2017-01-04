@@ -1,4 +1,4 @@
-﻿package com.github.grzesiek_galezowski.BastardInjection.Outbound;
+package com.github.grzesiek_galezowski.BastardInjection.Outbound;
 
 class OutboundMessage implements IOutboundMessage {
   private final IMarshalling _marshalling;

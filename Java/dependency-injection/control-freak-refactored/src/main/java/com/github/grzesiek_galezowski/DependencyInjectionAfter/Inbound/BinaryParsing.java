@@ -1,4 +1,4 @@
-﻿package com.github.grzesiek_galezowski.DependencyInjectionAfter.Inbound;
+package com.github.grzesiek_galezowski.DependencyInjectionAfter.Inbound;
 
 import com.github.grzesiek_galezowski.DependencyInjectionAfter.InMessages.NullMessage;
 import com.github.grzesiek_galezowski.DependencyInjectionAfter.InMessages.StartMessage;

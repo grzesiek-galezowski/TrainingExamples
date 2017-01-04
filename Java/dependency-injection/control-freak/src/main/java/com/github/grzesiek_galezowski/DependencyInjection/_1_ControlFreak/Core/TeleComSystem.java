@@ -1,4 +1,4 @@
-﻿package com.github.grzesiek_galezowski.DependencyInjection._1_ControlFreak.Core;
+package com.github.grzesiek_galezowski.DependencyInjection._1_ControlFreak.Core;
 
 import com.github.grzesiek_galezowski.DependencyInjection._1_ControlFreak.Inbound.BinaryUdpInbound;
 import com.github.grzesiek_galezowski.DependencyInjection._1_ControlFreak.Outbound.XmlTcpOutbound;

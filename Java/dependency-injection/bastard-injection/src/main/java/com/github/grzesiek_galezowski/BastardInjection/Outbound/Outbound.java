@@ -1,4 +1,4 @@
-﻿package com.github.grzesiek_galezowski.BastardInjection.Outbound;
+package com.github.grzesiek_galezowski.BastardInjection.Outbound;
 
 import com.github.grzesiek_galezowski.BastardInjection.Interfaces.AcmeMessage;
 

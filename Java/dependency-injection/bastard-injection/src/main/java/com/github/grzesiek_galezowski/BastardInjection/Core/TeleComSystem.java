@@ -1,4 +1,4 @@
-﻿package com.github.grzesiek_galezowski.BastardInjection.Core;
+package com.github.grzesiek_galezowski.BastardInjection.Core;
 
 import com.github.grzesiek_galezowski.BastardInjection.Inbound.BinaryUdpInbound;
 import com.github.grzesiek_galezowski.BastardInjection.Inbound.IInbound;

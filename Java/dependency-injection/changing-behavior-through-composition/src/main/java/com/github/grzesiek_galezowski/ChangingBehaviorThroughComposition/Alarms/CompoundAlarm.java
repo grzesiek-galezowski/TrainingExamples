@@ -1,4 +1,4 @@
-﻿package com.github.grzesiek_galezowski.ChangingBehaviorThroughComposition.Alarms;
+package com.github.grzesiek_galezowski.ChangingBehaviorThroughComposition.Alarms;
 
 import com.github.grzesiek_galezowski.ChangingBehaviorThroughComposition.Alarm;
 

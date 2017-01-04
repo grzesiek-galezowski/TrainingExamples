@@ -1,4 +1,4 @@
-﻿package com.github.grzesiek_galezowski.ChangingBehaviorThroughComposition.SwitchCriterias;
+package com.github.grzesiek_galezowski.ChangingBehaviorThroughComposition.SwitchCriterias;
 
 import com.github.grzesiek_galezowski.ChangingBehaviorThroughComposition.SwitchCriteria;
 

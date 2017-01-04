@@ -1,4 +1,4 @@
-﻿package com.github.grzesiek_galezowski.BastardInjection.Inbound;
+package com.github.grzesiek_galezowski.BastardInjection.Inbound;
 
 import com.github.grzesiek_galezowski.BastardInjection.InMessages.NullMessage;
 import com.github.grzesiek_galezowski.BastardInjection.InMessages.StartMessage;

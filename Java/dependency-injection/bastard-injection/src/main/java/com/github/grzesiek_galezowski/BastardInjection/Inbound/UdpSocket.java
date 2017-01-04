@@ -1,4 +1,4 @@
-﻿package com.github.grzesiek_galezowski.BastardInjection.Inbound;
+package com.github.grzesiek_galezowski.BastardInjection.Inbound;
 
 class UdpSocket implements IInputSocket {
   public boolean receive(byte[] frameData) {

@@ -1,4 +1,4 @@
-﻿package com.github.grzesiek_galezowski.DependencyInjection._1_ControlFreak.Services;
+package com.github.grzesiek_galezowski.DependencyInjection._1_ControlFreak.Services;
 
 import com.github.grzesiek_galezowski.DependencyInjection._1_ControlFreak.Interfaces.DataDestination;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;

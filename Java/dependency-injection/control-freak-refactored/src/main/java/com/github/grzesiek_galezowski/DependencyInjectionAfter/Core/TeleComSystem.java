@@ -1,4 +1,4 @@
-﻿package com.github.grzesiek_galezowski.DependencyInjectionAfter.Core;
+package com.github.grzesiek_galezowski.DependencyInjectionAfter.Core;
 
 import com.github.grzesiek_galezowski.DependencyInjectionAfter.Inbound.IInbound;
 import com.github.grzesiek_galezowski.DependencyInjectionAfter.Outbound.IOutbound;

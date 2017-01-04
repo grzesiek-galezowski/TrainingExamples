@@ -1,4 +1,4 @@
-﻿package com.github.grzesiek_galezowski.BastardInjection;
+package com.github.grzesiek_galezowski.BastardInjection;
 
 import com.github.grzesiek_galezowski.BastardInjection.Core.TeleComSystem;
 

@@ -1,4 +1,4 @@
-﻿package com.github.grzesiek_galezowski.DependencyInjection._1_ControlFreak;
+package com.github.grzesiek_galezowski.DependencyInjection._1_ControlFreak;
 
 import com.github.grzesiek_galezowski.DependencyInjection._1_ControlFreak.Core.TeleComSystem;
 

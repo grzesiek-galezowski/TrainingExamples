@@ -1,4 +1,4 @@
-﻿package ServiceLocatorAntipattern.Outbound;
+package ServiceLocatorAntipattern.Outbound;
 
 public class XmlMarshalling implements IMarshalling {
   public String of(String arg) {

@@ -1,4 +1,4 @@
-﻿package ServiceLocatorAntipattern.Inbound;
+package ServiceLocatorAntipattern.Inbound;
 
 import ServiceLocatorAntipattern.ApplicationRoot;
 import ServiceLocatorAntipattern.Core.ProcessingWorkflow;

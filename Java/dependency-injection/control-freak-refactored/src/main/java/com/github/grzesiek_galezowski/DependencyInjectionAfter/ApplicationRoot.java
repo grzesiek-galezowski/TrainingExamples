@@ -1,4 +1,4 @@
-﻿import com.github.grzesiek_galezowski.DependencyInjectionAfter.Core.AcmeProcessingWorkflow;
+import com.github.grzesiek_galezowski.DependencyInjectionAfter.Core.AcmeProcessingWorkflow;
 import com.github.grzesiek_galezowski.DependencyInjectionAfter.Core.IAcmeProcessingWorkflow;
 import com.github.grzesiek_galezowski.DependencyInjectionAfter.Core.TeleComSystem;
 import com.github.grzesiek_galezowski.DependencyInjectionAfter.Inbound.*;

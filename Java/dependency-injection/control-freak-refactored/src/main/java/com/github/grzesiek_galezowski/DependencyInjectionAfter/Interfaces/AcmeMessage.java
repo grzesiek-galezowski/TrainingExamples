@@ -1,4 +1,4 @@
-﻿package com.github.grzesiek_galezowski.DependencyInjectionAfter.Interfaces;
+package com.github.grzesiek_galezowski.DependencyInjectionAfter.Interfaces;
 
 import com.github.grzesiek_galezowski.DependencyInjectionAfter.Services.IAuthorization;
 

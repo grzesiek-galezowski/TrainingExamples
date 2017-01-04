@@ -1,4 +1,4 @@
-﻿package ServiceLocatorAntipattern.Outbound;
+package ServiceLocatorAntipattern.Outbound;
 
 import ServiceLocatorAntipattern.ApplicationRoot;
 

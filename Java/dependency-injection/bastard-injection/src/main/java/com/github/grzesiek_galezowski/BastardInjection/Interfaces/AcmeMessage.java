@@ -1,4 +1,4 @@
-﻿package com.github.grzesiek_galezowski.BastardInjection.Interfaces;
+package com.github.grzesiek_galezowski.BastardInjection.Interfaces;
 
 import com.github.grzesiek_galezowski.BastardInjection.Services.IAuthorization;
 

@@ -1,4 +1,4 @@
-﻿package ServiceLocatorAntipattern.Outbound;
+package ServiceLocatorAntipattern.Outbound;
 
 public class TcpSocket implements OutputSocket {
   public void open() {

@@ -1,4 +1,4 @@
-﻿package com.github.grzesiek_galezowski.DependencyInjectionAfter.Services;
+package com.github.grzesiek_galezowski.DependencyInjectionAfter.Services;
 
 import com.github.grzesiek_galezowski.DependencyInjectionAfter.Interfaces.AcmeMessage;
 import com.github.grzesiek_galezowski.DependencyInjectionAfter.Interfaces.DataDestination;

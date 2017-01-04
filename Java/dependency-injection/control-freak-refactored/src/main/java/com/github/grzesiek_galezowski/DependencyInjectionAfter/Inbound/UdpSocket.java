@@ -1,4 +1,4 @@
-﻿package com.github.grzesiek_galezowski.DependencyInjectionAfter.Inbound;
+package com.github.grzesiek_galezowski.DependencyInjectionAfter.Inbound;
 
 import java.util.Random;
 

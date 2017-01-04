@@ -1,4 +1,4 @@
-﻿package ServiceLocatorAntipattern.Interfaces;
+package ServiceLocatorAntipattern.Interfaces;
 
 import ServiceLocatorAntipattern.Services.IAuthorization;
 

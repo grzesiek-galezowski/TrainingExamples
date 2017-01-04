@@ -1,4 +1,4 @@
-﻿package com.github.grzesiek_galezowski.DependencyInjection._1_ControlFreak.Inbound;
+package com.github.grzesiek_galezowski.DependencyInjection._1_ControlFreak.Inbound;
 
 import com.github.grzesiek_galezowski.DependencyInjection._1_ControlFreak.Core.AcmeProcessingWorkflow;
 import com.github.grzesiek_galezowski.DependencyInjection._1_ControlFreak.Interfaces.AcmeMessage;

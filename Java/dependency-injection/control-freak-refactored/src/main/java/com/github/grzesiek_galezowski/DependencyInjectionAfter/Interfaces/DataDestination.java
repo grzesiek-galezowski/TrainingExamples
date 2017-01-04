@@ -1,4 +1,4 @@
-﻿package com.github.grzesiek_galezowski.DependencyInjectionAfter.Interfaces;
+package com.github.grzesiek_galezowski.DependencyInjectionAfter.Interfaces;
 
 public interface DataDestination {
   void Add(String s);

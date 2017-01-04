@@ -1,4 +1,4 @@
-﻿package ServiceLocatorAntipattern.Services;
+package ServiceLocatorAntipattern.Services;
 
 import ServiceLocatorAntipattern.ApplicationRoot;
 import ServiceLocatorAntipattern.Interfaces.AcmeMessage;

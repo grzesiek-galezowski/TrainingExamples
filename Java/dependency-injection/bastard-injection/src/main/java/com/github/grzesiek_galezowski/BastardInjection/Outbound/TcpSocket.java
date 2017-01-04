@@ -1,4 +1,4 @@
-﻿package com.github.grzesiek_galezowski.BastardInjection.Outbound;
+package com.github.grzesiek_galezowski.BastardInjection.Outbound;
 
 class TcpSocket implements IOutputSocket {
   public void open() {

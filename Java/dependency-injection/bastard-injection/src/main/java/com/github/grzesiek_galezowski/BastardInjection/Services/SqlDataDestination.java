@@ -1,4 +1,4 @@
-﻿package com.github.grzesiek_galezowski.BastardInjection.Services;
+package com.github.grzesiek_galezowski.BastardInjection.Services;
 
 import com.github.grzesiek_galezowski.BastardInjection.Interfaces.DataDestination;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;

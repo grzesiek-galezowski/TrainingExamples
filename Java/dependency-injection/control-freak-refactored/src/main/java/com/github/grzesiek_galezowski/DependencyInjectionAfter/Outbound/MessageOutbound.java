@@ -1,4 +1,4 @@
-﻿package com.github.grzesiek_galezowski.DependencyInjectionAfter.Outbound;
+package com.github.grzesiek_galezowski.DependencyInjectionAfter.Outbound;
 
 import com.github.grzesiek_galezowski.DependencyInjectionAfter.Interfaces.AcmeMessage;
 import com.github.grzesiek_galezowski.DependencyInjectionAfter.Outbound.IOutbound;

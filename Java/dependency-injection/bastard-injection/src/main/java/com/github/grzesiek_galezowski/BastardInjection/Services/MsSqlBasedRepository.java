@@ -1,4 +1,4 @@
-﻿package com.github.grzesiek_galezowski.BastardInjection.Services;
+package com.github.grzesiek_galezowski.BastardInjection.Services;
 
 import com.github.grzesiek_galezowski.BastardInjection.Interfaces.AcmeMessage;
 import com.github.grzesiek_galezowski.BastardInjection.Interfaces.DataDestination;

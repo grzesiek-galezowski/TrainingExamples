@@ -1,4 +1,4 @@
-﻿package ServiceLocatorAntipattern;
+package ServiceLocatorAntipattern;
 
 import ServiceLocatorAntipattern.Core.AcmeProcessingWorkflow;
 import ServiceLocatorAntipattern.Core.ProcessingWorkflow;

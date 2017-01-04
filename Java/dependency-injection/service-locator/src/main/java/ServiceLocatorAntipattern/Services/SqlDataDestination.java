@@ -1,4 +1,4 @@
-﻿package ServiceLocatorAntipattern.Services;
+package ServiceLocatorAntipattern.Services;
 
 import ServiceLocatorAntipattern.Interfaces.DataDestination;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;

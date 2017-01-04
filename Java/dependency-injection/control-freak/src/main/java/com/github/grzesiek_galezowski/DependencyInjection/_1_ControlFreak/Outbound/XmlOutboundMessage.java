@@ -1,4 +1,4 @@
-﻿package com.github.grzesiek_galezowski.DependencyInjection._1_ControlFreak.Outbound;
+package com.github.grzesiek_galezowski.DependencyInjection._1_ControlFreak.Outbound;
 
 import com.github.grzesiek_galezowski.DependencyInjection._1_ControlFreak.Interfaces.DataDestination;
 
