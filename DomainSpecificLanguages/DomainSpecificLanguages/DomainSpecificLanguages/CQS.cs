@@ -17,6 +17,7 @@ namespace DomainSpecificLanguages
   {
     public void Main()
     {
+      Assert.That(12, Is.Negative);
       
     }
 

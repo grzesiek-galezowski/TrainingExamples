@@ -15,5 +15,10 @@ namespace CommandQuerySeparation._04_QueryFirst
     {
       
     }
+
+    public void Delete()
+    {
+      
+    }
   }
 }

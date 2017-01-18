@@ -1,6 +1,6 @@
 ﻿namespace CombosClassicNestedFunctions
 {
-  public class JinKazama : ComboSyntax
+  public class JinKazama : ComboSyntax //context superclass
   {
     public void Combos()
     {
