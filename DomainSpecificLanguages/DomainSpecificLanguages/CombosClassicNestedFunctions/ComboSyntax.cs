@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace CombosClassicNestedFunctions
 {
@@ -70,12 +71,12 @@ namespace CombosClassicNestedFunctions
       throw new NotImplementedException();
     }
 
-    protected KeyPress All(KeyPress key1, KeyPress key2, KeyPress key3)
+    protected KeyPress All(params KeyPress[] keys)
     {
-      return key1.Join(key2).Join(key3);
+      return keys.Aggregate((k1, k2) => k1.Join(k2));
     }
 
-    protected KeyPress Both(KeyPress key1, KeyPress key2)
+    protected KeyPress All(KeyPress key1, KeyPress key2)
     {
       return key1.Join(key2);
     }
