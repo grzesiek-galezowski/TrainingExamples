@@ -9,14 +9,14 @@ using namespace std;
 class Object
 {
 public:
-	Object(const std::initializer_list<int>& args)
-	{
-		for(std::initializer_list<int>::iterator it = args.begin(); it != args.end() ; ++it)
-		{
-			std::cout << *it;
-		}
-		std::cout << "\n";
-	}
+  Object(const std::initializer_list<int>& args)
+  {
+    for(std::initializer_list<int>::iterator it = args.begin(); it != args.end() ; ++it)
+    {
+      std::cout << *it;
+    }
+    std::cout << "\n";
+  }
 };
 
 TEST_CLASS(_02_SequenceConstructorNotation)
@@ -43,7 +43,7 @@ public:
     Assert().AreEqual(5.6, *(list1.begin() + 2));
     Assert().AreEqual(6.7, *(list1.begin() + 3));
     Assert().AreEqual(*(list1.end() - 1), *(list1.begin() + 3));
-    Assert().AreEqual(4u, list1.size());
+    Assert().AreEqual<unsigned>(4u, list1.size());
 
   }
 
