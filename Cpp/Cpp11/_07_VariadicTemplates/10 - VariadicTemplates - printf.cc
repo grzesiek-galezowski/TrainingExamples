@@ -5,6 +5,7 @@
 #include<exception>
 #include<stdexcept>
 #include<cstdio>
+#include<vector>
 
 void tsprintf(const char* s)
 {
@@ -19,7 +20,7 @@ void tsprintf(const char* s)
 }
 
 template<typename T, typename ...Args>
-void tsprintf(const char* s, const T& value, const Args&... args)
+void tsprintf(const char* s, const T& value, const Args&... args) //unpacking
 {
 	while (*s)
 	{
@@ -36,7 +37,7 @@ void tsprintf(const char* s, const T& value, const Args&... args)
 
 int main()
 {
-	tsprintf("The following values have been supplied: %, %, %\n", "lalamido", 123, "aa");
+	tsprintf("The following values have been supplied: %, %, %\n", "lalamido", 123, "aa"); //try passing vector
 	std::printf("The following values have been supplied: %d, %d, %s\n", "lalamido", 123, "aa");
 	return 0;
 }

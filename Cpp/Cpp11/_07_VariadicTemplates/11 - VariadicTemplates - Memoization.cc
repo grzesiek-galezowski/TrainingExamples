@@ -1,14 +1,11 @@
 #include "stdafx.h"
 
-#if 0
 #include<functional>
 #include<map>
 #include<iostream>
 #include<iomanip>
 
 #define W(obj) std::setw(3) << obj
-
-#define __GXX_EXPERIMENTAL_CXX0X__
 
 template <typename ReturnType, typename... Args>
 std::function<ReturnType (Args...)>
@@ -48,6 +45,3 @@ int main()
 	std::cout << memoizedFoo(2, 2, 3) << std::endl;
 
 }
-
-
-#endif
