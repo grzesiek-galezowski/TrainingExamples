@@ -12,3 +12,15 @@ enum class PowersOf2 : int
   sixth = constexpr_pow(2, 6)
 };
 
+
+enum class NestedConstexprs : int
+{
+  first = constexpr_pow(2, 2),
+  second = constexpr_pow(first, 2),
+  third = constexpr_pow(second, 2),
+  fourth = constexpr_pow(third, 2),
+  fifth = constexpr_pow(fourth, 2),
+  sixth = constexpr_pow(constexpr_pow(fourth, 2), 2)
+
+};
+
