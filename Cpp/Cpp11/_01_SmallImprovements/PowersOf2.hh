@@ -21,6 +21,5 @@ enum class NestedConstexprs : int
   fourth = constexpr_pow(third, 2),
   fifth = constexpr_pow(fourth, 2),
   sixth = constexpr_pow(constexpr_pow(fourth, 2), 2)
-
-};
+}; //compare to macros
 

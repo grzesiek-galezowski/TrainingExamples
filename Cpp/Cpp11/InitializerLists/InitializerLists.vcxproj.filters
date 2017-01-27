@@ -26,10 +26,10 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ConstructorNotation.cc">
+    <ClCompile Include="_01_NewConstructorNotation.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SequenceConstructor.cc">
+    <ClCompile Include="_02_SequenceConstructor.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
