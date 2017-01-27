@@ -12,10 +12,11 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace std::chrono;
 using namespace std;
 
-system_clock::time_point now()
+auto now()
 {
   return system_clock::now();
 }
+
 /* //equivalent of:
 auto now = []() { return system_clock::now(); };
 */
@@ -34,6 +35,7 @@ struct Task
 	string name;
 };
 
+//later
 auto appendTaskNameTo(string& str)
 {
   return [&str](const Task& t)
@@ -41,6 +43,7 @@ auto appendTaskNameTo(string& str)
     str.append(t.name);
   };
 }
+
 
 vector<Task> createTasks()
 {
@@ -168,3 +171,5 @@ namespace _06_Lambdas
     }
   };
 }
+
+
