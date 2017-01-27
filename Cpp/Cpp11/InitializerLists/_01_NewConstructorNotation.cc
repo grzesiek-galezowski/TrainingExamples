@@ -22,6 +22,7 @@ public:
 
   TEST_METHOD(CustomConstructorInvocation)
   {
+    Object o0(1, 2.5, 'c');
     Object o1{ 1, 2.5, 'c' };
     //Object o2 = {1, 2.5, 'c'}; //comment out explicit for this to work
 
@@ -29,6 +30,7 @@ public:
     Assert().AreEqual(2.5, o1.b);
     Assert().AreEqual('c', o1.c);
   }
+
 
 };
 

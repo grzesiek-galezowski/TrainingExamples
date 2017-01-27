@@ -11,6 +11,7 @@ class Object
 public:
   Object(const std::initializer_list<int>& args)
   {
+    //try converting to auto:
     for(std::initializer_list<int>::iterator it = args.begin(); it != args.end() ; ++it)
     {
       std::cout << *it;
@@ -38,13 +39,18 @@ public:
       "class std::initializer_list<double>", typeid(list2).name());
 
     std::initializer_list<double> list1{ 2.3, 4.5, 5.6, 6.7 };
-    Assert().AreEqual(2.3, *(list1.begin()));
-    Assert().AreEqual(4.5, *(list1.begin() + 1));
-    Assert().AreEqual(5.6, *(list1.begin() + 2));
-    Assert().AreEqual(6.7, *(list1.begin() + 3));
-    Assert().AreEqual(*(list1.end() - 1), *(list1.begin() + 3));
+    Assert().AreEqual(2.3, item(list1, 0));
+    Assert().AreEqual(4.5, item(list1, 1));
+    Assert().AreEqual(5.6, item(list1, 2));
+    Assert().AreEqual(6.7, item(list1, 3));
+    Assert().AreEqual(*(list1.end() - 1), item(list1, 3));
     Assert().AreEqual<unsigned>(4u, list1.size());
 
+  }
+
+  template<typename T> auto item(T collection, int place)
+  {
+    return *(collection.begin() + place);
   }
 
 };
