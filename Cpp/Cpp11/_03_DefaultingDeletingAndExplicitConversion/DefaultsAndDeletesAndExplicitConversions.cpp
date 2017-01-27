@@ -7,7 +7,7 @@
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace std;
 
-class ConversibleValue
+class ConversibleValue //deletes and explicit operators!
 {
 public:
   ConversibleValue(const ConversibleValue& other) = delete;
@@ -43,21 +43,21 @@ namespace _03_DefaultingDeletingAndExplicitConversion
 	{
 	public:
 		
-		TEST_METHOD(DefaultAndDeletedMembers)
-		{
+    TEST_METHOD(DefaultAndDeletedMembers)
+    {
       ConversibleValue value1; //explicit constructor is default
-                               //ConversibleValue value2(value1); // error - copy constructor deleted
+      //ConversibleValue value2(value1); // error - copy constructor deleted
       ConversibleValue value3; //explicit constructor is default
       value3 = value1; //assignment operator is default
-		}
+    }
 
     TEST_METHOD(ImplicitAndExplicitConversions)
     {
       ConversibleValue value1;
       int convertedToInt = value1;
       //string convertedToString = value1; //compile error - explicit required
-      string convertedToString1 = (string)value1;
-      string convertedToString2 = static_cast<string>(value1);
+      string convertedToString1 = (string)value1; //OK, explicit cast
+      string convertedToString2 = static_cast<string>(value1); //OK, better explicit cast
       
       //!! note the 's' suffix:
       Assert().AreEqual(
