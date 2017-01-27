@@ -17,9 +17,6 @@ namespace _01_SmallImprovements
     for (PowersOf2& value : powers)
     {
       cout << u8"Następna potęga dwójki: " << endl;
-
-      // std::cout << value << std::endl; //=> error!
-
       auto printablePower = static_cast<int>(value);
       cout << printablePower << endl;
     }
@@ -29,7 +26,7 @@ namespace _01_SmallImprovements
   {
   public:
 
-    TEST_METHOD(SmallImprovements)
+    TEST_METHOD(ClassEnums)
     {
       Assert().AreEqual<PowersOf2>(PowersOf2::second, PowersOf2::second);
       Assert().AreNotEqual<PowersOf2>(PowersOf2::third, PowersOf2::first);
