@@ -66,7 +66,7 @@ namespace _06_Lambdas
     {
       vector<Task> tasks = createTasks();
 
-      sort(tasks.begin(), tasks.end(),
+      std::sort(tasks.begin(), tasks.end(),
         [](const Task& t1, const Task& t2)
       {
         return t1.startDate < t2.startDate;
@@ -83,7 +83,7 @@ namespace _06_Lambdas
     {
       vector<Task> tasks = createTasks();
 
-      sort(tasks.rbegin(), tasks.rend(),
+      std::sort(tasks.rbegin(), tasks.rend(),
         [](const Task& t1, const Task& t2)
       {
         return t1.startDate < t2.startDate;
@@ -100,8 +100,8 @@ namespace _06_Lambdas
     {
       vector<Task> tasks = createTasks();
 
-      sort(tasks.begin(), tasks.end(),
-        [](const Task& t1, const Task& t2)
+      std::sort(tasks.begin(), tasks.end(),
+        [](auto& t1, auto& t2)
       {
         return t1.endDate < t2.endDate;
       });
@@ -119,7 +119,7 @@ namespace _06_Lambdas
       vector<Task> tasks = createTasks();
       vector<Task> reschedulesTasks(tasks);
 
-      transform(tasks.begin(), tasks.end(), reschedulesTasks.begin(),
+      std::transform(tasks.begin(), tasks.end(), reschedulesTasks.begin(),
         [](const Task& baseTask)
       {
         Task rescheduledTask = baseTask;

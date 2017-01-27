@@ -5,13 +5,15 @@
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-std::function<int ()> sequencer(int start)
+//std::function<int ()> sequencer(int start)
+auto sequencer(int start)
 {
-    return [=]() mutable //return [&start]()
-    {
-        start++;
-        return start;
-    };
+  //try commenting mutable
+  return [=]() mutable //return [&start]()
+  {
+      start++;
+      return start;
+  };
 }
 
 namespace _06_Lambdas
