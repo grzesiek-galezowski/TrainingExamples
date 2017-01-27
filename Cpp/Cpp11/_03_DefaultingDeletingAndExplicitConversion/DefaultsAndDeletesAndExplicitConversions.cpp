@@ -14,27 +14,18 @@ public:
   explicit ConversibleValue() = default;
   ConversibleValue& operator=(const ConversibleValue& other) = default;
 
-  operator int()
+  //implicit:
+  operator int() 
   {
     return 5;
   }
 
+  //explicit:
   explicit operator std::string()
   {
     return "Piejo kury piejo nie majo koguta!";
   }
 };
-
-
-int main()
-{
-
-
-
-
-  return 0;
-}
-
 
 
 namespace _03_DefaultingDeletingAndExplicitConversion
