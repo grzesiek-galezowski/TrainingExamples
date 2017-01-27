@@ -11,3 +11,4 @@ template<typename T> constexpr T constexpr_pow(T num, int power)
 
 static_assert(constexpr_pow(2, 3) == 2 * 2 * 2, "This power algorithm is a piece of...");
 static_assert(constexpr_pow(5, 5) == 5 * 5 * 5 * 5 * 5, "This power algorithm is a piece of...");
+

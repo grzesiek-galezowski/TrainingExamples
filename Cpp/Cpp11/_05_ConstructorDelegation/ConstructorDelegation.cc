@@ -10,22 +10,24 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace std;
 using namespace std::chrono;
 
-auto seed = high_resolution_clock::now().time_since_epoch().count();
-mt19937 random(seed);
+auto seed = std::chrono::high_resolution_clock::now().time_since_epoch().count();
+std::mt19937 random(seed); //functor!!
 
 class ObjectWithTwoConstructors
 {
 public:
+  const int a;
+
+  //field initializer:
+  const int randomValue1 = random();
+  const int randomValue2;
+
+
 	ObjectWithTwoConstructors(const int& initialValue) 
-    : a(initialValue), random2(random()) {}
+    : a(initialValue), randomValue2(random()) {}
 
   ObjectWithTwoConstructors() : ObjectWithTwoConstructors(2) {} // legal in c++ 11!!
 	
-  const int a;
-  
-  //field initializer:
-  const int random1 = random();
-  const int random2;
 };
 
 TEST_CLASS(ConstructorDelegation)
@@ -46,8 +48,8 @@ public:
     ObjectWithTwoConstructors o1;
     ObjectWithTwoConstructors o2;
 
-    Assert().AreNotEqual(o1.random1, o2.random1);
-    Assert().AreNotEqual(o1.random2, o2.random2);
+    Assert().AreNotEqual(o1.randomValue1, o2.randomValue1);
+    Assert().AreNotEqual(o1.randomValue2, o2.randomValue2);
   }
 
 };
