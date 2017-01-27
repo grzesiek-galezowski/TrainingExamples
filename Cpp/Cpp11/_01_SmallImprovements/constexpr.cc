@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "CppUnitTest.h"
 
 #include<vector>
@@ -16,7 +16,7 @@ namespace _01_SmallImprovements
   {
     for (PowersOf2& value : powers)
     {
-      cout << u8"Nastêpna potêga dwójki: " << endl;
+      cout << u8"NastÄ™pna potÄ™ga dwÃ³jki: " << endl;
 
       // std::cout << value << std::endl; //=> error!
 
