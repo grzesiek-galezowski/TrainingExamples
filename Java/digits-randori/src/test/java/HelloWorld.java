@@ -1,8 +1,6 @@
 import org.junit.Test;
 import thirdparty.DigitalDisplay;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -24,19 +22,19 @@ import static org.mockito.Mockito.verify;
 
 public class HelloWorld {
 
-  private String exampleOutput  =
-      ".-." +
-      "|.|" +
-      ".-." +
-      "|.|" +
-      ".-.";
+  private String[] exampleOutput  = new String[] {
+      ".-.",
+      "|.|",
+      ".-.",
+      "|.|",
+      ".-."};
 
   private String digitIndexes  =
-      ".0." +
-      "1.2" +
-      ".3." +
-      "4.5" +
-      ".6.";
+      ".A." +
+      "F.B" +
+      ".G." +
+      "E.C" +
+      ".D.";
 
   @Test
   public void shouldXXXXXXXXXXXXXXX() {

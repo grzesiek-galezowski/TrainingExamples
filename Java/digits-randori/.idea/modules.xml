@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/digits-randori.iml" filepath="$PROJECT_DIR$/digits-randori.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/alarms-randori.iml" filepath="$PROJECT_DIR$/.idea/modules/alarms-randori.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/alarms-randori_main.iml" filepath="$PROJECT_DIR$/.idea/modules/alarms-randori_main.iml" group="alarms-randori" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/alarms-randori_test.iml" filepath="$PROJECT_DIR$/.idea/modules/alarms-randori_test.iml" group="alarms-randori" />
     </modules>
   </component>
 </project>
