@@ -46,13 +46,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\Alarm.cs" />
-    <Compile Include="Criterias\DayCriteria.cs" />
-    <Compile Include="Interfaces\TimeCriteria.cs" />
-    <Compile Include="Criterias\NightCriteria.cs" />
-    <Compile Include="Criterias\OutsideWeekendCriteria.cs" />
+    <Compile Include="Criteria\DayCriterion.cs" />
+    <Compile Include="Interfaces\TimeCriterion.cs" />
+    <Compile Include="Criteria\NightCriterion.cs" />
+    <Compile Include="Criteria\OutsideWeekendCriterion.cs" />
     <Compile Include="Adapters\SirensService.cs" />
     <Compile Include="Adapters\TelephoneService.cs" />
-    <Compile Include="Criterias\WeekendCriteria.cs" />
+    <Compile Include="Criteria\WeekendCriterion.cs" />
     <Compile Include="Alarms\CompositeAlarm.cs" />
     <Compile Include="Alarms\LoudAlarmService.cs" />
     <Compile Include="Alarms\SilentAlarmService.cs" />

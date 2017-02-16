@@ -59,7 +59,7 @@
     <Compile Include="AlarmServices\SilentAlarmService.cs" />
     <Compile Include="Adapters\SirensService.cs" />
     <Compile Include="Adapters\TelephoneService.cs" />
-    <Compile Include="Enums\TimeCriterias.cs" />
+    <Compile Include="Enums\TimeCriteria.cs" />
     <Compile Include="Adapters\TimeService.cs" />
     <Compile Include="AlarmServices\TimedAlarmService.cs" />
   </ItemGroup>

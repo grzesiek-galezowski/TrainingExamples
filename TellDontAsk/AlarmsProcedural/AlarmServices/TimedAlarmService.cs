@@ -9,26 +9,26 @@ namespace AlarmsProcedural.AlarmServices
   {
     public static void Trigger(Alarm alarm)
     {
-      if (alarm.TimeCriterias.All(IsSatisfied))
+      if (CriteriaAreSatisfied(alarm))
       {
         AlarmService.TriggerAlarm(alarm.Nested1);
       }
     }
 
-    private static bool IsSatisfied(TimeCriterias criteria)
+    private static bool IsSatisfied(TimeCriteria criterion)
     {
-      switch (criteria)
+      switch (criterion)
       {
-        case TimeCriterias.OnWeekend:
+        case TimeCriteria.OnWeekend:
           return TimeService.IsWeekend();
-        case TimeCriterias.OutsideWeekend:
+        case TimeCriteria.OutsideWeekend:
           return TimeService.IsOutsideWeekend();
-        case TimeCriterias.AtNight:
+        case TimeCriteria.AtNight:
           return TimeService.IsNight();
-        case TimeCriterias.DuringDay:
+        case TimeCriteria.DuringDay:
           return TimeService.IsDay();
         default:
-          throw new ArgumentOutOfRangeException("criteria");
+          throw new ArgumentOutOfRangeException("criterion");
       }
     }
 
@@ -40,28 +40,28 @@ namespace AlarmsProcedural.AlarmServices
     public static void Dump(Alarm alarm)
     {
       Console.WriteLine("{ Timed Alarm active when: ");
-      OutputCriterias(alarm);
+      OutputCriteria(alarm);
       Console.WriteLine("When triggered : ");
       AlarmService.Dump(alarm.Nested1);
       Console.WriteLine(" }");
     }
 
-    private static void OutputCriterias(Alarm alarm)
+    private static void OutputCriteria(Alarm alarm)
     {
-      foreach (var criteria in alarm.TimeCriterias)
+      foreach (var criteria in alarm.TimeCriteria)
       {
         switch (criteria)
         {
-          case TimeCriterias.OnWeekend:
+          case TimeCriteria.OnWeekend:
             Console.WriteLine("it's weekend");
             break;
-          case TimeCriterias.OutsideWeekend:
+          case TimeCriteria.OutsideWeekend:
             Console.WriteLine("it's not weekend");
             break;
-          case TimeCriterias.AtNight:
+          case TimeCriteria.AtNight:
             Console.WriteLine("it's night");
             break;
-          case TimeCriterias.DuringDay:
+          case TimeCriteria.DuringDay:
             Console.WriteLine("it's a day");
             break;
           default:
@@ -69,5 +69,11 @@ namespace AlarmsProcedural.AlarmServices
         }
       }
     }
+
+    private static bool CriteriaAreSatisfied(Alarm alarm)
+    {
+      return alarm.TimeCriteria.All(IsSatisfied);
+    }
+
   }
 }

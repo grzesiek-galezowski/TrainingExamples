@@ -1,13 +1,13 @@
 using System;
 using AlarmsObjectOriented.Interfaces;
 
-namespace AlarmsObjectOriented.Criterias
+namespace AlarmsObjectOriented.Criteria
 {
-  public class OutsideWeekendCriteria : TimeCriteria
+  public class OutsideWeekendCriterion : TimeCriterion
   {
     public bool IsSatisfied()
     {
-      return !new WeekendCriteria().IsSatisfied();
+      return !new WeekendCriterion().IsSatisfied();
     }
 
     public void Output()

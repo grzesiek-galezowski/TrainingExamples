@@ -1,6 +1,6 @@
 ﻿namespace AlarmsProcedural.Enums
 {
-  public enum TimeCriterias
+  public enum TimeCriteria
   {
     OnWeekend,
     OutsideWeekend,

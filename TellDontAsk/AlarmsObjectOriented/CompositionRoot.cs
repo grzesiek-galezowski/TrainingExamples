@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AlarmsObjectOriented.Adapters;
 using AlarmsObjectOriented.Alarms;
-using AlarmsObjectOriented.Criterias;
+using AlarmsObjectOriented.Criteria;
 using AlarmsObjectOriented.Interfaces;
 using NUnit.Framework;
 
@@ -35,8 +35,8 @@ namespace AlarmsObjectOriented
           new LoudAlarm(),
           AllOf
           (
-            new NightCriteria(), 
-            new WeekendCriteria()
+            new NightCriterion(), 
+            new WeekendCriterion()
           )
         ),
         new SilentAlarm
@@ -46,9 +46,9 @@ namespace AlarmsObjectOriented
       );
     }
 
-    private static IEnumerable<TimeCriteria> AllOf(params TimeCriteria[] criterias)
+    private static IEnumerable<TimeCriterion> AllOf(params TimeCriterion[] criterion)
     {
-      return criterias;
+      return criterion;
     }
   }
 

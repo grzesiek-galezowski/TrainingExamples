@@ -2,9 +2,9 @@ using System;
 using AlarmsObjectOriented.Interfaces;
 using TddEbook.TddToolkit;
 
-namespace AlarmsObjectOriented.Criterias
+namespace AlarmsObjectOriented.Criteria
 {
-  internal class DayCriteria : TimeCriteria
+  internal class WeekendCriterion : TimeCriterion
   {
     public bool IsSatisfied()
     {
@@ -13,7 +13,7 @@ namespace AlarmsObjectOriented.Criterias
 
     public void Output()
     {
-      Console.WriteLine("it's a day");
+      Console.WriteLine("it's weekend");
     }
   }
 }

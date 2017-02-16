@@ -1,13 +1,13 @@
 using System;
 using AlarmsObjectOriented.Interfaces;
 
-namespace AlarmsObjectOriented.Criterias
+namespace AlarmsObjectOriented.Criteria
 {
-  internal class NightCriteria : TimeCriteria
+  internal class NightCriterion : TimeCriterion
   {
     public bool IsSatisfied()
     {
-      return !new DayCriteria().IsSatisfied();
+      return !new DayCriterion().IsSatisfied();
     }
 
     public void Output()

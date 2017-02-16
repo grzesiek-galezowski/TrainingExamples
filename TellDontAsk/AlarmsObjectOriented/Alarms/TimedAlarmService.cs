@@ -8,9 +8,9 @@ namespace AlarmsObjectOriented.Alarms
   public class TimedAlarm : Alarm
   {
     private readonly Alarm _alarm;
-    private readonly IEnumerable<TimeCriteria> _timeServices;
+    private readonly IEnumerable<TimeCriterion> _timeServices;
 
-    public TimedAlarm(Alarm alarm, IEnumerable<TimeCriteria> timeServices)
+    public TimedAlarm(Alarm alarm, IEnumerable<TimeCriterion> timeServices)
     {
       _alarm = alarm;
       _timeServices = timeServices;
@@ -32,13 +32,13 @@ namespace AlarmsObjectOriented.Alarms
     public void Dump()
     {
       Console.WriteLine("{ Timed Alarm active when: ");
-      OutputCriterias();
+      OutputCriteria();
       Console.WriteLine("When triggered : ");
       _alarm.Dump();
       Console.WriteLine(" }");
     }
 
-    public void OutputCriterias()
+    public void OutputCriteria()
     {
       foreach (var criteria in _timeServices)
       {

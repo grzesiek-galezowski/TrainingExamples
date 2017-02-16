@@ -1,6 +1,6 @@
 namespace AlarmsObjectOriented.Interfaces
 {
-  public interface TimeCriteria
+  public interface TimeCriterion
   {
     bool IsSatisfied();
     void Output();

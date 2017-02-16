@@ -38,10 +38,10 @@ namespace AlarmsProcedural
         Nested1 = new Alarm(AlarmTypes.Timed)
         {
           Nested1 = new Alarm(AlarmTypes.Loud),
-          TimeCriterias = AllOf
+          TimeCriteria = AllOf
           (
-            TimeCriterias.AtNight, 
-            TimeCriterias.OnWeekend
+            TimeCriteria.AtNight, 
+            TimeCriteria.OnWeekend
           ),
         },
         Nested2 = new Alarm(AlarmTypes.Silent)
@@ -51,9 +51,9 @@ namespace AlarmsProcedural
       };
     }
 
-    public static TimeCriterias[] AllOf(params TimeCriterias[] criterias)
+    public static TimeCriteria[] AllOf(params TimeCriteria[] criteria)
     {
-      return criterias;
+      return criteria;
     }
   }
 
