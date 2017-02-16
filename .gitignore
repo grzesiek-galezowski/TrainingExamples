@@ -109,3 +109,5 @@ Cpp/Cpp11/Cpp11.sdf
 Cpp/Cpp11/Cpp11.sdf
 *.sdf
 *.class
+TellDontAsk/Sessions/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+*.ncrunchsolution

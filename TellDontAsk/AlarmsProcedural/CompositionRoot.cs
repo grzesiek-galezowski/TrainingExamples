@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using AlarmsProcedural.Enums;
 using NUnit.Framework;
 
@@ -56,13 +57,33 @@ namespace AlarmsProcedural
     }
   }
 
-  public class Spec
+  public class CharacterizationTests
   {
     [Test]
-    public void ShouldXXXXXXXXXXXX()
+    public void Characterization1() //please don't name tests like that
     {
       CompositionRoot.Main();
-      Assert.Fail("Unfinished");
+      using (var stringWriter = new StringWriter())
+      {
+        Console.SetOut(stringWriter);
+        CompositionRoot.Main();
+
+        var output = stringWriter.ToString();
+        Assert.AreEqual(
+          "Calling 11-222-1121\r\n" +
+          "Stopped playing\r\n" +
+          "Recalling 11-222-1121\r\n" +
+          "========DUMP=========\r\n" +
+          "{ Both: \r\n" +
+          "{ Timed Alarm active when: \r\n" +
+          "it\'s night\r\n" +
+          "it\'s weekend\r\n" +
+          "When triggered : \r\n" +
+          "{ Playing loud sound }\r\n" +
+          " }\r\n" +
+          "{ Calls: 11-222-1121 }\r\n" +
+          "} \r\n", output);
+      } 
     }
   }
 }

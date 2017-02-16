@@ -15,7 +15,7 @@ namespace AlarmsProcedural.AlarmServices
       SirensService.StopPlayingLoudSound();
     }
 
-    public static void Dump(Alarm alarm)
+    public static void Dump()
     {
       Console.WriteLine("{ Playing loud sound }");
     }

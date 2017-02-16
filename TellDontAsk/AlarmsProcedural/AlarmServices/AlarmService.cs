@@ -52,7 +52,7 @@ namespace AlarmsProcedural.AlarmServices
       switch (alarm.AlarmType)
       {
         case AlarmTypes.Loud:
-          LoudAlarmService.Dump(alarm);
+          LoudAlarmService.Dump();
           break;
         case AlarmTypes.Silent:
           SilentAlarmService.Dump(alarm);
