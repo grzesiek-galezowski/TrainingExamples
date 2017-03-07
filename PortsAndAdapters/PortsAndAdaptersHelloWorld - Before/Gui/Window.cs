@@ -9,7 +9,7 @@ namespace Gui
 {
     public class Window
     {
-      DomainLogic _logic = new DomainLogic();
+      private readonly DomainLogic _logic = new DomainLogic();
 
       public void OnSubmitClicked()
       {

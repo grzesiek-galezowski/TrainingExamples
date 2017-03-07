@@ -9,11 +9,11 @@ namespace Domain
 {
     public class DomainLogic
     {
-      DatabaseObject database = new DatabaseObject();
+      private readonly DatabaseObject _database = new DatabaseObject();
 
       public void HandleAddEmployeeRequest()
       {
-        database.SaveEmployee();
+        _database.SaveEmployee();
       }
     }
 }
