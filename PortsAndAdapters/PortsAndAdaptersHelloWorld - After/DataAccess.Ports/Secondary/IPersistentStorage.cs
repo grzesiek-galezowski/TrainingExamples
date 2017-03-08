@@ -1,4 +1,4 @@
-﻿namespace DataAccess.Ports
+﻿namespace DataAccess.Ports.Secondary
 {
   public interface IPersistentStorage
   {

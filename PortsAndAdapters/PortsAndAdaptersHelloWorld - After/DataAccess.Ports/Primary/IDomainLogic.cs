@@ -1,4 +1,4 @@
-﻿namespace DataAccess.Ports
+﻿namespace DataAccess.Ports.Primary
 {
   public interface IDomainLogic
   {

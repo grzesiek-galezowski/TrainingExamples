@@ -1,11 +1,11 @@
-﻿using System.Security.Cryptography;
-using DataAccess.Ports;
+﻿using DataAccess.Ports;
+using DataAccess.Ports.Primary;
 
 namespace Gui
 {
     public class Window
     {
-      readonly IDomainLogic _logic;
+      private readonly IDomainLogic _logic;
 
       public Window(IDomainLogic domainLogic)
       {
