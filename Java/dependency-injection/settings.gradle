@@ -1,2 +1,8 @@
 rootProject.name = 'dependency-injection'
 
+include '_01_changing-behavior-through-composition'
+include '_02_control-freak'
+include '_03_control-freak-refactored'
+include '_04_bastard-injection'
+include '_05_service-locator'
+include '_06_conforming-container-antipattern'
