@@ -1,6 +1,6 @@
 package com.github.grzesiek_galezowski.DependencyInjectionAfter.Outbound;
 
-public interface ISocket {
+public interface Socket {
   void Open();
 
   void Close();

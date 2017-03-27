@@ -1,20 +1,20 @@
 package com.github.grzesiek_galezowski.DependencyInjectionAfter.Inbound;
 
-import com.github.grzesiek_galezowski.DependencyInjectionAfter.Core.IAcmeProcessingWorkflow;
+import com.github.grzesiek_galezowski.DependencyInjectionAfter.Core.ProcessingWorkflow;
 import com.github.grzesiek_galezowski.DependencyInjectionAfter.Interfaces.AcmeMessage;
 
-public class MessageInbound implements IInbound {
-  private IAcmeProcessingWorkflow _processingWorkflow;
-  private final IInboundSocket _socket;
-  private final IParsing _parsing;
+public class MessageInbound implements Inbound {
+  private ProcessingWorkflow _processingWorkflow;
+  private final InboundSocket _socket;
+  private final Parsing _parsing;
 
   public MessageInbound(
-      IInboundSocket udpSocket, IParsing binaryParsing) {
+      InboundSocket udpSocket, Parsing binaryParsing) {
     _socket = udpSocket;
     _parsing = binaryParsing;
   }
 
-  public void SetDomainLogic(IAcmeProcessingWorkflow processingWorkflow) {
+  public void SetDomainLogic(ProcessingWorkflow processingWorkflow) {
     _processingWorkflow = processingWorkflow;
   }
 

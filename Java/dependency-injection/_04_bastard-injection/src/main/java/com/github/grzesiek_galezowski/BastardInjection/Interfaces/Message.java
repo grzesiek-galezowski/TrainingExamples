@@ -1,9 +1,9 @@
 package com.github.grzesiek_galezowski.BastardInjection.Interfaces;
 
-import com.github.grzesiek_galezowski.BastardInjection.Services.IAuthorization;
+import com.github.grzesiek_galezowski.BastardInjection.Services.Authorization;
 
 public interface Message {
-  void authorizeUsing(IAuthorization authorizationRules);
+  void authorizeUsing(Authorization authorizationRules);
 
   void writeTo(DataDestination dataDestination);
 }

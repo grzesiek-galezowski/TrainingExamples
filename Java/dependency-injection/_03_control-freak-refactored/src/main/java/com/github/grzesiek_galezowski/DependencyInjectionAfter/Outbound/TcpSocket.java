@@ -1,6 +1,6 @@
 package com.github.grzesiek_galezowski.DependencyInjectionAfter.Outbound;
 
-public class TcpSocket implements ISocket {
+public class TcpSocket implements Socket {
   public void Open() {
     System.out.println("open");
   }

@@ -2,6 +2,6 @@ package ServiceLocatorAntipattern.Services;
 
 import ServiceLocatorAntipattern.Interfaces.Message;
 
-public interface IRepository {
+public interface Repository {
   void save(Message message);
 }

@@ -1,17 +1,17 @@
 package com.github.grzesiek_galezowski.DependencyInjectionAfter.Core;
 
-import com.github.grzesiek_galezowski.DependencyInjectionAfter.Inbound.IInbound;
-import com.github.grzesiek_galezowski.DependencyInjectionAfter.Outbound.IOutbound;
+import com.github.grzesiek_galezowski.DependencyInjectionAfter.Inbound.Inbound;
+import com.github.grzesiek_galezowski.DependencyInjectionAfter.Outbound.Outbound;
 
 public class TeleComSystem {
-  private final IAcmeProcessingWorkflow _processingWorkflow;
-  private final IInbound _inbound;
-  private final IOutbound _outbound;
+  private final ProcessingWorkflow _processingWorkflow;
+  private final Inbound _inbound;
+  private final Outbound _outbound;
 
   public TeleComSystem(
-      IInbound binaryUdpInbound,
-      IOutbound xmlTcpOutbound,
-      IAcmeProcessingWorkflow acmeProcessingWorkflow) {
+      Inbound binaryUdpInbound,
+      Outbound xmlTcpOutbound,
+      ProcessingWorkflow acmeProcessingWorkflow) {
     _inbound = binaryUdpInbound;
     _outbound = xmlTcpOutbound;
     _processingWorkflow = acmeProcessingWorkflow;

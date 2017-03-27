@@ -1,4 +1,4 @@
 package ServiceLocatorAntipattern.Services;
 
-public class ActiveDirectoryBasedAuthorization implements IAuthorization {
+public class ActiveDirectoryBasedAuthorization implements Authorization {
 }

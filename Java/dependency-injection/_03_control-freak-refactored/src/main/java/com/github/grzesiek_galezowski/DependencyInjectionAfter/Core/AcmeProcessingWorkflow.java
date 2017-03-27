@@ -1,23 +1,23 @@
 package com.github.grzesiek_galezowski.DependencyInjectionAfter.Core;
 
 import com.github.grzesiek_galezowski.DependencyInjectionAfter.Interfaces.AcmeMessage;
-import com.github.grzesiek_galezowski.DependencyInjectionAfter.Outbound.IOutbound;
-import com.github.grzesiek_galezowski.DependencyInjectionAfter.Services.IAuthorization;
-import com.github.grzesiek_galezowski.DependencyInjectionAfter.Services.IRepository;
+import com.github.grzesiek_galezowski.DependencyInjectionAfter.Outbound.Outbound;
+import com.github.grzesiek_galezowski.DependencyInjectionAfter.Services.Authorization;
+import com.github.grzesiek_galezowski.DependencyInjectionAfter.Services.Repository;
 
-public class AcmeProcessingWorkflow implements IAcmeProcessingWorkflow {
-  private final IRepository _repository;
-  private final IAuthorization _authorizationRules;
-  private IOutbound _outbound;
+public class AcmeProcessingWorkflow implements ProcessingWorkflow {
+  private final Repository _repository;
+  private final Authorization _authorizationRules;
+  private Outbound _outbound;
 
   public AcmeProcessingWorkflow(
-      IAuthorization activeDirectoryBasedAuthorization,
-      IRepository msSqlBasedRepository) {
+      Authorization activeDirectoryBasedAuthorization,
+      Repository msSqlBasedRepository) {
     _authorizationRules = activeDirectoryBasedAuthorization;
     _repository = msSqlBasedRepository;
   }
 
-  public void SetOutbound(IOutbound outbound) {
+  public void SetOutbound(Outbound outbound) {
     _outbound = outbound;
   }
 

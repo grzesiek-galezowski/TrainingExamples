@@ -34,8 +34,8 @@ public class ApplicationRoot {
         new ReflectionLifecycleStrategy(monitor),
         null);
     context.as(CACHE)
-        .addComponent(IRepository.class, MsSqlBasedRepository.class)
-        .addComponent(IAuthorization.class, ActiveDirectoryBasedAuthorization.class)
+        .addComponent(Repository.class, MsSqlBasedRepository.class)
+        .addComponent(Authorization.class, ActiveDirectoryBasedAuthorization.class)
         .addComponent(ProcessingWorkflow.class, AcmeProcessingWorkflow.class)
         .addComponent(OutputSocket.class, TcpSocket.class)
         .addComponent(Outbound.class, MessageOutbound.class)

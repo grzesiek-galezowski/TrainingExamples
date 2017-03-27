@@ -1,4 +1,4 @@
 package ServiceLocatorAntipattern.Services;
 
-public interface IAuthorization {
+public interface Authorization {
 }

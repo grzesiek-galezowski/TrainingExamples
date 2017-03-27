@@ -3,13 +3,13 @@ package com.github.grzesiek_galezowski.BastardInjection.Core;
 import com.github.grzesiek_galezowski.BastardInjection.Interfaces.Message;
 import com.github.grzesiek_galezowski.BastardInjection.Outbound.Outbound;
 import com.github.grzesiek_galezowski.BastardInjection.Services.ActiveDirectoryBasedAuthorization;
-import com.github.grzesiek_galezowski.BastardInjection.Services.IAuthorization;
-import com.github.grzesiek_galezowski.BastardInjection.Services.IRepository;
+import com.github.grzesiek_galezowski.BastardInjection.Services.Authorization;
+import com.github.grzesiek_galezowski.BastardInjection.Services.Repository;
 import com.github.grzesiek_galezowski.BastardInjection.Services.MsSqlBasedRepository;
 
 class AcmeProcessingWorkflow implements ProcessingWorkflow {
-  private final IRepository _repository;
-  private final IAuthorization _authorizationRules;
+  private final Repository _repository;
+  private final Authorization _authorizationRules;
   private Outbound _outbound;
 
   public AcmeProcessingWorkflow() {
@@ -18,8 +18,8 @@ class AcmeProcessingWorkflow implements ProcessingWorkflow {
 
   //for tests
   public AcmeProcessingWorkflow(
-      IAuthorization authorization,
-      IRepository repository) {
+      Authorization authorization,
+      Repository repository) {
     _authorizationRules = authorization;
     _repository = repository;
   }

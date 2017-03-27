@@ -1,7 +1,7 @@
 package com.github.grzesiek_galezowski.DependencyInjectionAfter;
 
 import com.github.grzesiek_galezowski.DependencyInjectionAfter.Core.AcmeProcessingWorkflow;
-import com.github.grzesiek_galezowski.DependencyInjectionAfter.Core.IAcmeProcessingWorkflow;
+import com.github.grzesiek_galezowski.DependencyInjectionAfter.Core.ProcessingWorkflow;
 import com.github.grzesiek_galezowski.DependencyInjectionAfter.Core.TeleComSystem;
 import com.github.grzesiek_galezowski.DependencyInjectionAfter.Inbound.*;
 import com.github.grzesiek_galezowski.DependencyInjectionAfter.Outbound.*;
@@ -32,6 +32,31 @@ public class ApplicationRoot {
     sys.Start();
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   public void mainFluentInterfaceWay() {
     //Growing Object Oriented Software Guided By Tests
     //Building on SOLID Foundations
@@ -60,14 +85,14 @@ public class ApplicationRoot {
 
       //Register
       pico
-          .addComponent(IRepository.class, MsSqlBasedRepository.class)
-          .addComponent(IAuthorization.class, ActiveDirectoryBasedAuthorization.class)
-          .addComponent(IAcmeProcessingWorkflow.class, AcmeProcessingWorkflow.class)
-          .addComponent(IOutboundMessageFactory.class, XmlOutboundMessageFactory.class)
-          .addComponent(ISocket.class, TcpSocket.class)
-          .addComponent(IOutbound.class, MessageOutbound.class)
-          .addComponent(IParsing.class, BinaryParsing.class)
-          .addComponent(IInbound.class, MessageInbound.class)
+          .addComponent(Repository.class, MsSqlBasedRepository.class)
+          .addComponent(Authorization.class, ActiveDirectoryBasedAuthorization.class)
+          .addComponent(ProcessingWorkflow.class, AcmeProcessingWorkflow.class)
+          .addComponent(OutboundMessageFactory.class, XmlOutboundMessageFactory.class)
+          .addComponent(Socket.class, TcpSocket.class)
+          .addComponent(Outbound.class, MessageOutbound.class)
+          .addComponent(Parsing.class, BinaryParsing.class)
+          .addComponent(Inbound.class, MessageInbound.class)
           .addComponent(TeleComSystem.class);
       //////// Only one getComponent() call after this line! ////////////
 

@@ -2,10 +2,10 @@ package ServiceLocatorAntipattern.InMessages;
 
 import ServiceLocatorAntipattern.Interfaces.Message;
 import ServiceLocatorAntipattern.Interfaces.DataDestination;
-import ServiceLocatorAntipattern.Services.IAuthorization;
+import ServiceLocatorAntipattern.Services.Authorization;
 
 public class StartMessage implements Message {
-  public void authorizeUsing(IAuthorization authorizationRules) {
+  public void authorizeUsing(Authorization authorizationRules) {
     System.out.println("Authorizing start with " + authorizationRules);
   }
 

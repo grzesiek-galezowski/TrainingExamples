@@ -3,7 +3,7 @@ package com.github.grzesiek_galezowski.BastardInjection.Services;
 import com.github.grzesiek_galezowski.BastardInjection.Interfaces.Message;
 import com.github.grzesiek_galezowski.BastardInjection.Interfaces.DataDestination;
 
-public class MsSqlBasedRepository implements IRepository {
+public class MsSqlBasedRepository implements Repository {
   private final DataDestination _dataDestination;
 
   public MsSqlBasedRepository() {
