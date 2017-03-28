@@ -4,7 +4,7 @@ import com.github.grzesiek_galezowski.DependencyInjectionAfter.Core.ProcessingWo
 import com.github.grzesiek_galezowski.DependencyInjectionAfter.Interfaces.AcmeMessage;
 
 public class MessageInbound implements Inbound {
-  private ProcessingWorkflow _processingWorkflow;
+  private ProcessingWorkflow processingWorkflow;
   private final InboundSocket socket;
   private final Parsing parsing;
 
@@ -15,7 +15,7 @@ public class MessageInbound implements Inbound {
   }
 
   public void setDomainLogic(ProcessingWorkflow processingWorkflow) {
-    _processingWorkflow = processingWorkflow;
+    this.processingWorkflow = processingWorkflow;
   }
 
   public void startListening() {
@@ -23,8 +23,8 @@ public class MessageInbound implements Inbound {
     while (socket.receive(frameData)) {
       AcmeMessage message = parsing.resultFor(frameData);
       if (message != null) {
-        if (_processingWorkflow != null) {
-          _processingWorkflow.applyTo(message);
+        if (processingWorkflow != null) {
+          processingWorkflow.applyTo(message);
         }
       }
     }
