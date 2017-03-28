@@ -1,15 +1,15 @@
 package com.github.grzesiek_galezowski.DependencyInjectionAfter.Outbound;
 
 public class TcpSocket implements Socket {
-  public void Open() {
+  public void open() {
     System.out.println("open");
   }
 
-  public void Close() {
+  public void close() {
     System.out.println("closing");
   }
 
-  public void Send(String lol) {
+  public void send(String lol) {
     System.out.println(lol);
   }
 }

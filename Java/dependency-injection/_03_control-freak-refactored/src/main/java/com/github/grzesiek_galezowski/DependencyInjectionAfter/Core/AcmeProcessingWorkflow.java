@@ -17,13 +17,13 @@ public class AcmeProcessingWorkflow implements ProcessingWorkflow {
     repository = msSqlBasedRepository;
   }
 
-  public void SetOutbound(Outbound outbound) {
+  public void setOutbound(Outbound outbound) {
     this.outbound = outbound;
   }
 
-  public void ApplyTo(AcmeMessage message) {
-    message.AuthorizeUsing(authorizationRules);
-    repository.Save(message);
-    outbound.Send(message);
+  public void applyTo(AcmeMessage message) {
+    message.authorizeUsing(authorizationRules);
+    repository.save(message);
+    outbound.send(message);
   }
 }

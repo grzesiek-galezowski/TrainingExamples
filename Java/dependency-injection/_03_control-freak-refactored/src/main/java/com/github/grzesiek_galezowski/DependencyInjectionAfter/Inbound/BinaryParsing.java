@@ -6,7 +6,7 @@ import com.github.grzesiek_galezowski.DependencyInjectionAfter.InMessages.StopMe
 import com.github.grzesiek_galezowski.DependencyInjectionAfter.Interfaces.AcmeMessage;
 
 public class BinaryParsing implements Parsing {
-  public AcmeMessage ResultFor(byte[] frameData) {
+  public AcmeMessage resultFor(byte[] frameData) {
     if (frameData == null) {
       return new NullMessage();
     } else if (frameData[0] == 1) {

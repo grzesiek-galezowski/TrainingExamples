@@ -10,7 +10,7 @@ public class MsSqlBasedRepository implements Repository {
     _sqlDataDestination = sqlDataDestination;
   }
 
-  public void Save(AcmeMessage message) {
-    message.WriteTo(_sqlDataDestination);
+  public void save(AcmeMessage message) {
+    message.writeTo(_sqlDataDestination);
   }
 }

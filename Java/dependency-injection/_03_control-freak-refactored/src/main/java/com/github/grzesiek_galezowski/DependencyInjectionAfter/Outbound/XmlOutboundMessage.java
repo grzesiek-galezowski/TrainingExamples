@@ -10,14 +10,14 @@ public class XmlOutboundMessage implements DataDestination, OutboundMessage {
     this.xmlMarshalling = xmlMarshalling;
   }
 
-  public void SendVia(Socket outputSocket) {
-    String marshalledContent = xmlMarshalling.Of(_content);
-    outputSocket.Open();
-    outputSocket.Send(marshalledContent);
-    outputSocket.Close();
+  public void sendVia(Socket outputSocket) {
+    String marshalledContent = xmlMarshalling.of(_content);
+    outputSocket.open();
+    outputSocket.send(marshalledContent);
+    outputSocket.close();
   }
 
-  public void Add(String s) {
+  public void add(String s) {
     _content += s;
   }
 }

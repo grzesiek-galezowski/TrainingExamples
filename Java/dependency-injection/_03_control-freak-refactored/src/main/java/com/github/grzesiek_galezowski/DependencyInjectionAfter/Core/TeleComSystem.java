@@ -17,10 +17,10 @@ public class TeleComSystem {
     processingWorkflow = acmeProcessingWorkflow;
   }
 
-  public void Start() {
+  public void start() {
     //should it really be "setDomainLogic()" or more abstract?
-    inbound.SetDomainLogic(processingWorkflow);
-    processingWorkflow.SetOutbound(outbound);
-    inbound.StartListening();
+    inbound.setDomainLogic(processingWorkflow);
+    processingWorkflow.setOutbound(outbound);
+    inbound.startListening();
   }
 }

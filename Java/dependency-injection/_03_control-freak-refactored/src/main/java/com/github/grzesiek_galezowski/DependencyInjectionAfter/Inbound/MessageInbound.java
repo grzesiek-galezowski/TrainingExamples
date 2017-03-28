@@ -14,17 +14,17 @@ public class MessageInbound implements Inbound {
     parsing = binaryParsing;
   }
 
-  public void SetDomainLogic(ProcessingWorkflow processingWorkflow) {
+  public void setDomainLogic(ProcessingWorkflow processingWorkflow) {
     _processingWorkflow = processingWorkflow;
   }
 
-  public void StartListening() {
+  public void startListening() {
     byte[] frameData = new byte[100];
-    while (socket.Receive(frameData)) {
-      AcmeMessage message = parsing.ResultFor(frameData);
+    while (socket.receive(frameData)) {
+      AcmeMessage message = parsing.resultFor(frameData);
       if (message != null) {
         if (_processingWorkflow != null) {
-          _processingWorkflow.ApplyTo(message);
+          _processingWorkflow.applyTo(message);
         }
       }
     }

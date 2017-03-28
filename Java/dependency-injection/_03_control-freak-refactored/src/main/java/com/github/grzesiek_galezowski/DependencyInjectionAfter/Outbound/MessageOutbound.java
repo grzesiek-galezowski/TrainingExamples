@@ -13,9 +13,9 @@ public class MessageOutbound implements Outbound {
     this.outboundMessageFactory = outboundMessageFactory;
   }
 
-  public void Send(AcmeMessage message) {
-    OutboundMessage outboundMessage = outboundMessageFactory.CreateOutboundMessage();
-    message.WriteTo(outboundMessage);
-    outboundMessage.SendVia(outputSocket);
+  public void send(AcmeMessage message) {
+    OutboundMessage outboundMessage = outboundMessageFactory.createOutboundMessage();
+    message.writeTo(outboundMessage);
+    outboundMessage.sendVia(outputSocket);
   }
 }

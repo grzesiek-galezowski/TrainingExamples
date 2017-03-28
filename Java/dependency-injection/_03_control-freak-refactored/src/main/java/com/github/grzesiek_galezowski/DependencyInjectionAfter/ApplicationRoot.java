@@ -29,7 +29,7 @@ public class ApplicationRoot {
             new MsSqlBasedRepository(
                 new SqlDataDestination())));
 
-    sys.Start();
+    sys.start();
   }
 
 
@@ -69,7 +69,7 @@ public class ApplicationRoot {
             persistsInSqlDatabase()),
         andSendsThem(viaTcp(), asXml()));
 
-    sys.Start();
+    sys.start();
   }
 
   public void mainIoCContainer() {
@@ -98,7 +98,7 @@ public class ApplicationRoot {
 
       //Resolve
       TeleComSystem system = pico.getComponent(TeleComSystem.class);
-      system.Start();
+      system.start();
     }
     finally
     {

@@ -4,7 +4,7 @@ import com.github.grzesiek_galezowski.DependencyInjectionAfter.Interfaces.AcmeMe
 import com.github.grzesiek_galezowski.DependencyInjectionAfter.Outbound.Outbound;
 
 public interface ProcessingWorkflow {
-  void SetOutbound(Outbound outbound);
+  void setOutbound(Outbound outbound);
 
-  void ApplyTo(AcmeMessage message);
+  void applyTo(AcmeMessage message);
 }
