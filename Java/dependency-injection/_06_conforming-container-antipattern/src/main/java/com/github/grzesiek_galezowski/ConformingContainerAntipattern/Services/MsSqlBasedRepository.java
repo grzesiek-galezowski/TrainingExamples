@@ -5,9 +5,9 @@ import com.github.grzesiek_galezowski.ConformingContainerAntipattern.Interfaces.
 import com.github.grzesiek_galezowski.ConformingContainerAntipattern.Interfaces.DataDestination;
 
 public class MsSqlBasedRepository implements Repository {
-  private final DataDestination _sqlDataDestination = ApplicationRoot.CONTEXT.resolve(SqlDataDestination.class);
+  private final DataDestination sqlDataDestination = ApplicationRoot.CONTEXT.resolve(SqlDataDestination.class);
 
   public void save(InboundMessage message) {
-    message.writeTo(_sqlDataDestination);
+    message.writeTo(sqlDataDestination);
   }
 }

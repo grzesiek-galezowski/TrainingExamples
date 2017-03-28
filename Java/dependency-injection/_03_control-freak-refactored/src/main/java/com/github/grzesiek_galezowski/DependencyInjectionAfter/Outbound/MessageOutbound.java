@@ -3,19 +3,19 @@ package com.github.grzesiek_galezowski.DependencyInjectionAfter.Outbound;
 import com.github.grzesiek_galezowski.DependencyInjectionAfter.Interfaces.AcmeMessage;
 
 public class MessageOutbound implements Outbound {
-  private final Socket _outputSocket;
-  private final OutboundMessageFactory _outboundMessageFactory;
+  private final Socket outputSocket;
+  private final OutboundMessageFactory outboundMessageFactory;
 
   public MessageOutbound(
       Socket outputSocket,
       OutboundMessageFactory outboundMessageFactory) {
-    _outputSocket = outputSocket;
-    _outboundMessageFactory = outboundMessageFactory;
+    this.outputSocket = outputSocket;
+    this.outboundMessageFactory = outboundMessageFactory;
   }
 
   public void Send(AcmeMessage message) {
-    OutboundMessage outboundMessage = _outboundMessageFactory.CreateOutboundMessage();
+    OutboundMessage outboundMessage = outboundMessageFactory.CreateOutboundMessage();
     message.WriteTo(outboundMessage);
-    outboundMessage.SendVia(_outputSocket);
+    outboundMessage.SendVia(outputSocket);
   }
 }

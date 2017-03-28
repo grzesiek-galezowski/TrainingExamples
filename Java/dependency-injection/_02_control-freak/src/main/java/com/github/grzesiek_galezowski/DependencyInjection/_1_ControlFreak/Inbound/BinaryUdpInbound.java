@@ -4,26 +4,26 @@ import com.github.grzesiek_galezowski.DependencyInjection._1_ControlFreak.Core.A
 import com.github.grzesiek_galezowski.DependencyInjection._1_ControlFreak.Interfaces.AcmeMessage;
 
 public class BinaryUdpInbound {
-    private AcmeProcessingWorkflow _processingWorkflow;
-    private final UdpSocket _socket;
-    private final BinaryParsing _parsing;
+    private AcmeProcessingWorkflow workflow;
+    private final UdpSocket socket;
+    private final BinaryParsing parsing;
 
     public BinaryUdpInbound() {
-      _socket = new UdpSocket();
-      _parsing = new BinaryParsing();
+      socket = new UdpSocket();
+      parsing = new BinaryParsing();
     }
 
     public void setDomainLogic(AcmeProcessingWorkflow processingWorkflow) {
-      _processingWorkflow = processingWorkflow;
+      workflow = processingWorkflow;
     }
 
     public void startListening() {
       byte[] frameData = new byte[100];
-      while (_socket.receive(frameData)) {
-        AcmeMessage message = _parsing.resultFor(frameData);
+      while (socket.receive(frameData)) {
+        AcmeMessage message = parsing.resultFor(frameData);
         if (message != null) {
-          if (_processingWorkflow != null) {
-            _processingWorkflow.applyTo(message);
+          if (workflow != null) {
+            workflow.applyTo(message);
           }
         }
       }

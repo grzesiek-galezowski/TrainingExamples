@@ -7,7 +7,7 @@ import org.picocontainer.lifecycle.ReflectionLifecycleStrategy;
 import org.picocontainer.monitors.NullComponentMonitor;
 
 public class ConformingContainer implements AutoCloseable {
-  final MutablePicoContainer _container = createContainer();
+  final MutablePicoContainer container = createContainer();
 
   public MutablePicoContainer createContainer() {
     ComponentMonitor monitor = new NullComponentMonitor();
@@ -18,7 +18,7 @@ public class ConformingContainer implements AutoCloseable {
   }
 
   public <T> As<T> as(Class<T> clazz) {
-    return new As(_container, clazz);
+    return new As(container, clazz);
   }
 
   public <T> void useSingle(Class<T> clazz) {
@@ -30,11 +30,11 @@ public class ConformingContainer implements AutoCloseable {
   }
 
   public <T> T resolve(Class<T> clazz) {
-    return _container.getComponent(clazz);
+    return container.getComponent(clazz);
   }
 
   public void close() throws Exception {
-    _container.dispose();
+    container.dispose();
   }
 
 }

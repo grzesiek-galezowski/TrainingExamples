@@ -4,22 +4,22 @@ import com.github.grzesiek_galezowski.DependencyInjectionAfter.Inbound.Inbound;
 import com.github.grzesiek_galezowski.DependencyInjectionAfter.Outbound.Outbound;
 
 public class TeleComSystem {
-  private final ProcessingWorkflow _processingWorkflow;
-  private final Inbound _inbound;
-  private final Outbound _outbound;
+  private final ProcessingWorkflow processingWorkflow;
+  private final Inbound inbound;
+  private final Outbound outbound;
 
   public TeleComSystem(
       Inbound binaryUdpInbound,
       Outbound xmlTcpOutbound,
       ProcessingWorkflow acmeProcessingWorkflow) {
-    _inbound = binaryUdpInbound;
-    _outbound = xmlTcpOutbound;
-    _processingWorkflow = acmeProcessingWorkflow;
+    inbound = binaryUdpInbound;
+    outbound = xmlTcpOutbound;
+    processingWorkflow = acmeProcessingWorkflow;
   }
 
   public void Start() {
-    _inbound.SetDomainLogic(_processingWorkflow);
-    _processingWorkflow.SetOutbound(_outbound);
-    _inbound.StartListening();
+    inbound.SetDomainLogic(processingWorkflow);
+    processingWorkflow.SetOutbound(outbound);
+    inbound.StartListening();
   }
 }

@@ -5,26 +5,26 @@ import com.github.grzesiek_galezowski.ConformingContainerAntipattern.Core.Proces
 import com.github.grzesiek_galezowski.ConformingContainerAntipattern.Interfaces.InboundMessage;
 
 public class BinaryUdpInbound implements Inbound {
-  private final InputSocket _socket;
-  private final PacketParsing _parsing;
-  private ProcessingWorkflow _processingWorkflow;
+  private final InputSocket socket;
+  private final PacketParsing parsing;
+  private ProcessingWorkflow processingWorkflow;
 
   public BinaryUdpInbound() {
-    _socket = ApplicationRoot.CONTEXT.resolve(InputSocket.class);
-    _parsing = ApplicationRoot.CONTEXT.resolve(PacketParsing.class);
+    socket = ApplicationRoot.CONTEXT.resolve(InputSocket.class);
+    parsing = ApplicationRoot.CONTEXT.resolve(PacketParsing.class);
   }
 
   public void setDomainLogic(ProcessingWorkflow processingWorkflow) {
-    _processingWorkflow = processingWorkflow;
+    this.processingWorkflow = processingWorkflow;
   }
 
   public void startListening() {
     byte[] frameData = new byte[100];
-    while (_socket.receive(frameData)) {
-      InboundMessage message = _parsing.resultFor(frameData);
+    while (socket.receive(frameData)) {
+      InboundMessage message = parsing.resultFor(frameData);
       if (message != null) {
-        if (_processingWorkflow != null) {
-          _processingWorkflow.applyTo(message);
+        if (processingWorkflow != null) {
+          processingWorkflow.applyTo(message);
         }
       }
     }

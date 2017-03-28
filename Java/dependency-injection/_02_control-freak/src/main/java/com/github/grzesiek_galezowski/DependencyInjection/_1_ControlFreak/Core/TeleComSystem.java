@@ -4,20 +4,20 @@ import com.github.grzesiek_galezowski.DependencyInjection._1_ControlFreak.Inboun
 import com.github.grzesiek_galezowski.DependencyInjection._1_ControlFreak.Outbound.XmlTcpOutbound;
 
 public class TeleComSystem {
-    private final AcmeProcessingWorkflow _processingWorkflow;
-    private final BinaryUdpInbound _inbound;
-    private final XmlTcpOutbound _outbound;
+    private final AcmeProcessingWorkflow processingWorkflow;
+    private final BinaryUdpInbound inbound;
+    private final XmlTcpOutbound outbound;
 
     public TeleComSystem() {
-      _inbound = new BinaryUdpInbound();
-      _outbound = new XmlTcpOutbound();
-      _processingWorkflow = new AcmeProcessingWorkflow();
+      inbound = new BinaryUdpInbound();
+      outbound = new XmlTcpOutbound();
+      processingWorkflow = new AcmeProcessingWorkflow();
     }
 
     public void start() {
-      _inbound.setDomainLogic(_processingWorkflow);
-      _processingWorkflow.setOutbound(_outbound);
-      _inbound.startListening();
+      inbound.setDomainLogic(processingWorkflow);
+      processingWorkflow.setOutbound(outbound);
+      inbound.startListening();
     }
 
   }

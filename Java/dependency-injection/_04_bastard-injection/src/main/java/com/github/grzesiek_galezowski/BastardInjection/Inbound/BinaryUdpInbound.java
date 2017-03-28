@@ -6,9 +6,9 @@ import com.github.grzesiek_galezowski.BastardInjection.Interfaces.Message;
 import java.io.IOException;
 
 public class BinaryUdpInbound implements Inbound {
-    private ProcessingWorkflow _processingWorkflow;
-    private final InputSocket _socket;
-    private final PacketParsing _parsing;
+    private ProcessingWorkflow processingWorkflow;
+    private final InputSocket socket;
+    private final PacketParsing parsing;
 
     public BinaryUdpInbound() {
       this(new UdpSocket(), new BinaryParsing());
@@ -16,27 +16,27 @@ public class BinaryUdpInbound implements Inbound {
 
     //for tests
     public BinaryUdpInbound(InputSocket socket, PacketParsing parsing) {
-      _socket = socket;
-      _parsing = parsing;
+      this.socket = socket;
+      this.parsing = parsing;
     }
 
     public void setDomainLogic(ProcessingWorkflow processingWorkflow) {
-      _processingWorkflow = processingWorkflow;
+      this.processingWorkflow = processingWorkflow;
     }
 
     public void startListening() {
       byte[] frameData = new byte[100];
-      while (_socket.receive(frameData)) {
-        Message message = _parsing.resultFor(frameData);
+      while (socket.receive(frameData)) {
+        Message message = parsing.resultFor(frameData);
         if (message != null) {
-          if (_processingWorkflow != null) {
-            _processingWorkflow.applyTo(message);
+          if (processingWorkflow != null) {
+            processingWorkflow.applyTo(message);
           }
         }
       }
     }
 
     public void close() throws IOException {
-      _socket.close(); //error!
+      socket.close(); //error!
     }
   }

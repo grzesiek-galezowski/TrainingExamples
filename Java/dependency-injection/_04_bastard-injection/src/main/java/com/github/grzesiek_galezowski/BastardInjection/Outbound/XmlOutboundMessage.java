@@ -1,26 +1,26 @@
 package com.github.grzesiek_galezowski.BastardInjection.Outbound;
 
 class XmlOutboundMessage implements OutboundMessage {
-  private final Marshalling _marshalling;
-  private String _content = "";
+  private final Marshalling marshalling;
+  private String content = "";
 
   public XmlOutboundMessage() {
     this(new XmlMarshalling());
   }
 
   public XmlOutboundMessage(Marshalling marshalling) {
-    _marshalling = marshalling;
+    this.marshalling = marshalling;
   }
 
   public void sendVia(OutputSocket outputOutputSocket) {
-    String marshalledContent = _marshalling.Of(_content);
+    String marshalledContent = marshalling.Of(content);
     outputOutputSocket.open();
     outputOutputSocket.send(marshalledContent);
     outputOutputSocket.close();
   }
 
   public void add(String content) {
-    _content += content;
+    this.content += content;
   }
 
 }

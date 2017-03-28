@@ -8,9 +8,9 @@ import com.github.grzesiek_galezowski.BastardInjection.Services.Repository;
 import com.github.grzesiek_galezowski.BastardInjection.Services.MsSqlBasedRepository;
 
 class AcmeProcessingWorkflow implements ProcessingWorkflow {
-  private final Repository _repository;
-  private final Authorization _authorizationRules;
-  private Outbound _outbound;
+  private final Repository repository;
+  private final Authorization authorizationRules;
+  private Outbound outbound;
 
   public AcmeProcessingWorkflow() {
     this(new ActiveDirectoryBasedAuthorization(), new MsSqlBasedRepository());
@@ -20,17 +20,17 @@ class AcmeProcessingWorkflow implements ProcessingWorkflow {
   public AcmeProcessingWorkflow(
       Authorization authorization,
       Repository repository) {
-    _authorizationRules = authorization;
-    _repository = repository;
+    authorizationRules = authorization;
+    this.repository = repository;
   }
 
   public void setOutbound(Outbound outbound) {
-    _outbound = outbound;
+    this.outbound = outbound;
   }
 
   public void applyTo(Message message) {
-    message.authorizeUsing(_authorizationRules);
-    _repository.save(message);
-    _outbound.send(message);
+    message.authorizeUsing(authorizationRules);
+    repository.save(message);
+    outbound.send(message);
   }
 }
