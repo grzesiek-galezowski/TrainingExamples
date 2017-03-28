@@ -18,6 +18,7 @@ public class TeleComSystem {
   }
 
   public void Start() {
+    //should it really be "setDomainLogic()" or more abstract?
     inbound.SetDomainLogic(processingWorkflow);
     processingWorkflow.SetOutbound(outbound);
     inbound.StartListening();
