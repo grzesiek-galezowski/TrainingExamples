@@ -9,6 +9,7 @@ public class MutablePartOfDay {
         //only called at beginning,
         //no checks, sets the time passed
         //does not notify anobody
+        LocalTime.
 
     }
 
