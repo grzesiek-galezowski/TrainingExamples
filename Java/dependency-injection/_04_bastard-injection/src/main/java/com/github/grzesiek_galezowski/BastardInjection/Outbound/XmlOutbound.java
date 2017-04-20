@@ -3,7 +3,7 @@ package com.github.grzesiek_galezowski.BastardInjection.Outbound;
 import com.github.grzesiek_galezowski.BastardInjection.Interfaces.Message;
 
 public class XmlOutbound implements Outbound {
-  private final OutputSocket _outputSocket;
+  private final OutputSocket outputSocket;
 
   public XmlOutbound() {
     this(new TcpSocket());
@@ -11,12 +11,12 @@ public class XmlOutbound implements Outbound {
 
   //for tests
   public XmlOutbound(OutputSocket outputSocket) {
-    _outputSocket = outputSocket;
+    this.outputSocket = outputSocket;
   }
 
   public void send(Message message) {
     XmlOutboundMessage outboundMessage = new XmlOutboundMessage();
     message.writeTo(outboundMessage);
-    outboundMessage.sendVia(_outputSocket);
+    outboundMessage.sendVia(outputSocket);
   }
 }

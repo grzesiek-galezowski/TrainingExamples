@@ -5,19 +5,19 @@ import ServiceLocatorAntipattern.Inbound.Inbound;
 import ServiceLocatorAntipattern.Outbound.Outbound;
 
 public class TeleComSystem {
-  private final ProcessingWorkflow _processingWorkflow;
-  private final Inbound _inbound;
-  private final Outbound _outbound;
+  private final ProcessingWorkflow processingWorkflow;
+  private final Inbound inbound;
+  private final Outbound outbound;
 
   public TeleComSystem() {
-    _inbound = ApplicationRoot.context.getComponent(Inbound.class);
-    _outbound = ApplicationRoot.context.getComponent(Outbound.class);
-    _processingWorkflow = ApplicationRoot.context.getComponent(ProcessingWorkflow.class);
+    inbound = ApplicationRoot.context.getComponent(Inbound.class);
+    outbound = ApplicationRoot.context.getComponent(Outbound.class);
+    processingWorkflow = ApplicationRoot.context.getComponent(ProcessingWorkflow.class);
   }
 
   public void start() {
-    _inbound.setDomainLogic(_processingWorkflow);
-    _processingWorkflow.setOutbound(_outbound);
-    _inbound.startListening();
+    inbound.setDomainLogic(processingWorkflow);
+    processingWorkflow.setOutbound(outbound);
+    inbound.startListening();
   }
 }

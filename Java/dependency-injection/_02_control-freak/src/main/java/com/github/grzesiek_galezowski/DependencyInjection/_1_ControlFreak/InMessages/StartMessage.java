@@ -5,11 +5,11 @@ import com.github.grzesiek_galezowski.DependencyInjection._1_ControlFreak.Interf
 import com.github.grzesiek_galezowski.DependencyInjection._1_ControlFreak.Services.ActiveDirectoryBasedAuthorization;
 
 public class StartMessage implements AcmeMessage {
-    public void authorizeUsing(ActiveDirectoryBasedAuthorization authorizationRules) {
-      System.out.println("Authorizing start with " + authorizationRules);
-    }
-
-    public void writeTo(DataDestination dataDestination) {
-      dataDestination.add("Writing start to " + dataDestination);
-    }
+  public void authorizeUsing(ActiveDirectoryBasedAuthorization authorizationRules) {
+    System.out.println("Authorizing start with " + authorizationRules);
   }
+
+  public void writeTo(DataDestination dataDestination) {
+    dataDestination.add("Writing start to " + dataDestination);
+  }
+}

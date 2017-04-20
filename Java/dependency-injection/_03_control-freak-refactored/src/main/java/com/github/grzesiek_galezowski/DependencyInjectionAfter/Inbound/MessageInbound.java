@@ -4,27 +4,27 @@ import com.github.grzesiek_galezowski.DependencyInjectionAfter.Core.ProcessingWo
 import com.github.grzesiek_galezowski.DependencyInjectionAfter.Interfaces.AcmeMessage;
 
 public class MessageInbound implements Inbound {
-  private ProcessingWorkflow _processingWorkflow;
-  private final InboundSocket _socket;
-  private final Parsing _parsing;
+  private ProcessingWorkflow processingWorkflow;
+  private final InboundSocket socket;
+  private final Parsing parsing;
 
   public MessageInbound(
       InboundSocket udpSocket, Parsing binaryParsing) {
-    _socket = udpSocket;
-    _parsing = binaryParsing;
+    socket = udpSocket;
+    parsing = binaryParsing;
   }
 
-  public void SetDomainLogic(ProcessingWorkflow processingWorkflow) {
-    _processingWorkflow = processingWorkflow;
+  public void setDomainLogic(ProcessingWorkflow processingWorkflow) {
+    this.processingWorkflow = processingWorkflow;
   }
 
-  public void StartListening() {
+  public void startListening() {
     byte[] frameData = new byte[100];
-    while (_socket.Receive(frameData)) {
-      AcmeMessage message = _parsing.ResultFor(frameData);
+    while (socket.receive(frameData)) {
+      AcmeMessage message = parsing.resultFor(frameData);
       if (message != null) {
-        if (_processingWorkflow != null) {
-          _processingWorkflow.ApplyTo(message);
+        if (processingWorkflow != null) {
+          processingWorkflow.applyTo(message);
         }
       }
     }

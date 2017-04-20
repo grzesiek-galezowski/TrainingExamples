@@ -6,13 +6,13 @@ import com.github.grzesiek_galezowski.DependencyInjection._1_ControlFreak.Servic
 import com.github.grzesiek_galezowski.DependencyInjection._1_ControlFreak.Services.MsSqlBasedRepository;
 
 public class AcmeProcessingWorkflow {
-    private final MsSqlBasedRepository _repository;
-    private final ActiveDirectoryBasedAuthorization _authorizationRules;
+    private final MsSqlBasedRepository repository;
+    private final ActiveDirectoryBasedAuthorization authorizationRules;
     private XmlTcpOutbound _outbound;
 
     public AcmeProcessingWorkflow() {
-      _authorizationRules = new ActiveDirectoryBasedAuthorization();
-      _repository = new MsSqlBasedRepository();
+      authorizationRules = new ActiveDirectoryBasedAuthorization();
+      repository = new MsSqlBasedRepository();
     }
 
     public void setOutbound(XmlTcpOutbound outbound) {
@@ -20,8 +20,8 @@ public class AcmeProcessingWorkflow {
     }
 
     public void applyTo(AcmeMessage message) {
-      message.authorizeUsing(_authorizationRules);
-      _repository.save(message);
+      message.authorizeUsing(authorizationRules);
+      repository.save(message);
       _outbound.send(message);
     }
   }

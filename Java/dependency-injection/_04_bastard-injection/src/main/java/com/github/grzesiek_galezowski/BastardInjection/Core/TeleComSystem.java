@@ -9,9 +9,9 @@ import java.io.Closeable;
 import java.io.IOException;
 
 public class TeleComSystem implements Closeable {
-  private final ProcessingWorkflow _processingWorkflow;
-  private final Inbound _inbound;
-  private final Outbound _outbound;
+  private final ProcessingWorkflow processingWorkflow;
+  private final Inbound inbound;
+  private final Outbound outbound;
 
   public TeleComSystem() {
     this(new AcmeProcessingWorkflow(), new BinaryUdpInbound(), new XmlOutbound());
@@ -22,18 +22,18 @@ public class TeleComSystem implements Closeable {
       ProcessingWorkflow processingWorkflow,
       Inbound inbound,
       Outbound outbound) {
-    _processingWorkflow = processingWorkflow;
-    _inbound = inbound;
-    _outbound = outbound;
+    this.processingWorkflow = processingWorkflow;
+    this.inbound = inbound;
+    this.outbound = outbound;
   }
 
   public void start() {
-    _inbound.setDomainLogic(_processingWorkflow);
-    _processingWorkflow.setOutbound(_outbound);
-    _inbound.startListening();
+    inbound.setDomainLogic(processingWorkflow);
+    processingWorkflow.setOutbound(outbound);
+    inbound.startListening();
   }
 
   public void close() throws IOException {
-    _inbound.close();
+    inbound.close();
   }
 }

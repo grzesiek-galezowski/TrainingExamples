@@ -3,7 +3,7 @@ package com.github.grzesiek_galezowski.DependencyInjectionAfter.Inbound;
 import com.github.grzesiek_galezowski.DependencyInjectionAfter.Core.ProcessingWorkflow;
 
 public interface Inbound {
-  void SetDomainLogic(ProcessingWorkflow processingWorkflow);
+  void setDomainLogic(ProcessingWorkflow processingWorkflow);
 
-  void StartListening();
+  void startListening();
 }

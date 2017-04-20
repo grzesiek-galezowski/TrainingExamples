@@ -3,15 +3,15 @@ package com.github.grzesiek_galezowski.DependencyInjection._1_ControlFreak.Outbo
 import com.github.grzesiek_galezowski.DependencyInjection._1_ControlFreak.Interfaces.AcmeMessage;
 
 public class XmlTcpOutbound {
-  private final TcpSocket _outputSocket;
+  private final TcpSocket outputSocket;
 
   public XmlTcpOutbound() {
-    _outputSocket = new TcpSocket();
+    outputSocket = new TcpSocket();
   }
 
   public void send(AcmeMessage message) {
     XmlOutboundMessage outboundMessage = new XmlOutboundMessage();
     message.writeTo(outboundMessage);
-    outboundMessage.sendVia(_outputSocket);
+    outboundMessage.sendVia(outputSocket);
   }
 }

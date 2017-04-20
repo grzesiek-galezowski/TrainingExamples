@@ -7,22 +7,22 @@ import com.github.grzesiek_galezowski.ConformingContainerAntipattern.Services.Au
 import com.github.grzesiek_galezowski.ConformingContainerAntipattern.Services.Repository;
 
 public class AcmeProcessingWorkflow implements ProcessingWorkflow {
-  private final Repository _repository;
-  private final Authorization _authorizationRules;
-  private Outbound _outbound;
+  private final Repository repository;
+  private final Authorization authorizationRules;
+  private Outbound outbound;
 
   public AcmeProcessingWorkflow() {
-    _authorizationRules = ApplicationRoot.CONTEXT.resolve(Authorization.class);
-    _repository = ApplicationRoot.CONTEXT.resolve(Repository.class);
+    authorizationRules = ApplicationRoot.CONTEXT.resolve(Authorization.class);
+    repository = ApplicationRoot.CONTEXT.resolve(Repository.class);
   }
 
   public void setOutbound(Outbound outbound) {
-    _outbound = outbound;
+    this.outbound = outbound;
   }
 
   public void applyTo(InboundMessage message) {
-    message.authorizeUsing(_authorizationRules);
-    _repository.save(message);
-    _outbound.send(message);
+    message.authorizeUsing(authorizationRules);
+    repository.save(message);
+    outbound.send(message);
   }
 }

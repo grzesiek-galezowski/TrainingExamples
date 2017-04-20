@@ -5,11 +5,11 @@ import com.github.grzesiek_galezowski.DependencyInjectionAfter.Interfaces.DataDe
 import com.github.grzesiek_galezowski.DependencyInjectionAfter.Services.Authorization;
 
 public class StopMessage implements AcmeMessage {
-    public void AuthorizeUsing(Authorization authorizationRules) {
+    public void authorizeUsing(Authorization authorizationRules) {
         System.out.println("Authorizing Stop with " + authorizationRules);
     }
 
-    public void WriteTo(DataDestination dataDestination) {
+    public void writeTo(DataDestination dataDestination) {
         System.out.println("Writing Stop to " + dataDestination);
     }
 }

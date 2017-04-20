@@ -5,11 +5,11 @@ import com.github.grzesiek_galezowski.DependencyInjectionAfter.Interfaces.DataDe
 import com.github.grzesiek_galezowski.DependencyInjectionAfter.Services.Authorization;
 
 public class NullMessage implements AcmeMessage {
-    public void AuthorizeUsing(Authorization authorizationRules) {
+    public void authorizeUsing(Authorization authorizationRules) {
 
     }
 
-    public void WriteTo(DataDestination dataDestination) {
+    public void writeTo(DataDestination dataDestination) {
 
     }
 }

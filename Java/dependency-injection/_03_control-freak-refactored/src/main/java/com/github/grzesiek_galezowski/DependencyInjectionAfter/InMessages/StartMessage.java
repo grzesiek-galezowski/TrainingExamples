@@ -5,11 +5,11 @@ import com.github.grzesiek_galezowski.DependencyInjectionAfter.Interfaces.DataDe
 import com.github.grzesiek_galezowski.DependencyInjectionAfter.Services.Authorization;
 
 public class StartMessage implements AcmeMessage {
-    public void AuthorizeUsing(Authorization authorizationRules) {
-        System.out.println("Authorizing Start with " + authorizationRules);
+    public void authorizeUsing(Authorization authorizationRules) {
+        System.out.println("Authorizing start with " + authorizationRules);
     }
 
-    public void WriteTo(DataDestination dataDestination) {
-        dataDestination.Add("Writing Start to " + dataDestination);
+    public void writeTo(DataDestination dataDestination) {
+        dataDestination.add("Writing start to " + dataDestination);
     }
 }

@@ -4,15 +4,15 @@ import com.github.grzesiek_galezowski.ConformingContainerAntipattern.Application
 import com.github.grzesiek_galezowski.ConformingContainerAntipattern.Interfaces.InboundMessage;
 
 public class MessageOutbound implements Outbound {
-  private final OutputSocket _outputOutputSocket;
+  private final OutputSocket outputOutputSocket;
 
   public MessageOutbound() {
-    _outputOutputSocket = ApplicationRoot.CONTEXT.resolve(OutputSocket.class);
+    outputOutputSocket = ApplicationRoot.CONTEXT.resolve(OutputSocket.class);
   }
 
   public void send(InboundMessage message) {
     OutboundMessage outboundMessage = ApplicationRoot.CONTEXT.resolve(OutboundMessage.class);
     message.writeTo(outboundMessage);
-    outboundMessage.sendVia(_outputOutputSocket);
+    outboundMessage.sendVia(outputOutputSocket);
   }
 }

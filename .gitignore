@@ -129,5 +129,6 @@ Java/empty-pacman-randori2/build/test-results/test/binary/output.bin.idx
 Java/empty-pacman-randori2/gradle/wrapper/gradle-wrapper.properties
 Java/empty-pacman-randori2/gradlew.bat
 Java/pacman-randori/.idea/qaplug_profiles.xml
-*.lock
 Java/serenity-ioc/.idea/kotlinc.xml
+Java/**/*.xml
+Java/day_night_randori/.gradle/3.3/taskArtifacts/taskArtifacts.lock

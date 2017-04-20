@@ -7,7 +7,7 @@ import ServiceLocatorAntipattern.Interfaces.Message;
 public class BinaryUdpInbound implements Inbound {
   private final InputSocket _socket;
   private final PacketParsing _parsing;
-  private ProcessingWorkflow _processingWorkflow;
+  private ProcessingWorkflow processingWorkflow;
 
   public BinaryUdpInbound() {
     _socket = ApplicationRoot.context.getComponent(InputSocket.class);
@@ -15,7 +15,7 @@ public class BinaryUdpInbound implements Inbound {
   }
 
   public void setDomainLogic(ProcessingWorkflow processingWorkflow) {
-    _processingWorkflow = processingWorkflow;
+    this.processingWorkflow = processingWorkflow;
   }
 
   public void startListening() { //todo look at earlier examples
@@ -23,8 +23,8 @@ public class BinaryUdpInbound implements Inbound {
     while (_socket.receive(frameData)) {
       Message message = _parsing.resultFor(frameData);
       if (message != null) {
-        if (_processingWorkflow != null) {
-          _processingWorkflow.applyTo(message);
+        if (processingWorkflow != null) {
+          processingWorkflow.applyTo(message);
         }
       }
     }

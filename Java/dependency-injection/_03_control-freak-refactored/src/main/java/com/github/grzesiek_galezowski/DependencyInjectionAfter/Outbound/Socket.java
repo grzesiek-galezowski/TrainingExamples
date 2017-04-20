@@ -1,9 +1,9 @@
 package com.github.grzesiek_galezowski.DependencyInjectionAfter.Outbound;
 
 public interface Socket {
-  void Open();
+  void open();
 
-  void Close();
+  void close();
 
-  void Send(String lol);
+  void send(String lol);
 }

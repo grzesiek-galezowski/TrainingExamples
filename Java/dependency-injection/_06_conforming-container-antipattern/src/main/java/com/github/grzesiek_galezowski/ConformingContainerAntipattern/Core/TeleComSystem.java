@@ -5,19 +5,19 @@ import com.github.grzesiek_galezowski.ConformingContainerAntipattern.Inbound.Inb
 import com.github.grzesiek_galezowski.ConformingContainerAntipattern.Outbound.Outbound;
 
 public class TeleComSystem {
-  private final ProcessingWorkflow _processingWorkflow;
-  private final Inbound _inbound;
-  private final Outbound _outbound;
+  private final ProcessingWorkflow processingWorkflow;
+  private final Inbound inbound;
+  private final Outbound outbound;
 
   public TeleComSystem() {
-    _inbound = ApplicationRoot.CONTEXT.resolve(Inbound.class);
-    _outbound = ApplicationRoot.CONTEXT.resolve(Outbound.class);
-    _processingWorkflow = ApplicationRoot.CONTEXT.resolve(ProcessingWorkflow.class);
+    inbound = ApplicationRoot.CONTEXT.resolve(Inbound.class);
+    outbound = ApplicationRoot.CONTEXT.resolve(Outbound.class);
+    processingWorkflow = ApplicationRoot.CONTEXT.resolve(ProcessingWorkflow.class);
   }
 
   public void start() {
-    _inbound.setDomainLogic(_processingWorkflow);
-    _processingWorkflow.setOutbound(_outbound);
-    _inbound.startListening();
+    inbound.setDomainLogic(processingWorkflow);
+    processingWorkflow.setOutbound(outbound);
+    inbound.startListening();
   }
 }
