@@ -1,0 +1,16 @@
+<acceptance-test-run title="Should list items related to a specified keyword" name="Should list items related to a specified keyword" description="" steps="3" successful="3" failures="0" skipped="0" ignored="0" pending="0" result="SUCCESS" duration="290" timestamp="2017-04-20T21:34:35.353+02:00">
+  <user-story id="searching-by-keyword" name="Searching by keyword" path="alculator.feature"/>
+  <tags>
+    <tag name="Searching by keyword" type="feature"/>
+    <tag name="Alculator" type="story"/>
+  </tags>
+  <test-step result="SUCCESS" duration="78">
+    <description>Given I want to buy a wool scarf</description>
+  </test-step>
+  <test-step result="SUCCESS" duration="0">
+    <description>When I search for items containing &apos;wool&apos;</description>
+  </test-step>
+  <test-step result="SUCCESS" duration="16">
+    <description>Then I should only see items related to &apos;wool&apos;</description>
+  </test-step>
+</acceptance-test-run>

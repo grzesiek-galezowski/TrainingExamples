@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.opera:operalaunchers:1.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.opera/operalaunchers/1.1/8f09d3dc6dcce5580666ae6e0556a7dbb6b1a563/operalaunchers-1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.opera/operalaunchers/1.1/f995d39578f92f1db1e26d768b7500daae210307/operalaunchers-1.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

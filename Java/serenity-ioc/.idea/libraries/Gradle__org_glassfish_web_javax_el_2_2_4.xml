@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.glassfish.web:javax.el:2.2.4">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.glassfish.web/javax.el/2.2.4/a50914ff519682e185bca4385b4313b8c8a81775/javax.el-2.2.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.glassfish.web/javax.el/2.2.4/8fc376c408ccbdd533b70c4144fed08741f1ca4f/javax.el-2.2.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.ini4j:ini4j:0.5.2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.ini4j/ini4j/0.5.2/16561cb11c221b5928119e10d7636c95ee5c960d/ini4j-0.5.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.ini4j/ini4j/0.5.2/17a383f897ae0ec8fca2f3effc2a2b8dbb336fc2/ini4j-0.5.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
