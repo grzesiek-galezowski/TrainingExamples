@@ -11,6 +11,6 @@ public class Specification {
 
     @Test
     public void shouldXyz() {
-        assertThat(2, equalTo(33));
+        assertThat(2, equalTo(2));
     }
 }
