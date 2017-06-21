@@ -1,5 +1,0 @@
-C:\Users\astral\Documents\GitHub\TrainingExamples\TellDontAsk\Sessions\bin\AutoTest.Net\_tmpIntermediateAT\Sessions.csprojResolveAssemblyReference.cache
-C:\Users\astral\Documents\GitHub\TrainingExamples\TellDontAsk\Sessions\bin\AutoTest.Net\_tmpIntermediateAT\Sessions.dll
-C:\Users\astral\Documents\GitHub\TrainingExamples\TellDontAsk\Sessions\bin\AutoTest.Net\_tmpIntermediateAT\Sessions.pdb
-C:\Users\astral\Documents\GitHub\TrainingExamples\TellDontAsk\Sessions\bin\AutoTest.Net\Sessions.dll
-C:\Users\astral\Documents\GitHub\TrainingExamples\TellDontAsk\Sessions\bin\AutoTest.Net\Sessions.pdb

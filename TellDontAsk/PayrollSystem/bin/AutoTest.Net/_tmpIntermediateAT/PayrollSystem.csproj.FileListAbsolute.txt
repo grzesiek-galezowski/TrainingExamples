@@ -1,5 +1,0 @@
-C:\Users\astral\Documents\GitHub\TrainingExamples\TellDontAsk\PayrollSystem\bin\AutoTest.Net\_tmpIntermediateAT\PayrollSystem.dll
-C:\Users\astral\Documents\GitHub\TrainingExamples\TellDontAsk\PayrollSystem\bin\AutoTest.Net\_tmpIntermediateAT\PayrollSystem.pdb
-C:\Users\astral\Documents\GitHub\TrainingExamples\TellDontAsk\PayrollSystem\bin\AutoTest.Net\PayrollSystem.dll
-C:\Users\astral\Documents\GitHub\TrainingExamples\TellDontAsk\PayrollSystem\bin\AutoTest.Net\PayrollSystem.pdb
-C:\Users\astral\Documents\GitHub\TrainingExamples\TellDontAsk\PayrollSystem\bin\AutoTest.Net\_tmpIntermediateAT\PayrollSystem.csprojResolveAssemblyReference.cache

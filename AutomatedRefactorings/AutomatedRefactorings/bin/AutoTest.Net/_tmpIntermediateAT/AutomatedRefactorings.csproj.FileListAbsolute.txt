@@ -1,5 +1,0 @@
-C:\Users\astral\Documents\GitHub\TrainingExamples\AutomatedRefactorings\AutomatedRefactorings\bin\AutoTest.Net\_tmpIntermediateAT\AutomatedRefactorings.csprojResolveAssemblyReference.cache
-C:\Users\astral\Documents\GitHub\TrainingExamples\AutomatedRefactorings\AutomatedRefactorings\bin\AutoTest.Net\_tmpIntermediateAT\AutomatedRefactorings.dll
-C:\Users\astral\Documents\GitHub\TrainingExamples\AutomatedRefactorings\AutomatedRefactorings\bin\AutoTest.Net\_tmpIntermediateAT\AutomatedRefactorings.pdb
-C:\Users\astral\Documents\GitHub\TrainingExamples\AutomatedRefactorings\AutomatedRefactorings\bin\AutoTest.Net\AutomatedRefactorings.dll
-C:\Users\astral\Documents\GitHub\TrainingExamples\AutomatedRefactorings\AutomatedRefactorings\bin\AutoTest.Net\AutomatedRefactorings.pdb
