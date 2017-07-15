@@ -132,3 +132,4 @@ Java/pacman-randori/.idea/qaplug_profiles.xml
 Java/serenity-ioc/.idea/kotlinc.xml
 Java/**/*.xml
 Java/day_night_randori/.gradle/3.3/taskArtifacts/taskArtifacts.lock
+*.lock
