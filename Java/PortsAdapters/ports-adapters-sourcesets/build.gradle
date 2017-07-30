@@ -1,0 +1,72 @@
+group 'ports-adapters-sourcesets'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    application
+    inboundPorts
+    outboundPorts
+    inboundAdapters
+    outboundAdapters
+    storagePorts
+    storageAdapters
+}
+
+def defineSourceSetLocation(sourceSet, location) {
+    sourceSet.java.srcDirs = ['src/'+ location + "/" + sourceSet.getName() + "/java"]
+    sourceSet.resources.srcDirs = ['src/'+ location + "/" + sourceSet.getName() + "/resources"]
+}
+
+defineSourceSetLocation(sourceSets.inboundPorts, "inbound")
+defineSourceSetLocation(sourceSets.inboundAdapters, "inbound")
+defineSourceSetLocation(sourceSets.outboundPorts, "outbound")
+defineSourceSetLocation(sourceSets.outboundAdapters, "outbound")
+defineSourceSetLocation(sourceSets.storagePorts, "storage")
+defineSourceSetLocation(sourceSets.storageAdapters, "storage")
+
+dependencies {
+    compile (
+        sourceSets.application.output,
+        sourceSets.inboundPorts.output,
+        sourceSets.inboundAdapters.output,
+        sourceSets.outboundPorts.output,
+        sourceSets.outboundAdapters.output,
+        sourceSets.storagePorts.output,
+        sourceSets.storageAdapters.output,
+    )
+
+    testCompile (
+        sourceSets.application.output,
+        sourceSets.inboundPorts.output,
+        sourceSets.inboundAdapters.output,
+        sourceSets.outboundPorts.output,
+        sourceSets.outboundAdapters.output,
+        sourceSets.storagePorts.output,
+        sourceSets.storageAdapters.output,
+    )
+
+    applicationCompile (
+        sourceSets.inboundPorts.output,
+        sourceSets.outboundPorts.output,
+        sourceSets.storagePorts.output,
+    )
+
+    inboundAdaptersCompile (
+        sourceSets.inboundPorts.output,
+    )
+    outboundAdaptersCompile (
+        sourceSets.outboundPorts.output,
+    )
+    storageAdaptersCompile (
+        sourceSets.storagePorts.output,
+    )
+
+
+}
