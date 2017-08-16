@@ -135,3 +135,6 @@ Java/day_night_randori/.gradle/3.3/taskArtifacts/taskArtifacts.lock
 *.lock
 Java/PortsAdapters/ports-adapters-sourcesets/.gradle/*
 Java/PortsAdapters/ports-adapters-sourcesets/.idea/*
+
+*.idx
+Java/test-setup-gotchas/build/reports/tests/test/index.html
