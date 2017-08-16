@@ -1,4 +1,4 @@
-package problems;
+package solutions;
 
 import autofixture.publicinterface.Any;
 import lombok.val;
