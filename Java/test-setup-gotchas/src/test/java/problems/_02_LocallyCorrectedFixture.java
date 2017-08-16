@@ -31,6 +31,8 @@ public class _02_LocallyCorrectedFixture {
         assertThat(decryptedContent).isEqualTo("Mayday!");
     }
 
+    //... some tests later...
+
     @Test
     public void ShouldThrowExceptionWhenTryingToSendWhileItIsNotTurnedOn() {
         //GIVEN
