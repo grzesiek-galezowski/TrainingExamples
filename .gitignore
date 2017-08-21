@@ -141,3 +141,7 @@ Java/medicine-clash-kata/.idea/*
 Java/medicine-clash-kata/build/*
 *.idx
 Java/test-setup-gotchas/build/reports/tests/test/index.html
+Java/automated-refactorings/.gradle/*
+Java/automated-refactorings/.idea/*
+Java/automated-refactorings/build/*
+
