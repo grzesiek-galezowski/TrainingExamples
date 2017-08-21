@@ -1,0 +1,23 @@
+plugins {
+    id 'io.franzbecker.gradle-lombok' version '1.10'
+}
+
+group 'medicine-clash-kata'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/com.github.grzesiek-galezowski/tdd-toolkit-java
+    testCompile group: 'com.github.grzesiek-galezowski', name: 'tdd-toolkit-java', version: '1.0.33'
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok-maven
+    compileOnly group: 'org.projectlombok', name: 'lombok-maven', version: '1.16.18.1', ext: 'pom'
+
+}

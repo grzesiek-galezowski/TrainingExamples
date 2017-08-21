@@ -135,3 +135,7 @@ Java/day_night_randori/.gradle/3.3/taskArtifacts/taskArtifacts.lock
 *.lock
 Java/PortsAdapters/ports-adapters-sourcesets/.gradle/*
 Java/PortsAdapters/ports-adapters-sourcesets/.idea/*
+Java/PortsAdapters/ports-adapters-sourcesets/build/*
+Java/medicine-clash-kata/.gradle/*
+Java/medicine-clash-kata/.idea/*
+Java/medicine-clash-kata/build/*
