@@ -10,6 +10,9 @@ public class EmployeeReportCommand {
     this.averagePay = averagePay;
   }
 
+  //todo apply to report
+  //todo apply to employee dto
+  //todo apply to employees
   public void execute() {
     final ArrayList<EmployeeDto> employeeDtos = Database.loadEmployees();
     String report = "";
