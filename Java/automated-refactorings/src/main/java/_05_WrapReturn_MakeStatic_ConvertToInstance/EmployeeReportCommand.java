@@ -22,29 +22,29 @@ public class EmployeeReportCommand {
   //7. Convert to instance method
   public void execute() {
     final ArrayList<EmployeeDto> employeeDtos = Database.loadEmployees();
-    String report = "";
-    report += "=== BEGIN ===" + System.lineSeparator();
+    StringBuilder report = new StringBuilder("");
+    report.append("=== BEGIN ===").append(System.lineSeparator());
 
-    report += "UNDERPAID EMPLOYEES" + System.lineSeparator();
+    report.append("UNDERPAID EMPLOYEES").append(System.lineSeparator());
 
     //underpaid employees
     for(EmployeeDto e : employeeDtos) {
       if(e.getPay() < averagePay * 0.8) {
-        report += e.toString() + System.lineSeparator();
+        report.append(e.toString()).append(System.lineSeparator());
       }
     }
 
-    report += "OVERPAID EMPLOYEES" + System.lineSeparator();
+    report.append("OVERPAID EMPLOYEES").append(System.lineSeparator());
 
     //overpaid employees
     for(EmployeeDto e : employeeDtos) {
       if(e.getPay() > averagePay * 1.2) {
-        report += e.toString() + System.lineSeparator();
+        report.append(e.toString()).append(System.lineSeparator());
       }
     }
 
-    report += "=== END ===" + System.lineSeparator();
+    report.append("=== END ===").append(System.lineSeparator());
 
-    System.out.println(report);
+    System.out.println(report.toString());
   }
 }
