@@ -45,6 +45,6 @@ public class EmployeeReportCommand {
 
     report += "=== END ===" + System.lineSeparator();
 
-
+    System.out.println(report);
   }
 }
