@@ -1,0 +1,16 @@
+group 'test-automation-layer-example'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/com.github.grzesiek-galezowski/tdd-toolkit-java
+    compile group: 'com.github.grzesiek-galezowski', name: 'tdd-toolkit-java', version: '1.0.33'
+}
