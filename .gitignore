@@ -144,4 +144,7 @@ Java/test-setup-gotchas/build/reports/tests/test/index.html
 Java/automated-refactorings/.gradle/*
 Java/automated-refactorings/.idea/*
 Java/automated-refactorings/build/*
+Java/test-automation-layer-example/.gradle/*
+Java/test-automation-layer-example/.idea/*
+Java/test-automation-layer-example/build/*
 
