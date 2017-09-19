@@ -1,6 +1,5 @@
 package messaging_channels;
 
-import messaging_channels.events.PurchaseMade;
 import org.junit.jupiter.api.Test;
 
 class DataTypeChannelSpecification {
@@ -9,8 +8,9 @@ class DataTypeChannelSpecification {
     DataTypeChannel.Client client = new DataTypeChannel.Client();
     DataTypeChannel.Server server = new DataTypeChannel.Server();
 
-    server.purchases().subscribe(client::onPurchaseMade);
-    server.deliveries().subscribe(client::onItemDelivered);
+    //pub-sub channel is chosen, but this is not important
+    server.purchasesChannel().subscribe(client::onPurchaseMade);
+    server.deliveriesChannel().subscribe(client::onItemDelivered);
     Thread.sleep(20000);
   }
 }

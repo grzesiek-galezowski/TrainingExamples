@@ -16,5 +16,9 @@ dependencies {
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.9.1'
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.1'
+    compile 'net.jokubasdargis.rxeither:rxeither:1.2.0'
     testCompile "org.junit.jupiter:junit-jupiter-engine:5.0.0"
+    // https://mvnrepository.com/artifact/de.scravy/either
+    compile group: 'de.scravy', name: 'either', version: '1.3.0'
+
 }

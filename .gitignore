@@ -148,3 +148,5 @@ Java/test-automation-layer-example/.gradle/*
 Java/test-automation-layer-example/.idea/*
 Java/test-automation-layer-example/build/*
 
+Java/messaging-patterns/.idea/sonarlint/issuestore/f/0/f07866736216be0ee2aba49e392191aeae700a35
+*.pb

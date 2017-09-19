@@ -2,7 +2,6 @@ package messaging_channels;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.reactivex.Flowable;
-import io.reactivex.schedulers.Schedulers;
 import messaging_channels.events.ItemDelivered;
 import messaging_channels.events.PurchaseMade;
 
@@ -11,25 +10,25 @@ import java.util.concurrent.TimeUnit;
 
 import static java.lang.System.out;
 
-public class DataTypeChannel {
-
+public class PointToPointChannel {
   public static class Server {
+
     private static final ObjectMapper objectMapper = new ObjectMapper();
+    private Client client;
 
-    public Flowable<String> purchasesChannel() {
-      return Flowable
-          .interval(1, TimeUnit.SECONDS)
-          .map(time -> objectMapper.writeValueAsString(new PurchaseMade()));
+    public Server(Client client) {
+      this.client = client;
     }
 
-    public Flowable<String> deliveriesChannel() {
-      return Flowable
+    public void start() {
+      Flowable
           .interval(1, TimeUnit.SECONDS)
-          .map(time -> objectMapper.writeValueAsString(new ItemDelivered()));
+          .map(time -> objectMapper.writeValueAsString(new PurchaseMade()))
+          .forEach(str -> client.onPurchaseMade(str));
     }
-
 
   }
+
   public static class Client {
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
@@ -37,12 +36,6 @@ public class DataTypeChannel {
       final PurchaseMade purchaseMade
           = objectMapper.readValue(payload, PurchaseMade.class);
       out.println(purchaseMade);
-    }
-
-    public void onItemDelivered(final String payload) throws IOException {
-      final ItemDelivered itemDelivered
-          = objectMapper.readValue(payload, ItemDelivered.class);
-      out.println(itemDelivered);
     }
 
   }
