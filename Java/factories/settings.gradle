@@ -1,2 +1,6 @@
 rootProject.name = 'factories'
+include 'encapsulation_of_type'
+include 'encapsulation_of_rule'
+include 'encapsulation_of_global_context'
+include 'encapsulation_of_terminology'
 

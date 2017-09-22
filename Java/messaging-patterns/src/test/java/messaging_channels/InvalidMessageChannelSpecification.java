@@ -1,6 +1,7 @@
 package messaging_channels;
 
 import org.junit.jupiter.api.Test;
+import rx.subjects.Subject;
 
 import static messaging_channels.InvalidMessageChannel.*;
 
@@ -23,7 +24,4 @@ class InvalidMessageChannelSpecification {
 
     Thread.sleep(10000);
   }
-
-
-
 }
