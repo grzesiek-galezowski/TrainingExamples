@@ -152,3 +152,4 @@ Java/messaging-patterns/.idea/sonarlint/issuestore/f/0/f07866736216be0ee2aba49e3
 *.pb
 *.ide
 Java/**/.idea/sonarlint/**
+Java/dropwizard-hello/.gradle/buildOutputCleanup/cache.properties
