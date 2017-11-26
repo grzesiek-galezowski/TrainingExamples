@@ -1,0 +1,25 @@
+
+buildscript {
+    repositories { maven { url "https://plugins.gradle.org/m2/" } }
+    dependencies {
+        classpath "gradle.plugin.pl.squirrel:classycle-gradle-plugin:1.2"
+    }
+}
+
+group 'com.examples'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: "pl.squirrel.classycle"
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
