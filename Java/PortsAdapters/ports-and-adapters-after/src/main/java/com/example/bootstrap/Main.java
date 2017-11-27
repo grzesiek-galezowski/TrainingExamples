@@ -14,6 +14,6 @@ public class Main {
     repository = new DatabaseObject();
     domainLogic = new ApplicationLogic(repository);
     window = new Window(domainLogic);
-    window.OnSubmitClicked();
+    window.onSubmitClicked();
   }
 }

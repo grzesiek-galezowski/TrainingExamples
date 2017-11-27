@@ -9,7 +9,7 @@ public class Window {
     this.domainLogic = domainLogic;
   }
 
-  public void OnSubmitClicked()
+  public void onSubmitClicked()
   {
     domainLogic.handleAddEmployeeRequest();
   }
