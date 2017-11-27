@@ -13,9 +13,9 @@ sourceSets {
     application
     inboundPorts
     outboundPorts
+    storagePorts
     inboundAdapters
     outboundAdapters
-    storagePorts
     storageAdapters
 }
 
