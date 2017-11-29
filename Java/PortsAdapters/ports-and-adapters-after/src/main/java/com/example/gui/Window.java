@@ -1,11 +1,11 @@
 package com.example.gui;
 
-import com.example.ports.views.Backend;
+import com.example.ports.views.Application;
 
 public class Window {
-  private final Backend domainLogic;
+  private final Application domainLogic;
 
-  public Window(final Backend domainLogic) {
+  public Window(final Application domainLogic) {
     this.domainLogic = domainLogic;
   }
 

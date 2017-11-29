@@ -1,5 +1,5 @@
 package com.example.ports.views;
 
-public interface Backend {
+public interface Application {
   void handleAddEmployeeRequest();
 }
