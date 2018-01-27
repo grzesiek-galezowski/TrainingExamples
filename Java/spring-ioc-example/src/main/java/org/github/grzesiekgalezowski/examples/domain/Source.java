@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Source {
   public Source(final Cache cache) {
-
+    System.out.println(this.getClass() + ": ");
+    System.out.println("-> " + cache.getClass());
   }
 }

@@ -12,10 +12,16 @@
     <orderEntry type="module" module-name="spring-ioc-example_main" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-core:4.3.10.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-context:4.3.10.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: org.junit.jupiter:junit-jupiter-engine:5.0.3" level="project" />
     <orderEntry type="library" name="Gradle: commons-logging:commons-logging:1.2" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-aop:4.3.10.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-beans:4.3.10.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-expression:4.3.10.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: org.apiguardian:apiguardian-api:1.0.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.junit.platform:junit-platform-engine:1.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.junit.jupiter:junit-jupiter-api:5.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.junit.platform:junit-platform-commons:1.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.opentest4j:opentest4j:1.0.0" level="project" />
   </component>
   <component name="TestModuleProperties" production-module="spring-ioc-example_main" />
 </module>

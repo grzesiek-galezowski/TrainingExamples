@@ -6,5 +6,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class Destination implements Output {
   public Destination(final Cache cache, Source source) {
+    System.out.println(this.getClass() + ": ");
+    System.out.println("-> " + cache.getClass());
+    System.out.println("-> " + source.getClass());
   }
 }

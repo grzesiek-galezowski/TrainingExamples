@@ -10,6 +10,9 @@ repositories {
 }
 
 dependencies {
+    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.0.3'
+
     // https://mvnrepository.com/artifact/org.springframework/spring-core
     compile group: 'org.springframework', name: 'spring-core', version: '4.3.10.RELEASE'
     // https://mvnrepository.com/artifact/org.springframework/spring-context
