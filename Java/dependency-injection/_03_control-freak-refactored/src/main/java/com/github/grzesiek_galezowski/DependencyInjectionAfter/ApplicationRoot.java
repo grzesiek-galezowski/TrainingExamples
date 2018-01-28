@@ -86,6 +86,7 @@ public class ApplicationRoot {
       //Register
       pico
           .addComponent(Repository.class, MsSqlBasedRepository.class)
+            //.as(CACHE)
           .addComponent(Authorization.class, ActiveDirectoryBasedAuthorization.class)
           .addComponent(ProcessingWorkflow.class, AcmeProcessingWorkflow.class)
           .addComponent(OutboundMessageFactory.class, XmlOutboundMessageFactory.class)

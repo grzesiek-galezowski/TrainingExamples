@@ -13,7 +13,9 @@ class AcmeProcessingWorkflow implements ProcessingWorkflow {
   private Outbound outbound;
 
   public AcmeProcessingWorkflow() {
-    this(new ActiveDirectoryBasedAuthorization(), new MsSqlBasedRepository());
+    this(
+      new ActiveDirectoryBasedAuthorization(),
+      new MsSqlBasedRepository());
   }
 
   //for tests
