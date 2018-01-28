@@ -1,9 +1,8 @@
 public class Building {
-  private final SilentAlarm alarm;
+  private final LoudAlarm alarm;
 
   public Building() {
-    //what if we want to use another alarm?
-    alarm = new SilentAlarm("333-444-555");
+    alarm = new LoudAlarm();
   }
 
   public void someoneCameIn() {

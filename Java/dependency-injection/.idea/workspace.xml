@@ -2,48 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6ae56e15-5b2b-4b3b-93f4-2127302388af" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/modules/_00_why-composition/_00_why-composition_main.iml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/modules/_00_why-composition/_00_why-composition_test.iml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/_00_why-composition/src/main/java/Building.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/_00_why-composition/src/main/java/SilentAlarm.java" />
-      <change beforePath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/cache.properties.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/fileHashes.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/fileSnapshots.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/taskArtifacts.bin" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/_01_changing-behavior-through-composition/_01_changing-behavior-through-composition.iml" afterPath="$PROJECT_DIR$/.idea/modules/_01_changing-behavior-through-composition/_01_changing-behavior-through-composition.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/_01_changing-behavior-through-composition/_01_changing-behavior-through-composition_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/_01_changing-behavior-through-composition/_01_changing-behavior-through-composition_main.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/_01_changing-behavior-through-composition/_01_changing-behavior-through-composition_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/_01_changing-behavior-through-composition/_01_changing-behavior-through-composition_test.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/_02_control-freak/_02_control-freak.iml" afterPath="$PROJECT_DIR$/.idea/modules/_02_control-freak/_02_control-freak.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/_02_control-freak/_02_control-freak_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/_02_control-freak/_02_control-freak_main.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/_02_control-freak/_02_control-freak_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/_02_control-freak/_02_control-freak_test.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/_03_control-freak-refactored/_03_control-freak-refactored.iml" afterPath="$PROJECT_DIR$/.idea/modules/_03_control-freak-refactored/_03_control-freak-refactored.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/_03_control-freak-refactored/_03_control-freak-refactored_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/_03_control-freak-refactored/_03_control-freak-refactored_main.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/_03_control-freak-refactored/_03_control-freak-refactored_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/_03_control-freak-refactored/_03_control-freak-refactored_test.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/_04_bastard-injection/_04_bastard-injection.iml" afterPath="$PROJECT_DIR$/.idea/modules/_04_bastard-injection/_04_bastard-injection.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/_04_bastard-injection/_04_bastard-injection_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/_04_bastard-injection/_04_bastard-injection_main.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/_04_bastard-injection/_04_bastard-injection_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/_04_bastard-injection/_04_bastard-injection_test.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/_05_service-locator/_05_service-locator.iml" afterPath="$PROJECT_DIR$/.idea/modules/_05_service-locator/_05_service-locator.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/_05_service-locator/_05_service-locator_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/_05_service-locator/_05_service-locator_main.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/_05_service-locator/_05_service-locator_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/_05_service-locator/_05_service-locator_test.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/_06_conforming-container-antipattern/_06_conforming-container-antipattern.iml" afterPath="$PROJECT_DIR$/.idea/modules/_06_conforming-container-antipattern/_06_conforming-container-antipattern.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/_06_conforming-container-antipattern/_06_conforming-container-antipattern_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/_06_conforming-container-antipattern/_06_conforming-container-antipattern_main.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/_06_conforming-container-antipattern/_06_conforming-container-antipattern_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/_06_conforming-container-antipattern/_06_conforming-container-antipattern_test.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/dependency-injection.iml" afterPath="$PROJECT_DIR$/.idea/modules/dependency-injection.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/dependency-injection_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/dependency-injection_main.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/dependency-injection_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/dependency-injection_test.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/_02_control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Services/SqlDataDestination.java" afterPath="$PROJECT_DIR$/_02_control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Services/SqlDataDestination.java" />
-      <change beforePath="$PROJECT_DIR$/_03_control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Services/SqlDataDestination.java" afterPath="$PROJECT_DIR$/_03_control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Services/SqlDataDestination.java" />
-      <change beforePath="$PROJECT_DIR$/_04_bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Services/SqlDataDestination.java" afterPath="$PROJECT_DIR$/_04_bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Services/SqlDataDestination.java" />
-      <change beforePath="$PROJECT_DIR$/_05_service-locator/src/main/java/ServiceLocatorAntipattern/Services/SqlDataDestination.java" afterPath="$PROJECT_DIR$/_05_service-locator/src/main/java/ServiceLocatorAntipattern/Services/SqlDataDestination.java" />
-      <change beforePath="$PROJECT_DIR$/_06_conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/Services/SqlDataDestination.java" afterPath="$PROJECT_DIR$/_06_conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/Services/SqlDataDestination.java" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" />
-      <change beforePath="$PROJECT_DIR$/gradlew" afterPath="$PROJECT_DIR$/gradlew" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" afterPath="$PROJECT_DIR$/settings.gradle" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/_00_why-composition/src/main/java/Sirens.java" />
+      <change beforePath="$PROJECT_DIR$/_00_why-composition/src/main/java/Building.java" afterPath="$PROJECT_DIR$/_00_why-composition/src/main/java/Building.java" />
+      <change beforePath="$PROJECT_DIR$/_00_why-composition/src/main/java/SilentAlarm.java" afterPath="$PROJECT_DIR$/_00_why-composition/src/main/java/LoudAlarm.java" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -173,11 +134,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Building.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Building.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_00_why-composition/src/main/java/Building.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="100">
-              <caret line="4" column="43" lean-forward="false" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
+              <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -193,11 +154,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SilentAlarm.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_00_why-composition/src/main/java/SilentAlarm.java">
+      <file leaf-file-name="LoudAlarm.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_00_why-composition/src/main/java/LoudAlarm.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="6" column="44" lean-forward="false" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/_00_why-composition/src/main/java/README.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="0" column="42" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Sirens.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_00_why-composition/src/main/java/Sirens.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -207,33 +188,20 @@
         <entry file="file://$PROJECT_DIR$/_01_changing-behavior-through-composition/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="100">
-              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SqlDataDestination.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_04_bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Services/SqlDataDestination.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="50">
-              <caret line="2" column="82" lean-forward="false" selection-start-line="2" selection-start-column="82" selection-end-line="2" selection-end-column="82" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SqlDataDestination.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_03_control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Services/SqlDataDestination.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="6" column="53" lean-forward="false" selection-start-line="6" selection-start-column="53" selection-end-line="6" selection-end-column="53" />
+              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -1565,7 +1533,10 @@
         <option value="$PROJECT_DIR$/_03_control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Services/SqlDataDestination.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/_00_why-composition/src/main/java/SilentAlarm.java" />
+        <option value="$PROJECT_DIR$/_00_why-composition/src/main/java/Sirens.java" />
         <option value="$PROJECT_DIR$/_00_why-composition/src/main/java/Building.java" />
+        <option value="$PROJECT_DIR$/_00_why-composition/src/main/java/LoudAlarm.java" />
+        <option value="$PROJECT_DIR$/_00_why-composition/src/main/java/README.txt" />
       </list>
     </option>
   </component>
@@ -1591,8 +1562,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -1601,10 +1570,38 @@
               <item name="dependency-injection" type="b2602c69:ProjectViewProjectNode" />
               <item name="dependency-injection" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
+            <path>
+              <item name="dependency-injection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dependency-injection" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="_00_why-composition" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="dependency-injection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dependency-injection" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="_00_why-composition" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dependency-injection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dependency-injection" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="_00_why-composition" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="dependency-injection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dependency-injection" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="_00_why-composition" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1618,6 +1615,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
       <recent name="" />
     </key>
   </component>
@@ -1830,6 +1830,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="55" y="-8" width="1633" height="1066" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Key Promoter X" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1843,10 +1844,9 @@
       <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32976446" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20025429" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2027972" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="SonarLint" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32976446" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32976446" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3299428" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1856,6 +1856,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32976446" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1879,22 +1880,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/_00_why-composition/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1907,7 +1892,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1947,7 +1931,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
           <caret line="21" column="38" lean-forward="false" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1955,7 +1938,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1963,7 +1945,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1979,7 +1960,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1995,7 +1975,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2035,7 +2014,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
           <caret line="21" column="38" lean-forward="false" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2043,7 +2021,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2059,7 +2036,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2099,7 +2075,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="21" column="38" lean-forward="true" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2107,7 +2082,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2123,7 +2097,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2163,7 +2136,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2171,7 +2143,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2179,7 +2150,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2187,7 +2157,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
           <caret line="21" column="38" lean-forward="false" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2195,7 +2164,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2203,7 +2171,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2227,7 +2194,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
           <caret line="2" column="96" lean-forward="false" selection-start-line="2" selection-start-column="96" selection-end-line="2" selection-end-column="96" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2235,7 +2201,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
           <caret line="2" column="101" lean-forward="false" selection-start-line="2" selection-start-column="101" selection-end-line="2" selection-end-column="101" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2243,7 +2208,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
           <caret line="2" column="60" lean-forward="false" selection-start-line="2" selection-start-column="60" selection-end-line="2" selection-end-column="60" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2282,7 +2246,7 @@
     <entry file="file://$PROJECT_DIR$/_01_changing-behavior-through-composition/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -2311,10 +2275,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_00_why-composition/src/main/java/SilentAlarm.java">
+    <entry file="file://$PROJECT_DIR$/_00_why-composition/src/main/java/Sirens.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="150">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -2322,7 +2286,23 @@
     <entry file="file://$PROJECT_DIR$/_00_why-composition/src/main/java/Building.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
-          <caret line="4" column="43" lean-forward="false" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
+          <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_00_why-composition/src/main/java/LoudAlarm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="44" lean-forward="false" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_00_why-composition/src/main/java/README.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="42" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="43" />
           <folding />
         </state>
       </provider>
