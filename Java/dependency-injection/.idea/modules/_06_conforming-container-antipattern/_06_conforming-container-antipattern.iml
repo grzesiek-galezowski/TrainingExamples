@@ -5,6 +5,7 @@
     <content url="file://$MODULE_DIR$/../../../_06_conforming-container-antipattern">
       <excludeFolder url="file://$MODULE_DIR$/../../../_06_conforming-container-antipattern/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../../_06_conforming-container-antipattern/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../_06_conforming-container-antipattern/out" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

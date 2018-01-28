@@ -2,7 +2,48 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6ae56e15-5b2b-4b3b-93f4-2127302388af" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/modules/_00_why-composition/_00_why-composition_main.iml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/modules/_00_why-composition/_00_why-composition_test.iml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/_00_why-composition/src/main/java/Building.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/_00_why-composition/src/main/java/SilentAlarm.java" />
+      <change beforePath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/cache.properties.lock" />
+      <change beforePath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/fileHashes.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/fileSnapshots.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/taskArtifacts.bin" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/_01_changing-behavior-through-composition/_01_changing-behavior-through-composition.iml" afterPath="$PROJECT_DIR$/.idea/modules/_01_changing-behavior-through-composition/_01_changing-behavior-through-composition.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/_01_changing-behavior-through-composition/_01_changing-behavior-through-composition_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/_01_changing-behavior-through-composition/_01_changing-behavior-through-composition_main.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/_01_changing-behavior-through-composition/_01_changing-behavior-through-composition_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/_01_changing-behavior-through-composition/_01_changing-behavior-through-composition_test.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/_02_control-freak/_02_control-freak.iml" afterPath="$PROJECT_DIR$/.idea/modules/_02_control-freak/_02_control-freak.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/_02_control-freak/_02_control-freak_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/_02_control-freak/_02_control-freak_main.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/_02_control-freak/_02_control-freak_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/_02_control-freak/_02_control-freak_test.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/_03_control-freak-refactored/_03_control-freak-refactored.iml" afterPath="$PROJECT_DIR$/.idea/modules/_03_control-freak-refactored/_03_control-freak-refactored.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/_03_control-freak-refactored/_03_control-freak-refactored_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/_03_control-freak-refactored/_03_control-freak-refactored_main.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/_03_control-freak-refactored/_03_control-freak-refactored_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/_03_control-freak-refactored/_03_control-freak-refactored_test.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/_04_bastard-injection/_04_bastard-injection.iml" afterPath="$PROJECT_DIR$/.idea/modules/_04_bastard-injection/_04_bastard-injection.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/_04_bastard-injection/_04_bastard-injection_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/_04_bastard-injection/_04_bastard-injection_main.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/_04_bastard-injection/_04_bastard-injection_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/_04_bastard-injection/_04_bastard-injection_test.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/_05_service-locator/_05_service-locator.iml" afterPath="$PROJECT_DIR$/.idea/modules/_05_service-locator/_05_service-locator.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/_05_service-locator/_05_service-locator_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/_05_service-locator/_05_service-locator_main.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/_05_service-locator/_05_service-locator_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/_05_service-locator/_05_service-locator_test.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/_06_conforming-container-antipattern/_06_conforming-container-antipattern.iml" afterPath="$PROJECT_DIR$/.idea/modules/_06_conforming-container-antipattern/_06_conforming-container-antipattern.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/_06_conforming-container-antipattern/_06_conforming-container-antipattern_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/_06_conforming-container-antipattern/_06_conforming-container-antipattern_main.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/_06_conforming-container-antipattern/_06_conforming-container-antipattern_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/_06_conforming-container-antipattern/_06_conforming-container-antipattern_test.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/dependency-injection.iml" afterPath="$PROJECT_DIR$/.idea/modules/dependency-injection.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/dependency-injection_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/dependency-injection_main.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/dependency-injection_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/dependency-injection_test.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/_02_control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Services/SqlDataDestination.java" afterPath="$PROJECT_DIR$/_02_control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Services/SqlDataDestination.java" />
+      <change beforePath="$PROJECT_DIR$/_03_control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Services/SqlDataDestination.java" afterPath="$PROJECT_DIR$/_03_control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Services/SqlDataDestination.java" />
+      <change beforePath="$PROJECT_DIR$/_04_bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Services/SqlDataDestination.java" afterPath="$PROJECT_DIR$/_04_bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Services/SqlDataDestination.java" />
+      <change beforePath="$PROJECT_DIR$/_05_service-locator/src/main/java/ServiceLocatorAntipattern/Services/SqlDataDestination.java" afterPath="$PROJECT_DIR$/_05_service-locator/src/main/java/ServiceLocatorAntipattern/Services/SqlDataDestination.java" />
+      <change beforePath="$PROJECT_DIR$/_06_conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/Services/SqlDataDestination.java" afterPath="$PROJECT_DIR$/_06_conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/Services/SqlDataDestination.java" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" />
+      <change beforePath="$PROJECT_DIR$/gradlew" afterPath="$PROJECT_DIR$/gradlew" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" afterPath="$PROJECT_DIR$/settings.gradle" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -20,6 +61,16 @@
     <ignored path="$PROJECT_DIR$/_05_service-locator/build/" />
     <ignored path="$PROJECT_DIR$/_06_conforming-container-antipattern/.gradle/" />
     <ignored path="$PROJECT_DIR$/_06_conforming-container-antipattern/build/" />
+    <ignored path="$PROJECT_DIR$/_01_changing-behavior-through-composition/out/" />
+    <ignored path="$PROJECT_DIR$/_04_bastard-injection/out/" />
+    <ignored path="$PROJECT_DIR$/_05_service-locator/out/" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/_02_control-freak/out/" />
+    <ignored path="$PROJECT_DIR$/_06_conforming-container-antipattern/out/" />
+    <ignored path="$PROJECT_DIR$/_00_why-composition/.gradle/" />
+    <ignored path="$PROJECT_DIR$/_00_why-composition/build/" />
+    <ignored path="$PROJECT_DIR$/_00_why-composition/out/" />
+    <ignored path="$PROJECT_DIR$/_03_control-freak-refactored/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +78,10 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="CheckTestsConfiguration">
+    <option name="CHECK_FOR_TESTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="LEVELS_TO_CHECK_FOR_TESTS" value="0" />
+  </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -39,37 +93,51 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <projects_view />
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/_00_why-composition">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="dependency-injection" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="dependency-injection" type="f1a62948:ProjectNode" />
+                <item name="dependency-injection" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="dependency-injection" type="f1a62948:ProjectNode" />
+                <item name="dependency-injection" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="dependency-injection" type="f1a62948:ProjectNode" />
+                <item name="dependency-injection" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
       </state>
     </system>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="settings.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/settings.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_05_service-locator/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="125">
+              <caret line="5" column="25" lean-forward="false" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -78,8 +146,18 @@
       <file leaf-file-name="Alarm.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_01_changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
+            <state relative-caret-position="50">
               <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_00_why-composition/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -88,28 +166,68 @@
       <file leaf-file-name="Building.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_01_changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Building.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            <state relative-caret-position="125">
+              <caret line="5" column="9" lean-forward="false" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CompositionRoot.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_01_changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/CompositionRoot.java">
+      <file leaf-file-name="Building.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/_00_why-composition/src/main/java/Building.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1602">
-              <caret line="89" column="40" lean-forward="false" selection-start-line="89" selection-start-column="40" selection-end-line="89" selection-end-column="40" />
+            <state relative-caret-position="100">
+              <caret line="4" column="43" lean-forward="false" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AcmeProcessingWorkflow.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/_02_control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Core/AcmeProcessingWorkflow.java">
+      <file leaf-file-name="SilentAlarm.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_01_changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/SilentAlarm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="21" column="38" lean-forward="false" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+            <state relative-caret-position="100">
+              <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SilentAlarm.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_00_why-composition/src/main/java/SilentAlarm.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_01_changing-behavior-through-composition/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SqlDataDestination.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_04_bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Services/SqlDataDestination.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="50">
+              <caret line="2" column="82" lean-forward="false" selection-start-line="2" selection-start-column="82" selection-end-line="2" selection-end-column="82" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SqlDataDestination.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_03_control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Services/SqlDataDestination.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="6" column="53" lean-forward="false" selection-start-line="6" selection-start-column="53" selection-end-line="6" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -117,405 +235,26 @@
       </file>
     </leaf>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>NotImple</find>
+    </findStrings>
+    <dirStrings>
+      <dir>C:\Users\grzes\Documents\GitHub\TrainingExamples\Java\dependency-injection</dir>
+    </dirStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
-  </component>
-  <component name="GradleExtensions">
-    <project path="$PROJECT_DIR$">
-      <sub-project>
-        <project path="$PROJECT_DIR$">
-          <extensions>
-            <ext name="ext" type="org.gradle.api.internal.plugins.DefaultExtraPropertiesExtension" />
-            <ext name="defaultArtifacts" type="org.gradle.api.internal.plugins.DefaultArtifactPublicationSet" />
-            <ext name="reporting" type="org.gradle.api.reporting.ReportingExtension" />
-            <task name="components" type="org.gradle.api.reporting.components.ComponentReport">Displays the components produced by root project 'dependency-injection'. [incubating]&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="buildDependents">Assembles and tests this project and all projects that depend on it.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="projects" type="org.gradle.api.tasks.diagnostics.ProjectReportTask">Displays the sub-projects of root project 'dependency-injection'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="idea">Generates IDEA project files (IML, IPR, IWS)&lt;p&gt;&lt;i&gt;Task group: IDE&lt;i&gt;</task>
-            <task name="classes">Assembles main classes.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="buildEnvironment" type="org.gradle.api.tasks.diagnostics.BuildEnvironmentReportTask">Displays all buildscript dependencies declared in root project 'dependency-injection'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="wrapper" type="org.gradle.api.tasks.wrapper.Wrapper">Generates Gradle wrapper files. [incubating]&lt;p&gt;&lt;i&gt;Task group: Build Setup&lt;i&gt;</task>
-            <task name="cleanIdeaModule" type="org.gradle.api.tasks.Delete">&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="testClasses">Assembles test classes.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="javadoc" type="org.gradle.api.tasks.javadoc.Javadoc">Generates Javadoc API documentation for the main source code.&lt;p&gt;&lt;i&gt;Task group: documentation&lt;i&gt;</task>
-            <task name="jar" type="org.gradle.api.tasks.bundling.Jar">Assembles a jar archive containing the main classes.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="model" type="org.gradle.api.reporting.model.ModelReport">Displays the configuration model of root project 'dependency-injection'. [incubating]&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="ideaModule" type="org.gradle.plugins.ide.idea.GenerateIdeaModule">Generates IDEA module files (IML)&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="processResources" type="org.gradle.language.jvm.tasks.ProcessResources">Processes main resources.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="tasks" type="org.gradle.api.tasks.diagnostics.TaskReportTask">Displays the tasks runnable from root project 'dependency-injection' (some of the displayed tasks may belong to subprojects).&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="init" type="org.gradle.buildinit.tasks.InitBuild">Initializes a new Gradle build. [incubating]&lt;p&gt;&lt;i&gt;Task group: Build Setup&lt;i&gt;</task>
-            <task name="cleanIdea">Cleans IDEA project files (IML, IPR)&lt;p&gt;&lt;i&gt;Task group: IDE&lt;i&gt;</task>
-            <task name="ideaWorkspace" type="org.gradle.plugins.ide.idea.GenerateIdeaWorkspace">Generates an IDEA workspace file (IWS)&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="test" type="org.gradle.api.tasks.testing.Test">Runs the unit tests.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
-            <task name="compileJava" type="org.gradle.api.tasks.compile.JavaCompile">Compiles main Java source.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="dependencyInsight" type="org.gradle.api.tasks.diagnostics.DependencyInsightReportTask">Displays the insight into a specific dependency in root project 'dependency-injection'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="check">Runs all checks.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
-            <task name="assemble">Assembles the outputs of this project.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="clean" type="org.gradle.api.tasks.Delete">Deletes the build directory.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="compileTestJava" type="org.gradle.api.tasks.compile.JavaCompile">Compiles test Java source.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="cleanIdeaProject" type="org.gradle.api.tasks.Delete">&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="dependencies" type="org.gradle.api.tasks.diagnostics.DependencyReportTask">Displays all dependencies declared in root project 'dependency-injection'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="processTestResources" type="org.gradle.language.jvm.tasks.ProcessResources">Processes test resources.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="help" type="org.gradle.configuration.Help">Displays a help message.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="build">Assembles and tests this project.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="buildNeeded">Assembles and tests this project and all projects it depends on.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="ideaProject" type="org.gradle.plugins.ide.idea.GenerateIdeaProject">Generates IDEA project file (IPR)&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="properties" type="org.gradle.api.tasks.diagnostics.PropertyReportTask">Displays the properties of root project 'dependency-injection'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="cleanIdeaWorkspace" type="org.gradle.api.tasks.Delete">&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <conf name="archives">Configuration for archive artifacts.</conf>
-            <conf name="compile" visible="false">Dependencies for source set 'main'.</conf>
-            <conf name="compileClasspath" visible="false">Compile classpath for source set 'main'.</conf>
-            <conf name="compileOnly" visible="false">Compile dependencies for source set 'main'.</conf>
-            <conf name="default">Configuration for default artifacts.</conf>
-            <conf name="runtime" visible="false">Runtime dependencies for source set 'main'.</conf>
-            <conf name="testCompile" visible="false">Dependencies for source set 'test'.</conf>
-            <conf name="testCompileClasspath" visible="false">Compile classpath for source set 'test'.</conf>
-            <conf name="testCompileOnly" visible="false">Compile dependencies for source set 'test'.</conf>
-            <conf name="testRuntime" visible="false">Runtime dependencies for source set 'test'.</conf>
-            <conf name="classpath" scriptClasspath="true" />
-          </extensions>
-        </project>
-        <project path="$PROJECT_DIR$/_01_changing-behavior-through-composition">
-          <extensions parent="$PROJECT_DIR$">
-            <ext name="ext" type="org.gradle.api.internal.plugins.DefaultExtraPropertiesExtension" />
-            <ext name="defaultArtifacts" type="org.gradle.api.internal.plugins.DefaultArtifactPublicationSet" />
-            <ext name="reporting" type="org.gradle.api.reporting.ReportingExtension" />
-            <task name="components" type="org.gradle.api.reporting.components.ComponentReport">Displays the components produced by project ':_01_changing-behavior-through-composition'. [incubating]&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="buildDependents">Assembles and tests this project and all projects that depend on it.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="projects" type="org.gradle.api.tasks.diagnostics.ProjectReportTask">Displays the sub-projects of project ':_01_changing-behavior-through-composition'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="idea">Generates IDEA project files (IML, IPR, IWS)&lt;p&gt;&lt;i&gt;Task group: IDE&lt;i&gt;</task>
-            <task name="classes">Assembles main classes.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="buildEnvironment" type="org.gradle.api.tasks.diagnostics.BuildEnvironmentReportTask">Displays all buildscript dependencies declared in project ':_01_changing-behavior-through-composition'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="cleanIdeaModule" type="org.gradle.api.tasks.Delete">&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="testClasses">Assembles test classes.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="javadoc" type="org.gradle.api.tasks.javadoc.Javadoc">Generates Javadoc API documentation for the main source code.&lt;p&gt;&lt;i&gt;Task group: documentation&lt;i&gt;</task>
-            <task name="jar" type="org.gradle.api.tasks.bundling.Jar">Assembles a jar archive containing the main classes.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="model" type="org.gradle.api.reporting.model.ModelReport">Displays the configuration model of project ':_01_changing-behavior-through-composition'. [incubating]&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="ideaModule" type="org.gradle.plugins.ide.idea.GenerateIdeaModule">Generates IDEA module files (IML)&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="processResources" type="org.gradle.language.jvm.tasks.ProcessResources">Processes main resources.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="tasks" type="org.gradle.api.tasks.diagnostics.TaskReportTask">Displays the tasks runnable from project ':_01_changing-behavior-through-composition'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="cleanIdea">Cleans IDEA project files (IML, IPR)&lt;p&gt;&lt;i&gt;Task group: IDE&lt;i&gt;</task>
-            <task name="test" type="org.gradle.api.tasks.testing.Test">Runs the unit tests.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
-            <task name="compileJava" type="org.gradle.api.tasks.compile.JavaCompile">Compiles main Java source.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="dependencyInsight" type="org.gradle.api.tasks.diagnostics.DependencyInsightReportTask">Displays the insight into a specific dependency in project ':_01_changing-behavior-through-composition'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="check">Runs all checks.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
-            <task name="assemble">Assembles the outputs of this project.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="clean" type="org.gradle.api.tasks.Delete">Deletes the build directory.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="compileTestJava" type="org.gradle.api.tasks.compile.JavaCompile">Compiles test Java source.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="dependencies" type="org.gradle.api.tasks.diagnostics.DependencyReportTask">Displays all dependencies declared in project ':_01_changing-behavior-through-composition'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="processTestResources" type="org.gradle.language.jvm.tasks.ProcessResources">Processes test resources.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="help" type="org.gradle.configuration.Help">Displays a help message.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="build">Assembles and tests this project.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="buildNeeded">Assembles and tests this project and all projects it depends on.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="properties" type="org.gradle.api.tasks.diagnostics.PropertyReportTask">Displays the properties of project ':_01_changing-behavior-through-composition'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <conf name="archives">Configuration for archive artifacts.</conf>
-            <conf name="compile" visible="false">Dependencies for source set 'main'.</conf>
-            <conf name="compileClasspath" visible="false">Compile classpath for source set 'main'.</conf>
-            <conf name="compileOnly" visible="false">Compile dependencies for source set 'main'.</conf>
-            <conf name="default">Configuration for default artifacts.</conf>
-            <conf name="runtime" visible="false">Runtime dependencies for source set 'main'.</conf>
-            <conf name="testCompile" visible="false">Dependencies for source set 'test'.</conf>
-            <conf name="testCompileClasspath" visible="false">Compile classpath for source set 'test'.</conf>
-            <conf name="testCompileOnly" visible="false">Compile dependencies for source set 'test'.</conf>
-            <conf name="testRuntime" visible="false">Runtime dependencies for source set 'test'.</conf>
-            <conf name="classpath" scriptClasspath="true" />
-          </extensions>
-        </project>
-        <project path="$PROJECT_DIR$/_02_control-freak">
-          <extensions parent="$PROJECT_DIR$">
-            <ext name="ext" type="org.gradle.api.internal.plugins.DefaultExtraPropertiesExtension" />
-            <ext name="defaultArtifacts" type="org.gradle.api.internal.plugins.DefaultArtifactPublicationSet" />
-            <ext name="reporting" type="org.gradle.api.reporting.ReportingExtension" />
-            <task name="components" type="org.gradle.api.reporting.components.ComponentReport">Displays the components produced by project ':_02_control-freak'. [incubating]&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="buildDependents">Assembles and tests this project and all projects that depend on it.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="projects" type="org.gradle.api.tasks.diagnostics.ProjectReportTask">Displays the sub-projects of project ':_02_control-freak'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="idea">Generates IDEA project files (IML, IPR, IWS)&lt;p&gt;&lt;i&gt;Task group: IDE&lt;i&gt;</task>
-            <task name="classes">Assembles main classes.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="buildEnvironment" type="org.gradle.api.tasks.diagnostics.BuildEnvironmentReportTask">Displays all buildscript dependencies declared in project ':_02_control-freak'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="cleanIdeaModule" type="org.gradle.api.tasks.Delete">&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="testClasses">Assembles test classes.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="javadoc" type="org.gradle.api.tasks.javadoc.Javadoc">Generates Javadoc API documentation for the main source code.&lt;p&gt;&lt;i&gt;Task group: documentation&lt;i&gt;</task>
-            <task name="jar" type="org.gradle.api.tasks.bundling.Jar">Assembles a jar archive containing the main classes.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="model" type="org.gradle.api.reporting.model.ModelReport">Displays the configuration model of project ':_02_control-freak'. [incubating]&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="ideaModule" type="org.gradle.plugins.ide.idea.GenerateIdeaModule">Generates IDEA module files (IML)&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="processResources" type="org.gradle.language.jvm.tasks.ProcessResources">Processes main resources.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="tasks" type="org.gradle.api.tasks.diagnostics.TaskReportTask">Displays the tasks runnable from project ':_02_control-freak'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="cleanIdea">Cleans IDEA project files (IML, IPR)&lt;p&gt;&lt;i&gt;Task group: IDE&lt;i&gt;</task>
-            <task name="test" type="org.gradle.api.tasks.testing.Test">Runs the unit tests.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
-            <task name="compileJava" type="org.gradle.api.tasks.compile.JavaCompile">Compiles main Java source.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="dependencyInsight" type="org.gradle.api.tasks.diagnostics.DependencyInsightReportTask">Displays the insight into a specific dependency in project ':_02_control-freak'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="check">Runs all checks.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
-            <task name="assemble">Assembles the outputs of this project.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="clean" type="org.gradle.api.tasks.Delete">Deletes the build directory.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="compileTestJava" type="org.gradle.api.tasks.compile.JavaCompile">Compiles test Java source.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="dependencies" type="org.gradle.api.tasks.diagnostics.DependencyReportTask">Displays all dependencies declared in project ':_02_control-freak'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="processTestResources" type="org.gradle.language.jvm.tasks.ProcessResources">Processes test resources.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="help" type="org.gradle.configuration.Help">Displays a help message.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="build">Assembles and tests this project.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="buildNeeded">Assembles and tests this project and all projects it depends on.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="properties" type="org.gradle.api.tasks.diagnostics.PropertyReportTask">Displays the properties of project ':_02_control-freak'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <conf name="archives">Configuration for archive artifacts.</conf>
-            <conf name="compile" visible="false">Dependencies for source set 'main'.</conf>
-            <conf name="compileClasspath" visible="false">Compile classpath for source set 'main'.</conf>
-            <conf name="compileOnly" visible="false">Compile dependencies for source set 'main'.</conf>
-            <conf name="default">Configuration for default artifacts.</conf>
-            <conf name="runtime" visible="false">Runtime dependencies for source set 'main'.</conf>
-            <conf name="testCompile" visible="false">Dependencies for source set 'test'.</conf>
-            <conf name="testCompileClasspath" visible="false">Compile classpath for source set 'test'.</conf>
-            <conf name="testCompileOnly" visible="false">Compile dependencies for source set 'test'.</conf>
-            <conf name="testRuntime" visible="false">Runtime dependencies for source set 'test'.</conf>
-            <conf name="classpath" scriptClasspath="true" />
-          </extensions>
-        </project>
-        <project path="$PROJECT_DIR$/_03_control-freak-refactored">
-          <extensions parent="$PROJECT_DIR$">
-            <ext name="ext" type="org.gradle.api.internal.plugins.DefaultExtraPropertiesExtension" />
-            <ext name="defaultArtifacts" type="org.gradle.api.internal.plugins.DefaultArtifactPublicationSet" />
-            <ext name="reporting" type="org.gradle.api.reporting.ReportingExtension" />
-            <task name="components" type="org.gradle.api.reporting.components.ComponentReport">Displays the components produced by project ':_03_control-freak-refactored'. [incubating]&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="buildDependents">Assembles and tests this project and all projects that depend on it.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="projects" type="org.gradle.api.tasks.diagnostics.ProjectReportTask">Displays the sub-projects of project ':_03_control-freak-refactored'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="idea">Generates IDEA project files (IML, IPR, IWS)&lt;p&gt;&lt;i&gt;Task group: IDE&lt;i&gt;</task>
-            <task name="classes">Assembles main classes.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="buildEnvironment" type="org.gradle.api.tasks.diagnostics.BuildEnvironmentReportTask">Displays all buildscript dependencies declared in project ':_03_control-freak-refactored'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="cleanIdeaModule" type="org.gradle.api.tasks.Delete">&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="testClasses">Assembles test classes.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="javadoc" type="org.gradle.api.tasks.javadoc.Javadoc">Generates Javadoc API documentation for the main source code.&lt;p&gt;&lt;i&gt;Task group: documentation&lt;i&gt;</task>
-            <task name="jar" type="org.gradle.api.tasks.bundling.Jar">Assembles a jar archive containing the main classes.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="model" type="org.gradle.api.reporting.model.ModelReport">Displays the configuration model of project ':_03_control-freak-refactored'. [incubating]&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="ideaModule" type="org.gradle.plugins.ide.idea.GenerateIdeaModule">Generates IDEA module files (IML)&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="processResources" type="org.gradle.language.jvm.tasks.ProcessResources">Processes main resources.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="tasks" type="org.gradle.api.tasks.diagnostics.TaskReportTask">Displays the tasks runnable from project ':_03_control-freak-refactored'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="cleanIdea">Cleans IDEA project files (IML, IPR)&lt;p&gt;&lt;i&gt;Task group: IDE&lt;i&gt;</task>
-            <task name="test" type="org.gradle.api.tasks.testing.Test">Runs the unit tests.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
-            <task name="compileJava" type="org.gradle.api.tasks.compile.JavaCompile">Compiles main Java source.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="dependencyInsight" type="org.gradle.api.tasks.diagnostics.DependencyInsightReportTask">Displays the insight into a specific dependency in project ':_03_control-freak-refactored'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="check">Runs all checks.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
-            <task name="assemble">Assembles the outputs of this project.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="clean" type="org.gradle.api.tasks.Delete">Deletes the build directory.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="compileTestJava" type="org.gradle.api.tasks.compile.JavaCompile">Compiles test Java source.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="dependencies" type="org.gradle.api.tasks.diagnostics.DependencyReportTask">Displays all dependencies declared in project ':_03_control-freak-refactored'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="processTestResources" type="org.gradle.language.jvm.tasks.ProcessResources">Processes test resources.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="help" type="org.gradle.configuration.Help">Displays a help message.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="build">Assembles and tests this project.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="buildNeeded">Assembles and tests this project and all projects it depends on.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="properties" type="org.gradle.api.tasks.diagnostics.PropertyReportTask">Displays the properties of project ':_03_control-freak-refactored'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <conf name="archives">Configuration for archive artifacts.</conf>
-            <conf name="compile" visible="false">Dependencies for source set 'main'.</conf>
-            <conf name="compileClasspath" visible="false">Compile classpath for source set 'main'.</conf>
-            <conf name="compileOnly" visible="false">Compile dependencies for source set 'main'.</conf>
-            <conf name="default">Configuration for default artifacts.</conf>
-            <conf name="runtime" visible="false">Runtime dependencies for source set 'main'.</conf>
-            <conf name="testCompile" visible="false">Dependencies for source set 'test'.</conf>
-            <conf name="testCompileClasspath" visible="false">Compile classpath for source set 'test'.</conf>
-            <conf name="testCompileOnly" visible="false">Compile dependencies for source set 'test'.</conf>
-            <conf name="testRuntime" visible="false">Runtime dependencies for source set 'test'.</conf>
-            <conf name="classpath" scriptClasspath="true" />
-          </extensions>
-        </project>
-        <project path="$PROJECT_DIR$/_04_bastard-injection">
-          <extensions parent="$PROJECT_DIR$">
-            <ext name="ext" type="org.gradle.api.internal.plugins.DefaultExtraPropertiesExtension" />
-            <ext name="defaultArtifacts" type="org.gradle.api.internal.plugins.DefaultArtifactPublicationSet" />
-            <ext name="reporting" type="org.gradle.api.reporting.ReportingExtension" />
-            <task name="components" type="org.gradle.api.reporting.components.ComponentReport">Displays the components produced by project ':_04_bastard-injection'. [incubating]&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="buildDependents">Assembles and tests this project and all projects that depend on it.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="projects" type="org.gradle.api.tasks.diagnostics.ProjectReportTask">Displays the sub-projects of project ':_04_bastard-injection'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="idea">Generates IDEA project files (IML, IPR, IWS)&lt;p&gt;&lt;i&gt;Task group: IDE&lt;i&gt;</task>
-            <task name="classes">Assembles main classes.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="buildEnvironment" type="org.gradle.api.tasks.diagnostics.BuildEnvironmentReportTask">Displays all buildscript dependencies declared in project ':_04_bastard-injection'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="cleanIdeaModule" type="org.gradle.api.tasks.Delete">&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="testClasses">Assembles test classes.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="javadoc" type="org.gradle.api.tasks.javadoc.Javadoc">Generates Javadoc API documentation for the main source code.&lt;p&gt;&lt;i&gt;Task group: documentation&lt;i&gt;</task>
-            <task name="jar" type="org.gradle.api.tasks.bundling.Jar">Assembles a jar archive containing the main classes.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="model" type="org.gradle.api.reporting.model.ModelReport">Displays the configuration model of project ':_04_bastard-injection'. [incubating]&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="ideaModule" type="org.gradle.plugins.ide.idea.GenerateIdeaModule">Generates IDEA module files (IML)&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="processResources" type="org.gradle.language.jvm.tasks.ProcessResources">Processes main resources.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="tasks" type="org.gradle.api.tasks.diagnostics.TaskReportTask">Displays the tasks runnable from project ':_04_bastard-injection'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="cleanIdea">Cleans IDEA project files (IML, IPR)&lt;p&gt;&lt;i&gt;Task group: IDE&lt;i&gt;</task>
-            <task name="test" type="org.gradle.api.tasks.testing.Test">Runs the unit tests.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
-            <task name="compileJava" type="org.gradle.api.tasks.compile.JavaCompile">Compiles main Java source.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="dependencyInsight" type="org.gradle.api.tasks.diagnostics.DependencyInsightReportTask">Displays the insight into a specific dependency in project ':_04_bastard-injection'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="check">Runs all checks.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
-            <task name="assemble">Assembles the outputs of this project.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="clean" type="org.gradle.api.tasks.Delete">Deletes the build directory.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="compileTestJava" type="org.gradle.api.tasks.compile.JavaCompile">Compiles test Java source.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="dependencies" type="org.gradle.api.tasks.diagnostics.DependencyReportTask">Displays all dependencies declared in project ':_04_bastard-injection'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="processTestResources" type="org.gradle.language.jvm.tasks.ProcessResources">Processes test resources.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="help" type="org.gradle.configuration.Help">Displays a help message.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="build">Assembles and tests this project.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="buildNeeded">Assembles and tests this project and all projects it depends on.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="properties" type="org.gradle.api.tasks.diagnostics.PropertyReportTask">Displays the properties of project ':_04_bastard-injection'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <conf name="archives">Configuration for archive artifacts.</conf>
-            <conf name="compile" visible="false">Dependencies for source set 'main'.</conf>
-            <conf name="compileClasspath" visible="false">Compile classpath for source set 'main'.</conf>
-            <conf name="compileOnly" visible="false">Compile dependencies for source set 'main'.</conf>
-            <conf name="default">Configuration for default artifacts.</conf>
-            <conf name="runtime" visible="false">Runtime dependencies for source set 'main'.</conf>
-            <conf name="testCompile" visible="false">Dependencies for source set 'test'.</conf>
-            <conf name="testCompileClasspath" visible="false">Compile classpath for source set 'test'.</conf>
-            <conf name="testCompileOnly" visible="false">Compile dependencies for source set 'test'.</conf>
-            <conf name="testRuntime" visible="false">Runtime dependencies for source set 'test'.</conf>
-            <conf name="classpath" scriptClasspath="true" />
-          </extensions>
-        </project>
-        <project path="$PROJECT_DIR$/_05_service-locator">
-          <extensions parent="$PROJECT_DIR$">
-            <ext name="ext" type="org.gradle.api.internal.plugins.DefaultExtraPropertiesExtension" />
-            <ext name="defaultArtifacts" type="org.gradle.api.internal.plugins.DefaultArtifactPublicationSet" />
-            <ext name="reporting" type="org.gradle.api.reporting.ReportingExtension" />
-            <task name="components" type="org.gradle.api.reporting.components.ComponentReport">Displays the components produced by project ':_05_service-locator'. [incubating]&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="buildDependents">Assembles and tests this project and all projects that depend on it.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="projects" type="org.gradle.api.tasks.diagnostics.ProjectReportTask">Displays the sub-projects of project ':_05_service-locator'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="idea">Generates IDEA project files (IML, IPR, IWS)&lt;p&gt;&lt;i&gt;Task group: IDE&lt;i&gt;</task>
-            <task name="classes">Assembles main classes.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="buildEnvironment" type="org.gradle.api.tasks.diagnostics.BuildEnvironmentReportTask">Displays all buildscript dependencies declared in project ':_05_service-locator'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="cleanIdeaModule" type="org.gradle.api.tasks.Delete">&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="testClasses">Assembles test classes.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="javadoc" type="org.gradle.api.tasks.javadoc.Javadoc">Generates Javadoc API documentation for the main source code.&lt;p&gt;&lt;i&gt;Task group: documentation&lt;i&gt;</task>
-            <task name="jar" type="org.gradle.api.tasks.bundling.Jar">Assembles a jar archive containing the main classes.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="model" type="org.gradle.api.reporting.model.ModelReport">Displays the configuration model of project ':_05_service-locator'. [incubating]&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="ideaModule" type="org.gradle.plugins.ide.idea.GenerateIdeaModule">Generates IDEA module files (IML)&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="processResources" type="org.gradle.language.jvm.tasks.ProcessResources">Processes main resources.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="tasks" type="org.gradle.api.tasks.diagnostics.TaskReportTask">Displays the tasks runnable from project ':_05_service-locator'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="cleanIdea">Cleans IDEA project files (IML, IPR)&lt;p&gt;&lt;i&gt;Task group: IDE&lt;i&gt;</task>
-            <task name="test" type="org.gradle.api.tasks.testing.Test">Runs the unit tests.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
-            <task name="compileJava" type="org.gradle.api.tasks.compile.JavaCompile">Compiles main Java source.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="dependencyInsight" type="org.gradle.api.tasks.diagnostics.DependencyInsightReportTask">Displays the insight into a specific dependency in project ':_05_service-locator'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="check">Runs all checks.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
-            <task name="assemble">Assembles the outputs of this project.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="clean" type="org.gradle.api.tasks.Delete">Deletes the build directory.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="compileTestJava" type="org.gradle.api.tasks.compile.JavaCompile">Compiles test Java source.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="dependencies" type="org.gradle.api.tasks.diagnostics.DependencyReportTask">Displays all dependencies declared in project ':_05_service-locator'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="processTestResources" type="org.gradle.language.jvm.tasks.ProcessResources">Processes test resources.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="help" type="org.gradle.configuration.Help">Displays a help message.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="build">Assembles and tests this project.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="buildNeeded">Assembles and tests this project and all projects it depends on.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="properties" type="org.gradle.api.tasks.diagnostics.PropertyReportTask">Displays the properties of project ':_05_service-locator'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <conf name="archives">Configuration for archive artifacts.</conf>
-            <conf name="compile" visible="false">Dependencies for source set 'main'.</conf>
-            <conf name="compileClasspath" visible="false">Compile classpath for source set 'main'.</conf>
-            <conf name="compileOnly" visible="false">Compile dependencies for source set 'main'.</conf>
-            <conf name="default">Configuration for default artifacts.</conf>
-            <conf name="runtime" visible="false">Runtime dependencies for source set 'main'.</conf>
-            <conf name="testCompile" visible="false">Dependencies for source set 'test'.</conf>
-            <conf name="testCompileClasspath" visible="false">Compile classpath for source set 'test'.</conf>
-            <conf name="testCompileOnly" visible="false">Compile dependencies for source set 'test'.</conf>
-            <conf name="testRuntime" visible="false">Runtime dependencies for source set 'test'.</conf>
-            <conf name="classpath" scriptClasspath="true" />
-          </extensions>
-        </project>
-        <project path="$PROJECT_DIR$/_06_conforming-container-antipattern">
-          <extensions parent="$PROJECT_DIR$">
-            <ext name="ext" type="org.gradle.api.internal.plugins.DefaultExtraPropertiesExtension" />
-            <ext name="defaultArtifacts" type="org.gradle.api.internal.plugins.DefaultArtifactPublicationSet" />
-            <ext name="reporting" type="org.gradle.api.reporting.ReportingExtension" />
-            <task name="components" type="org.gradle.api.reporting.components.ComponentReport">Displays the components produced by project ':_06_conforming-container-antipattern'. [incubating]&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="buildDependents">Assembles and tests this project and all projects that depend on it.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="projects" type="org.gradle.api.tasks.diagnostics.ProjectReportTask">Displays the sub-projects of project ':_06_conforming-container-antipattern'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="idea">Generates IDEA project files (IML, IPR, IWS)&lt;p&gt;&lt;i&gt;Task group: IDE&lt;i&gt;</task>
-            <task name="classes">Assembles main classes.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="buildEnvironment" type="org.gradle.api.tasks.diagnostics.BuildEnvironmentReportTask">Displays all buildscript dependencies declared in project ':_06_conforming-container-antipattern'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="cleanIdeaModule" type="org.gradle.api.tasks.Delete">&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="testClasses">Assembles test classes.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="javadoc" type="org.gradle.api.tasks.javadoc.Javadoc">Generates Javadoc API documentation for the main source code.&lt;p&gt;&lt;i&gt;Task group: documentation&lt;i&gt;</task>
-            <task name="jar" type="org.gradle.api.tasks.bundling.Jar">Assembles a jar archive containing the main classes.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="model" type="org.gradle.api.reporting.model.ModelReport">Displays the configuration model of project ':_06_conforming-container-antipattern'. [incubating]&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="ideaModule" type="org.gradle.plugins.ide.idea.GenerateIdeaModule">Generates IDEA module files (IML)&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="processResources" type="org.gradle.language.jvm.tasks.ProcessResources">Processes main resources.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="tasks" type="org.gradle.api.tasks.diagnostics.TaskReportTask">Displays the tasks runnable from project ':_06_conforming-container-antipattern'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="cleanIdea">Cleans IDEA project files (IML, IPR)&lt;p&gt;&lt;i&gt;Task group: IDE&lt;i&gt;</task>
-            <task name="test" type="org.gradle.api.tasks.testing.Test">Runs the unit tests.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
-            <task name="compileJava" type="org.gradle.api.tasks.compile.JavaCompile">Compiles main Java source.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="dependencyInsight" type="org.gradle.api.tasks.diagnostics.DependencyInsightReportTask">Displays the insight into a specific dependency in project ':_06_conforming-container-antipattern'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="check">Runs all checks.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
-            <task name="assemble">Assembles the outputs of this project.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="clean" type="org.gradle.api.tasks.Delete">Deletes the build directory.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="compileTestJava" type="org.gradle.api.tasks.compile.JavaCompile">Compiles test Java source.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="dependencies" type="org.gradle.api.tasks.diagnostics.DependencyReportTask">Displays all dependencies declared in project ':_06_conforming-container-antipattern'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="processTestResources" type="org.gradle.language.jvm.tasks.ProcessResources">Processes test resources.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="help" type="org.gradle.configuration.Help">Displays a help message.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="build">Assembles and tests this project.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="buildNeeded">Assembles and tests this project and all projects it depends on.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="properties" type="org.gradle.api.tasks.diagnostics.PropertyReportTask">Displays the properties of project ':_06_conforming-container-antipattern'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <conf name="archives">Configuration for archive artifacts.</conf>
-            <conf name="compile" visible="false">Dependencies for source set 'main'.</conf>
-            <conf name="compileClasspath" visible="false">Compile classpath for source set 'main'.</conf>
-            <conf name="compileOnly" visible="false">Compile dependencies for source set 'main'.</conf>
-            <conf name="default">Configuration for default artifacts.</conf>
-            <conf name="runtime" visible="false">Runtime dependencies for source set 'main'.</conf>
-            <conf name="testCompile" visible="false">Dependencies for source set 'test'.</conf>
-            <conf name="testCompileClasspath" visible="false">Compile classpath for source set 'test'.</conf>
-            <conf name="testCompileOnly" visible="false">Compile dependencies for source set 'test'.</conf>
-            <conf name="testRuntime" visible="false">Runtime dependencies for source set 'test'.</conf>
-            <conf name="classpath" scriptClasspath="true" />
-          </extensions>
-        </project>
-      </sub-project>
-    </project>
-    <project path="$PROJECT_DIR$/_01_changing-behavior-through-composition">
-      <sub-project>
-        <project path="$PROJECT_DIR$/_01_changing-behavior-through-composition">
-          <extensions>
-            <ext name="ext" type="org.gradle.api.internal.plugins.DefaultExtraPropertiesExtension" />
-            <ext name="defaultArtifacts" type="org.gradle.api.internal.plugins.DefaultArtifactPublicationSet" />
-            <ext name="reporting" type="org.gradle.api.reporting.ReportingExtension" />
-            <ext name="sources" type="org.gradle.language.base.internal.DefaultProjectSourceSet" />
-            <ext name="binaries" type="org.gradle.platform.base.internal.DefaultBinaryContainer" objectType="org.gradle.api.internal.jvm.DefaultClassDirectoryBinarySpec" />
-            <task name="components" type="org.gradle.api.reporting.components.ComponentReport">Displays the components produced by root project 'changing-behavior-through-composition'. [incubating]&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="buildDependents">Assembles and tests this project and all projects that depend on it.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="projects" type="org.gradle.api.tasks.diagnostics.ProjectReportTask">Displays the sub-projects of root project 'changing-behavior-through-composition'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="idea">Generates IDEA project files (IML, IPR, IWS)&lt;p&gt;&lt;i&gt;Task group: IDE&lt;i&gt;</task>
-            <task name="classes">Assembles classes 'main'.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="wrapper" type="org.gradle.api.tasks.wrapper.Wrapper">Generates Gradle wrapper files. [incubating]&lt;p&gt;&lt;i&gt;Task group: Build Setup&lt;i&gt;</task>
-            <task name="cleanIdeaModule" type="org.gradle.api.tasks.Delete">&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="testClasses">Assembles classes 'test'.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="javadoc" type="org.gradle.api.tasks.javadoc.Javadoc">Generates Javadoc API documentation for the main source code.&lt;p&gt;&lt;i&gt;Task group: documentation&lt;i&gt;</task>
-            <task name="jar" type="org.gradle.api.tasks.bundling.Jar">Assembles a jar archive containing the main classes.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="model" type="org.gradle.api.reporting.model.ModelReport">Displays the configuration model of root project 'changing-behavior-through-composition'. [incubating]&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="ideaModule" type="org.gradle.plugins.ide.idea.GenerateIdeaModule">Generates IDEA module files (IML)&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="processResources" type="org.gradle.language.jvm.tasks.ProcessResources">Processes JVM resources 'main:resources'.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="tasks" type="org.gradle.api.tasks.diagnostics.TaskReportTask">Displays the tasks runnable from root project 'changing-behavior-through-composition'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="init" type="org.gradle.buildinit.tasks.InitBuild">Initializes a new Gradle build. [incubating]&lt;p&gt;&lt;i&gt;Task group: Build Setup&lt;i&gt;</task>
-            <task name="cleanIdea">Cleans IDEA project files (IML, IPR)&lt;p&gt;&lt;i&gt;Task group: IDE&lt;i&gt;</task>
-            <task name="ideaWorkspace" type="org.gradle.plugins.ide.idea.GenerateIdeaWorkspace">Generates an IDEA workspace file (IWS)&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="test" type="org.gradle.api.tasks.testing.Test">Runs the unit tests.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
-            <task name="compileJava" type="org.gradle.api.tasks.compile.JavaCompile">Compiles Java source 'main:java'.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="dependencyInsight" type="org.gradle.api.tasks.diagnostics.DependencyInsightReportTask">Displays the insight into a specific dependency in root project 'changing-behavior-through-composition'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="check">Runs all checks.&lt;p&gt;&lt;i&gt;Task group: verification&lt;i&gt;</task>
-            <task name="assemble">Assembles the outputs of this project.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="clean" type="org.gradle.api.tasks.Delete">Deletes the build directory.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="compileTestJava" type="org.gradle.api.tasks.compile.JavaCompile">Compiles Java source 'test:java'.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="cleanIdeaProject" type="org.gradle.api.tasks.Delete">&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="dependencies" type="org.gradle.api.tasks.diagnostics.DependencyReportTask">Displays all dependencies declared in root project 'changing-behavior-through-composition'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="processTestResources" type="org.gradle.language.jvm.tasks.ProcessResources">Processes JVM resources 'test:resources'.&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="help" type="org.gradle.configuration.Help">Displays a help message.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="build">Assembles and tests this project.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="buildNeeded">Assembles and tests this project and all projects it depends on.&lt;p&gt;&lt;i&gt;Task group: build&lt;i&gt;</task>
-            <task name="ideaProject" type="org.gradle.plugins.ide.idea.GenerateIdeaProject">Generates IDEA project file (IPR)&lt;p&gt;&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <task name="properties" type="org.gradle.api.tasks.diagnostics.PropertyReportTask">Displays the properties of root project 'changing-behavior-through-composition'.&lt;p&gt;&lt;i&gt;Task group: help&lt;i&gt;</task>
-            <task name="cleanIdeaWorkspace" type="org.gradle.api.tasks.Delete">&lt;i&gt;Task group: other&lt;i&gt;</task>
-            <conf name="archives">Configuration for archive artifacts.</conf>
-            <conf name="compile" visible="false">Compile classpath for source set 'main'.</conf>
-            <conf name="default">Configuration for default artifacts.</conf>
-            <conf name="runtime" visible="false">Runtime classpath for source set 'main'.</conf>
-            <conf name="testCompile" visible="false">Compile classpath for source set 'test'.</conf>
-            <conf name="testRuntime" visible="false">Runtime classpath for source set 'test'.</conf>
-            <conf name="classpath" scriptClasspath="true" />
-          </extensions>
-        </project>
-      </sub-project>
-    </project>
   </component>
   <component name="GradleLocalSettings">
     <option name="myGradleHomes">
       <map>
-        <entry key="$PROJECT_DIR$" value="C:\Users\grzes\.gradle\wrapper\dists\gradle-3.1-bin\37qejo6a26ua35lyn7h1u9v2n\gradle-3.1" />
+        <entry key="$PROJECT_DIR$" value="C:\Users\grzes\.gradle\wrapper\dists\gradle-4.2.1-bin\dajvke9o8kmaxbu0kc5gcgeju\gradle-4.2.1" />
       </map>
     </option>
     <option name="myGradleVersions">
       <map>
-        <entry key="$PROJECT_DIR$" value="3.1" />
+        <entry key="$PROJECT_DIR$" value="4.2.1" />
       </map>
     </option>
     <option name="availableProjects">
@@ -530,8 +269,24 @@
           <value>
             <list>
               <ExternalProjectPojo>
+                <option name="name" value="dependency-injection" />
+                <option name="path" value="$PROJECT_DIR$" />
+              </ExternalProjectPojo>
+              <ExternalProjectPojo>
+                <option name="name" value=":_00_why-composition" />
+                <option name="path" value="$PROJECT_DIR$/_00_why-composition" />
+              </ExternalProjectPojo>
+              <ExternalProjectPojo>
                 <option name="name" value=":_01_changing-behavior-through-composition" />
                 <option name="path" value="$PROJECT_DIR$/_01_changing-behavior-through-composition" />
+              </ExternalProjectPojo>
+              <ExternalProjectPojo>
+                <option name="name" value=":_02_control-freak" />
+                <option name="path" value="$PROJECT_DIR$/_02_control-freak" />
+              </ExternalProjectPojo>
+              <ExternalProjectPojo>
+                <option name="name" value=":_03_control-freak-refactored" />
+                <option name="path" value="$PROJECT_DIR$/_03_control-freak-refactored" />
               </ExternalProjectPojo>
               <ExternalProjectPojo>
                 <option name="name" value=":_04_bastard-injection" />
@@ -542,20 +297,8 @@
                 <option name="path" value="$PROJECT_DIR$/_05_service-locator" />
               </ExternalProjectPojo>
               <ExternalProjectPojo>
-                <option name="name" value="dependency-injection" />
-                <option name="path" value="$PROJECT_DIR$" />
-              </ExternalProjectPojo>
-              <ExternalProjectPojo>
-                <option name="name" value=":_02_control-freak" />
-                <option name="path" value="$PROJECT_DIR$/_02_control-freak" />
-              </ExternalProjectPojo>
-              <ExternalProjectPojo>
                 <option name="name" value=":_06_conforming-container-antipattern" />
                 <option name="path" value="$PROJECT_DIR$/_06_conforming-container-antipattern" />
-              </ExternalProjectPojo>
-              <ExternalProjectPojo>
-                <option name="name" value=":_03_control-freak-refactored" />
-                <option name="path" value="$PROJECT_DIR$/_03_control-freak-refactored" />
               </ExternalProjectPojo>
             </list>
           </value>
@@ -588,12 +331,17 @@
                 <option name="name" value="classes" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Displays the dependent components of components in root project 'dependency-injection'. [incubating]" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="dependentComponents" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Displays all buildscript dependencies declared in root project 'dependency-injection'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="buildEnvironment" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Generates Gradle wrapper files. [incubating]" />
+                <option name="description" value="Generates Gradle wrapper files." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="wrapper" />
               </ExternalTaskPojo>
@@ -628,7 +376,7 @@
                 <option name="name" value="tasks" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Initializes a new Gradle build. [incubating]" />
+                <option name="description" value="Initializes a new Gradle build." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="init" />
               </ExternalTaskPojo>
@@ -700,6 +448,137 @@
             </list>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/_00_why-composition">
+          <value>
+            <list>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the components produced by project ':_00_why-composition'. [incubating]" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_00_why-composition" />
+                <option name="name" value="components" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles and tests this project and all projects that depend on it." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_00_why-composition" />
+                <option name="name" value="buildDependents" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the sub-projects of project ':_00_why-composition'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_00_why-composition" />
+                <option name="name" value="projects" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles main classes." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_00_why-composition" />
+                <option name="name" value="classes" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the dependent components of components in project ':_00_why-composition'. [incubating]" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_00_why-composition" />
+                <option name="name" value="dependentComponents" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays all buildscript dependencies declared in project ':_00_why-composition'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_00_why-composition" />
+                <option name="name" value="buildEnvironment" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles test classes." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_00_why-composition" />
+                <option name="name" value="testClasses" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Generates Javadoc API documentation for the main source code." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_00_why-composition" />
+                <option name="name" value="javadoc" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles a jar archive containing the main classes." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_00_why-composition" />
+                <option name="name" value="jar" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the configuration model of project ':_00_why-composition'. [incubating]" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_00_why-composition" />
+                <option name="name" value="model" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Processes main resources." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_00_why-composition" />
+                <option name="name" value="processResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the tasks runnable from project ':_00_why-composition'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_00_why-composition" />
+                <option name="name" value="tasks" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs the unit tests." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_00_why-composition" />
+                <option name="name" value="test" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Compiles main Java source." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_00_why-composition" />
+                <option name="name" value="compileJava" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the insight into a specific dependency in project ':_00_why-composition'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_00_why-composition" />
+                <option name="name" value="dependencyInsight" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Runs all checks." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_00_why-composition" />
+                <option name="name" value="check" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles the outputs of this project." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_00_why-composition" />
+                <option name="name" value="assemble" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Deletes the build directory." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_00_why-composition" />
+                <option name="name" value="clean" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Compiles test Java source." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_00_why-composition" />
+                <option name="name" value="compileTestJava" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays all dependencies declared in project ':_00_why-composition'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_00_why-composition" />
+                <option name="name" value="dependencies" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Processes test resources." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_00_why-composition" />
+                <option name="name" value="processTestResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays a help message." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_00_why-composition" />
+                <option name="name" value="help" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles and tests this project." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_00_why-composition" />
+                <option name="name" value="build" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Assembles and tests this project and all projects it depends on." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_00_why-composition" />
+                <option name="name" value="buildNeeded" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the properties of project ':_00_why-composition'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_00_why-composition" />
+                <option name="name" value="properties" />
+              </ExternalTaskPojo>
+            </list>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/_01_changing-behavior-through-composition">
           <value>
             <list>
@@ -722,6 +601,11 @@
                 <option name="description" value="Assembles main classes." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_01_changing-behavior-through-composition" />
                 <option name="name" value="classes" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the dependent components of components in project ':_01_changing-behavior-through-composition'. [incubating]" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_01_changing-behavior-through-composition" />
+                <option name="name" value="dependentComponents" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Displays all buildscript dependencies declared in project ':_01_changing-behavior-through-composition'." />
@@ -850,6 +734,11 @@
                 <option name="name" value="classes" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Displays the dependent components of components in project ':_02_control-freak'. [incubating]" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_02_control-freak" />
+                <option name="name" value="dependentComponents" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Displays all buildscript dependencies declared in project ':_02_control-freak'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_02_control-freak" />
                 <option name="name" value="buildEnvironment" />
@@ -974,6 +863,11 @@
                 <option name="description" value="Assembles main classes." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_03_control-freak-refactored" />
                 <option name="name" value="classes" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the dependent components of components in project ':_03_control-freak-refactored'. [incubating]" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_03_control-freak-refactored" />
+                <option name="name" value="dependentComponents" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Displays all buildscript dependencies declared in project ':_03_control-freak-refactored'." />
@@ -1102,6 +996,11 @@
                 <option name="name" value="classes" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Displays the dependent components of components in project ':_04_bastard-injection'. [incubating]" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_04_bastard-injection" />
+                <option name="name" value="dependentComponents" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Displays all buildscript dependencies declared in project ':_04_bastard-injection'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_04_bastard-injection" />
                 <option name="name" value="buildEnvironment" />
@@ -1226,6 +1125,11 @@
                 <option name="description" value="Assembles main classes." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_05_service-locator" />
                 <option name="name" value="classes" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the dependent components of components in project ':_05_service-locator'. [incubating]" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_05_service-locator" />
+                <option name="name" value="dependentComponents" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Displays all buildscript dependencies declared in project ':_05_service-locator'." />
@@ -1354,6 +1258,11 @@
                 <option name="name" value="classes" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Displays the dependent components of components in project ':_06_conforming-container-antipattern'. [incubating]" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_06_conforming-container-antipattern" />
+                <option name="name" value="dependentComponents" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Displays all buildscript dependencies declared in project ':_06_conforming-container-antipattern'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/_06_conforming-container-antipattern" />
                 <option name="name" value="buildEnvironment" />
@@ -1460,9 +1369,24 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="22335514582146" />
+        <entry key="$PROJECT_DIR$" value="23939404630462" />
+        <entry key="$PROJECT_DIR$/_00_why-composition/build.gradle" value="2368844792" />
         <entry key="$PROJECT_DIR$/_01_changing-behavior-through-composition" value="4466756901494" />
-        <entry key="$PROJECT_DIR$/settings.gradle" value="2173974902" />
+        <entry key="$PROJECT_DIR$/_01_changing-behavior-through-composition/build.gradle" value="2266388589" />
+        <entry key="$PROJECT_DIR$/_01_changing-behavior-through-composition/settings.gradle" value="2247010306" />
+        <entry key="$PROJECT_DIR$/_02_control-freak/build.gradle" value="645880018" />
+        <entry key="$PROJECT_DIR$/_02_control-freak/settings.gradle" value="3466117473" />
+        <entry key="$PROJECT_DIR$/_03_control-freak-refactored/build.gradle" value="1982465356" />
+        <entry key="$PROJECT_DIR$/_03_control-freak-refactored/settings.gradle" value="561004515" />
+        <entry key="$PROJECT_DIR$/_04_bastard-injection/build.gradle" value="645880018" />
+        <entry key="$PROJECT_DIR$/_04_bastard-injection/settings.gradle" value="129624834" />
+        <entry key="$PROJECT_DIR$/_05_service-locator/build.gradle" value="2075477172" />
+        <entry key="$PROJECT_DIR$/_05_service-locator/settings.gradle" value="2022369455" />
+        <entry key="$PROJECT_DIR$/_06_conforming-container-antipattern/build.gradle" value="2075477172" />
+        <entry key="$PROJECT_DIR$/_06_conforming-container-antipattern/settings.gradle" value="4097366196" />
+        <entry key="$PROJECT_DIR$/build.gradle" value="2550685052" />
+        <entry key="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" value="2189914086" />
+        <entry key="$PROJECT_DIR$/settings.gradle" value="616511401" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -1476,6 +1400,13 @@
                     <value>
                       <ExternalModuleBuildClasspathPojo>
                         <option name="path" value="$PROJECT_DIR$" />
+                      </ExternalModuleBuildClasspathPojo>
+                    </value>
+                  </entry>
+                  <entry key="$PROJECT_DIR$/_00_why-composition">
+                    <value>
+                      <ExternalModuleBuildClasspathPojo>
+                        <option name="path" value="$PROJECT_DIR$/_00_why-composition" />
                       </ExternalModuleBuildClasspathPojo>
                     </value>
                   </entry>
@@ -1533,73 +1464,78 @@
               <option name="name" value="dependency-injection" />
               <option name="projectBuildClasspath">
                 <list>
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/ant-1.9.6.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/ant-launcher-1.9.6.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/gradle-base-services-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/gradle-base-services-groovy-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/gradle-cli-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/gradle-core-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/gradle-docs-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/gradle-installation-beacon-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/gradle-jvm-services-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/gradle-launcher-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/gradle-logging-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/gradle-messaging-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/gradle-model-core-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/gradle-model-groovy-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/gradle-native-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/gradle-open-api-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/gradle-process-services-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/gradle-resources-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/gradle-script-kotlin-0.3.2.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/gradle-tooling-api-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/gradle-ui-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/gradle-wrapper-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/groovy-all-2.4.7.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-announce-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-antlr-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-build-comparison-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-build-init-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-code-quality-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-composite-builds-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-dependency-management-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-diagnostics-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-ear-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-ide-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-ide-native-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-ide-play-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-ivy-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-jacoco-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-javascript-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-jetty-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-language-groovy-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-language-java-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-language-jvm-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-language-native-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-language-scala-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-maven-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-osgi-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-platform-base-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-platform-jvm-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-platform-native-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-platform-play-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-plugin-development-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-plugin-use-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-plugins-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-publish-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-reporting-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-resources-http-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-resources-s3-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-resources-sftp-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-scala-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-signing-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-task-cache-http-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-test-kit-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-testing-base-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-testing-jvm-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-testing-native-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/gradle-tooling-api-builders-3.1.jar" />
-                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-bin/37qejo6a26ua35lyn7h1u9v2n/gradle-3.1/lib/plugins/ivy-2.2.0.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/ant-1.9.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/ant-launcher-1.9.6.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/gradle-base-services-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/gradle-base-services-groovy-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/gradle-build-cache-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/gradle-cli-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/gradle-core-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/gradle-core-api-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/gradle-docs-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/gradle-installation-beacon-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/gradle-jvm-services-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/gradle-kotlin-dsl-0.11.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/gradle-kotlin-dsl-tooling-builders-0.11.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/gradle-kotlin-dsl-tooling-models-0.11.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/gradle-launcher-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/gradle-logging-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/gradle-messaging-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/gradle-model-core-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/gradle-model-groovy-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/gradle-native-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/gradle-persistent-cache-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/gradle-process-services-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/gradle-resources-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/gradle-runtime-api-info-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/gradle-tooling-api-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/gradle-wrapper-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/groovy-all-2.4.12.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-announce-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-antlr-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-build-cache-http-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-build-comparison-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-build-init-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-code-quality-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-composite-builds-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-dependency-management-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-diagnostics-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-ear-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-ide-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-ide-native-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-ide-play-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-ivy-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-jacoco-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-javascript-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-language-groovy-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-language-java-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-language-jvm-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-language-native-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-language-scala-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-maven-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-osgi-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-platform-base-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-platform-jvm-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-platform-native-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-platform-play-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-plugin-development-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-plugin-use-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-plugins-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-publish-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-reporting-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-resources-gcs-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-resources-http-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-resources-s3-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-resources-sftp-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-scala-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-signing-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-test-kit-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-testing-base-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-testing-jvm-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-testing-native-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-tooling-api-builders-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/gradle-workers-4.2.1.jar" />
+                  <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-4.2.1-bin/dajvke9o8kmaxbu0kc5gcgeju/gradle-4.2.1/lib/plugins/ivy-2.2.0.jar" />
                   <option value="$PROJECT_DIR$/buildSrc/src/main/java" />
                   <option value="$PROJECT_DIR$/buildSrc/src/main/groovy" />
                 </list>
@@ -1612,11 +1548,24 @@
     <option name="externalProjectsViewState">
       <projects_view />
     </option>
+    <option name="projectSyncType">
+      <map>
+        <entry key="$PROJECT_DIR$" value="RE_IMPORT" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/settings.gradle" />
+        <option value="$PROJECT_DIR$/_06_conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/Services/SqlDataDestination.java" />
+        <option value="$PROJECT_DIR$/_02_control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Services/SqlDataDestination.java" />
+        <option value="$PROJECT_DIR$/_05_service-locator/src/main/java/ServiceLocatorAntipattern/Services/SqlDataDestination.java" />
+        <option value="$PROJECT_DIR$/_04_bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Services/SqlDataDestination.java" />
+        <option value="$PROJECT_DIR$/_03_control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Services/SqlDataDestination.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/_00_why-composition/src/main/java/SilentAlarm.java" />
+        <option value="$PROJECT_DIR$/_00_why-composition/src/main/java/Building.java" />
       </list>
     </option>
   </component>
@@ -1644,147 +1593,33 @@
     <panes>
       <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_02_control-freak" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_02_control-freak" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_02_control-freak" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_02_control-freak" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_1_ControlFreak" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dependency-injection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_02_control-freak" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_1_ControlFreak" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
+          <expand>
+            <path>
+              <item name="dependency-injection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dependency-injection" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+          </expand>
+          <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Java" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.annotationProcessors" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/_01_changing-behavior-through-composition" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+    <property name="SONARLINT_ANALYSIS_RESULTS_SCOPE" value="VCS changed files" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -1799,20 +1634,12 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
-      <option name="PROGRAM_PARAMETERS" />
-      <predefined_log_file id="idea.log" enabled="true" />
-      <method />
-    </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
       <option name="HEIGHT" value="300" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <module />
-      <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -1827,23 +1654,24 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
-      <method />
     </configuration>
-    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+    <configuration name="dependency-injection [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
-          <list />
+          <list>
+            <option value="build" />
+          </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <method />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -1864,28 +1692,6 @@
       </option>
       <envs />
       <patterns />
-      <method />
-    </configuration>
-    <configuration default="true" type="JarApplication" factoryName="JAR Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="Java Scratch" factoryName="Java Scratch">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="SCRATCH_FILE_ID" value="0" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <method />
     </configuration>
     <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -1898,19 +1704,6 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="dependency-injection" />
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <envs />
-      <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
@@ -1918,7 +1711,6 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
-      <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -1946,8 +1738,73 @@
       <envs />
       <properties />
       <listeners />
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file id="idea.log" enabled="true" />
+    </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
       <method />
     </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Java Scratch" factoryName="Java Scratch">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SCRATCH_FILE_ID" value="0" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <envs />
+      <method />
+    </configuration>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Gradle.dependency-injection [build]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SbtLocalSettings">
+    <option name="lastUpdateTimestamp" value="1517143990595" />
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -1962,42 +1819,226 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="55" y="-8" width="1633" height="1066" extended-state="6" />
-    <editor active="true" />
+    <frame x="55" y="-8" width="1633" height="1066" extended-state="0" />
     <layout>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Key Promoter X" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32976446" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32976446" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32976446" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28756958" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20025429" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="SonarLint" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32976446" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32976446" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3299428" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/_01_changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/CompositionRoot.java</url>
+          <line>17</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="2" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/_00_why-composition/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_05_service-locator/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_01_changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_01_changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Building.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="9" lean-forward="false" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_01_changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/CompositionRoot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1325">
+          <caret line="91" column="28" lean-forward="false" selection-start-line="91" selection-start-column="28" selection-end-line="91" selection-end-column="28" />
+          <folding>
+            <element signature="method#aLoudAlarm#0;class#CompositionRoot#0" expanded="false" />
+            <element signature="method#aSilentAlarm#0;class#CompositionRoot#0" expanded="false" />
+            <element signature="method#alarmDisabled#0;class#CompositionRoot#0" expanded="false" />
+            <element signature="method#twoSilentAlarms#0;class#CompositionRoot#0" expanded="false" />
+            <element signature="method#twoSilentAlarmsAndOneLoud#0;class#CompositionRoot#0" expanded="false" />
+            <element signature="method#twoSilentAlarmsAndOneLoudAtNightAndNoneDuringDay#0;class#CompositionRoot#0" expanded="false" />
+            <element signature="method#byDefaultNoAlarmButTwoSilentAlarmsAndOneLoudOnlyAtNightWeekend#0;class#CompositionRoot#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_02_control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Core/AcmeProcessingWorkflow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="21" column="38" lean-forward="false" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_01_changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/CompoundAlarm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_01_changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriterias/CompoundSwitchCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_00_why-composition/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_05_service-locator/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_01_changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_01_changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Building.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_01_changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/CompositionRoot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2225">
+          <caret line="89" column="40" lean-forward="false" selection-start-line="89" selection-start-column="40" selection-end-line="89" selection-end-column="40" />
+          <folding>
+            <element signature="method#aLoudAlarm#0;class#CompositionRoot#0" expanded="false" />
+            <element signature="method#aSilentAlarm#0;class#CompositionRoot#0" expanded="false" />
+            <element signature="method#alarmDisabled#0;class#CompositionRoot#0" expanded="false" />
+            <element signature="method#twoSilentAlarms#0;class#CompositionRoot#0" expanded="false" />
+            <element signature="method#twoSilentAlarmsAndOneLoud#0;class#CompositionRoot#0" expanded="false" />
+            <element signature="method#twoSilentAlarmsAndOneLoudAtNightAndNoneDuringDay#0;class#CompositionRoot#0" expanded="false" />
+            <element signature="method#byDefaultNoAlarmButTwoSilentAlarmsAndOneLoudOnlyAtNightWeekend#0;class#CompositionRoot#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_02_control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Core/AcmeProcessingWorkflow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="21" column="38" lean-forward="false" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/settings.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -2042,7 +2083,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1602">
           <caret line="89" column="40" lean-forward="false" selection-start-line="89" selection-start-column="40" selection-end-line="89" selection-end-column="40" />
-          <folding />
+          <folding>
+            <element signature="method#aLoudAlarm#0;class#CompositionRoot#0" expanded="false" />
+            <element signature="method#aSilentAlarm#0;class#CompositionRoot#0" expanded="false" />
+            <element signature="method#alarmDisabled#0;class#CompositionRoot#0" expanded="false" />
+            <element signature="method#twoSilentAlarms#0;class#CompositionRoot#0" expanded="false" />
+            <element signature="method#twoSilentAlarmsAndOneLoud#0;class#CompositionRoot#0" expanded="false" />
+            <element signature="method#twoSilentAlarmsAndOneLoudAtNightAndNoneDuringDay#0;class#CompositionRoot#0" expanded="false" />
+            <element signature="method#byDefaultNoAlarmButTwoSilentAlarmsAndOneLoudOnlyAtNightWeekend#0;class#CompositionRoot#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2098,7 +2147,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1602">
           <caret line="89" column="40" lean-forward="true" selection-start-line="89" selection-start-column="40" selection-end-line="89" selection-end-column="40" />
-          <folding />
+          <folding>
+            <element signature="method#aLoudAlarm#0;class#CompositionRoot#0" expanded="false" />
+            <element signature="method#aSilentAlarm#0;class#CompositionRoot#0" expanded="false" />
+            <element signature="method#alarmDisabled#0;class#CompositionRoot#0" expanded="false" />
+            <element signature="method#twoSilentAlarms#0;class#CompositionRoot#0" expanded="false" />
+            <element signature="method#twoSilentAlarmsAndOneLoud#0;class#CompositionRoot#0" expanded="false" />
+            <element signature="method#twoSilentAlarmsAndOneLoudAtNightAndNoneDuringDay#0;class#CompositionRoot#0" expanded="false" />
+            <element signature="method#byDefaultNoAlarmButTwoSilentAlarmsAndOneLoudOnlyAtNightWeekend#0;class#CompositionRoot#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2112,16 +2169,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/settings.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
+        <state relative-caret-position="175">
           <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -2134,9 +2183,113 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/_02_control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Core/AcmeProcessingWorkflow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="21" column="38" lean-forward="false" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_01_changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/CompoundAlarm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_01_changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/SwitchCriterias/CompoundSwitchCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_01_changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/CompositionRoot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1325">
+          <caret line="91" column="28" lean-forward="false" selection-start-line="91" selection-start-column="28" selection-end-line="91" selection-end-column="28" />
+          <folding>
+            <element signature="method#aLoudAlarm#0;class#CompositionRoot#0" expanded="false" />
+            <element signature="method#aSilentAlarm#0;class#CompositionRoot#0" expanded="false" />
+            <element signature="method#alarmDisabled#0;class#CompositionRoot#0" expanded="false" />
+            <element signature="method#twoSilentAlarms#0;class#CompositionRoot#0" expanded="false" />
+            <element signature="method#twoSilentAlarmsAndOneLoud#0;class#CompositionRoot#0" expanded="false" />
+            <element signature="method#twoSilentAlarmsAndOneLoudAtNightAndNoneDuringDay#0;class#CompositionRoot#0" expanded="false" />
+            <element signature="method#byDefaultNoAlarmButTwoSilentAlarmsAndOneLoudOnlyAtNightWeekend#0;class#CompositionRoot#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_06_conforming-container-antipattern/src/main/java/com/github/grzesiek_galezowski/ConformingContainerAntipattern/Services/SqlDataDestination.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="96" lean-forward="false" selection-start-line="2" selection-start-column="96" selection-end-line="2" selection-end-column="96" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_02_control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Services/SqlDataDestination.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="101" lean-forward="false" selection-start-line="2" selection-start-column="101" selection-end-line="2" selection-end-column="101" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_05_service-locator/src/main/java/ServiceLocatorAntipattern/Services/SqlDataDestination.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="60" lean-forward="false" selection-start-line="2" selection-start-column="60" selection-end-line="2" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_04_bastard-injection/src/main/java/com/github/grzesiek_galezowski/BastardInjection/Services/SqlDataDestination.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="82" lean-forward="false" selection-start-line="2" selection-start-column="82" selection-end-line="2" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_03_control-freak-refactored/src/main/java/com/github/grzesiek_galezowski/DependencyInjectionAfter/Services/SqlDataDestination.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="53" lean-forward="false" selection-start-line="6" selection-start-column="53" selection-end-line="6" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="25" lean-forward="false" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_00_why-composition/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_01_changing-behavior-through-composition/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/_01_changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
+        <state relative-caret-position="50">
           <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
           <folding />
         </state>
@@ -2144,24 +2297,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/_01_changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Building.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state relative-caret-position="125">
+          <caret line="5" column="9" lean-forward="false" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_01_changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/CompositionRoot.java">
+    <entry file="file://$PROJECT_DIR$/_01_changing-behavior-through-composition/src/main/java/com/github/grzesiek_galezowski/ChangingBehaviorThroughComposition/Alarms/SilentAlarm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1602">
-          <caret line="89" column="40" lean-forward="false" selection-start-line="89" selection-start-column="40" selection-end-line="89" selection-end-column="40" />
+        <state relative-caret-position="100">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_02_control-freak/src/main/java/com/github/grzesiek_galezowski/DependencyInjection/_1_ControlFreak/Core/AcmeProcessingWorkflow.java">
+    <entry file="file://$PROJECT_DIR$/_00_why-composition/src/main/java/SilentAlarm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" column="38" lean-forward="false" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_00_why-composition/src/main/java/Building.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" column="43" lean-forward="false" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
           <folding />
         </state>
       </provider>

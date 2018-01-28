@@ -5,6 +5,7 @@
     <content url="file://$MODULE_DIR$/../../../_01_changing-behavior-through-composition">
       <excludeFolder url="file://$MODULE_DIR$/../../../_01_changing-behavior-through-composition/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../../_01_changing-behavior-through-composition/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../_01_changing-behavior-through-composition/out" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

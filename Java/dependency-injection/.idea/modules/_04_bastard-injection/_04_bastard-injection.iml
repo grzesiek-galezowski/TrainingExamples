@@ -5,6 +5,7 @@
     <content url="file://$MODULE_DIR$/../../../_04_bastard-injection">
       <excludeFolder url="file://$MODULE_DIR$/../../../_04_bastard-injection/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../../_04_bastard-injection/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../_04_bastard-injection/out" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

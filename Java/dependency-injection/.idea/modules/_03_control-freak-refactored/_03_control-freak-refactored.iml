@@ -5,6 +5,7 @@
     <content url="file://$MODULE_DIR$/../../../_03_control-freak-refactored">
       <excludeFolder url="file://$MODULE_DIR$/../../../_03_control-freak-refactored/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../../_03_control-freak-refactored/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../_03_control-freak-refactored/out" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

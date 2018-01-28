@@ -6,3 +6,5 @@ include '_03_control-freak-refactored'
 include '_04_bastard-injection'
 include '_05_service-locator'
 include '_06_conforming-container-antipattern'
+include '_00_why-composition'
+

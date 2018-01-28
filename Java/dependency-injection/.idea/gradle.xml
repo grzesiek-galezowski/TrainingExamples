@@ -10,6 +10,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/_00_why-composition" />
             <option value="$PROJECT_DIR$/_01_changing-behavior-through-composition" />
             <option value="$PROJECT_DIR$/_02_control-freak" />
             <option value="$PROJECT_DIR$/_03_control-freak-refactored" />
