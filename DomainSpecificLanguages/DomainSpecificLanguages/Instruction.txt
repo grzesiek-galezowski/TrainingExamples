@@ -1,0 +1,24 @@
+
+. Function Nesting
+  - useful for scopes and dependencies
+  - nested functions executed before wrapping ones (context pulled by other functions) 
+  - sequence specified as parameters (often params[]/args...)
+  - compare 
+    - x.Should().Be(2) to x.Should(Be(2)) 
+    - assertThat(12, allOf(equalTo(12), greaterThat(6))) vs. assertThat(12).equalTo(12).greaterThan(6) - how to make the second lazy?
+    - hamcrest example
+    - lazy evaluation, creating object graphs e.g. composites (alarms, Assert.That() example in CommandQuerySeparation), 
+      messaging system)
+  - explicit End(), Build() etc. method not needed - nesting manages contexts
+
+ - better extensibility in e.g. java than method chaining (also see assertj extensibility mechanism)
+ - bad discoverability
+ - implementation strategies:
+   - context superclass
+   - static import/static using
+   - static invocation Assert.That(12, Is.EqualTo(23)); vs hamcrest is(equalTo(23))
+   - extension methods (NSub vs. mockito: x.GetY().Returns(12) vs. when(x.getY()).thenReturns(12))
+   - operators (break guidelines)
+   - context superclass vs static methods - pros and cons (state management)
+ - most often method chaining and nested functions are used together (see test data builder http://www.natpryce.com/articles/000714.html)
+   

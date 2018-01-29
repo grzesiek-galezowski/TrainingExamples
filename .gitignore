@@ -53,7 +53,6 @@ Temporary Items
 *.cache
 *.suo
 *.v11.suo
-*.txt
 **/obj/Debug/*
 *.suo
 **/bin/Debug/nunit.framework.xml
@@ -153,3 +152,5 @@ Java/messaging-patterns/.idea/sonarlint/issuestore/f/0/f07866736216be0ee2aba49e3
 *.ide
 Java/**/.idea/sonarlint/**
 Java/dropwizard-hello/.gradle/buildOutputCleanup/cache.properties
+
+GCopLog.txt
