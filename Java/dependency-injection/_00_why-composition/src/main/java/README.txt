@@ -1,0 +1,1 @@
+start refactoring from the LoudAlarm class.

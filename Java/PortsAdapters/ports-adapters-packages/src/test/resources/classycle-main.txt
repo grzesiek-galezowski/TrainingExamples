@@ -1,0 +1,14 @@
+show allResults
+
+{package} = com.examples
+
+[ports] = ${package}.*.ports.*
+[adapters] = ${package}.*.adapters.*
+[application] = ${package}.*.application.*
+
+check [adapters] independentOf [application]
+check [application] independentOf [adapters]
+check [ports] independentOf [adapters]
+check [ports] independentOf [application]
+
+check absenceOfPackageCycles > 1 in ${package}.*
