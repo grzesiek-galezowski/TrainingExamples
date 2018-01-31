@@ -1,6 +1,5 @@
 package com.example.springbootmanualcompositionroot.adapters;
 
-import com.example.springbootmanualcompositionroot.adapters.SimpleBookRepository;
 import com.example.springbootmanualcompositionroot.application.BookRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

@@ -1,12 +1,10 @@
 import Main.CompositionRoot;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 public class CharacterizationTests {
 
@@ -17,7 +15,6 @@ public class CharacterizationTests {
     System.setOut(new PrintStream(stream));
 
     CompositionRoot.main();
-    String[] str = stream.toString().split("\r\n");
 
     assertEquals("Calling 11-222-1121\r\n" +
         "Stopped playing\r\n" +
