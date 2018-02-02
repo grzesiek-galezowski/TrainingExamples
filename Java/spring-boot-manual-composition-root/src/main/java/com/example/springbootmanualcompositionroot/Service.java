@@ -1,32 +1,20 @@
 package com.example.springbootmanualcompositionroot;
 
-import com.example.springbootmanualcompositionroot.adapters.PlainCommandsFactory;
-import com.example.springbootmanualcompositionroot.application.BookRepository;
+import com.example.springbootmanualcompositionroot.adapters.ServiceLogicRoot;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.web.context.support.GenericWebApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.example.springbootmanualcompositionroot")
 public class Service {
 
+	public Service(ConfigurableApplicationContext ctx) {
+		ServiceLogicRoot serviceLogicRoot
+			= new ServiceLogicRoot(ctx);
+		serviceLogicRoot.start();
 
-	public Service(ApplicationContext applicationContext) {
-
-		//
-		// From spring boot to app logic
-		//
-		PlainCommandsFactory commandsFactory
-			= new PlainCommandsFactory(
-				  applicationContext.getBean(BookRepository.class));
-
-		//
-		// From app logic to spring boot
-		//
-		((GenericWebApplicationContext) applicationContext)
-			.getBeanFactory().registerSingleton(
-				commandsFactory.getClass().toString(),
-				commandsFactory);
+		Runtime.getRuntime().addShutdownHook(
+			new Thread(serviceLogicRoot::stop));
 
 	}
 
