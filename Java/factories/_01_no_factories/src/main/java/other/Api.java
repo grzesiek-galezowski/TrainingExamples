@@ -57,7 +57,9 @@ public class Api {
         //Command subscriptionStartCommand = commandFactory.createFrom(
         //    parameters, responseBuilder);
 
-        //todo show how factories improve this code (uncomment code above)
+        //todo show how factories improve this code (uncomment code above
+        //or refactor using bifunction<NewSubscriptionParametersDto, SubscriptionStartResponseBuilder, Command>;
+
         List<AssetQuery> assetQueries = asList(parameters.requests).stream().map(
             assetRequestDto -> {
                 switch (assetRequestDto.kind) {
