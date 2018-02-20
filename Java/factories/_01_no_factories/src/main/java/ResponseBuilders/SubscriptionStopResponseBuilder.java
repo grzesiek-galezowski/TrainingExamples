@@ -5,8 +5,8 @@ import dto.StopSubscriptionResponseDto;
 public interface SubscriptionStopResponseBuilder extends
     SubscriptionValidationResults,
     SubscriptionStopEvents,
-    UserAuthorizationEvents
-  {
+    UserAuthorizationEvents {
     StopSubscriptionResponseDto buildStop();
+
     void assertNoFatalErrors(RuntimeException exception);
-  }
+}

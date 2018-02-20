@@ -9,37 +9,33 @@ import dto.StoppedSubscriptionParametersDto;
 import responseBuilders.SubscriptionStartResponseBuilder;
 import responseBuilders.SubscriptionStopResponseBuilder;
 
-public class Api
-  {
+public class Api {
     private final ICommandFactory commandFactory;
     private final ResponseBuilderFactory responseBuildersFactory;
 
     public Api(
-      ICommandFactory commandFactory, 
-      ResponseBuilderFactory responseBuildersFactory,
-      Log log)
-    {
-      this.commandFactory = commandFactory;
-      this.responseBuildersFactory = responseBuildersFactory;
+        ICommandFactory commandFactory,
+        ResponseBuilderFactory responseBuildersFactory,
+        Log log) {
+        this.commandFactory = commandFactory;
+        this.responseBuildersFactory = responseBuildersFactory;
     }
 
-    public StartSubscriptionResponseDto startSubscription(NewSubscriptionParametersDto parameters)
-    {
-      SubscriptionStartResponseBuilder responseBuilder = responseBuildersFactory.forStartSubscriptionResponse();
-      Command subscriptionStartCommand = commandFactory.createFrom(parameters, responseBuilder);
+    public StartSubscriptionResponseDto startSubscription(NewSubscriptionParametersDto parameters) {
+        SubscriptionStartResponseBuilder responseBuilder = responseBuildersFactory.forStartSubscriptionResponse();
+        Command subscriptionStartCommand = commandFactory.createFrom(parameters, responseBuilder);
 
-      subscriptionStartCommand.invoke();
-      
-      return responseBuilder.buildStart();
+        subscriptionStartCommand.invoke();
+
+        return responseBuilder.buildStart();
     }
 
-    public StopSubscriptionResponseDto stopSubscription(StoppedSubscriptionParametersDto parameters)
-    {
-      SubscriptionStopResponseBuilder responseBuilder = responseBuildersFactory.forStopSubscriptionResponse();
-      Command subscriptionStopCommand = commandFactory.createFrom(parameters, responseBuilder);
+    public StopSubscriptionResponseDto stopSubscription(StoppedSubscriptionParametersDto parameters) {
+        SubscriptionStopResponseBuilder responseBuilder = responseBuildersFactory.forStopSubscriptionResponse();
+        Command subscriptionStopCommand = commandFactory.createFrom(parameters, responseBuilder);
 
-      subscriptionStopCommand.invoke();
+        subscriptionStopCommand.invoke();
 
-      return responseBuilder.buildStop();
+        return responseBuilder.buildStop();
     }
-  }
+}

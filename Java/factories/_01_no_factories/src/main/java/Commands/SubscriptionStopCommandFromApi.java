@@ -16,11 +16,12 @@ public class SubscriptionStopCommandFromApi
     private final UserAuthorization userAuthorization;
 
     public SubscriptionStopCommandFromApi(
-        StoppedSubscriptionParametersDto parameters,
-        SubscriptionStopResponseBuilder responseBuilder,
-        SubscriptionsModifyOperations subscriptions,
-        DataCorrectnessCriteria correctnessCriteria,
-        UserAuthorization userAuthorization) {
+        final StoppedSubscriptionParametersDto parameters,
+        final SubscriptionStopResponseBuilder responseBuilder,
+        final SubscriptionsModifyOperations subscriptions,
+        final DataCorrectnessCriteria correctnessCriteria,
+        final UserAuthorization userAuthorization) {
+
         this.parameters = parameters;
         this.responseBuilder = responseBuilder;
         this.subscriptions = subscriptions;
@@ -28,7 +29,7 @@ public class SubscriptionStopCommandFromApi
         this.userAuthorization = userAuthorization;
     }
 
-    public StopSubscriptionResponseDto Response() {
+    public StopSubscriptionResponseDto response() {
         return responseBuilder.buildStop();
     }
 
