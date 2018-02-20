@@ -1,20 +1,11 @@
-﻿package other;
+package other;
 
-import ResponseBuilders.SubscriptionStartResponseBuilder;
-import ResponseBuilders.SubscriptionStopResponseBuilder;
+import responseBuilders.SubscriptionStartResponseBuilder;
+import responseBuilders.SubscriptionStopResponseBuilder;
 
 public interface ResponseBuilderFactory {
-    SubscriptionStartResponseBuilder ForStartSubscriptionResponse();
+    SubscriptionStartResponseBuilder forStartSubscriptionResponse();
 
-    SubscriptionStopResponseBuilder ForStopSubscriptionResponse();
+    SubscriptionStopResponseBuilder forStopSubscriptionResponse();
 }
 
-public class DefaultResponseBuilderFactory implements ResponseBuilderFactory {
-    public SubscriptionStartResponseBuilder ForStartSubscriptionResponse() {
-        return new SubscriptionResponseBuilder();
-    }
-
-    public SubscriptionStopResponseBuilder ForStopSubscriptionResponse() {
-        return new SubscriptionResponseBuilder();
-    }
-}

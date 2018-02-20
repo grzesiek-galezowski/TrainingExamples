@@ -1,5 +1,5 @@
-package ResponseBuilders;
+package responseBuilders;
 
 public interface SubscriptionStopEvents {
-    void NoSubscriptionToStopWithId(String subscriptionId);
+    void noSubscriptionToStopWithId(String subscriptionId);
 }

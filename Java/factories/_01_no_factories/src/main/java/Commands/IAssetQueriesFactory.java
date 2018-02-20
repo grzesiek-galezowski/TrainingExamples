@@ -1,10 +1,10 @@
-package Commands;
+package commands;
 
-import Dto.AssetRequestDto;
-import Queries.AssetQuery;
+import dto.AssetRequestDto;
+import queries.AssetQuery;
 
 import java.util.List;
 
 public interface IAssetQueriesFactory {
-    List<AssetQuery> CreateFrom(Iterable<AssetRequestDto> requests);
+    List<AssetQuery> createFrom(Iterable<AssetRequestDto> requests);
 }

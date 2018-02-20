@@ -1,9 +1,9 @@
-package Subscriptions;
+package subscriptions;
 
-import ResponseBuilders.SubscriptionStopEvents;
+import responseBuilders.SubscriptionStopEvents;
 
 public interface SubscriptionsModifyOperations {
-    void AddNew(Subscription subscription);
+    void addNew(Subscription subscription);
 
-    void Remove(String subscriptionId, SubscriptionStopEvents events);
+    void remove(String subscriptionId, SubscriptionStopEvents events);
 }

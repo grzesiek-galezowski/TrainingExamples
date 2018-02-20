@@ -1,9 +1,9 @@
-﻿package Authorization;
+package authorization;
 
-import Commands.AssetAccessAuthorization;
-import Commands.UserAuthorization;
-import ResponseBuilders.AssetAuthorizationEvents;
-import ResponseBuilders.UserAuthorizationEvents;
+import commands.AssetAccessAuthorization;
+import commands.UserAuthorization;
+import responseBuilders.AssetAuthorizationEvents;
+import responseBuilders.UserAuthorizationEvents;
 
 import java.util.List;
 
@@ -11,24 +11,24 @@ public class AuthorizationStructure implements
     AssetAccessAuthorization,
     UserAuthorization,
     AssetQueryResolution {
-    public void VerifyAccessTo(String assetName, String userName, AssetAuthorizationEvents events) {
-        events.NotAuthorizedForAsset(assetName, userName);
+    public void verifyAccessTo(String assetName, String userName, AssetAuthorizationEvents events) {
+        events.notAuthorizedForAsset(assetName, userName);
     }
 
-    public void VerifyUserExistence(String userName, UserAuthorizationEvents events) {
-        events.UserNotAuthorized(userName);
+    public void verifyUserExistence(String userName, UserAuthorizationEvents events) {
+        events.userNotAuthorized(userName);
     }
 
-    public List<String> RetrieveAssetsByHardwareName(String name) {
+    public List<String> retrieveAssetsByHardwareName(String name) {
         throw new RuntimeException("not implemented");
 
     }
 
-    public List<String> RetrieveAssetsByUserName(String name) {
+    public List<String> retrieveAssetsByUserName(String name) {
         throw new RuntimeException("not implemented");
     }
 
-    public List<String> RetrieveAssetsByOrganizationalUnitName(String name) {
+    public List<String> retrieveAssetsByOrganizationalUnitName(String name) {
         throw new RuntimeException("not implemented");
     }
 }

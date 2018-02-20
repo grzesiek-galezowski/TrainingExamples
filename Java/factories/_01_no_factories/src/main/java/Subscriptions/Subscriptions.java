@@ -1,25 +1,27 @@
-package Subscriptions;
+package subscriptions;
 
-import ResponseBuilders.SubscriptionStopEvents;
+import responseBuilders.SubscriptionStopEvents;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Subscriptions implements Subscriptions.SubscriptionsModifyOperations {
-    private final List<Subscriptions.Subscription> _subscriptions = new ArrayList<Subscriptions.Subscription>();
+public class Subscriptions implements SubscriptionsModifyOperations {
+    private final List<Subscription> _subscriptions = new ArrayList<>();
 
-    public void AddNew(Subscriptions.Subscription subscription) {
-        subscription.ScheduleExpiry();
+    @Override
+    public void addNew(Subscription subscription) {
+        subscription.scheduleExpiry();
         _subscriptions.add(subscription);
     }
 
-    public void Remove(String subscriptionId, SubscriptionStopEvents events) {
-        Subscription subscription = _subscriptions.stream().filter(s -> s.Has(subscriptionId)).findFirst().get();
+    @Override
+    public void remove(String subscriptionId, SubscriptionStopEvents events) {
+        Subscription subscription = _subscriptions.stream().filter(s -> s.has(subscriptionId)).findFirst().get();
         if (subscription != null) {
-            subscription.ForceExpiry();
+            subscription.forceExpiry();
             _subscriptions.remove(subscription);
         } else {
-            events.NoSubscriptionToStopWithId(subscriptionId);
+            events.noSubscriptionToStopWithId(subscriptionId);
         }
     }
 }

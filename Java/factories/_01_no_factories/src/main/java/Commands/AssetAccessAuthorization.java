@@ -1,7 +1,7 @@
-package Commands;
+package commands;
 
-import ResponseBuilders.AssetAuthorizationEvents;
+import responseBuilders.AssetAuthorizationEvents;
 
 public interface AssetAccessAuthorization {
-    void VerifyAccessTo(String assetName, String userName, AssetAuthorizationEvents assetAuthorizationEvents);
+    void verifyAccessTo(String assetName, String userName, AssetAuthorizationEvents assetAuthorizationEvents);
 }

@@ -1,12 +1,12 @@
-﻿package ResponseBuilders;
+package responseBuilders;
 
-import Dto.StopSubscriptionResponseDto;
+import dto.StopSubscriptionResponseDto;
 
 public interface SubscriptionStopResponseBuilder extends
     SubscriptionValidationResults,
     SubscriptionStopEvents,
     UserAuthorizationEvents
   {
-    StopSubscriptionResponseDto BuildStop();
-    void AssertNoFatalErrors(RuntimeException exception);
+    StopSubscriptionResponseDto buildStop();
+    void assertNoFatalErrors(RuntimeException exception);
   }

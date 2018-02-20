@@ -1,5 +1,5 @@
-﻿package ResponseBuilders;
+package responseBuilders;
 
 public interface UserAuthorizationEvents {
-    void UserNotAuthorized(String userName);
+    void userNotAuthorized(String userName);
 }

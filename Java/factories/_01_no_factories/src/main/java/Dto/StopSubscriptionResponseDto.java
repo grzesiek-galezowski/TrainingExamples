@@ -1,6 +1,6 @@
-﻿package Dto;
+package dto;
 
 public class StopSubscriptionResponseDto {
-    public boolean Failure;
-    public String[] Errors;
+    public boolean failure;
+    public String[] errors;
 }

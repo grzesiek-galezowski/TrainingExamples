@@ -1,7 +1,7 @@
-package Subscriptions;
+package subscriptions;
 
-import Dto.NewSubscriptionParametersDto;
+import dto.NewSubscriptionParametersDto;
 
 public interface ISubscriptionFactory {
-    Subscription CreateFrom(NewSubscriptionParametersDto parameters);
+    Subscription createFrom(NewSubscriptionParametersDto parameters);
 }

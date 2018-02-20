@@ -1,12 +1,12 @@
-package Commands;
+package commands;
 
-import Dto.NewSubscriptionParametersDto;
-import Dto.StoppedSubscriptionParametersDto;
-import ResponseBuilders.SubscriptionStartResponseBuilder;
-import ResponseBuilders.SubscriptionStopResponseBuilder;
+import dto.NewSubscriptionParametersDto;
+import dto.StoppedSubscriptionParametersDto;
+import responseBuilders.SubscriptionStartResponseBuilder;
+import responseBuilders.SubscriptionStopResponseBuilder;
 
 public interface ICommandFactory {
-    Command CreateFrom(NewSubscriptionParametersDto parameters, SubscriptionStartResponseBuilder responseBuilder);
+    Command createFrom(NewSubscriptionParametersDto parameters, SubscriptionStartResponseBuilder responseBuilder);
 
-    Command CreateFrom(StoppedSubscriptionParametersDto parameters, SubscriptionStopResponseBuilder responseBuilder);
+    Command createFrom(StoppedSubscriptionParametersDto parameters, SubscriptionStopResponseBuilder responseBuilder);
 }

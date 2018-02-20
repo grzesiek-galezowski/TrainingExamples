@@ -1,4 +1,4 @@
-package Dto;
+package dto;
 
 public enum AssetKind {
     User,

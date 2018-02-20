@@ -1,5 +1,5 @@
-package ResponseBuilders;
+package responseBuilders;
 
 public interface SubscriptionValidationResults {
-    void NotValid(String dataName);
+    void notValid(String dataName);
 }

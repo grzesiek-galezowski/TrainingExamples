@@ -1,5 +1,5 @@
-package Commands;
+package commands;
 
 public interface Command {
-    void Invoke();
+    void invoke();
 }

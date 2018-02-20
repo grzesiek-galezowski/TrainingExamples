@@ -1,12 +1,12 @@
-package ResponseBuilders;
+package responseBuilders;
 
-import Dto.StartSubscriptionResponseDto;
-import Queries.QueryResolutionEvents;
+import dto.StartSubscriptionResponseDto;
+import queries.QueryResolutionEvents;
 
 public interface SubscriptionStartResponseBuilder extends
     SubscriptionValidationResults,
     QueryResolutionEvents,
     AssetAuthorizationEvents {
-    StartSubscriptionResponseDto BuildStart();
-    void AssertNoFatalErrors(RuntimeException exceptionToThrow);
+    StartSubscriptionResponseDto buildStart();
+    void assertNoFatalErrors(RuntimeException exceptionToThrow);
 }

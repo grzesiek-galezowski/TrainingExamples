@@ -1,7 +1,7 @@
-﻿package Dto;
+package dto;
 
 public class NewSubscriptionParametersDto {
-    public String UserName;
-    public String SubscriptionId;
-    public AssetRequestDto[] Requests;
+    public String userName;
+    public String subscriptionId;
+    public AssetRequestDto[] requests;
 }

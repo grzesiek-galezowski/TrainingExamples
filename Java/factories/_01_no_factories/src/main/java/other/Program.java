@@ -1,42 +1,38 @@
-﻿package other;
+package other;
 
-import Dto.NewSubscriptionParametersDto;
-import Dto.StoppedSubscriptionParametersDto;using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SubscriptionApi.Authorization;
-using SubscriptionApi.Commands;
-using SubscriptionApi.Dto;
-using SubscriptionApi.ResponseBuilders;
-using SubscriptionApi.Subscriptions;
+import authorization.AuthorizationStructure;
+import commands.AssetQueriesFactory;
+import commands.CommandFactory;
+import dto.NewSubscriptionParametersDto;
+import dto.StartSubscriptionResponseDto;
+import dto.StopSubscriptionResponseDto;
+import dto.StoppedSubscriptionParametersDto;
+import subscriptions.SubscriptionDataCorrectnessCriteria;
+import subscriptions.SubscriptionFactory;
+import subscriptions.Subscriptions;
 
-namespace SubscriptionApi
-{
-  static class Program
-  {
-    static void Main(string[] args)
-    {
-      var structure = new AuthorizationStructure();
+public class Program {
 
-      var dummyLog = new DummyLog();
-      var api = new Api(
-        new CommandFactory(
-          new Subscriptions.Subscriptions(),
-          structure, 
-          new SubscriptionFactory(), 
-          new SubscriptionDataCorrectnessCriteria(), 
-          new AssetQueriesFactory(
-            structure
-          ),
-          dummyLog
-        ), 
-        new DefaultResponseBuilderFactory(), 
-        dummyLog
-      );
+    public static void main(String[] args) {
+        AuthorizationStructure structure = new AuthorizationStructure();
 
-      var response1 = api.StartSubscription(new NewSubscriptionParametersDto());
-      var response2 = api.StopSubscription(new StoppedSubscriptionParametersDto());
+        Log dummyLog = new DummyLog();
+        Api api = new Api(
+            new CommandFactory(
+                new Subscriptions(),
+                structure,
+                new SubscriptionFactory(),
+                new SubscriptionDataCorrectnessCriteria(),
+                new AssetQueriesFactory(
+                    structure
+                ),
+                dummyLog
+            ),
+            new DefaultResponseBuilderFactory(),
+            dummyLog
+        );
+
+        StartSubscriptionResponseDto response1 = api.startSubscription(new NewSubscriptionParametersDto());
+        StopSubscriptionResponseDto response2 = api.stopSubscription(new StoppedSubscriptionParametersDto());
     }
-  }
 }

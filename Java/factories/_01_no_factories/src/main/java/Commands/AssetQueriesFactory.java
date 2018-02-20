@@ -1,12 +1,12 @@
-package Commands;
+package commands;
 
-import Authorization.AssetQueryResolution;
-import Dto.AssetKind;
-import Dto.AssetRequestDto;
-import Queries.AssetQuery;
-import Queries.HardwareQuery;
-import Queries.OrganizationalUnitQuery;
-import Queries.UserQuery;
+import authorization.AssetQueryResolution;
+import dto.AssetKind;
+import dto.AssetRequestDto;
+import queries.AssetQuery;
+import queries.HardwareQuery;
+import queries.OrganizationalUnitQuery;
+import queries.UserQuery;
 
 import java.util.List;
 import java.util.stream.StreamSupport;
@@ -14,27 +14,27 @@ import java.util.stream.StreamSupport;
 import static java.util.stream.Collectors.toList;
 
 public class AssetQueriesFactory implements IAssetQueriesFactory {
-    private final AssetQueryResolution _authorizationStructure;
+    private final AssetQueryResolution authorizationStructure;
 
     public AssetQueriesFactory(AssetQueryResolution authorizationStructure) {
-        _authorizationStructure = authorizationStructure;
+        this.authorizationStructure = authorizationStructure;
     }
 
-    public List<AssetQuery> CreateFrom(Iterable<AssetRequestDto> requests) {
+    public List<AssetQuery> createFrom(Iterable<AssetRequestDto> requests) {
         return StreamSupport.stream(requests.spliterator(), false).map(
-            assetRequestDto -> AssetQueryFor(
-                assetRequestDto.Name,
-                assetRequestDto.Kind)).collect(toList());
+            assetRequestDto -> assetQueryFor(
+                assetRequestDto.name,
+                assetRequestDto.kind)).collect(toList());
     }
 
-    private AssetQuery AssetQueryFor(String name, AssetKind assetKind) {
+    private AssetQuery assetQueryFor(String name, AssetKind assetKind) {
         switch (assetKind) {
             case User:
-                return new UserQuery(name, _authorizationStructure);
+                return new UserQuery(name, authorizationStructure);
             case OrganizationalUnit:
-                return new OrganizationalUnitQuery(name, _authorizationStructure);
+                return new OrganizationalUnitQuery(name, authorizationStructure);
             case Hardware:
-                return new HardwareQuery(name, _authorizationStructure);
+                return new HardwareQuery(name, authorizationStructure);
             default:
                 throw new IllegalArgumentException();
         }

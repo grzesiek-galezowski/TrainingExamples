@@ -1,5 +1,5 @@
-package Commands;
+package commands;
 
 public interface CommandProcessing {
-    void ApplyTo(SubscriptionCommand subscriptionStartCommand);
+    void applyTo(SubscriptionCommand subscriptionStartCommand);
 }

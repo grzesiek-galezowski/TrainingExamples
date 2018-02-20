@@ -1,23 +1,23 @@
-package Subscriptions;
+package subscriptions;
 
-import Dto.NewSubscriptionParametersDto;
+import dto.NewSubscriptionParametersDto;
 
 public class Subscription {
-    private final NewSubscriptionParametersDto _parameters;
+    private final NewSubscriptionParametersDto parameters;
 
     public Subscription(NewSubscriptionParametersDto parameters) {
-        _parameters = parameters;
+        this.parameters = parameters;
     }
 
-    public boolean Has(String subscriptionId) {
-        return _parameters.SubscriptionId == subscriptionId;
+    public boolean has(String subscriptionId) {
+        return parameters.subscriptionId == subscriptionId;
     }
 
-    public void ForceExpiry() {
+    public void forceExpiry() {
         throw new RuntimeException("not implemented");
     }
 
-    public void ScheduleExpiry() {
+    public void scheduleExpiry() {
         throw new RuntimeException("not implemented");
     }
 }

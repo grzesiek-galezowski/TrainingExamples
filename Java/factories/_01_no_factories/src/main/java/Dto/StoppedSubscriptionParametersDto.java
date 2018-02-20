@@ -1,6 +1,6 @@
-﻿package Dto;
+package dto;
 
 public class StoppedSubscriptionParametersDto {
-    public String UserName;
-    public String SubscriptionId;
+    public String userName;
+    public String subscriptionId;
 }

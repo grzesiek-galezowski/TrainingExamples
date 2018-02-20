@@ -1,5 +1,5 @@
-package Queries;
+package queries;
 
 public interface QueryResolutionEvents {
-    void NoResolutionResultsFor(String name);
+    void noResolutionResultsFor(String name);
 }

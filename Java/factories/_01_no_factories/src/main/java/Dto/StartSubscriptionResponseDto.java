@@ -1,6 +1,6 @@
-﻿package Dto;
+package dto;
 
 public class StartSubscriptionResponseDto {
-    public boolean Failure;
-    public String[] Errors;
+    public boolean failure;
+    public String[] errors;
 }

@@ -1,14 +1,14 @@
-﻿package Commands;
+package commands;
 
-import Authorization.AuthorizationStructure;
-import Dto.NewSubscriptionParametersDto;
-import Dto.StoppedSubscriptionParametersDto;
-import Queries.AssetQuery;
-import ResponseBuilders.SubscriptionStartResponseBuilder;
-import ResponseBuilders.SubscriptionStopResponseBuilder;
-import Subscriptions.ISubscriptionFactory;
-import Subscriptions.SubscriptionDataCorrectnessCriteria;
-import Subscriptions.SubscriptionsModifyOperations;
+import authorization.AuthorizationStructure;
+import dto.NewSubscriptionParametersDto;
+import dto.StoppedSubscriptionParametersDto;
+import queries.AssetQuery;
+import responseBuilders.SubscriptionStartResponseBuilder;
+import responseBuilders.SubscriptionStopResponseBuilder;
+import subscriptions.DataCorrectnessCriteria;
+import subscriptions.ISubscriptionFactory;
+import subscriptions.SubscriptionsModifyOperations;
 import other.Log;
 
 import java.util.List;
@@ -17,55 +17,55 @@ import static java.util.Arrays.asList;
 
 public class CommandFactory implements ICommandFactory
   {
-    private final SubscriptionsModifyOperations _subscriptions;
-    private final AuthorizationStructure _authorizationStructure;
-    private final ISubscriptionFactory _subscriptionFactory;
-    private final IAssetQueriesFactory _assetQueriesFactory;
-    private final Log _log;
-    private final SubscriptionDataCorrectnessCriteria _dataCorrectnessCriteria;
+    private final SubscriptionsModifyOperations subscriptions;
+    private final AuthorizationStructure authorizationStructure;
+    private final ISubscriptionFactory subscriptionFactory;
+    private final IAssetQueriesFactory assetQueriesFactory;
+    private final Log log;
+    private final DataCorrectnessCriteria dataCorrectnessCriteria;
 
     public CommandFactory(
       SubscriptionsModifyOperations subscriptions, 
       AuthorizationStructure authorizationStructure, 
       ISubscriptionFactory subscriptionFactory, 
-      SubscriptionDataCorrectnessCriteria dataCorrectnessCriteria, 
+      DataCorrectnessCriteria dataCorrectnessCriteria,
       IAssetQueriesFactory assetQueriesFactory, 
       Log log)
     {
-      _subscriptions = subscriptions;
-      _authorizationStructure = authorizationStructure;
-      _subscriptionFactory = subscriptionFactory;
-      _dataCorrectnessCriteria = dataCorrectnessCriteria;
-      _assetQueriesFactory = assetQueriesFactory;
-      _log = log;
+      this.subscriptions = subscriptions;
+      this.authorizationStructure = authorizationStructure;
+      this.subscriptionFactory = subscriptionFactory;
+      this.dataCorrectnessCriteria = dataCorrectnessCriteria;
+      this.assetQueriesFactory = assetQueriesFactory;
+      this.log = log;
     }
 
-    public Command CreateFrom(NewSubscriptionParametersDto parameters, SubscriptionStartResponseBuilder responseBuilder)
+    public Command createFrom(NewSubscriptionParametersDto parameters, SubscriptionStartResponseBuilder responseBuilder)
     {
-      List<AssetQuery> assetQueries = _assetQueriesFactory
-          .CreateFrom(asList(parameters.Requests));
+      List<AssetQuery> assetQueries = assetQueriesFactory
+          .createFrom(asList(parameters.requests));
       return 
-        new ExceptionLoggedCommand(_log,
+        new ExceptionLoggedCommand(log,
           new AdapterFromSubscriptionCommandToCommand(
             new SubscriptionStartCommandFromApi(
-              parameters, 
-              _authorizationStructure, 
-              responseBuilder, 
-              _subscriptionFactory, 
-              _subscriptions,
+              parameters,
+                authorizationStructure,
+              responseBuilder,
+                subscriptionFactory,
+                subscriptions,
               assetQueries)));
     }
 
-    public Command CreateFrom(StoppedSubscriptionParametersDto parameters, SubscriptionStopResponseBuilder responseBuilder)
+    public Command createFrom(StoppedSubscriptionParametersDto parameters, SubscriptionStopResponseBuilder responseBuilder)
     {
       return 
-        new ExceptionLoggedCommand(_log,
+        new ExceptionLoggedCommand(log,
           new AdapterFromSubscriptionCommandToCommand(
             new SubscriptionStopCommandFromApi(
               parameters, 
-              responseBuilder, 
-              _subscriptions, 
-              _dataCorrectnessCriteria, 
-              _authorizationStructure)));
+              responseBuilder,
+                subscriptions,
+                dataCorrectnessCriteria,
+                authorizationStructure)));
     }
   }

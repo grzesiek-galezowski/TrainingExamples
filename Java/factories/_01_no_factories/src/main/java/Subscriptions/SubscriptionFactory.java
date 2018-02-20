@@ -1,9 +1,10 @@
-﻿package Subscriptions;
+package subscriptions;
 
-import Dto.NewSubscriptionParametersDto;
+import dto.NewSubscriptionParametersDto;
 
 public class SubscriptionFactory implements ISubscriptionFactory {
-    public Subscription CreateFrom(NewSubscriptionParametersDto parameters) {
+    @Override
+    public Subscription createFrom(NewSubscriptionParametersDto parameters) {
         return new Subscription(parameters);
     }
 }

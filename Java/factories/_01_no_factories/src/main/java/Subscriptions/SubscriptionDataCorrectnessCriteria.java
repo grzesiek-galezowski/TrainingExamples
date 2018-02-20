@@ -1,17 +1,19 @@
-﻿package Subscriptions;
+package subscriptions;
 
-import ResponseBuilders.SubscriptionValidationResults;
+import responseBuilders.SubscriptionValidationResults;
 
-public class SubscriptionDataCorrectnessCriteria {
-    public void ValidateSessionId(String subscriptionId, SubscriptionValidationResults results) {
+public class SubscriptionDataCorrectnessCriteria implements DataCorrectnessCriteria {
+    @Override
+    public void validateSessionId(String subscriptionId, SubscriptionValidationResults results) {
         if ("".equals(subscriptionId) || subscriptionId == null) {
-            results.NotValid("Subscription ID");
+            results.notValid("Subscription ID");
         }
     }
 
-    public void ValidateUserName(String userName, SubscriptionValidationResults results) {
+    @Override
+    public void validateUserName(String userName, SubscriptionValidationResults results) {
         if ("".equals(userName) || userName == null) {
-            results.NotValid("user name");
+            results.notValid("user name");
         }
     }
 }

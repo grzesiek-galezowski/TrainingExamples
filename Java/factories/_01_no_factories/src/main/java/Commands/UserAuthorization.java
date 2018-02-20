@@ -1,7 +1,7 @@
-﻿package Commands;
+package commands;
 
-import ResponseBuilders.UserAuthorizationEvents;
+import responseBuilders.UserAuthorizationEvents;
 
 public interface UserAuthorization {
-    void VerifyUserExistence(String userName, UserAuthorizationEvents userAuthorizationEvents);
+    void verifyUserExistence(String userName, UserAuthorizationEvents userAuthorizationEvents);
 }

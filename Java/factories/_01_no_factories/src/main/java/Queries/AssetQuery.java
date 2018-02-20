@@ -1,7 +1,7 @@
-package Queries;
+package queries;
 
 import java.util.List;
 
 public interface AssetQuery {
-    void ResolveInto(List<String> requestedAssetNames, QueryResolutionEvents resolutionEvents);
+    void resolveInto(List<String> requestedAssetNames, QueryResolutionEvents resolutionEvents);
 }

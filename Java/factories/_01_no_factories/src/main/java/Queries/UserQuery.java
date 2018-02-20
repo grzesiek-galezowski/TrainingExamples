@@ -1,26 +1,26 @@
-package Queries;
+package queries;
 
-import Authorization.AssetQueryResolution;
+import authorization.AssetQueryResolution;
 
 import java.util.List;
 
 public class UserQuery implements AssetQuery
   {
-    private final String _name;
-    private AssetQueryResolution _authorizationStructure;
+    private final String name;
+    private AssetQueryResolution authorizationStructure;
 
     public UserQuery(String name, AssetQueryResolution authorizationStructure)
     {
-      _name = name;
-      _authorizationStructure = authorizationStructure;
+      this.name = name;
+      this.authorizationStructure = authorizationStructure;
     }
 
-    public void ResolveInto(List<String> requestedAssetNames, QueryResolutionEvents resolutionEvents)
+    public void resolveInto(List<String> requestedAssetNames, QueryResolutionEvents resolutionEvents)
     {
-      List<String> assetsFromQuery = _authorizationStructure.RetrieveAssetsByUserName(_name);
+      List<String> assetsFromQuery = authorizationStructure.retrieveAssetsByUserName(name);
       if (assetsFromQuery.isEmpty())
       {
-        resolutionEvents.NoResolutionResultsFor(_name);
+        resolutionEvents.noResolutionResultsFor(name);
       }
       else
       {

@@ -1,6 +1,6 @@
-package Dto;
+package dto;
 
 public class AssetRequestDto {
-    public AssetKind Kind;
-    public String Name;
+    public AssetKind kind;
+    public String name;
 }

@@ -1,9 +1,7 @@
-package ResponseBuilders;
+package responseBuilders;
 
-import Dto.StartSubscriptionResponseDto;
-import Dto.StopSubscriptionResponseDto;
-import ResponseBuilders.SubscriptionStartResponseBuilder;
-import ResponseBuilders.SubscriptionStopResponseBuilder;
+import dto.StartSubscriptionResponseDto;
+import dto.StopSubscriptionResponseDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,61 +9,60 @@ import java.util.List;
 public class SubscriptionResponseBuilder implements
     SubscriptionStopResponseBuilder, SubscriptionStartResponseBuilder
   {
-    private final List<String> _errors = new ArrayList<>();
+    private final List<String> errors = new ArrayList<>();
 
-    public void AssertNoFatalErrors(RuntimeException exceptionToThrow)
+    public void assertNoFatalErrors(RuntimeException exceptionToThrow)
     {
-      if (!_errors.isEmpty())
+      if (!errors.isEmpty())
       {
         throw exceptionToThrow;
       }
     }
 
-    public void NotAuthorized(String assetName, String userName)
+    public void notAuthorized(String assetName, String userName)
     {
-      _errors.add(userName + " has no rights to " + assetName);
+      errors.add(userName + " has no rights to " + assetName);
     }
 
-    public void NotValid(String dataName)
+    public void notValid(String dataName)
     {
-      _errors.add(dataName + " is invalid");
+      errors.add(dataName + " is invalid");
     }
 
-    public StartSubscriptionResponseDto BuildStart() //todo rename to build start
+    public StartSubscriptionResponseDto buildStart() //todo rename to build start
     {
       StartSubscriptionResponseDto dto = new StartSubscriptionResponseDto();
-      dto.Failure = !_errors.isEmpty();
-      dto.Errors = _errors.stream().toArray(String[]::new);
+      dto.failure = !errors.isEmpty();
+      dto.errors = errors.stream().toArray(String[]::new);
       return dto;
     }
 
-    public StopSubscriptionResponseDto BuildStop()
+    public StopSubscriptionResponseDto buildStop()
     {
-      return new StopSubscriptionResponseDto()
-      {
-        Failure = _errors.Any(),
-        Errors = _errors.ToArray()
-      };
+        StopSubscriptionResponseDto dto = new StopSubscriptionResponseDto();
+        dto.failure = !errors.isEmpty();
+        dto.errors = errors.stream().toArray(String[]::new);
+        return dto;
     }
 
-    public void NoResolutionResultsFor(String name)
+    public void noResolutionResultsFor(String name)
     {
-      _errors.add("Resolution of " + name + " yielded no results");
+      errors.add("Resolution of " + name + " yielded no results");
     }
 
-    public void NoSubscriptionToStopWithId(String subscriptionId)
+    public void noSubscriptionToStopWithId(String subscriptionId)
     {
-      _errors.add("No subscription with id " + subscriptionId + " found");
+      errors.add("No subscription with id " + subscriptionId + " found");
     }
 
-    public void UserNotAuthorized(String userName)
+    public void userNotAuthorized(String userName)
     {
-      _errors.add("User " + userName + " could not be authorized in the system");
+      errors.add("User " + userName + " could not be authorized in the system");
     }
 
-    public void NotAuthorizedForAsset(String assetName, String userName)
+    public void notAuthorizedForAsset(String assetName, String userName)
     {
-      _errors.add("User " + userName + " is not authorized for " + assetName);
+      errors.add("User " + userName + " is not authorized for " + assetName);
     }
   }
 

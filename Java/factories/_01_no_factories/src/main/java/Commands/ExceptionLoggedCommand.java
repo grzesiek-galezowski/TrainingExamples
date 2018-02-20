@@ -1,21 +1,21 @@
-package Commands;
+package commands;
 
 import other.Log;
 
 public class ExceptionLoggedCommand implements Command {
-    private final Log _log;
-    private final Command _wrappedCommand;
+    private final Log log;
+    private final Command wrappedCommand;
 
     public ExceptionLoggedCommand(Log log, Command wrappedCommand) {
-        _log = log;
-        _wrappedCommand = wrappedCommand;
+        this.log = log;
+        this.wrappedCommand = wrappedCommand;
     }
 
-    public void Invoke() {
+    public void invoke() {
         try {
-            _wrappedCommand.Invoke();
+            wrappedCommand.invoke();
         } catch (Exception e) {
-            _log.Error(e);
+            log.error(e);
         }
     }
 }

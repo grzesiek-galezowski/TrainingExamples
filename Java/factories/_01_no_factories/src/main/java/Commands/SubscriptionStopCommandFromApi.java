@@ -1,52 +1,52 @@
-﻿package Commands;
+package commands;
 
-import Dto.StopSubscriptionResponseDto;
-import Dto.StoppedSubscriptionParametersDto;
-import Exceptions.FatalErrorOccuredDuringValidationsException;
-import ResponseBuilders.SubscriptionStopResponseBuilder;
-import Subscriptions.SubscriptionDataCorrectnessCriteria;
-import Subscriptions.SubscriptionsModifyOperations;
+import dto.StopSubscriptionResponseDto;
+import dto.StoppedSubscriptionParametersDto;
+import exceptions.FatalErrorOccuredDuringValidationsException;
+import responseBuilders.SubscriptionStopResponseBuilder;
+import subscriptions.DataCorrectnessCriteria;
+import subscriptions.SubscriptionsModifyOperations;
 
 public class SubscriptionStopCommandFromApi
     implements SubscriptionCommand {
-    private final StoppedSubscriptionParametersDto _parameters;
-    private final SubscriptionStopResponseBuilder _responseBuilder;
-    private final SubscriptionsModifyOperations _subscriptions;
-    private final SubscriptionDataCorrectnessCriteria _correctnessCriteria;
-    private final UserAuthorization _userAuthorization;
+    private final StoppedSubscriptionParametersDto parameters;
+    private final SubscriptionStopResponseBuilder responseBuilder;
+    private final SubscriptionsModifyOperations subscriptions;
+    private final DataCorrectnessCriteria correctnessCriteria;
+    private final UserAuthorization userAuthorization;
 
     public SubscriptionStopCommandFromApi(
         StoppedSubscriptionParametersDto parameters,
         SubscriptionStopResponseBuilder responseBuilder,
         SubscriptionsModifyOperations subscriptions,
-        SubscriptionDataCorrectnessCriteria correctnessCriteria,
+        DataCorrectnessCriteria correctnessCriteria,
         UserAuthorization userAuthorization) {
-        _parameters = parameters;
-        _responseBuilder = responseBuilder;
-        _subscriptions = subscriptions;
-        _correctnessCriteria = correctnessCriteria;
-        _userAuthorization = userAuthorization;
+        this.parameters = parameters;
+        this.responseBuilder = responseBuilder;
+        this.subscriptions = subscriptions;
+        this.correctnessCriteria = correctnessCriteria;
+        this.userAuthorization = userAuthorization;
     }
 
     public StopSubscriptionResponseDto Response() {
-        return _responseBuilder.BuildStop();
+        return responseBuilder.buildStop();
     }
 
-    public void ValidateData() {
-        _correctnessCriteria.ValidateSessionId(_parameters.SubscriptionId, _responseBuilder);
-        _correctnessCriteria.ValidateUserName(_parameters.UserName, _responseBuilder);
-        _responseBuilder.AssertNoFatalErrors(new FatalErrorOccuredDuringValidationsException());
+    public void validateData() {
+        correctnessCriteria.validateSessionId(parameters.subscriptionId, responseBuilder);
+        correctnessCriteria.validateUserName(parameters.userName, responseBuilder);
+        responseBuilder.assertNoFatalErrors(new FatalErrorOccuredDuringValidationsException());
     }
 
-    public void Authorize() {
-        _userAuthorization.VerifyUserExistence(_parameters.UserName, _responseBuilder);
+    public void authorize() {
+        userAuthorization.verifyUserExistence(parameters.userName, responseBuilder);
     }
 
-    public void Invoke() {
-        _subscriptions.Remove(_parameters.SubscriptionId, _responseBuilder);
+    public void invoke() {
+        subscriptions.remove(parameters.subscriptionId, responseBuilder);
     }
 
-    public void Resolve() {
+    public void resolve() {
 
     }
 }

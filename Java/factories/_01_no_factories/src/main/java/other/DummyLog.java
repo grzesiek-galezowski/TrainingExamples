@@ -1,7 +1,8 @@
-﻿package other;
+package other;
 
 public class DummyLog implements Log {
-    public void Error(Exception exception) {
+    @Override
+    public void error(Exception exception) {
         System.out.println(exception);
     }
 }

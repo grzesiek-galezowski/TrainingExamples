@@ -1,9 +1,9 @@
-﻿package Commands;
+package commands;
 
 public interface SubscriptionCommand extends Command {
-    void ValidateData();
+    void validateData();
 
-    void Authorize();
+    void authorize();
 
-    void Resolve();
+    void resolve();
 }

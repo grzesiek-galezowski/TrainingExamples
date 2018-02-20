@@ -1,17 +1,17 @@
-package Commands;
+package commands;
 
 
 public class AdapterFromSubscriptionCommandToCommand implements Command {
-    private final SubscriptionCommand _innerCommand;
+    private final SubscriptionCommand innerCommand;
 
     public AdapterFromSubscriptionCommandToCommand(SubscriptionCommand innerCommand) {
-        _innerCommand = innerCommand;
+        this.innerCommand = innerCommand;
     }
 
-    public void Invoke() {
-        _innerCommand.ValidateData();
-        _innerCommand.Resolve();
-        _innerCommand.Authorize();
-        _innerCommand.Invoke();
+    public void invoke() {
+        innerCommand.validateData();
+        innerCommand.resolve();
+        innerCommand.authorize();
+        innerCommand.invoke();
     }
 }

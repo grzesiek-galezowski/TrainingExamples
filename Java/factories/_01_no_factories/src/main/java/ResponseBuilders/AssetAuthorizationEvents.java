@@ -1,5 +1,5 @@
-﻿package ResponseBuilders;
+package responseBuilders;
 
 public interface AssetAuthorizationEvents {
-    void NotAuthorizedForAsset(String assetName, String userName);
+    void notAuthorizedForAsset(String assetName, String userName);
 }
