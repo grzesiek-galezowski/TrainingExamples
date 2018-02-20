@@ -29,8 +29,10 @@ public class Program {
                 dummyLog
             ),
             new DefaultResponseBuilderFactory(),
-            dummyLog
-        );
+            dummyLog,
+            structure,
+            new SubscriptionFactory(),
+            new Subscriptions(), structure);
 
         StartSubscriptionResponseDto response1 = api.startSubscription(new NewSubscriptionParametersDto());
         StopSubscriptionResponseDto response2 = api.stopSubscription(new StoppedSubscriptionParametersDto());
