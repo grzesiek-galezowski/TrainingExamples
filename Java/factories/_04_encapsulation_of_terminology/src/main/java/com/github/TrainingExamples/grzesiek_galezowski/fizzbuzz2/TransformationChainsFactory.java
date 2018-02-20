@@ -4,9 +4,13 @@ package com.github.TrainingExamples.grzesiek_galezowski.fizzbuzz2;
 public class TransformationChainsFactory {
     public TransformationChain createFizzBuzz() {
         return new RuleBasedTransformationChain(
-            new Join(new Fizz(), new Buzz()),
+            createFizzBuzzRule(),
             new Fizz(),
             new Buzz()
         );
+    }
+
+    private Join createFizzBuzzRule() {
+        return new Join(new Fizz(), new Buzz());
     }
 }
