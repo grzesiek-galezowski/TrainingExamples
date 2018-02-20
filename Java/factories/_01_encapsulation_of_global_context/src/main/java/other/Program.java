@@ -1,8 +1,8 @@
 package other;
 
 import authorization.AuthorizationStructure;
-import commands.AssetQueriesFactory;
-import commands.CommandFactory;
+import com.github.TrainingExamples.grzesiek_galezowski.commands.AssetQueriesFactory;
+import com.github.TrainingExamples.grzesiek_galezowski.commands.CommandFactory;
 import dto.NewSubscriptionParametersDto;
 import dto.StartSubscriptionResponseDto;
 import dto.StopSubscriptionResponseDto;

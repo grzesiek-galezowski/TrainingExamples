@@ -1,7 +1,7 @@
 package authorization;
 
-import commands.AssetAccessAuthorization;
-import commands.UserAuthorization;
+import com.github.TrainingExamples.grzesiek_galezowski.commands.AssetAccessAuthorization;
+import com.github.TrainingExamples.grzesiek_galezowski.commands.UserAuthorization;
 import responseBuilders.AssetAuthorizationEvents;
 import responseBuilders.UserAuthorizationEvents;
 

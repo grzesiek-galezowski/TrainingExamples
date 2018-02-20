@@ -1,4 +1,4 @@
-package com.github.TrainingExamples.grzesiek_galezowski.Commands;
+package com.github.TrainingExamples.grzesiek_galezowski.commands;
 
 import com.github.TrainingExamples.grzesiek_galezowski.Message;
 import com.github.TrainingExamples.grzesiek_galezowski.MessageDto;

@@ -1,12 +1,12 @@
 package other;
 
 import authorization.AssetQueryResolution;
-import commands.AdapterFromSubscriptionCommandToCommand;
-import commands.AssetAccessAuthorization;
-import commands.Command;
-import commands.ExceptionLoggedCommand;
-import commands.ICommandFactory;
-import commands.SubscriptionStartCommandFromApi;
+import com.github.TrainingExamples.grzesiek_galezowski.commands.AdapterFromSubscriptionCommandToCommand;
+import com.github.TrainingExamples.grzesiek_galezowski.commands.AssetAccessAuthorization;
+import com.github.TrainingExamples.grzesiek_galezowski.commands.Command;
+import com.github.TrainingExamples.grzesiek_galezowski.commands.ExceptionLoggedCommand;
+import com.github.TrainingExamples.grzesiek_galezowski.commands.ICommandFactory;
+import com.github.TrainingExamples.grzesiek_galezowski.commands.SubscriptionStartCommandFromApi;
 import dto.NewSubscriptionParametersDto;
 import dto.StartSubscriptionResponseDto;
 import dto.StopSubscriptionResponseDto;

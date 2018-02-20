@@ -1,10 +1,11 @@
 package com.github.TrainingExamples.grzesiek_galezowski.commands;
 
+
 import com.github.TrainingExamples.grzesiek_galezowski.Message;
 import com.github.TrainingExamples.grzesiek_galezowski.MessageDto;
 
-public class SessionInit implements Message {
-  public SessionInit(final MessageDto rawData) {
+public class SessionPayload implements Message {
+  public SessionPayload(final MessageDto rawData) {
   }
 
   @Override
