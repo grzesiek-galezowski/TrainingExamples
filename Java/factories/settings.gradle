@@ -4,4 +4,5 @@ include '_02_encapsulation_of_type'
 include '_03_encapsulation_of_rule'
 include '_04_encapsulation_of_terminology'
 include '_05_static_creation_methods'
+include '_00_playground'
 

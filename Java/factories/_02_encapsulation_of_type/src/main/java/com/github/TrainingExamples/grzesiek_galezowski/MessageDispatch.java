@@ -7,6 +7,8 @@ public class MessageDispatch {
     this.messageFactory = messageFactory;
   }
 
+
+  //todo before show new List() vs new ArrayList()
   public void applyTo(MessageDto dto) {
     final Message msg = messageFactory.from(dto);
     try {

@@ -1,4 +1,7 @@
-package com.github.TrainingExamples.grzesiek_galezowski;
+package com.github.TrainingExamples.grzesiek_galezowski.Commands;
+
+import com.github.TrainingExamples.grzesiek_galezowski.Message;
+import com.github.TrainingExamples.grzesiek_galezowski.MessageDto;
 
 public class SessionEnd implements Message {
   public SessionEnd(final MessageDto rawData) {
