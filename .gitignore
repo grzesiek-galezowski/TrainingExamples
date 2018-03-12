@@ -154,3 +154,5 @@ Java/**/.idea/sonarlint/**
 Java/dropwizard-hello/.gradle/buildOutputCleanup/cache.properties
 
 GCopLog.txt
+Java/path-values/.gradle/buildOutputCleanup/cache.properties
+Java/path-values/build/*

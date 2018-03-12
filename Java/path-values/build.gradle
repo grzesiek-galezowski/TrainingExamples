@@ -1,0 +1,26 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+plugins {
+    id 'net.ltgt.apt' version '0.10'
+}
+
+apply plugin: 'java'
+
+group 'com.github.galezowski.grzegorz'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    testCompile 'com.github.grzesiek-galezowski:tdd-toolkit-java:1.2.4'
+    compileOnly 'org.projectlombok:lombok:1.16.20'
+
+    apt "org.projectlombok:lombok:1.16.20"
+}
