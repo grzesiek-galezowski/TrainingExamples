@@ -1,8 +1,6 @@
+package logic;
+
 import autofixture.publicinterface.Any;
-import logic.AbsoluteDirectoryPath;
-import logic.AbsoluteFilePath;
-import logic.DirectoryName;
-import logic.FileName;
 import lombok.val;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -11,6 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Optional;
 
+import static com.github.grzesiek_galezowski.test_environment.XAssertJConditions.corectlyImplementedEquality;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -39,6 +38,12 @@ public class AbsoluteDirectoryPathSpecification {
     }
 
     @Test
+    public void shouldThrowArgumentExceptionWhenTryingToCreateInstanceWithNotAbsolutePath() {
+        assertThatThrownBy(() -> AbsoluteDirectoryPath.from("lolek\\lolki2"))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     public void shouldCreatePathWithValueWhenInputIsValid() {
         String fromPath = "C:\\lolek";
         val path = AbsoluteDirectoryPath.from(fromPath);
@@ -50,7 +55,7 @@ public class AbsoluteDirectoryPathSpecification {
     public void shouldAllowAppendingFileNameToCreateAbsoluteFilePath() {
         //GIVEN
         val path = Any.anonymous(AbsoluteDirectoryPath.class);
-        val fileName = Any.instanceOf(FileName.class);
+        val fileName = Any.anonymous(InlineGenerators.fileName());
         AbsoluteFilePath absoluteFilePath = path.with(fileName);
 
         //WHEN
@@ -63,7 +68,13 @@ public class AbsoluteDirectoryPathSpecification {
     }
 
     @Test
-    public void ShouldBeConvertibleToPath() {
+    public void shouldHaveCrrectlyImplementedEqualsAndHashCode() {
+        assertThat(AbsoluteDirectoryPath.class)
+            .has(corectlyImplementedEquality());
+    }
+
+    @Test
+    public void shouldBeConvertibleToPath() {
         //GIVEN
         Path initialPath = Any.instanceOf(Path.class);
         val directoryPath = AbsoluteDirectoryPath.from(initialPath.toString());
@@ -76,7 +87,7 @@ public class AbsoluteDirectoryPathSpecification {
     }
 
     @Test
-    public void ShouldAllowGettingPathRoot() {
+    public void shouldAllowGettingPathRoot() {
         //GIVEN
         Path initialPath = Any.instanceOf(Path.class);
         val dir = AbsoluteDirectoryPath.from(
@@ -147,7 +158,7 @@ public class AbsoluteDirectoryPathSpecification {
     }
 
     @Test
-    public void ShouldAllowAddingDirectoryName() {
+    public void shouldAllowAddingDirectoryName() {
         //GIVEN
         val directoryPath = AbsoluteDirectoryPath.from(
             "G:\\Directory\\Subdirectory");
@@ -164,7 +175,7 @@ public class AbsoluteDirectoryPathSpecification {
     }
 
     @Test
-    public void ShouldAllowAddingDirectoryNameAndFileName() {
+    public void shouldAllowAddingDirectoryNameAndFileName() {
         //GIVEN
         val directoryPath = AbsoluteDirectoryPath.from("G:\\Directory\\Subdirectory");
 
@@ -178,38 +189,39 @@ public class AbsoluteDirectoryPathSpecification {
         assertThat(absoluteFilePath.toString()).isEqualTo("G:\\Directory\\Subdirectory\\Lolek\\Lolek2\\File.txt");
     }
 
+    @Test
+    public void shouldAllowAddingRelativeDirectory() {
+        //GIVEN
+        val directoryPath = AbsoluteDirectoryPath.from("G:\\Directory\\Subdirectory");
 
+        //WHEN
+        val relativePath = RelativeDirectoryPath.from("Lolek\\Lolek2");
+        AbsoluteDirectoryPath newDirectoryPath =
+            directoryPath.with(relativePath);
+
+        //THEN
+        assertThat(newDirectoryPath.toString())
+            .isEqualTo("G:\\Directory\\Subdirectory\\Lolek\\Lolek2");
+    }
+
+    @Test
+    public void shouldAllowAddingRelativePathWithFileName() {
+        //GIVEN
+        val directoryPath = AbsoluteDirectoryPath.from("G:\\Directory\\Subdirectory");
+
+        //WHEN
+        val relativePathWithFileName = RelativeFilePath
+            .from("Subdirectory2\\file.txt");
+        AbsoluteFilePath absoluteFilePath = directoryPath.with(relativePathWithFileName);
+
+        //THEN
+        assertThat(absoluteFilePath.toString())
+            .isEqualTo("G:\\Directory\\Subdirectory\\Subdirectory2\\file.txt");
+    }
 
 /*
-    [Fact]
-    public void ShouldAllowAddingRelativeDirectory()
-    {
-      //GIVEN
-      var directoryPath = AbsoluteDirectoryPath.Value(@"G:\Directory\Subdirectory");
 
-      //WHEN
-      var relativePath = RelativeDirectoryPath.Value(@"Lolek\Lolek2");
-      AbsoluteDirectoryPath newDirectoryPath = directoryPath + relativePath;
-
-      //THEN
-      Assert.Equal(@"G:\Directory\Subdirectory\Lolek\Lolek2", newDirectoryPath.ToString());
-    }
-
-    [Fact]
-    public void ShouldAllowAddingRelativePathWithFileName()
-    {
-      //GIVEN
-      var directoryPath = AbsoluteDirectoryPath.Value(@"G:\Directory\Subdirectory");
-
-      //WHEN
-      var relativePathWithFileName = RelativeFilePath.Value(@"Subdirectory2\file.txt");
-      AbsoluteFilePath absoluteFilePath = directoryPath + relativePathWithFileName;
-
-      //THEN
-      Assert.Equal(@"G:\Directory\Subdirectory\Subdirectory2\file.txt", absoluteFilePath.ToString());
-    }
-
-    [Fact]
+    @Test
     public void ShouldBeConvertibleToAnyDirectoryPath()
     {
       //GIVEN
@@ -222,7 +234,7 @@ public class AbsoluteDirectoryPathSpecification {
       Assert.Equal(dirPath.ToString(), anyDirectoryPath.ToString());
     }
 
-    [Fact]
+    @Test
     public void ShouldBeConvertibleToAnyPath()
     {
       //GIVEN
@@ -235,7 +247,7 @@ public class AbsoluteDirectoryPathSpecification {
       Assert.Equal(directorypath.ToString(), anyPathWithFileName.ToString());
     }
 
-    [Fact]
+    @Test
     public void ShouldDetermineEqualityToAnotherInstanceUsingFileSystemComparisonRules()
     {
       //GIVEN

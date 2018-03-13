@@ -1,27 +1,38 @@
 package logic;
 
+import lombok.EqualsAndHashCode;
+import lombok.NonNull;
+
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class DirectoryName {
-    private Path fileName;
+@EqualsAndHashCode
+public final class DirectoryName {
+    private final Path fileName;
 
-    //todo hide!
-    public static DirectoryName from(Path fileName) {
-        return new DirectoryName(fileName);
+
+    public static final DirectoryName from(@NonNull final String name) {
+        if ("".equals(name)) {
+            throw new IllegalArgumentException("Name cannot be an empty string");
+        }
+        Path dirName = Paths.get(name);
+        if (!dirName.equals(dirName.getFileName())) {
+            throw new IllegalArgumentException("Multiple path segments not allowed in " + dirName);
+        }
+        return new DirectoryName(dirName);
+
     }
 
-    public static DirectoryName from(String subdir) {
-        return new DirectoryName(Paths.get(subdir));
-    }
-
-    DirectoryName(Path fileName) {
-
+    DirectoryName(final Path fileName) {
         this.fileName = fileName;
     }
 
     @Override
-    public String toString() {
+    public final String toString() {
         return fileName.toString();
+    }
+
+    Path toJavaPath() {
+        return fileName;
     }
 }
