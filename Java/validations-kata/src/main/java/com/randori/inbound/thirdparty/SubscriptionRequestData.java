@@ -1,6 +1,7 @@
 package com.randori.inbound.thirdparty;
 
-import javafx.util.Duration;
+
+import java.time.Duration;
 
 public class SubscriptionRequestData {
     public String sessionId;

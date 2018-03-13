@@ -1,6 +1,8 @@
 rootProject.name = 'factories'
-include 'encapsulation_of_type'
-include 'encapsulation_of_rule'
-include 'encapsulation_of_global_context'
-include 'encapsulation_of_terminology'
+include '_01_encapsulation_of_global_context'
+include '_02_encapsulation_of_type'
+include '_03_encapsulation_of_rule'
+include '_04_encapsulation_of_terminology'
+include '_05_static_creation_methods'
+include '_00_playground'
 
