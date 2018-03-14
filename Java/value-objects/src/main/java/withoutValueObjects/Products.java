@@ -30,6 +30,7 @@ public class Products {
     }
 
     public boolean isTopProduct(String productName) {
+        //comparing!!
         return productName.equals(topProductName);
     }
 
