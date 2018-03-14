@@ -12,7 +12,6 @@ public final class RelativeFilePath {
     private final Path path;
 
     RelativeFilePath(final Path path) {
-
         this.path = path;
     }
 

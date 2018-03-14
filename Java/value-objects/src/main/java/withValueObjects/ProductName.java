@@ -2,7 +2,7 @@ package withValueObjects;
 
 import org.apache.commons.lang3.StringUtils;
 
-public final class ProductName {
+public final class ProductName implements Comparable<ProductName> {
     private static final ProductName productName = new ProductName(""); //what is this?
     private final String capitalizedName;
 
@@ -46,5 +46,10 @@ public final class ProductName {
     @Override
     public int hashCode() {
         return capitalizedName != null ? capitalizedName.hashCode() : 0;
+    }
+
+    @Override
+    public int compareTo(ProductName o) {
+        return capitalizedName.compareTo(o.capitalizedName);
     }
 }
