@@ -1,12 +1,15 @@
 package logic;
 
 import lombok.val;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.nio.file.Paths;
 import java.util.Optional;
 
 import static com.github.grzesiek_galezowski.test_environment.XAssertJConditions.corectlyImplementedEquality;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class RelativeDirectoryPathSpecification {
 
@@ -15,8 +18,6 @@ public class RelativeDirectoryPathSpecification {
         assertThat(RelativeDirectoryPath.class)
             .has(corectlyImplementedEquality());
     }
-
-    //todo test for invalid input
 
     @Test
     public void shouldAllowAddingDirectoryNameToIt() {
@@ -89,50 +90,79 @@ public class RelativeDirectoryPathSpecification {
 
     }
 
+    @Test
+    public void shouldReturnNothingWhenGettingPathWithoutLastDirectoryButCurrentDirectoryIsTheOnlyLeft() {
+        //GIVEN
+        val relativePath = RelativeDirectoryPath.from("Directory");
+
+        //WHEN
+        Optional<RelativeDirectoryPath> pathWithoutLastDir
+            = relativePath.parent();
+
+        //THEN
+        assertThat(pathWithoutLastDir).isEmpty();
+    }
+
+    @DataProvider(name = "invalid values")
+    public static Object[][] invalidValues() {
+        return new Object[][]{
+            {null, NullPointerException.class},
+            {"", IllegalArgumentException.class},
+            {"?", IllegalArgumentException.class},
+            {"|", IllegalArgumentException.class},
+            {"\"", IllegalArgumentException.class},
+            {"C:\\", IllegalArgumentException.class},
+            {"\\\\\\\\\\\\\\\\\\\\/\\/", IllegalArgumentException.class}
+        };
+    }
+
+    @Test(dataProvider = "invalid values")
+    public void shouldThrowExceptionWhenCreatedWithInvalidValue(
+        String invalidName,
+        Class exceptionClass
+    ) {
+        assertThatThrownBy(() ->
+            RelativeDirectoryPath.from(invalidName)
+        ).isInstanceOf(exceptionClass);
+    }
+
+    @Test
+    public void shouldBeConvertibleToDirectoryInfo() {
+        //GIVEN
+        String input = "Dir\\Subdir";
+        val path = RelativeDirectoryPath.from(input);
+
+        //WHEN
+        val directoryInfo = path.toJavaPath();
+
+        //THEN
+        assertThat(directoryInfo).isEqualTo(Paths.get(input));
+    }
+
+    @DataProvider(name = "multiple segments")
+    public static Object[][] multipleSegments() {
+        return new Object[][]{
+            {"Segment1\\Segment2\\", "Segment2"},
+            {"Segment1", "Segment1"},
+        };
+    }
+
+    @Test(dataProvider = "multiple segments")
+    public void shouldAllowGettingTheNameOfCurrentDirectory(
+        String fullPath, String expectedDirectoryName) {
+        //GIVEN
+        val directoryPath = RelativeDirectoryPath.from(fullPath);
+
+        //WHEN
+        DirectoryName dirName = directoryPath.directoryName();
+
+        //THEN
+        assertThat(dirName).isEqualTo(
+            DirectoryName.from(expectedDirectoryName));
+    }
+
+
     /*
-
-
-
-
-
-    @Test
-    public void shouldReturnNothingWhenGettingPathWithoutLastDirectoryButCurrentDirectoryIsTheOnlyLeft()
-    {
-      //GIVEN
-      var relativePath = RelativeDirectoryPath.Value(@"Directory");
-
-      //WHEN
-      AtmaFileSystem.Maybe<RelativeDirectoryPath> pathWithoutLastDir = relativePath.ParentDirectory();
-
-      //THEN
-      Assert.False(pathWithoutLastDir.Found);
-      Assert.Throws<InvalidOperationException>(() => pathWithoutLastDir.Value());
-    }
-
-    [Theory,
-      InlineData(null, typeof(ArgumentNullException)),
-      InlineData("", typeof(ArgumentException)),
-      InlineData(@"C:\", typeof(InvalidOperationException))]
-    public void shouldNotAllowCreatingInvalidInstance(string input, Type exceptionType)
-    {
-      Assert.Throws(exceptionType, () => RelativeDirectoryPath.Value(input));
-    }
-
-    @Test
-    public void shouldBeConvertibleToDirectoryInfo()
-    {
-      //GIVEN
-      var path = RelativeDirectoryPath.Value(@"Dir\Subdir");
-
-      //WHEN
-      var directoryInfo = path.Info();
-
-      //THEN
-      Assert.Equal(directoryInfo.FullName, FullNameFrom(path));
-    }
-
-    //bug check for Info() returning internally held object that it cannot be modified externally!!!!
-
 
     @Test
     public void shouldBeConvertibleToAnyDirectoryPath()
@@ -160,21 +190,6 @@ public class RelativeDirectoryPathSpecification {
       Assert.Equal(directorypath.ToString(), anyPathWithFileName.ToString());
     }
 
-    [Theory,
-      InlineData(@"Segment1\Segment2\", "Segment2"),
-      InlineData(@"Segment1\", "Segment1"),
-      ]
-    public void shouldAllowGettingTheNameOfCurrentDirectory(string fullPath, string expectedDirectoryName)
-    {
-      //GIVEN
-      var directoryPath = RelativeDirectoryPath.Value(fullPath);
-
-      //WHEN
-      DirectoryName dirName = directoryPath.DirectoryName();
-
-      //THEN
-      Assert.Equal(expectedDirectoryName, dirName.ToString());
-    }
 
     private static string FullNameFrom(RelativeDirectoryPath path)
     {

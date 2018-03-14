@@ -16,6 +16,7 @@ public final class FileName {
         this.path = path;
     }
 
+    //todo what about empty string?
     public static FileName from(@NonNull final String name) {
         val path = Paths.get(name);
         if(!path.getFileName().equals(path)) {

@@ -1,6 +1,7 @@
 package logic;
 
 import lombok.EqualsAndHashCode;
+import lombok.NonNull;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -14,8 +15,17 @@ public final class RelativeDirectoryPath {
         this.path = path;
     }
 
-    public static RelativeDirectoryPath from(final String path) {
-        return new RelativeDirectoryPath(Paths.get(path));
+
+    public static RelativeDirectoryPath from(@NonNull final String pathString) {
+        if("".equals(pathString)) {
+            throw new IllegalArgumentException("path cannot be an empty string");
+        }
+
+        Path path = Paths.get(pathString);
+        if(path.isAbsolute()) {
+            throw new IllegalArgumentException(pathString + " is an absolute path, but expected a relative path");
+        }
+        return new RelativeDirectoryPath(path);
     }
 
     @Override
@@ -54,5 +64,9 @@ public final class RelativeDirectoryPath {
     Optional<RelativeDirectoryPath> parent() {
         return Optional.ofNullable(path.getParent())
             .map(p -> new RelativeDirectoryPath(p));
+    }
+
+    DirectoryName directoryName() {
+        return new DirectoryName(path.getFileName());
     }
 }

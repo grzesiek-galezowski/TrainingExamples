@@ -23,6 +23,7 @@ public class AbsoluteDirectoryPathSpecification {
             {"?", IllegalArgumentException.class},
             {"|", IllegalArgumentException.class},
             {"\"", IllegalArgumentException.class},
+            {"nonAbsolutePath", IllegalArgumentException.class},
             {"\\\\\\\\\\\\\\\\\\\\/\\/", IllegalArgumentException.class}
         };
     }
