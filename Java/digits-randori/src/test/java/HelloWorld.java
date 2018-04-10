@@ -40,7 +40,7 @@ public class HelloWorld {
   public void shouldXXXXXXXXXXXXXXX() {
     DigitalDisplay display = mock(DigitalDisplay.class);
 
-    display.put("a", "b", "c");
+    display.put("a", "b", "a");
 
     verify(display).put("a", "b", "d"); //should fail
   }
