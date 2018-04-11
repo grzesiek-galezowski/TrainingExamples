@@ -15,11 +15,9 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'com.github.grzesiek-galezowski', name: 'tdd-toolkit-java', version: '1.2.4'
     compile group: 'com.google.guava', name: 'guava', version: '24.1-jre'
     compile group: 'com.github.autofixture', name: 'autofixturegenerator', version: '2.1.9'
-    testCompile group: 'pl.pragmatists', name: 'JUnitParams', version: '1.1.1'
-    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.18.0'
 }
 
 task wrapper(type: Wrapper) {

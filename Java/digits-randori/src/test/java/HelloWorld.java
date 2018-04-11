@@ -1,8 +1,7 @@
-import org.junit.Test;
-import thirdparty.DigitalDisplay;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.assertj.core.api.Assertions.assertThat;
 
 //task
 //write code that uses DigitalDisplay (i.e. DigitalDisplayDriver or sth. )
@@ -22,26 +21,95 @@ import static org.mockito.Mockito.verify;
 
 public class HelloWorld {
 
-  private String[] exampleOutput  = new String[] {
-      ".-.",
-      "|.|",
-      ".-.",
-      "|.|",
-      ".-."};
+    private String[] exampleOutput = new String[]{
+        ".-.",
+        "|.|",
+        ".-.",
+        "|.|",
+        ".-."};
 
-  private String digitIndexes  =
-      ".A." +
-      "F.B" +
-      ".G." +
-      "E.C" +
-      ".D.";
+    private String digitIndexes =
+        ".A." +
+            "F.B" +
+            ".G." +
+            "E.C" +
+            ".D.";
 
-  @Test
-  public void shouldXXXXXXXXXXXXXXX() {
-    DigitalDisplay display = mock(DigitalDisplay.class);
+    @DataProvider(name = "testData")
+    public static Object[][] testData() {
+        return new Object[][]{
+            test(
+                forIndices(),
+                expect(
+                    "...",
+                    "...",
+                    "...",
+                    "...",
+                    "...")
+            ),
+            /*test(
+                forIndices(
+                    'A', 'B'
+                ),
+                expect(
+                    ".-.",
+                    "..|",
+                    "...",
+                    "...",
+                    "...")
+            ),
+            */
 
-    display.put("a", "b", "a");
 
-    verify(display).put("a", "b", "d"); //should fail
-  }
+        };
+    }
+
+    @Test(dataProvider = "testData")
+    public void shouldXXXXXXXXXXXXXXX(Character[] input, String[] expected) {
+        assertThat(input).isEqualTo(expected);
+
+        //DigitalDisplay display = mock(DigitalDisplay.class);
+
+        //verify(display).put("a", "b", "d");
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private static Object[] test(Character[] characters, String... strings) {
+        return new Object[]{
+            characters,
+            strings,
+        };
+    }
+
+    private static String[] expect(String... strings) {
+        return strings;
+    }
+
+    private static Character[] forIndices(Character... chars) {
+        return chars;
+    }
+
 }

@@ -160,3 +160,4 @@ Java/validations-kata/.idea/modules/test-output/*
 Java/mars-rover-functional/.gradle/buildOutputCleanup/cache.properties
 Java/value-objects/.gradle/buildOutputCleanup/cache.properties
 Java/digits-randori/.idea/libraries/Gradle__com_github_autofixture_autofixturegenerator_1_0_5.xml
+Java/digits-randori/.idea/*

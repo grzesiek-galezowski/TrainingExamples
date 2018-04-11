@@ -2,7 +2,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class DigitalDisplayDriver {
 
-  public void display(int... indices)
+  public void display(char... indices)
   {
     throw new NotImplementedException();
   }
