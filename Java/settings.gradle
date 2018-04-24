@@ -5,4 +5,5 @@ include 'AlarmsProcedural'
 include 'PayrollSystem'
 
 include 'AlarmsObjectOriented'
+rootProject.name = 'functional-fundamentals'
 
