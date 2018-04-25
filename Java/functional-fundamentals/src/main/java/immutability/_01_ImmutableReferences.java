@@ -10,6 +10,7 @@ public class _01_ImmutableReferences {
     public static void main(String[] args) {
         mutablePrimitive();
         immutablePrimitive();
+        shadowingPrimitive();
         mutableReferenceAndValue();
         immutableReferenceMutableValue();
         immutableReferenceAndValue();
@@ -29,10 +30,17 @@ public class _01_ImmutableReferences {
         //x2 = 24; //won't compile
     }
 
+    private static void shadowingPrimitive() {
+        //immutable
+        val x2 = 23;
+        //val x2 = "alamakota"; shadowing/rebinding. Not supported in Java
+    }
+
+
     private static void mutableReferenceAndValue() {
         List<Integer> list = Arrays.asList(1,2,3,4,5);
         //mutable reference
-        list = Arrays.asList(1,2,3,4,5);
+        list = Arrays.asList(2,3,4,5,6);
         //mutable value
         list.add(123);
     }

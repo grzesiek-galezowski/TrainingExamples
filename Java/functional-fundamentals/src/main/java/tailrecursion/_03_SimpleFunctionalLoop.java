@@ -11,44 +11,8 @@ public class _03_SimpleFunctionalLoop {
 
         out.println(ints);
 
-        List<Integer> intsPlus1_1 = addOneNonTailRecursiveTo(ints);
-        out.println(intsPlus1_1);
-        List<Integer> intsPlus1_2 = addOneTailRecursiveTo(ints);
-        out.println(intsPlus1_2);
-        List<Integer> intsPlus1_3 = myMap(ints, i -> i + 1);
-        out.println(intsPlus1_3);
-    }
-
-    //TAIL NON-RECURSIVE
-    private static List<Integer> addOneNonTailRecursiveTo(List<Integer> input) {
-        if(input.isEmpty()) {
-            return input;
-        }
-
-        final Integer head = input.head();
-        final List<Integer> tail = input.tail();
-        final Integer transformedHead = head + 1;
-        out.println("Prepending " + transformedHead);
-        return addOneNonTailRecursiveTo(tail).prepend(transformedHead);
-    }
-
-
-    //TAIL RECURSIVE
-    private static List<Integer> addOneTailRecursiveTo(List<Integer> input) {
-        return AddOneTailRecursive(input, List.empty());
-    }
-
-    private static List<Integer> AddOneTailRecursive(
-        List<Integer> input, List<Integer> aggregated) {
-
-        if(input.isEmpty()) {
-            return aggregated;
-        }
-
-        final Integer head = input.head();
-        final List<Integer> tail = input.tail();
-
-        return AddOneTailRecursive(tail, aggregated.append(head + 1));
+        List<Integer> intsPlus1 = myMap(ints, i -> i + 1);
+        out.println(intsPlus1);
     }
 
     //TAIL RECURSIVE
@@ -68,7 +32,10 @@ public class _03_SimpleFunctionalLoop {
         final Integer head = input.head();
         final List<Integer> tail = input.tail();
 
-        return myMap(tail, aggregated.append(transform.apply(head)), transform);
+        return myMap(
+            tail,
+            aggregated.append(transform.apply(head)),
+            transform);
     }
 
 

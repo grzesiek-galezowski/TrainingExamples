@@ -8,8 +8,8 @@ public class _01_RecursiveLoop {
     public static void main(String[] args) {
         List<Integer> ints = List.of(1, 2, 3, 4, 5, 6, 7, 8);
         out.println(ints);
-        List<Integer> intsPlus1_1 = addOneToInfo(ints);
-        out.println(intsPlus1_1);
+        List<Integer> intsPlus1 = addOneTo(ints);
+        out.println(intsPlus1);
     }
 
     //TAIL NON-RECURSIVE
@@ -18,18 +18,19 @@ public class _01_RecursiveLoop {
             return input;
         }
 
-        final Integer head = input.head();
+        final Integer       head = input.head();
         final List<Integer> tail = input.tail();
+
         final Integer transformedHead = head + 1;
         return addOneTo(tail).prepend(transformedHead);
     }
 
-    private static List<Integer> addOneTo2(List<Integer> input) {
-        if (input.isEmpty()) {
-            return input;
-        }
+    private static List<Integer> addOneToAsExpression(List<Integer> input) {
+        //single expression
+        return input.isEmpty() ?
+            input :
+            addOneToAsExpression(input.tail()).prepend(input.head() + 1);
 
-        return addOneTo2(input.tail()).prepend(input.head() + 1);
     }
 
     private static List<Integer> addOneToInfo(List<Integer> input) {
