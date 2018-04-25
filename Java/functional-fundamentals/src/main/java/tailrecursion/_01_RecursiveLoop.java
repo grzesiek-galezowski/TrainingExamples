@@ -6,7 +6,7 @@ import static java.lang.System.out;
 
 public class _01_RecursiveLoop {
     public static void main(String[] args) {
-        List<Integer> ints = List.of(1, 2, 3, 4, 5, 6, 7, 8);
+        List<Integer> ints = List.range(0,10);
         out.println(ints);
         List<Integer> intsPlus1 = addOneTo(ints);
         out.println(intsPlus1);

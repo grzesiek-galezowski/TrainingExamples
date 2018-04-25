@@ -33,7 +33,7 @@ public class _01_ImmutableReferences {
     private static void shadowingPrimitive() {
         //immutable
         val x2 = 23;
-        //val x2 = "alamakota"; shadowing/rebinding. Not supported in Java
+        //val x2 = "alamakota"; //shadowing/rebinding. Not supported in Java
     }
 
 
@@ -59,7 +59,9 @@ public class _01_ImmutableReferences {
         //immutable reference
         //list3 = io.vavr.collection.List.of(1,2,3,4,5); //won't compile
         //immutable value
-        final io.vavr.collection.List<Integer> list4 = list3.append(123);
+
+        final io.vavr.collection.List<Integer> list4
+            = list3.append(123);
     }
 
     private static void immutableReferenceAndValueWithVal() {

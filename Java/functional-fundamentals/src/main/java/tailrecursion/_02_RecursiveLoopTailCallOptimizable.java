@@ -15,7 +15,7 @@ public class _02_RecursiveLoopTailCallOptimizable {
 
 
     public static void main(String[] args) {
-        List<Integer> ints = List.of(1, 2, 3, 4, 5, 6, 7, 8);
+        List<Integer> ints = List.range(0,10);
         out.println(" INPUT:   " + ints);
 
         List<Integer> intsPlus1 = addOneToInfo(ints);
@@ -25,7 +25,8 @@ public class _02_RecursiveLoopTailCallOptimizable {
     }
 
     private static List<Integer> addOneTo(List<Integer> input) {
-        return addOneTo(input, List.empty() /* identity */);
+        return addOneTo(
+            input, List.empty() /* identity */);
     }
 
     private static List<Integer> addOneTo(
@@ -67,8 +68,7 @@ public class _02_RecursiveLoopTailCallOptimizable {
         List<Integer> input, List<Integer> aggregated) {
 
         return input.isEmpty() ? aggregated :
-            addOneTo(input.tail(), aggregated.prepend(input.head() + 1));
-
+            addOneToAsExpression(input.tail(), aggregated.prepend(input.head() + 1));
     }
 
 
