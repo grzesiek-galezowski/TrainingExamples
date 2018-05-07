@@ -9,20 +9,23 @@ public class ParserCombinator {
     public static void main(String[] args) {
         //forward - backwards analysis using inline
 
-        val value = parseBookInfo("Paperback: 240 pages\n" +
-                "Publisher: Addison-Wesley Professional; 1 edition (November 18, 2002)\n" +
-                "Language: English\n" +
-                "ISBN-10: 0321146530\n" +
-                "ISBN-13: 978-0321146533\n" +
-                "Product Dimensions: 7.3 x 0.7 x 9.1 inches\n" +
-                "Shipping Weight: 1.6 pounds",
-            s -> header(s, "Paperback: ", c -> parsePages(c)),
-            s -> header(s, "Publisher: ", c -> parsePublishInfo(c)),
-            s -> header(s, "Language: ", c -> parseLanguage(c)),
-            s -> header(s, "ISBN-10: ", c -> parseIsbn10(c)),
-            s -> header(s, "ISBN-13: ", c -> parseIsbn13(c)),
-            s -> header(s, "Product Dimensions: ", c -> parseDimensions(c)),
-            s -> header(s, "Shipping Weight: ", c -> parseWeight(c))
+        String fileContent =
+            "Paperback: 240 pages\n" +
+            "Publisher: Addison-Wesley Professional; 1 edition (November 18, 2002)\n" +
+            "Language: English\n" +
+            "ISBN-10: 0321146530\n" +
+            "ISBN-13: 978-0321146533\n" +
+            "Product Dimensions: 7.3 x 0.7 x 9.1 inches\n" +
+            "Shipping Weight: 1.6 pounds";
+
+        val value = parseBookInfo(fileContent,
+            line1 -> header(line1, "Paperback: ", c -> parsePages(c)),
+            line2 -> header(line2, "Publisher: ", c -> parsePublishInfo(c)),
+            line3 -> header(line3, "Language: ", c -> parseLanguage(c)),
+            line4 -> header(line4, "ISBN-10: ", c -> parseIsbn10(c)),
+            line5 -> header(line5, "ISBN-13: ", c -> parseIsbn13(c)),
+            line6 -> header(line6, "Product Dimensions: ", c -> parseDimensions(c)),
+            line7 -> header(line7, "Shipping Weight: ", c -> parseWeight(c))
         );
     }
 
@@ -67,7 +70,7 @@ public class ParserCombinator {
 
     private static Integer parsePages(String s) {
         val words = s.split("\\s");
-        return Integer.valueOf(words[1]);
+        return Integer.valueOf(words[0]);
     }
 
     public static BookInfo parseBookInfo(
