@@ -1,4 +1,4 @@
-package immutability;
+package _01_immutability;
 
 import lombok.Value;
 import lombok.experimental.Wither;

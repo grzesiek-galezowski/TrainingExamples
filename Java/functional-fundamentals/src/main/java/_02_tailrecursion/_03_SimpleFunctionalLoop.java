@@ -1,4 +1,4 @@
-package tailrecursion;
+package _02_tailrecursion;
 
 import io.vavr.Function1;
 import io.vavr.collection.List;
