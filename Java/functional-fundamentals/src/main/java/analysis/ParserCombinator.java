@@ -1,5 +1,9 @@
 package analysis;
 
+import analysis.data.BookInfo;
+import analysis.data.Dimensions;
+import analysis.data.PublishInfo;
+import analysis.data.Weight;
 import lombok.val;
 
 import java.util.Locale;
@@ -7,7 +11,7 @@ import java.util.function.Function;
 
 public class ParserCombinator {
     public static void main(String[] args) {
-        //forward - backwards analysis using inline
+        //forward - backwards analysis using inline and substitution
 
         String fileContent =
             "Paperback: 240 pages\n" +
@@ -18,7 +22,7 @@ public class ParserCombinator {
             "Product Dimensions: 7.3 x 0.7 x 9.1 inches\n" +
             "Shipping Weight: 1.6 pounds";
 
-        val value = parseBookInfo(fileContent,
+        final BookInfo value = parseBookInfo(fileContent,
             line1 -> header(line1, "Paperback: ", c -> parsePages(c)),
             line2 -> header(line2, "Publisher: ", c -> parsePublishInfo(c)),
             line3 -> header(line3, "Language: ", c -> parseLanguage(c)),
@@ -83,7 +87,7 @@ public class ParserCombinator {
         Function<String, Dimensions> dimensionsParser,
         Function<String, Weight> weightParser
     ) {
-        String[] lines = content.split("\n");
+        val lines = content.split("\n");
         val pages = pagesParser.apply(lines[0]);
         val publishInfo = publishInfoParser.apply(lines[1]);
         val locale = localeParser.apply(lines[2]);

@@ -1,4 +1,4 @@
-package analysis;
+package analysis.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Value;
@@ -7,7 +7,7 @@ import java.util.Locale;
 
 @AllArgsConstructor
 @Value
-class BookInfo {
+public class BookInfo {
     private int pages;
     private PublishInfo publishInfo;
     private Locale locale;

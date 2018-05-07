@@ -1,4 +1,4 @@
-package analysis;
+package analysis.data;
 
 //todo make these all final
 
