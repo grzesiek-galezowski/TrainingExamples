@@ -8,15 +8,15 @@ public class _02_Streams {
 
         final String primerPhrase =
             Arrays.asList("Ewa", "Kot", "Hubert", "Ala", "Julka").stream()
-                .map(s -> s + " ")      // Arrays.asList("Ewa ", "Kot ", "Hubert ", "Ala ", "Julka ").stream()
-                .map(s -> s + "ma")     // Arrays.asList("Ewa ma", "Kot ma", "Hubert ma", "Ala ma", "Julka ma").stream()
-                .map(s -> s + " ")      // Arrays.asList("Ewa ma ", "Kot ma ", "Hubert ma ", "Ala ma ", "Julka ma ").stream()
-                .map(s -> s + "psa")    // Arrays.asList("Ewa ma psa", "Kot ma psa", "Hubert ma psa", "Ala ma psa", "Julka ma psa").stream()
-                .map(s -> s + ".")      // Arrays.asList("Ewa ma psa.", "Kot ma psa.", "Hubert ma psa.", "Ala ma psa.", "Julka ma psa.").stream()
-                .skip(1)                // Arrays.asList("Kot ma psa.", "Hubert ma psa.", "Ala ma psa.", "Julka ma psa.").stream()
-                .sorted()               // Arrays.asList("Ala ma psa.", "Hubert ma psa.", "Julka ma psa.", "Kot ma psa.").stream()
-                .map(s -> s.replace("psa", "kota")) // Arrays.asList("Ala ma kota.", "Hubert ma kota.", "Julka ma kota.", "Kot ma kota.").stream()
-                .limit(3)               // Arrays.asList("Ala ma kota.", "Hubert ma kota.", "Julka ma kota.").stream()
+                .map(s -> s + " ")      // Stream.of("Ewa ", "Kot ", "Hubert ", "Ala ", "Julka ")
+                .map(s -> s + "ma")     // Stream.of("Ewa ma", "Kot ma", "Hubert ma", "Ala ma", "Julka ma")
+                .map(s -> s + " ")      // Stream.of("Ewa ma ", "Kot ma ", "Hubert ma ", "Ala ma ", "Julka ma ")
+                .map(s -> s + "psa")    // Stream.of("Ewa ma psa", "Kot ma psa", "Hubert ma psa", "Ala ma psa", "Julka ma psa")
+                .map(s -> s + ".")      // Stream.of("Ewa ma psa.", "Kot ma psa.", "Hubert ma psa.", "Ala ma psa.", "Julka ma psa.")
+                .skip(1)                // Stream.of("Kot ma psa.", "Hubert ma psa.", "Ala ma psa.", "Julka ma psa.")
+                .sorted()               // Stream.of("Ala ma psa.", "Hubert ma psa.", "Julka ma psa.", "Kot ma psa.")
+                .map(s -> s.replace("psa", "kota")) // Stream.of("Ala ma kota.", "Hubert ma kota.", "Julka ma kota.", "Kot ma kota.")
+                .limit(3)               // Stream.of("Ala ma kota.", "Hubert ma kota.", "Julka ma kota.")
                 .findFirst()            // "Ala ma kota."
                 .orElse("Ups! Zapomniałem elementarza.");
 
