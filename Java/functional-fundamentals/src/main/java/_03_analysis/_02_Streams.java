@@ -17,7 +17,7 @@ public class _02_Streams {
                 .sorted()               // Stream.of("Ala ma psa.", "Hubert ma psa.", "Julka ma psa.", "Kot ma psa.")
                 .map(s -> s.replace("psa", "kota")) // Stream.of("Ala ma kota.", "Hubert ma kota.", "Julka ma kota.", "Kot ma kota.")
                 .limit(3)               // Stream.of("Ala ma kota.", "Hubert ma kota.", "Julka ma kota.")
-                .findFirst()            // "Ala ma kota."
+                .findFirst()            // Optional.of("Ala ma kota.")
                 .orElse("Ups! Zapomniałem elementarza.");
 
     }
