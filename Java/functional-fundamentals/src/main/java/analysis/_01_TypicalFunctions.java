@@ -1,12 +1,16 @@
 package analysis;
 
+import lombok.val;
+
 public class _01_TypicalFunctions {
 
     public static void main(String[] args) {
 
         String str = "Ewa";
 
-        firstN(4, rplc("psa", "kota", apnd(".", apnd("psa", apnd(" ", apnd("ma", apnd(" ", str)))))));
+        val result = firstN(4, rplc("psa", "kota", apnd(".", apnd("psa", apnd(" ", apnd("ma", apnd(" ", str)))))));
+
+        System.out.println(result);
     }
 
     private static String firstN(int i, String rplc) {
