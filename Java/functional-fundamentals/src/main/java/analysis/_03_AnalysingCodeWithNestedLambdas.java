@@ -9,7 +9,7 @@ import lombok.val;
 import java.util.Locale;
 import java.util.function.Function;
 
-public class ParserCombinator {
+public class _03_AnalysingCodeWithNestedLambdas {
     public static void main(String[] args) {
         //forward - backwards analysis using inline and substitution
 
@@ -23,30 +23,32 @@ public class ParserCombinator {
             "Shipping Weight: 1.6 pounds";
 
         final BookInfo value = parseBookInfo(fileContent,
-            line1 -> header(line1, "Paperback: ", c -> parsePages(c)),
-            line2 -> header(line2, "Publisher: ", c -> parsePublishInfo(c)),
-            line3 -> header(line3, "Language: ", c -> parseLanguage(c)),
-            line4 -> header(line4, "ISBN-10: ", c -> parseIsbn10(c)),
-            line5 -> header(line5, "ISBN-13: ", c -> parseIsbn13(c)),
-            line6 -> header(line6, "Product Dimensions: ", c -> parseDimensions(c)),
-            line7 -> header(line7, "Shipping Weight: ", c -> parseWeight(c))
+          line1 -> header(line1, "Paperback: ", c -> pages(c)),
+          line2 -> header(line2, "Publisher: ", c -> publishInfo(c)),
+          line3 -> header(line3, "Language: ",  c -> language(c)),
+          line4 -> header(line4, "ISBN-10: ",   c -> isbn10(c)),
+          line5 -> header(line5, "ISBN-13: ",   c -> isbn13(c)),
+          line6 -> header(line6, "Product Dimensions: ", c -> dimensions(c)),
+          line7 -> header(line7, "Shipping Weight: ",    c -> weight(c))
         );
+
+        System.out.println(value);
     }
 
     private static <T> T header(
         String content,
         String header,
         Function<String, T> parser) {
-        val withoutHeader = content.replace(header, "");
-        return parser.apply(withoutHeader);
+        val headerless = content.replace(header, "");
+        return parser.apply(headerless);
     }
 
-    private static Weight parseWeight(String s) {
+    private static Weight weight(String s) {
         val parts = s.split("\\s");
         return new Weight(Double.valueOf(parts[0]), parts[1]);
     }
 
-    private static Dimensions parseDimensions(String s) {
+    private static Dimensions dimensions(String s) {
         val parts = s.split("\\s");
         return new Dimensions(
             Double.parseDouble(parts[0]),
@@ -55,24 +57,24 @@ public class ParserCombinator {
             parts[5]);
     }
 
-    private static String parseIsbn13(String s) {
+    private static String isbn13(String s) {
         return s;
     }
 
-    private static String parseIsbn10(String s) {
+    private static String isbn10(String s) {
         return s;
     }
 
-    private static Locale parseLanguage(String s) {
+    private static Locale language(String s) {
         return Locale.forLanguageTag(s); //won't work
     }
 
-    private static PublishInfo parsePublishInfo(String publishInfoLine) {
+    private static PublishInfo publishInfo(String publishInfoLine) {
         val parts = publishInfoLine.split(";");
-        return new PublishInfo(parts[0], parts[1]);
+        return new PublishInfo(parts[0].trim(), parts[1].trim());
     }
 
-    private static Integer parsePages(String s) {
+    private static Integer pages(String s) {
         val words = s.split("\\s");
         return Integer.valueOf(words[0]);
     }

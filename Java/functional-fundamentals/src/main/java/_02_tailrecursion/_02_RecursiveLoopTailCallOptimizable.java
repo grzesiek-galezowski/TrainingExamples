@@ -13,7 +13,6 @@ public class _02_RecursiveLoopTailCallOptimizable {
 
     //btw, Java does not have tail call recursion optimization
 
-
     public static void main(String[] args) {
         List<Integer> ints = List.range(0,10);
         out.println(" INPUT:   " + ints);
