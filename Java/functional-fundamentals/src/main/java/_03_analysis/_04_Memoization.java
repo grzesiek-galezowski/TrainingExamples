@@ -1,4 +1,4 @@
-package analysis;
+package _03_analysis;
 
 import io.vavr.Function2;
 import io.vavr.Tuple;

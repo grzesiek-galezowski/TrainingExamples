@@ -1,4 +1,4 @@
-package analysis.data;
+package _03_analysis.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Value;

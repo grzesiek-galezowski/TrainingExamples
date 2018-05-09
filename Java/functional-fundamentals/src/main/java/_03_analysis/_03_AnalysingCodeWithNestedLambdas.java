@@ -1,9 +1,9 @@
-package analysis;
+package _03_analysis;
 
-import analysis.data.BookInfo;
-import analysis.data.Dimensions;
-import analysis.data.PublishInfo;
-import analysis.data.Weight;
+import _03_analysis.data.BookInfo;
+import _03_analysis.data.Dimensions;
+import _03_analysis.data.PublishInfo;
+import _03_analysis.data.Weight;
 import lombok.val;
 
 import java.util.Locale;
