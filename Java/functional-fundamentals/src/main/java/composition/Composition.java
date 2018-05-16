@@ -1,22 +1,12 @@
-package composition2;
+package composition;
 
-import java.util.function.Function;
+import composition.wrappers.Demo;
+import composition.wrappers.Functions;
 
+import static composition.wrappers.Compose.compose;
 import static java.lang.System.out;
 
-public class Compose {
-
-    public static <T, U, V> Function<T, V> compose(
-        Function<T, U> f,
-        Function<U, V> g) {
-
-        return instance -> g.apply(f.apply(instance));
-    }
-
-    public static <T, U> Function<T, U> fun(Function<T, U> f) {
-        return f;
-    }
-
+public class Composition {
     public static void main(String[] args) {
         out.println(((((0) + 1) + 1) + 1) + 1);
 
@@ -56,13 +46,11 @@ public class Compose {
 
 
         out.println(
-            fun(
-                Demo::plus1)
+            Functions.f1(Demo::plus1)
                 .andThen(Demo::plus1)
                 .andThen(Demo::plus1)
                 .andThen(Demo::plus1)
                 .andThen(Demo::plus1)
                 .apply(0));
     }
-
 }

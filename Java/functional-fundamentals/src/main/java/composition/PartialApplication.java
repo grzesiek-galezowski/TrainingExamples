@@ -1,8 +1,9 @@
-package composition2;
+package composition;
 
 import io.vavr.Function1;
 import io.vavr.Function3;
 
+import java.math.BigInteger;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -11,7 +12,9 @@ public class PartialApplication {
 
     public void main(String[] args) {
 
-
+        BigInteger i1 = 123;
+        BigInteger i2 = 123;
+        System.out.println(i1 < i2);
     }
 
 
