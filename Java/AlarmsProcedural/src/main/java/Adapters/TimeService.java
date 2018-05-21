@@ -1,10 +1,10 @@
 package Adapters;
 
-import static autofixture.publicinterface.Generate.any;
+import autofixture.publicinterface.Any;
 
 public class TimeService {
   public static boolean isWeekend() {
-    return any(boolean.class);
+    return Any.instanceOf(boolean.class);
   }
 
   public static boolean isOutsideWeekend() {
@@ -12,7 +12,7 @@ public class TimeService {
   }
 
   public static boolean isNight() {
-    return any(boolean.class);
+    return Any.instanceOf(boolean.class);
   }
 
   public static boolean isDay() {
