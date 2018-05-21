@@ -26,6 +26,12 @@ public class CompositionRoot {
 
   }
 
+  ///////////////////
+  // COMP
+  // -> TIMED -> LOUD
+  // -> SILENT
+  ///////////////////
+
   private static Alarm createAlarm() {
     Alarm alarm = new Alarm(AlarmTypes.Composite);
 
