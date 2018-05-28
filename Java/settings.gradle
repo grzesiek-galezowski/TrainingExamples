@@ -1,9 +1,0 @@
-rootProject.name = 'Employees'
-
-include 'AlarmsProcedural'
-
-include 'PayrollSystem'
-
-include 'AlarmsObjectOriented'
-rootProject.name = 'functional-fundamentals'
-
