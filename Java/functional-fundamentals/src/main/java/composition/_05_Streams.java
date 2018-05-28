@@ -3,7 +3,7 @@ package composition;
 import java.util.Arrays;
 import java.util.function.Function;
 
-public class _02_Streams {
+public class _05_Streams {
 
     public static void main(String[] args) {
 

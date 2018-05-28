@@ -1,6 +1,5 @@
 package composition.wrappers;
 
-import composition.MyStringFunction;
 import io.vavr.Function1;
 import io.vavr.Function2;
 import io.vavr.Function3;

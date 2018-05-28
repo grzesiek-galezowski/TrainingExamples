@@ -1,4 +1,4 @@
-package composition;
+package composition.wrappers;
 
 import io.vavr.Function1;
 

@@ -1,6 +1,7 @@
 package composition;
 
 import composition.wrappers.Functions;
+import composition.wrappers.MyStringFunction;
 import composition.wrappers.StringOperations;
 import lombok.val;
 
@@ -10,7 +11,7 @@ import static composition.wrappers.Functions.*;
 import static composition.wrappers.Functions.f3;
 import static composition.wrappers.StringOperations.*;
 
-public class _01_TypicalFunctions {
+public class _04_TypicalFunctions {
 
     public static void main(String[] args) {
 

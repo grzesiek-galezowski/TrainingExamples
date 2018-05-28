@@ -24,6 +24,7 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compileOnly 'org.projectlombok:lombok:1.16.20'
     apt "org.projectlombok:lombok:1.16.20"
+    apt 'java-oo:javac-oo-plugin:0.5'
 
     //compile files("\${System.getProperty('java.home')}/../lib/tools.jar")
 }

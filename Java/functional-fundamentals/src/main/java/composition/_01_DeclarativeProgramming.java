@@ -9,7 +9,7 @@ import lombok.val;
 import java.util.Locale;
 import java.util.function.Function;
 
-public class DeclarativeProgramming {
+public class _01_DeclarativeProgramming {
 
     private static final String PAPERBACK = "Paperback: ";
     private static final String PUBLISHER = "Publisher: ";
@@ -31,21 +31,19 @@ public class DeclarativeProgramming {
                 "Shipping Weight: 1.6 pounds";
 
         final BookInfo value = infoFrom(fileContent,
-            line(PAPERBACK, pages()),
-            line(PUBLISHER, publishInfo()),
-            line(LANGUAGE, language()),
-            line(ISBN_10, isbn10()),
-            line(ISBN_13, isbn13()),
-            line(PRODUCT_DIMENSIONS, dimensions()),
-            line(SHIPPING_WEIGHT, weight())
+            withNextLine(PAPERBACK, pages()),
+            withNextLine(PUBLISHER, publishInfo()),
+            withNextLine(LANGUAGE, language()),
+            withNextLine(ISBN_10, isbn10()),
+            withNextLine(ISBN_13, isbn13()),
+            withNextLine(PRODUCT_DIMENSIONS, dimensions()),
+            withNextLine(SHIPPING_WEIGHT, weight())
         );
-
-        //TODO similar to
 
         System.out.println(value);
     }
 
-    private static <T> Function<String, T> line(String header, Function<String, T> pages) {
+    private static <T> Function<String, T> withNextLine(String header, Function<String, T> pages) {
         return line1 -> header(line1, header, pages);
     }
 
