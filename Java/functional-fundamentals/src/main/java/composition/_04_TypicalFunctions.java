@@ -2,14 +2,14 @@ package composition;
 
 import composition.wrappers.Functions;
 import composition.wrappers.MyStringFunction;
-import composition.wrappers.StringOperations;
+import composition.wrappers.Text;
 import lombok.val;
 
 import java.util.function.Function;
 
 import static composition.wrappers.Functions.*;
 import static composition.wrappers.Functions.f3;
-import static composition.wrappers.StringOperations.*;
+import static composition.wrappers.Text.*;
 
 public class _04_TypicalFunctions {
 
@@ -18,16 +18,16 @@ public class _04_TypicalFunctions {
         String str = "Ewa";
 
         //1
-        val result = firstN(4, rplc("psa", "kota", apnd(".", apnd("psa", apnd(" ", apnd("ma", apnd(" ", str)))))));
+        val result = firstN(4, replace("psa", "kota", append(".", append("psa", append(" ", append("ma", append(" ", str)))))));
 
 
         // 2
-        Function<String, String> compose = compose((String s) -> apnd(" ", s),
-            compose(s -> apnd("ma", s),
-                compose(s -> apnd(" ", s),
-                    compose(s -> apnd("psa", s),
-                        compose(s -> apnd(".", s),
-                            compose(s -> rplc("psa", "kota", s),
+        Function<String, String> compose = compose((String s) -> append(" ", s),
+            compose(s -> append("ma", s),
+                compose(s -> append(" ", s),
+                    compose(s -> append("psa", s),
+                        compose(s -> append(".", s),
+                            compose(s -> replace("psa", "kota", s),
                                 s -> firstN(4, s)
                             )
                         )
@@ -38,51 +38,52 @@ public class _04_TypicalFunctions {
 
         // 3
         Function<String, String> stringFunction
-            = Functions.<String, String>f1(s -> apnd(" ", s))
-            .andThen(s -> apnd("ma", s))
-            .andThen(s -> apnd(" ", s))
-            .andThen(s -> apnd("psa", s))
-            .andThen(s -> apnd(".", s))
-            .andThen(s -> rplc("psa", "kota", s))
+            = Functions.<String, String>f1(s -> append(" ", s))
+            .andThen(s -> append("ma", s))
+            .andThen(s -> append(" ", s))
+            .andThen(s -> append("psa", s))
+            .andThen(s -> append(".", s))
+            .andThen(s -> replace("psa", "kota", s))
             .andThen(s -> firstN(4, s));
 
         Function<String, String> stringFunction2
-            = f1(append(" "))
-            .andThen(append("ma"))
-            .andThen(append(" "))
-            .andThen(append("psa"))
-            .andThen(append("."))
-            .andThen(replace("psa", "kota"))
-            .andThen(firstNElements(4));
+            = f1(appendF(" "))
+            .andThen(appendF("ma"))
+            .andThen(appendF(" "))
+            .andThen(appendF("psa"))
+            .andThen(appendF("."))
+            .andThen(replaceF("psa", "kota"))
+            .andThen(firstNElementsF(4));
 
         MyStringFunction myStringFunction1 = mf(s -> s + " ")
-            >> append("ma")
-            >> append(" ")
-            >> append("psa")
-            >> append(".")
-            >> append(".")
-            >> replace("psa", "kota")
-            >> firstNElements(4);
+            >> appendF("ma")
+            >> appendF(" ")
+            >> appendF("psa")
+            >> appendF(".")
+            >> appendF(".")
+            >> replaceF("psa", "kota")
+            >> firstNElementsF(4);
 
         //partial application 1
         MyStringFunction myStringFunction2 = mf(s -> s + " ")
-            >> f2(StringOperations::apnd).apply("ma")
-            >> f2(StringOperations::apnd).apply(" ")
-            >> f2(StringOperations::apnd).apply("psa")
-            >> f2(StringOperations::apnd).apply(".")
-            >> f2(StringOperations::apnd).apply(".")
-            >> f3(StringOperations::rplc).apply("psa").apply("kota")
-            >> f2(StringOperations::firstN).apply(4);
+            >> f2(Text::append).apply("ma")
+            >> f2(Text::append).apply(" ")
+            >> f2(Text::append).apply("psa")
+            >> f2(Text::append).apply(".")
+            >> f2(Text::append).apply(".")
+            >> f3(Text::replace).apply("psa").apply("kota")
+            >> f2(Text::firstN).apply(10);
+        System.out.println(myStringFunction2.apply("["));
 
         //partial application 2
         MyStringFunction myStringFunction3 = mf(s -> s + " ")
-            >> f2(StringOperations::apnd).apply("ma")
-            >> f2(StringOperations::apnd).apply(" ")
-            >> f2(StringOperations::apnd).apply("psa")
-            >> f2(StringOperations::apnd).apply(".")
-            >> f2(StringOperations::apnd).apply(".")
-            >> f3(StringOperations::rplc).apply("psa").apply("kota")
-            >> f2(StringOperations::firstN).apply(4);
+            >> f2(Text::append).apply("ma")
+            >> f2(Text::append).apply(" ")
+            >> f2(Text::append).apply("psa")
+            >> f2(Text::append).apply(".")
+            >> f2(Text::append).apply(".")
+            >> f3(Text::replace).apply("psa").apply("kota")
+            >> f2(Text::firstN).apply(4);
 
         System.out.println(result);
     }

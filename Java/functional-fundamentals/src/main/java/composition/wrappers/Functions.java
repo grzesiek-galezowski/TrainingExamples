@@ -1,10 +1,15 @@
 package composition.wrappers;
 
+import io.vavr.Function0;
 import io.vavr.Function1;
 import io.vavr.Function2;
 import io.vavr.Function3;
 
 public class Functions {
+    public static <U> Function0<U> f0(
+        Function0<U> f) {
+        return f;
+    }
     public static <T, U> Function1<T,U> f1(
         Function1<T, U> f) {
         return f;

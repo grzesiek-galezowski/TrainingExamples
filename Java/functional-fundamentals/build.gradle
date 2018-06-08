@@ -1,5 +1,6 @@
 plugins {
-    id 'net.ltgt.apt' version '0.10'
+    id 'net.ltgt.apt' version '0.15'
+    id "com.github.ben-manes.versions" version "0.17.0"
 }
 
 group 'galezowski'
@@ -18,28 +19,11 @@ repositories {
 
 dependencies {
     compile group: 'io.vavr', name: 'vavr', version: '0.9.2'
-    compile 'java-oo:javac-oo-plugin:0.5'
-//    compile group: 'systems.manifold', name: 'manifold-ext', version: '0.12-alpha'
-//    compile group: 'systems.manifold', name: 'manifold', version: '0.12-alpha'
     testCompile group: 'junit', name: 'junit', version: '4.12'
-    compileOnly 'org.projectlombok:lombok:1.16.20'
-    apt "org.projectlombok:lombok:1.16.20"
-    apt 'java-oo:javac-oo-plugin:0.5'
+    compileOnly 'org.projectlombok:lombok:1.18.0'
+    compile files('lib\\javac8-oo-plugin-0.5.jar')
 
-    //compile files("\${System.getProperty('java.home')}/../lib/tools.jar")
+    annotationProcessor "org.projectlombok:lombok:1.18.0"
+    annotationProcessor files('lib\\javac8-oo-plugin-0.5.jar')
 }
 
-/*tasks.withType(JavaCompile) {
-    options.compilerArgs += '-Xplugin:Manifold'
-    options.fork = true
-}*/
-
-/*
-@Value.Immutable
-public abstract class FoobarValue {
-  public abstract int foo();
-  public abstract String bar();
-  public abstract List<Integer> buz();
-  public abstract Set<Long> crux();
-}
- */

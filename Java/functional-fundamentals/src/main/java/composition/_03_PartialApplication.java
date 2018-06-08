@@ -16,8 +16,7 @@ import static java.util.stream.Collectors.toList;
 
 public class _03_PartialApplication {
 
-    public void main(String[] args) {
-        //1/2 chleba 4 jabłka
+    public static void main(String[] args) {
         val onePlusA = bind1st(Demo::minus, 1);
         out.println(onePlusA.apply(2)); //=> -1
 

@@ -1,25 +1,35 @@
 package composition;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.function.Function;
+
+import static composition.wrappers.Functions.f0;
+import static java.util.stream.Collectors.toList;
 
 public class _05_Streams {
 
     public static void main(String[] args) {
 
-        final String primerPhrase =
+
+        List<String> strings =
             Arrays.asList("Ewa", "Kot", "Hubert", "Ala", "Julka").stream()
-                .map(add(" "))
-                .map(add("ma"))
-                .map(add(" "))
-                .map(add("psa"))
-                .map(add("."))
-                .skip(1)
-                .sorted()
-                .map(replace("psa", "kota"))
-                .limit(3)
-                .findFirst()
-                .orElse("Ups! Zapomniałem elementarza.");
+            .map(add(" "))
+            .map(add("ma"))
+            .map(add(" "))
+            .map(add("psa"))
+            .map(add("."))
+            .map(replace("psa", "kota"))
+            .collect(toList()); //reduce
+
+        String string = f0(() -> "Ewa")
+            .andThen(add(" "))
+            .andThen(add("ma"))
+            .andThen(add(" "))
+            .andThen(add("psa"))
+            .andThen(add("."))
+            .andThen(replace("psa", "kota"))
+            .apply(); //reduce
 
     }
 
