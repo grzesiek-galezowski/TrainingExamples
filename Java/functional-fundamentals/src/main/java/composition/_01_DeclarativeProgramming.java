@@ -22,7 +22,7 @@ public class _01_DeclarativeProgramming {
     public static void main(String[] args) {
 
         String fileContent =
-            "Paperback: 240 pages\n" +
+                "Paperback: 240 pages\n" +
                 "Publisher: Addison-Wesley Professional; 1 edition (November 18, 2002)\n" +
                 "Language: English\n" +
                 "ISBN-10: 0321146530\n" +
@@ -31,19 +31,19 @@ public class _01_DeclarativeProgramming {
                 "Shipping Weight: 1.6 pounds";
 
         final BookInfo value = infoFrom(fileContent,
-            withNextLine(PAPERBACK, pages()),
-            withNextLine(PUBLISHER, publishInfo()),
-            withNextLine(LANGUAGE, language()),
-            withNextLine(ISBN_10, isbn10()),
-            withNextLine(ISBN_13, isbn13()),
-            withNextLine(PRODUCT_DIMENSIONS, dimensions()),
-            withNextLine(SHIPPING_WEIGHT, weight())
+            line(PAPERBACK, pages()),
+            line(PUBLISHER, publishInfo()),
+            line(LANGUAGE, language()),
+            line(ISBN_10, isbn10()),
+            line(ISBN_13, isbn13()),
+            line(PRODUCT_DIMENSIONS, dimensions()),
+            line(SHIPPING_WEIGHT, weight())
         );
 
         System.out.println(value);
     }
 
-    private static <T> Function<String, T> withNextLine(String header, Function<String, T> pages) {
+    private static <T> Function<String, T> line(String header, Function<String, T> pages) {
         return line1 -> header(line1, header, pages);
     }
 

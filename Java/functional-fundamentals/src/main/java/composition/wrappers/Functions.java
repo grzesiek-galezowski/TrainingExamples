@@ -30,7 +30,7 @@ public class Functions {
         return f;
     }
 
-    public static MyStringFunction mf(
+    public static MyStringFunction myFun(
         Function1<String, String> f) {
         return new MyStringFunction(f);
     }
