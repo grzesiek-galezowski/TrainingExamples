@@ -30,7 +30,7 @@ public class _01_DeclarativeProgramming {
                 "Product Dimensions: 7.3 x 0.7 x 9.1 inches\n" +
                 "Shipping Weight: 1.6 pounds";
 
-        final BookInfo value = infoFrom(fileContent,
+        final BookInfo value = from(fileContent,
             line(PAPERBACK, pages()),
             line(PUBLISHER, publishInfo()),
             line(LANGUAGE, language()),
@@ -119,7 +119,7 @@ public class _01_DeclarativeProgramming {
         return Integer.valueOf(words[0]);
     }
 
-    public static BookInfo infoFrom(
+    public static BookInfo from(
         String content,
         Function<String, Integer> pagesParser,
         Function<String, PublishInfo> publishInfoParser,
