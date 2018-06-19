@@ -12,12 +12,10 @@ import static composition.wrappers.Functions.f1;
 import static composition.wrappers.Functions.f2;
 import static composition.wrappers.Functions.f3;
 import static composition.wrappers.Functions.myFun;
+import static composition.wrappers.Text.F;
 import static composition.wrappers.Text.append;
-import static composition.wrappers.Text.appendF;
 import static composition.wrappers.Text.firstN;
-import static composition.wrappers.Text.firstNElementsF;
 import static composition.wrappers.Text.replace;
-import static composition.wrappers.Text.replaceF;
 
 public class _05_FunctionCompositionWithPartialApplication {
 
@@ -57,23 +55,23 @@ public class _05_FunctionCompositionWithPartialApplication {
         // LIBRARY COMMPOSITION
         // + DECLARATIVE APPROACH WITH HIGHER ORDER FUNCTIONS
         Function<String, String> stringFunction2
-            = f1(appendF(" "))
-            .andThen(appendF("ma"))
-            .andThen(appendF(" "))
-            .andThen(appendF("psa"))
-            .andThen(appendF("."))
-            .andThen(replaceF("psa", "kota"))
-            .andThen(firstNElementsF(4));
+            = f1(F.append(" "))
+            .andThen(F.append("ma"))
+            .andThen(F.append(" "))
+            .andThen(F.append("psa"))
+            .andThen(F.append("."))
+            .andThen(F.replace("psa", "kota"))
+            .andThen(F.firstNElements(4));
 
         // HOW NON-OO LANGUAGES DO IT... OPERATOR OVERLOADING
         MyStringFunction myStringFunction1 = myFun(s -> s + " ")
-            >> appendF("ma")
-            >> appendF(" ")
-            >> appendF("psa")
-            >> appendF(".")
-            >> appendF(".")
-            >> replaceF("psa", "kota")
-            >> firstNElementsF(4);
+            >> F.append("ma")
+            >> F.append(" ")
+            >> F.append("psa")
+            >> F.append(".")
+            >> F.append(".")
+            >> F.replace("psa", "kota")
+            >> F.firstNElements(4);
 
         // OPERATORS WITH PARTIAL APPLICATION
         MyStringFunction myStringFunction2 = myFun(s -> s + " ")

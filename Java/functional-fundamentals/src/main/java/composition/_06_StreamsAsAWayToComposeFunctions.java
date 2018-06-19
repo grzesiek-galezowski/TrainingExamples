@@ -4,8 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static composition.wrappers.Functions.f0;
-import static composition.wrappers.Text.appendF;
-import static composition.wrappers.Text.replaceF;
+import static composition.wrappers.Text.F;
 import static java.util.stream.Collectors.toList;
 
 public class _06_StreamsAsAWayToComposeFunctions {
@@ -15,33 +14,23 @@ public class _06_StreamsAsAWayToComposeFunctions {
 
         List<String> strings =
             Arrays.asList("Ewa", "Kot", "Hubert", "Ala", "Julka").stream()
-            .map(appendF(" "))
-            .map(appendF("ma"))
-            .map(appendF(" "))
-            .map(appendF("psa"))
-            .map(appendF("."))
-            .map(replaceF("psa", "kota"))
+            .map(F.append(" "))
+            .map(F.append("ma"))
+            .map(F.append(" "))
+            .map(F.append("psa"))
+            .map(F.append("."))
+            .map(F.replace("psa", "kota"))
             .collect(toList()); //reduce
 
         String string = f0(() -> "Ewa")
-            .andThen(appendF(" "))
-            .andThen(appendF("ma"))
-            .andThen(appendF(" "))
-            .andThen(appendF("psa"))
-            .andThen(appendF("."))
-            .andThen(replaceF("psa", "kota"))
+            .andThen(F.append(" "))
+            .andThen(F.append("ma"))
+            .andThen(F.append(" "))
+            .andThen(F.append("psa"))
+            .andThen(F.append("."))
+            .andThen(F.replace("psa", "kota"))
             .apply(); //reduce
 
     }
-
-    /*
-    private static Function<String, String> replace(String psa, String kota) {
-        return s -> s.replace(psa, kota);
-    }
-
-    private static Function<String, String> add(String s1) {
-        return s -> s + s1;
-    }*/
-
 }
 
