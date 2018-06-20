@@ -8,9 +8,11 @@ import static java.lang.System.out;
 public class _02_HomeGrownComposition {
     public static void main(String[] args) {
 
+        //DESCRIBE HOMEGROWN compose FUNCTION
+
         //WITHOUT COMPOSITION
         out.println(0 + 1 + 1 + 1 + 1);
-        out.println(((((0) + 1) + 1) + 1) + 1);
+        out.println((((0 + 1) + 1) + 1) + 1);
 
         //SIMPLE FUNCTION COMPOSITION
         out.println(compose(Arithmetics::plus1, Arithmetics::plus1).apply(0));
