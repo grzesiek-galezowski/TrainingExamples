@@ -1,8 +1,8 @@
-package composition.wrappers;
+package _04_composition.wrappers;
 
 import io.vavr.Function1;
 
-import static composition.wrappers.Functions.f1;
+import static _04_composition.wrappers.Functions.f1;
 
 public class Text {
 

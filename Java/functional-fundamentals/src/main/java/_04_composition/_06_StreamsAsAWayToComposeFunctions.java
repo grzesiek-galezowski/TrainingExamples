@@ -1,10 +1,10 @@
-package composition;
+package _04_composition;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static composition.wrappers.Functions.f0;
-import static composition.wrappers.Text.F;
+import static _04_composition.wrappers.Functions.f0;
+import static _04_composition.wrappers.Text.F;
 import static java.util.stream.Collectors.toList;
 
 public class _06_StreamsAsAWayToComposeFunctions {

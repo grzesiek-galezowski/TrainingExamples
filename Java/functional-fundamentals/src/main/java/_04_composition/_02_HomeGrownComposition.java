@@ -1,8 +1,8 @@
-package composition;
+package _04_composition;
 
-import composition.wrappers.Arithmetics;
+import _04_composition.wrappers.Arithmetics;
 
-import static composition.wrappers.Compose.compose;
+import static _04_composition.wrappers.Compose.compose;
 import static java.lang.System.out;
 
 public class _02_HomeGrownComposition {

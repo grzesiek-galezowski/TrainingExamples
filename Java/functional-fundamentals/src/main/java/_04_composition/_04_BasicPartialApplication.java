@@ -1,11 +1,11 @@
-package composition;
+package _04_composition;
 
-import composition.wrappers.Arithmetics;
+import _04_composition.wrappers.Arithmetics;
 import io.vavr.Function1;
 import io.vavr.Function2;
 import lombok.val;
 
-import static composition.wrappers.Functions.f2;
+import static _04_composition.wrappers.Functions.f2;
 import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
 

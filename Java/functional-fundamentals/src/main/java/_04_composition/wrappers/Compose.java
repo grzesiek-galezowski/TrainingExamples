@@ -1,4 +1,4 @@
-package composition.wrappers;
+package _04_composition.wrappers;
 
 import java.util.function.Function;
 

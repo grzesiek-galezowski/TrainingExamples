@@ -1,4 +1,4 @@
-package composition;
+package _04_composition;
 
 import _03_analysis.data.BookInfo;
 import _03_analysis.data.Dimensions;

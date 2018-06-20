@@ -1,8 +1,8 @@
-package composition;
+package _04_composition;
 
-import composition.wrappers.Arithmetics;
+import _04_composition.wrappers.Arithmetics;
 
-import static composition.wrappers.Functions.f1;
+import static _04_composition.wrappers.Functions.f1;
 import static java.lang.System.out;
 
 public class _03_LibraryBuiltInComposition {

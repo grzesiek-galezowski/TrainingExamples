@@ -1,21 +1,21 @@
-package composition;
+package _04_composition;
 
-import composition.wrappers.Functions;
-import composition.wrappers.MyStringFunction;
-import composition.wrappers.Text;
+import _04_composition.wrappers.Functions;
+import _04_composition.wrappers.MyStringFunction;
+import _04_composition.wrappers.Text;
 import lombok.val;
 
 import java.util.function.Function;
 
-import static composition.wrappers.Compose.compose;
-import static composition.wrappers.Functions.f1;
-import static composition.wrappers.Functions.f2;
-import static composition.wrappers.Functions.f3;
-import static composition.wrappers.Functions.myFun;
-import static composition.wrappers.Text.F;
-import static composition.wrappers.Text.append;
-import static composition.wrappers.Text.firstN;
-import static composition.wrappers.Text.replace;
+import static _04_composition.wrappers.Compose.compose;
+import static _04_composition.wrappers.Functions.f1;
+import static _04_composition.wrappers.Functions.f2;
+import static _04_composition.wrappers.Functions.f3;
+import static _04_composition.wrappers.Functions.myFun;
+import static _04_composition.wrappers.Text.F;
+import static _04_composition.wrappers.Text.append;
+import static _04_composition.wrappers.Text.firstN;
+import static _04_composition.wrappers.Text.replace;
 
 public class _05_FunctionCompositionWithPartialApplication {
 
