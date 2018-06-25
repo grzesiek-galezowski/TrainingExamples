@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class PersonSpecification {
+public class Ex04ParameterizedTest_PersonSpecification {
 
     @DataProvider
     public static Object[][] shouldBeAdultDependingOnAgeData() {
