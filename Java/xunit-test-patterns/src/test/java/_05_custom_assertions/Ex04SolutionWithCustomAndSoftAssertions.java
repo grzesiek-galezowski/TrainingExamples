@@ -1,11 +1,11 @@
 package _05_custom_assertions;
 
+import com.github.grzesiek_galezowski.test_environment.XAssert;
 import lombok.val;
+import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-public class Ex03SolutionWithPurelyCustomAssertions {
+public class Ex04SolutionWithCustomAndSoftAssertions {
     static class PersonData {
         public final String name;
         public final String surname;
@@ -39,10 +39,19 @@ public class Ex03SolutionWithPurelyCustomAssertions {
     }
 
     private void assertThatAreTheSamePerson(PersonData superman, PersonData clark) {
-        assertThat(superman.name).as("name").isEqualTo(clark.name);
-        assertThat(superman.surname).as("surname").isEqualTo(clark.surname);
-        assertThat(superman.age).as("age").isEqualTo(clark.age);
+        XAssert.assertAll(softly -> {
+            softly.assertThat(superman.name).as("name").isEqualTo(clark.name);
+            softly.assertThat(superman.surname).as("surname").isEqualTo(clark.surname);
+            softly.assertThat(superman.age).as("age").isEqualTo(clark.age);
+        });
     }
 
+    private void assertThatAreTheSamePerson2(PersonData superman, PersonData clark) {
+        val softly = new SoftAssertions();
+        softly.assertThat(superman.name).as("name").isEqualTo(clark.name);
+        softly.assertThat(superman.surname).as("surname").isEqualTo(clark.surname);
+        softly.assertThat(superman.age).as("age").isEqualTo(clark.age);
+        softly.assertAll();
+    }
 
 }
