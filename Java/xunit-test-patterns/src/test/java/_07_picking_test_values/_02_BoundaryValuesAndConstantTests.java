@@ -1,18 +1,18 @@
-package _03_parameterized_tests;
+package _07_picking_test_values;
 
+import _03_parameterized_tests.Person;
 import lombok.val;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class Ex04ParameterizedTest_PersonSpecification {
-
+public class _02_BoundaryValuesAndConstantTests {
     @DataProvider
     public static Object[][] shouldBeAdultDependingOnAgeData() {
         return new Object[][]{
-            {17, false},
-            {18, true},
+            {Person.ADULT_AGE - 1, false},
+            {Person.ADULT_AGE, true},
         };
     }
 
@@ -26,6 +26,11 @@ public class Ex04ParameterizedTest_PersonSpecification {
 
         //THEN
         assertThat(isAdult).isEqualTo(expectedIsAdult);
+    }
+
+    @Test
+    public void shouldSayThatAdultAgeIs18() {
+        assertThat(Person.ADULT_AGE).isEqualTo(18);
     }
 
 }

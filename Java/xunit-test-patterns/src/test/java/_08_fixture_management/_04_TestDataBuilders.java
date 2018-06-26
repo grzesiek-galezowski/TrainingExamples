@@ -9,14 +9,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class _04_TestDataBuilders {
 
     @Test
-    public void trolololo() {
+    public void shouldIncludeUserNameInAppendedUserLog() {
         //GIVEN
         val user = new UserBuilder().withName("Zenek").build();
+        val inMemoryLog = new InMemoryLog();
 
         //WHEN
+        inMemoryLog.logUser(user);
 
         //THEN
-        assertThat(1).isEqualTo(2);
+        assertThat(inMemoryLog.entries())
+            .last().asString().contains("Zenek");
     }
 
     static final class UserBuilder {

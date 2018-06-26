@@ -5,8 +5,6 @@ import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-
-
 public class Ex01NoTrueFalseAssertions {
 
     @Test
@@ -14,6 +12,7 @@ public class Ex01NoTrueFalseAssertions {
         //show assertion errors
         assertThat(1 == 4).isTrue();
     }
+
     @Test
     public void usingSpecificAssertion() {
         //show assertion errors

@@ -1,4 +1,4 @@
 package _08_fixture_management;
 
-public class _03_CreationMethods {
+public class InvoiceLine {
 }
