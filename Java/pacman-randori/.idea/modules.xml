@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pacman-randori_main.iml" filepath="$PROJECT_DIR$/.idea/modules/pacman-randori_main.iml" group="pacman-randori" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pacman-randori_test.iml" filepath="$PROJECT_DIR$/.idea/modules/pacman-randori_test.iml" group="pacman-randori" />
-    </modules>
-  </component>
-</project>
