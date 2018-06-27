@@ -5,6 +5,7 @@ import autofixture.publicinterface.InstanceOf;
 import org.testng.annotations.Test;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.List;
 
 import static autofixture.publicinterface.InlineGenerators.otherThan;
@@ -21,14 +22,14 @@ public class _01_ConstrainedNonDeterminism {
         String result = transform(nonNullValue);
 
         // THEN
-        assertThat(result).isEqualTo(nonNullValue);
+        assertThat(result).isEqualTo(nonNullValue + "a");
     }
 
     private String transform(String value) {
         if(value == null) {
             return "FAIL";
         } else {
-            return value; //TODO make it fail
+            return value + "a"; //TODO make it fail
         }
     }
 
@@ -57,7 +58,8 @@ public class _01_ConstrainedNonDeterminism {
     @Test
     public void collections() {
         Any.arrayOf(Integer.class);
-        Any.collectionOf(Integer.class);
+        Collection<Integer> integers = Any.collectionOf(Integer.class);
+        Any.sortedMapBetween(String.class, Integer.class);
         Any.sortedMapBetween(String.class, Integer.class);
         //...
     }
