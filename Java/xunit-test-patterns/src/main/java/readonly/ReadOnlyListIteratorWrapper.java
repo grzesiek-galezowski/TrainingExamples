@@ -1,25 +1,36 @@
+package readonly;
+
+import readonly.interfaces.ReadOnlyListIterator;
+
 import java.util.ListIterator;
 
-public class ReadOnlyListIterator<T> extends ReadOnlyCollectionIterator<T> {
+public class ReadOnlyListIteratorWrapper<T>
+    extends ReadOnlyCollectionIteratorWrapper<T>
+    implements ReadOnlyListIterator<T> {
+
     private final ListIterator<T> iterator;
 
-    public ReadOnlyListIterator(ListIterator<T> iterator) {
+    public ReadOnlyListIteratorWrapper(ListIterator<T> iterator) {
         super(iterator);
         this.iterator = iterator;
     }
 
+    @Override
     public boolean hasPrevious() {
         return iterator.hasPrevious();
     }
 
+    @Override
     public T previous() {
         return iterator.previous();
     }
 
+    @Override
     public int nextIndex() {
         return iterator.nextIndex();
     }
 
+    @Override
     public int previousIndex() {
         return iterator.previousIndex();
     }

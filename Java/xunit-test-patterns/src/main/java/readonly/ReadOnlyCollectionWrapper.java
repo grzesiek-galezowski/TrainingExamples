@@ -1,61 +1,84 @@
+package readonly;
+
+import readonly.interfaces.ReadOnlyCollection;
+import readonly.interfaces.ReadOnlyCollectionIterator;
+
 import java.util.Collection;
 import java.util.Spliterator;
 import java.util.stream.Stream;
 
-public class ReadOnlyCollection<T> {
+public class ReadOnlyCollectionWrapper<T> implements ReadOnlyCollection<T> {
     private final Collection<T> original;
 
-    public ReadOnlyCollection(Collection<T> original) {
+    public ReadOnlyCollectionWrapper(Collection<T> original) {
         this.original = original;
     }
 
+    @Override
     public int size() {
         return original.size();
     }
 
+    @Override
     public boolean isEmpty() {
         return original.isEmpty();
     }
 
+    @Override
     public boolean contains(Object o) {
         return original.contains(o);
     }
 
+    @Override
     public ReadOnlyCollectionIterator<T> iterator() {
-        return new ReadOnlyCollectionIterator<T>(original.iterator());
+        return new ReadOnlyCollectionIteratorWrapper<T>(original.iterator());
     }
 
+    @Override
     public Object[] toArray() {
         return original.toArray();
     }
 
+    @Override
     public <T1> T1[] toArray(T1[] a) {
         return original.toArray(a);
     }
 
+    @Override
     public boolean containsAll(Collection<?> c) {
         return original.containsAll(c);
     }
 
     @Override
     public boolean equals(Object o) {
-        //todo compare to read only and normal collections
-        return original.equals(o);
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        ReadOnlyCollectionWrapper<?> that = (ReadOnlyCollectionWrapper<?>) o;
+
+        return original != null ? original.equals(that.original) : that.original == null;
     }
 
     @Override
     public int hashCode() {
-        return original.hashCode();
+        return original != null ? original.hashCode() : 0;
     }
 
+    @Override
     public Spliterator<T> spliterator() {
         return original.spliterator();
     }
 
+    @Override
     public Stream<T> stream() {
         return original.stream();
     }
 
+    @Override
     public Stream<T> parallelStream() {
         return original.parallelStream();
     }
