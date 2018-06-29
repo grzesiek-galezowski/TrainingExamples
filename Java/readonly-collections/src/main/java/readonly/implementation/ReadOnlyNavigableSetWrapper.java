@@ -1,5 +1,6 @@
 package readonly.implementation;
 
+import readonly.implementation.iterator.ReadOnlyCollectionIteratorWrapper;
 import readonly.interfaces.ReadOnlyCollectionIterator;
 import readonly.interfaces.ReadOnlyNavigableSet;
 
@@ -60,5 +61,29 @@ public class ReadOnlyNavigableSetWrapper<E>
     @Override
     public ReadOnlyNavigableSet<E> tailSet(E var1, boolean var2) {
         return new ReadOnlyNavigableSetWrapper<>(original.tailSet(var1, var2));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        if (!super.equals(o)) {
+            return false;
+        }
+
+        ReadOnlyNavigableSetWrapper<?> that = (ReadOnlyNavigableSetWrapper<?>) o;
+
+        return original != null ? original.equals(that.original) : that.original == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + (original != null ? original.hashCode() : 0);
+        return result;
     }
 }

@@ -1,5 +1,6 @@
 package readonly.implementation;
 
+import readonly.implementation.iterator.ReadOnlyCollectionIteratorWrapper;
 import readonly.interfaces.ReadOnlyCollectionIterator;
 import readonly.interfaces.ReadOnlyDequeue;
 

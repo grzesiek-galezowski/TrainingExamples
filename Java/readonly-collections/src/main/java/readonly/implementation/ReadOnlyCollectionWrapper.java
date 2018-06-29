@@ -1,5 +1,6 @@
 package readonly.implementation;
 
+import readonly.implementation.iterator.ReadOnlyCollectionIteratorWrapper;
 import readonly.interfaces.ReadOnlyCollection;
 import readonly.interfaces.ReadOnlyCollectionIterator;
 
@@ -51,6 +52,21 @@ public class ReadOnlyCollectionWrapper<T> implements ReadOnlyCollection<T>, Seri
     }
 
     @Override
+    public Spliterator<T> spliterator() {
+        return original.spliterator();
+    }
+
+    @Override
+    public Stream<T> stream() {
+        return original.stream();
+    }
+
+    @Override
+    public Stream<T> parallelStream() {
+        return original.parallelStream();
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -67,20 +83,5 @@ public class ReadOnlyCollectionWrapper<T> implements ReadOnlyCollection<T>, Seri
     @Override
     public int hashCode() {
         return original != null ? original.hashCode() : 0;
-    }
-
-    @Override
-    public Spliterator<T> spliterator() {
-        return original.spliterator();
-    }
-
-    @Override
-    public Stream<T> stream() {
-        return original.stream();
-    }
-
-    @Override
-    public Stream<T> parallelStream() {
-        return original.parallelStream();
     }
 }

@@ -1,5 +1,6 @@
 package readonly.implementation;
 
+import readonly.implementation.iterator.ReadOnlyListIteratorWrapper;
 import readonly.interfaces.ReadOnlyList;
 import readonly.interfaces.ReadOnlyListIterator;
 

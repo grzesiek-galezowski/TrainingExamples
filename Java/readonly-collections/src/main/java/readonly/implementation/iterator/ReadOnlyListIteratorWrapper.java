@@ -1,4 +1,4 @@
-package readonly.implementation;
+package readonly.implementation.iterator;
 
 import readonly.interfaces.ReadOnlyListIterator;
 
