@@ -3,12 +3,13 @@ package readonly.implementation;
 import readonly.interfaces.ReadOnlyNavigableMap;
 import readonly.interfaces.ReadOnlyNavigableSet;
 
+import java.io.Serializable;
 import java.util.Map;
 import java.util.NavigableMap;
 
 public class ReadOnlyNavigableMapWrapper<K, V>
     extends ReadOnlySortedMapWrapper<K, V>
-    implements ReadOnlyNavigableMap<K, V> {
+    implements ReadOnlyNavigableMap<K, V>, Serializable {
 
     private NavigableMap<K, V> original;
 

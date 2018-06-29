@@ -2,12 +2,13 @@ package readonly.implementation;
 
 import readonly.interfaces.ReadOnlySortedMap;
 
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.SortedMap;
 
 public class ReadOnlySortedMapWrapper<K, V>
     extends ReadOnlyMapWrapper<K, V>
-    implements ReadOnlySortedMap<K, V> {
+    implements ReadOnlySortedMap<K, V>, Serializable {
 
     private SortedMap<K, V> original;
 

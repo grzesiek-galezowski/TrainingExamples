@@ -4,10 +4,11 @@ import readonly.interfaces.ReadOnlyCollection;
 import readonly.interfaces.ReadOnlyMap;
 import readonly.interfaces.ReadOnlySet;
 
+import java.io.Serializable;
 import java.util.Map;
 import java.util.function.BiConsumer;
 
-public class ReadOnlyMapWrapper<K,V> implements ReadOnlyMap<K, V> {
+public class ReadOnlyMapWrapper<K,V> implements ReadOnlyMap<K, V>, Serializable {
 
     private final Map<K,V> original;
 
