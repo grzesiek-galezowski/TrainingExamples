@@ -11,13 +11,13 @@ public interface ReadOnlyCollection<T> {
 
     boolean contains(Object o);
 
+    boolean containsAll(Collection<?> c);
+
     ReadOnlyCollectionIterator<T> iterator();
 
     Object[] toArray();
 
     <T1> T1[] toArray(T1[] a);
-
-    boolean containsAll(Collection<?> c);
 
     Spliterator<T> spliterator();
 

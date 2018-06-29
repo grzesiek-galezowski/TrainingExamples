@@ -1,4 +1,4 @@
-package readonly;
+package readonly.implementation;
 
 import readonly.interfaces.ReadOnlyListIterator;
 
@@ -10,7 +10,7 @@ public class ReadOnlyListIteratorWrapper<T>
 
     private final ListIterator<T> iterator;
 
-    public ReadOnlyListIteratorWrapper(ListIterator<T> iterator) {
+    public ReadOnlyListIteratorWrapper(final ListIterator<T> iterator) {
         super(iterator);
         this.iterator = iterator;
     }

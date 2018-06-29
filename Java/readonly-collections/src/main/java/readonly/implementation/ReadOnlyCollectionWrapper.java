@@ -1,16 +1,17 @@
-package readonly;
+package readonly.implementation;
 
 import readonly.interfaces.ReadOnlyCollection;
 import readonly.interfaces.ReadOnlyCollectionIterator;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Spliterator;
 import java.util.stream.Stream;
 
-public class ReadOnlyCollectionWrapper<T> implements ReadOnlyCollection<T> {
+public class ReadOnlyCollectionWrapper<T> implements ReadOnlyCollection<T>, Serializable {
     private final Collection<T> original;
 
-    public ReadOnlyCollectionWrapper(Collection<T> original) {
+    public ReadOnlyCollectionWrapper(final Collection<T> original) {
         this.original = original;
     }
 

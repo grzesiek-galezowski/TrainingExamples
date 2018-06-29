@@ -1,15 +1,18 @@
-package readonly;
+package readonly.implementation;
 
 import readonly.interfaces.ReadOnlyList;
 import readonly.interfaces.ReadOnlyListIterator;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class ReadOnlyListWrapper<T> extends ReadOnlyCollectionWrapper<T> implements ReadOnlyList<T> {
+public class ReadOnlyListWrapper<T>
+    extends ReadOnlyCollectionWrapper<T>
+    implements ReadOnlyList<T>, Serializable {
     private final List<T> original;
 
-    public ReadOnlyListWrapper(List<T> list) {
+    public ReadOnlyListWrapper(final List<T> list) {
         super(list);
         original = list;
     }
@@ -47,5 +50,29 @@ public class ReadOnlyListWrapper<T> extends ReadOnlyCollectionWrapper<T> impleme
     @Override
     public void forEach(Consumer<? super T> action) {
         original.forEach(action);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        if (!super.equals(o)) {
+            return false;
+        }
+
+        ReadOnlyListWrapper<?> that = (ReadOnlyListWrapper<?>) o;
+
+        return original != null ? original.equals(that.original) : that.original == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + (original != null ? original.hashCode() : 0);
+        return result;
     }
 }

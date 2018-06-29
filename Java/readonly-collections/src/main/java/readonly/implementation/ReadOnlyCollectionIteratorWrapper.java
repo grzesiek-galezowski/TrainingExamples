@@ -1,4 +1,4 @@
-package readonly;
+package readonly.implementation;
 
 import readonly.interfaces.ReadOnlyCollectionIterator;
 
@@ -6,9 +6,9 @@ import java.util.Iterator;
 import java.util.function.Consumer;
 
 public class ReadOnlyCollectionIteratorWrapper<T> implements ReadOnlyCollectionIterator<T> {
-    private Iterator<T> iterator;
+    private final Iterator<T> iterator;
 
-    public ReadOnlyCollectionIteratorWrapper(Iterator<T> iterator) {
+    public ReadOnlyCollectionIteratorWrapper(final Iterator<T> iterator) {
         this.iterator = iterator;
     }
 
