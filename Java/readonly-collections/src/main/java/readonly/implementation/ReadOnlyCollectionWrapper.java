@@ -7,6 +7,7 @@ import readonly.interfaces.ReadOnlyCollectionIterator;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Spliterator;
+import java.util.function.IntFunction;
 import java.util.stream.Stream;
 
 public class ReadOnlyCollectionWrapper<T> implements ReadOnlyCollection<T>, Serializable {
@@ -44,6 +45,11 @@ public class ReadOnlyCollectionWrapper<T> implements ReadOnlyCollection<T>, Seri
     @Override
     public <T1> T1[] toArray(T1[] a) {
         return original.toArray(a);
+    }
+
+    @Override
+    public <T1> T1[] toArray(IntFunction<T1[]> intFunction) {
+        return original.stream().toArray(intFunction);
     }
 
     @Override

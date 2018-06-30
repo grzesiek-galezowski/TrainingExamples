@@ -1,6 +1,6 @@
 package readonly.interfaces;
 
-public interface ReadOnlyDequeue<T> extends ReadOnlyQueue<T> {
+public interface ReadOnlyDeque<T> extends ReadOnlyQueue<T> {
     T getFirst();
 
     T getLast();

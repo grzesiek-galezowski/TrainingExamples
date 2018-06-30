@@ -2,18 +2,18 @@ package readonly.implementation;
 
 import readonly.implementation.iterator.ReadOnlyCollectionIteratorWrapper;
 import readonly.interfaces.ReadOnlyCollectionIterator;
-import readonly.interfaces.ReadOnlyDequeue;
+import readonly.interfaces.ReadOnlyDeque;
 
 import java.io.Serializable;
 import java.util.Deque;
 
-public class ReadOnlyDequeueWrapper<T>
+public class ReadOnlyDequeWrapper<T>
     extends ReadOnlyQueueWrapper<T>
-    implements ReadOnlyDequeue<T>, Serializable {
+    implements ReadOnlyDeque<T>, Serializable {
 
     private final Deque<T> original;
 
-    public ReadOnlyDequeueWrapper(final Deque<T> original) {
+    public ReadOnlyDequeWrapper(final Deque<T> original) {
         super(original);
         this.original = original;
     }
@@ -55,7 +55,7 @@ public class ReadOnlyDequeueWrapper<T>
             return false;
         }
 
-        ReadOnlyDequeueWrapper<?> that = (ReadOnlyDequeueWrapper<?>) o;
+        ReadOnlyDequeWrapper<?> that = (ReadOnlyDequeWrapper<?>) o;
 
         return original != null ? original.equals(that.original) : that.original == null;
     }
