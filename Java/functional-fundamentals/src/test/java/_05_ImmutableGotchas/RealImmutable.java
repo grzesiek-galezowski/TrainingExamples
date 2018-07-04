@@ -10,6 +10,9 @@ import static org.mutabilitydetector.unittesting.MutabilityMatchers.areEffective
 
 public class RealImmutable {
 
+    //QUESTION: can we be sure that an object of this class
+    //          is immutable when we receive it?
+
     @Test
     public void failsBecauseClassIsNotFinal() {
         assertImmutable(NonFinalEmptyObject.class);
@@ -22,7 +25,11 @@ public class RealImmutable {
 
     @Test
     public void failsBecauseFieldIsNotFinalEvenThoughTheClassIsEffectivelyImmutable() {
-        assertInstancesOf(ObjectWithSinglePrivateField.class, areEffectivelyImmutable());
+
+        assertInstancesOf(
+            ObjectWithSinglePrivateField.class,
+            areEffectivelyImmutable());
+
         assertImmutable(ObjectWithSinglePrivateField.class);
     }
 
@@ -57,9 +64,22 @@ public class RealImmutable {
 
     @Test
     public void failsBecauseZonedDateTimeUsesAbstractFields() {
-        assertImmutable(ObjectWithPrivateFinalDateWithZoneField.class);
         assertImmutable(ZonedDateTime.class);
+        assertImmutable(ObjectWithPrivateFinalDateWithZoneField.class);
     }
 
+    @Test
+    public void failsBecauseFieldIsAbstract() {
+        assertImmutable(ObjectWithPrivateFinalAbstractField.class);
+    }
 
+    @Test
+    public void failsBecauseArraysAreMutableIsAbstract() {
+        assertImmutable(ObjectWithPrivateFinalArrayField.class);
+    }
+
+    @Test
+    public void failsBecauseGenericsMayBeMutated() {
+        assertImmutable(ObjectWithPrivateFinalGenericField.class);
+    }
 }

@@ -7,6 +7,7 @@ public final class ObjectWithPrivateFinalListPassedViaConstructor {
 
     public ObjectWithPrivateFinalListPassedViaConstructor(
         ArrayList<Integer> list) {
+
         this.list = list;
     }
 }
