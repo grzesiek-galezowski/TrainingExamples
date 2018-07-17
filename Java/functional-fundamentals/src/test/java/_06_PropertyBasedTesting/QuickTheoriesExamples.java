@@ -9,7 +9,7 @@ import static org.quicktheories.generators.SourceDSL.integers;
 import static org.quicktheories.generators.SourceDSL.lists;
 import static org.quicktheories.generators.SourceDSL.strings;
 
-public class Lolokimono {
+public class QuickTheoriesExamples {
     @Test
     public void addingTwoPositiveIntegersAlwaysGivesAPositiveInteger(){
         qt()
