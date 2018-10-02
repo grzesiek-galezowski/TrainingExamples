@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using static System.Environment;
 
-namespace OpenChatSpecification
+namespace AutomatedRefactorings._5_MakeNotStaticFavouriteTrick
 {
   public class Database
   {
@@ -44,33 +43,33 @@ namespace OpenChatSpecification
     //7. Convert to instance method
     public void Execute()
     {
-      List<EmployeeDto> employeeDtos = Database.LoadEmployees();
-      StringBuilder report = new StringBuilder("");
-      report.Append("=== BEGIN ===").Append(NewLine);
+      var employeeDtos = Database.LoadEmployees();
+      var report = new StringBuilder("");
+      report.Append("=== BEGIN ===").Append(Environment.NewLine);
 
-      report.Append("UNDERPAID EMPLOYEES").Append(NewLine);
+      report.Append("UNDERPAID EMPLOYEES").Append(Environment.NewLine);
 
       //underpaid employees
       foreach (EmployeeDto e in employeeDtos) 
       {
         if (e.Pay < averagePay * 0.8)
         {
-          report.Append(e).Append(NewLine);
+          report.Append(e).Append(Environment.NewLine);
         }
       }
 
-      report.Append("OVERPAID EMPLOYEES").Append(NewLine);
+      report.Append("OVERPAID EMPLOYEES").Append(Environment.NewLine);
 
       //overpaid employees
       foreach (EmployeeDto e in employeeDtos) 
       {
         if (e.Pay > averagePay * 1.2)
         {
-          report.Append(e).Append(NewLine);
+          report.Append(e).Append(Environment.NewLine);
         }
       }
 
-      report.Append("=== END ===").Append(NewLine);
+      report.Append("=== END ===").Append(Environment.NewLine);
 
       Console.WriteLine(report.ToString());
     }
