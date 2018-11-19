@@ -169,3 +169,6 @@ Java/digits-randori/build/*
 Java/functional-fundamentals/build/*
 CSharp/AutomatedRefactorings/.vs/AutomatedRefactorings/v15/Server/sqlite3/storage.ide-shm
 *.ide-wal
+CSharp/NullIssues/**/obj/*
+CSharp/NullIssues/**/bin/*
+CSharp/NullIssues/.vs/*
