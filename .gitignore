@@ -167,6 +167,7 @@ Java/functional-fundamentals/build/dependencyUpdates/report.txt
 Java/xunit-test-patterns/.gradle/buildOutputCleanup/cache.properties
 Java/digits-randori/build/*
 Java/functional-fundamentals/build/*
+Java/empty-pacman-randori2/.idea/*
 CSharp/AutomatedRefactorings/.vs/AutomatedRefactorings/v15/Server/sqlite3/storage.ide-shm
 *.ide-wal
 CSharp/NullIssues/**/obj/*
