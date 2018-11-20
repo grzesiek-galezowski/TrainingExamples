@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Net.Cache;
 
 namespace NullAsNothing
 {
@@ -6,7 +6,25 @@ namespace NullAsNothing
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var mySystem = new MySystem(new UsersCache(), new RadioCache(), new GroupCache());
+            
+            var result = mySystem.QueryWith(WhateverQuery());
+            result.SendToUser();
         }
+
+        private static QueryForData WhateverQuery()
+        {
+            return new QueryForData()
+            {
+                EntityId = "trolololo",
+                EntityType = EntityTypes.Radio
+            };
+        }
+    }
+
+    internal class QueryForData
+    {
+        public EntityTypes EntityType { get; set; }
+        public string EntityId { get; set; }
     }
 }

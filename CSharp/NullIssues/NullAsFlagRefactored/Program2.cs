@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NullAsFlag
+namespace NullAsFlagRefactored
 {
     class Program2
     {
