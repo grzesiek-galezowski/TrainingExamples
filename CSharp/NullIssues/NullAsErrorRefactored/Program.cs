@@ -2,33 +2,40 @@
 
 namespace NullAsErrorRefactored
 {
+    //exceptions have 2 things nulls do not:
+    //1. A name
+    //2. A stack trace
+
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             var database = new Database();
             var userDto = new UserDto();
 
             try
             {
-                var id = database.Save(userDto);
+                database.Save(userDto);
             }
             catch (DatabaseConnectionException e)
-            {
-
-            }
-
-            if (id == null)
             {
                 LogError(
                     $"Could not connect to db to save user {userDto}");
             }
         }
 
+
+
+
+
         private static void LogError(string s)
         {
             Console.WriteLine(s);
         }
+    }
+
+    internal class DatabaseConnectionException : Exception
+    {
     }
 
     internal class ResourceId
@@ -41,7 +48,7 @@ namespace NullAsErrorRefactored
 
     internal class Database
     {
-        public ResourceId Save(UserDto userDto)
+        public void Save(UserDto userDto)
         {
         }
     }
