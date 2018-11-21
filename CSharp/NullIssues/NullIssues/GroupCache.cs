@@ -1,6 +1,6 @@
 ﻿using Functional.Maybe;
 
-namespace NullAsNothingRefactored
+namespace NullAsNothingRefactored2
 {
     internal class GroupCache : ICache
     {

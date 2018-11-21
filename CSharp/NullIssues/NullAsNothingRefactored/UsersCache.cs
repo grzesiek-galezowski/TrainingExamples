@@ -1,10 +1,12 @@
-﻿namespace NullAsNothingRefactored
+﻿using Functional.Maybe;
+
+namespace NullAsNothingRefactored
 {
-    internal class UsersCache : ICache
+    public class UsersCache : ICache
     {
-        public QueryResult GetBy(string entityId)
+        public Maybe<QueryResult> GetBy(string entityId)
         {
-            return new QueryResult();
+            return new QueryResult().ToMaybe();
         }
     }
 }

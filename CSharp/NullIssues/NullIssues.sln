@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NullIssues", "NullIssues\NullIssues.csproj", "{DD30B50C-AE44-4B2C-ACA3-FB3CDA8C312B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NullAsNothingRefactored2", "NullIssues\NullAsNothingRefactored2.csproj", "{DD30B50C-AE44-4B2C-ACA3-FB3CDA8C312B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NullAsFlag", "NullAsFlag\NullAsFlag.csproj", "{12E819A4-5303-4242-B05B-C2B8B5F5F4B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NullAsFlag", "NullAsFlag\NullAsFlag.csproj", "{12E819A4-5303-4242-B05B-C2B8B5F5F4B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NullAsFlagRefactored", "NullAsFlagRefactored\NullAsFlagRefactored.csproj", "{35A519F0-2976-47A9-9A52-661A1305BDB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NullAsFlagRefactored", "NullAsFlagRefactored\NullAsFlagRefactored.csproj", "{35A519F0-2976-47A9-9A52-661A1305BDB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NullAsError", "NullAsError\NullAsError.csproj", "{B97F20E5-1CBF-4BF0-8869-3BF2DFBB41D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NullAsError", "NullAsError\NullAsError.csproj", "{B97F20E5-1CBF-4BF0-8869-3BF2DFBB41D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NullAsErrorRefactored", "NullAsErrorRefactored\NullAsErrorRefactored.csproj", "{7602C052-8BFA-4299-BE4C-EC27D66D0796}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NullAsErrorRefactored", "NullAsErrorRefactored\NullAsErrorRefactored.csproj", "{7602C052-8BFA-4299-BE4C-EC27D66D0796}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NullAsNothing", "NullAsNothing\NullAsNothing.csproj", "{92D986A6-5BD4-4E53-8B1A-44790A35280A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NullAsNothing", "NullAsNothing\NullAsNothing.csproj", "{92D986A6-5BD4-4E53-8B1A-44790A35280A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NullAsNothingRefactored", "NullAsNothingRefactored\NullAsNothingRefactored.csproj", "{B90714BE-7C34-454D-A17D-2BE2C6FB4477}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NullAsNothingRefactored", "NullAsNothingRefactored\NullAsNothingRefactored.csproj", "{B90714BE-7C34-454D-A17D-2BE2C6FB4477}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

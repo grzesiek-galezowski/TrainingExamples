@@ -1,8 +1,6 @@
-﻿using Functional.Maybe;
-
-namespace NullAsNothing
+﻿namespace NullAsNothingRefactored2
 {
-    internal class MySystem
+    public class MySystem
     {
         private readonly ICache _usersCache;
         private readonly ICache _radioCache;
@@ -19,15 +17,15 @@ namespace NullAsNothing
         {
             if (queryForData.EntityType == EntityTypes.User)
             {
-                return _usersCache.GetBy(queryForData.EntityId);
+                return _usersCache.GetBy(queryForData.EntityId).Value;
             }
             else if (queryForData.EntityType == EntityTypes.Radio)
             {
-                return _radioCache.GetBy(queryForData.EntityId);
+                return _radioCache.GetBy(queryForData.EntityId).Value;
             }
             else if (queryForData.EntityType == EntityTypes.Group)
             {
-                return _groupCache.GetBy(queryForData.EntityId);
+                return _groupCache.GetBy(queryForData.EntityId).Value;
             }
             else
             {

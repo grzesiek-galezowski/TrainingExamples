@@ -1,4 +1,6 @@
-﻿namespace NullAsNothingRefactored
+﻿using Functional.Maybe;
+
+namespace NullAsNothingRefactored
 {
     internal class MySystem
     {
@@ -13,7 +15,7 @@
             _groupCache = groupCache;
         }
 
-        public QueryResult QueryWith(QueryForData queryForData)
+        public Maybe<QueryResult> QueryWith(QueryForData queryForData)
         {
             if (queryForData.EntityType == EntityTypes.User)
             {

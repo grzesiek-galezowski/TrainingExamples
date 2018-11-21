@@ -5,4 +5,10 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="Functional.Maybe">
+      <HintPath>..\..\..\..\..\..\.nuget\packages\functional.maybe\1.1.1\lib\net45\Functional.Maybe.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

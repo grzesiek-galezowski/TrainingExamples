@@ -5,4 +5,8 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Functional.Maybe" Version="1.1.1" />
+  </ItemGroup>
+
 </Project>

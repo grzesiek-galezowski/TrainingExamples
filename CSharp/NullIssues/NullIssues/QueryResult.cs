@@ -1,4 +1,4 @@
-﻿namespace NullAsNothingRefactored
+﻿namespace NullAsNothingRefactored2
 {
     public class QueryResult
     {

@@ -1,8 +1,8 @@
 ﻿using Functional.Maybe;
 
-namespace NullAsNothingRefactored
+namespace NullAsNothingRefactored2
 {
-    internal interface ICache
+    public interface ICache
     {
         Maybe<QueryResult> GetBy(string entityId);
     }
