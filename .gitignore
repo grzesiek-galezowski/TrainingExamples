@@ -173,3 +173,5 @@ CSharp/AutomatedRefactorings/.vs/AutomatedRefactorings/v15/Server/sqlite3/storag
 CSharp/NullIssues/**/obj/*
 CSharp/NullIssues/**/bin/*
 CSharp/NullIssues/.vs/*
+*.ide-shm
+CSharp/FizzBuzzCore/.vs/FizzBuzzCore/DesignTimeBuild/.dtbcache
