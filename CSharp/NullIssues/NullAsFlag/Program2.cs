@@ -51,7 +51,10 @@ namespace NullAsFlag
 
         public void HandleReplicatedMessage(string message)
         {
-            _myNotificationsEngine.NotifyNewData(_localDataCenter, null, message);
+            _myNotificationsEngine.NotifyNewData(
+                _localDataCenter, 
+                null, 
+                message);
         }
     }
 
@@ -65,12 +68,15 @@ namespace NullAsFlag
 
     internal class MyNotificationsEngine
     {
-        public void NotifyNewData(DataCenter localDataCenter, DataCenter remoteDataCenter, string lol)
+        public void NotifyNewData(
+            DataCenter localDataCenter, 
+            DataCenter remoteDataCenter /* = null  */, 
+            string message)
         {
-            localDataCenter.Send(lol);
+            localDataCenter.Send(message);
             if (remoteDataCenter != null)
             {
-                remoteDataCenter.Send(lol);
+                remoteDataCenter.Send(message);
             }
         }
     }

@@ -6,9 +6,12 @@ namespace NullAsNothingRefactored
     {
         static void Main(string[] args)
         {
-            var mySystem = new MySystem(new UsersCache(), new RadioCache(), new GroupCache());
+            var mySystem = new MySystem(
+                new UsersCache(), 
+                new RadioCache(), 
+                new GroupCache());
 
-            var result = mySystem.QueryWith(WhateverQuery());
+            Maybe<QueryResult> result = mySystem.QueryWith(WhateverQuery());
             if (result.HasValue)
             {
                 result.Value.SendToUser();

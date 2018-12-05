@@ -6,7 +6,10 @@ namespace NullAsNothing
     {
         static void Main(string[] args)
         {
-            var mySystem = new MySystem(new UsersCache(), new RadioCache(), new GroupCache());
+            var mySystem = new MySystem(
+                new UsersCache(), 
+                new RadioCache(), 
+                new GroupCache());
             
             var result = mySystem.QueryWith(WhateverQuery());
             result.SendToUser();

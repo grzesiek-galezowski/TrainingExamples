@@ -6,7 +6,7 @@ namespace NullAsNothingRefactored2
     {
         public Maybe<QueryResult> GetBy(string entityId)
         {
-            return ((QueryResult) null).ToMaybe();
+            return Maybe<QueryResult>.Nothing;
         }
     }
 }
