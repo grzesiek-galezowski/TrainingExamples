@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NullAsNothing", "NullAsNoth
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NullAsNothingRefactored", "NullAsNothingRefactored\NullAsNothingRefactored.csproj", "{B90714BE-7C34-454D-A17D-2BE2C6FB4477}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaybeAsMonad", "MaybeAsMonad\MaybeAsMonad.csproj", "{713F5FD6-3F8D-4A51-A10A-558A016C25A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{B90714BE-7C34-454D-A17D-2BE2C6FB4477}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B90714BE-7C34-454D-A17D-2BE2C6FB4477}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B90714BE-7C34-454D-A17D-2BE2C6FB4477}.Release|Any CPU.Build.0 = Release|Any CPU
+		{713F5FD6-3F8D-4A51-A10A-558A016C25A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{713F5FD6-3F8D-4A51-A10A-558A016C25A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{713F5FD6-3F8D-4A51-A10A-558A016C25A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{713F5FD6-3F8D-4A51-A10A-558A016C25A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

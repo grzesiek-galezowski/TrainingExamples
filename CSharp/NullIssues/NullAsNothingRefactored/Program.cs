@@ -11,10 +11,11 @@ namespace NullAsNothingRefactored
                 new RadioCache(), 
                 new GroupCache());
 
-            Maybe<QueryResult> result = mySystem.QueryWith(WhateverQuery());
-            if (result.HasValue)
+            Maybe<QueryResult> maybeResult = mySystem.QueryWith(WhateverQuery());
+
+            if (maybeResult.HasValue)
             {
-                result.Value.SendToUser();
+                maybeResult.Value.SendToUser();
             }
         }
 
