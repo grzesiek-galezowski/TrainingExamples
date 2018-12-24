@@ -1,0 +1,15 @@
+﻿{
+  "name": "Bot_Builder_Basic_Bot_V4",
+  "services": [
+    {
+      "type": "endpoint",
+      "name": "development",
+      "endpoint": "http://localhost:3978/api/messages",
+      "appId": "",
+      "appPassword": "",
+      "id": "1"
+    }
+  ],
+  "padlock": "",
+  "version": "2.0"
+}

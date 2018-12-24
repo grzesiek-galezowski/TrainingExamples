@@ -175,3 +175,4 @@ CSharp/NullIssues/**/bin/*
 CSharp/NullIssues/.vs/*
 *.ide-shm
 CSharp/FizzBuzzCore/.vs/FizzBuzzCore/DesignTimeBuild/.dtbcache
+CSharp/MyBot/.vs/MyBot/DesignTimeBuild/.dtbcache
