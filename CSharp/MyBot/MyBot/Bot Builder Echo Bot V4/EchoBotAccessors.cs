@@ -4,7 +4,7 @@
 using System;
 using Microsoft.Bot.Builder;
 
-namespace Bot_Builder_Echo_Bot_V4
+namespace BotBuilderEchoBotV4
 {
   /// <summary>
   /// This class is created as a Singleton and passed into the IBot-derived constructor.

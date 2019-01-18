@@ -9,7 +9,7 @@ using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Schema;
 using Microsoft.Extensions.Logging;
 
-namespace Bot_Builder_Basic_Bot_V4
+namespace BotBuilderBasicBotV4.Dialogs.Greeting
 {
   /// <summary>
   /// Demonstrates the following concepts:

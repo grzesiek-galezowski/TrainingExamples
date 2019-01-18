@@ -1,3 +1,6 @@
-internal interface IDialogContext
+namespace BotBuilderEchoBotV4
 {
+    internal interface IDialogContext
+    {
+    }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Bot_Builder_Echo_Bot_V4
+namespace BotBuilderEchoBotV4.Navigation
 {
   public class YesNoTransitionState : IState //bug rename
   {

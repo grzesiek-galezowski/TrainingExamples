@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-namespace Bot_Builder_Basic_Bot_V4
+namespace BotBuilderBasicBotV4.Dialogs.Greeting
 {
   /// <summary>
   /// User state properties for Greeting.

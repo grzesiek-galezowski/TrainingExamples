@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-namespace Bot_Builder_Echo_Bot_V4
+namespace BotBuilderEchoBotV4
 {
   /// <summary>
   /// Stores counter state for the conversation.

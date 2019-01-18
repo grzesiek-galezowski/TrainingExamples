@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using Microsoft.Bot.Builder.AI.Luis;
 using Microsoft.Bot.Configuration;
 
-namespace Bot_Builder_Basic_Bot_V4
+namespace BotBuilderBasicBotV4
 {
   /// <summary>
   /// Represents references to external services.

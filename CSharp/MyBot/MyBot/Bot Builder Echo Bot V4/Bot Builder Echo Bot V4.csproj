@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <CodeAnalysisRuleSet>EchoBotWithCounter.ruleset</CodeAnalysisRuleSet>
+    <RootNamespace>BotBuilderEchoBotV4</RootNamespace>
+    <AssemblyName>Bot Builder EchoBotV4</AssemblyName>
   </PropertyGroup>
 
 

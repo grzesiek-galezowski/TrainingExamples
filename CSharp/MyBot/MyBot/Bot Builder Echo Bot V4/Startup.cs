@@ -15,7 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace Bot_Builder_Echo_Bot_V4
+namespace BotBuilderEchoBotV4
 {
   /// <summary>
   /// The Startup class configures services and the request pipeline.

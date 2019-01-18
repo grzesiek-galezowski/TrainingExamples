@@ -1,7 +1,10 @@
-public enum States
+namespace BotBuilderEchoBotV4
 {
-  InitialChoice,
-  DisplayingCatalog,
-  DisplayingShop,
-  FromGameCatalogToDisplayShop
+    public enum States
+    {
+        InitialChoice,
+        DisplayingCatalog,
+        DisplayingShop,
+        FromGameCatalogToDisplayShop
+    }
 }

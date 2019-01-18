@@ -13,7 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace Bot_Builder_Basic_Bot_V4
+namespace BotBuilderBasicBotV4
 {
   /// <summary>
   /// The Startup class configures services and the app's request pipeline.

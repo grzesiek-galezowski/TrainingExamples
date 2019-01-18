@@ -1,6 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using BotBuilderEchoBotV4.Navigation;
 
-namespace Bot_Builder_Echo_Bot_V4
+namespace BotBuilderEchoBotV4
 {
   public class StatesFactory : IStatesFactory
   {
@@ -18,38 +19,14 @@ namespace Bot_Builder_Echo_Bot_V4
       {
         return new YesNoTransitionState();
       }
-      else //if(state == States.DisplayingShop)
+      else if(state == States.DisplayingShop)
       {
         return new DisplayingShopState();
       }
-    }
-  }
-
-  public class DisplayingShopState : IState
-  {
-    public Task OnWatchGameCatalogAsync(User user, DialogStateMachine dialogContext)
-    {
-      throw new System.NotImplementedException();
-    }
-
-    public Task OnEnterAsync(User user)
-    {
-      throw new System.NotImplementedException();
-    }
-
-    public Task OnGoShoppingAsync(User user, DialogStateMachine dialogStateMachine)
-    {
-      throw new System.NotImplementedException();
-    }
-
-    public Task OnYesAsync(User user, DialogStateMachine dialogStateMachine)
-    {
-      throw new System.NotImplementedException();
-    }
-
-    public Task OnNoAsync(User user, DialogStateMachine dialogStateMachine)
-    {
-      throw new System.NotImplementedException();
+      else
+      {
+          throw new Exception("trolololo");
+      }
     }
   }
 }

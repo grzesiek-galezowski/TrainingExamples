@@ -1,6 +1,10 @@
 using System.Threading.Tasks;
+using BotBuilderEchoBotV4.Navigation;
 
-internal interface IIntent
+namespace BotBuilderEchoBotV4
 {
-  Task ApplyTo(DialogStateMachine dialogStateMachine, User user);
+    internal interface IIntent
+    {
+        Task ApplyTo(DialogStateMachine dialogStateMachine, User user);
+    }
 }

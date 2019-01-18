@@ -7,7 +7,7 @@ using Microsoft.Bot.Builder;
 using Microsoft.Bot.Schema;
 using Microsoft.Extensions.Logging;
 
-namespace Bot_Builder_Echo_Bot_V4
+namespace BotBuilderEchoBotV4
 {
   public class ConversationTurnContext
   {

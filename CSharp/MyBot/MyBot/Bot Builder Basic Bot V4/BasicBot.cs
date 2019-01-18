@@ -7,13 +7,14 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using BotBuilderBasicBotV4.Dialogs.Greeting;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Schema;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace Bot_Builder_Basic_Bot_V4
+namespace BotBuilderBasicBotV4
 {
   /// <summary>
   /// Main entry point and orchestration for bot.

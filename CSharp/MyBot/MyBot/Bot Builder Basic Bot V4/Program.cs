@@ -5,7 +5,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace Bot_Builder_Basic_Bot_V4
+namespace BotBuilderBasicBotV4
 {
   public class Program
   {
