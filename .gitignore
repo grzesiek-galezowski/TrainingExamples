@@ -176,3 +176,6 @@ CSharp/NullIssues/.vs/*
 *.ide-shm
 CSharp/FizzBuzzCore/.vs/FizzBuzzCore/DesignTimeBuild/.dtbcache
 CSharp/MyBot/.vs/MyBot/DesignTimeBuild/.dtbcache
+
+**/*.csproj.nuget.g.props
+**/obj/

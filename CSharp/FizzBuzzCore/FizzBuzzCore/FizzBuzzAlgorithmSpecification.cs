@@ -29,7 +29,6 @@ namespace FizzBuzzCore
         }
     }*/
 
-
     public class FizzBuzzAlgorithmSpecification
     {
         [TestCase(1, "1")]

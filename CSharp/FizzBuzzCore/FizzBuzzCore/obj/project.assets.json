@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.1": {
-      "FluentAssertions/5.5.3": {
+      "FluentAssertions/5.6.0": {
         "type": "package",
         "dependencies": {
           "System.Configuration.ConfigurationManager": "4.4.0"
@@ -16,6 +16,18 @@
       },
       "FluentAssertions.Analyzers/0.11.4": {
         "type": "package"
+      },
+      "Functional.Maybe/2.0.10": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.0/Functional.Maybe.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/Functional.Maybe.dll": {}
+        }
       },
       "Microsoft.CodeCoverage/15.9.0": {
         "type": "package",
@@ -664,7 +676,7 @@
           "build/NUnit.props": {}
         }
       },
-      "NUnit3TestAdapter/3.11.2": {
+      "NUnit3TestAdapter/3.12.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.DotNet.InternalAbstractions": "1.0.0",
@@ -1773,14 +1785,14 @@
     }
   },
   "libraries": {
-    "FluentAssertions/5.5.3": {
-      "sha512": "eapf6Utuug2MeBH8gWHobQypNtC3wqHh3EbB2qUHp41p1TGrR5L1IdqtFT0PWOU5waCtMw6ONxaBT/VeI6ccAg==",
+    "FluentAssertions/5.6.0": {
+      "sha512": "WM7ueKkwUmxMsOE7fm3h7zc8XuWivq3hkqTRTo8XFYMbt91KuTIdY1ADTVUz/fZrc9DaYiyK7eDUyZKkyhXp5Q==",
       "type": "package",
-      "path": "fluentassertions/5.5.3",
+      "path": "fluentassertions/5.6.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "fluentassertions.5.5.3.nupkg.sha512",
+        "fluentassertions.5.6.0.nupkg.sha512",
         "fluentassertions.nuspec",
         "lib/net45/FluentAssertions.dll",
         "lib/net45/FluentAssertions.pdb",
@@ -1815,6 +1827,18 @@
         "fluentassertions.analyzers.nuspec",
         "tools/install.ps1",
         "tools/uninstall.ps1"
+      ]
+    },
+    "Functional.Maybe/2.0.10": {
+      "sha512": "rdxVjS7ToI9oc8IUzp6DFxZmK4Sxm79G2O+0rpIXXAEg2R2bOxp3+hwCl6LwRIxyyHXOPQ/llo6m4Le22S+7rQ==",
+      "type": "package",
+      "path": "functional.maybe/2.0.10",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "functional.maybe.2.0.10.nupkg.sha512",
+        "functional.maybe.nuspec",
+        "lib/netstandard1.0/Functional.Maybe.dll"
       ]
     },
     "Microsoft.CodeCoverage/15.9.0": {
@@ -2767,10 +2791,10 @@
         "nunit.nuspec"
       ]
     },
-    "NUnit3TestAdapter/3.11.2": {
-      "sha512": "BJNgCjEHToRJo8Mxv70cjw6/hBwl2/HqCb/zaSWDtuEVbmtOaElQpx2TXnymMuXrkj3sWhAH9Xe9QCs6iKhvYw==",
+    "NUnit3TestAdapter/3.12.0": {
+      "sha512": "H1zF3uzN+nheWW3wfx1xyottGjLJxi8E3ll8XV9ga7lEClLCoILvnsWgIZRD8WGFVuEnodA47OpCqu7y/yCDsQ==",
       "type": "package",
-      "path": "nunit3testadapter/3.11.2",
+      "path": "nunit3testadapter/3.12.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2784,7 +2808,7 @@
         "build/netcoreapp1.0/NUnit3.TestAdapter.pdb",
         "build/netcoreapp1.0/NUnit3TestAdapter.props",
         "build/netcoreapp1.0/nunit.engine.netstandard.dll",
-        "nunit3testadapter.3.11.2.nupkg.sha512",
+        "nunit3testadapter.3.12.0.nupkg.sha512",
         "nunit3testadapter.nuspec"
       ]
     },
@@ -6031,12 +6055,13 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
-      "FluentAssertions >= 5.5.3",
+      "FluentAssertions >= 5.6.0",
       "FluentAssertions.Analyzers >= 0.11.4",
+      "Functional.Maybe >= 2.0.10",
       "Microsoft.NET.Test.Sdk >= 15.9.0",
       "Microsoft.NETCore.App >= 2.1.0",
       "NUnit >= 3.11.0",
-      "NUnit3TestAdapter >= 3.11.2",
+      "NUnit3TestAdapter >= 3.12.0",
       "xunit >= 2.4.1",
       "xunit.runner.visualstudio >= 2.4.1"
     ]
@@ -6084,11 +6109,15 @@
         "dependencies": {
           "FluentAssertions": {
             "target": "Package",
-            "version": "[5.5.3, )"
+            "version": "[5.6.0, )"
           },
           "FluentAssertions.Analyzers": {
             "target": "Package",
             "version": "[0.11.4, )"
+          },
+          "Functional.Maybe": {
+            "target": "Package",
+            "version": "[2.0.10, )"
           },
           "Microsoft.NET.Test.Sdk": {
             "target": "Package",
@@ -6105,7 +6134,7 @@
           },
           "NUnit3TestAdapter": {
             "target": "Package",
-            "version": "[3.11.2, )"
+            "version": "[3.12.0, )"
           },
           "xunit": {
             "target": "Package",
