@@ -1504,10 +1504,11 @@
           "lib/netstandard1.4/Microsoft.Azure.KeyVault.WebKey.dll": {}
         }
       },
-      "Microsoft.Bot.Builder/4.0.6": {
+      "Microsoft.Bot.Builder/4.2.2": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Bot.Connector": "4.0.6",
+          "Microsoft.Bot.Connector": "4.2.2",
+          "Microsoft.Extensions.Logging": "2.1.1",
           "SourceLink.Create.CommandLine": "2.8.1"
         },
         "compile": {
@@ -1517,13 +1518,13 @@
           "lib/netstandard2.0/Microsoft.Bot.Builder.dll": {}
         }
       },
-      "Microsoft.Bot.Builder.Integration.AspNet.Core/4.0.6": {
+      "Microsoft.Bot.Builder.Integration.AspNet.Core/4.2.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Hosting.Abstractions": "2.0.1",
-          "Microsoft.Bot.Builder": "4.0.6",
-          "Microsoft.Extensions.Configuration": "2.0.1",
-          "Microsoft.Extensions.Options": "2.0.1",
+          "Microsoft.Bot.Builder": "4.2.2",
+          "Microsoft.Bot.Configuration": "4.2.2",
+          "Microsoft.Extensions.Configuration": "2.1.1",
           "Microsoft.Net.Http.Headers": "2.0.1",
           "Newtonsoft.Json": "10.0.3",
           "SourceLink.Create.CommandLine": "2.8.1"
@@ -1535,7 +1536,7 @@
           "lib/netstandard2.0/Microsoft.Bot.Builder.Integration.AspNet.Core.dll": {}
         }
       },
-      "Microsoft.Bot.Configuration/4.0.6": {
+      "Microsoft.Bot.Configuration/4.2.2": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "10.0.3",
@@ -1549,10 +1550,11 @@
           "lib/netstandard2.0/Microsoft.Bot.Configuration.dll": {}
         }
       },
-      "Microsoft.Bot.Connector/4.0.6": {
+      "Microsoft.Bot.Connector/4.2.2": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Bot.Schema": "4.0.6",
+          "Microsoft.Bot.Schema": "4.2.2",
+          "Microsoft.IdentityModel.Clients.ActiveDirectory": "4.5.0",
           "Microsoft.IdentityModel.Protocols.OpenIdConnect": "5.2.1",
           "Microsoft.Rest.ClientRuntime": "2.3.13",
           "Newtonsoft.Json": "10.0.3",
@@ -1565,7 +1567,7 @@
           "lib/netstandard2.0/Microsoft.Bot.Connector.dll": {}
         }
       },
-      "Microsoft.Bot.Schema/4.0.6": {
+      "Microsoft.Bot.Schema/4.2.2": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "10.0.3",
@@ -2442,19 +2444,20 @@
           "lib/netstandard2.0/Microsoft.Extensions.WebEncoders.dll": {}
         }
       },
-      "Microsoft.IdentityModel.Clients.ActiveDirectory/3.14.1": {
+      "Microsoft.IdentityModel.Clients.ActiveDirectory/4.5.0": {
         "type": "package",
         "dependencies": {
-          "NETStandard.Library": "1.6.0",
-          "System.Runtime.Serialization.Json": "4.0.2",
-          "System.Runtime.Serialization.Primitives": "4.1.1"
+          "NETStandard.Library": "1.6.1",
+          "System.Runtime.Serialization.Json": "4.3.0",
+          "System.Runtime.Serialization.Primitives": "4.3.0",
+          "System.Security.Cryptography.X509Certificates": "4.3.0",
+          "System.Security.SecureString": "4.3.0",
+          "System.Xml.XDocument": "4.3.0"
         },
         "compile": {
-          "lib/netstandard1.3/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll": {},
           "lib/netstandard1.3/Microsoft.IdentityModel.Clients.ActiveDirectory.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.3/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll": {},
           "lib/netstandard1.3/Microsoft.IdentityModel.Clients.ActiveDirectory.dll": {}
         }
       },
@@ -4158,12 +4161,12 @@
           "lib/netstandard1.3/System.Runtime.Numerics.dll": {}
         }
       },
-      "System.Runtime.Serialization.Json/4.0.2": {
+      "System.Runtime.Serialization.Json/4.3.0": {
         "type": "package",
         "dependencies": {
-          "System.IO": "4.1.0",
-          "System.Private.DataContractSerialization": "4.1.1",
-          "System.Runtime": "4.1.0"
+          "System.IO": "4.3.0",
+          "System.Private.DataContractSerialization": "4.3.0",
+          "System.Runtime": "4.3.0"
         },
         "compile": {
           "ref/netstandard1.0/System.Runtime.Serialization.Json.dll": {}
@@ -4487,6 +4490,32 @@
             "rid": "unix"
           },
           "runtimes/win/lib/netcoreapp2.0/System.Security.Principal.Windows.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
+      "System.Security.SecureString/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Handles": "4.3.0",
+          "System.Runtime.InteropServices": "4.3.0",
+          "System.Security.Cryptography.Primitives": "4.3.0",
+          "System.Text.Encoding": "4.3.0",
+          "System.Threading": "4.3.0"
+        },
+        "compile": {
+          "ref/netstandard1.3/System.Security.SecureString.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netstandard1.3/System.Security.SecureString.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          },
+          "runtimes/win/lib/netstandard1.3/System.Security.SecureString.dll": {
             "assetType": "runtime",
             "rid": "win"
           }
@@ -4863,7 +4892,7 @@
       ]
     },
     "Libuv/1.10.0": {
-      "sha512": "zisTbxitzki256+rKY0myI2T1yLyO9+qAU8P+FXkd8Dv0Iymk484Y9SbwUlyL3igF/bpiCv7SCdv349rN/JbfQ==",
+      "sha512": "lgDqozqVhVQ+YeXZdD/nh1s0noRPw12Z6XJ4EEmdcZYd8qIbiAIg6sfiQeHWpglurv2TPj8pSfRiUNGaRGSBWw==",
       "type": "package",
       "path": "libuv/1.10.0",
       "files": [
@@ -4883,7 +4912,7 @@
       ]
     },
     "Microsoft.ApplicationInsights/2.4.0": {
-      "sha512": "KnW9kZcj+GnPA0OCKk6TXqJTXMp8dwtad30akKxI/0oyDZ4isfwt/7WakT0o3VPsU76kg/SFc3OIsReoqPF+9w==",
+      "sha512": "ijBpEs+3LXptF1VMIztBjHSBmfaZXQ0esX5FWqi9+jb5kYcYm2uyZ+lSL3MkTjie/529QBSkxsCTYwyOUihHsg==",
       "type": "package",
       "path": "microsoft.applicationinsights/2.4.0",
       "files": [
@@ -4920,7 +4949,7 @@
       ]
     },
     "Microsoft.ApplicationInsights.DependencyCollector/2.4.1": {
-      "sha512": "9dNiUxWKLlOxfk9PLrqg+idGZOkfC6Cc+wv9vieVxvcUMxDX2bRLg85F0p7gCStCwcjRySEBaJIDzktw8S8vkQ==",
+      "sha512": "cmNBSZuXAN3Fcjqo6cORASHzsCDojwVkCiSbcg6lMPL8yzUHk9VX042oDfUwKNq4yk+80wgUmYKdSUgyuXaHKw==",
       "type": "package",
       "path": "microsoft.applicationinsights.dependencycollector/2.4.1",
       "files": [
@@ -5282,10 +5311,11 @@
       ]
     },
     "Microsoft.AspNetCore.Diagnostics.Abstractions/2.1.1": {
-      "sha512": "rLn97UtnaXvD1E8K2UFQg5MBZ/D6KLuMZEEt47qkIIEsEQar84yIlR3HdDDF7ovJ/Bg546EyJXHxXvi7t6G7yw==",
+      "sha512": "hwWxICfj3y21OZRICVFEA/MmF8b8W52r7OfQkp23uDyfO7QrPPmOedLezmoQ2ydVZNE8d37YXryZcXjr/POG8Q==",
       "type": "package",
       "path": "microsoft.aspnetcore.diagnostics.abstractions/2.1.1",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.Diagnostics.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Diagnostics.Abstractions.xml",
@@ -5400,10 +5430,11 @@
       ]
     },
     "Microsoft.AspNetCore.Http.Features/2.1.1": {
-      "sha512": "cMnTXRH+8T7GLht6cXRCMmN1HaYfXti2WEUdXqMUuyJgi4oH9cmzW4nECSBkQjsCs5O06BphyDDDAsTW/zQmpg==",
+      "sha512": "PZUv3wvyax3Gi2DzpmtclX3cxsk3trXBzeGEiMDFsKoJ+EC0h2O8t0gwevYZwDuHpn+9ZGYJDuP5ub4Trh8MsA==",
       "type": "package",
       "path": "microsoft.aspnetcore.http.features/2.1.1",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.xml",
@@ -5446,7 +5477,7 @@
       ]
     },
     "Microsoft.AspNetCore.JsonPatch/2.0.0": {
-      "sha512": "TTegmLlmfFvCJ/7QRCMWswfmB17DmBS5Z/ahkGW9RihQPvjmW/3FpckVUJSn0D8chbGfM7PUCCXfEYlsKFDF0A==",
+      "sha512": "US78cfi7nrPTXeONgcSWbgrUBLs1Aca4kCJTieWXDLg0G0gwmdfPbd6S3c5TdJRQdA69K3UhPAs9r9ZAMjIFAA==",
       "type": "package",
       "path": "microsoft.aspnetcore.jsonpatch/2.0.0",
       "files": [
@@ -5983,78 +6014,78 @@
         "microsoft.azure.keyvault.webkey.nuspec"
       ]
     },
-    "Microsoft.Bot.Builder/4.0.6": {
-      "sha512": "Dy7GDNV3YY29cqszikrd6c9by4x3CR/vQD6xFBl5Hpfks+Q5LCJo4KdN9H/3GJxzkTM158P/y7Jl2itENmGVHw==",
+    "Microsoft.Bot.Builder/4.2.2": {
+      "sha512": "dmnSUoEod3kbkqfSwPkp+gKaqAy9l4RxxhNYlA3XTdGhfeHRr1mNzyCdaPxJ1KX+Vct07sSfeHwnC5aKguH7Iw==",
       "type": "package",
-      "path": "microsoft.bot.builder/4.0.6",
+      "path": "microsoft.bot.builder/4.2.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Bot.Builder.dll",
         "lib/netstandard2.0/Microsoft.Bot.Builder.pdb",
         "lib/netstandard2.0/Microsoft.Bot.Builder.xml",
-        "microsoft.bot.builder.4.0.6.nupkg.sha512",
+        "microsoft.bot.builder.4.2.2.nupkg.sha512",
         "microsoft.bot.builder.nuspec"
       ]
     },
-    "Microsoft.Bot.Builder.Integration.AspNet.Core/4.0.6": {
-      "sha512": "S1eeQJl1kwXaDCDarBYAv0CUpqueK+tJvNKiIWxQxD9dr7LdqWCdx65hkvZpniiyAkq/Xl6HOpnynk9HPFKNJA==",
+    "Microsoft.Bot.Builder.Integration.AspNet.Core/4.2.2": {
+      "sha512": "4pObX53Xhi6v9AjSgAjIisjmhq52yhX/acce6Msai4wlm5m5uXWAbHms9pt7ABi3JUEkySqXi3zy2CIp+VNTbw==",
       "type": "package",
-      "path": "microsoft.bot.builder.integration.aspnet.core/4.0.6",
+      "path": "microsoft.bot.builder.integration.aspnet.core/4.2.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Bot.Builder.Integration.AspNet.Core.dll",
         "lib/netstandard2.0/Microsoft.Bot.Builder.Integration.AspNet.Core.pdb",
         "lib/netstandard2.0/Microsoft.Bot.Builder.Integration.AspNet.Core.xml",
-        "microsoft.bot.builder.integration.aspnet.core.4.0.6.nupkg.sha512",
+        "microsoft.bot.builder.integration.aspnet.core.4.2.2.nupkg.sha512",
         "microsoft.bot.builder.integration.aspnet.core.nuspec"
       ]
     },
-    "Microsoft.Bot.Configuration/4.0.6": {
-      "sha512": "OecIlSmVhmEJGtN/Z6VBZRDs3yuamIAhyq2HjWdGqggyh7oAj3kxJuFjNVU19GMXMVuCVkPW1d2rFZiTESpCXw==",
+    "Microsoft.Bot.Configuration/4.2.2": {
+      "sha512": "nXkdDAWXnXL0VaQs6JCMXD8LSosZm/7UVutNbuX62xSXgjvbRIH6kConnqYIy4vGT0VWPGEEfNAJ1S9N0CDYeA==",
       "type": "package",
-      "path": "microsoft.bot.configuration/4.0.6",
+      "path": "microsoft.bot.configuration/4.2.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Bot.Configuration.dll",
         "lib/netstandard2.0/Microsoft.Bot.Configuration.pdb",
         "lib/netstandard2.0/Microsoft.Bot.Configuration.xml",
-        "microsoft.bot.configuration.4.0.6.nupkg.sha512",
+        "microsoft.bot.configuration.4.2.2.nupkg.sha512",
         "microsoft.bot.configuration.nuspec"
       ]
     },
-    "Microsoft.Bot.Connector/4.0.6": {
-      "sha512": "p6VuYd/OZPSutWhF4/UhWLmYlXy8VT4dOw3vI7CgmetW6Euko7LmblEn6AB0S8rtbZwUrAXjIDF43/+yuUjHsg==",
+    "Microsoft.Bot.Connector/4.2.2": {
+      "sha512": "xE7P5Flj/VGwLp8blt9SypvU2vxYWcTBwNRd7SXurb9CrhVz+nkZkPXpnY7EGojGySh48+UUwWLwynWFL22ZyA==",
       "type": "package",
-      "path": "microsoft.bot.connector/4.0.6",
+      "path": "microsoft.bot.connector/4.2.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Bot.Connector.dll",
         "lib/netstandard2.0/Microsoft.Bot.Connector.pdb",
         "lib/netstandard2.0/Microsoft.Bot.Connector.xml",
-        "microsoft.bot.connector.4.0.6.nupkg.sha512",
+        "microsoft.bot.connector.4.2.2.nupkg.sha512",
         "microsoft.bot.connector.nuspec"
       ]
     },
-    "Microsoft.Bot.Schema/4.0.6": {
-      "sha512": "LiJcCmmmyKwAfRftmjmeUFwE7M5tSnvOFdfUSV4OXIn6QtkRHs+bbE4ten9wqyO2yRZsJyU4hQJnwENmx1OLIw==",
+    "Microsoft.Bot.Schema/4.2.2": {
+      "sha512": "4AUYmw14GezMxY03cCO3CzmAFCWQ6wViUZjSdYAG0AkiTR1/45Cn3PhiIbL4depHHdX9WY18FDPIL+et0Shn5g==",
       "type": "package",
-      "path": "microsoft.bot.schema/4.0.6",
+      "path": "microsoft.bot.schema/4.2.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Bot.Schema.dll",
         "lib/netstandard2.0/Microsoft.Bot.Schema.pdb",
         "lib/netstandard2.0/Microsoft.Bot.Schema.xml",
-        "microsoft.bot.schema.4.0.6.nupkg.sha512",
+        "microsoft.bot.schema.4.2.2.nupkg.sha512",
         "microsoft.bot.schema.nuspec"
       ]
     },
     "Microsoft.CodeAnalysis.Analyzers/1.1.0": {
-      "sha512": "XhtRenRU26ZRNDaT7SUWnNjZWgv8CUbNXeaVqTM7AUpmb7uGDnm3qekqataZEHPteqAlb2ITupQxahSTCzjXwA==",
+      "sha512": "pqTSw5CRE6TSKALfSaTtY6mxHXoXMUfezq5hn/aKLK98PcRELGbnU9u5I54/fwLwR/GA+2I8JOVhxTBgw9a6fg==",
       "type": "package",
       "path": "microsoft.codeanalysis.analyzers/1.1.0",
       "hasTools": true,
@@ -6072,7 +6103,7 @@
       ]
     },
     "Microsoft.CodeAnalysis.Common/2.3.1": {
-      "sha512": "W3rdClTnJL46eMT/fjZGLDcVkyPzVmbnv9uRZuZUr62FPq9Y7sbsUhHWe+rr9KuOeWxT1/u3QacXQ3dmAjr74w==",
+      "sha512": "nGATpUW09zOGFLQZ3JXIObJyNlk2dvgNgC7Kh+iDpxGWgKHSgpHMXnGmXUecJa4CNi0HhUENKSnEack1aF/MwQ==",
       "type": "package",
       "path": "microsoft.codeanalysis.common/2.3.1",
       "files": [
@@ -6085,7 +6116,7 @@
       ]
     },
     "Microsoft.CodeAnalysis.CSharp/2.3.1": {
-      "sha512": "4rgotVyYKXlVQGqQ5Rq9IKGtIyO+hzvppPDZqE9OX3qUZD0+oaKL1cMQ4vX5o98lEXihOClgGSwaW1E9xRctwQ==",
+      "sha512": "fvO7Q8FqzmWX8gzzCk4Bf34Ms06bZ6r/A9tUz1ndj3ioitAxSC2QUXbUQOJ4ExzohTtXhczJAFirgs//Nasz6A==",
       "type": "package",
       "path": "microsoft.codeanalysis.csharp/2.3.1",
       "files": [
@@ -6111,7 +6142,7 @@
       ]
     },
     "Microsoft.CSharp/4.4.0": {
-      "sha512": "Mg7IqHdgGsyeXSApz85limYBHCUk4dQF4EPnSqcIfFiFA2C6bH4jdtYTsLeYnRN03BkPlNHXtbwlzGn8ASq8LA==",
+      "sha512": "vvVR/B08YVghQ4jHEloxqw2ZWzEGE1AOA5E0DioUM3ujbXz6FD3AfB/0Jl2ohJPd0nXYGwmPe1En6HTsSriq1A==",
       "type": "package",
       "path": "microsoft.csharp/4.4.0",
       "files": [
@@ -6305,7 +6336,7 @@
       ]
     },
     "Microsoft.Data.Sqlite/2.0.1": {
-      "sha512": "bUVc4fdknlFYUnEgljI13lr23YaOXO9GEw0Oo6ay8cWijUA/3raWVTNHdRIASF14RFcJ0RaWgLyRGxo7w2qF0Q==",
+      "sha512": "jJXCZniFDwHGnRYd9WD3vswQCyIXk0/gsne9TLFWIpy6oK4kAcKD1BTncaHQmVg0pp/YmRBKXVIh4yXSHqbsGQ==",
       "type": "package",
       "path": "microsoft.data.sqlite/2.0.1",
       "files": [
@@ -6316,7 +6347,7 @@
       ]
     },
     "Microsoft.Data.Sqlite.Core/2.0.1": {
-      "sha512": "Vubn0Y9RVl82mLoL+8gA7lrbuxdA2+cJmFxfwc56bnujLtTbdcZ8Ay1k+1mGpdZ4IjUKP06IBhXaa071owXStA==",
+      "sha512": "lkUOJRJEXnXAxWKhCSFjYKLhuopw+m6ClML4cF1Rt/Ek8bBUW6hn1xAHCZ9KFqkcNOpBS7rQ6nZBaSXU3mgbOQ==",
       "type": "package",
       "path": "microsoft.data.sqlite.core/2.0.1",
       "files": [
@@ -6329,7 +6360,7 @@
       ]
     },
     "Microsoft.DotNet.PlatformAbstractions/2.0.3": {
-      "sha512": "SjPzgZN6Qp4V7fCtV5gQ2bX4SJwFHQac2TXRl/zN+Z6ULKuomAt/PclgCU9YgYsWWvKCnN0vMmP7U71dnXgttQ==",
+      "sha512": "cXgVdJmW3fLwmSxsv0RlTe4BIKs6slVXV5xRvsO4CV4aUeY67GelaujxY/lP5yVlaMjMM22pXKbKtUY9x050Mw==",
       "type": "package",
       "path": "microsoft.dotnet.platformabstractions/2.0.3",
       "files": [
@@ -6488,7 +6519,7 @@
       ]
     },
     "Microsoft.Extensions.Configuration/2.1.1": {
-      "sha512": "1JaydycXzbfAExlsD7XIWykzVnU/wZM86KzrHyGlXuxqnqzcWSXLJn4Ejn8bDnq07CEJNZ+GjsxWKlJ8kFfnvQ==",
+      "sha512": "LjVKO6P2y52c5ZhTLX/w8zc5H4Y3J/LJsgqTBj49TtFq/hAtVNue/WA0F6/7GMY90xhD7K0MDZ4qpOeWXbLvzg==",
       "type": "package",
       "path": "microsoft.extensions.configuration/2.1.1",
       "files": [
@@ -6501,7 +6532,7 @@
       ]
     },
     "Microsoft.Extensions.Configuration.Abstractions/2.1.1": {
-      "sha512": "9EMhOWU2eOQOtMIJ+vfwKJpnLRc1Wl3vXu8qXeevA91cSY4j3WvArmF7ApGtJwa7yKewJTvlQlBSn9OSnLFg6Q==",
+      "sha512": "VfuZJNa0WUshZ/+8BFZAhwFKiKuu/qOUCFntfdLpHj7vcRnsGHqd3G2Hse78DM+pgozczGM63lGPRLmy+uhUOA==",
       "type": "package",
       "path": "microsoft.extensions.configuration.abstractions/2.1.1",
       "files": [
@@ -6525,7 +6556,7 @@
       ]
     },
     "Microsoft.Extensions.Configuration.Binder/2.1.1": {
-      "sha512": "t7KFAv6AxyUsZj9QN8FAbusg+X5baCELl+XtscyuP1IGUv5UctyY7/rNZLyiKaV7HhAcDQ1zC5ZQNQQFn6JpAA==",
+      "sha512": "fcLCTS03poWE4v9tSNBr3pWn0QwGgAn1vzqHXlXgvqZeOc7LvQNzaWcKRQZTdEc3+YhQKwMsOtm3VKSA2aWQ8w==",
       "type": "package",
       "path": "microsoft.extensions.configuration.binder/2.1.1",
       "files": [
@@ -6638,7 +6669,7 @@
       ]
     },
     "Microsoft.Extensions.DependencyInjection.Abstractions/2.1.1": {
-      "sha512": "PW1596sF97gpIc1JuUuYvTmeLfeqC5whbWPsWgJhN0fdwz683him3b/HB0dqhFesVssOjnnA0fEz4+S0gUeBqA==",
+      "sha512": "MgYpU5cwZohUMKKg3sbPhvGG+eAZ/59E9UwPwlrUkyXU+PGzqwZg9yyQNjhxuAWmoNoFReoemeCku50prYSGzA==",
       "type": "package",
       "path": "microsoft.extensions.dependencyinjection.abstractions/2.1.1",
       "files": [
@@ -6651,7 +6682,7 @@
       ]
     },
     "Microsoft.Extensions.DependencyModel/2.0.3": {
-      "sha512": "hURToQHB3f5lrAzdDFtcmV/b/qg7o8Ldnj3iU68/unXEzmEUCwhXNkqeINb67L/rbomEkBfwbL6LWumv9g/LcA==",
+      "sha512": "OiNYN/QeZLuYcn4CvYrOmYgODPB1Jpqft+cT4F3Hkq5poj+1DLfbIBftMI/Pn8J7DyHhYeBMLxJUuugjvk/Fuw==",
       "type": "package",
       "path": "microsoft.extensions.dependencymodel/2.0.3",
       "files": [
@@ -6667,7 +6698,7 @@
       ]
     },
     "Microsoft.Extensions.DiagnosticAdapter/2.0.1": {
-      "sha512": "7HO5TlPQMqMoIYRZ0gQDkqi97FCZEHsSXzFIWlrHG2faOfZorN6syEmdMq/lHYBAisPfhdz1eGkhuOzmCuZKMw==",
+      "sha512": "w8nux+yppIAD3ouzLz3CEtUMj03WIQ9FAmuR6IhrCpQDcoMtajlZIkZLbryJE1jdF1wkewLLM2LpXasfu7HzQw==",
       "type": "package",
       "path": "microsoft.extensions.diagnosticadapter/2.0.1",
       "files": [
@@ -6694,7 +6725,7 @@
       ]
     },
     "Microsoft.Extensions.FileProviders.Composite/2.0.1": {
-      "sha512": "XQgLy2EJhQwFtWFEaxidEFH5CG6UpJksUumAZFH1/DySRFyVqoUY6fExCqMNRwFUZMio6tr2eYvQGVYoNTKhGg==",
+      "sha512": "bgAUXH3T/Y1R5bCthCiZVzEX4spvNeIHRv6+Jr4BJMxPVSFm/8er7xvywd2NCayv94frKZdDGP3mjAQZenZDxQ==",
       "type": "package",
       "path": "microsoft.extensions.fileproviders.composite/2.0.1",
       "files": [
@@ -6707,7 +6738,7 @@
       ]
     },
     "Microsoft.Extensions.FileProviders.Embedded/2.0.1": {
-      "sha512": "dupuUHdRuZCtSAAacLzhblRz4qHUh4PXI4hDZq7sj0KteHjyJTjcEYmKocxXexr18d2OuuYRqt57NChldouLzQ==",
+      "sha512": "PH1oo04WCbKy42aga6bC4phl1rZfbFsZLuozJN1LGUUZTCnycUAZzCqG6MNRCgRiHg2bPexiQ15708vSwnuBHQ==",
       "type": "package",
       "path": "microsoft.extensions.fileproviders.embedded/2.0.1",
       "files": [
@@ -6800,7 +6831,7 @@
       ]
     },
     "Microsoft.Extensions.Logging/2.1.1": {
-      "sha512": "x4/RzeReQSIi4nVpOjXEySm/xUSr6lBjuecdYnlUboWxbLSm2j3vhFV5OLGRp3gfte3cRMdysMNa/wyZN0t/Tw==",
+      "sha512": "hh+mkOAQDTp6XH80xJt3+wwYVzkbwYQl9XZRCz4Um0JjP/o7N9vHM3rZ6wwwtr+BBe/L6iBO2sz0px6OWBzqZQ==",
       "type": "package",
       "path": "microsoft.extensions.logging/2.1.1",
       "files": [
@@ -6813,7 +6844,7 @@
       ]
     },
     "Microsoft.Extensions.Logging.Abstractions/2.1.1": {
-      "sha512": "QWFWKrdeoDSEr8nVJaBAVDMj24wnh9clGzDNmMdgHHRsOIwTUMeh4XljeZXJhIKPT00jWuzwEzn3uNxOtO4cYg==",
+      "sha512": "XRzK7ZF+O6FzdfWrlFTi1Rgj2080ZDsd46vzOjadHUB0Cz5kOvDG8vI7caa5YFrsHQpcfn0DxtjS4E46N4FZsA==",
       "type": "package",
       "path": "microsoft.extensions.logging.abstractions/2.1.1",
       "files": [
@@ -6908,7 +6939,7 @@
       ]
     },
     "Microsoft.Extensions.Options/2.1.1": {
-      "sha512": "j0zOfTt1Qm+JDW2m+6Q/aj1m4C8+onudUu4ls/fN69VxruZkMWmX1bPKkbkYIPNNxJsf4k7FOkVq5o1vEFq9pQ==",
+      "sha512": "V7lXCU78lAbzaulCGFKojcCyG8RTJicEbiBkPJjFqiqXwndEBBIehdXRMWEVU3UtzQ1yDvphiWUL9th6/4gJ7w==",
       "type": "package",
       "path": "microsoft.extensions.options/2.1.1",
       "files": [
@@ -6933,7 +6964,7 @@
       ]
     },
     "Microsoft.Extensions.PlatformAbstractions/1.1.0": {
-      "sha512": "BMUkmjwSnuazDGkID3QbHTP7eomEmUxO4IKJqBWoB4r0mNij/3i5yWVQqynzm6tKVFvCskQrd6+uACTuxdUrOw==",
+      "sha512": "H6ZsQzxYw/6k2DfEQRXdC+vQ6obd6Uba3uGJrnJ2vG4PRXjQZ7seB13JdCfE72abp8E6Fk3gGgDzfJiLZi5ZpQ==",
       "type": "package",
       "path": "microsoft.extensions.platformabstractions/1.1.0",
       "files": [
@@ -6948,7 +6979,7 @@
       ]
     },
     "Microsoft.Extensions.Primitives/2.1.1": {
-      "sha512": "Svz25/egj1TsNL4118jyMqkhDiu0l8QYWq2p52P4BBN0GbqwR18ZRIctSP5TTDJy0m0EFC8aB2FOVjGtvEGWSA==",
+      "sha512": "scJ1GZNIxMmjpENh0UZ8XCQ6vzr/LzeF9WvEA51Ix2OQGAs9WPgPu8ABVUdvpKPLuor/t05gm6menJK3PwqOXg==",
       "type": "package",
       "path": "microsoft.extensions.primitives/2.1.1",
       "files": [
@@ -6971,232 +7002,28 @@
         "microsoft.extensions.webencoders.nuspec"
       ]
     },
-    "Microsoft.IdentityModel.Clients.ActiveDirectory/3.14.1": {
-      "sha512": "A4MCkz8IWOSEGt51YwlGrQW/sualR4KnGsH+Z1wg5JARYrLzOQ0gb3qou7Yma2p6iSZuJn7h2gJrOSLoBpMAgA==",
+    "Microsoft.IdentityModel.Clients.ActiveDirectory/4.5.0": {
+      "sha512": "YcSLCMaFwhy7EBIndvzjRde2OiT7DoMCLRhgBWzrOUAUrqYEMtyzwm1D6J+nli1GpYQ/+NtujVn1wFiIMC0/Yw==",
       "type": "package",
-      "path": "microsoft.identitymodel.clients.activedirectory/3.14.1",
+      "path": "microsoft.identitymodel.clients.activedirectory/4.5.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "lib/MonoAndroid10/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.XML",
-        "lib/MonoAndroid10/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll",
-        "lib/MonoAndroid10/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.pdb",
-        "lib/MonoAndroid10/Microsoft.IdentityModel.Clients.ActiveDirectory.dll",
-        "lib/MonoAndroid10/Microsoft.IdentityModel.Clients.ActiveDirectory.pdb",
-        "lib/MonoAndroid10/Microsoft.IdentityModel.Clients.ActiveDirectory.xml",
-        "lib/Xamarin.iOS10/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.XML",
-        "lib/Xamarin.iOS10/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll",
-        "lib/Xamarin.iOS10/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.pdb",
-        "lib/Xamarin.iOS10/Microsoft.IdentityModel.Clients.ActiveDirectory.dll",
-        "lib/Xamarin.iOS10/Microsoft.IdentityModel.Clients.ActiveDirectory.pdb",
-        "lib/Xamarin.iOS10/Microsoft.IdentityModel.Clients.ActiveDirectory.xml",
-        "lib/net45/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.XML",
-        "lib/net45/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll",
-        "lib/net45/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.pdb",
+        "lib/monoandroid81/Microsoft.IdentityModel.Clients.ActiveDirectory.dll",
+        "lib/monoandroid81/Microsoft.IdentityModel.Clients.ActiveDirectory.xml",
         "lib/net45/Microsoft.IdentityModel.Clients.ActiveDirectory.dll",
-        "lib/net45/Microsoft.IdentityModel.Clients.ActiveDirectory.pdb",
         "lib/net45/Microsoft.IdentityModel.Clients.ActiveDirectory.xml",
-        "lib/netcore45/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.XML",
-        "lib/netcore45/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll",
-        "lib/netcore45/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.pdb",
-        "lib/netcore45/Microsoft.IdentityModel.Clients.ActiveDirectory.dll",
-        "lib/netcore45/Microsoft.IdentityModel.Clients.ActiveDirectory.pdb",
-        "lib/netcore45/Microsoft.IdentityModel.Clients.ActiveDirectory.xml",
-        "lib/netstandard1.3/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll",
-        "lib/netstandard1.3/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.pdb",
+        "lib/netstandard1.1/Microsoft.IdentityModel.Clients.ActiveDirectory.dll",
+        "lib/netstandard1.1/Microsoft.IdentityModel.Clients.ActiveDirectory.xml",
         "lib/netstandard1.3/Microsoft.IdentityModel.Clients.ActiveDirectory.dll",
-        "lib/netstandard1.3/Microsoft.IdentityModel.Clients.ActiveDirectory.pdb",
         "lib/netstandard1.3/Microsoft.IdentityModel.Clients.ActiveDirectory.xml",
-        "lib/portable-net45+win/Microsoft.IdentityModel.Clients.ActiveDirectory.dll",
-        "lib/portable-net45+win/Microsoft.IdentityModel.Clients.ActiveDirectory.pdb",
-        "lib/portable-net45+win/Microsoft.IdentityModel.Clients.ActiveDirectory.xml",
-        "microsoft.identitymodel.clients.activedirectory.3.14.1.nupkg.sha512",
-        "microsoft.identitymodel.clients.activedirectory.nuspec",
-        "src/src/ADAL.Common/AdalEventSource.cs",
-        "src/src/ADAL.Common/AuthenticationContextIntegratedAuthExtensions.cs",
-        "src/src/ADAL.Common/AuthenticationResult.cs",
-        "src/src/ADAL.Common/ClientAssertionCertificate.cs",
-        "src/src/ADAL.Common/CommonAssemblyInfo.cs",
-        "src/src/ADAL.Common/Constants.cs",
-        "src/src/ADAL.Common/CryptographyHelper.cs",
-        "src/src/ADAL.Common/EncodingHelper.cs",
-        "src/src/ADAL.Common/LocalSettingsHelper.cs",
-        "src/src/ADAL.Common/Logger.cs",
-        "src/src/ADAL.Common/PromptBehavior.cs",
-        "src/src/ADAL.Common/TokenCache.cs",
-        "src/src/ADAL.Common/WebProxyProvider.cs",
-        "src/src/ADAL.PCL.Android/ADAL.PCL.Android.csproj",
-        "src/src/ADAL.PCL.Android/AuthenticationAgentActivity.cs",
-        "src/src/ADAL.PCL.Android/AuthenticationAgentContinuationHelper.cs",
-        "src/src/ADAL.PCL.Android/AuthenticationRequest.cs",
-        "src/src/ADAL.PCL.Android/BrokerConstants.cs",
-        "src/src/ADAL.PCL.Android/BrokerHelper.cs",
-        "src/src/ADAL.PCL.Android/BrokerProxy.cs",
-        "src/src/ADAL.PCL.Android/Constants.cs",
-        "src/src/ADAL.PCL.Android/CryptographyHelper.cs",
-        "src/src/ADAL.PCL.Android/DeviceAuthHelper.cs",
-        "src/src/ADAL.PCL.Android/Logger.cs",
-        "src/src/ADAL.PCL.Android/PlatformInformation.cs",
-        "src/src/ADAL.PCL.Android/PlatformParameters.cs",
-        "src/src/ADAL.PCL.Android/Properties/AssemblyInfo.cs",
-        "src/src/ADAL.PCL.Android/Resources/AboutResources.txt",
-        "src/src/ADAL.PCL.Android/Resources/Resource.Designer.cs",
-        "src/src/ADAL.PCL.Android/Resources/Values/Strings.xml",
-        "src/src/ADAL.PCL.Android/Resources/layout/WebAuthenticationBroker.axml",
-        "src/src/ADAL.PCL.Android/TokenCachePlugin.cs",
-        "src/src/ADAL.PCL.Android/WebProxyProvider.cs",
-        "src/src/ADAL.PCL.Android/WebUI.cs",
-        "src/src/ADAL.PCL.Android/WebUIFactory.cs",
-        "src/src/ADAL.PCL.CoreCLR/ADAL.PCL.CoreCLR.csproj",
-        "src/src/ADAL.PCL.CoreCLR/BrokerHelper.cs",
-        "src/src/ADAL.PCL.CoreCLR/ClientAssertionCertificate.cs",
-        "src/src/ADAL.PCL.CoreCLR/CryptographyHelper.cs",
-        "src/src/ADAL.PCL.CoreCLR/DeviceAuthHelper.cs",
-        "src/src/ADAL.PCL.CoreCLR/PlatformInformation.cs",
-        "src/src/ADAL.PCL.CoreCLR/PlatformParameters.cs",
-        "src/src/ADAL.PCL.CoreCLR/Properties/AssemblyInfo.cs",
-        "src/src/ADAL.PCL.CoreCLR/TokenCachePlugin.cs",
-        "src/src/ADAL.PCL.CoreCLR/WebProxyProvider.cs",
-        "src/src/ADAL.PCL.CoreCLR/WebUIFactory.cs",
-        "src/src/ADAL.PCL.Desktop/ADAL.PCL.Desktop.csproj",
-        "src/src/ADAL.PCL.Desktop/BrokerHelper.cs",
-        "src/src/ADAL.PCL.Desktop/CryptographyHelper.cs",
-        "src/src/ADAL.PCL.Desktop/CustomWebBrowser.CustomWebBrowserEvent.cs",
-        "src/src/ADAL.PCL.Desktop/CustomWebBrowser.cs",
-        "src/src/ADAL.PCL.Desktop/DeviceAuthHelper.cs",
-        "src/src/ADAL.PCL.Desktop/InteractiveWebUI.cs",
-        "src/src/ADAL.PCL.Desktop/Native/BCryptNative.cs",
-        "src/src/ADAL.PCL.Desktop/Native/ICngAlgorithm.cs",
-        "src/src/ADAL.PCL.Desktop/Native/ICngAsymmetricAlgorithm.cs",
-        "src/src/ADAL.PCL.Desktop/Native/NCryptNative.cs",
-        "src/src/ADAL.PCL.Desktop/Native/RSACng.cs",
-        "src/src/ADAL.PCL.Desktop/Native/Win32Native.cs",
-        "src/src/ADAL.PCL.Desktop/Native/X509Native.cs",
-        "src/src/ADAL.PCL.Desktop/NavigateErrorStatus.cs",
-        "src/src/ADAL.PCL.Desktop/PlatformInformation.cs",
-        "src/src/ADAL.PCL.Desktop/PlatformParameters.cs",
-        "src/src/ADAL.PCL.Desktop/Properties/AssemblyInfo.cs",
-        "src/src/ADAL.PCL.Desktop/SecureClientSecret.cs",
-        "src/src/ADAL.PCL.Desktop/SilentWebUI.cs",
-        "src/src/ADAL.PCL.Desktop/SilentWebUIDoneEventArgs.cs",
-        "src/src/ADAL.PCL.Desktop/SilentWindowsFormsAuthenticationDialog.cs",
-        "src/src/ADAL.PCL.Desktop/StaTaskScheduler.cs",
-        "src/src/ADAL.PCL.Desktop/TokenCachePlugin.cs",
-        "src/src/ADAL.PCL.Desktop/UserPasswordCredential.cs",
-        "src/src/ADAL.PCL.Desktop/WebBrowserInterfaces.cs",
-        "src/src/ADAL.PCL.Desktop/WebBrowserNavigateErrorEventArgs.cs",
-        "src/src/ADAL.PCL.Desktop/WebUI.cs",
-        "src/src/ADAL.PCL.Desktop/WebUIFactory.cs",
-        "src/src/ADAL.PCL.Desktop/WinFormWebAuthenticationDialog.cs",
-        "src/src/ADAL.PCL.Desktop/WindowsFormsWebAuthenticationDialogBase.cs",
-        "src/src/ADAL.PCL.WinRT/ADAL.PCL.WinRT.csproj",
-        "src/src/ADAL.PCL.WinRT/BrokerHelper.cs",
-        "src/src/ADAL.PCL.WinRT/CryptographyHelper.cs",
-        "src/src/ADAL.PCL.WinRT/DeviceAuthHelper.cs",
-        "src/src/ADAL.PCL.WinRT/PlatformInformation.cs",
-        "src/src/ADAL.PCL.WinRT/PlatformParameters.cs",
-        "src/src/ADAL.PCL.WinRT/Properties/AssemblyInfo.cs",
-        "src/src/ADAL.PCL.WinRT/TokenCachePlugin.cs",
-        "src/src/ADAL.PCL.WinRT/WebUI.cs",
-        "src/src/ADAL.PCL.WinRT/WebUIFactory.cs",
-        "src/src/ADAL.PCL.iOS/ADAL.PCL.iOS.csproj",
-        "src/src/ADAL.PCL.iOS/AdalCustomUrlProtocol.cs",
-        "src/src/ADAL.PCL.iOS/AdalInitializer.cs",
-        "src/src/ADAL.PCL.iOS/AuthenticationAgentUINavigationController.cs",
-        "src/src/ADAL.PCL.iOS/AuthenticationAgentUIViewController.cs",
-        "src/src/ADAL.PCL.iOS/AuthenticationContinuationHelper.cs",
-        "src/src/ADAL.PCL.iOS/BrokerConstants.cs",
-        "src/src/ADAL.PCL.iOS/BrokerHelper.cs",
-        "src/src/ADAL.PCL.iOS/BrokerKeyHelper.cs",
-        "src/src/ADAL.PCL.iOS/Constants.cs",
-        "src/src/ADAL.PCL.iOS/CryptographyHelper.cs",
-        "src/src/ADAL.PCL.iOS/DeviceAuthHelper.cs",
-        "src/src/ADAL.PCL.iOS/GlobalSuppressions.cs",
-        "src/src/ADAL.PCL.iOS/Logger.cs",
-        "src/src/ADAL.PCL.iOS/PlatformInformation.cs",
-        "src/src/ADAL.PCL.iOS/PlatformParameters.cs",
-        "src/src/ADAL.PCL.iOS/Properties/AssemblyInfo.cs",
-        "src/src/ADAL.PCL.iOS/TokenCachePlugin.cs",
-        "src/src/ADAL.PCL.iOS/WebUI.cs",
-        "src/src/ADAL.PCL.iOS/WebUIFactory.cs",
-        "src/src/ADAL.PCL/ADAL.PCL.csproj",
-        "src/src/ADAL.PCL/AdalOption.cs",
-        "src/src/ADAL.PCL/AuthenticationContext.cs",
-        "src/src/ADAL.PCL/AuthenticationParameters.cs",
-        "src/src/ADAL.PCL/AuthenticationResult.cs",
-        "src/src/ADAL.PCL/Authority/Authenticator.cs",
-        "src/src/ADAL.PCL/Authority/AuthenticatorTemplate.cs",
-        "src/src/ADAL.PCL/Authority/AuthenticatorTemplateList.cs",
-        "src/src/ADAL.PCL/Authority/AuthorizationResult.cs",
-        "src/src/ADAL.PCL/Authority/DeviceAuthJWTResponse.cs",
-        "src/src/ADAL.PCL/Authority/IdToken.cs",
-        "src/src/ADAL.PCL/Authority/RequestData.cs",
-        "src/src/ADAL.PCL/Authority/RequestParameters.cs",
-        "src/src/ADAL.PCL/Authority/TokenResponse.cs",
-        "src/src/ADAL.PCL/Cache/CacheQueryData.cs",
-        "src/src/ADAL.PCL/Cache/TokenCacheKey.cs",
-        "src/src/ADAL.PCL/ClientAssertion.cs",
-        "src/src/ADAL.PCL/ClientCredential.cs",
-        "src/src/ADAL.PCL/ClientCreds/ClientKey.cs",
-        "src/src/ADAL.PCL/ClientCreds/JsonWebToken.cs",
-        "src/src/ADAL.PCL/DeviceCodeResult.cs",
-        "src/src/ADAL.PCL/Exceptions/AdalException.cs",
-        "src/src/ADAL.PCL/Exceptions/AdalServiceException.cs",
-        "src/src/ADAL.PCL/Exceptions/AdalSilentTokenAcquisitionException.cs",
-        "src/src/ADAL.PCL/Exceptions/AdalUserMismatchException.cs",
-        "src/src/ADAL.PCL/Exceptions/HttpRequestWrapperException.cs",
-        "src/src/ADAL.PCL/Flows/AcquireTokenByAuthorizationCodeHandler.cs",
-        "src/src/ADAL.PCL/Flows/AcquireTokenForClientHandler.cs",
-        "src/src/ADAL.PCL/Flows/AcquireTokenHandlerBase.cs",
-        "src/src/ADAL.PCL/Flows/AcquireTokenInteractiveHandler.cs",
-        "src/src/ADAL.PCL/Flows/AcquireTokenOnBehalfHandler.cs",
-        "src/src/ADAL.PCL/Flows/AcquireTokenSilentHandler.cs",
-        "src/src/ADAL.PCL/Flows/AuthenticationResultEx.cs",
-        "src/src/ADAL.PCL/Flows/CallState.cs",
-        "src/src/ADAL.PCL/Flows/DeviceCode/AcquireDeviceCodeHandler.cs",
-        "src/src/ADAL.PCL/Flows/DeviceCode/AcquireTokenByDeviceCodeHandler.cs",
-        "src/src/ADAL.PCL/Flows/DeviceCode/DeviceCodeResponse.cs",
-        "src/src/ADAL.PCL/Flows/NonInteractive/AcquireTokenNonInteractiveHandler.cs",
-        "src/src/ADAL.PCL/Flows/NonInteractive/MexParser.cs",
-        "src/src/ADAL.PCL/Flows/NonInteractive/UserRealmDiscoveryResponse.cs",
-        "src/src/ADAL.PCL/Flows/NonInteractive/WsTrustRequest.cs",
-        "src/src/ADAL.PCL/Flows/NonInteractive/WsTrustResponse.cs",
-        "src/src/ADAL.PCL/Http/AdalHttpClient.cs",
-        "src/src/ADAL.PCL/Http/HttpClientFactory.cs",
-        "src/src/ADAL.PCL/Http/HttpClientWrapper.cs",
-        "src/src/ADAL.PCL/Http/HttpMessageHandlerFactory.cs",
-        "src/src/ADAL.PCL/Http/HttpWebResponseWrapper.cs",
-        "src/src/ADAL.PCL/Http/IHttpWebResponse.cs",
-        "src/src/ADAL.PCL/IAdalLogCallback.cs",
-        "src/src/ADAL.PCL/IClientAssertionCertificate.cs",
-        "src/src/ADAL.PCL/IPlatformParameters.cs",
-        "src/src/ADAL.PCL/ISecureClientSecret.cs",
-        "src/src/ADAL.PCL/Platform/IBrokerHelper.cs",
-        "src/src/ADAL.PCL/Platform/ICryptographyHelper.cs",
-        "src/src/ADAL.PCL/Platform/IDeviceAuthHelper.cs",
-        "src/src/ADAL.PCL/Platform/IHttpClient.cs",
-        "src/src/ADAL.PCL/Platform/IHttpClientFactory.cs",
-        "src/src/ADAL.PCL/Platform/ITokenCachePlugin.cs",
-        "src/src/ADAL.PCL/Platform/IWebProxyProvider.cs",
-        "src/src/ADAL.PCL/Platform/IWebUI.cs",
-        "src/src/ADAL.PCL/Platform/IWebUIFactory.cs",
-        "src/src/ADAL.PCL/Platform/LoggerBase.cs",
-        "src/src/ADAL.PCL/Platform/PlatformInformationBase.cs",
-        "src/src/ADAL.PCL/Platform/PlatformPlugin.cs",
-        "src/src/ADAL.PCL/Properties/AssemblyInfo.cs",
-        "src/src/ADAL.PCL/TokenCache.cs",
-        "src/src/ADAL.PCL/TokenCacheItem.cs",
-        "src/src/ADAL.PCL/TokenCacheNotificationArgs.cs",
-        "src/src/ADAL.PCL/UserAssertion.cs",
-        "src/src/ADAL.PCL/UserCredential.cs",
-        "src/src/ADAL.PCL/UserIdentifier.cs",
-        "src/src/ADAL.PCL/UserInfo.cs",
-        "src/src/ADAL.PCL/Utilities/AdalIdHelper.cs",
-        "src/src/ADAL.PCL/Utilities/Base64UrlEncoder.cs",
-        "src/src/ADAL.PCL/Utilities/Constants.cs",
-        "src/src/ADAL.PCL/Utilities/EncodingHelper.cs",
-        "src/src/ADAL.PCL/Utilities/JsonHelper.cs",
-        "src/src/ADAL.PCL/Utilities/OAuthConstants.cs"
+        "lib/uap10.0/Microsoft.IdentityModel.Clients.ActiveDirectory.dll",
+        "lib/uap10.0/Microsoft.IdentityModel.Clients.ActiveDirectory.pri",
+        "lib/uap10.0/Microsoft.IdentityModel.Clients.ActiveDirectory.xml",
+        "lib/xamarinios10/Microsoft.IdentityModel.Clients.ActiveDirectory.dll",
+        "lib/xamarinios10/Microsoft.IdentityModel.Clients.ActiveDirectory.xml",
+        "microsoft.identitymodel.clients.activedirectory.4.5.0.nupkg.sha512",
+        "microsoft.identitymodel.clients.activedirectory.nuspec"
       ]
     },
     "Microsoft.IdentityModel.Logging/5.2.1": {
@@ -7280,7 +7107,7 @@
       ]
     },
     "Microsoft.NETCore.App/2.0.0": {
-      "sha512": "8Lrz5RgmfIUMtpTmGG1Z+nVlCr14bFco/aQdiNYfb7uys37vQ6dVtds9xPIFANVyf6HFePhD9nGmqFcfv5eKMQ==",
+      "sha512": "aEj44yEbsK+XlDwPNSM7CeaYDg33NMk492y2kFRIOMPOVmXvXNO0LTDm8lUhS4Jlm2uNFsIDDH4ggt9lnSDejQ==",
       "type": "package",
       "path": "microsoft.netcore.app/2.0.0",
       "files": [
@@ -7574,7 +7401,7 @@
       ]
     },
     "Microsoft.NETCore.DotNetHostPolicy/2.0.0": {
-      "sha512": "uYoVFwvMIp9KtOjW6huBedoBP+50Pny0aIrmJGPoaHJ9anAtrvCjS+iKFR5MIS8amJRKsLc3YEtpT/AYfYmIdA==",
+      "sha512": "RAMrQqBFMiF4dbpHJEvcwwXG+ISoKRck8zXlfr49waPc7xllEpv/ANHi4c3pCTkVIdNNSdDYf71YjbkaRSHJgg==",
       "type": "package",
       "path": "microsoft.netcore.dotnethostpolicy/2.0.0",
       "files": [
@@ -7588,7 +7415,7 @@
       ]
     },
     "Microsoft.NETCore.DotNetHostResolver/2.0.0": {
-      "sha512": "HYXxywd3EaAw1M2K5ox6oUu0NgG90oDIpyq70IBvOf2keNuMJWYTWZUAoTlpv8E0Ks09DA+gczoA64tCdII5Xw==",
+      "sha512": "LrZ1AcFJF7+da03Is+5RKdqjnDVNnoi1MBRAi4LRif3uO9rRntfNUezeNcG/OO/yGYzyEwGJkioyw8ZWGJiKWg==",
       "type": "package",
       "path": "microsoft.netcore.dotnethostresolver/2.0.0",
       "files": [
@@ -7602,7 +7429,7 @@
       ]
     },
     "Microsoft.NETCore.Platforms/2.0.0": {
-      "sha512": "5BdAWDgMNwf90L0J+C/eh6kfHDa37ViL1cBL1nv5zPA4TB2cGV51YiQyvzCEy9DBE0LwwMI4+PkUpIekKyocSA==",
+      "sha512": "CCf4NjmDOoise7FAij2VPuHIgKKsu696vkTwhOkPVQfLsTmB2WLFfQ4yeO5Udtk8FD636UBMx6Y9eovzJKT76A==",
       "type": "package",
       "path": "microsoft.netcore.platforms/2.0.0",
       "files": [
@@ -7619,7 +7446,7 @@
       ]
     },
     "Microsoft.NETCore.Targets/1.1.0": {
-      "sha512": "RZTZFXIr0gC21L9JHCj4i/tVrGGfZQl4TJdoT/P84CrKJomxp1jhD2p/ZR3ofMnMgAtG9a5obuKl9j0qqMhdOQ==",
+      "sha512": "7Kq5uoWmPg4qlhB33A8THCRvHZX9VvvWR6/QTnsMQv67ML7OvPlpEN+dXOqUNlncAAo0/RMP56NEsIr/9NeHNw==",
       "type": "package",
       "path": "microsoft.netcore.targets/1.1.0",
       "files": [
@@ -7930,7 +7757,7 @@
       ]
     },
     "Remotion.Linq/2.1.1": {
-      "sha512": "m9y+SLyqYEDcc3lnqAHO2VOsdIeDuO02IuBXeo7CIDve2J3ahXQRieZt2DuoXgCnWW83PgN6+8CQsaORlwAMXw==",
+      "sha512": "IJn0BqkvwEDpP+2qjvci7n4/a9f7DhKESLWb2/uG4xQh3rTkGTBUz69bI4IivCoKkTFAqjXxYDZw2K/npohjsw==",
       "type": "package",
       "path": "remotion.linq/2.1.1",
       "files": [
@@ -7987,7 +7814,7 @@
       ]
     },
     "runtime.native.System/4.3.0": {
-      "sha512": "c/qWt2LieNZIj1jGnVNsE2Kl23Ya2aSTBuXMD6V7k9KWr6l16Tqdwq+hJScEpWER9753NWC8h96PaVNY5Ld7Jw==",
+      "sha512": "EQBapg/FRDK1ZAcipEz4LjCQp+mpGcSCRqGN70DllMboRkssxZ92nzLjteWDOV7vM9tOhC2SM26H7n9/GJGxEQ==",
       "type": "package",
       "path": "runtime.native.system/4.3.0",
       "files": [
@@ -8227,7 +8054,7 @@
       ]
     },
     "SQLitePCLRaw.bundle_green/1.1.7": {
-      "sha512": "ndZplZhKILwXTlM3v4EYQlJqTJ4OFoOoGDIk9w1a6Qv4x1lnUyM0CPnHGBzh3jnmHpUYeVCqTDwFQ9zyHZDOGQ==",
+      "sha512": "Kw+n4CUhQ8S4YAPmpRUldO8S7c4LU7HHukJF0v5Sfggf8Ia9YVdIh0dYkMvKvS+DTX+OBORSMqPM0CGfAzFtVA==",
       "type": "package",
       "path": "sqlitepclraw.bundle_green/1.1.7",
       "files": [
@@ -8274,7 +8101,7 @@
       ]
     },
     "SQLitePCLRaw.core/1.1.7": {
-      "sha512": "OwSVeqJVN2M0eU7h6Xw4S8BvzNde9T1o8vP9a7OBGBC4CXBa1ePBjo7tq6gkF6yIdcDxkqLbOraHBxdLrvMq2g==",
+      "sha512": "u9k9ZFkyTU6CVyXWpRuuXOvKi/cy/xt1oGKVSW8aUKcTL4RdH34yFNtVykEeiR68ojIEvmoZfL51h/xx2IQk5g==",
       "type": "package",
       "path": "sqlitepclraw.core/1.1.7",
       "files": [
@@ -8300,7 +8127,7 @@
       ]
     },
     "SQLitePCLRaw.lib.e_sqlite3.linux/1.1.7": {
-      "sha512": "LWxJ0JhP6+FeiKadmlve/5zfdgACoUCqjbYGD2TDGpBUrHC0v+RdjZhXi48sTnkVW5fn+TtA37WV02LSMFJH3w==",
+      "sha512": "KRqMd1qLwJ4pzPybj8q95s+wV6jby5F0O/rp0vw3wa2Z2wHxRm0VqxS2Sejlr7Ctz+LxSr8DpNg1l1u6n/PAPA==",
       "type": "package",
       "path": "sqlitepclraw.lib.e_sqlite3.linux/1.1.7",
       "files": [
@@ -8317,7 +8144,7 @@
       ]
     },
     "SQLitePCLRaw.lib.e_sqlite3.osx/1.1.7": {
-      "sha512": "LnEgt++nwP2KnoFYIKdAXPjS9W8ZGU1DfL/PHyAqLBQQlfG5V0H/HHiVJOh5B6XQ4Jf0AdJQphtkVG4u2V3mYQ==",
+      "sha512": "hdZx1DKHbDi4li6abmJ+A29mxY8D6BcM0s8VMT8p4MWEyrj54CZFUm402jTV6OgZCsFGkbRFnuFdBXf4vSDO7g==",
       "type": "package",
       "path": "sqlitepclraw.lib.e_sqlite3.osx/1.1.7",
       "files": [
@@ -8333,7 +8160,7 @@
       ]
     },
     "SQLitePCLRaw.lib.e_sqlite3.v110_xp/1.1.7": {
-      "sha512": "M1WskZ/7pOTLCwdPgvrK4YGx+pJoT5cISUs8G8O68Wr+yLUBnz4BhnS+suhUiD1W/UAkFev/MnbeCiQj87VaTQ==",
+      "sha512": "roIdTH4a4iFa08HOwTWnzj2QYBIpSZRYfLSvHjtbH67I4DSWregrd4jkSnoOuwC5GHG08FNahBfEx3HAsVqW+g==",
       "type": "package",
       "path": "sqlitepclraw.lib.e_sqlite3.v110_xp/1.1.7",
       "files": [
@@ -8350,7 +8177,7 @@
       ]
     },
     "SQLitePCLRaw.provider.e_sqlite3.netstandard11/1.1.7": {
-      "sha512": "J81nAWSiEJK8agJR/r9uRy+0SGmsFq3GmSMu4QS0Jzr+OQDAjLVZ/qNhUF1Q15p/h/NR5/o0HyzVHPofcxEyvA==",
+      "sha512": "Zdug2wETm6847337EtD8MoCAtOdwM6prEXL/UsJ97Zxvoeyk/gUpdtuFNBxgJzceuty0jymjxm5yur5QajdApg==",
       "type": "package",
       "path": "sqlitepclraw.provider.e_sqlite3.netstandard11/1.1.7",
       "files": [
@@ -8456,10 +8283,11 @@
       ]
     },
     "System.Buffers/4.5.0": {
-      "sha512": "xpHYjjtyTEpzMwtSQBWdVc3dPjLdQtvyUg6fBlBqcLl1r2Y7gDG/W/enAYOB98nG3oD3Q153Y2FBO8JDWd+0Xw==",
+      "sha512": "09yL/QiPEDZI9JLg0R0OcGe/0ycFm69QN16DCvXkqkIorCC1Y2EKwk5KvSlfMmGse+LcKkD3H+Cra7fFkxHXEg==",
       "type": "package",
       "path": "system.buffers/4.5.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -8484,7 +8312,7 @@
       ]
     },
     "System.Collections/4.3.0": {
-      "sha512": "3Dcj85/TBdVpL5Zr+gEEBUuFe2icOnLalmEh9hfck1PTYbbyWuZgh4fmm2ysCLTrqLQw6t3TgTyJ+VLp+Qb+Lw==",
+      "sha512": "htemrOzDpS4XbAFQYME7IieiF7m4tdcH8TRfwzPzvmn7725iRW0QDeHYTgydE6JOyQdNOnwfQ9jO6mKbX8ZTFg==",
       "type": "package",
       "path": "system.collections/4.3.0",
       "files": [
@@ -8618,7 +8446,7 @@
       ]
     },
     "System.Collections.Immutable/1.5.0": {
-      "sha512": "RGxi2aQoXgZ5ge0zxrKqI4PU9LrYYoLC+cnEnWXKsSduCOUhE1GEAAoTexUVT8RZOILQyy1B27HC8Xw/XLGzdQ==",
+      "sha512": "EXKiDFsChZW0RjrZ4FYHu9aW6+P4MCgEDCklsVseRfhoO0F+dXeMSsMRAlVXIo06kGJ/zv+2w1a2uc2+kxxSaQ==",
       "type": "package",
       "path": "system.collections.immutable/1.5.0",
       "files": [
@@ -8715,7 +8543,7 @@
       ]
     },
     "System.ComponentModel.Annotations/4.4.0": {
-      "sha512": "vd03owHLpgcjxuZQJt/rZDsphb6uofhbxeFdXAHI7bytuHBKOmARGV0jE6fKH32vmQlPkRnvxQRbPS2elLAmSg==",
+      "sha512": "29K3DQ+IGU7LBaMjTo7SI7T7X/tsMtLvz1p56LJ556Iu0Dw3pKZw5g8yCYCWMRxrOF0Hr0FU0FwW0o42y2sb3A==",
       "type": "package",
       "path": "system.componentmodel.annotations/4.4.0",
       "files": [
@@ -8839,7 +8667,7 @@
       ]
     },
     "System.Data.SqlClient/4.4.3": {
-      "sha512": "NvG/0mC80diO0zXYt89gFC869Gn6aIn5Tx0HavxGa3IPbH2Ktflbw2HJvl24zmpAL0UF/bkGsI+jv0/aHX8dJw==",
+      "sha512": "D1hEOS1oPLJ6WcGCzpTWe8SauWVxnDoDTUWhv5XCNdRm/QeSUk4BQ3ZDe7BH+zNVHDBkPYjVzpVjnCl43eOSGg==",
       "type": "package",
       "path": "system.data.sqlclient/4.4.3",
       "files": [
@@ -8907,10 +8735,12 @@
       ]
     },
     "System.Diagnostics.Contracts/4.3.0": {
-      "sha512": "eelRRbnm+OloiQvp9CXS0ixjNQldjjkHO4iIkR5XH2VIP8sUB/SIpa1TdUW6/+HDcQ+MlhP3pNa1u5SbzYuWGA==",
+      "sha512": "hQjC+dSe1rBacyz3Qh4hooO4bWhG3/pzIL4bsMHPsLCWAQ5xfNYIuB7sU7pVZSV2v/p7DcrX6U7qAjZKJSaigg==",
       "type": "package",
       "path": "system.diagnostics.contracts/4.3.0",
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -8965,7 +8795,7 @@
       ]
     },
     "System.Diagnostics.Debug/4.3.0": {
-      "sha512": "ZUhUOdqmaG5Jk3Xdb8xi5kIyQYAA4PnTNlHx1mu9ZY3qv4ELIdKbnL/akbGaKi2RnNUWaZsAs31rvzFdewTj2g==",
+      "sha512": "ZDTOJ1twhUOSKgNQB9hQpoAZJHLqF4U8pC3XtnTHau+OriP+qpjO8h2oabmTvgvfIKwaMhURv0o6EhUy+WDqjQ==",
       "type": "package",
       "path": "system.diagnostics.debug/4.3.0",
       "files": [
@@ -9348,7 +9178,7 @@
       ]
     },
     "System.Globalization/4.3.0": {
-      "sha512": "kYdVd2f2PAdFGblzFswE4hkNANJBKRmsfa2X5LG2AcWE1c7/4t0pYae1L8vfZ5xvE2nK/R9JprtToA61OSHWIg==",
+      "sha512": "KfS/5oZObzMVvyt4Yp2PHIhbvA8KJKlEKeh6G2tlPtuN0AoBUWCj1xQF23yXtTvma6ee6pwfH79jykAYVcfZyQ==",
       "type": "package",
       "path": "system.globalization/4.3.0",
       "files": [
@@ -9527,7 +9357,7 @@
       ]
     },
     "System.IO/4.3.0": {
-      "sha512": "CiHAzBlIZAooM3BL2A2+yCZe+p/9OLdZlI0swFXqfx2wisE7CIjT8iOXoLPcQE3FA7oY2avDiKlceyoRCT91Ng==",
+      "sha512": "ZDHzYrjPWlQTXWjoKR80W+CJBawoEvkBa6KNuXblb6sDzNqlCHZ6s2BYzFtd27qAUh8fzQKlJPcy3AncduyDXA==",
       "type": "package",
       "path": "system.io/4.3.0",
       "files": [
@@ -9927,7 +9757,7 @@
       ]
     },
     "System.Linq.Queryable/4.0.1": {
-      "sha512": "UK6XHjmSWthh/kigJdv9DzM9YP9kXxhzsPqfRfl+6EuNeekfnd1wMfiXaFyvQaU8U5Je1LBXjOPUOpiE42n+Ow==",
+      "sha512": "RYXomGy3lVfD2Jx6cxcTT3BWxnhT3VlXx4VENfRQ5o89geEbhq+6PYiqFraKP6FJgPcLtaWKjEr9CxYmtYGSyA==",
       "type": "package",
       "path": "system.linq.queryable/4.0.1",
       "files": [
@@ -9985,7 +9815,7 @@
       ]
     },
     "System.Memory/4.5.1": {
-      "sha512": "vcG3/MbfpxznMkkkaAblJi7RHOmuP7kawQMhDgLSuA1tRpRQYsFSCTxRSINDUgn2QNn2jWeLxv8er5BXbyACkw==",
+      "sha512": "sDJYJpGtTgx+23Ayu5euxG5mAXWdkDb4+b0rD0Cab0M1oQS9H0HXGPriKcqpXuiJDTV7fTp/d+fMDJmnr6sNvA==",
       "type": "package",
       "path": "system.memory/4.5.1",
       "files": [
@@ -10010,10 +9840,11 @@
       ]
     },
     "System.Net.Http/4.3.0": {
-      "sha512": "Z1UfSF6dlpCdZdxh6LeoGlYH+q6ptG/iiIWgUUeKhE3DbQACmZkU7Sz2nOX0qdHjz72MOdYRbkSJ5Qwl6sZgvg==",
+      "sha512": "sYg+FtILtRQuYWSIAuNOELwVuVsxVyJGWQyOnlAzhV4xvhyFnON1bAzYYC+jjRW8JREM45R0R5Dgi8MTC5sEwA==",
       "type": "package",
       "path": "system.net.http/4.3.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
@@ -10286,10 +10117,11 @@
       ]
     },
     "System.Numerics.Vectors/4.5.0": {
-      "sha512": "MNcaYxUJvUcoXOa+jgKl/GDw/Mh+wMrxDjW4dre7qrp35LUGTjUBNtZsNjxsWX592ocdyqt1X5hMJB+5OStoYw==",
+      "sha512": "nATsBTD2CKr4AYN6eRszhX4sptImWmBJwB/U6XKCWWfnCcrTBw8XSCm3QA9gjppkHTr8OkXUY21MR91D3QZXsw==",
       "type": "package",
       "path": "system.numerics.vectors/4.5.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -10415,7 +10247,7 @@
       ]
     },
     "System.Reflection/4.3.0": {
-      "sha512": "8z4A6GMakVgsupc1X4WAIbjAYLtgtPDTUO//5LLIc7cDJL8T3TdeMNcvC7OJXWyhj++jFx7vTk4j8q7J61b+Pg==",
+      "sha512": "yIQunVBlqtnBh4E/IFlc3Jgfk9q2zcKR5gHBRaq02rXjzHb8QmNUxZu5ZAzQf0+NfG0kaXjQlfXp76GrOYYX4w==",
       "type": "package",
       "path": "system.reflection/4.3.0",
       "files": [
@@ -10671,10 +10503,11 @@
       ]
     },
     "System.Reflection.Metadata/1.6.0": {
-      "sha512": "I4aWCii7N1bmn43vviRfJQYW6UAco1G/CcjJouvgGdb/sr2BRTSnddhaPMg2oxu9VHFn8T1z3dTLq0pna8zmtA==",
+      "sha512": "COC1aiAJjCoA5GBF+QKL2uLqEBew4JsCkQmoHKbN3TlOZKa2fKLz5CpiRQKDz0RsAOEGsVKqOD5bomsXq/4STQ==",
       "type": "package",
       "path": "system.reflection.metadata/1.6.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -10691,7 +10524,7 @@
       ]
     },
     "System.Reflection.Primitives/4.3.0": {
-      "sha512": "HKfW3yDkLaH1/Il5PNQeYha5/oZTdt/fkHWoIKOg9IYSp+TbWUlkOm44MhWMbe62uA5rG8llHw2SwbO7V3dYtg==",
+      "sha512": "uYobMY1buaKUUyek+dIqfrYrHeLKWCPnIj4Yh6IylwOavPvicD+XWU+ZbbY8jsvJ/DZdgruCDYH/GFaLxK+yAw==",
       "type": "package",
       "path": "system.reflection.primitives/4.3.0",
       "files": [
@@ -10799,7 +10632,7 @@
       ]
     },
     "System.Resources.ResourceManager/4.3.0": {
-      "sha512": "/zrcPkkWdZmI4F92gL/TPumP98AVDu/Wxr3CSJGQQ+XN6wbRZcyfSKVoPo17ilb3iOr0cCRqJInGwNMolqhS8A==",
+      "sha512": "+W+rm0+XtOIvrgO5tLyAdxb2tVJxEHItvAWkPnCSZrj3d9FTfCfh9bxsOrZM77mKNTdZC9dCVvLj18WtwHxUYA==",
       "type": "package",
       "path": "system.resources.resourcemanager/4.3.0",
       "files": [
@@ -10855,7 +10688,7 @@
       ]
     },
     "System.Runtime/4.3.0": {
-      "sha512": "LT9BMow8kzxtBUQ5guge/Yq3cTkj6dUzs506KvbuLcYNatXBJJlwEPrC2pQ7nAQ1g4Ex2YLAElvhB8QZ/w6/nQ==",
+      "sha512": "IvS4KRfxx1jhqqqxaVgY0S7jFVd16cxBm45uaG9EqtougRkTrJmnFuv2deZn8xL+FEABnv5PpAAYj5iyKIPezQ==",
       "type": "package",
       "path": "system.runtime/4.3.0",
       "files": [
@@ -10946,7 +10779,7 @@
       ]
     },
     "System.Runtime.CompilerServices.Unsafe/4.5.1": {
-      "sha512": "qUJMNWhbm9oZ3XaMFiEMiYmRPszbnXIkRIi7+4b2Md2xZ6JUOepf0/kY3S85qistRohl9OdMe4PsO+RdG2kTIQ==",
+      "sha512": "Zh8t8oqolRaFa9vmOZfdQm/qKejdqz0J9kr7o2Fu0vPeoH3BL1EOXipKWwkWtLT1JPzjByrF19fGuFlNbmPpiw==",
       "type": "package",
       "path": "system.runtime.compilerservices.unsafe/4.5.1",
       "files": [
@@ -10971,7 +10804,7 @@
       ]
     },
     "System.Runtime.Extensions/4.3.0": {
-      "sha512": "guW0uK0fn5fcJJ1tJVXYd7/1h5F+pea1r7FLSOz/f8vPEqbR2ZAknuRDvTQ8PzAilDveOxNjSfr0CHfIQfFk8g==",
+      "sha512": "EBR/U4ZQmJa3DKIaM/CWJPE07PsY/zRFOnfoREU8BkfofP1E3+vt5EDQCkf57CZRKgdcvEFdFBbrGErC+HssIA==",
       "type": "package",
       "path": "system.runtime.extensions/4.3.0",
       "files": [
@@ -11269,11 +11102,13 @@
         "system.runtime.numerics.nuspec"
       ]
     },
-    "System.Runtime.Serialization.Json/4.0.2": {
-      "sha512": "+7DIJhnKYgCzUgcLbVTtRQb2l1M0FP549XFlFkQM5lmNiUBl44AfNbx4bz61xA8PzLtlYwfmif4JJJW7MPPnjg==",
+    "System.Runtime.Serialization.Json/4.3.0": {
+      "sha512": "CpVfOH0M/uZ5PH+M9+Gu56K0j9lJw3M+PKRegTkcrY/stOIvRUeonggxNrfBYLA5WOHL2j15KNJuTuld3x4o9w==",
       "type": "package",
-      "path": "system.runtime.serialization.json/4.0.2",
+      "path": "system.runtime.serialization.json/4.3.0",
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -11322,7 +11157,7 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
-        "system.runtime.serialization.json.4.0.2.nupkg.sha512",
+        "system.runtime.serialization.json.4.3.0.nupkg.sha512",
         "system.runtime.serialization.json.nuspec"
       ]
     },
@@ -11890,10 +11725,11 @@
       ]
     },
     "System.Security.Principal.Windows/4.5.0": {
-      "sha512": "WA9ETb/pY3BjnxKjBUHEgO59B7d/nnmjHFsqjJ2eDT780nD769CT1/bw2ia0Z6W7NqlcqokE6sKGKa6uw88XGA==",
+      "sha512": "hs2zF4tOQ3V4iQttVnLrnR/i8AOrrAgu2Gmp4/jNaE/+5hiZWDj20FK/m/OW3Itdi9XDvqf55WzHkiWYtOSUNg==",
       "type": "package",
       "path": "system.security.principal.windows/4.5.0",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
@@ -11929,6 +11765,47 @@
         "system.security.principal.windows.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "System.Security.SecureString/4.3.0": {
+      "sha512": "PnXp38O9q/2Oe4iZHMH60kinScv6QiiL2XH54Pj2t0Y6c2zKPEiAZsM/M3wBOHLNTBDFP0zfy13WN2M0qFz5jg==",
+      "type": "package",
+      "path": "system.security.securestring/4.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net46/System.Security.SecureString.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net46/System.Security.SecureString.dll",
+        "ref/netstandard1.3/System.Security.SecureString.dll",
+        "ref/netstandard1.3/System.Security.SecureString.xml",
+        "ref/netstandard1.3/de/System.Security.SecureString.xml",
+        "ref/netstandard1.3/es/System.Security.SecureString.xml",
+        "ref/netstandard1.3/fr/System.Security.SecureString.xml",
+        "ref/netstandard1.3/it/System.Security.SecureString.xml",
+        "ref/netstandard1.3/ja/System.Security.SecureString.xml",
+        "ref/netstandard1.3/ko/System.Security.SecureString.xml",
+        "ref/netstandard1.3/ru/System.Security.SecureString.xml",
+        "ref/netstandard1.3/zh-hans/System.Security.SecureString.xml",
+        "ref/netstandard1.3/zh-hant/System.Security.SecureString.xml",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "runtimes/unix/lib/netstandard1.3/System.Security.SecureString.dll",
+        "runtimes/win/lib/net46/System.Security.SecureString.dll",
+        "runtimes/win/lib/netstandard1.3/System.Security.SecureString.dll",
+        "system.security.securestring.4.3.0.nupkg.sha512",
+        "system.security.securestring.nuspec"
       ]
     },
     "System.Spatial/5.8.2": {
@@ -11996,7 +11873,7 @@
       ]
     },
     "System.Text.Encoding/4.3.0": {
-      "sha512": "AYaZ+IXx31IjIoSeuM9kS5JCMoYaXmfyHNvj/7GiUbKeXFYHIkWJRptSocP82g/5yvbJZVuH8X9LygG+zFLaiQ==",
+      "sha512": "LtrC9tLKwDZrzXqj3VCdYGeumxSPHpfMtYwP3n0omRJbfguQ1/LVr2OHkz8YdSbeMrT8XsfTpTBMgh+GZGoskQ==",
       "type": "package",
       "path": "system.text.encoding/4.3.0",
       "files": [
@@ -12279,7 +12156,7 @@
       ]
     },
     "System.Threading/4.3.0": {
-      "sha512": "VkUS0kOBcUf3Wwm0TSbrevDDZ6BlM+b/HRiapRFWjM5O0NS0LviG0glKmFK+hhPDd1XFeSdU1GmlLhb2CoVpIw==",
+      "sha512": "CvzDtfwDRj/FyZRN13Ep9+FyuW4XG4bJZl6YkE+VDW/9aSXcNbzD8whM+KXeI0XTG6HYGhm02qex+gNRENEyfg==",
       "type": "package",
       "path": "system.threading/4.3.0",
       "files": [
@@ -12349,7 +12226,7 @@
       ]
     },
     "System.Threading.Tasks/4.3.0": {
-      "sha512": "THduOj+UmIKnryNDd57GxBXvFsDdHeWk+24QR4JKIopS9nVQk71+c31c1mG/xjETiyJTnVBnNKxY1uq6woWMxw==",
+      "sha512": "mfU3uARPe9iM9vM9IJoTunXINvZHgXDAKjcCwETdheLLIuhsFqUxmMHlZQJLl6GEET0yK5Hwnm/unzUimzTN6w==",
       "type": "package",
       "path": "system.threading.tasks/4.3.0",
       "files": [
@@ -12416,7 +12293,7 @@
       ]
     },
     "System.Threading.Tasks.Extensions/4.5.1": {
-      "sha512": "rckdhLJtzQ3EI+0BGuq7dUVtCSnerqAoAmL3S6oMRZ4VMZTL3Rq9DS8IDW57c6PYVebA4O0NbSA1BDvyE18UMA==",
+      "sha512": "WSKUTtLhPR8gllzIWO2x6l4lmAIfbyMAiTlyXAis4QBDonXK4b4S6F8zGARX4/P8wH3DH+sLdhamCiHn+fTU1A==",
       "type": "package",
       "path": "system.threading.tasks.extensions/4.5.1",
       "files": [
@@ -12640,7 +12517,7 @@
       ]
     },
     "System.ValueTuple/4.5.0": {
-      "sha512": "xZtSZNEHGa+tGsKuP4sh257vxJ/yemShz4EusmomkynMzuEDDjVaErBNewpzEF6swUgbcrSQAX3ELsEp1zCOwA==",
+      "sha512": "okurQJO6NRE/apDIP23ajJ0hpiNmJ+f0BwOlB/cSqTLQlw5upkf+5+96+iG2Jw40G1fCVCyPz/FhIABUjMR+RQ==",
       "type": "package",
       "path": "system.valuetuple/4.5.0",
       "files": [
@@ -13004,7 +12881,7 @@
       ]
     },
     "WindowsAzure.Storage/8.1.4": {
-      "sha512": "KXblJ3XWzUORNFiIoItmK/sOFIa3aKdjXSpdiCpYmqUKeFt6BQ1pDoGqeynvmuwLqlqp6/+RCXnW+Fix1bPWxQ==",
+      "sha512": "SpcAYi5gkWLQTVQltkulSFLKsLM8BqHTFhKWQx+HYGKh7yaYy2YnVqJUWCIUpva3NUdGKpr/HKHx9WKu8h4LxQ==",
       "type": "package",
       "path": "windowsazure.storage/8.1.4",
       "files": [
@@ -13033,34 +12910,34 @@
       "AsyncUsageAnalyzers >= 1.0.0-alpha003",
       "Microsoft.AspNetCore >= 2.1.3",
       "Microsoft.AspNetCore.All >= 2.0.7",
-      "Microsoft.Bot.Builder >= 4.0.6",
-      "Microsoft.Bot.Builder.Integration.AspNet.Core >= 4.0.6",
-      "Microsoft.Bot.Configuration >= 4.0.6",
-      "Microsoft.Bot.Connector >= 4.0.6",
-      "Microsoft.Bot.Schema >= 4.0.6",
+      "Microsoft.Bot.Builder >= 4.2.2",
+      "Microsoft.Bot.Builder.Integration.AspNet.Core >= 4.2.2",
+      "Microsoft.Bot.Configuration >= 4.2.2",
+      "Microsoft.Bot.Connector >= 4.2.2",
+      "Microsoft.Bot.Schema >= 4.2.2",
       "Microsoft.Extensions.Logging.AzureAppServices >= 2.1.1",
       "Microsoft.NETCore.App >= 2.0.0",
       "StyleCop.Analyzers >= 1.1.0-beta008"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ftw637\\.nuget\\packages\\": {},
+    "C:\\Users\\grzes\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ftw637\\Documents\\GitHub\\TrainingExamples\\CSharp\\MyBot\\MyBot\\Bot Builder Echo Bot V4\\Bot Builder Echo Bot V4.csproj",
+      "projectUniqueName": "C:\\Users\\grzes\\Documents\\GitHub\\TrainingExamples\\CSharp\\MyBot\\MyBot\\Bot Builder Echo Bot V4\\Bot Builder Echo Bot V4.csproj",
       "projectName": "Bot Builder EchoBotV4",
-      "projectPath": "C:\\Users\\ftw637\\Documents\\GitHub\\TrainingExamples\\CSharp\\MyBot\\MyBot\\Bot Builder Echo Bot V4\\Bot Builder Echo Bot V4.csproj",
-      "packagesPath": "C:\\Users\\ftw637\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ftw637\\Documents\\GitHub\\TrainingExamples\\CSharp\\MyBot\\MyBot\\Bot Builder Echo Bot V4\\obj\\",
+      "projectPath": "C:\\Users\\grzes\\Documents\\GitHub\\TrainingExamples\\CSharp\\MyBot\\MyBot\\Bot Builder Echo Bot V4\\Bot Builder Echo Bot V4.csproj",
+      "packagesPath": "C:\\Users\\grzes\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\grzes\\Documents\\GitHub\\TrainingExamples\\CSharp\\MyBot\\MyBot\\Bot Builder Echo Bot V4\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\ftw637\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\grzes\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -13068,7 +12945,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://sitecore.myget.org/F/sc-packages/api/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.0": {
@@ -13099,23 +12977,23 @@
           },
           "Microsoft.Bot.Builder": {
             "target": "Package",
-            "version": "[4.0.6, )"
+            "version": "[4.2.2, )"
           },
           "Microsoft.Bot.Builder.Integration.AspNet.Core": {
             "target": "Package",
-            "version": "[4.0.6, )"
+            "version": "[4.2.2, )"
           },
           "Microsoft.Bot.Configuration": {
             "target": "Package",
-            "version": "[4.0.6, )"
+            "version": "[4.2.2, )"
           },
           "Microsoft.Bot.Connector": {
             "target": "Package",
-            "version": "[4.0.6, )"
+            "version": "[4.2.2, )"
           },
           "Microsoft.Bot.Schema": {
             "target": "Package",
-            "version": "[4.0.6, )"
+            "version": "[4.2.2, )"
           },
           "Microsoft.Extensions.Logging.AzureAppServices": {
             "target": "Package",

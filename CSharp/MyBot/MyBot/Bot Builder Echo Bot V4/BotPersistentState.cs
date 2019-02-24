@@ -25,7 +25,7 @@ namespace BotBuilderEchoBotV4
             return _accessors.CurrentState.SetAsync(_turnContext, value, CancellationToken.None);
         }
 
-        public Task CommitChangesAsync() //bug save it somewhere
+        public Task CommittChangesAsync() //bug save it somewhere
         {
             return _accessors.ConversationState.SaveChangesAsync(_turnContext);
         }

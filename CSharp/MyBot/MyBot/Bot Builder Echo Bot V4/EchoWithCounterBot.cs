@@ -3,6 +3,7 @@
 
 using System.Threading;
 using System.Threading.Tasks;
+using BotBuilderEchoBotV4.Navigation;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Schema;
 using Microsoft.Extensions.Logging;
@@ -66,7 +67,7 @@ namespace BotBuilderEchoBotV4
         await turnContext.SendActivityAsync($"{turnContext.Activity.Type} event detected");
       }
 
-      botPersistentState.CommitChangesAsync();
+      await botPersistentState.CommittChangesAsync();
     }
   }
 }
