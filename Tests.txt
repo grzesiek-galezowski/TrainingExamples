@@ -1,0 +1,57 @@
+TDD
+ - DI
+ - Refactoring
+ - Mocki
+ - Triangulacja
+ - Wpływ TDD na design
+
+DESIGN PATTERNS
+ - SOLID
+  - CQS
+  - Zrefaktoryzuj ramki to polimorfizmu
+  - SRP + testy
+  - 
+ - GOF
+  - 3 zasady
+   - encapsulate what varies
+   - design to interfaces
+   - prefer composition
+  - strategia
+  - dekorator
+  - kompozyt
+  - builder
+  - fabryka
+  - null object
+   - jakie znamy alternatywy do nulla? 
+   - co byłoby lepsze w takiej sytuacji od nulla? (3 sytuacje)
+   - proszę zamienić if(null) na null object
+ - Wzorce Fowlera
+  - DTO
+  - Value Object
+  - Czym się różni DTO od ValueObjectu
+  - (Skrypt transakcyjny a model dziedziny)
+ - Wzorce xunit
+  - Shared Fixture
+   - NUnit/XUnit.net - ćwiczenie z polem klasy używanym w 2 testach
+  - Test Data Builder
+  - Factory method
+ - Wzorce architektoniczne
+  - CQRS
+  - architektura heksagonalna/ports & adapters
+  - architektura warstwowa (i jej wady)
+  - architektura rur i filtrów
+  - mikrousługi
+
+Inne zwinne praktyki
+  - historyjki użytkownika
+  - story mapping
+ 
+PROGRAMOWANIE FUNKCYJNE
+ - LINQ
+ - Maybe
+ - Either
+
+WPF
+ - ViewModel 
+  - warstwy ViewModelu i która ma jaką rolę?
+  - jak wywołać dialog z ViewModelu albo z modelu?
