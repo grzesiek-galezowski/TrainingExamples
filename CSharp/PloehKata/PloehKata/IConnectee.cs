@@ -2,6 +2,6 @@
 {
   public interface IConnectee
   {
-    void AttemptConnectionFrom(Connector connector, IConnectionInProgress connectionInProgress);
+    void AttemptConnectionFrom(IExistingConnector connector, IConnectionInProgress connectionInProgress);
   }
 }
