@@ -20,7 +20,8 @@ namespace PloehKata
     {
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-      var userInfrastructure = new UserInfrastructure(new UserRepository());
+      var noSqlPersistence = new NoSqlPersistence();
+      var userInfrastructure = new UserInfrastructure(new UserLookup(noSqlPersistence), new UserDestination(noSqlPersistence));
       
       services.AddSingleton(userInfrastructure);
     }

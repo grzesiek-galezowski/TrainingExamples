@@ -4,17 +4,19 @@ namespace PloehKata
 {
   public class UserInfrastructure : IUserInfrastructure
   {
-    private IUserRepository _repository;
+    private IUserLookup _lookup;
+    private IConnectorDestination _destination;
 
-    public UserInfrastructure(IUserRepository repository)
+    public UserInfrastructure(IUserLookup lookup, IConnectorDestination destination)
     {
-      _repository = repository;
+        _lookup = lookup;
+        _destination = destination;
     }
 
     public IUserCommand CreateConnectionCommand(
       IConnectionInProgress connectionInProgress, string user1Id, string user2Id)
     {
-      return new ConnectionCommand(connectionInProgress, user1Id, user2Id, _repository);
+      return new ConnectionCommand(connectionInProgress, user1Id, user2Id, _lookup, _destination);
     }
 
     public IConnectionInProgress CreateConnectionInProgress()

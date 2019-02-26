@@ -5,5 +5,6 @@ namespace PloehKata
     public class UserDto
     {
         public List<string> Connections { get; private set; } = new List<string>();
+        public string Id { get; set; }
     }
 }

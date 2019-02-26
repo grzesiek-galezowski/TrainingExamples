@@ -1,6 +1,5 @@
 ﻿using FluentAssertions;
 using NSubstitute;
-using NSubstitute.Core.Arguments;
 using PloehKata;
 using TddXt.AnyRoot.Strings;
 using Xunit;
@@ -34,10 +33,25 @@ namespace PloehKataSpecification
       var connector = new Connector(userDto);
 
       //WHEN
-      connector.ConnectWith(connecteeId); //bug what about connection in progress?
+      connector.AddConnectionId(connecteeId);
 
       //THEN
       userDto.Connections.Should().Contain(connecteeId);
+    }
+
+    [Fact]
+    public void ShouldSaveUserDtoToDestination()
+    {
+        //GIVEN
+        var userDto = Any.Instance<UserDto>();
+        var connector = new Connector(userDto);
+        var destination = Substitute.For<IConnectorDestination>();
+
+        //WHEN
+        connector.WriteTo(destination);
+
+        //THEN
+        destination.Received(1).Save(userDto);
     }
   }
 }

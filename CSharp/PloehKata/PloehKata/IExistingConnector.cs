@@ -2,6 +2,6 @@
 {
     public interface IExistingConnector
     {
-        void ConnectWith(string id);
+        void AddConnectionId(string id);
     }
 }

@@ -14,14 +14,14 @@
       connectee.AttemptConnectionFrom(this, connectionInProgress);
     }
 
-    public void WriteTo(IUserRepository repository)
+    public void WriteTo(IConnectorDestination destination)
     {
-      throw new System.NotImplementedException();
+      destination.Save(_userDto);
     }
 
-    public void ConnectWith(string id)
+    public void AddConnectionId(string id)
     {
-        throw new System.NotImplementedException();
+        _userDto.Connections.Add(id);
     }
   }
 }

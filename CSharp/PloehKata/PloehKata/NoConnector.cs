@@ -7,9 +7,9 @@
       connectionInProgress.UserNotFound();
     }
 
-    public void WriteTo(IUserRepository repository)
+    public void WriteTo(IConnectorDestination destination)
     {
-      throw new System.NotImplementedException();
+      
     }
   }
 }

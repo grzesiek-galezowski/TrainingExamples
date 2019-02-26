@@ -1,41 +1,83 @@
-﻿using System;
-using NSubstitute;
+﻿using NSubstitute;
+using NSubstitute.ExceptionExtensions;
 using PloehKata;
 using TddXt.AnyRoot;
 using TddXt.AnyRoot.Strings;
+using TddXt.XNSubstitute.Root;
 using Xunit;
 using static TddXt.AnyRoot.Root;
 
 namespace PloehKataSpecification
 {
-  public class ConnectionCommandSpecification
-  {
-    [Fact]
-    public void ShouldReadBothUsersAndAttemptConnectionBetweenThemThenUpdateConector()
+    public class ConnectionCommandSpecification
     {
-      //GIVEN
-      var connectionInProgress = Any.Instance<IConnectionInProgress>();
-      var user1Id = Any.String();
-      var user2Id = Any.String();
-      var repository = Substitute.For<IUserRepository>();
-      var connector = Substitute.For<IConnector>();
-      var connectee = Any.Instance<IConnectee>();
-      var command = new ConnectionCommand(connectionInProgress, user1Id, user2Id, repository);
+        [Fact]
+        public void ShouldReadBothUsersAndAttemptConnectionBetweenThemThenUpdateConector()
+        {
+            //GIVEN
+            var connectionInProgress = Any.Instance<IConnectionInProgress>();
+            var user1Id = Any.String();
+            var user2Id = Any.String();
+            var lookup = Substitute.For<IUserLookup>();
+            var destination = Substitute.For<IConnectorDestination>();
+            var connector = Substitute.For<IConnector>();
+            var connectee = Any.Instance<IConnectee>();
+            var command = new ConnectionCommand(connectionInProgress, user1Id, user2Id, lookup, destination);
 
-      repository.LookupConnector(user1Id).Returns(connector);
-      repository.LookupConnectee(user2Id).Returns(connectee);
+            lookup.LookupConnector(user1Id).Returns(connector);
+            lookup.LookupConnectee(user2Id).Returns(connectee);
 
-      //WHEN
-      command.Execute();
+            //WHEN
+            command.Execute();
 
-      //THEN
-      Received.InOrder(() =>
-      {
-        connector.AttemptConnectionWith(connectee, connectionInProgress);
-        connector.WriteTo(repository);
-      });
+            //THEN
+            Received.InOrder(() =>
+            {
+                connector.AttemptConnectionWith(connectee, connectionInProgress);
+                connector.WriteTo(destination);
+            });
+        }
+
+        [Fact]
+        public void ShouldReportInvalidUserIdWhenInvalidConnectorIdExceptionIsThrownFromLookup()
+        {
+            //GIVEN
+            var connectionInProgress = Substitute.For<IConnectionInProgress>();
+            var user1Id = Any.String();
+            var user2Id = Any.String();
+            var lookup = Substitute.For<IUserLookup>();
+            var destination = Substitute.For<IConnectorDestination>();
+            var command = new ConnectionCommand(connectionInProgress, user1Id, user2Id, lookup, destination);
+
+            lookup.LookupConnector(user1Id).Throws(Any.Instance<InvalidConnectorIdException>());
+
+            //WHEN
+            command.Execute();
+
+            //THEN
+            XReceived.Only(() => connectionInProgress.Received(1).InvalidUserId());
+        }
+
+        [Fact]
+        public void ShouldReportInvalidOtherUserIdWhenInvalidConnecteeIdExceptionIsThrownFromLookup()
+        {
+            //GIVEN
+            var connectionInProgress = Substitute.For<IConnectionInProgress>();
+            var user1Id = Any.String();
+            var user2Id = Any.String();
+            var lookup = Substitute.For<IUserLookup>();
+            var destination = Substitute.For<IConnectorDestination>();
+            var command = new ConnectionCommand(connectionInProgress, user1Id, user2Id, lookup, destination);
+
+            lookup.LookupConnector(user1Id).Throws(Any.Instance<InvalidConnecteeIdException>());
+
+            //WHEN
+            command.Execute();
+
+            //THEN
+            XReceived.Only(() => connectionInProgress.Received(1).InvalidOtherUserId());
+        }
+
+        //bug invalid ID -> exception?
     }
-
-    //bug invalid ID -> exception?
-  }
 }

@@ -1,6 +1,6 @@
 ﻿namespace PloehKata
 {
-  public interface IUserRepository
+  public interface IUserLookup
   {
     IConnector LookupConnector(string connectorId);
     IConnectee LookupConnectee(string connecteeId);

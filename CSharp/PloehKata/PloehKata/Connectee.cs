@@ -2,16 +2,16 @@
 {
     public class Connectee : IConnectee
     {
-        private readonly string _id;
+        private readonly UserDto _userDto;
 
-        public Connectee(string id)
+        public Connectee(UserDto userDto)
         {
-            _id = id;
+            _userDto = userDto;
         }
 
         public void AttemptConnectionFrom(IExistingConnector connector, IConnectionInProgress connectionInProgress)
         {
-            connector.ConnectWith(_id);
+            connector.AddConnectionId(_userDto.Id);
         }
     }
 }

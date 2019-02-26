@@ -1,7 +1,5 @@
-﻿using FluentAssertions;
-using NSubstitute;
+﻿using NSubstitute;
 using PloehKata;
-using TddXt.AnyRoot.Strings;
 using Xunit;
 using static TddXt.AnyRoot.Root;
 
@@ -13,8 +11,8 @@ namespace PloehKataSpecification
         public void ShouldWHAT() //bug
         {
             //GIVEN
-            var id = Any.String();
-            var connectee = new Connectee(id);
+            var userDto = Any.Instance<UserDto>();
+            var connectee = new Connectee(userDto);
             var existingConnector = Substitute.For<IExistingConnector>();
             var connectionInProgress = Any.Instance<IConnectionInProgress>();
 
@@ -22,7 +20,7 @@ namespace PloehKataSpecification
             connectee.AttemptConnectionFrom(existingConnector, connectionInProgress);
 
             //THEN
-            existingConnector.Received(1).ConnectWith(id);
+            existingConnector.Received(1).AddConnectionId(userDto.Id);
         }
 
     }

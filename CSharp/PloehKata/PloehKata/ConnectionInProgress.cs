@@ -13,5 +13,15 @@ namespace PloehKata
     {
       throw new System.NotImplementedException();
     }
+
+    public void InvalidUserId()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void InvalidOtherUserId()
+    {
+        throw new System.NotImplementedException();
+    }
   }
 }

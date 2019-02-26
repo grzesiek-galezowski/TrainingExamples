@@ -6,5 +6,7 @@ namespace PloehKata
   {
     IActionResult ToActionResult();
     void UserNotFound();
+    void InvalidUserId();
+    void InvalidOtherUserId();
   }
 }

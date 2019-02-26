@@ -14,7 +14,7 @@ namespace PloehKataSpecification
     public void ShouldCreateEmptyConnectionInProgress()
     {
       //GIVEN
-      var userInfrastructure = new UserInfrastructure(Any.Instance<IUserRepository>());
+      var userInfrastructure = new UserInfrastructure(Any.Instance<IUserLookup>(), Any.Instance<IConnectorDestination>());
 
       //WHEN
       var connectionInProgress = userInfrastructure.CreateConnectionInProgress();
@@ -27,8 +27,9 @@ namespace PloehKataSpecification
     public void ShouldCreateConnectCommandWithIdsAndConnectionInProgress()
     {
       //GIVEN
-      var repository = Any.Instance<IUserRepository>();
-      var userInfrastructure = new UserInfrastructure(repository);
+      var repository = Any.Instance<IUserLookup>();
+      var destination = Any.Instance<IConnectorDestination>();
+      var userInfrastructure = new UserInfrastructure(repository, destination);
       var connectionInProgress = Any.Instance<IConnectionInProgress>();
       var user1Id = Any.String();
       var user2Id = Any.String();
@@ -39,6 +40,7 @@ namespace PloehKataSpecification
       //THEN
       command.Should().BeOfType<ConnectionCommand>()
         .And.DependOn(repository)
+        .And.DependOn(destination)
         .And.DependOn(user1Id)
         .And.DependOn(user2Id)
         .And.DependOn(connectionInProgress);
