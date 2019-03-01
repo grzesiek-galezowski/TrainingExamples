@@ -8,7 +8,7 @@ namespace PloehKataSpecification
     public class ConnecteeSpecification
     {
         [Fact]
-        public void ShouldWHAT() //bug
+        public void ShouldAddConnectionToConnectorAndReportSuccessWhenConnectionAttemptIsMade()
         {
             //GIVEN
             var userDto = Any.Instance<UserDto>();
@@ -20,8 +20,11 @@ namespace PloehKataSpecification
             connectee.AttemptConnectionFrom(existingConnector, connectionInProgress);
 
             //THEN
-            existingConnector.Received(1).AddConnectionId(userDto.Id);
+            Received.InOrder(() =>
+            {
+                existingConnector.AddConnection(userDto);
+                connectionInProgress.Success(userDto);
+            });
         }
-
     }
 }

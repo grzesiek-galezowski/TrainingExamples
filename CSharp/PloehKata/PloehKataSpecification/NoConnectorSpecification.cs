@@ -9,7 +9,7 @@ using static TddXt.AnyRoot.Root;
 
 namespace PloehKataSpecification
 {
-  public class NoConnectorSpecification
+    public class NoConnectorSpecification
   {
     [Fact]
     public void ShouldReportThatUserIsNotFoundWhenAttemptingConnectionWithIt()

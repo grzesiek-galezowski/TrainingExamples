@@ -1,6 +1,8 @@
-﻿using FluentAssertions;
+﻿using System;
+using FluentAssertions;
 using NSubstitute;
 using PloehKata;
+using TddXt.AnyRoot;
 using TddXt.AnyRoot.Strings;
 using Xunit;
 using static TddXt.AnyRoot.Root;
@@ -28,15 +30,15 @@ namespace PloehKataSpecification
     public void ShouldAddConnecteeIdToItsConnectionsWhenConnectedWithThisId()
     {
       //GIVEN
-      var connecteeId = Any.String();
       var userDto = Any.Instance<UserDto>();
       var connector = new Connector(userDto);
+      var connecteeDto = Any.Instance<UserDto>();
 
       //WHEN
-      connector.AddConnectionId(connecteeId);
+      connector.AddConnection(connecteeDto);
 
       //THEN
-      userDto.Connections.Should().Contain(connecteeId);
+      userDto.Connections.Should().Contain(connecteeDto);
     }
 
     [Fact]

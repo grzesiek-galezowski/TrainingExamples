@@ -19,9 +19,14 @@
       destination.Save(_userDto);
     }
 
-    public void AddConnectionId(string id)
+    public void AddConnection(string id, string userDtoName)
     {
-        _userDto.Connections.Add(id);
+        //_userDto.Connections.Add(id);
+    }
+
+    public void AddConnection(UserDto anotherUserDto)
+    {
+        _userDto.Connections.Add(anotherUserDto);
     }
   }
 }

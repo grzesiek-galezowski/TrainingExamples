@@ -23,5 +23,10 @@ namespace PloehKata
     {
         throw new System.NotImplementedException();
     }
+
+    public void Success(UserDto userDto)
+    {
+        throw new System.NotImplementedException();
+    }
   }
 }

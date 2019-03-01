@@ -11,7 +11,7 @@
 
         public void AttemptConnectionFrom(IExistingConnector connector, IConnectionInProgress connectionInProgress)
         {
-            connector.AddConnectionId(_userDto.Id);
+            connector.AddConnection(_userDto);
         }
     }
 }

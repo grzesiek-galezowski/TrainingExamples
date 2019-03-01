@@ -4,7 +4,8 @@ namespace PloehKata
 {
     public class UserDto
     {
-        public List<string> Connections { get; private set; } = new List<string>();
+        public List<UserDto> Connections { get; private set; } = new List<UserDto>();
         public string Id { get; set; }
+        public string Name { get; set; }
     }
 }

@@ -8,5 +8,6 @@ namespace PloehKata
     void UserNotFound();
     void InvalidUserId();
     void InvalidOtherUserId();
+    void Success(UserDto userDto);
   }
 }
