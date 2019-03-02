@@ -1,7 +1,7 @@
-﻿using FluentAssertions;
-using NSubstitute;
-using NSubstitute.Core.Arguments;
+﻿using NSubstitute;
 using PloehKata;
+using PloehKata.Logic;
+using PloehKata.Ports;
 using TddXt.AnyRoot.Exploding;
 using Xunit;
 using static TddXt.AnyRoot.Root;
@@ -11,7 +11,7 @@ namespace PloehKataSpecification
     public class NoConnecteeSpecification
     {
         [Fact]
-        public void ShouldWHAT()
+        public void ShouldReportOtherUserNotFoundWhenAttemptingConnectionAnyConnector()
         {
             //GIVEN
             var noConnectee = new NoConnectee();
@@ -22,7 +22,7 @@ namespace PloehKataSpecification
                 Any.Exploding<IExistingConnector>(), connectionInProgress);
 
             //THEN
-            true.Should().BeFalse("not implemented");
+            connectionInProgress.Received(1).OtherUserNotFound();
         }
 
     }

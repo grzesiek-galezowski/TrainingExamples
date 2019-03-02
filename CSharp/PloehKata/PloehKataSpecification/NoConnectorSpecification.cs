@@ -2,6 +2,8 @@
 using FluentAssertions;
 using NSubstitute;
 using PloehKata;
+using PloehKata.Logic;
+using PloehKata.Ports;
 using TddXt.AnyRoot.Exploding;
 using TddXt.XNSubstitute.Root;
 using Xunit;

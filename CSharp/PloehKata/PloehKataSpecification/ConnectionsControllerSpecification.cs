@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using NSubstitute;
 using PloehKata;
+using PloehKata.Adapters;
+using PloehKata.Ports;
 using TddXt.AnyRoot.Strings;
 using Xunit;
 using static TddXt.AnyRoot.Root;
@@ -14,16 +16,18 @@ namespace PloehKataSpecification
     public void ShouldForwardLogicToConnectCommand()
     {
       //GIVEN
-      var connectCommand = Substitute.For<IUserCommand>();
+      var connectCommand = Substitute.For<IUserUseCase>();
       var resultFromConnection = Any.Instance<IActionResult>();
-      var connectionInProgress = Substitute.For<IConnectionInProgress>();
-      var infrastructure = Substitute.For<IUserInfrastructure>();
+      var connectionInProgress = Substitute.For<IActionResultBasedConnectionInProgress>();
+      var useCaseFactory = Substitute.For<IUserUseCaseFactory>();
+      var connectionInProgressFactory = Substitute.For<IConnectionInProgressFactory>();
       var user1Id = Any.String();
       var user2Id = Any.String();
-      var connectionsController = new ConnectionsController(infrastructure);
+      var connectionsController = new ConnectionsController(
+        useCaseFactory, connectionInProgressFactory);
 
-      infrastructure.CreateConnectionInProgress().Returns(connectionInProgress);
-      infrastructure.CreateConnectionCommand(connectionInProgress, user1Id, user2Id).Returns(connectCommand);
+      connectionInProgressFactory.CreateConnectionInProgress().Returns(connectionInProgress);
+      useCaseFactory.CreateConnectionUseCase(user1Id, user2Id, connectionInProgress).Returns(connectCommand);
       connectionInProgress.ToActionResult().Returns(resultFromConnection);
 
       //WHEN

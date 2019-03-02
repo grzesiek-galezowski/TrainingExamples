@@ -2,6 +2,8 @@
 using FluentAssertions;
 using NSubstitute;
 using PloehKata;
+using PloehKata.Logic;
+using PloehKata.Ports;
 using TddXt.AnyRoot;
 using TddXt.AnyRoot.Strings;
 using Xunit;
@@ -27,7 +29,7 @@ namespace PloehKataSpecification
     }
 
     [Fact]
-    public void ShouldAddConnecteeIdToItsConnectionsWhenConnectedWithThisId()
+    public void ShouldAddConnecteeItsConnectionsAndViceVersaWhenConnectedToAnotherUser()
     {
       //GIVEN
       var userDto = Any.Instance<UserDto>();
@@ -39,6 +41,7 @@ namespace PloehKataSpecification
 
       //THEN
       userDto.Connections.Should().Contain(connecteeDto);
+      connecteeDto.Connections.Should().Contain(userDto);
     }
 
     [Fact]
