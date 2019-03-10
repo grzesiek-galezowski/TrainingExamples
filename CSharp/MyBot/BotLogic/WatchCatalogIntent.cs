@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
-using BotBuilderEchoBotV4.Navigation;
+using BotLogic;
 
-namespace BotBuilderEchoBotV4
+namespace BotBuilderEchoBotV4.Logic
 {
     internal class WatchCatalogIntent : IIntent
     {
@@ -12,7 +12,7 @@ namespace BotBuilderEchoBotV4
             _text = text;
         }
 
-        public Task ApplyTo(DialogStateMachine dialogStateMachine, User user)
+        public Task ApplyTo(DialogStateMachine dialogStateMachine, IUser user)
         {
             return dialogStateMachine.OnWatchGameCatalogAsync(user);
         }

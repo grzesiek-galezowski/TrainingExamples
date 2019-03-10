@@ -1,4 +1,6 @@
-namespace BotBuilderEchoBotV4
+using BotLogic;
+
+namespace BotBuilderEchoBotV4.Logic
 {
     public class Games
     {
@@ -9,12 +11,13 @@ namespace BotBuilderEchoBotV4
             _games = games;
         }
 
-        public void DisplayFor(User user)
+        public void DisplayFor(BotLogic.IUser user)
         {
             foreach (var game in _games)
             {
-                user.SayAsync(game);
+                user.AppendToResponseAsync(game);
             }
         }
     }
+
 }

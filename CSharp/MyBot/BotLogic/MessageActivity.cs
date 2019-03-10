@@ -1,17 +1,17 @@
 using System.Threading.Tasks;
-using BotBuilderEchoBotV4.Navigation;
+using BotLogic;
 
-namespace BotBuilderEchoBotV4
+namespace BotBuilderEchoBotV4.Logic
 {
-    internal class MessageActivity
+  public class MessageActivity
     {
-        private readonly User _user;
+        private readonly IUser _user;
         private readonly string _text;
         private readonly IntentRecognition _intentRecognition;
         private readonly DialogStateMachine _dialogStateMachine;
 
         public MessageActivity(
-            User user,
+            IUser user,
             string activityText, 
             IntentRecognition intentRecognition, 
             DialogStateMachine dialogStateMachine)

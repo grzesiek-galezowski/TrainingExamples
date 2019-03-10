@@ -1,4 +1,4 @@
-namespace BotBuilderEchoBotV4
+namespace BotBuilderEchoBotV4.Logic
 {
     internal interface IDialogContext
     {

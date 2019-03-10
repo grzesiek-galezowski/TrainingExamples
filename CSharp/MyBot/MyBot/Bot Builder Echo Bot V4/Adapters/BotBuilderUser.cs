@@ -1,20 +1,21 @@
 using System;
 using System.Threading.Tasks;
+using BotLogic;
 using Microsoft.Bot.Builder;
 
-namespace BotBuilderEchoBotV4
+namespace BotBuilderEchoBotV4.Logic
 {
-    public class User
-    {
+  public class BotBuilderUser : IUser
+  {
         private readonly ITurnContext _turnContext;
         private string _responseMessage = string.Empty;
 
-        public User(ITurnContext turnContext)
+        public BotBuilderUser(ITurnContext turnContext)
         {
             _turnContext = turnContext;
         }
 
-        public Task SayAsync(string text)
+        public Task AppendToResponseAsync(string text)
         {
             return Task.Factory.StartNew(() =>
             {

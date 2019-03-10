@@ -1,18 +1,19 @@
 using System.Threading.Tasks;
+using BotLogic;
 
-namespace BotBuilderEchoBotV4.Navigation
+namespace BotBuilderEchoBotV4.Logic
 {
 
     public class DialogStateMachine : IDialogContext
     {
         private readonly IStatesFactory _states;
-        private readonly BotPersistentState _persistentState;
+        private readonly IBotPersistentState _persistentState;
         private IState _currentState;
 
         public DialogStateMachine(
             IState currentState,
             IStatesFactory states,
-            BotPersistentState persistentState)
+            IBotPersistentState persistentState)
         {
             _currentState = currentState;
             _states = states;
@@ -20,29 +21,29 @@ namespace BotBuilderEchoBotV4.Navigation
         }
 
 
-        public async Task GoToAsync(States state, User user)
+        public async Task GoToAsync(States state, IUser user)
         {
             _currentState = _states.GetState(state);
             await _persistentState.SetCurrentStateAsync(state);
             await _currentState.OnEnterAsync(user);
         }
 
-        public Task OnWatchGameCatalogAsync(User user)
+        public Task OnWatchGameCatalogAsync(IUser user)
         {
             return _currentState.OnWatchGameCatalogAsync(user, this);
         }
 
-        public Task OnGoShoppingIntentAsync(User user)
+        public Task OnGoShoppingIntentAsync(IUser user)
         {
             return _currentState.OnGoShoppingAsync(user, this);
         }
 
-        public Task OnYesAsync(User user)
+        public Task OnYesAsync(IUser user)
         {
             return _currentState.OnYesAsync(user, this);
         }
 
-        public Task OnNoAsync(User user)
+        public Task OnNoAsync(IUser user)
         {
             return _currentState.OnNoAsync(user, this);
         }

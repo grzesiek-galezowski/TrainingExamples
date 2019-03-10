@@ -3,6 +3,7 @@
 
 using System;
 using System.Linq;
+using BotBuilderEchoBotV4.Logic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Bot.Builder;
@@ -111,7 +112,7 @@ namespace BotBuilderEchoBotV4
       options.OnTurnError = async (context, exception) =>
       {
         logger.LogError($"Exception caught : {exception}");
-        await context.SendActivityAsync("Sorry, it looks like something went wrong.");
+        await context.SendActivityAsync(exception.ToString());
       };
 
       // The Memory Storage used here is for local bot debugging only. When the bot

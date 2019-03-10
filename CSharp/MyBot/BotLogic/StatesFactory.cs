@@ -1,7 +1,6 @@
 ﻿using System;
-using BotBuilderEchoBotV4.Navigation;
 
-namespace BotBuilderEchoBotV4
+namespace BotBuilderEchoBotV4.Logic
 {
   public class StatesFactory : IStatesFactory
   {

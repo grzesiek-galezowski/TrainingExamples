@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 using System;
+using BotBuilderEchoBotV4.Logic;
 using Microsoft.Bot.Builder;
 
 namespace BotBuilderEchoBotV4

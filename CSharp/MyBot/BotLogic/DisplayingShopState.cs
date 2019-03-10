@@ -1,30 +1,32 @@
 ﻿using System.Threading.Tasks;
+using BotLogic;
 
-namespace BotBuilderEchoBotV4.Navigation
+namespace BotBuilderEchoBotV4.Logic
 {
+
     public class DisplayingShopState : IState
     {
-        public Task OnWatchGameCatalogAsync(User user, DialogStateMachine dialogContext)
+        public Task OnWatchGameCatalogAsync(IUser user, DialogStateMachine dialogContext)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task OnEnterAsync(User user)
+        public Task OnEnterAsync(IUser user)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task OnGoShoppingAsync(User user, DialogStateMachine dialogStateMachine)
+        public Task OnGoShoppingAsync(IUser user, DialogStateMachine dialogStateMachine)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task OnYesAsync(User user, DialogStateMachine dialogStateMachine)
+        public Task OnYesAsync(IUser user, DialogStateMachine dialogStateMachine)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task OnNoAsync(User user, DialogStateMachine dialogStateMachine)
+        public Task OnNoAsync(IUser user, DialogStateMachine dialogStateMachine)
         {
             throw new System.NotImplementedException();
         }

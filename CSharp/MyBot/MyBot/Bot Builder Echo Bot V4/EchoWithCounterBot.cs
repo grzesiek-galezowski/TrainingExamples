@@ -3,7 +3,8 @@
 
 using System.Threading;
 using System.Threading.Tasks;
-using BotBuilderEchoBotV4.Navigation;
+using BotBuilderEchoBotV4.Logic;
+using BotLogic;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Schema;
 using Microsoft.Extensions.Logging;
@@ -53,7 +54,7 @@ namespace BotBuilderEchoBotV4
       {
         IStatesFactory states = new StatesFactory();
         await new MessageActivity(
-          new User(turnContext),
+          new BotBuilderUser(turnContext),
           turnContext.Activity.Text,
           new IntentRecognition(),
           new DialogStateMachine(
