@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace BotBuilderEchoBotV4.Logic
+namespace BotLogic
 {
     public class GameCatalog
     {

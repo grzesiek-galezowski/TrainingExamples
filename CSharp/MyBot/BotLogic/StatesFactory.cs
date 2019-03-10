@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BotBuilderEchoBotV4.Logic
+namespace BotLogic
 {
   public class StatesFactory : IStatesFactory
   {

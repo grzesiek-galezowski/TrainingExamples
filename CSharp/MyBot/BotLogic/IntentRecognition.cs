@@ -1,4 +1,4 @@
-namespace BotBuilderEchoBotV4.Logic
+namespace BotLogic
 {
   public class IntentRecognition
   {

@@ -3,6 +3,7 @@
 
 using System;
 using BotBuilderEchoBotV4.Logic;
+using BotLogic;
 using Microsoft.Bot.Builder;
 
 namespace BotBuilderEchoBotV4

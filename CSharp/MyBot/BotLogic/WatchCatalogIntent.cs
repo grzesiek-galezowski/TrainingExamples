@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
-using BotLogic;
 
-namespace BotBuilderEchoBotV4.Logic
+namespace BotLogic
 {
     internal class WatchCatalogIntent : IIntent
     {

@@ -1,6 +1,4 @@
-using BotLogic;
-
-namespace BotBuilderEchoBotV4.Logic
+namespace BotLogic
 {
     public class Games
     {

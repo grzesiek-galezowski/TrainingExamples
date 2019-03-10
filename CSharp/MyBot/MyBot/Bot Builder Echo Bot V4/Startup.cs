@@ -4,6 +4,7 @@
 using System;
 using System.Linq;
 using BotBuilderEchoBotV4.Logic;
+using BotLogic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Bot.Builder;
@@ -24,7 +25,7 @@ namespace BotBuilderEchoBotV4
   public class Startup
   {
     private ILoggerFactory _loggerFactory;
-    private bool _isProduction = false;
+    private readonly bool _isProduction = false;
 
     public Startup(IHostingEnvironment env)
     {
@@ -56,7 +57,7 @@ namespace BotBuilderEchoBotV4
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddBot<EchoWithCounterBot>(options => { ConfigureBot(services, options); });
-      services.AddSingleton<EchoBotAccessors>(sp => { return CreateEchoBotAccessors(sp); });
+      services.AddSingleton(CreateEchoBotAccessors);
     }
 
     private static EchoBotAccessors CreateEchoBotAccessors(IServiceProvider sp)
@@ -97,7 +98,7 @@ namespace BotBuilderEchoBotV4
 
       // Retrieve current endpoint.
       var environment = _isProduction ? "production" : "development";
-      var service = botConfig.Services.Where(s => s.Type == "endpoint" && s.Name == environment).FirstOrDefault();
+      var service = botConfig.Services.FirstOrDefault(s => s.Type == "endpoint" && s.Name == environment);
       if (!(service is EndpointService endpointService))
       {
         throw new InvalidOperationException($"The .bot file does not contain an endpoint with name '{environment}'.");

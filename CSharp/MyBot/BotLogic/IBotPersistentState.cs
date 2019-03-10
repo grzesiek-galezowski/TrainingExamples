@@ -1,5 +1,4 @@
 using System.Threading.Tasks;
-using BotBuilderEchoBotV4.Logic;
 
 namespace BotLogic
 {
