@@ -5,7 +5,7 @@ namespace BotLogic
 
     public class DisplayingShopState : IState
     {
-        public Task OnWatchGameCatalogAsync(IUser user, DialogStateMachine dialogContext)
+        public Task OnWatchGameCatalogAsync(IUser user, IDialogContext dialogContext)
         {
             throw new System.NotImplementedException();
         }
@@ -15,17 +15,17 @@ namespace BotLogic
             throw new System.NotImplementedException();
         }
 
-        public Task OnGoShoppingAsync(IUser user, DialogStateMachine dialogStateMachine)
+        public Task OnGoShoppingAsync(IUser user, IDialogContext dialogStateMachine)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task OnYesAsync(IUser user, DialogStateMachine dialogStateMachine)
+        public Task OnYesAsync(IUser user, IDialogContext dialogStateMachine)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task OnNoAsync(IUser user, DialogStateMachine dialogStateMachine)
+        public Task OnNoAsync(IUser user, IDialogContext dialogStateMachine)
         {
             throw new System.NotImplementedException();
         }

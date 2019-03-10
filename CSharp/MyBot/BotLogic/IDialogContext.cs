@@ -1,6 +1,9 @@
+using System.Threading.Tasks;
+
 namespace BotLogic
 {
-    internal interface IDialogContext
+  public interface IDialogContext
     {
+      Task GoToAsync(States state, IUser user);
     }
 }

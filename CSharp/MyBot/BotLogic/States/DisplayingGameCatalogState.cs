@@ -11,7 +11,7 @@ namespace BotLogic
             _gameCatalog = gameCatalog;
         }
 
-        public Task OnWatchGameCatalogAsync(IUser user, DialogStateMachine dialogContext)
+        public Task OnWatchGameCatalogAsync(IUser user, IDialogContext dialogContext)
         {
             user.AppendToResponseAsync("You are already watching game catalog.");
             return Task.CompletedTask;
@@ -23,17 +23,17 @@ namespace BotLogic
             games.DisplayFor(user);
         }
 
-        public Task OnGoShoppingAsync(IUser user, DialogStateMachine dialogStateMachine)
+        public Task OnGoShoppingAsync(IUser user, IDialogContext dialogStateMachine)
         {
             return dialogStateMachine.GoToAsync(States.FromGameCatalogToDisplayShop, user);
         }
 
-        public Task OnYesAsync(IUser user, DialogStateMachine dialogStateMachine)
+        public Task OnYesAsync(IUser user, IDialogContext dialogStateMachine)
         {
             return user.AppendToResponseAsync("There's nothing to confirm");
         }
 
-        public Task OnNoAsync(IUser user, DialogStateMachine dialogStateMachine)
+        public Task OnNoAsync(IUser user, IDialogContext dialogStateMachine)
         {
             return user.AppendToResponseAsync("There's nothing to reject");
         }

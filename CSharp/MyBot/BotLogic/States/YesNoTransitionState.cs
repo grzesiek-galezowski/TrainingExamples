@@ -4,7 +4,7 @@ namespace BotLogic
 {
   public class YesNoTransitionState : IState //bug rename
   {
-    public async Task OnWatchGameCatalogAsync(IUser user, DialogStateMachine dialogContext)
+    public async Task OnWatchGameCatalogAsync(IUser user, IDialogContext dialogContext)
     {
       await user.AppendToResponseAsync("OK, let's stay with the catalog");
       await dialogContext.GoToAsync(States.DisplayingCatalog, user);
@@ -15,18 +15,18 @@ namespace BotLogic
       return user.AppendToResponseAsync("Do you really want to stop viewing the catalog and go shopping?");
     }
 
-    public async Task OnGoShoppingAsync(IUser user, DialogStateMachine dialogStateMachine)
+    public async Task OnGoShoppingAsync(IUser user, IDialogContext dialogStateMachine)
     {
       await user.AppendToResponseAsync("OK, let's go shopping!");
       await dialogStateMachine.GoToAsync(States.DisplayingShop, user);
     }
 
-    public Task OnYesAsync(IUser user, DialogStateMachine dialogStateMachine)
+    public Task OnYesAsync(IUser user, IDialogContext dialogStateMachine)
     {
       return OnGoShoppingAsync(user, dialogStateMachine);
     }
 
-    public Task OnNoAsync(IUser user, DialogStateMachine dialogStateMachine)
+    public Task OnNoAsync(IUser user, IDialogContext dialogStateMachine)
     {
       return OnWatchGameCatalogAsync(user, dialogStateMachine);
     }
