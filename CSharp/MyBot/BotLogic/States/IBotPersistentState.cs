@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace BotLogic
+namespace BotLogic.States
 {
   public interface IBotPersistentState
   {

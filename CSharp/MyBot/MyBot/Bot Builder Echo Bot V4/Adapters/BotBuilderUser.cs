@@ -15,17 +15,14 @@ namespace BotBuilderEchoBotV4.Logic
             _turnContext = turnContext;
         }
 
-        public Task AppendToResponseAsync(string text)
+        public void AppendToResponse(string text)
         {
-            return Task.Factory.StartNew(() =>
+            if (_responseMessage != string.Empty)
             {
-                if (_responseMessage != string.Empty)
-                {
-                    _responseMessage += Environment.NewLine;
-                }
+                _responseMessage += Environment.NewLine;
+            }
 
-                _responseMessage += text;
-            });
+            _responseMessage += text;
         }
 
         public Task RespondAsync()

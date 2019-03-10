@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using BotBuilderEchoBotV4.Logic;
 using BotLogic;
+using BotLogic.States;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Schema;
 using Microsoft.Extensions.Logging;

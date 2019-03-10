@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace BotLogic
+namespace BotLogic.States
 {
     public class DisplayingGameCatalogState : IState
     {
@@ -11,10 +11,9 @@ namespace BotLogic
             _gameCatalog = gameCatalog;
         }
 
-        public Task OnWatchGameCatalogAsync(IUser user, IDialogContext dialogContext)
+        public async Task OnWatchGameCatalogAsync(IUser user, IDialogContext dialogContext)
         {
-            user.AppendToResponseAsync("You are already watching game catalog.");
-            return Task.CompletedTask;
+            user.AppendToResponse("You are already watching game catalog.");
         }
 
         public async Task OnEnterAsync(IUser user)
@@ -28,14 +27,14 @@ namespace BotLogic
             return dialogStateMachine.GoToAsync(States.FromGameCatalogToDisplayShop, user);
         }
 
-        public Task OnYesAsync(IUser user, IDialogContext dialogStateMachine)
+        public async Task OnYesAsync(IUser user, IDialogContext dialogStateMachine)
         {
-            return user.AppendToResponseAsync("There's nothing to confirm");
+            user.AppendToResponse("There's nothing to confirm");
         }
 
-        public Task OnNoAsync(IUser user, IDialogContext dialogStateMachine)
+        public async Task OnNoAsync(IUser user, IDialogContext dialogStateMachine)
         {
-            return user.AppendToResponseAsync("There's nothing to reject");
+            user.AppendToResponse("There's nothing to reject");
         }
     }
 }

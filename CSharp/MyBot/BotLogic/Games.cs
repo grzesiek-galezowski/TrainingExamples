@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+
 namespace BotLogic
 {
     public class Games
@@ -13,7 +15,7 @@ namespace BotLogic
         {
             foreach (var game in _games)
             {
-                user.AppendToResponseAsync(game);
+                user.AppendToResponse(game);
             }
         }
     }

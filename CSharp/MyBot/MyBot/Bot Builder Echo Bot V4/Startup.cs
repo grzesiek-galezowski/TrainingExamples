@@ -5,6 +5,7 @@ using System;
 using System.Linq;
 using BotBuilderEchoBotV4.Logic;
 using BotLogic;
+using BotLogic.States;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Bot.Builder;

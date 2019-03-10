@@ -4,7 +4,7 @@ namespace BotLogic
 {
   public interface IUser
   {
-    Task AppendToResponseAsync(string text);
+    void AppendToResponse(string text);
     Task RespondAsync();
   }
 }

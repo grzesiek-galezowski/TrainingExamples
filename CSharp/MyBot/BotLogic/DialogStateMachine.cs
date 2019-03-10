@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using BotLogic.States;
 
 namespace BotLogic
 {
@@ -20,7 +21,7 @@ namespace BotLogic
         }
 
 
-        public async Task GoToAsync(States state, IUser user)
+        public async Task GoToAsync(States.States state, IUser user)
         {
             _currentState = _states.GetState(state);
             await _persistentState.SetCurrentStateAsync(state);

@@ -24,7 +24,7 @@ namespace BotLogic
         public async Task HandleAsync()
         {
             var intent = _intentRecognition.From(_text);
-            await intent.ApplyTo(_dialogStateMachine, _user);
+            await intent.ApplyToAsync(_dialogStateMachine, _user);
             await _user.RespondAsync();
         }
     }

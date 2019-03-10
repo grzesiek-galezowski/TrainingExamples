@@ -1,10 +1,10 @@
 using System.Threading.Tasks;
 
-namespace BotLogic
+namespace BotLogic.Intents
 {
   internal class GoShoppingIntent : IIntent
   {
-    public Task ApplyTo(DialogStateMachine dialogStateMachine, IUser user)
+    public Task ApplyToAsync(DialogStateMachine dialogStateMachine, IUser user)
     {
       return dialogStateMachine.OnGoShoppingIntentAsync(user);
     }

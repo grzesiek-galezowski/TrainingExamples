@@ -1,19 +1,12 @@
 using System.Threading.Tasks;
 
-namespace BotLogic
+namespace BotLogic.Intents
 {
-    internal class WatchCatalogIntent : IIntent
+  internal class WatchCatalogIntent : IIntent
+  {
+    public Task ApplyToAsync(DialogStateMachine dialogStateMachine, IUser user)
     {
-        private readonly string _text;
-
-        public WatchCatalogIntent(string text)
-        {
-            _text = text;
-        }
-
-        public Task ApplyTo(DialogStateMachine dialogStateMachine, IUser user)
-        {
-            return dialogStateMachine.OnWatchGameCatalogAsync(user);
-        }
+      return dialogStateMachine.OnWatchGameCatalogAsync(user);
     }
+  }
 }

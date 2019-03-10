@@ -1,3 +1,5 @@
+using BotLogic.Intents;
+
 namespace BotLogic
 {
   public class IntentRecognition
@@ -6,7 +8,7 @@ namespace BotLogic
     {
       if (text.Contains("catalog"))
       {
-        return new WatchCatalogIntent(text);
+        return new WatchCatalogIntent();
       }
       else if (text.Contains("yes"))
       {
@@ -16,9 +18,13 @@ namespace BotLogic
       {
         return new NoIntent();
       }
-      else
+      else if(text.Contains("shop"))
       {
         return new GoShoppingIntent();
+      }
+      else
+      {
+        return new InvalidItent();
       }
 
     }

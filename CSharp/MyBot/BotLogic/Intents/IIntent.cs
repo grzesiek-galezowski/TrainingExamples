@@ -1,9 +1,9 @@
 using System.Threading.Tasks;
 
-namespace BotLogic
+namespace BotLogic.Intents
 {
   public interface IIntent
     {
-        Task ApplyTo(DialogStateMachine dialogStateMachine, IUser user);
+        Task ApplyToAsync(DialogStateMachine dialogStateMachine, IUser user);
     }
 }
