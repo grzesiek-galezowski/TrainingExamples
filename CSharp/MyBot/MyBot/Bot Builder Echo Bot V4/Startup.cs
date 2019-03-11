@@ -57,8 +57,9 @@ namespace BotBuilderEchoBotV4
     /// <seealso cref="https://docs.microsoft.com/en-us/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0"/>
     public void ConfigureServices(IServiceCollection services)
     {
-      services.AddBot<EchoWithCounterBot>(options => { ConfigureBot(services, options); });
+      services.AddBot<GameStoreBot>(options => { ConfigureBot(services, options); });
       services.AddSingleton(CreateEchoBotAccessors);
+      services.AddSingleton(new ActivityFactory());
     }
 
     private static EchoBotAccessors CreateEchoBotAccessors(IServiceProvider sp)
@@ -108,7 +109,7 @@ namespace BotBuilderEchoBotV4
       options.CredentialProvider = new SimpleCredentialProvider(endpointService.AppId, endpointService.AppPassword);
 
       // Creates a logger for the application to use.
-      ILogger logger = _loggerFactory.CreateLogger<EchoWithCounterBot>();
+      ILogger logger = _loggerFactory.CreateLogger<GameStoreBot>();
 
       // Catches any errors that occur during a conversation turn and logs them.
       options.OnTurnError = async (context, exception) =>

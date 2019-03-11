@@ -4,6 +4,15 @@ namespace BotLogic.States
 {
   public class StatesFactory : IStatesFactory
   {
+    private readonly GameCatalog _gameCatalog;
+    private readonly Shop _shop;
+
+    public StatesFactory(GameCatalog gameCatalog, Shop shop)
+    {
+      _gameCatalog = gameCatalog;
+      _shop = shop;
+    }
+
     public IState GetState(States state)
     {
       if (state == States.InitialChoice)
@@ -12,7 +21,7 @@ namespace BotLogic.States
       }
       else if(state == States.DisplayingCatalog)
       {
-        return new DisplayingGameCatalogState(new GameCatalog());
+        return new DisplayingGameCatalogState(_gameCatalog);
       }
       else if(state == States.FromGameCatalogToDisplayShop)
       {
@@ -20,7 +29,7 @@ namespace BotLogic.States
       }
       else if(state == States.DisplayingShop)
       {
-        return new DisplayingShopState();
+        return new DisplayingShopState(_shop);
       }
       else
       {

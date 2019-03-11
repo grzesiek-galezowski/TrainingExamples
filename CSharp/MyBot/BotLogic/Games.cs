@@ -11,11 +11,11 @@ namespace BotLogic
             _games = games;
         }
 
-        public void DisplayFor(BotLogic.IUser user)
+        public void DisplayFor(IConversationPartner conversationPartner)
         {
             foreach (var game in _games)
             {
-                user.AppendToResponse(game);
+                conversationPartner.AppendToResponse(game);
             }
         }
     }

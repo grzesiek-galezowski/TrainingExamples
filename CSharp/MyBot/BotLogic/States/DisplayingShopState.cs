@@ -3,31 +3,27 @@
 namespace BotLogic.States
 {
 
-    public class DisplayingShopState : IState
+    public class DisplayingShopState : DefaultState
     {
-        public Task OnWatchGameCatalogAsync(IUser user, IDialogContext dialogContext)
-        {
-            throw new System.NotImplementedException();
-        }
+      private readonly Shop _shop;
 
-        public Task OnEnterAsync(IUser user)
-        {
-            throw new System.NotImplementedException();
-        }
+      public DisplayingShopState(Shop shop)
+      {
+        _shop = shop;
+      }
 
-        public Task OnGoShoppingAsync(IUser user, IDialogContext dialogStateMachine)
-        {
-            throw new System.NotImplementedException();
-        }
+      public override async Task OnEnterAsync(IConversationPartner conversationPartner)
+      {
+        conversationPartner.AppendToResponse(_shop.GetCurrentGamesForSaleAsync());
+      }
+    }
 
-        public Task OnYesAsync(IUser user, IDialogContext dialogStateMachine)
-        {
-            throw new System.NotImplementedException();
-        }
+    public class Shop
+    {
+      public string GetCurrentGamesForSaleAsync()
+      {
+        return "Chrono cross, Chrono Trigger";
 
-        public Task OnNoAsync(IUser user, IDialogContext dialogStateMachine)
-        {
-            throw new System.NotImplementedException();
-        }
+      }
     }
 }

@@ -3,14 +3,14 @@ using System.Threading.Tasks;
 using BotLogic;
 using Microsoft.Bot.Builder;
 
-namespace BotBuilderEchoBotV4.Logic
+namespace BotBuilderEchoBotV4.Adapters
 {
-  public class BotBuilderUser : IUser
+  public class BotBuilderConversationPartner : IConversationPartner
   {
         private readonly ITurnContext _turnContext;
         private string _responseMessage = string.Empty;
 
-        public BotBuilderUser(ITurnContext turnContext)
+        public BotBuilderConversationPartner(ITurnContext turnContext)
         {
             _turnContext = turnContext;
         }

@@ -21,31 +21,31 @@ namespace BotLogic
         }
 
 
-        public async Task GoToAsync(States.States state, IUser user)
+        public async Task GoToAsync(States.States state, IConversationPartner conversationPartner)
         {
             _currentState = _states.GetState(state);
             await _persistentState.SetCurrentStateAsync(state);
-            await _currentState.OnEnterAsync(user);
+            await _currentState.OnEnterAsync(conversationPartner);
         }
 
-        public Task OnWatchGameCatalogAsync(IUser user)
+        public Task OnWatchGameCatalogAsync(IConversationPartner conversationPartner)
         {
-            return _currentState.OnWatchGameCatalogAsync(user, this);
+            return _currentState.OnWatchGameCatalogAsync(conversationPartner, this);
         }
 
-        public Task OnGoShoppingIntentAsync(IUser user)
+        public Task OnGoShoppingIntentAsync(IConversationPartner conversationPartner)
         {
-            return _currentState.OnGoShoppingAsync(user, this);
+            return _currentState.OnGoShoppingAsync(conversationPartner, this);
         }
 
-        public Task OnYesAsync(IUser user)
+        public Task OnYesAsync(IConversationPartner conversationPartner)
         {
-            return _currentState.OnYesAsync(user, this);
+            return _currentState.OnYesAsync(conversationPartner, this);
         }
 
-        public Task OnNoAsync(IUser user)
+        public Task OnNoAsync(IConversationPartner conversationPartner)
         {
-            return _currentState.OnNoAsync(user, this);
+            return _currentState.OnNoAsync(conversationPartner, this);
         }
     }
 }

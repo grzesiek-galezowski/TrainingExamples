@@ -5,9 +5,9 @@ namespace BotLogic
 {
   public class InvalidItent : IIntent
   {
-    public async Task ApplyToAsync(DialogStateMachine dialogStateMachine, IUser user)
+    public async Task ApplyToAsync(DialogStateMachine dialogStateMachine, IConversationPartner conversationPartner)
     {
-      user.AppendToResponse("Invalid intent, sorry!");
+      conversationPartner.AppendToResponse("Invalid intent, sorry!");
     }
   }
 }

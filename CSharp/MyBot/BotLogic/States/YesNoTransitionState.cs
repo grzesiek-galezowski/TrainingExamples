@@ -4,31 +4,31 @@ namespace BotLogic.States
 {
   public class YesNoTransitionState : IState //bug rename
   {
-    public Task OnWatchGameCatalogAsync(IUser user, IDialogContext dialogContext)
+    public Task OnWatchGameCatalogAsync(IConversationPartner conversationPartner, IDialogContext dialogContext)
     {
-      user.AppendToResponse("OK, let's stay with the catalog");
-      return dialogContext.GoToAsync(States.DisplayingCatalog, user);
+      conversationPartner.AppendToResponse("OK, let's stay with the catalog");
+      return dialogContext.GoToAsync(States.DisplayingCatalog, conversationPartner);
     }
 
-    public async Task OnEnterAsync(IUser user)
+    public async Task OnEnterAsync(IConversationPartner conversationPartner)
     {
-      user.AppendToResponse("Do you really want to stop viewing the catalog and go shopping?");
+      conversationPartner.AppendToResponse("Do you really want to stop viewing the catalog and go shopping?");
     }
 
-    public Task OnGoShoppingAsync(IUser user, IDialogContext dialogStateMachine)
+    public Task OnGoShoppingAsync(IConversationPartner conversationPartner, IDialogContext dialogStateMachine)
     {
-      user.AppendToResponse("OK, let's go shopping!");
-      return dialogStateMachine.GoToAsync(States.DisplayingShop, user);
+      conversationPartner.AppendToResponse("OK, let's go shopping!");
+      return dialogStateMachine.GoToAsync(States.DisplayingShop, conversationPartner);
     }
 
-    public Task OnYesAsync(IUser user, IDialogContext dialogStateMachine)
+    public Task OnYesAsync(IConversationPartner conversationPartner, IDialogContext dialogStateMachine)
     {
-      return OnGoShoppingAsync(user, dialogStateMachine);
+      return OnGoShoppingAsync(conversationPartner, dialogStateMachine);
     }
 
-    public Task OnNoAsync(IUser user, IDialogContext dialogStateMachine)
+    public Task OnNoAsync(IConversationPartner conversationPartner, IDialogContext dialogStateMachine)
     {
-      return OnWatchGameCatalogAsync(user, dialogStateMachine);
+      return OnWatchGameCatalogAsync(conversationPartner, dialogStateMachine);
     }
   }
 }

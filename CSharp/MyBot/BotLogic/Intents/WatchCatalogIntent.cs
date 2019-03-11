@@ -4,9 +4,9 @@ namespace BotLogic.Intents
 {
   internal class WatchCatalogIntent : IIntent
   {
-    public Task ApplyToAsync(DialogStateMachine dialogStateMachine, IUser user)
+    public Task ApplyToAsync(DialogStateMachine dialogStateMachine, IConversationPartner conversationPartner)
     {
-      return dialogStateMachine.OnWatchGameCatalogAsync(user);
+      return dialogStateMachine.OnWatchGameCatalogAsync(conversationPartner);
     }
   }
 }

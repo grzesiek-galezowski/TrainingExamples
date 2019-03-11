@@ -4,9 +4,9 @@ namespace BotLogic.Intents
 {
   internal class NoIntent : IIntent
   {
-    public Task ApplyToAsync(DialogStateMachine dialogStateMachine, IUser user)
+    public Task ApplyToAsync(DialogStateMachine dialogStateMachine, IConversationPartner conversationPartner)
     {
-      return dialogStateMachine.OnYesAsync(user);
+      return dialogStateMachine.OnYesAsync(conversationPartner);
     }
   }
 }

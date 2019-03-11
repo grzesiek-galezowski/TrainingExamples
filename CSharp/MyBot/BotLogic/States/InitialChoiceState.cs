@@ -4,29 +4,29 @@ namespace BotLogic.States
 {
   public class InitialChoiceState : IState
   {
-    public Task OnWatchGameCatalogAsync(IUser user, IDialogContext dialogContext)
+    public Task OnWatchGameCatalogAsync(IConversationPartner conversationPartner, IDialogContext dialogContext)
     {
-      return dialogContext.GoToAsync(States.DisplayingCatalog, user);
+      return dialogContext.GoToAsync(States.DisplayingCatalog, conversationPartner);
     }
 
-    public Task OnEnterAsync(IUser user)
+    public Task OnEnterAsync(IConversationPartner conversationPartner)
     {
       return Task.CompletedTask;
     }
 
-    public Task OnGoShoppingAsync(IUser user, IDialogContext dialogStateMachine)
+    public Task OnGoShoppingAsync(IConversationPartner conversationPartner, IDialogContext dialogStateMachine)
     {
-      return dialogStateMachine.GoToAsync(States.DisplayingShop, user);
+      return dialogStateMachine.GoToAsync(States.DisplayingShop, conversationPartner);
     }
 
-    public async Task OnYesAsync(IUser user, IDialogContext dialogStateMachine)
+    public async Task OnYesAsync(IConversationPartner conversationPartner, IDialogContext dialogStateMachine)
     {
-      user.AppendToResponse("There's nothing to confirm");
+      conversationPartner.AppendToResponse("There's nothing to confirm");
     }
 
-    public async Task OnNoAsync(IUser user, IDialogContext dialogStateMachine)
+    public async Task OnNoAsync(IConversationPartner conversationPartner, IDialogContext dialogStateMachine)
     {
-      user.AppendToResponse("There's nothing to reject");
+      conversationPartner.AppendToResponse("There's nothing to reject");
     }
 
   }

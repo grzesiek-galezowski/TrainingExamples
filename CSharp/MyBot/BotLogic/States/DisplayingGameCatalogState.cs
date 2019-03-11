@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 
 namespace BotLogic.States
 {
-    public class DisplayingGameCatalogState : IState
+    public class DisplayingGameCatalogState : DefaultState
     {
         private readonly GameCatalog _gameCatalog;
 
@@ -11,30 +11,20 @@ namespace BotLogic.States
             _gameCatalog = gameCatalog;
         }
 
-        public async Task OnWatchGameCatalogAsync(IUser user, IDialogContext dialogContext)
+        public override async Task OnWatchGameCatalogAsync(IConversationPartner conversationPartner, IDialogContext dialogContext)
         {
-            user.AppendToResponse("You are already watching game catalog.");
+            conversationPartner.AppendToResponse("You are already watching game catalog.");
         }
 
-        public async Task OnEnterAsync(IUser user)
+        public override async Task OnEnterAsync(IConversationPartner conversationPartner)
         {
             var games = await _gameCatalog.GetGamesAsync();
-            games.DisplayFor(user);
+            games.DisplayFor(conversationPartner);
         }
 
-        public Task OnGoShoppingAsync(IUser user, IDialogContext dialogStateMachine)
+        public override Task OnGoShoppingAsync(IConversationPartner conversationPartner, IDialogContext dialogStateMachine)
         {
-            return dialogStateMachine.GoToAsync(States.FromGameCatalogToDisplayShop, user);
-        }
-
-        public async Task OnYesAsync(IUser user, IDialogContext dialogStateMachine)
-        {
-            user.AppendToResponse("There's nothing to confirm");
-        }
-
-        public async Task OnNoAsync(IUser user, IDialogContext dialogStateMachine)
-        {
-            user.AppendToResponse("There's nothing to reject");
+            return dialogStateMachine.GoToAsync(States.FromGameCatalogToDisplayShop, conversationPartner);
         }
     }
 }
