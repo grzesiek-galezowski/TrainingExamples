@@ -10,5 +10,12 @@ namespace XUnitFixtures.FreshVsShared
             int x = 1;
             Assert.AreEqual(1, x);
         }
+
+        [Test]
+        public void Test2()
+        {
+            int x = 1;
+            Assert.AreEqual(1, x);
+        }
     }
 }
