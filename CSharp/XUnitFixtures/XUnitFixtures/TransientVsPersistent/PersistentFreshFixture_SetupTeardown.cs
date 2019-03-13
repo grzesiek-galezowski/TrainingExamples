@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace XUnitFixtures
+namespace XUnitFixtures.TransientVsPersistent
 {
     public class PersistentFreshFixture_SetupTeardown
     {

@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace XUnitFixtures
+namespace XUnitFixtures.FreshVsShared
 {
     public class TransientFreshFixture
     {
