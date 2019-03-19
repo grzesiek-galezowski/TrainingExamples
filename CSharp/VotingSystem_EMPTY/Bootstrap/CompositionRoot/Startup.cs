@@ -12,12 +12,7 @@ namespace Bootstrap.CompositionRoot
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     { 
-      var usersRepository = UsersRepository.CreateUsersRepository();
-      var applicationLogicRoot = new ApplicationLogicRoot(usersRepository);
-
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-      services.AddSingleton<ICommandFactory>(
-        ctx => applicationLogicRoot.CommandFactory());
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
