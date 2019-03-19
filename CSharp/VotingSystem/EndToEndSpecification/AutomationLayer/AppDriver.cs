@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Reflection;
 using System.Threading.Tasks;
 using ApplicationLogic.Ports;
 using Bootstrap.CompositionRoot;
@@ -16,8 +17,6 @@ namespace EndToEndSpecification.AutomationLayer
     public AppDriver()
     {
       _testServer = new TestServer(new WebHostBuilder()
-        .UseContentRoot(
-          @"C:\Users\grzes\Documents\Visual Studio 2017\Projects\VotingSystem\Bootstrap\")
         .UseEnvironment("Development")
         .UseStartup<Startup>());
     }
