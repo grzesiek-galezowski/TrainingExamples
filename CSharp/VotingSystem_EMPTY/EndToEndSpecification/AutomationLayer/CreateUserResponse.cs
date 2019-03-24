@@ -31,20 +31,19 @@ namespace EndToEndSpecification.AutomationLayer
 
     private CreateUserResponse ShouldHaveLocationStartingWith(string s)
     {
-      _headers.Location.ToString().Should().StartWith(s);
+      _headers.Location.Should().NotBeNull("a response to creating user should contain a path where the user was created");
+      _headers.Location.ToString().Should().StartWith(s, " expected a location header starting with " + s);
       return this;
     }
 
 
     public CreateUserResponse ShouldIndicateSuccessfulCreationOf(UserDtoBuilder johnny)
     {
-      using (new AssertionScope())
-      {
-        return ShouldBe201Created()
-          .ShouldHaveLocationStartingWith(UsersApiRelativeUriRoot)
-          .ShouldHaveBodyEqualTo(johnny.Build().Login)
-          .ShouldHaveLocationWith(_content);
-      }
+      this.ShouldBe201Created();
+      this.ShouldHaveLocationStartingWith(UsersApiRelativeUriRoot);
+      this.ShouldHaveBodyEqualTo(johnny.Build().Login);
+      this.ShouldHaveLocationWith(johnny.Build().Login);
+      return this;
     }
 
     private CreateUserResponse ShouldHaveLocationWith(string content)
