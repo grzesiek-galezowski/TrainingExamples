@@ -20,13 +20,10 @@ using Microsoft.Extensions.Options;
 
 namespace BotBuilderEchoBotV4
 {
-  /// <summary>
-  /// The Startup class configures services and the request pipeline.
-  /// </summary>
   public class Startup
   {
-    private ILoggerFactory _loggerFactory;
     private readonly bool _isProduction = false;
+    private ILoggerFactory _loggerFactory;
 
     public Startup(IHostingEnvironment env)
     {
@@ -40,21 +37,8 @@ namespace BotBuilderEchoBotV4
       Configuration = builder.Build();
     }
 
-    /// <summary>
-    /// Gets the configuration that represents a set of key/value application configuration properties.
-    /// </summary>
-    /// <value>
-    /// The <see cref="IConfiguration"/> that represents a set of key/value application configuration properties.
-    /// </value>
     public IConfiguration Configuration { get; }
 
-    /// <summary>
-    /// This method gets called by the runtime. Use this method to add services to the container.
-    /// </summary>
-    /// <param name="services">The <see cref="IServiceCollection"/> specifies the contract for a collection of service descriptors.</param>
-    /// <seealso cref="IStatePropertyAccessor{T}"/>
-    /// <seealso cref="https://docs.microsoft.com/en-us/aspnet/web-api/overview/advanced/dependency-injection"/>
-    /// <seealso cref="https://docs.microsoft.com/en-us/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0"/>
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddBot<GameStoreBot>(options => { ConfigureBot(services, options); });
@@ -78,8 +62,6 @@ namespace BotBuilderEchoBotV4
           "ConversationState must be defined and added before adding conversation-scoped state accessors.");
       }
 
-      // Create the custom state accessor.
-      // State accessors enable other components to read and write individual properties of state.
       var accessors = new EchoBotAccessors(conversationState)
       {
         CurrentState = conversationState.CreateProperty<States>(EchoBotAccessors.StatesName),
@@ -90,15 +72,38 @@ namespace BotBuilderEchoBotV4
 
     private void ConfigureBot(IServiceCollection services, BotFrameworkOptions options)
     {
+      ILogger logger = _loggerFactory.CreateLogger<GameStoreBot>();
+
       var secretKey = Configuration.GetSection("botFileSecret")?.Value;
       var botFilePath = Configuration.GetSection("botFilePath")?.Value;
 
-      // Loads .bot configuration file and adds a singleton that your Bot can access through dependency injection.
-      var botConfig = BotConfiguration.Load(botFilePath ?? @".\BotConfiguration.bot", secretKey);
-      services.AddSingleton(sp =>
-        botConfig ?? throw new InvalidOperationException($"The .bot config file could not be loaded. ({botConfig})"));
+      var botConfig = BotConfiguration.Load(botFilePath ?? @".\BotConfiguration.bot", secretKey) 
+                      ?? throw new InvalidOperationException($"The .bot config file could not be loaded.");
 
       // Retrieve current endpoint.
+      var endpointService = GetEndpointService(botConfig);
+      SetupCredentialsProvider(options, endpointService);
+         SetupFallbackErrorHandling(options, logger);
+
+      services.AddSingleton(sp => botConfig);
+    }
+
+    private static void SetupFallbackErrorHandling(BotFrameworkOptions options, ILogger logger)
+    {
+      options.OnTurnError = async (context, exception) =>
+      {
+        logger.LogError($"Exception caught : {exception}");
+        await context.SendActivityAsync(exception.ToString());
+      };
+    }
+
+    private static void SetupCredentialsProvider(BotFrameworkOptions options, EndpointService endpointService)
+    {
+      options.CredentialProvider = new SimpleCredentialProvider(endpointService.AppId, endpointService.AppPassword);
+    }
+
+    private EndpointService GetEndpointService(BotConfiguration botConfig)
+    {
       var environment = _isProduction ? "production" : "development";
       var service = botConfig.Services.FirstOrDefault(s => s.Type == "endpoint" && s.Name == environment);
       if (!(service is EndpointService endpointService))
@@ -106,24 +111,7 @@ namespace BotBuilderEchoBotV4
         throw new InvalidOperationException($"The .bot file does not contain an endpoint with name '{environment}'.");
       }
 
-      options.CredentialProvider = new SimpleCredentialProvider(endpointService.AppId, endpointService.AppPassword);
-
-      // Creates a logger for the application to use.
-      ILogger logger = _loggerFactory.CreateLogger<GameStoreBot>();
-
-      // Catches any errors that occur during a conversation turn and logs them.
-      options.OnTurnError = async (context, exception) =>
-      {
-        logger.LogError($"Exception caught : {exception}");
-        await context.SendActivityAsync(exception.ToString());
-      };
-
-      // The Memory Storage used here is for local bot debugging only. When the bot
-      // is restarted, everything stored in memory will be gone.
-      IStorage dataStore = new MemoryStorage();
-      var conversationState = new ConversationState(dataStore);
-
-      options.State.Add(conversationState);
+      return endpointService;
     }
 
     public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)

@@ -1,4 +1,6 @@
-﻿using ApplicationLogic;
+﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
+using ApplicationLogic;
 using Bootstrap.Controllers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -9,6 +11,7 @@ namespace Bootstrap.CompositionRoot
 {
   public class Startup
   {
+
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     { 
