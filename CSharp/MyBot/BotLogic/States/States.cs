@@ -1,4 +1,4 @@
-namespace BotLogic.States
+namespace BotLogic.StateValues
 {
     public enum States
     {

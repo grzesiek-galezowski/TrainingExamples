@@ -1,7 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using BotLogic;
-using BotLogic.States;
+using BotLogic.StateValues;
 
 namespace BotBuilderEchoBotV4
 {

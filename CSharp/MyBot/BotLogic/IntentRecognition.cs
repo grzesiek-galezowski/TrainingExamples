@@ -4,8 +4,13 @@ using BotLogic.Intents;
 
 namespace BotLogic
 {
-  public class IntentRecognition
-  {
+    public interface IIntentRecognition
+    {
+        Task<IIntent> PerformAsync(CancellationToken cancellationToken);
+    }
+
+    public class IntentRecognition : IIntentRecognition
+    {
     private readonly IUserPhrase _userPhrase;
 
     public IntentRecognition(IUserPhrase userPhrase)

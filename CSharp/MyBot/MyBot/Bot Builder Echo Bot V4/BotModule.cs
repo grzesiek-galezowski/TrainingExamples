@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-using BotLogic.States;
+using BotLogic.StateValues;
 using Functional.Maybe;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Integration;

@@ -5,7 +5,7 @@ namespace BotLogic.Intents
 {
   internal class GoShoppingIntent : IIntent
   {
-    public Task ApplyToAsync(DialogStateMachine dialogStateMachine, IConversationPartner conversationPartner,
+    public Task ApplyToAsync(IDialogStateMachine dialogStateMachine, IConversationPartner conversationPartner,
       CancellationToken cancellationToken)
     {
       return dialogStateMachine.OnGoShoppingIntentAsync(conversationPartner, cancellationToken);

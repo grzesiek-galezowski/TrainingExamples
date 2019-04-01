@@ -1,9 +1,9 @@
-﻿using BotLogic.States;
+﻿using BotLogic.StateValues;
 
 namespace BotLogic
 {
   public interface IStatesFactory
   {
-    IState GetState(States.States state);
+    IState GetState(StateValues.States state);
   }
 }

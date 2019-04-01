@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BotLogic.States
+namespace BotLogic.StateValues
 {
   public class StatesFactory : IStatesFactory
   {

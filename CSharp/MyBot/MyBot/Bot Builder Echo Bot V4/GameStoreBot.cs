@@ -31,7 +31,7 @@ namespace BotBuilderEchoBotV4
 
     public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default)
     {
-      var intentRecognizer = _turnContextPoweredObjectsFactory.ExtractUserPhraseFrom(turnContext);
+      var userPhrase = _turnContextPoweredObjectsFactory.ExtractUserPhraseFrom(turnContext);
       var botPersistentState = _turnContextPoweredObjectsFactory.CreateBotPersistentState(turnContext);
       var partner = _turnContextPoweredObjectsFactory.CreateConversationPartner(turnContext);
 
@@ -39,7 +39,7 @@ namespace BotBuilderEchoBotV4
       {
         var messageActivity = await _activityFactory.CreateMessageActivityAsync(
           botPersistentState,
-          intentRecognizer,
+          userPhrase,
           partner,
           cancellationToken);
         await messageActivity.HandleAsync(cancellationToken);

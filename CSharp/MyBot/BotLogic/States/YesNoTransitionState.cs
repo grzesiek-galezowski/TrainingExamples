@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace BotLogic.States
+namespace BotLogic.StateValues
 {
   public class YesNoTransitionState : IState //bug rename
   {

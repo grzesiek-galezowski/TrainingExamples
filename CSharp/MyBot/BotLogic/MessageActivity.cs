@@ -6,13 +6,13 @@ namespace BotLogic
   public class MessageActivity
     {
         private readonly IConversationPartner _conversationPartner;
-        private readonly IntentRecognition _intentRecognition;
-        private readonly DialogStateMachine _dialogStateMachine;
+        private readonly IIntentRecognition _intentRecognition;
+        private readonly IDialogStateMachine _dialogStateMachine;
 
         public MessageActivity(
             IConversationPartner conversationPartner, 
-            IntentRecognition intentRecognition, 
-            DialogStateMachine dialogStateMachine)
+            IIntentRecognition intentRecognition, 
+            IDialogStateMachine dialogStateMachine)
         {
             _conversationPartner = conversationPartner;
             _intentRecognition = intentRecognition;

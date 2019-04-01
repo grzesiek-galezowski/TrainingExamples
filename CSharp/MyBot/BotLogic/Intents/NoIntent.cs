@@ -5,10 +5,10 @@ namespace BotLogic.Intents
 {
   internal class NoIntent : IIntent
   {
-    public Task ApplyToAsync(DialogStateMachine dialogStateMachine, IConversationPartner conversationPartner,
+    public Task ApplyToAsync(IDialogStateMachine dialogStateMachine, IConversationPartner conversationPartner,
       CancellationToken cancellationToken)
     {
-      return dialogStateMachine.OnYesAsync(conversationPartner, cancellationToken);
+      return dialogStateMachine.OnNoAsync(conversationPartner, cancellationToken);
     }
   }
 }

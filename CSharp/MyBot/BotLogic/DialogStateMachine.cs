@@ -1,11 +1,18 @@
 using System.Threading;
 using System.Threading.Tasks;
-using BotLogic.States;
+using BotLogic.StateValues;
 
 namespace BotLogic
 {
+    public interface IDialogStateMachine
+    {
+        Task OnWatchGameCatalogAsync(IConversationPartner conversationPartner, CancellationToken cancellationToken);
+        Task OnGoShoppingIntentAsync(IConversationPartner conversationPartner, CancellationToken cancellationToken);
+        Task OnYesAsync(IConversationPartner conversationPartner, CancellationToken cancellationToken);
+        Task OnNoAsync(IConversationPartner conversationPartner, CancellationToken cancellationToken);
+    }
 
-    public class DialogStateMachine : IDialogContext
+    public class DialogStateMachine : IDialogContext, IDialogStateMachine
     {
         private readonly IStatesFactory _states;
         private readonly IBotPersistentState _persistentState;
@@ -22,7 +29,7 @@ namespace BotLogic
         }
 
 
-        public async Task GoToAsync(States.States state, IConversationPartner conversationPartner, CancellationToken cancellationToken)
+        public async Task GoToAsync(StateValues.States state, IConversationPartner conversationPartner, CancellationToken cancellationToken)
         {
             _currentState = _states.GetState(state);
             await _persistentState.SetCurrentStateAsync(state, cancellationToken);

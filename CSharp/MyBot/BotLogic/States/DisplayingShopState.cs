@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace BotLogic.States
+namespace BotLogic.StateValues
 {
 
     public class DisplayingShopState : DefaultState

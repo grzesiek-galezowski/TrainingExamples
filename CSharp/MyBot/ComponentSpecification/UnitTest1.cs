@@ -2,7 +2,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using BotBuilderEchoBotV4;
 using BotLogic;
-using BotLogic.States;
+using BotLogic.StateValues;
 using NSubstitute;
 using Xunit;
 

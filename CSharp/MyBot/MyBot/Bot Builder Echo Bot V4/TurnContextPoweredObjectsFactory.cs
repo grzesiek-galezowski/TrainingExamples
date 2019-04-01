@@ -1,6 +1,6 @@
 ﻿using BotBuilderEchoBotV4.Adapters;
 using BotLogic;
-using BotLogic.States;
+using BotLogic.StateValues;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.AI.Luis;
 
