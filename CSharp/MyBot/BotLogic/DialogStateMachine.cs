@@ -29,7 +29,7 @@ namespace BotLogic
         }
 
 
-        public async Task GoToAsync(StateValues.States state, IConversationPartner conversationPartner, CancellationToken cancellationToken)
+        public async Task GoToAsync(States.States state, IConversationPartner conversationPartner, CancellationToken cancellationToken)
         {
             _currentState = _states.GetState(state);
             await _persistentState.SetCurrentStateAsync(state, cancellationToken);

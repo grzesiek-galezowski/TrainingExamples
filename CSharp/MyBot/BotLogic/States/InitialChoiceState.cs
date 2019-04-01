@@ -7,7 +7,7 @@ namespace BotLogic.StateValues
   {
     public Task OnWatchGameCatalogAsync(IConversationPartner conversationPartner, IDialogContext dialogContext, CancellationToken cancellationToken)
     {
-      return dialogContext.GoToAsync(States.DisplayingCatalog, conversationPartner, cancellationToken);
+      return dialogContext.GoToAsync(States.States.DisplayingCatalog, conversationPartner, cancellationToken);
     }
 
     public Task OnEnterAsync(IConversationPartner conversationPartner)
@@ -17,7 +17,7 @@ namespace BotLogic.StateValues
 
     public Task OnGoShoppingAsync(IConversationPartner conversationPartner, IDialogContext dialogStateMachine, CancellationToken token)
     {
-      return dialogStateMachine.GoToAsync(States.DisplayingShop, conversationPartner, token);
+      return dialogStateMachine.GoToAsync(States.States.DisplayingShop, conversationPartner, token);
     }
 
     public async Task OnYesAsync(IConversationPartner conversationPartner, IDialogContext dialogStateMachine, CancellationToken cancellationToken)

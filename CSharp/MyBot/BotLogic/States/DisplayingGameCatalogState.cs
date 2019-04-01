@@ -25,7 +25,7 @@ namespace BotLogic.StateValues
 
         public override Task OnGoShoppingAsync(IConversationPartner conversationPartner, IDialogContext dialogStateMachine, CancellationToken token)
         {
-            return dialogStateMachine.GoToAsync(States.FromGameCatalogToDisplayShop, conversationPartner, token);
+            return dialogStateMachine.GoToAsync(States.States.FromGameCatalogToDisplayShop, conversationPartner, token);
         }
     }
 }

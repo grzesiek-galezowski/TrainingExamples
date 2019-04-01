@@ -1,12 +1,14 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using System.IO;
 using Functional.Maybe;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Bot.Builder.AI.Luis;
 using Microsoft.Bot.Builder.Integration;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
+using Microsoft.Bot.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -36,8 +38,11 @@ namespace BotBuilderEchoBotV4
     {
       var botModule = new BotModule();
       var activityFactory = new ActivityFactory();
-      var luisApplication = new LuisApplication("", "", "");
-      var luisRecognizer = new LuisRecognizer(luisApplication);
+      var luisEndpoint = File.ReadAllText(@"C:\Users\grzes\Dysk Google\LuisEndpoint.txt");
+      var luisApplication = new LuisApplication(
+        luisEndpoint
+        );
+      var luisRecognizer = new LuisRecognizer(luisApplication, includeApiResults: true);
 
       services.AddBot(
         ctx =>

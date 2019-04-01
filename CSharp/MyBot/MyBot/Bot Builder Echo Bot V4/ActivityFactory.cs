@@ -1,6 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using BotLogic;
+using BotLogic.States;
 using BotLogic.StateValues;
 
 namespace BotBuilderEchoBotV4
@@ -10,7 +11,7 @@ namespace BotBuilderEchoBotV4
     Task<MessageActivity> CreateMessageActivityAsync(
       IBotPersistentState persistentState,
       IUserPhrase userPhrase,
-      IConversationPartner conversationPartner, 
+      IConversationPartner conversationPartner,
       CancellationToken cancellationToken);
   }
 

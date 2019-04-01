@@ -5,8 +5,8 @@ namespace BotLogic.StateValues
 {
   public interface IBotPersistentState
   {
-    Task<States> ReadCurrentStateAsync(CancellationToken cancellationToken, States initialChoice);
-    Task SetCurrentStateAsync(States value, CancellationToken cancellationToken);
+    Task<States.States> ReadCurrentStateAsync(CancellationToken cancellationToken, States.States initialChoice);
+    Task SetCurrentStateAsync(States.States value, CancellationToken cancellationToken);
 
     Task CommitChangesAsync(CancellationToken cancellationToken) //bug save it somewhere
       ;

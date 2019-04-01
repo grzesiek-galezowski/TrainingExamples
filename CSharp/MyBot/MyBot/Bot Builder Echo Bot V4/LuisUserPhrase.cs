@@ -23,6 +23,7 @@ namespace BotBuilderEchoBotV4
     public async Task<RecognitionResultDto> RecognizeIntentAsync(CancellationToken cancellationToken)
     {
       var recognizerResult = await _luisRecognizer.RecognizeAsync(_turnContext, cancellationToken);
+
       var luisResult = (LuisResult)recognizerResult.Properties["luisResult"];
       var recognitionResultDto = new RecognitionResultDto()
       {

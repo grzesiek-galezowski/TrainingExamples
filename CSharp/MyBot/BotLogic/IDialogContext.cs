@@ -6,6 +6,6 @@ namespace BotLogic
 {
   public interface IDialogContext
     {
-      Task GoToAsync(States state, IConversationPartner conversationPartner, CancellationToken cancellationToken);
+      Task GoToAsync(States.States state, IConversationPartner conversationPartner, CancellationToken cancellationToken);
     }
 }
