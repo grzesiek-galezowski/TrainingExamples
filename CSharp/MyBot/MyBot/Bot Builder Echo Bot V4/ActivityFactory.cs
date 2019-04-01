@@ -1,24 +1,34 @@
+using System.Threading;
 using System.Threading.Tasks;
 using BotLogic;
 using BotLogic.States;
 
 namespace BotBuilderEchoBotV4
 {
-  public class ActivityFactory
+  public interface IActivityFactory
   {
-    public async Task<MessageActivity> CreateMessageActivity(
+    Task<MessageActivity> CreateMessageActivityAsync(
       IBotPersistentState persistentState,
+      IUserPhrase userPhrase,
+      IConversationPartner conversationPartner, 
+      CancellationToken cancellationToken);
+  }
+
+  public class ActivityFactory : IActivityFactory
+  {
+    public async Task<MessageActivity> CreateMessageActivityAsync(
+      IBotPersistentState persistentState,
+      IUserPhrase userPhrase,
       IConversationPartner conversationPartner,
-      string activityText)
+      CancellationToken cancellationToken)
     {
       IStatesFactory states = new StatesFactory(new GameCatalog(), new Shop());
       var messageActivity = new MessageActivity(
         conversationPartner,
-        activityText,
-        new IntentRecognition(),
+        new IntentRecognition(userPhrase),
         new DialogStateMachine(
           states.GetState(
-            await persistentState.ReadCurrentStateAsync()),
+            await persistentState.ReadCurrentStateAsync(cancellationToken, States.InitialChoice)),
           states,
           persistentState
         ));

@@ -1,3 +1,4 @@
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BotLogic.States
@@ -11,7 +12,7 @@ namespace BotLogic.States
             _gameCatalog = gameCatalog;
         }
 
-        public override async Task OnWatchGameCatalogAsync(IConversationPartner conversationPartner, IDialogContext dialogContext)
+        public override async Task OnWatchGameCatalogAsync(IConversationPartner conversationPartner, IDialogContext dialogContext, CancellationToken cancellationToken)
         {
             conversationPartner.AppendToResponse("You are already watching game catalog.");
         }
@@ -22,9 +23,9 @@ namespace BotLogic.States
             games.DisplayFor(conversationPartner);
         }
 
-        public override Task OnGoShoppingAsync(IConversationPartner conversationPartner, IDialogContext dialogStateMachine)
+        public override Task OnGoShoppingAsync(IConversationPartner conversationPartner, IDialogContext dialogStateMachine, CancellationToken token)
         {
-            return dialogStateMachine.GoToAsync(States.FromGameCatalogToDisplayShop, conversationPartner);
+            return dialogStateMachine.GoToAsync(States.FromGameCatalogToDisplayShop, conversationPartner, token);
         }
     }
 }

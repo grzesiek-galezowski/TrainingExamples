@@ -1,12 +1,13 @@
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BotLogic.States
 {
   public class InitialChoiceState : IState
   {
-    public Task OnWatchGameCatalogAsync(IConversationPartner conversationPartner, IDialogContext dialogContext)
+    public Task OnWatchGameCatalogAsync(IConversationPartner conversationPartner, IDialogContext dialogContext, CancellationToken cancellationToken)
     {
-      return dialogContext.GoToAsync(States.DisplayingCatalog, conversationPartner);
+      return dialogContext.GoToAsync(States.DisplayingCatalog, conversationPartner, cancellationToken);
     }
 
     public Task OnEnterAsync(IConversationPartner conversationPartner)
@@ -14,17 +15,17 @@ namespace BotLogic.States
       return Task.CompletedTask;
     }
 
-    public Task OnGoShoppingAsync(IConversationPartner conversationPartner, IDialogContext dialogStateMachine)
+    public Task OnGoShoppingAsync(IConversationPartner conversationPartner, IDialogContext dialogStateMachine, CancellationToken token)
     {
-      return dialogStateMachine.GoToAsync(States.DisplayingShop, conversationPartner);
+      return dialogStateMachine.GoToAsync(States.DisplayingShop, conversationPartner, token);
     }
 
-    public async Task OnYesAsync(IConversationPartner conversationPartner, IDialogContext dialogStateMachine)
+    public async Task OnYesAsync(IConversationPartner conversationPartner, IDialogContext dialogStateMachine, CancellationToken cancellationToken)
     {
       conversationPartner.AppendToResponse("There's nothing to confirm");
     }
 
-    public async Task OnNoAsync(IConversationPartner conversationPartner, IDialogContext dialogStateMachine)
+    public async Task OnNoAsync(IConversationPartner conversationPartner, IDialogContext dialogStateMachine, CancellationToken cancellationToken)
     {
       conversationPartner.AppendToResponse("There's nothing to reject");
     }

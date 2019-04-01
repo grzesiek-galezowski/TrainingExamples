@@ -1,24 +1,35 @@
+using System.Threading;
+using System.Threading.Tasks;
 using BotLogic.Intents;
 
 namespace BotLogic
 {
   public class IntentRecognition
   {
-    public IIntent From(string text)
+    private readonly IUserPhrase _userPhrase;
+
+    public IntentRecognition(IUserPhrase userPhrase)
     {
-      if (text.Contains("catalog"))
+      _userPhrase = userPhrase;
+    }
+
+    public async Task<IIntent> PerformAsync(CancellationToken cancellationToken)
+    {
+      var intentDto = await _userPhrase.RecognizeIntentAsync(cancellationToken);
+
+      if (intentDto.Intent == "catalog")
       {
         return new WatchCatalogIntent();
       }
-      else if (text.Contains("yes"))
+      else if (intentDto.Intent == "yes")
       {
         return new YesIntent();
       }
-      else if (text.Contains("no"))
+      else if (intentDto.Intent == "no")
       {
         return new NoIntent();
       }
-      else if(text.Contains("shop"))
+      else if(intentDto.Intent == "shop")
       {
         return new GoShoppingIntent();
       }

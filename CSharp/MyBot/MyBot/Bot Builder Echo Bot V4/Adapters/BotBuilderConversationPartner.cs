@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using BotLogic;
 using Microsoft.Bot.Builder;
@@ -25,9 +26,9 @@ namespace BotBuilderEchoBotV4.Adapters
             _responseMessage += text;
         }
 
-        public Task RespondAsync()
+        public Task RespondAsync(CancellationToken cancellationToken)
         {
-            return _turnContext.SendActivityAsync(_responseMessage);
+            return _turnContext.SendActivityAsync(_responseMessage, cancellationToken: cancellationToken);
         }
     }
 }

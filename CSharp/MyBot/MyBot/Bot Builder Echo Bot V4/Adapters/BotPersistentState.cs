@@ -1,35 +1,34 @@
 using System.Threading;
 using System.Threading.Tasks;
-using BotLogic;
 using BotLogic.States;
 using Microsoft.Bot.Builder;
 
-namespace BotBuilderEchoBotV4.Logic
+namespace BotBuilderEchoBotV4.Adapters
 {
   public class BotPersistentState : IBotPersistentState
   {
     private readonly ITurnContext _turnContext;
-    private readonly EchoBotAccessors _accessors;
+    private readonly BotAccessors _accessors;
 
-    public BotPersistentState(ITurnContext turnContext, EchoBotAccessors accessors)
+    public BotPersistentState(ITurnContext turnContext, BotAccessors accessors)
     {
       _turnContext = turnContext;
       _accessors = accessors;
     }
 
-    public Task<States> ReadCurrentStateAsync()
+    public Task<States> ReadCurrentStateAsync(CancellationToken cancellationToken, States initialChoice)
     {
-      return _accessors.CurrentState.GetAsync(_turnContext, () => States.InitialChoice);
+      return _accessors.CurrentState.GetAsync(_turnContext, () => initialChoice, cancellationToken);
     }
 
-    public Task SetCurrentStateAsync(States value)
+    public Task SetCurrentStateAsync(States value, CancellationToken cancellationToken)
     {
-      return _accessors.CurrentState.SetAsync(_turnContext, value, CancellationToken.None);
+      return _accessors.CurrentState.SetAsync(_turnContext, value, cancellationToken);
     }
 
-    public Task CommittChangesAsync() //bug save it somewhere
+    public Task CommitChangesAsync(CancellationToken cancellationToken)
     {
-      return _accessors.ConversationState.SaveChangesAsync(_turnContext);
+      return _accessors.ConversationState.SaveChangesAsync(_turnContext, cancellationToken: cancellationToken);
     }
   }
 }

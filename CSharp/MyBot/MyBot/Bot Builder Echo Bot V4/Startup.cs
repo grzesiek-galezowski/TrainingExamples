@@ -1,29 +1,24 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-using System;
-using System.Linq;
-using BotBuilderEchoBotV4.Logic;
-using BotLogic;
-using BotLogic.States;
+using Functional.Maybe;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Bot.Builder;
+using Microsoft.Bot.Builder.AI.Luis;
 using Microsoft.Bot.Builder.Integration;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
-using Microsoft.Bot.Configuration;
-using Microsoft.Bot.Connector.Authentication;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using static BotBuilderEchoBotV4.NullableExtensions;
 
 namespace BotBuilderEchoBotV4
 {
   public class Startup
   {
     private readonly bool _isProduction = false;
-    private ILoggerFactory _loggerFactory;
+    private readonly IConfiguration _configuration;
+    private Maybe<ILoggerFactory> _loggerFactory;
 
     public Startup(IHostingEnvironment env)
     {
@@ -34,94 +29,41 @@ namespace BotBuilderEchoBotV4
         .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
         .AddEnvironmentVariables();
 
-      Configuration = builder.Build();
+      _configuration = builder.Build();
     }
-
-    public IConfiguration Configuration { get; }
 
     public void ConfigureServices(IServiceCollection services)
     {
-      services.AddBot<GameStoreBot>(options => { ConfigureBot(services, options); });
-      services.AddSingleton(CreateEchoBotAccessors);
-      services.AddSingleton(new ActivityFactory());
+      var botModule = new BotModule();
+      var activityFactory = new ActivityFactory();
+      var luisApplication = new LuisApplication("", "", "");
+      var luisRecognizer = new LuisRecognizer(luisApplication);
+
+      services.AddBot(
+        ctx =>
+        {
+          return new GameStoreBot(
+            activityFactory,
+            new TurnContextPoweredObjectsFactory(
+              botModule.CreateBotAccessors(),
+              luisRecognizer));
+        },
+        options =>
+        {
+          botModule.Configure(
+            options,
+            _loggerFactory.Value,
+            _isProduction,
+            _configuration);
+        });
     }
 
-    private static EchoBotAccessors CreateEchoBotAccessors(IServiceProvider sp)
+    // ReSharper disable once UnusedMember.Global
+    public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
     {
-      var options = sp.GetRequiredService<IOptions<BotFrameworkOptions>>().Value;
-      if (options == null)
-      {
-        throw new InvalidOperationException(
-          "BotFrameworkOptions must be configured prior to setting up the state accessors");
-      }
+      _loggerFactory = loggerFactory.ToMaybe();
 
-      var conversationState = options.State.OfType<ConversationState>().FirstOrDefault();
-      if (conversationState == null)
-      {
-        throw new InvalidOperationException(
-          "ConversationState must be defined and added before adding conversation-scoped state accessors.");
-      }
-
-      var accessors = new EchoBotAccessors(conversationState)
-      {
-        CurrentState = conversationState.CreateProperty<States>(EchoBotAccessors.StatesName),
-      };
-
-      return accessors;
-    }
-
-    private void ConfigureBot(IServiceCollection services, BotFrameworkOptions options)
-    {
-      ILogger logger = _loggerFactory.CreateLogger<GameStoreBot>();
-
-      var secretKey = Configuration.GetSection("botFileSecret")?.Value;
-      var botFilePath = Configuration.GetSection("botFilePath")?.Value;
-
-      var botConfig = BotConfiguration.Load(botFilePath ?? @".\BotConfiguration.bot", secretKey) 
-                      ?? throw new InvalidOperationException($"The .bot config file could not be loaded.");
-
-      // Retrieve current endpoint.
-      var endpointService = GetEndpointService(botConfig);
-      SetupCredentialsProvider(options, endpointService);
-         SetupFallbackErrorHandling(options, logger);
-
-      services.AddSingleton(sp => botConfig);
-    }
-
-    private static void SetupFallbackErrorHandling(BotFrameworkOptions options, ILogger logger)
-    {
-      options.OnTurnError = async (context, exception) =>
-      {
-        logger.LogError($"Exception caught : {exception}");
-        await context.SendActivityAsync(exception.ToString());
-      };
-    }
-
-    private static void SetupCredentialsProvider(BotFrameworkOptions options, EndpointService endpointService)
-    {
-      options.CredentialProvider = new SimpleCredentialProvider(endpointService.AppId, endpointService.AppPassword);
-    }
-
-    private EndpointService GetEndpointService(BotConfiguration botConfig)
-    {
-      var environment = _isProduction ? "production" : "development";
-      var service = botConfig.Services.FirstOrDefault(s => s.Type == "endpoint" && s.Name == environment);
-      if (!(service is EndpointService endpointService))
-      {
-        throw new InvalidOperationException($"The .bot file does not contain an endpoint with name '{environment}'.");
-      }
-
-      return endpointService;
-    }
-
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
-    {
-      _loggerFactory = loggerFactory;
-
-      app.UseDefaultFiles()
-        .UseStaticFiles()
-        .UseBotFramework();
-
+      app.UseBotFramework();
     }
   }
 }
