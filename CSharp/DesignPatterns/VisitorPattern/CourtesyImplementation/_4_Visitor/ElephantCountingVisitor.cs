@@ -1,6 +1,6 @@
 namespace CourtesyImplementation._4_Visitor
 {
-  public class CountingVisitor : NodeVisitor
+  public class ElephantCountingVisitor : NodeVisitor
   {
     private int _count = 0;
 

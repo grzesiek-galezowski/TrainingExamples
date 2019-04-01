@@ -3,7 +3,7 @@ using Xunit;
 
 namespace CourtesyImplementation._1_Downcasting
 {
-  public class Lol
+  public class Test
   {
     [Fact]
     public void Whatever_Anything()

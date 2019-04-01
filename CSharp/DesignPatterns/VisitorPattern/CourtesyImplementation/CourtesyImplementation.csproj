@@ -78,7 +78,7 @@
     <Compile Include="_3_TellDontAsk\Node.cs" />
     <Compile Include="_3_TellDontAsk\Test.cs" />
     <Compile Include="_4_Visitor\Box.cs" />
-    <Compile Include="_4_Visitor\CountingVisitor.cs" />
+    <Compile Include="_4_Visitor\ElephantCountingVisitor.cs" />
     <Compile Include="_4_Visitor\Test.cs" />
     <Compile Include="_4_Visitor\Node.cs" />
     <Compile Include="_4_Visitor\NodeVisitor.cs" />

@@ -3,7 +3,7 @@ using Xunit;
 
 namespace CourtesyImplementation._4_Visitor
 {
-  public class Lol
+  public class Test
   {
     [Fact]
     public void Whatever_Anything()
@@ -23,7 +23,7 @@ namespace CourtesyImplementation._4_Visitor
         )
       );
       //WHEN
-      var countingVisitor = new CountingVisitor();
+      var countingVisitor = new ElephantCountingVisitor();
       box.Accept(countingVisitor);
 
       //THEN
