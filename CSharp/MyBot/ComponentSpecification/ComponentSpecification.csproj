@@ -25,7 +25,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BotLogic\BotLogic.csproj" />
-    <ProjectReference Include="..\MyBot\Bot Builder Echo Bot V4\GameStoreBot.csproj" />
   </ItemGroup>
 
 </Project>

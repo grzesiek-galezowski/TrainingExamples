@@ -2,19 +2,17 @@
 // Licensed under the MIT License.
 
 using System.IO;
+using BotLogic.Composition;
 using Functional.Maybe;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Bot.Builder.AI.Luis;
-using Microsoft.Bot.Builder.Integration;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
-using Microsoft.Bot.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using static BotBuilderEchoBotV4.NullableExtensions;
 
-namespace BotBuilderEchoBotV4
+namespace GameBot
 {
   public class Startup
   {
@@ -47,7 +45,7 @@ namespace BotBuilderEchoBotV4
       services.AddBot(
         ctx =>
         {
-          return new GameStoreBot(
+          return new Bot(
             activityFactory,
             new TurnContextPoweredObjectsFactory(
               botModule.CreateBotAccessors(),

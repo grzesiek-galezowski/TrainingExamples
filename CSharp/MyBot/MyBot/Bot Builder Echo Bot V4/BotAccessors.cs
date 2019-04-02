@@ -2,12 +2,10 @@
 // Licensed under the MIT License.
 
 using System;
-using BotLogic;
 using BotLogic.States;
-using BotLogic.StateValues;
 using Microsoft.Bot.Builder;
 
-namespace BotBuilderEchoBotV4
+namespace GameBot
 {
   public class BotAccessors
   {
@@ -18,7 +16,7 @@ namespace BotBuilderEchoBotV4
 
     public static string StatesName { get; } = $"{nameof(BotAccessors)}.State";
 
-    public IStatePropertyAccessor<States> CurrentState { get; set; }
+    public IStatePropertyAccessor<StateNames> CurrentState { get; set; }
 
     public ConversationState ConversationState { get; }
   }

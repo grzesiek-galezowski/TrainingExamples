@@ -1,10 +1,10 @@
-﻿using BotBuilderEchoBotV4.Adapters;
-using BotLogic;
-using BotLogic.StateValues;
+﻿using BotLogic;
+using BotLogic.States;
+using GameBot.Adapters;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.AI.Luis;
 
-namespace BotBuilderEchoBotV4
+namespace GameBot
 {
   public interface ITurnContextPoweredObjectsFactory
   {

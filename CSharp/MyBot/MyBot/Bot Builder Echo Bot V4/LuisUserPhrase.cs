@@ -6,7 +6,7 @@ using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime.Models;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.AI.Luis;
 
-namespace BotBuilderEchoBotV4
+namespace GameBot
 {
 
   public class LuisUserPhrase : IUserPhrase

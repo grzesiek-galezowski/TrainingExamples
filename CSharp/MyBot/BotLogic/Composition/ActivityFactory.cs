@@ -1,10 +1,8 @@
 using System.Threading;
 using System.Threading.Tasks;
-using BotLogic;
 using BotLogic.States;
-using BotLogic.StateValues;
 
-namespace BotBuilderEchoBotV4
+namespace BotLogic.Composition
 {
   public interface IActivityFactory
   {
@@ -23,13 +21,13 @@ namespace BotBuilderEchoBotV4
       IConversationPartner conversationPartner,
       CancellationToken cancellationToken)
     {
-      IStatesFactory states = new StatesFactory(new GameCatalog(), new Shop());
+      IStatesFactory states = new StatesFactory();
       var messageActivity = new MessageActivity(
         conversationPartner,
         new IntentRecognition(userPhrase),
         new DialogStateMachine(
           states.GetState(
-            await persistentState.ReadCurrentStateAsync(cancellationToken, States.InitialChoice)),
+            await persistentState.ReadCurrentStateAsync(cancellationToken, StateNames.BeforeGameStarts)),
           states,
           persistentState
         ));

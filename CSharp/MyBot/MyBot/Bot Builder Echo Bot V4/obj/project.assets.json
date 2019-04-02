@@ -13135,9 +13135,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\grzes\\Documents\\GitHub\\TrainingExamples\\CSharp\\MyBot\\MyBot\\Bot Builder Echo Bot V4\\GameStoreBot.csproj",
-      "projectName": "Bot Builder EchoBotV4",
-      "projectPath": "C:\\Users\\grzes\\Documents\\GitHub\\TrainingExamples\\CSharp\\MyBot\\MyBot\\Bot Builder Echo Bot V4\\GameStoreBot.csproj",
+      "projectUniqueName": "C:\\Users\\grzes\\Documents\\GitHub\\TrainingExamples\\CSharp\\MyBot\\MyBot\\Bot Builder Echo Bot V4\\GameBot.csproj",
+      "projectName": "GameBot",
+      "projectPath": "C:\\Users\\grzes\\Documents\\GitHub\\TrainingExamples\\CSharp\\MyBot\\MyBot\\Bot Builder Echo Bot V4\\GameBot.csproj",
       "packagesPath": "C:\\Users\\grzes\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\grzes\\Documents\\GitHub\\TrainingExamples\\CSharp\\MyBot\\MyBot\\Bot Builder Echo Bot V4\\obj\\",
       "projectStyle": "PackageReference",

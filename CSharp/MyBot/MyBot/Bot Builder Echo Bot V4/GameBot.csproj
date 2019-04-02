@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <CodeAnalysisRuleSet>EchoBotWithCounter.ruleset</CodeAnalysisRuleSet>
-    <RootNamespace>BotBuilderEchoBotV4</RootNamespace>
-    <AssemblyName>Bot Builder EchoBotV4</AssemblyName>
+    <RootNamespace>GameBot</RootNamespace>
+    <AssemblyName>GameBot</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -33,11 +33,6 @@
     <PackageReference Include="Microsoft.Bot.Schema" Version="4.3.2" />
     <PackageReference Include="Microsoft.Extensions.Logging.AzureAppServices" Version="2.1.1" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.0-beta008" PrivateAssets="all" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <Folder Include="Logic\" />
   </ItemGroup>
 
 

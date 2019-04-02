@@ -1,6 +1,6 @@
 using System;
 
-namespace BotBuilderEchoBotV4
+namespace GameBot
 {
   public static class NullableExtensions
   {

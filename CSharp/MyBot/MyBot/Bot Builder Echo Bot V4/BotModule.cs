@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
 using BotLogic.States;
-using BotLogic.StateValues;
 using Functional.Maybe;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Integration;
@@ -12,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace BotBuilderEchoBotV4
+namespace GameBot
 {
   public class BotModule
   {
@@ -20,7 +19,7 @@ namespace BotBuilderEchoBotV4
 
     public void Configure(BotFrameworkOptions options, ILoggerFactory loggerFactory, bool isProduction, IConfiguration configuration)
     {
-      ILogger logger = loggerFactory.CreateLogger<GameStoreBot>();
+      ILogger logger = loggerFactory.CreateLogger<Bot>();
 
       var botConfig = ReadBotConfiguration(configuration);
       SetupCredentialsProvider(isProduction, options, botConfig);
@@ -34,7 +33,7 @@ namespace BotBuilderEchoBotV4
       var conversationState = State.Value;
       var accessors = new BotAccessors(conversationState)
       {
-        CurrentState = conversationState.CreateProperty<States>(BotAccessors.StatesName),
+        CurrentState = conversationState.CreateProperty<StateNames>(BotAccessors.StatesName),
       };
 
       return accessors;

@@ -1,27 +1,20 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Bot.Builder.Community.Recognizers.Fuzzy;
-using BotLogic;
-using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime.Models;
+using BotLogic.Composition;
 using Microsoft.Bot.Builder;
-using Microsoft.Bot.Builder.AI.Luis;
-using Microsoft.Bot.Configuration;
 using Microsoft.Bot.Schema;
 
-namespace BotBuilderEchoBotV4
+namespace GameBot
 {
-  public class GameStoreBot : IBot
+  public class Bot : IBot
   {
     private readonly IActivityFactory _activityFactory;
     private readonly ITurnContextPoweredObjectsFactory _turnContextPoweredObjectsFactory;
 
-    public GameStoreBot(
+    public Bot(
       IActivityFactory activityFactory,
       ITurnContextPoweredObjectsFactory turnContextPoweredObjectsFactory)
     {

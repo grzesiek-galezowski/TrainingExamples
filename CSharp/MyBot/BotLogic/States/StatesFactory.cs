@@ -1,35 +1,19 @@
 ﻿using System;
 
-namespace BotLogic.StateValues
+namespace BotLogic.States
 {
   public class StatesFactory : IStatesFactory
   {
-    private readonly GameCatalog _gameCatalog;
-    private readonly Shop _shop;
 
-    public StatesFactory(GameCatalog gameCatalog, Shop shop)
+    public StatesFactory()
     {
-      _gameCatalog = gameCatalog;
-      _shop = shop;
     }
 
-    public IState GetState(States.States state)
+    public IState GetState(States.StateNames stateName)
     {
-      if (state == States.States.InitialChoice)
+      if (stateName == States.StateNames.BeforeGameStarts)
       {
-        return new InitialChoiceState();
-      }
-      else if(state == States.States.DisplayingCatalog)
-      {
-        return new DisplayingGameCatalogState(_gameCatalog);
-      }
-      else if(state == States.States.FromGameCatalogToDisplayShop)
-      {
-        return new YesNoTransitionState();
-      }
-      else if(state == States.States.DisplayingShop)
-      {
-        return new DisplayingShopState(_shop);
+        return new BeforeGameStartsState();
       }
       else
       {

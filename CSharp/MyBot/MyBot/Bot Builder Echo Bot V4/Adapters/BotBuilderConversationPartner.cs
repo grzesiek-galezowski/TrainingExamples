@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using BotLogic;
 using Microsoft.Bot.Builder;
 
-namespace BotBuilderEchoBotV4.Adapters
+namespace GameBot.Adapters
 {
   public class BotBuilderConversationPartner : IConversationPartner
   {

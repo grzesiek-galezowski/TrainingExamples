@@ -1,10 +1,9 @@
 using System.Threading;
 using System.Threading.Tasks;
 using BotLogic.States;
-using BotLogic.StateValues;
 using Microsoft.Bot.Builder;
 
-namespace BotBuilderEchoBotV4.Adapters
+namespace GameBot.Adapters
 {
   public class BotPersistentState : IBotPersistentState
   {
@@ -17,12 +16,12 @@ namespace BotBuilderEchoBotV4.Adapters
       _accessors = accessors;
     }
 
-    public Task<States> ReadCurrentStateAsync(CancellationToken cancellationToken, States initialChoice)
+    public Task<StateNames> ReadCurrentStateAsync(CancellationToken cancellationToken, StateNames initialChoice)
     {
       return _accessors.CurrentState.GetAsync(_turnContext, () => initialChoice, cancellationToken);
     }
 
-    public Task SetCurrentStateAsync(States value, CancellationToken cancellationToken)
+    public Task SetCurrentStateAsync(StateNames value, CancellationToken cancellationToken)
     {
       return _accessors.CurrentState.SetAsync(_turnContext, value, cancellationToken);
     }
