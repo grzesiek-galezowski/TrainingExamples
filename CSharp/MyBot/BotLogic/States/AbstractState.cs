@@ -22,12 +22,15 @@ namespace BotLogic.States
       conversationPartner.AppendToResponse("Nothing to reject.");
     }
 
-    public virtual async Task OnStartGameAsync(IConversationPartner conversationPartner, CancellationToken cancellationToken)
+    public virtual async Task OnStartGameAsync(IDialogContext dialogContext, IConversationPartner conversationPartner,
+      CancellationToken cancellationToken)
     {
       conversationPartner.AppendToResponse("You are mid-game, right?");
     }
 
-    public virtual Task OnKillCharacterAsync(string characterName, IConversationPartner conversationPartner,
+    public virtual Task OnKillCharacterAsync(IDialogContext dialogContext,
+      ICharacter gandalf,
+      IConversationPartner conversationPartner,
       CancellationToken cancellationToken)
     {
       return Task.CompletedTask;

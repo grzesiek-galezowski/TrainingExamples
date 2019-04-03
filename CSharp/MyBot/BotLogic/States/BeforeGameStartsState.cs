@@ -5,10 +5,10 @@ namespace BotLogic.States
 {
   public class BeforeGameStartsState : AbstractState
   {
-    public override async Task OnStartGameAsync(IConversationPartner conversationPartner, CancellationToken cancellationToken)
+    public override async Task OnStartGameAsync(IDialogContext dialogContext, IConversationPartner conversationPartner,
+      CancellationToken cancellationToken)
     {
-      conversationPartner.AppendToResponse(BrightRoomConversations.EntryDescription());
-      //bug move to another state
+      await dialogContext.GoToAsync(StateNames.EnterBrightRoomState, conversationPartner, cancellationToken);
     }
   }
 }

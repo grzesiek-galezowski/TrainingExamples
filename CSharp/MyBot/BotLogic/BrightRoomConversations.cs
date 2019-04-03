@@ -14,5 +14,14 @@ namespace BotLogic
              "You are now but a pile of ash. - Oh well - says Gandalf to Aragorn - " +
              "I told you from the get-go that using the eagles would be a better idea...";
     }
+
+    public static string AttemptingToKillAragornAnswer()
+    {
+      return "You attack Aragorn with a big stone just for fun to check if Aragorn can " +
+             "truly deflect any hit with his sword. Apparently, his muscle memory worked a bit too well." +
+             " You could see it very clearly from the right distance as your head, cut off from your corpse, " +
+             "went flying through the window";
+
+    }
   }
 }

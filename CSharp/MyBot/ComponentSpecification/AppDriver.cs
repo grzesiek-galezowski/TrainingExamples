@@ -18,7 +18,7 @@ namespace ComponentSpecification
     public AppDriver()
     {
       _activityFactory = new ActivityFactory();
-      _botPersistentState = Substitute.For<IBotPersistentState>();
+      _botPersistentState = new FakeBotPersistentState();
       _userPhrase = Substitute.For<IUserPhrase>();
       
     }

@@ -49,14 +49,13 @@ namespace BotLogic
 
     public Task OnStartGameAsync(IConversationPartner conversationPartner, CancellationToken cancellationToken)
     {
-      return _currentState.OnStartGameAsync(conversationPartner, cancellationToken);
+      return _currentState.OnStartGameAsync((IDialogContext)this, conversationPartner, cancellationToken);
     }
 
     public Task OnKillCharacterAsync(string characterName, IConversationPartner conversationPartner,
       CancellationToken cancellationToken)
     {
-      return _currentState.OnKillCharacterAsync(characterName, conversationPartner,
-        cancellationToken);
+      return _currentState.OnKillCharacterAsync((IDialogContext)this, new Gandalf(), conversationPartner, cancellationToken);
     }
   }
 }

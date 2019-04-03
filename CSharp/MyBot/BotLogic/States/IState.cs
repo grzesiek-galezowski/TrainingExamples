@@ -13,7 +13,10 @@ namespace BotLogic.States
     Task OnNoAsync(IConversationPartner conversationPartner, IDialogContext dialogStateMachine,
       CancellationToken cancellationToken);
 
-    Task OnStartGameAsync(IConversationPartner conversationPartner, CancellationToken cancellationToken);
-    Task OnKillCharacterAsync(string characterName, IConversationPartner conversationPartner, CancellationToken cancellationToken);
+    Task OnStartGameAsync(IDialogContext dialogContext, IConversationPartner conversationPartner,
+      CancellationToken cancellationToken);
+    Task OnKillCharacterAsync(IDialogContext dialogContext,
+      ICharacter gandalf,
+      IConversationPartner conversationPartner, CancellationToken cancellationToken);
   }
 }
