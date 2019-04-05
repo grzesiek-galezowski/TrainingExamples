@@ -1,7 +1,10 @@
+using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using BotLogic.Characters;
 using BotLogic.Intents;
+using BotLogic.States;
 
 namespace BotLogic
 {
@@ -30,10 +33,32 @@ namespace BotLogic
         if (intentDto.Intent == IntentNames.KillCharacter)
         {
           //todo add validation of entity type
-          return new KillCharacterIntent(intentDto.Entities.First().Entity);
+          return new KillCharacterIntent(ExtractCharacterFrom(intentDto));
+        }
+        if (intentDto.Intent == IntentNames.TalkToCharacter)
+        {
+          //todo add validation of entity type
+          return new TalkToCharacterIntent(ExtractCharacterFrom(intentDto));
         }
 
         return new InvalidItent();
+      }
+
+      private static ICharacter ExtractCharacterFrom(RecognitionResultDto intentDto)
+      {
+        return GetCharacter(intentDto.Entities.First(e => e.Type == "CharacterName"));
+      }
+
+      private static ICharacter GetCharacter(EntityDto entity)
+      {
+        if (entity.Entity.Equals("Gandalf", StringComparison.InvariantCultureIgnoreCase))
+        {
+          return new Gandalf();
+        }
+        else
+        {
+          return new Aragorn();
+        }
       }
 
       public class StartGameIntent : IIntent
@@ -46,19 +71,17 @@ namespace BotLogic
       }
     }
 
-    public class KillCharacterIntent : IIntent
+    public class TalkToCharacterIntent : IIntent
     {
-      private readonly string _characterName;
-
-      public KillCharacterIntent(string characterName)
+      public TalkToCharacterIntent(ICharacter character)
       {
-        _characterName = characterName;
+        throw new NotImplementedException();
       }
 
       public Task ApplyToAsync(IDialogStateMachine dialogStateMachine, IConversationPartner conversationPartner,
         CancellationToken cancellationToken)
       {
-        return dialogStateMachine.OnKillCharacterAsync(_characterName, conversationPartner, cancellationToken);
+        throw new NotImplementedException();
       }
     }
 }

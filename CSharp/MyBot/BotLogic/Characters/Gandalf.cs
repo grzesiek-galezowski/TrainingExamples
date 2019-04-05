@@ -1,4 +1,4 @@
-﻿namespace BotLogic.States
+﻿namespace BotLogic.Characters
 {
   public interface ICharacter
   {
@@ -9,7 +9,7 @@
   {
     public void TryToKill(IConversationPartner conversationPartner)
     {
-      conversationPartner.AppendToResponse(BrightRoomConversations.AttemptingToKillGandalfAnswer());
+      conversationPartner.AppendToResponse(BotPhrases.AttemptingToKillGandalfAnswer());
     }
   }
 }

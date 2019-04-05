@@ -1,5 +1,6 @@
 using System.Threading;
 using System.Threading.Tasks;
+using BotLogic.Characters;
 
 namespace BotLogic.States
 {
@@ -16,7 +17,7 @@ namespace BotLogic.States
     Task OnStartGameAsync(IDialogContext dialogContext, IConversationPartner conversationPartner,
       CancellationToken cancellationToken);
     Task OnKillCharacterAsync(IDialogContext dialogContext,
-      ICharacter gandalf,
+      ICharacter character,
       IConversationPartner conversationPartner, CancellationToken cancellationToken);
   }
 }

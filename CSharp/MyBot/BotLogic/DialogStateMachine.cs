@@ -1,5 +1,6 @@
 using System.Threading;
 using System.Threading.Tasks;
+using BotLogic.Characters;
 using BotLogic.States;
 
 namespace BotLogic
@@ -9,7 +10,8 @@ namespace BotLogic
     Task OnYesAsync(IConversationPartner conversationPartner, CancellationToken cancellationToken);
     Task OnNoAsync(IConversationPartner conversationPartner, CancellationToken cancellationToken);
     Task OnStartGameAsync(IConversationPartner conversationPartner, CancellationToken cancellationToken);
-    Task OnKillCharacterAsync(string characterName, IConversationPartner conversationPartner, CancellationToken cancellationToken);
+    Task OnKillCharacterAsync(ICharacter character, IConversationPartner conversationPartner,
+      CancellationToken cancellationToken);
   }
 
   public class DialogStateMachine : IDialogContext, IDialogStateMachine
@@ -49,13 +51,15 @@ namespace BotLogic
 
     public Task OnStartGameAsync(IConversationPartner conversationPartner, CancellationToken cancellationToken)
     {
-      return _currentState.OnStartGameAsync((IDialogContext)this, conversationPartner, cancellationToken);
+      return _currentState.OnStartGameAsync(this, conversationPartner, cancellationToken);
     }
 
-    public Task OnKillCharacterAsync(string characterName, IConversationPartner conversationPartner,
+    public Task OnKillCharacterAsync(
+      ICharacter character,
+      IConversationPartner conversationPartner,
       CancellationToken cancellationToken)
     {
-      return _currentState.OnKillCharacterAsync((IDialogContext)this, new Gandalf(), conversationPartner, cancellationToken);
+      return _currentState.OnKillCharacterAsync(this, character, conversationPartner, cancellationToken);
     }
   }
 }

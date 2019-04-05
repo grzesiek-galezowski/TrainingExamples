@@ -1,6 +1,6 @@
 namespace BotLogic
 {
-  public static class BrightRoomConversations
+  public static class BotPhrases
   {
     public static string EntryDescription()
     {
@@ -22,6 +22,16 @@ namespace BotLogic
              " You could see it very clearly from the right distance as your head, cut off from your corpse, " +
              "went flying through the window";
 
+    }
+
+    public static string AragornAsksAboutFianceeName()
+    {
+      return nameof(AragornAsksAboutFianceeName); //bug
+    }
+
+    public static string AragornTellsTheStoryOfHisFianceeAfterAcknowleding(string frodosFianceeName)
+    {
+      return frodosFianceeName; //bug
     }
   }
 }

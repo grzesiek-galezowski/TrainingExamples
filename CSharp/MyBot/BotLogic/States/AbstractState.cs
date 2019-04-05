@@ -1,5 +1,6 @@
 using System.Threading;
 using System.Threading.Tasks;
+using BotLogic.Characters;
 
 namespace BotLogic.States
 {
@@ -29,7 +30,7 @@ namespace BotLogic.States
     }
 
     public virtual Task OnKillCharacterAsync(IDialogContext dialogContext,
-      ICharacter gandalf,
+      ICharacter character,
       IConversationPartner conversationPartner,
       CancellationToken cancellationToken)
     {
