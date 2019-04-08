@@ -22,8 +22,8 @@ namespace BotLogic.States
 
     public override Task OnSomeWordsAsync(IDialogContext context,
       IEnumerable<string> words, in CancellationToken cancellationToken)
-    {
-        var frodosFianceeName = string.Join(" ", words);
+    { 
+      var frodosFianceeName = string.Join(" ", words);
       if(frodosFianceeName == "Aragorn")
       {
         _player.AppendToResponse(BotPhrases.AragornJokesAboutHimBeingAFianceeOfFrodo());
