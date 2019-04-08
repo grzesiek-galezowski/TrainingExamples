@@ -4,6 +4,6 @@ namespace BotLogic
 {
   public interface IStatesFactory
   {
-    IState GetState(States.StateNames stateName);
+    IState GetState(StateNames stateName);
   }
 }

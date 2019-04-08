@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using BotLogic;
@@ -11,7 +12,7 @@ namespace ComponentSpecification
   public class AppDriver
   {
     private readonly IActivityFactory _activityFactory;
-    private FakeConversationPartner? _conversationPartner;
+    private FakePlayer? _player;
     private readonly IBotPersistentState _botPersistentState;
     private readonly IUserPhrase _userPhrase;
 
@@ -25,17 +26,17 @@ namespace ComponentSpecification
 
     public async Task Receives(RecognitionResultDto recognitionResultDto)
     {
-      _conversationPartner = new FakeConversationPartner();
+      _player = new FakePlayer();
       _userPhrase.RecognizeIntentAsync(Arg.Any<CancellationToken>()).Returns(recognitionResultDto);
 
       var messageActivity = await _activityFactory.CreateMessageActivityAsync(
-        _botPersistentState, _userPhrase, _conversationPartner, CancellationToken.None);
+        _botPersistentState, _userPhrase, _player, CancellationToken.None);
       await messageActivity.HandleAsync(CancellationToken.None);
     }
 
-    public void Answers(string expectedAnswer)
+    public void AnswersWith(params string[] expectedAnswer)
     {
-      _conversationPartner.Content.Should().Be(expectedAnswer);
+      _player!.Content.Should().Be(string.Join("", expectedAnswer));
     }
   }
 }

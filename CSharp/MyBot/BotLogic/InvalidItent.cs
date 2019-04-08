@@ -6,10 +6,18 @@ namespace BotLogic
 {
   public class InvalidItent : IIntent
   {
-    public async Task ApplyToAsync(IDialogStateMachine dialogStateMachine, IConversationPartner conversationPartner,
+    private readonly IPlayer _player;
+
+    public InvalidItent(IPlayer player)
+    {
+      _player = player;
+    }
+
+    public async Task ApplyToAsync(
+      IDialogStateMachine dialogStateMachine,
       CancellationToken cancellationToken)
     {
-      conversationPartner.AppendToResponse("Invalid intent, sorry!");
+      _player.AppendToResponse("Invalid intent, sorry!");
     }
   }
 }

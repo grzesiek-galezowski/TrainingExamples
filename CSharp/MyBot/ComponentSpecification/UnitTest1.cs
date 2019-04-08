@@ -1,6 +1,8 @@
 using System.Threading.Tasks;
 using BotLogic;
 using Xunit;
+using static BotLogic.BotPhrases;
+using static ComponentSpecification.Intents;
 
 namespace ComponentSpecification
 {
@@ -10,39 +12,53 @@ namespace ComponentSpecification
     public async Task ShouldAllowTryingToKillGandalfAndEndGame()
     {
       var bot = new AppDriver();
-      await bot.Receives(Intents.StartGame());
-      bot.Answers(BotPhrases.EntryDescription());
-      await bot.Receives(Intents.Kill("Gandalf"));
-      bot.Answers(BotPhrases.AttemptingToKillGandalfAnswer());
-      await bot.Receives(Intents.StartGame());
-      bot.Answers(BotPhrases.EntryDescription());
+      await bot.Receives(StartGame());
+      bot.AnswersWith(EntryDescription());
+      await bot.Receives(Kill("Gandalf"));
+      bot.AnswersWith(AttemptingToKillGandalfAnswer());
+      await bot.Receives(StartGame());
+      bot.AnswersWith(EntryDescription());
     }
 
     [Fact]
     public async Task ShouldAllowTryingToKillAragornAndEndGame()
     {
       var bot = new AppDriver();
-      await bot.Receives(Intents.StartGame());
-      bot.Answers(BotPhrases.EntryDescription());
-      await bot.Receives(Intents.Kill("Aragorn"));
-      bot.Answers(BotPhrases.AttemptingToKillAragornAnswer());
-      await bot.Receives(Intents.StartGame());
-      bot.Answers(BotPhrases.EntryDescription());
+      await bot.Receives(StartGame());
+      bot.AnswersWith(EntryDescription());
+      await bot.Receives(Kill("Aragorn"));
+      bot.AnswersWith(AttemptingToKillAragornAnswer());
+      await bot.Receives(StartGame());
+      bot.AnswersWith(EntryDescription());
     }
 
     [Fact]
     public async Task ShouldAllowTalkingToAragornAndGivingFianceeName()
-    {
+     {
       var bot = new AppDriver();
-      await bot.Receives(Intents.StartGame());
-      bot.Answers(BotPhrases.EntryDescription());
-      await bot.Receives(Intents.TalkTo("Aragorn"));
-      bot.Answers(BotPhrases.AragornAsksAboutFianceeName());
-      await bot.Receives(Intents.Words("Mandaryna Mandrykiewicz"));
-      bot.Answers(
-        BotPhrases.AragornTellsTheStoryOfHisFianceeAfterAcknowleding("Mandaryna Mandrykiewicz")
-        + BotPhrases.EntryDescription());
+      await bot.Receives(StartGame());
+      bot.AnswersWith(EntryDescription());
+      await bot.Receives(TalkTo("Aragorn"));
+      bot.AnswersWith(QuestionFromAragornAboutFrodosFianceeName());
+      await bot.Receives(Words("Mandaryna Mandrykiewicz"));
+      bot.AnswersWith(
+        AragornsStoryOfHisFianceeAfterAcknowleding("Mandaryna Mandrykiewicz"),
+        EntryDescription());
       
+    }
+    
+    [Fact]
+    public async Task ShouldMakeAragornJokeWhenFianceeNameIsAragorn()
+     {
+      var bot = new AppDriver();
+      await bot.Receives(StartGame());
+      bot.AnswersWith(EntryDescription());
+      await bot.Receives(TalkTo("Aragorn"));
+      bot.AnswersWith(QuestionFromAragornAboutFrodosFianceeName());
+      await bot.Receives(Words("Aragorn"));
+      bot.AnswersWith(
+        AragornJokesAboutHimBeingAFianceeOfFrodo(),
+        QuestionFromAragornAboutFrodosFianceeName());
     }
   }
 

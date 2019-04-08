@@ -8,7 +8,7 @@ namespace GameBot
 {
   public interface ITurnContextPoweredObjectsFactory
   {
-    IConversationPartner CreateConversationPartner(ITurnContext turnContext);
+    IPlayer CreateConversationPartner(ITurnContext turnContext);
     IBotPersistentState CreateBotPersistentState(ITurnContext turnContext);
     IUserPhrase ExtractUserPhraseFrom(ITurnContext turnContext);
   }
@@ -24,9 +24,9 @@ namespace GameBot
       _luisRecognizer = luisRecognizer;
     }
 
-    public IConversationPartner CreateConversationPartner(ITurnContext turnContext)
+    public IPlayer CreateConversationPartner(ITurnContext turnContext)
     {
-      return new BotBuilderConversationPartner(turnContext);
+      return new BotBuilderPlayer(turnContext);
     }
 
     public IBotPersistentState CreateBotPersistentState(ITurnContext turnContext)

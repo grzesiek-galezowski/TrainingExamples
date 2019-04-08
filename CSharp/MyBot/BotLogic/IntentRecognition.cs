@@ -16,10 +16,12 @@ namespace BotLogic
     public class IntentRecognition : IIntentRecognition
     {
       private readonly IUserPhrase _userPhrase;
+      private readonly IPlayer _player;
 
-      public IntentRecognition(IUserPhrase userPhrase)
+      public IntentRecognition(IUserPhrase userPhrase, IPlayer player)
       {
         _userPhrase = userPhrase;
+        _player = player;
       }
 
       public async Task<IIntent> PerformAsync(CancellationToken cancellationToken)
@@ -40,8 +42,13 @@ namespace BotLogic
           //todo add validation of entity type
           return new TalkToCharacterIntent(ExtractCharacterFrom(intentDto));
         }
+        if (intentDto.Intent == IntentNames.Words)
+        {
+          //todo add validation of entity type
+          return new WordsIntent(intentDto.Entities.Select(e => e.Entity).ToList());
+        }
 
-        return new InvalidItent();
+        return new InvalidItent(_player);
       }
 
       private static ICharacter ExtractCharacterFrom(RecognitionResultDto intentDto)
@@ -61,27 +68,5 @@ namespace BotLogic
         }
       }
 
-      public class StartGameIntent : IIntent
-      {
-        public Task ApplyToAsync(IDialogStateMachine dialogStateMachine, IConversationPartner conversationPartner,
-          CancellationToken cancellationToken)
-        {
-          return dialogStateMachine.OnStartGameAsync(conversationPartner, cancellationToken);
-        }
-      }
-    }
-
-    public class TalkToCharacterIntent : IIntent
-    {
-      public TalkToCharacterIntent(ICharacter character)
-      {
-        throw new NotImplementedException();
-      }
-
-      public Task ApplyToAsync(IDialogStateMachine dialogStateMachine, IConversationPartner conversationPartner,
-        CancellationToken cancellationToken)
-      {
-        throw new NotImplementedException();
-      }
     }
 }

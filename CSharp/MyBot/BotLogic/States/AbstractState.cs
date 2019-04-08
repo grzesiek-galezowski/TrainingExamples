@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using BotLogic.Characters;
@@ -6,33 +7,53 @@ namespace BotLogic.States
 {
   public abstract class AbstractState : IState
   {
-    public virtual Task OnEnterAsync(IConversationPartner conversationPartner)
+    private readonly IPlayer _player;
+
+    protected AbstractState(IPlayer player)
+    {
+      _player = player;
+    }
+
+    public virtual Task OnEnterAsync(CancellationToken cancellationToken)
     {
       return Task.CompletedTask;
     }
 
-    public virtual async Task OnYesAsync(IConversationPartner conversationPartner, IDialogContext dialogStateMachine,
+    public virtual async Task OnYesAsync(IDialogContext dialogStateMachine,
       CancellationToken cancellationToken)
     {
-      conversationPartner.AppendToResponse("Nothing to confirm.");
+      _player.AppendToResponse("Nothing to confirm.");
     }
 
-    public virtual async Task OnNoAsync(IConversationPartner conversationPartner, IDialogContext dialogStateMachine,
+    public virtual async Task OnNoAsync(IDialogContext dialogStateMachine,
       CancellationToken cancellationToken)
     {
-      conversationPartner.AppendToResponse("Nothing to reject.");
+      _player.AppendToResponse("Nothing to reject.");
     }
 
-    public virtual async Task OnStartGameAsync(IDialogContext dialogContext, IConversationPartner conversationPartner,
+    public virtual async Task OnStartGameAsync(IDialogContext dialogContext,
       CancellationToken cancellationToken)
     {
-      conversationPartner.AppendToResponse("You are mid-game, right?");
+      _player.AppendToResponse("You are mid-game, right?");
     }
 
     public virtual Task OnKillCharacterAsync(IDialogContext dialogContext,
       ICharacter character,
-      IConversationPartner conversationPartner,
       CancellationToken cancellationToken)
+    {
+      return Task.CompletedTask;
+    }
+
+    public virtual Task OnTalkToAsync(
+      IDialogContext dialogContext, 
+      ICharacter character,
+      CancellationToken cancellationToken)
+    {
+      return Task.CompletedTask;
+    }
+
+    public virtual Task OnSomeWordsAsync(IDialogContext context,
+      IEnumerable<string> words, in CancellationToken cancellationToken)
     {
       return Task.CompletedTask;
     }

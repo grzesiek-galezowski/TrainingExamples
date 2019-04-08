@@ -9,7 +9,7 @@ namespace BotLogic.Composition
     Task<MessageActivity> CreateMessageActivityAsync(
       IBotPersistentState persistentState,
       IUserPhrase userPhrase,
-      IConversationPartner conversationPartner,
+      IPlayer player,
       CancellationToken cancellationToken);
   }
 
@@ -18,20 +18,24 @@ namespace BotLogic.Composition
     public async Task<MessageActivity> CreateMessageActivityAsync(
       IBotPersistentState persistentState,
       IUserPhrase userPhrase,
-      IConversationPartner conversationPartner,
+      IPlayer player,
       CancellationToken cancellationToken)
     {
-      IStatesFactory states = new StatesFactory();
       var messageActivity = new MessageActivity(
-        conversationPartner,
-        new IntentRecognition(userPhrase),
-        new DialogStateMachine(
-          states.GetState(
-            await persistentState.ReadCurrentStateAsync(cancellationToken, StateNames.BeforeGameStarts)),
-          states,
-          persistentState
-        ));
+        player,
+        new IntentRecognition(userPhrase, player),
+        await DialogStateMachine(persistentState, cancellationToken, new StatesFactory(player)));
       return messageActivity;
+    }
+
+    private static async Task<DialogStateMachine> DialogStateMachine(IBotPersistentState persistentState, CancellationToken cancellationToken, IStatesFactory states)
+    {
+      return new DialogStateMachine(
+        states.GetState(
+          await persistentState.ReadCurrentStateAsync(cancellationToken, StateNames.BeforeGameStarts)),
+        states,
+        persistentState
+      );
     }
   }
 }

@@ -4,7 +4,7 @@ using BotLogic;
 
 namespace ComponentSpecification
 {
-  public class FakeConversationPartner : IConversationPartner
+  public class FakePlayer : IPlayer
   {
     public string Content { get; private set; } = string.Empty;
 

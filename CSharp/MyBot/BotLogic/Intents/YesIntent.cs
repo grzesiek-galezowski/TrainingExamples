@@ -6,11 +6,10 @@ namespace BotLogic.Intents
   internal class YesIntent : IIntent
   {
     public Task ApplyToAsync(
-        IDialogStateMachine dialogStateMachine, 
-        IConversationPartner conversationPartner,
+        IDialogStateMachine dialogStateMachine,
       CancellationToken cancellationToken)
     {
-      return dialogStateMachine.OnYesAsync(conversationPartner, cancellationToken);
+      return dialogStateMachine.OnYesAsync(cancellationToken);
     }
   }
 }

@@ -1,14 +1,15 @@
 using System.Threading;
 using System.Threading.Tasks;
+using BotLogic.Intents;
 
-namespace BotLogic.Intents
+namespace BotLogic
 {
-  internal class NoIntent : IIntent
+  public class StartGameIntent : IIntent
   {
     public Task ApplyToAsync(IDialogStateMachine dialogStateMachine,
       CancellationToken cancellationToken)
     {
-      return dialogStateMachine.OnNoAsync(cancellationToken);
+      return dialogStateMachine.OnStartGameAsync(cancellationToken);
     }
   }
 }

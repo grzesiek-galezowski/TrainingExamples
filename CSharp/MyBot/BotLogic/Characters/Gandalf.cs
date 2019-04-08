@@ -1,15 +1,22 @@
-﻿namespace BotLogic.Characters
-{
-  public interface ICharacter
-  {
-    void TryToKill(IConversationPartner conversationPartner);
-  }
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+using BotLogic.States;
 
+namespace BotLogic.Characters
+{
   public class Gandalf : ICharacter
   {
-    public void TryToKill(IConversationPartner conversationPartner)
+    public void TryToKill(IPlayer player)
     {
-      conversationPartner.AppendToResponse(BotPhrases.AttemptingToKillGandalfAnswer());
+      player.AppendToResponse(BotPhrases.AttemptingToKillGandalfAnswer());
+    }
+
+    public Task TalkToAsync(IDialogContext dialogContext,
+      IPlayer player,
+      CancellationToken cancellationToken)
+    {
+      throw new NotImplementedException();
     }
   }
 }

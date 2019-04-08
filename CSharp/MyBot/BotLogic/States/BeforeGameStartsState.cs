@@ -5,10 +5,17 @@ namespace BotLogic.States
 {
   public class BeforeGameStartsState : AbstractState
   {
-    public override async Task OnStartGameAsync(IDialogContext dialogContext, IConversationPartner conversationPartner,
+    private readonly IPlayer _player;
+
+    public BeforeGameStartsState(IPlayer player) : base(player)
+    {
+      _player = player;
+    }
+
+    public override async Task OnStartGameAsync(IDialogContext dialogContext,
       CancellationToken cancellationToken)
     {
-      await dialogContext.GoToAsync(StateNames.EnterBrightRoomState, conversationPartner, cancellationToken);
+      await dialogContext.GoToAsync(StateNames.EnterBrightRoomState, cancellationToken);
     }
   }
 }

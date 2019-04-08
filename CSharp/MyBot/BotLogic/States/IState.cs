@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using BotLogic.Characters;
@@ -6,18 +7,22 @@ namespace BotLogic.States
 {
   public interface IState
   {
-    Task OnEnterAsync(IConversationPartner conversationPartner);
+    Task OnEnterAsync(CancellationToken cancellationToken);
 
-    Task OnYesAsync(IConversationPartner conversationPartner, IDialogContext dialogStateMachine,
+    Task OnYesAsync(IDialogContext dialogStateMachine,
       CancellationToken cancellationToken);
 
-    Task OnNoAsync(IConversationPartner conversationPartner, IDialogContext dialogStateMachine,
+    Task OnNoAsync(IDialogContext dialogStateMachine,
       CancellationToken cancellationToken);
 
-    Task OnStartGameAsync(IDialogContext dialogContext, IConversationPartner conversationPartner,
+    Task OnStartGameAsync(IDialogContext dialogContext,
       CancellationToken cancellationToken);
-    Task OnKillCharacterAsync(IDialogContext dialogContext,
-      ICharacter character,
-      IConversationPartner conversationPartner, CancellationToken cancellationToken);
+    Task OnKillCharacterAsync(
+      IDialogContext dialogContext,
+      ICharacter character, 
+      CancellationToken cancellationToken);
+
+    Task OnTalkToAsync(IDialogContext dialogContext, ICharacter character, CancellationToken cancellationToken);
+    Task OnSomeWordsAsync(IDialogContext context, IEnumerable<string> words, in CancellationToken cancellationToken);
   }
 }

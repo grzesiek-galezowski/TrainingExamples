@@ -6,12 +6,12 @@ using Microsoft.Bot.Builder;
 
 namespace GameBot.Adapters
 {
-  public class BotBuilderConversationPartner : IConversationPartner
+  public class BotBuilderPlayer : IPlayer
   {
         private readonly ITurnContext _turnContext;
         private string _responseMessage = string.Empty;
 
-        public BotBuilderConversationPartner(ITurnContext turnContext)
+        public BotBuilderPlayer(ITurnContext turnContext)
         {
             _turnContext = turnContext;
         }

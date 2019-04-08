@@ -5,7 +5,6 @@ namespace BotLogic.Intents
 {
   public interface IIntent
     {
-        Task ApplyToAsync(IDialogStateMachine dialogStateMachine, IConversationPartner conversationPartner,
-          CancellationToken cancellationToken);
+        Task ApplyToAsync(IDialogStateMachine dialogStateMachine, CancellationToken cancellationToken);
     }
 }

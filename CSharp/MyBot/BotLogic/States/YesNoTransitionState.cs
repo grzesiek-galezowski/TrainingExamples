@@ -5,6 +5,8 @@ namespace BotLogic.States
 {
   public class YesNoTransitionState : AbstractState
   {
-
+    public YesNoTransitionState(IPlayer player) : base(player)
+    {
+    }
   }
 }

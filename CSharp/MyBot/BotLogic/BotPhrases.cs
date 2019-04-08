@@ -24,14 +24,19 @@ namespace BotLogic
 
     }
 
-    public static string AragornAsksAboutFianceeName()
+    public static string QuestionFromAragornAboutFrodosFianceeName()
     {
-      return nameof(AragornAsksAboutFianceeName); //bug
+      return nameof(QuestionFromAragornAboutFrodosFianceeName); //bug
     }
 
-    public static string AragornTellsTheStoryOfHisFianceeAfterAcknowleding(string frodosFianceeName)
+    public static string AragornsStoryOfHisFianceeAfterAcknowleding(string frodosFianceeName)
     {
       return frodosFianceeName; //bug
+    }
+
+    public static string AragornJokesAboutHimBeingAFianceeOfFrodo()
+    {
+      return nameof(AragornJokesAboutHimBeingAFianceeOfFrodo);
     }
   }
 }
