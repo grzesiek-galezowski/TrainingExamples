@@ -1,4 +1,3 @@
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 using BotLogic;
@@ -7,7 +6,7 @@ using BotLogic.States;
 using FluentAssertions;
 using NSubstitute;
 
-namespace ComponentSpecification
+namespace ComponentSpecification.Automation
 {
   public class AppDriver
   {
@@ -21,7 +20,6 @@ namespace ComponentSpecification
       _activityFactory = new ActivityFactory();
       _botPersistentState = new FakeBotPersistentState();
       _userPhrase = Substitute.For<IUserPhrase>();
-      
     }
 
     public async Task Receives(RecognitionResultDto recognitionResultDto)

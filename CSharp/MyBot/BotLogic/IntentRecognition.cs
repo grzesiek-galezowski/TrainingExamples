@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -45,10 +47,15 @@ namespace BotLogic
         if (intentDto.Intent == IntentNames.Words)
         {
           //todo add validation of entity type
-          return new WordsIntent(intentDto.Entities.Select(e => e.Entity).ToList());
+          return new WordsIntent(Words.From(EntityValuesIn(intentDto).ToImmutableList()));
         }
 
-        return new InvalidItent(_player);
+        return new InvalidItent(_player); //bug is that even needed?
+      }
+
+      private static IEnumerable<string> EntityValuesIn(RecognitionResultDto intentDto)
+      {
+        return intentDto.Entities.Select(e => e.Entity);
       }
 
       private static ICharacter ExtractCharacterFrom(RecognitionResultDto intentDto)

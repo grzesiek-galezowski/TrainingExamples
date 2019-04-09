@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using BotLogic.Characters;
@@ -23,6 +22,6 @@ namespace BotLogic.States
       CancellationToken cancellationToken);
 
     Task OnTalkToAsync(IDialogContext dialogContext, ICharacter character, CancellationToken cancellationToken);
-    Task OnSomeWordsAsync(IDialogContext context, IEnumerable<string> words, in CancellationToken cancellationToken);
+    Task OnSomeWordsAsync(IDialogContext context, Words words, in CancellationToken cancellationToken);
   }
 }

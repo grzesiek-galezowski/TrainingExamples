@@ -2,7 +2,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using BotLogic.States;
 
-namespace ComponentSpecification
+namespace ComponentSpecification.Automation
 {
   public class FakeBotPersistentState : IBotPersistentState
   {

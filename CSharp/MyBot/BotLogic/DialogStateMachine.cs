@@ -8,13 +8,11 @@ namespace BotLogic
 {
   public interface IDialogStateMachine
   {
-    Task OnYesAsync(CancellationToken cancellationToken);
-    Task OnNoAsync(CancellationToken cancellationToken);
     Task OnStartGameAsync(CancellationToken cancellationToken);
     Task OnKillCharacterAsync(ICharacter character, CancellationToken cancellationToken);
 
     Task OnTalkToAsync(ICharacter character, CancellationToken cancellationToken);
-    Task OnSomeWordsAsync(CancellationToken cancellationToken, IReadOnlyList<string> words);
+    Task OnSomeWordsAsync(Words words, CancellationToken cancellationToken);
   }
 
   public class DialogStateMachine : IDialogContext, IDialogStateMachine
@@ -34,22 +32,13 @@ namespace BotLogic
     }
 
 
-    public async Task GoToAsync(StateNames stateName,
+    public async Task GoToAsync(
+      StateNames stateName,
       CancellationToken cancellationToken)
     {
       _currentState = _states.GetState(stateName);
       await _persistentState.SetCurrentStateAsync(stateName, cancellationToken);
       await _currentState.OnEnterAsync(cancellationToken);
-    }
-
-    public Task OnYesAsync(CancellationToken cancellationToken)
-    {
-      return _currentState.OnYesAsync(this, cancellationToken);
-    }
-
-    public Task OnNoAsync(CancellationToken cancellationToken)
-    {
-      return _currentState.OnNoAsync(this, cancellationToken);
     }
 
     public Task OnStartGameAsync(CancellationToken cancellationToken)
@@ -69,7 +58,7 @@ namespace BotLogic
       return _currentState.OnTalkToAsync(this, character, cancellationToken);
     }
 
-    public Task OnSomeWordsAsync(CancellationToken cancellationToken, IReadOnlyList<string> words)
+    public Task OnSomeWordsAsync(Words words, CancellationToken cancellationToken)
     {
       return _currentState.OnSomeWordsAsync(this, words, cancellationToken);
     }

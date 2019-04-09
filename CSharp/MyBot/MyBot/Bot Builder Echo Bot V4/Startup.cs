@@ -36,11 +36,7 @@ namespace GameBot
     {
       var botModule = new BotModule();
       var activityFactory = new ActivityFactory();
-      var luisEndpoint = File.ReadAllText(@"C:\Users\grzes\Dysk Google\LuisEndpoint.txt");
-      var luisApplication = new LuisApplication(
-        luisEndpoint
-        );
-      var luisRecognizer = new LuisRecognizer(luisApplication, includeApiResults: true);
+      var luisRecognizer = CreateLuisRecognizer();
 
       services.AddBot(
         ctx =>
@@ -59,6 +55,14 @@ namespace GameBot
             _isProduction,
             _configuration);
         });
+    }
+
+    public static LuisRecognizer CreateLuisRecognizer()
+    {
+      return new LuisRecognizer(
+        new LuisApplication(
+          File.ReadAllText(@"C:\Users\grzes\Dysk Google\LuisEndpoint.txt")
+        ), includeApiResults: true);
     }
 
     // ReSharper disable once UnusedMember.Global

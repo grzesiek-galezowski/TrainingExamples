@@ -3,21 +3,22 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using BotLogic.Intents;
+using BotLogic.States;
 
 namespace BotLogic
 {
   public class WordsIntent : IIntent
   {
-    private readonly IReadOnlyList<string> _words;
+    private readonly Words _words;
 
-    public WordsIntent(IReadOnlyList<string> words)
+    public WordsIntent(Words words)
     {
       _words = words;
     }
 
     public Task ApplyToAsync(IDialogStateMachine dialogStateMachine, CancellationToken cancellationToken)
     {
-      return dialogStateMachine.OnSomeWordsAsync(cancellationToken, _words);
+      return dialogStateMachine.OnSomeWordsAsync(_words, cancellationToken);
     }
   }
 }

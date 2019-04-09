@@ -2,7 +2,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using BotLogic;
 
-namespace ComponentSpecification
+namespace ComponentSpecification.Automation
 {
   public class FakePlayer : IPlayer
   {

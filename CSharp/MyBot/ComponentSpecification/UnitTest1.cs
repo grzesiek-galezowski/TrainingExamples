@@ -1,8 +1,9 @@
 using System.Threading.Tasks;
 using BotLogic;
+using ComponentSpecification.Automation;
 using Xunit;
 using static BotLogic.BotPhrases;
-using static ComponentSpecification.Intents;
+using static ComponentSpecification.Automation.Intents;
 
 namespace ComponentSpecification
 {

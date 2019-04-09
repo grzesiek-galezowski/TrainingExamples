@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using BotLogic.Characters;
@@ -37,11 +36,11 @@ namespace BotLogic.States
       _player.AppendToResponse("You are mid-game, right?");
     }
 
-    public virtual Task OnKillCharacterAsync(IDialogContext dialogContext,
+    public virtual async Task OnKillCharacterAsync(IDialogContext dialogContext,
       ICharacter character,
       CancellationToken cancellationToken)
     {
-      return Task.CompletedTask;
+      _player.AppendToResponse("A strange voice says: Hold your horses, Mary Cooper!");
     }
 
     public virtual Task OnTalkToAsync(
@@ -49,13 +48,18 @@ namespace BotLogic.States
       ICharacter character,
       CancellationToken cancellationToken)
     {
+      _player.AppendToResponse("No point in talking now");
       return Task.CompletedTask;
     }
 
     public virtual Task OnSomeWordsAsync(IDialogContext context,
-      IEnumerable<string> words, in CancellationToken cancellationToken)
+      Words words,
+      in CancellationToken cancellationToken)
     {
+      _player.AppendToResponse("What does " + words.AsSpaceSeparatedString() + " even mean?");
       return Task.CompletedTask;
     }
   }
 }
+
+

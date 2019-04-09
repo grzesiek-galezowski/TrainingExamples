@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -20,18 +19,16 @@ namespace BotLogic.States
       _player.AppendToResponse(BotPhrases.QuestionFromAragornAboutFrodosFianceeName());
     }
 
-    public override Task OnSomeWordsAsync(IDialogContext context,
-      IEnumerable<string> words, in CancellationToken cancellationToken)
-    { 
-      var frodosFianceeName = string.Join(" ", words);
-      if(frodosFianceeName == "Aragorn")
+    public override Task OnSomeWordsAsync(IDialogContext context, Words words, in CancellationToken cancellationToken)
+    {
+      if(words.AsSpaceSeparatedString() == "Aragorn")
       {
         _player.AppendToResponse(BotPhrases.AragornJokesAboutHimBeingAFianceeOfFrodo());
         return context.GoToAsync(StateNames.AragornAsksAboutFrodosFianceeName, cancellationToken);
       }
       else
       {
-        _player.AppendToResponse(BotPhrases.AragornsStoryOfHisFianceeAfterAcknowleding(frodosFianceeName));
+        _player.AppendToResponse(BotPhrases.AragornsStoryOfHisFianceeAfterAcknowleding(words.AsSpaceSeparatedString()));
         return context.GoToAsync(StateNames.EnterBrightRoomState, cancellationToken);
       }
     }
