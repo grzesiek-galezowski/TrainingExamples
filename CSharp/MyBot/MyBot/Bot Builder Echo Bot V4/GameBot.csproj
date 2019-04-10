@@ -37,6 +37,7 @@
 
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Adapters.Luis\Adapters.Luis.csproj" />
     <ProjectReference Include="..\..\BotLogic\BotLogic.csproj" />
   </ItemGroup>
 

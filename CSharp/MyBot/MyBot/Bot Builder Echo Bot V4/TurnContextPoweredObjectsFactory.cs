@@ -1,4 +1,5 @@
-﻿using BotLogic;
+﻿using Adapters.Luis;
+using BotLogic;
 using BotLogic.States;
 using GameBot.Adapters;
 using Microsoft.Bot.Builder;
@@ -36,7 +37,7 @@ namespace GameBot
 
     public IUserPhrase ExtractUserPhraseFrom(ITurnContext turnContext)
     {
-      return new LuisUserPhrase(turnContext, _luisRecognizer);
+      return LuisAdapters.CreateLuisUserPhrase(_luisRecognizer, turnContext);
     }
   }
 }

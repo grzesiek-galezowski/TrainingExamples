@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 using System.IO;
+using Adapters.Luis;
 using BotLogic.Composition;
 using Functional.Maybe;
 using Microsoft.AspNetCore.Builder;
@@ -36,7 +37,7 @@ namespace GameBot
     {
       var botModule = new BotModule();
       var activityFactory = new ActivityFactory();
-      var luisRecognizer = CreateLuisRecognizer();
+      var luisRecognizer = LuisAdapters.CreateLuisRecognizer();
 
       services.AddBot(
         ctx =>
@@ -55,14 +56,6 @@ namespace GameBot
             _isProduction,
             _configuration);
         });
-    }
-
-    public static LuisRecognizer CreateLuisRecognizer()
-    {
-      return new LuisRecognizer(
-        new LuisApplication(
-          File.ReadAllText(@"C:\Users\grzes\Dysk Google\LuisEndpoint.txt")
-        ), includeApiResults: true);
     }
 
     // ReSharper disable once UnusedMember.Global
