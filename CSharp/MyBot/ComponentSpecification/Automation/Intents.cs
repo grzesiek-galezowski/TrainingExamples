@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using BotLogic;
 
@@ -59,6 +60,16 @@ namespace ComponentSpecification.Automation
             Type = EntityTypes.Word
           }
         ).ToList()
+      };
+
+    }
+
+    public static RecognitionResultDto QuestionWho()
+    {
+      return new RecognitionResultDto()
+      {
+        Entities = ImmutableArray<EntityDto>.Empty,
+        Intent = IntentNames.QuestionWho
       };
 
     }

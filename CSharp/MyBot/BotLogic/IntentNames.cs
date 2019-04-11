@@ -6,5 +6,6 @@ namespace BotLogic
     public const string TalkToCharacter = "TalkToCharacter";
     public const string KillCharacter = "KillCharacter";
     public const string StartGame = "StartGame";
+    public const string QuestionWho = "QuestionWho";
   }
 }
