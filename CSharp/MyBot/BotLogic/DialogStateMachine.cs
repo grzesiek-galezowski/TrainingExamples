@@ -13,6 +13,7 @@ namespace BotLogic
 
     Task OnTalkToAsync(ICharacter character, CancellationToken cancellationToken);
     Task OnSomeWordsAsync(Words words, CancellationToken cancellationToken);
+    Task OnQuestionWhoAsync(in CancellationToken cancellationToken);
   }
 
   public class DialogStateMachine : IDialogContext, IDialogStateMachine
@@ -61,6 +62,11 @@ namespace BotLogic
     public Task OnSomeWordsAsync(Words words, CancellationToken cancellationToken)
     {
       return _currentState.OnSomeWordsAsync(this, words, cancellationToken);
+    }
+
+    public Task OnQuestionWhoAsync(in CancellationToken cancellationToken)
+    {
+      return _currentState.OnQuestionWhoAsync(this, cancellationToken);
     }
   }
 }

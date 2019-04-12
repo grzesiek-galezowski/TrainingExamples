@@ -59,6 +59,12 @@ namespace BotLogic.States
       _player.AppendToResponse("What does " + words.AsSpaceSeparatedString() + " even mean?");
       return Task.CompletedTask;
     }
+
+    public virtual Task OnQuestionWhoAsync(IDialogContext context, CancellationToken cancellationToken)
+    {
+      _player.AppendToResponse("What?");
+      return Task.CompletedTask;
+    }
   }
 }
 

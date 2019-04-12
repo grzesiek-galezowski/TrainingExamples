@@ -7,7 +7,7 @@ using static ComponentSpecification.Automation.Intents;
 
 namespace ComponentSpecification
 {
-  public class UnitTest1
+  public class BrightRoomConversationSpecification
   {
     [Fact]
     public async Task ShouldAllowTryingToKillGandalfAndEndGame()

@@ -1,8 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
-using BotLogic.Intents;
 
-namespace BotLogic
+namespace BotLogic.Intents
 {
   public class StartGameIntent : IIntent
   {

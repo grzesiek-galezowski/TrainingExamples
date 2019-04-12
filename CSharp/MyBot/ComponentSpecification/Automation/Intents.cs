@@ -52,7 +52,7 @@ namespace ComponentSpecification.Automation
     {
       return new RecognitionResultDto
       {
-        Intent = IntentNames.Words,
+        Intent = IntentNames.None,
         Entities = words.Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(w => 
           new EntityDto
           {

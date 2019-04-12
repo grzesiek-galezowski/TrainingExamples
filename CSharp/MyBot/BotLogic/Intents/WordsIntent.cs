@@ -1,11 +1,8 @@
-using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using BotLogic.Intents;
 using BotLogic.States;
 
-namespace BotLogic
+namespace BotLogic.Intents
 {
   public class WordsIntent : IIntent
   {

@@ -32,5 +32,11 @@ namespace BotLogic.States
         return context.GoToAsync(StateNames.EnterBrightRoomState, cancellationToken);
       }
     }
+
+    public override async Task OnQuestionWhoAsync(IDialogContext context, CancellationToken cancellationToken)
+    {
+      _player.AppendToResponse(BotPhrases.ClarificationFromAragornAboutFrodosFianceeName());
+
+    }
   }
 }

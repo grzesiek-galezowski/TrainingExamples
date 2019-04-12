@@ -1,9 +1,8 @@
 using System.Threading;
 using System.Threading.Tasks;
 using BotLogic.Characters;
-using BotLogic.Intents;
 
-namespace BotLogic
+namespace BotLogic.Intents
 {
   public class KillCharacterIntent : IIntent
   {

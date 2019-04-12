@@ -4,7 +4,7 @@ namespace BotLogic
   {
     public static string EntryDescription()
     {
-      return "Frdo, you are in a bright room. On your left stands Gandalf. He seems to be watching you. Aragorn is standing in front of you.";
+      return "Frodo, you are in a bright room. On your left stands Gandalf. He seems to be watching you. Aragorn is standing in front of you.";
     }
 
     public static string AttemptingToKillGandalfAnswer()
@@ -41,7 +41,7 @@ namespace BotLogic
 
     public static string AragornJokesAboutHimBeingAFianceeOfFrodo()
     {
-      return nameof(AragornJokesAboutHimBeingAFianceeOfFrodo);
+      return "He he, no shit!";
     }
 
     public static string ClarificationFromAragornAboutFrodosFianceeName()

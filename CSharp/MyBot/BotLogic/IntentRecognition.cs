@@ -44,10 +44,15 @@ namespace BotLogic
           //todo add validation of entity type
           return new TalkToCharacterIntent(ExtractCharacterFrom(intentDto));
         }
-        if (intentDto.Intent == IntentNames.Words)
+        if (intentDto.Intent == IntentNames.None)
         {
           //todo add validation of entity type
           return new WordsIntent(Words.From(EntityValuesIn(intentDto).ToImmutableList()));
+        }
+        if (intentDto.Intent == IntentNames.QuestionWho)
+        {
+          //todo add validation of entity type
+          return new QuestionWhoIntent();
         }
 
         return new InvalidItent(_player); //bug is that even needed?

@@ -23,5 +23,6 @@ namespace BotLogic.States
 
     Task OnTalkToAsync(IDialogContext dialogContext, ICharacter character, CancellationToken cancellationToken);
     Task OnSomeWordsAsync(IDialogContext context, Words words, in CancellationToken cancellationToken);
+    Task OnQuestionWhoAsync(IDialogContext context, CancellationToken cancellationToken);
   }
 }
