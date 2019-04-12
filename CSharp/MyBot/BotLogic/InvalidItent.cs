@@ -17,7 +17,7 @@ namespace BotLogic
       IDialogStateMachine dialogStateMachine,
       CancellationToken cancellationToken)
     {
-      _player.AppendToResponse("Invalid intent, sorry!");
+      _player.AppendToResponse(Roles.Narrator, "Invalid intent, sorry!");
     }
   }
 }

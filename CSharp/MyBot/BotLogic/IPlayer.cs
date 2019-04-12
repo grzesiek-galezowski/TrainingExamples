@@ -5,7 +5,7 @@ namespace BotLogic
 {
   public interface IPlayer
   {
-    void AppendToResponse(string text);
+    void AppendToResponse(string role, string text);
     Task RespondAsync(CancellationToken cancellationToken);
   }
 }

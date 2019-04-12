@@ -16,26 +16,26 @@ namespace BotLogic.States
 
     public override async Task OnEnterAsync(CancellationToken cancellationToken)
     {
-      _player.AppendToResponse(BotPhrases.QuestionFromAragornAboutFrodosFianceeName());
+      _player.AppendToResponse(Roles.Aragorn, BotPhrases.QuestionFromAragornAboutFrodosFianceeName());
     }
 
     public override Task OnSomeWordsAsync(IDialogContext context, Words words, in CancellationToken cancellationToken)
     {
       if(words.AsSpaceSeparatedString() == "Aragorn")
       {
-        _player.AppendToResponse(BotPhrases.AragornJokesAboutHimBeingAFianceeOfFrodo());
+        _player.AppendToResponse(Roles.Aragorn, BotPhrases.AragornJokesAboutHimBeingAFianceeOfFrodo());
         return context.GoToAsync(StateNames.AragornAsksAboutFrodosFianceeName, cancellationToken);
       }
       else
       {
-        _player.AppendToResponse(BotPhrases.AragornsStoryOfHisFianceeAfterAcknowleding(words.AsSpaceSeparatedString()));
+        _player.AppendToResponse(Roles.Aragorn, BotPhrases.AragornsStoryOfHisFianceeAfterAcknowleding(words.AsSpaceSeparatedString()));
         return context.GoToAsync(StateNames.EnterBrightRoomState, cancellationToken);
       }
     }
 
     public override async Task OnQuestionWhoAsync(IDialogContext context, CancellationToken cancellationToken)
     {
-      _player.AppendToResponse(BotPhrases.ClarificationFromAragornAboutFrodosFianceeName());
+      _player.AppendToResponse(Roles.Aragorn, BotPhrases.ClarificationFromAragornAboutFrodosFianceeName());
 
     }
   }

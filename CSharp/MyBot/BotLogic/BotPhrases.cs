@@ -2,6 +2,7 @@ namespace BotLogic
 {
   public static class BotPhrases
   {
+
     public static string EntryDescription()
     {
       return "Frodo, you are in a bright room. On your left stands Gandalf. He seems to be watching you. Aragorn is standing in front of you.";
@@ -24,10 +25,15 @@ namespace BotLogic
 
     }
 
-    public static string QuestionFromAragornAboutFrodosFianceeName()
+    public static string QuestionFromAragornAboutFrodosStateOfMind()
     {
       return
-        $"Hey, Frodo, why are you so sad? As if you were yearning to one again see.. ekhem, well... what was her name?";
+        $"Hey, Frodo, why are you so sad? As if you were yearning to once again see.. ekhem, well... ";
+    }
+
+    public static string QuestionFromAragornAboutFrodosFianceeName()
+    {
+      return "What was her name?";
     }
 
     public static string AragornsStoryOfHisFianceeAfterAcknowleding(string frodosFianceeName)

@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -25,17 +27,34 @@ namespace Adapters.Luis
       var recognizerResult = await _luisRecognizer.RecognizeAsync(_turnContext, cancellationToken);
 
       var luisResult = (LuisResult)recognizerResult.Properties["luisResult"];
-      var recognitionResultDto = new RecognitionResultDto()
+        var topScoringIntent = luisResult.TopScoringIntent.Intent;
+        var recognitionResultDto = new RecognitionResultDto()
+        {
+          Intent = topScoringIntent,
+          Entities = EntitiesExtractedFrom(luisResult),
+        };
+
+      return recognitionResultDto;
+    }
+
+    private static List<EntityDto> EntitiesExtractedFrom(LuisResult luisResult)
+    {
+      if (luisResult.TopScoringIntent.Intent == IntentNames.None)
       {
-        Intent = luisResult.TopScoringIntent.Intent,
-        Entities = luisResult.Entities.Select(
-          e => new EntityDto
+        return luisResult.Query.Split(' ', StringSplitOptions.RemoveEmptyEntries).Select(word =>
+          new EntityDto
+          {
+            Entity = word,
+            Type = EntityTypes.Word,
+          }
+        ).ToList();
+      }
+      return luisResult.Entities.Select(
+        e => new EntityDto
         {
           Entity = e.Entity,
           Type = e.Type,
-        }).ToList(),
-      };
-      return recognitionResultDto;
+        }).ToList();
     }
   }
 }

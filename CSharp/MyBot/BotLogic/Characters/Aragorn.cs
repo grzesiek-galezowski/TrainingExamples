@@ -9,7 +9,7 @@ namespace BotLogic.Characters
   {
     public void TryToKill(IPlayer player)
     {
-      player.AppendToResponse(BotPhrases.AttemptingToKillAragornAnswer());
+      player.AppendToResponse(Roles.Narrator, BotPhrases.AttemptingToKillAragornAnswer());
     }
 
     public Task TalkToAsync(
@@ -17,6 +17,7 @@ namespace BotLogic.Characters
       IPlayer player,
       CancellationToken cancellationToken)
     {
+      player.AppendToResponse(Roles.Aragorn, BotPhrases.QuestionFromAragornAboutFrodosStateOfMind());
       return dialogContext.GoToAsync(StateNames.AragornAsksAboutFrodosFianceeName, cancellationToken);
     }
   }

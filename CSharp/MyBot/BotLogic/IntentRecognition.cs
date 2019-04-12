@@ -10,75 +10,80 @@ using BotLogic.States;
 
 namespace BotLogic
 {
-    public interface IIntentRecognition
+
+  public interface IIntentRecognition
+  {
+    Task<IIntent> PerformAsync(CancellationToken cancellationToken);
+  }
+
+  public class IntentRecognition : IIntentRecognition
+  {
+    private readonly IUserPhrase _userPhrase;
+    private readonly IPlayer _player;
+
+    public IntentRecognition(IUserPhrase userPhrase, IPlayer player)
     {
-        Task<IIntent> PerformAsync(CancellationToken cancellationToken);
+      _userPhrase = userPhrase;
+      _player = player;
     }
 
-    public class IntentRecognition : IIntentRecognition
+    public async Task<IIntent> PerformAsync(CancellationToken cancellationToken)
     {
-      private readonly IUserPhrase _userPhrase;
-      private readonly IPlayer _player;
+      var intentDto = await _userPhrase.RecognizeIntentAsync(cancellationToken);
 
-      public IntentRecognition(IUserPhrase userPhrase, IPlayer player)
+      if (intentDto.Intent == IntentNames.StartGame)
       {
-        _userPhrase = userPhrase;
-        _player = player;
+        return new StartGameIntent();
       }
 
-      public async Task<IIntent> PerformAsync(CancellationToken cancellationToken)
+      if (intentDto.Intent == IntentNames.KillCharacter)
       {
-        var intentDto = await _userPhrase.RecognizeIntentAsync(cancellationToken);
-
-        if (intentDto.Intent == IntentNames.StartGame)
-        {
-          return new StartGameIntent();
-        }
-        if (intentDto.Intent == IntentNames.KillCharacter)
-        {
-          //todo add validation of entity type
-          return new KillCharacterIntent(ExtractCharacterFrom(intentDto));
-        }
-        if (intentDto.Intent == IntentNames.TalkToCharacter)
-        {
-          //todo add validation of entity type
-          return new TalkToCharacterIntent(ExtractCharacterFrom(intentDto));
-        }
-        if (intentDto.Intent == IntentNames.None)
-        {
-          //todo add validation of entity type
-          return new WordsIntent(Words.From(EntityValuesIn(intentDto).ToImmutableList()));
-        }
-        if (intentDto.Intent == IntentNames.QuestionWho)
-        {
-          //todo add validation of entity type
-          return new QuestionWhoIntent();
-        }
-
-        return new InvalidItent(_player); //bug is that even needed?
+        //todo add validation of entity type
+        return new KillCharacterIntent(ExtractCharacterFrom(intentDto));
       }
 
-      private static IEnumerable<string> EntityValuesIn(RecognitionResultDto intentDto)
+      if (intentDto.Intent == IntentNames.TalkToCharacter)
       {
-        return intentDto.Entities.Select(e => e.Entity);
+        //todo add validation of entity type
+        return new TalkToCharacterIntent(ExtractCharacterFrom(intentDto));
       }
 
-      private static ICharacter ExtractCharacterFrom(RecognitionResultDto intentDto)
+      if (intentDto.Intent == IntentNames.None)
       {
-        return GetCharacter(intentDto.Entities.First(e => e.Type == "CharacterName"));
+        //todo add validation of entity type
+        return new WordsIntent(Words.From(EntityValuesIn(intentDto).ToImmutableList()));
       }
 
-      private static ICharacter GetCharacter(EntityDto entity)
+      if (intentDto.Intent == IntentNames.QuestionWho)
       {
-        if (entity.Entity.Equals("Gandalf", StringComparison.InvariantCultureIgnoreCase))
-        {
-          return new Gandalf();
-        }
-        else
-        {
-          return new Aragorn();
-        }
+        //todo add validation of entity type
+        return new QuestionWhoIntent();
       }
 
+      return new InvalidItent(_player); //bug is that even needed?
     }
+
+    private static IEnumerable<string> EntityValuesIn(RecognitionResultDto intentDto)
+    {
+      return intentDto.Entities.Select(e => e.Entity);
+    }
+
+    private static ICharacter ExtractCharacterFrom(RecognitionResultDto intentDto)
+    {
+      return GetCharacter(intentDto.Entities.First(e => e.Type == "CharacterName"));
+    }
+
+    private static ICharacter GetCharacter(EntityDto entity)
+    {
+      if (entity.Entity.Equals("Gandalf", StringComparison.InvariantCultureIgnoreCase))
+      {
+        return new Gandalf();
+      }
+      else
+      {
+        return new Aragorn();
+      }
+    }
+
+  }
 }
