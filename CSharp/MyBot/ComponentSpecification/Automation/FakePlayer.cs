@@ -8,7 +8,7 @@ namespace ComponentSpecification.Automation
   {
     public string Content { get; private set; } = string.Empty;
 
-    public void AppendToResponse(string text)
+    public void AppendToResponse(string role, string text)
     {
       Content += text;
     }

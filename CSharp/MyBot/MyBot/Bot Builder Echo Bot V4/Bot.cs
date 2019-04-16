@@ -3,7 +3,9 @@
 
 using System.Threading;
 using System.Threading.Tasks;
+using BotLogic;
 using BotLogic.Composition;
+using GameBot.Adapters;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Schema;
 
@@ -39,7 +41,7 @@ namespace GameBot
       }
       else
       {
-        partner.AppendToResponse($"{turnContext.Activity.Type} event detected");
+        partner.AppendToResponse(Roles.Narrator, $"{turnContext.Activity.Type} event detected");
       }
 
       await partner.RespondAsync(cancellationToken);

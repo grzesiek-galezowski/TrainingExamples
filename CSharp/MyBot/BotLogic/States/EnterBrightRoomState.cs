@@ -15,7 +15,7 @@ namespace BotLogic.States
 
     public override async Task OnEnterAsync(CancellationToken cancellationToken)
     {
-      _player.AppendToResponse(BotPhrases.EntryDescription());
+      _player.AppendToResponse(Roles.Narrator, BotPhrases.EntryDescription());
     }
 
     public override async Task OnKillCharacterAsync(

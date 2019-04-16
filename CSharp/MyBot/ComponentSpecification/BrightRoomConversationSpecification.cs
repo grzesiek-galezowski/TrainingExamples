@@ -40,7 +40,10 @@ namespace ComponentSpecification
       await bot.Receives(StartGame());
       bot.AnswersWith(EntryDescription());
       await bot.Receives(TalkTo("Aragorn"));
-      bot.AnswersWith(QuestionFromAragornAboutFrodosFianceeName());
+      bot.AnswersWith(
+        QuestionFromAragornAboutFrodosStateOfMind(),
+        QuestionFromAragornAboutFrodosFianceeName()
+        );
       await bot.Receives(Words("Mandaryna Mandrykiewicz"));
       bot.AnswersWith(
         AragornsStoryOfHisFianceeAfterAcknowleding("Mandaryna Mandrykiewicz"),
@@ -54,7 +57,10 @@ namespace ComponentSpecification
       await bot.Receives(StartGame());
       bot.AnswersWith(EntryDescription());
       await bot.Receives(TalkTo("Aragorn"));
-      bot.AnswersWith(QuestionFromAragornAboutFrodosFianceeName());
+      bot.AnswersWith(
+        QuestionFromAragornAboutFrodosStateOfMind(),
+        QuestionFromAragornAboutFrodosFianceeName()
+      );
       await bot.Receives(Words("Aragorn"));
       bot.AnswersWith(
         AragornJokesAboutHimBeingAFianceeOfFrodo(),
@@ -68,7 +74,10 @@ namespace ComponentSpecification
       await bot.Receives(StartGame());
       bot.AnswersWith(EntryDescription());
       await bot.Receives(TalkTo("Aragorn"));
-      bot.AnswersWith(QuestionFromAragornAboutFrodosFianceeName());
+      bot.AnswersWith(
+        QuestionFromAragornAboutFrodosStateOfMind(),
+        QuestionFromAragornAboutFrodosFianceeName()
+      );
       await bot.Receives(QuestionWho());
       bot.AnswersWith(ClarificationFromAragornAboutFrodosFianceeName());
       await bot.Receives(Words("Mandaryna Mandrykiewicz"));

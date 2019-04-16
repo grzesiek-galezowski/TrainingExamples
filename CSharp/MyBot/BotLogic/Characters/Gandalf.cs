@@ -9,7 +9,7 @@ namespace BotLogic.Characters
   {
     public void TryToKill(IPlayer player)
     {
-      player.AppendToResponse(BotPhrases.AttemptingToKillGandalfAnswer());
+      player.AppendToResponse(Roles.Narrator, BotPhrases.AttemptingToKillGandalfAnswer());
     }
 
     public Task TalkToAsync(IDialogContext dialogContext,
