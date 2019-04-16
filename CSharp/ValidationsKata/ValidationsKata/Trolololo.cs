@@ -2,6 +2,16 @@
 using NSubstitute;
 using Xunit;
 
+/*
+Received.InOrder(() =>
+{
+  a.X();
+  b.X();
+  c.X();
+});
+*/
+
+
 namespace ValidationsKata
 {
   public class Trolololo
