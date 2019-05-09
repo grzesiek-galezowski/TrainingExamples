@@ -2,13 +2,15 @@
 {
     public class TrunkFile
     {
-        public AnalysisResult Result { get; }
+        public int ChangeRate { get; }
         public string Path { get; }
+        public double Complexity { get; }
 
-        public TrunkFile(AnalysisResult result, string path)
+        public TrunkFile(int changeRate, string path, double complexity)
         {
-            Result = result;
+            ChangeRate = changeRate;
             Path = path;
+            Complexity = complexity;
         }
     }
 }
