@@ -16,47 +16,23 @@ namespace GitAttempt2
 
       using var repo = new Repository(repositoryPath);
 
-      IEnumerable<LogEntry> logEntries = repo.Commits.QueryBy("src/NScan/Domain/Root/NScanMain.cs");
-
       var commits = repo.Branches[branchName].Commits.Reverse().ToArray();
-      var analysisMetadata = new Dictionary<string, HashSet<string>>();
-      var complexityPerPath = new Dictionary<string, double>();
+      var analysisMetadata = new Dictionary<string, AnalysisLog>();
       var pathsInTrunk = new List<string>();
       
       CollectPathsFrom(commits.Last().Tree, pathsInTrunk);
-      CollectChangeRates(repo, commits, analysisMetadata);
-      CollectComplexity(pathsInTrunk, complexityPerPath, repo.Info.WorkingDirectory);
+      CollectResults(repo, commits, analysisMetadata);
 
 
       var trunkFiles = analysisMetadata.Where(am => pathsInTrunk.Contains(am.Key))
-        .Select(x => new TrunkFile(x.Value.Count, x.Key, complexityPerPath[x.Key]));
+        .Select(x => new TrunkFile(x.Value.Results.Count, x.Key, x.Value.Results.Last().Complexity));
       return trunkFiles;
     }
 
-    private static void CollectComplexity(
-      IEnumerable<string> pathsInTrunk, 
-      IDictionary<string, double> complexityPerPath,
-      string repositoryPath)
-    {
-      foreach (var path in pathsInTrunk)
-      {
-        CalculateComplexityFor(repositoryPath, path, complexityPerPath);
-      }
-    }
-
-    private static void CalculateComplexityFor(
-      string repositoryPath, 
-      string path,
-      IDictionary<string, double> complexityPerPath)
-    {
-      var complexity = ComplexityMetrics.CalculateComplexityFor(repositoryPath, path);
-      complexityPerPath[path] = complexity;
-    }
-
-    private static void CollectChangeRates(
+    private static void CollectResults(
       IRepository repo, 
       IReadOnlyList<Commit> commits,
-      Dictionary<string, HashSet<string>> analysisResults)
+      Dictionary<string, AnalysisLog> analysisResults)
     {
       var treeVisitor = new CollectFileChangeRateFromCommitVisitor(analysisResults);
       TreeNavigation.Traverse(commits.First().Tree, treeVisitor);

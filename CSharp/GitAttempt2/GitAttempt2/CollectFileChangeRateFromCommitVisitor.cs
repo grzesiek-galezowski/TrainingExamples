@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using LibGit2Sharp;
 
 namespace GitAttempt2
@@ -10,9 +12,9 @@ namespace GitAttempt2
 
   public class CollectFileChangeRateFromCommitVisitor : ITreeVisitor
   {
-    private readonly Dictionary<string, HashSet<string>> _commitsPerPath;
+    private readonly Dictionary<string, AnalysisLog> _commitsPerPath;
 
-    public CollectFileChangeRateFromCommitVisitor(Dictionary<string, HashSet<string>> commitsPerPath)
+    public CollectFileChangeRateFromCommitVisitor(Dictionary<string, AnalysisLog> commitsPerPath)
     {
       _commitsPerPath = commitsPerPath;
     }
@@ -24,10 +26,10 @@ namespace GitAttempt2
       {
         if (!_commitsPerPath.ContainsKey(treeEntry.Path))
         {
-          _commitsPerPath[treeEntry.Path] = new HashSet<string>();
+          _commitsPerPath[treeEntry.Path] = new AnalysisLog();
         }
 
-        _commitsPerPath[treeEntry.Path].Add(blob.GetContentText());
+        _commitsPerPath[treeEntry.Path].AddDataFrom(blob);
       }
     }
 
@@ -36,7 +38,7 @@ namespace GitAttempt2
       var blob = BlobFrom(treeEntry, currentCommit);
       if (!blob.IsBinary)
       {
-        _commitsPerPath[treeEntry.Path].Add(blob.GetContentText());
+        _commitsPerPath[treeEntry.Path].AddDataFrom(blob);
       }
     }
 
@@ -46,7 +48,7 @@ namespace GitAttempt2
       if (!blob.IsBinary)
       {
         _commitsPerPath[treeEntry.Path] = _commitsPerPath[treeEntry.OldPath];
-        _commitsPerPath[treeEntry.Path].Add(blob.GetContentText());
+        _commitsPerPath[treeEntry.Path].AddDataFrom(blob);
       }
     }
 
@@ -56,10 +58,8 @@ namespace GitAttempt2
       var blob = BlobFrom(treeEntry, currentCommit);
       if (!blob.IsBinary)
       {
-        _commitsPerPath[treeEntry.Path] = new HashSet<string>
-        {
-          blob.GetContentText()
-        };
+        _commitsPerPath[treeEntry.Path] = new AnalysisLog();
+        _commitsPerPath[treeEntry.Path].AddDataFrom(blob);
       }
     }
 
@@ -68,16 +68,33 @@ namespace GitAttempt2
       var blob = BlobFrom(treeEntry, currentCommit);
       if (!blob.IsBinary)
       {
-        _commitsPerPath[treeEntry.Path] = new HashSet<string>
-        {
-          blob.GetContentText()
-        };
+        _commitsPerPath[treeEntry.Path] = new AnalysisLog();
+        _commitsPerPath[treeEntry.Path].AddDataFrom(blob);
       }
     }
 
     private static Blob BlobFrom(TreeEntryChanges treeEntry, Commit currentCommit)
     {
       return ((Blob)currentCommit[treeEntry.Path].Target);
+    }
+  }
+
+  public class AnalysisLog
+  {
+    private List<AnalysisResult> _results = new List<AnalysisResult>();
+
+    public IReadOnlyList<AnalysisResult> Results => _results;
+
+    public void AddDataFrom(Blob blob)
+    {
+      var analysisResult = new AnalysisResult(
+        blob.GetContentText(), 
+        ComplexityMetrics.CalculateComplexityFor(Regex.Split(blob.GetContentText(), @"\r\n|\r|\n")));
+      
+      if (!_results.Contains(analysisResult))
+      {
+        _results.Add(analysisResult);
+      }
     }
   }
 }
