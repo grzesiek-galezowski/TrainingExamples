@@ -55,17 +55,19 @@ namespace GitAttempt2
       IReadOnlyList<Commit> commits,
       Dictionary<string, int> analysisResults)
     {
-      TreeNavigation.Traverse(commits.First().Tree, new CollectFileChangeRateFromCommitVisitor(analysisResults));
+      var treeVisitor = new CollectFileChangeRateFromCommitVisitor(analysisResults);
+      TreeNavigation.Traverse(commits.First().Tree, treeVisitor);
       for (var i = 1; i < commits.Count; ++i)
       {
         var previousCommit = commits[i - 1];
         var currentCommit = commits[i];
 
-        AnalyzeChanges(repo.Diff.Compare<TreeChanges>(previousCommit.Tree, currentCommit.Tree), analysisResults);
+        AnalyzeChanges(repo.Diff.Compare<TreeChanges>(previousCommit.Tree, currentCommit.Tree), analysisResults, treeVisitor);
       }
     }
 
-    private static void AnalyzeChanges(TreeChanges treeChanges, Dictionary<string, int> analysisResultPerPath)
+    private static void AnalyzeChanges(TreeChanges treeChanges, Dictionary<string, int> analysisResultPerPath,
+      CollectFileChangeRateFromCommitVisitor treeVisitor)
     {
       foreach (var treeEntry in treeChanges)
       {
@@ -74,19 +76,18 @@ namespace GitAttempt2
           case ChangeKind.Unmodified:
             break;
           case ChangeKind.Added:
-            analysisResultPerPath[treeEntry.Path] = 1;
+            treeVisitor.OnAdded(treeEntry);
             break;
           case ChangeKind.Deleted:
             break;
           case ChangeKind.Modified:
-            analysisResultPerPath[treeEntry.Path]++;
+            treeVisitor.OnModified(treeEntry);
             break;
           case ChangeKind.Renamed:
-            analysisResultPerPath[treeEntry.Path] = analysisResultPerPath[treeEntry.OldPath];
-            analysisResultPerPath[treeEntry.Path]++;
+            treeVisitor.OnRenamed(treeEntry);
             break;
           case ChangeKind.Copied:
-            analysisResultPerPath[treeEntry.Path] = 1;
+            treeVisitor.OnCopied(treeEntry);
             break;
           default:
             throw new ArgumentOutOfRangeException();

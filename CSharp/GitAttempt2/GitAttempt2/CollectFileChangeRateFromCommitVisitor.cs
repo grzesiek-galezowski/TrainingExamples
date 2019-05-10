@@ -27,5 +27,26 @@ namespace GitAttempt2
 
       _commitsPerPath[treeEntry.Path]++;
     }
+
+    public void OnModified(TreeEntryChanges treeEntry)
+    {
+      _commitsPerPath[treeEntry.Path]++;
+    }
+
+    public void OnRenamed(TreeEntryChanges treeEntry)
+    {
+      _commitsPerPath[treeEntry.Path] = _commitsPerPath[treeEntry.OldPath];
+      _commitsPerPath[treeEntry.Path]++;
+    }
+
+    public void OnCopied(TreeEntryChanges treeEntry)
+    {
+      _commitsPerPath[treeEntry.Path] = 1;
+    }
+
+    public void OnAdded(TreeEntryChanges treeEntry)
+    {
+      _commitsPerPath[treeEntry.Path] = 1;
+    }
   }
 }
