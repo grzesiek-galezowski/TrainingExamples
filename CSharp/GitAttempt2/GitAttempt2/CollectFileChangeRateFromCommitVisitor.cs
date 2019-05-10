@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using LibGit2Sharp;
 
@@ -8,16 +9,14 @@ namespace GitAttempt2
     void OnBlob(TreeEntry treeEntry);
   }
 
-  public class CommitsPerPathVisitor : ITreeVisitor
+  public class CollectFileChangeRateFromCommitVisitor : ITreeVisitor
   {
     private readonly Dictionary<string, int> _commitsPerPath;
 
-    public CommitsPerPathVisitor(Dictionary<string, int> commitsPerPath)
+    public CollectFileChangeRateFromCommitVisitor(Dictionary<string, int> commitsPerPath)
     {
       _commitsPerPath = commitsPerPath;
     }
-
-    public Dictionary<string, int> CommitsPerPath => _commitsPerPath;
 
     public void OnBlob(TreeEntry treeEntry)
     {

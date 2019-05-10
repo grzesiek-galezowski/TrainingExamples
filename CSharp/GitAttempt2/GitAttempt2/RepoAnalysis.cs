@@ -46,42 +46,8 @@ namespace GitAttempt2
       string path,
       IDictionary<string, double> complexityPerPath)
     {
-      var totalWhitespaces = 0;
-      var currentIndentationLength = Maybe<int>.Nothing;
-      var linesInFile = File.ReadLines(Path.Combine(repositoryPath, path)).ToArray();
-      foreach (var line in linesInFile)
-      {
-        var lineIndentation = IndentationOf(line);
-        if (ThereIsAny(lineIndentation) && IsBetter(lineIndentation, currentIndentationLength))
-        {
-          currentIndentationLength = lineIndentation.ToMaybe();
-        }
-
-        totalWhitespaces += lineIndentation;
-      }
-
-      complexityPerPath[path]
-        = (TotalIndentations(totalWhitespaces, currentIndentationLength) + linesInFile.Length) / linesInFile.Length;
-    }
-
-    private static bool IsBetter(int lineIndentation, Maybe<int> currentIndentationLength)
-    {
-      return (!currentIndentationLength.HasValue || lineIndentation < currentIndentationLength.Value);
-    }
-
-    private static bool ThereIsAny(int lineIndentation)
-    {
-      return lineIndentation > 0;
-    }
-
-    private static double TotalIndentations(int totalWhitespaces, Maybe<int> indentationLength)
-    {
-      return 1d * totalWhitespaces / indentationLength.Select(i => i + 1).OrElse(1);
-    }
-
-    private static int IndentationOf(string line)
-    {
-      return line.TakeWhile(char.IsWhiteSpace).Count();
+      var complexity = ComplexityMetrics.CalculateComplexityFor(repositoryPath, path);
+      complexityPerPath[path] = complexity;
     }
 
     private static void CollectChangeRates(
@@ -89,7 +55,7 @@ namespace GitAttempt2
       IReadOnlyList<Commit> commits,
       Dictionary<string, int> analysisResults)
     {
-      Traverse(commits.First().Tree, new CommitsPerPathVisitor(analysisResults));
+      TreeNavigation.Traverse(commits.First().Tree, new CollectFileChangeRateFromCommitVisitor(analysisResults));
       for (var i = 1; i < commits.Count; ++i)
       {
         var previousCommit = commits[i - 1];
@@ -97,27 +63,6 @@ namespace GitAttempt2
 
         AnalyzeChanges(repo.Diff.Compare<TreeChanges>(previousCommit.Tree, currentCommit.Tree), analysisResults);
       }
-    }
-
-    private static void Traverse(Tree tree, ITreeVisitor visitor)
-    {
-      foreach (var treeEntry in tree)
-      {
-        switch (treeEntry.TargetType)
-        {
-          case TreeEntryTargetType.Blob:
-            visitor.OnBlob(treeEntry);
-            break;
-          case TreeEntryTargetType.Tree:
-            Traverse((Tree) treeEntry.Target, visitor);
-            break;
-          case TreeEntryTargetType.GitLink:
-            throw new ArgumentException(treeEntry.Path);
-          default:
-            throw new ArgumentOutOfRangeException();
-        }
-      }
-
     }
 
     private static void AnalyzeChanges(TreeChanges treeChanges, Dictionary<string, int> analysisResultPerPath)
