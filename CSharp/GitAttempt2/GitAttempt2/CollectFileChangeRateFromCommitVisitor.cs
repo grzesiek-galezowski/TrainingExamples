@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using LibGit2Sharp;
 
@@ -11,42 +10,74 @@ namespace GitAttempt2
 
   public class CollectFileChangeRateFromCommitVisitor : ITreeVisitor
   {
-    private readonly Dictionary<string, int> _commitsPerPath;
+    private readonly Dictionary<string, HashSet<string>> _commitsPerPath;
 
-    public CollectFileChangeRateFromCommitVisitor(Dictionary<string, int> commitsPerPath)
+    public CollectFileChangeRateFromCommitVisitor(Dictionary<string, HashSet<string>> commitsPerPath)
     {
       _commitsPerPath = commitsPerPath;
     }
 
     public void OnBlob(TreeEntry treeEntry)
     {
-      if (!_commitsPerPath.ContainsKey(treeEntry.Path))
+      var blob = (Blob) treeEntry.Target;
+      if (!blob.IsBinary)
       {
-        _commitsPerPath[treeEntry.Path] = 0;
+        if (!_commitsPerPath.ContainsKey(treeEntry.Path))
+        {
+          _commitsPerPath[treeEntry.Path] = new HashSet<string>();
+        }
+
+        _commitsPerPath[treeEntry.Path].Add(blob.GetContentText());
       }
-
-      _commitsPerPath[treeEntry.Path]++;
     }
 
-    public void OnModified(TreeEntryChanges treeEntry)
+    public void OnModified(TreeEntryChanges treeEntry, Commit currentCommit)
     {
-      _commitsPerPath[treeEntry.Path]++;
+      var blob = BlobFrom(treeEntry, currentCommit);
+      if (!blob.IsBinary)
+      {
+        _commitsPerPath[treeEntry.Path].Add(blob.GetContentText());
+      }
     }
 
-    public void OnRenamed(TreeEntryChanges treeEntry)
+    public void OnRenamed(TreeEntryChanges treeEntry, Commit currentCommit)
     {
-      _commitsPerPath[treeEntry.Path] = _commitsPerPath[treeEntry.OldPath];
-      _commitsPerPath[treeEntry.Path]++;
+      var blob = BlobFrom(treeEntry, currentCommit);
+      if (!blob.IsBinary)
+      {
+        _commitsPerPath[treeEntry.Path] = _commitsPerPath[treeEntry.OldPath];
+        _commitsPerPath[treeEntry.Path].Add(blob.GetContentText());
+      }
     }
 
-    public void OnCopied(TreeEntryChanges treeEntry)
+
+    public void OnCopied(TreeEntryChanges treeEntry, Commit currentCommit)
     {
-      _commitsPerPath[treeEntry.Path] = 1;
+      var blob = BlobFrom(treeEntry, currentCommit);
+      if (!blob.IsBinary)
+      {
+        _commitsPerPath[treeEntry.Path] = new HashSet<string>
+        {
+          blob.GetContentText()
+        };
+      }
     }
 
-    public void OnAdded(TreeEntryChanges treeEntry)
+    public void OnAdded(TreeEntryChanges treeEntry, Commit currentCommit)
     {
-      _commitsPerPath[treeEntry.Path] = 1;
+      var blob = BlobFrom(treeEntry, currentCommit);
+      if (!blob.IsBinary)
+      {
+        _commitsPerPath[treeEntry.Path] = new HashSet<string>
+        {
+          blob.GetContentText()
+        };
+      }
+    }
+
+    private static Blob BlobFrom(TreeEntryChanges treeEntry, Commit currentCommit)
+    {
+      return ((Blob)currentCommit[treeEntry.Path].Target);
     }
   }
 }

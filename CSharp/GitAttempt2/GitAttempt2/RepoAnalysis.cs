@@ -15,8 +15,11 @@ namespace GitAttempt2
       //using var repo = new Repository(@"C:\Users\grzes\Documents\GitHub\nscan\");
 
       using var repo = new Repository(repositoryPath);
+
+      IEnumerable<LogEntry> logEntries = repo.Commits.QueryBy("src/NScan/Domain/Root/NScanMain.cs");
+
       var commits = repo.Branches[branchName].Commits.Reverse().ToArray();
-      var analysisMetadata = new Dictionary<string, int>();
+      var analysisMetadata = new Dictionary<string, HashSet<string>>();
       var complexityPerPath = new Dictionary<string, double>();
       var pathsInTrunk = new List<string>();
       
@@ -26,7 +29,7 @@ namespace GitAttempt2
 
 
       var trunkFiles = analysisMetadata.Where(am => pathsInTrunk.Contains(am.Key))
-        .Select(x => new TrunkFile(x.Value, x.Key, complexityPerPath[x.Key]));
+        .Select(x => new TrunkFile(x.Value.Count, x.Key, complexityPerPath[x.Key]));
       return trunkFiles;
     }
 
@@ -53,7 +56,7 @@ namespace GitAttempt2
     private static void CollectChangeRates(
       IRepository repo, 
       IReadOnlyList<Commit> commits,
-      Dictionary<string, int> analysisResults)
+      Dictionary<string, HashSet<string>> analysisResults)
     {
       var treeVisitor = new CollectFileChangeRateFromCommitVisitor(analysisResults);
       TreeNavigation.Traverse(commits.First().Tree, treeVisitor);
@@ -62,12 +65,18 @@ namespace GitAttempt2
         var previousCommit = commits[i - 1];
         var currentCommit = commits[i];
 
-        AnalyzeChanges(repo.Diff.Compare<TreeChanges>(previousCommit.Tree, currentCommit.Tree), analysisResults, treeVisitor);
+        AnalyzeChanges(
+          repo.Diff.Compare<TreeChanges>(previousCommit.Tree, currentCommit.Tree), 
+          treeVisitor,
+          currentCommit
+          );
       }
     }
 
-    private static void AnalyzeChanges(TreeChanges treeChanges, Dictionary<string, int> analysisResultPerPath,
-      CollectFileChangeRateFromCommitVisitor treeVisitor)
+    private static void AnalyzeChanges(
+      TreeChanges treeChanges,
+      CollectFileChangeRateFromCommitVisitor treeVisitor, 
+      Commit currentCommit)
     {
       foreach (var treeEntry in treeChanges)
       {
@@ -76,18 +85,18 @@ namespace GitAttempt2
           case ChangeKind.Unmodified:
             break;
           case ChangeKind.Added:
-            treeVisitor.OnAdded(treeEntry);
+            treeVisitor.OnAdded(treeEntry, currentCommit);
             break;
           case ChangeKind.Deleted:
             break;
           case ChangeKind.Modified:
-            treeVisitor.OnModified(treeEntry);
+            treeVisitor.OnModified(treeEntry, currentCommit);
             break;
           case ChangeKind.Renamed:
-            treeVisitor.OnRenamed(treeEntry);
+            treeVisitor.OnRenamed(treeEntry, currentCommit);
             break;
           case ChangeKind.Copied:
-            treeVisitor.OnCopied(treeEntry);
+            treeVisitor.OnCopied(treeEntry, currentCommit);
             break;
           default:
             throw new ArgumentOutOfRangeException();
@@ -113,6 +122,26 @@ namespace GitAttempt2
             throw new ArgumentOutOfRangeException();
         }
       }
+    }
+  }
+
+  /// <summary>
+  /// Defines extensions used by <see cref="FileHistoryFixture"/>.
+  /// </summary>
+  internal static class FileHistoryFixtureExtensions
+  {
+    /// <summary>
+    /// Gets the <see cref="Blob"/> instances contained in each <see cref="LogEntry"/>.
+    /// </summary>
+    /// <remarks>
+    /// Use the <see cref="Enumerable.Distinct{TSource}(IEnumerable{TSource})"/> extension method
+    /// to retrieve the changed blobs.
+    /// </remarks>
+    /// <param name="fileHistory">The file history.</param>
+    /// <returns>The collection of <see cref="Blob"/> instances included in the file history.</returns>
+    public static IEnumerable<Blob> Blobs(this IEnumerable<LogEntry> fileHistory)
+    {
+      return fileHistory.Select(entry => entry.Commit.Tree[entry.Path].Target).OfType<Blob>();
     }
   }
 }
