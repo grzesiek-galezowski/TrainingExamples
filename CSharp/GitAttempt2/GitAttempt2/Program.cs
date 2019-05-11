@@ -14,34 +14,34 @@ namespace GitAttempt2
   {
     static void Main(string[] args)
     {
-      //git log --format=format: --name-only | egrep -v '^$' | sort | uniq -c | sort -r | head -5
-
-      var trunkFiles = RepoAnalysis.Analyze(@"c:\Users\grzes\Documents\GitHub\nscan\", "master")
-        .OrderByDescending(f => f.ChangeRate * f.History.Last().Complexity);
+      var analysisResults = RepoAnalysis.Analyze(@"c:\Users\grzes\Documents\GitHub\nscan\", "master")
+        .OrderByDescending(f => f.ChangeRate * f.History.Last().Complexity).ToArray();
       //var trunkFiles = RepoAnalysis.Analyze(@"C:\Users\grzes\Documents\GitHub\functional-maybe-extensions ", "master");
 
-      foreach (var trunkFile in trunkFiles)
+      foreach (var trunkFile in analysisResults)
       {
         Console.WriteLine(trunkFile.Path + " => " + trunkFile.ChangeRate + ":" + trunkFile.History.Last().Complexity);
       }
 
-      RenderChart(trunkFiles);
+      RenderChart(analysisResults);
 
       //trunkFiles.First()
     }
 
     private static void RenderChart(IEnumerable<HistoryAnalysisResult> analysisResults)
     {
-      string charts = "";
-      int i = 0;
+      var charts = "";
+      var i = 0;
       foreach (var analysisResult in analysisResults)
       {
+        i++;
         var template = File.ReadAllText("chartTemplate.html");
         charts += template
           .Replace("___COMPLEXITY___", analysisResult.History.Last().Complexity.ToString())
           .Replace("___CHANGES___", analysisResult.History.Count.ToString())
-          .Replace("___CHARTNUM___", i++.ToString())
-          .Replace("___TITLE___", analysisResult.Path)
+          .Replace("___CHARTNUM___", i.ToString())
+          .Replace("___TITLE___", i + ". " + analysisResult.Path)
+          .Replace("___Y_TITLE___", "Complexity per change")
           .Replace("___LABELS___", Labels(analysisResult))
           .Replace("___DATA___", Data(analysisResult));
       }
