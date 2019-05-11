@@ -2,18 +2,20 @@
 
 namespace GitAttempt2
 {
-    public sealed class AnalysisResult : IEquatable<AnalysisResult>
+    public sealed class Change : IEquatable<Change>
     {
+      public DateTimeOffset ChangeDate { get; }
       public string Text { get; }
       public double Complexity { get; }
 
-      public AnalysisResult(string text, double complexity)
+      public Change(string text, double complexity, DateTimeOffset changeDate)
       {
+        ChangeDate = changeDate;
         Text = text;
         Complexity = complexity;
       }
 
-      public bool Equals(AnalysisResult other)
+      public bool Equals(Change other)
       {
         if (ReferenceEquals(null, other)) return false;
         if (ReferenceEquals(this, other)) return true;
@@ -25,7 +27,7 @@ namespace GitAttempt2
         if (ReferenceEquals(null, obj)) return false;
         if (ReferenceEquals(this, obj)) return true;
         if (obj.GetType() != this.GetType()) return false;
-        return Equals((AnalysisResult) obj);
+        return Equals((Change) obj);
       }
 
       public override int GetHashCode()
@@ -33,12 +35,12 @@ namespace GitAttempt2
         return (Text != null ? Text.GetHashCode() : 0);
       }
 
-      public static bool operator ==(AnalysisResult left, AnalysisResult right)
+      public static bool operator ==(Change left, Change right)
       {
         return Equals(left, right);
       }
 
-      public static bool operator !=(AnalysisResult left, AnalysisResult right)
+      public static bool operator !=(Change left, Change right)
       {
         return !Equals(left, right);
       }

@@ -7,7 +7,7 @@ namespace GitAttempt2
 {
   public interface ITreeVisitor
   {
-    void OnBlob(TreeEntry treeEntry);
+    void OnBlob(TreeEntry treeEntry, Commit commit);
   }
 
   public class CollectFileChangeRateFromCommitVisitor : ITreeVisitor
@@ -19,7 +19,7 @@ namespace GitAttempt2
       _commitsPerPath = commitsPerPath;
     }
 
-    public void OnBlob(TreeEntry treeEntry)
+    public void OnBlob(TreeEntry treeEntry, Commit commit)
     {
       var blob = (Blob) treeEntry.Target;
       if (!blob.IsBinary)
@@ -29,7 +29,7 @@ namespace GitAttempt2
           _commitsPerPath[treeEntry.Path] = new AnalysisLog();
         }
 
-        _commitsPerPath[treeEntry.Path].AddDataFrom(blob);
+        _commitsPerPath[treeEntry.Path].AddDataFrom(blob, commit.Author.When);
       }
     }
 
@@ -38,7 +38,7 @@ namespace GitAttempt2
       var blob = BlobFrom(treeEntry, currentCommit);
       if (!blob.IsBinary)
       {
-        _commitsPerPath[treeEntry.Path].AddDataFrom(blob);
+        _commitsPerPath[treeEntry.Path].AddDataFrom(blob, currentCommit.Author.When);
       }
     }
 
@@ -48,7 +48,7 @@ namespace GitAttempt2
       if (!blob.IsBinary)
       {
         _commitsPerPath[treeEntry.Path] = _commitsPerPath[treeEntry.OldPath];
-        _commitsPerPath[treeEntry.Path].AddDataFrom(blob);
+        _commitsPerPath[treeEntry.Path].AddDataFrom(blob, currentCommit.Author.When);
       }
     }
 
@@ -59,7 +59,7 @@ namespace GitAttempt2
       if (!blob.IsBinary)
       {
         _commitsPerPath[treeEntry.Path] = new AnalysisLog();
-        _commitsPerPath[treeEntry.Path].AddDataFrom(blob);
+        _commitsPerPath[treeEntry.Path].AddDataFrom(blob, currentCommit.Author.When);
       }
     }
 
@@ -69,7 +69,7 @@ namespace GitAttempt2
       if (!blob.IsBinary)
       {
         _commitsPerPath[treeEntry.Path] = new AnalysisLog();
-        _commitsPerPath[treeEntry.Path].AddDataFrom(blob);
+        _commitsPerPath[treeEntry.Path].AddDataFrom(blob, currentCommit.Author.When);
       }
     }
 
@@ -81,19 +81,20 @@ namespace GitAttempt2
 
   public class AnalysisLog
   {
-    private List<AnalysisResult> _results = new List<AnalysisResult>();
+    private readonly List<Change> _results = new List<Change>();
 
-    public IReadOnlyList<AnalysisResult> Results => _results;
+    public IReadOnlyList<Change> Results => _results;
 
-    public void AddDataFrom(Blob blob)
+    public void AddDataFrom(Blob blob, DateTimeOffset changeDate)
     {
-      var analysisResult = new AnalysisResult(
+      var change = new Change(
         blob.GetContentText(), 
-        ComplexityMetrics.CalculateComplexityFor(Regex.Split(blob.GetContentText(), @"\r\n|\r|\n")));
+        ComplexityMetrics.CalculateComplexityFor(Regex.Split(blob.GetContentText(), @"\r\n|\r|\n")),
+        changeDate);
       
-      if (!_results.Contains(analysisResult))
+      if (!_results.Contains(change))
       {
-        _results.Add(analysisResult);
+        _results.Add(change);
       }
     }
   }

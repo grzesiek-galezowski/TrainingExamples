@@ -1,16 +1,13 @@
-﻿<!doctype html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>Line Chart Test</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-</head>
-<body>
+﻿<h2>___TITLE___</h2>
+
+<h3>COMPLEXITY: ___COMPLEXITY___</h3>
+<h3>CHANGES: ___CHANGES___</h3>
+
 <div class="container">
-    <canvas id="myChart"></canvas>
+    <canvas id="myChart___CHARTNUM___" height="40"></canvas>
 </div>
 <script>
-    var ctx = document.getElementById('myChart').getContext('2d');
+    var ctx = document.getElementById('myChart___CHARTNUM___').getContext('2d');
     var chart = new Chart(ctx, {
         // The type of chart we want to create
         type: 'line',
@@ -25,7 +22,7 @@
         data: {
             labels: [___LABELS___], //example '1', '2', '3'
             datasets: [{
-                label: 'My First dataset',
+                label: '___TITLE___',
                 fill: false,
                 borderColor: 'rgb(255, 99, 132)',
                 data: [___DATA___]
@@ -34,5 +31,3 @@
 
     });
 </script>
-</body>
-</html>

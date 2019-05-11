@@ -9,7 +9,7 @@ namespace GitAttempt2
 {
   public static class RepoAnalysis
   {
-    public static IEnumerable<TrunkFile> Analyze(string repositoryPath, string branchName)
+    public static IEnumerable<HistoryAnalysisResult> Analyze(string repositoryPath, string branchName)
     {
       //using var repo = new Repository(@"c:\Users\ftw637\Documents\GitHub\TrainingExamples\");
       //using var repo = new Repository(@"C:\Users\grzes\Documents\GitHub\nscan\");
@@ -25,7 +25,7 @@ namespace GitAttempt2
 
 
       var trunkFiles = analysisMetadata.Where(am => pathsInTrunk.Contains(am.Key))
-        .Select(x => new TrunkFile(x.Value.Results.Count, x.Key, x.Value.Results.Last().Complexity));
+        .Select(x => new HistoryAnalysisResult(x.Key, x.Value.Results));
       return trunkFiles;
     }
 
@@ -35,7 +35,7 @@ namespace GitAttempt2
       Dictionary<string, AnalysisLog> analysisResults)
     {
       var treeVisitor = new CollectFileChangeRateFromCommitVisitor(analysisResults);
-      TreeNavigation.Traverse(commits.First().Tree, treeVisitor);
+      TreeNavigation.Traverse(commits.First().Tree, commits.First(), treeVisitor);
       for (var i = 1; i < commits.Count; ++i)
       {
         var previousCommit = commits[i - 1];

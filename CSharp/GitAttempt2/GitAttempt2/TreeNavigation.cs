@@ -5,17 +5,17 @@ namespace GitAttempt2
 {
   public static class TreeNavigation
   {
-    public static void Traverse(Tree tree, ITreeVisitor visitor)
+    public static void Traverse(Tree tree, Commit commit, ITreeVisitor visitor)
     {
       foreach (var treeEntry in tree)
       {
         switch (treeEntry.TargetType)
         {
           case TreeEntryTargetType.Blob:
-            visitor.OnBlob(treeEntry);
+            visitor.OnBlob(treeEntry, commit);
             break;
           case TreeEntryTargetType.Tree:
-            Traverse(treeEntry, visitor);
+            Traverse(treeEntry, visitor, commit);
             break;
           case TreeEntryTargetType.GitLink:
             throw new ArgumentException(treeEntry.Path);
@@ -26,9 +26,9 @@ namespace GitAttempt2
 
     }
 
-    private static void Traverse(TreeEntry treeEntry, ITreeVisitor visitor)
+    private static void Traverse(TreeEntry treeEntry, ITreeVisitor visitor, Commit commit)
     {
-      Traverse((Tree) treeEntry.Target, visitor);
+      Traverse((Tree) treeEntry.Target, commit, visitor);
     }
   }
 }

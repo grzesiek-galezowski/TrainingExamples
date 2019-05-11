@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -15,12 +16,13 @@ namespace GitAttempt2
     {
       //git log --format=format: --name-only | egrep -v '^$' | sort | uniq -c | sort -r | head -5
 
-      var trunkFiles = RepoAnalysis.Analyze(@"c:\Users\grzes\Documents\GitHub\nscan\", "master");
+      var trunkFiles = RepoAnalysis.Analyze(@"c:\Users\grzes\Documents\GitHub\nscan\", "master")
+        .OrderByDescending(f => f.ChangeRate * f.History.Last().Complexity);
       //var trunkFiles = RepoAnalysis.Analyze(@"C:\Users\grzes\Documents\GitHub\functional-maybe-extensions ", "master");
 
-      foreach (var trunkFile in trunkFiles.OrderBy(f => f.ChangeRate * f.Complexity))
+      foreach (var trunkFile in trunkFiles)
       {
-        Console.WriteLine(trunkFile.Path + " => " + trunkFile.ChangeRate + ":" + trunkFile.Complexity);
+        Console.WriteLine(trunkFile.Path + " => " + trunkFile.ChangeRate + ":" + trunkFile.History.Last().Complexity);
       }
 
       RenderChart(trunkFiles);
@@ -28,11 +30,37 @@ namespace GitAttempt2
       //trunkFiles.First()
     }
 
-    private static void RenderChart(IEnumerable<TrunkFile> trunkFiles)
+    private static void RenderChart(IEnumerable<HistoryAnalysisResult> analysisResults)
     {
-      var template = File.ReadAllText("template.html");
-      File.WriteAllText("output.html", template.Replace("___LABELS___", "'lol1', 'lol2'").Replace("___DATA___", "'2', '3'"));
+      string charts = "";
+      int i = 0;
+      foreach (var analysisResult in analysisResults)
+      {
+        var template = File.ReadAllText("chartTemplate.html");
+        charts += template
+          .Replace("___COMPLEXITY___", analysisResult.History.Last().Complexity.ToString())
+          .Replace("___CHANGES___", analysisResult.History.Count.ToString())
+          .Replace("___CHARTNUM___", i++.ToString())
+          .Replace("___TITLE___", analysisResult.Path)
+          .Replace("___LABELS___", Labels(analysisResult))
+          .Replace("___DATA___", Data(analysisResult));
+      }
+      File.WriteAllText("output.html", File.ReadAllText("mainTemplate.html").Replace("___CHARTS___", charts));
+
       OpenBrowser("output.html");
+    }
+
+    private static string Data(HistoryAnalysisResult historyAnalysisResult)
+    {
+      var data = historyAnalysisResult.History.Select(change => "'" + change.Complexity.ToString(CultureInfo.InvariantCulture) + "'");
+      return string.Join(", ", data);
+    }
+
+    private static string Labels(HistoryAnalysisResult historyAnalysisResult)
+    {
+      var data = historyAnalysisResult.History.Select(change => 
+        "'" + change.ChangeDate.ToString("dd mm yyyy", CultureInfo.InvariantCulture) + "'");
+      return string.Join(", ", data);
     }
 
     public static void OpenBrowser(string url)
