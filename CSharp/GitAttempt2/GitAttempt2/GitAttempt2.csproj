@@ -7,8 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Chart.Mvc" Version="1.0.0.2" />
     <PackageReference Include="Functional.Maybe" Version="2.0.10" />
     <PackageReference Include="LibGit2Sharp" Version="0.26.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="template.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
