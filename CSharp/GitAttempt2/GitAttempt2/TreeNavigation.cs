@@ -12,8 +12,16 @@ namespace GitAttempt2
         switch (treeEntry.TargetType)
         {
           case TreeEntryTargetType.Blob:
-            visitor.OnBlob(treeEntry, commit);
+          {
+            Blob blob = (Blob) treeEntry.Target;
+            if (!blob.IsBinary)
+            {
+              visitor.OnBlob(treeEntry, commit, blob);
+            }
+
             break;
+          }
+
           case TreeEntryTargetType.Tree:
             Traverse(treeEntry, visitor, commit);
             break;

@@ -62,19 +62,46 @@ namespace GitAttempt2
           case ChangeKind.Unmodified:
             break;
           case ChangeKind.Added:
-            treeVisitor.OnAdded(treeEntry, currentCommit);
+          {
+            var blob = LibSpecificExtractions.BlobFrom(treeEntry, currentCommit);
+            if (!blob.IsBinary)
+            {
+              treeVisitor.OnAdded(treeEntry, currentCommit, blob);
+            }
             break;
+          }
           case ChangeKind.Deleted:
             break;
           case ChangeKind.Modified:
-            treeVisitor.OnModified(treeEntry, currentCommit);
+          {
+            var blob = LibSpecificExtractions.BlobFrom(treeEntry, currentCommit);
+            if (!blob.IsBinary)
+            {
+              treeVisitor.OnModified(treeEntry, currentCommit, blob);
+            }
+
             break;
+          }
           case ChangeKind.Renamed:
-            treeVisitor.OnRenamed(treeEntry, currentCommit);
+          {
+            var blob = LibSpecificExtractions.BlobFrom(treeEntry, currentCommit);
+            if (!blob.IsBinary)
+            {
+              treeVisitor.OnRenamed(treeEntry);
+            } 
             break;
+          }
           case ChangeKind.Copied:
-            treeVisitor.OnCopied(treeEntry, currentCommit);
+          {
+            var blob = LibSpecificExtractions.BlobFrom(treeEntry, currentCommit);
+            if (!blob.IsBinary)
+            {
+              treeVisitor.OnCopied(treeEntry, currentCommit, blob);
+            }
+
             break;
+          }
+
           default:
             throw new ArgumentOutOfRangeException();
         }

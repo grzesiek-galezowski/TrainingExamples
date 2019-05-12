@@ -1,15 +1,13 @@
 using System;
-using System.Text.RegularExpressions;
 using ApplicationLogic;
-using LibGit2Sharp;
 
 namespace GitAttempt2
 {
   public static class ChangeFactory
   {
-    public static Change CreateChange(string path, Blob blob, DateTimeOffset changeDate)
+    public static Change CreateChange(string path, string fileText, DateTimeOffset changeDate)
     {
-      var contentText = blob.GetContentText();
+      var contentText = fileText;
       return new Change(
         path, 
         contentText, ComplexityMetrics.CalculateComplexityFor(contentText),

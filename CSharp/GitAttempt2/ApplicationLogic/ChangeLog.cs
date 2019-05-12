@@ -11,10 +11,19 @@ namespace ApplicationLogic
 
     public void AddDataFrom(Change change)
     {
-      if (!_entries.Contains(change))
+      if (!_entries.Any())
       {
         _entries.Add(change);
       }
+      else if (!IsDuplicatedForSomeReason(change))
+      {
+        _entries.Add(change);
+      }
+    }
+
+    private bool IsDuplicatedForSomeReason(Change change)
+    {
+      return _entries.Last().Text.Equals(change.Text);
     }
 
     public string PathOfLastVersion()

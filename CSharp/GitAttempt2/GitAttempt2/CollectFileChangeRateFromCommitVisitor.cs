@@ -8,7 +8,7 @@ namespace GitAttempt2
 {
   public interface ITreeVisitor
   {
-    void OnBlob(TreeEntry treeEntry, Commit commit);
+    void OnBlob(TreeEntry treeEntry, Commit commit, Blob blob);
   }
 
   public class CollectFileChangeRateFromCommitVisitor : ITreeVisitor
@@ -20,62 +20,48 @@ namespace GitAttempt2
       _commitsPerPath = commitsPerPath;
     }
 
-    public void OnBlob(TreeEntry treeEntry, Commit commit)
+    public void OnBlob(TreeEntry treeEntry, Commit commit, Blob blob)
     {
-      var blob = (Blob) treeEntry.Target;
-      if (!blob.IsBinary)
-      {
-        if (!_commitsPerPath.ContainsKey(treeEntry.Path))
-        {
-          _commitsPerPath[treeEntry.Path] = new ChangeLog();
-        }
-
-        DateTimeOffset changeDate = commit.Author.When;
-        _commitsPerPath[treeEntry.Path].AddDataFrom(ChangeFactory.CreateChange(treeEntry.Path, blob, changeDate));
-      }
-    }
-
-    public void OnModified(TreeEntryChanges treeEntry, Commit currentCommit)
-    {
-      var blob = BlobFrom(treeEntry, currentCommit);
-      if (!blob.IsBinary)
-      {
-        DateTimeOffset changeDate = currentCommit.Author.When;
-        _commitsPerPath[treeEntry.Path].AddDataFrom(ChangeFactory.CreateChange(treeEntry.Path, blob, changeDate));
-      }
-    }
-
-    public void OnRenamed(TreeEntryChanges treeEntry, Commit currentCommit)
-    {
-      var blob = BlobFrom(treeEntry, currentCommit);
-      if (!blob.IsBinary)
-      {
-        _commitsPerPath[treeEntry.Path] = _commitsPerPath[treeEntry.OldPath];
-        DateTimeOffset changeDate = currentCommit.Author.When;
-        _commitsPerPath[treeEntry.Path].AddDataFrom(ChangeFactory.CreateChange(treeEntry.Path, blob, changeDate));
-      }
-    }
-
-
-    public void OnCopied(TreeEntryChanges treeEntry, Commit currentCommit)
-    {
-      var blob = BlobFrom(treeEntry, currentCommit);
-      if (!blob.IsBinary)
+      if (!_commitsPerPath.ContainsKey(treeEntry.Path))
       {
         _commitsPerPath[treeEntry.Path] = new ChangeLog();
-        _commitsPerPath[treeEntry.Path].AddDataFrom(ChangeFactory.CreateChange(treeEntry.Path, blob, currentCommit.Author.When));
       }
+      AddChange(treeEntry, blob, commit);
     }
 
-    public void OnAdded(TreeEntryChanges treeEntry, Commit currentCommit)
+    public void OnModified(TreeEntryChanges treeEntry, Commit currentCommit, Blob blob1)
     {
-      var blob = BlobFrom(treeEntry, currentCommit);
-      if (!blob.IsBinary)
-      {
-        _commitsPerPath[treeEntry.Path] = new ChangeLog();
-        DateTimeOffset changeDate = currentCommit.Author.When;
-        _commitsPerPath[treeEntry.Path].AddDataFrom(ChangeFactory.CreateChange(treeEntry.Path, blob, changeDate));
-      }
+      AddChange(treeEntry, currentCommit, blob1);
+    }
+
+    private void AddChange(TreeEntry treeEntry, Blob blob, Commit currentCommit)
+    {
+      _commitsPerPath[treeEntry.Path].AddDataFrom(
+        ChangeFactory.CreateChange(treeEntry.Path, blob.GetContentText(), currentCommit.Author.When));
+    }
+
+    private void AddChange(TreeEntryChanges treeEntry, Commit currentCommit, Blob blob)
+    {
+      _commitsPerPath[treeEntry.Path].AddDataFrom(
+        ChangeFactory.CreateChange(treeEntry.Path, blob.GetContentText(), currentCommit.Author.When));
+    }
+
+    public void OnRenamed(TreeEntryChanges treeEntry)
+    {
+      _commitsPerPath[treeEntry.Path] = _commitsPerPath[treeEntry.OldPath];
+    }
+
+
+    public void OnCopied(TreeEntryChanges treeEntry, Commit currentCommit, Blob blob)
+    {
+      _commitsPerPath[treeEntry.Path] = new ChangeLog();
+      AddChange(treeEntry, currentCommit, blob);
+    }
+
+    public void OnAdded(TreeEntryChanges treeEntry, Commit currentCommit, Blob blob)
+    {
+      _commitsPerPath[treeEntry.Path] = new ChangeLog();
+      AddChange(treeEntry, currentCommit, blob);
     }
   }
 }
