@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using ApplicationLogic;
 using Functional.Maybe;
 using LibGit2Sharp;
 
@@ -9,7 +10,7 @@ namespace GitAttempt2
 {
   public static class RepoAnalysis
   {
-    public static IEnumerable<HistoryAnalysisResult> Analyze(string repositoryPath, string branchName)
+    public static IEnumerable<ChangeLog> Analyze(string repositoryPath, string branchName)
     {
       //using var repo = new Repository(@"c:\Users\ftw637\Documents\GitHub\TrainingExamples\");
       //using var repo = new Repository(@"C:\Users\grzes\Documents\GitHub\nscan\");
@@ -17,7 +18,7 @@ namespace GitAttempt2
       using var repo = new Repository(repositoryPath);
 
       var commits = repo.Branches[branchName].Commits.Reverse().ToArray();
-      var analysisMetadata = new Dictionary<string, AnalysisLog>();
+      var analysisMetadata = new Dictionary<string, ChangeLog>();
       var pathsInTrunk = new List<string>();
       
       CollectPathsFrom(commits.Last().Tree, pathsInTrunk);
@@ -25,14 +26,14 @@ namespace GitAttempt2
 
 
       var trunkFiles = analysisMetadata.Where(am => pathsInTrunk.Contains(am.Key))
-        .Select(x => new HistoryAnalysisResult(x.Key, x.Value.Results));
+        .Select(x => x.Value);
       return trunkFiles;
     }
 
     private static void CollectResults(
       IRepository repo, 
       IReadOnlyList<Commit> commits,
-      Dictionary<string, AnalysisLog> analysisResults)
+      Dictionary<string, ChangeLog> analysisResults)
     {
       var treeVisitor = new CollectFileChangeRateFromCommitVisitor(analysisResults);
       TreeNavigation.Traverse(commits.First().Tree, commits.First(), treeVisitor);
@@ -98,26 +99,6 @@ namespace GitAttempt2
             throw new ArgumentOutOfRangeException();
         }
       }
-    }
-  }
-
-  /// <summary>
-  /// Defines extensions used by <see cref="FileHistoryFixture"/>.
-  /// </summary>
-  internal static class FileHistoryFixtureExtensions
-  {
-    /// <summary>
-    /// Gets the <see cref="Blob"/> instances contained in each <see cref="LogEntry"/>.
-    /// </summary>
-    /// <remarks>
-    /// Use the <see cref="Enumerable.Distinct{TSource}(IEnumerable{TSource})"/> extension method
-    /// to retrieve the changed blobs.
-    /// </remarks>
-    /// <param name="fileHistory">The file history.</param>
-    /// <returns>The collection of <see cref="Blob"/> instances included in the file history.</returns>
-    public static IEnumerable<Blob> Blobs(this IEnumerable<LogEntry> fileHistory)
-    {
-      return fileHistory.Select(entry => entry.Commit.Tree[entry.Path].Target).OfType<Blob>();
     }
   }
 }

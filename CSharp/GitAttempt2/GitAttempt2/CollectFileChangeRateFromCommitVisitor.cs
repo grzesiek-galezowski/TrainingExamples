@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
+using ApplicationLogic;
 using LibGit2Sharp;
+using static GitAttempt2.LibSpecificExtractions;
 
 namespace GitAttempt2
 {
@@ -12,9 +13,9 @@ namespace GitAttempt2
 
   public class CollectFileChangeRateFromCommitVisitor : ITreeVisitor
   {
-    private readonly Dictionary<string, AnalysisLog> _commitsPerPath;
+    private readonly Dictionary<string, ChangeLog> _commitsPerPath;
 
-    public CollectFileChangeRateFromCommitVisitor(Dictionary<string, AnalysisLog> commitsPerPath)
+    public CollectFileChangeRateFromCommitVisitor(Dictionary<string, ChangeLog> commitsPerPath)
     {
       _commitsPerPath = commitsPerPath;
     }
@@ -26,10 +27,11 @@ namespace GitAttempt2
       {
         if (!_commitsPerPath.ContainsKey(treeEntry.Path))
         {
-          _commitsPerPath[treeEntry.Path] = new AnalysisLog();
+          _commitsPerPath[treeEntry.Path] = new ChangeLog();
         }
 
-        _commitsPerPath[treeEntry.Path].AddDataFrom(blob, commit.Author.When);
+        DateTimeOffset changeDate = commit.Author.When;
+        _commitsPerPath[treeEntry.Path].AddDataFrom(ChangeFactory.CreateChange(treeEntry.Path, blob, changeDate));
       }
     }
 
@@ -38,7 +40,8 @@ namespace GitAttempt2
       var blob = BlobFrom(treeEntry, currentCommit);
       if (!blob.IsBinary)
       {
-        _commitsPerPath[treeEntry.Path].AddDataFrom(blob, currentCommit.Author.When);
+        DateTimeOffset changeDate = currentCommit.Author.When;
+        _commitsPerPath[treeEntry.Path].AddDataFrom(ChangeFactory.CreateChange(treeEntry.Path, blob, changeDate));
       }
     }
 
@@ -48,7 +51,8 @@ namespace GitAttempt2
       if (!blob.IsBinary)
       {
         _commitsPerPath[treeEntry.Path] = _commitsPerPath[treeEntry.OldPath];
-        _commitsPerPath[treeEntry.Path].AddDataFrom(blob, currentCommit.Author.When);
+        DateTimeOffset changeDate = currentCommit.Author.When;
+        _commitsPerPath[treeEntry.Path].AddDataFrom(ChangeFactory.CreateChange(treeEntry.Path, blob, changeDate));
       }
     }
 
@@ -58,8 +62,8 @@ namespace GitAttempt2
       var blob = BlobFrom(treeEntry, currentCommit);
       if (!blob.IsBinary)
       {
-        _commitsPerPath[treeEntry.Path] = new AnalysisLog();
-        _commitsPerPath[treeEntry.Path].AddDataFrom(blob, currentCommit.Author.When);
+        _commitsPerPath[treeEntry.Path] = new ChangeLog();
+        _commitsPerPath[treeEntry.Path].AddDataFrom(ChangeFactory.CreateChange(treeEntry.Path, blob, currentCommit.Author.When));
       }
     }
 
@@ -68,33 +72,9 @@ namespace GitAttempt2
       var blob = BlobFrom(treeEntry, currentCommit);
       if (!blob.IsBinary)
       {
-        _commitsPerPath[treeEntry.Path] = new AnalysisLog();
-        _commitsPerPath[treeEntry.Path].AddDataFrom(blob, currentCommit.Author.When);
-      }
-    }
-
-    private static Blob BlobFrom(TreeEntryChanges treeEntry, Commit currentCommit)
-    {
-      return ((Blob)currentCommit[treeEntry.Path].Target);
-    }
-  }
-
-  public class AnalysisLog
-  {
-    private readonly List<Change> _results = new List<Change>();
-
-    public IReadOnlyList<Change> Results => _results;
-
-    public void AddDataFrom(Blob blob, DateTimeOffset changeDate)
-    {
-      var change = new Change(
-        blob.GetContentText(), 
-        ComplexityMetrics.CalculateComplexityFor(Regex.Split(blob.GetContentText(), @"\r\n|\r|\n")),
-        changeDate);
-      
-      if (!_results.Contains(change))
-      {
-        _results.Add(change);
+        _commitsPerPath[treeEntry.Path] = new ChangeLog();
+        DateTimeOffset changeDate = currentCommit.Author.When;
+        _commitsPerPath[treeEntry.Path].AddDataFrom(ChangeFactory.CreateChange(treeEntry.Path, blob, changeDate));
       }
     }
   }

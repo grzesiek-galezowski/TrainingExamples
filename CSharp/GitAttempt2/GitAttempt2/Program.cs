@@ -5,8 +5,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using Chart.Mvc.ComplexChart;
-using Chart.Mvc.Extensions;
+using ApplicationLogic;
 
 namespace GitAttempt2
 {
@@ -15,20 +14,18 @@ namespace GitAttempt2
     static void Main(string[] args)
     {
       var analysisResults = RepoAnalysis.Analyze(@"c:\Users\grzes\Documents\GitHub\nscan\", "master")
-        .OrderByDescending(f => f.ChangeRate * f.History.Last().Complexity).ToArray();
-      //var trunkFiles = RepoAnalysis.Analyze(@"C:\Users\grzes\Documents\GitHub\functional-maybe-extensions ", "master");
+        .OrderByDescending(h => h.ChangesCount() * h.ComplexityOfLastVersion()).ToArray();
 
       foreach (var trunkFile in analysisResults)
       {
-        Console.WriteLine(trunkFile.Path + " => " + trunkFile.ChangeRate + ":" + trunkFile.History.Last().Complexity);
+        Console.WriteLine(trunkFile.PathOfLastVersion() + " => " + trunkFile.ChangesCount() + ":" + trunkFile.ComplexityOfLastVersion());
       }
 
       RenderChart(analysisResults);
 
-      //trunkFiles.First()
     }
 
-    private static void RenderChart(IEnumerable<HistoryAnalysisResult> analysisResults)
+    private static void RenderChart(ChangeLog[] analysisResults)
     {
       var charts = "";
       var i = 0;
@@ -37,28 +34,28 @@ namespace GitAttempt2
         i++;
         var template = File.ReadAllText("chartTemplate.html");
         charts += template
-          .Replace("___COMPLEXITY___", analysisResult.History.Last().Complexity.ToString())
-          .Replace("___CHANGES___", analysisResult.History.Count.ToString())
+          .Replace("___COMPLEXITY___", analysisResult.ComplexityOfLastVersion().ToString())
+          .Replace("___CHANGES___", analysisResult.ChangesCount().ToString())
           .Replace("___CHARTNUM___", i.ToString())
-          .Replace("___TITLE___", i + ". " + analysisResult.Path)
+          .Replace("___TITLE___", i + ". " + analysisResult.PathOfLastVersion())
           .Replace("___Y_TITLE___", "Complexity per change")
-          .Replace("___LABELS___", Labels(analysisResult))
-          .Replace("___DATA___", Data(analysisResult));
+          .Replace("___LABELS___", Labels(analysisResult)
+          .Replace("___DATA___", Data(analysisResult)));
       }
       File.WriteAllText("output.html", File.ReadAllText("mainTemplate.html").Replace("___CHARTS___", charts));
 
       OpenBrowser("output.html");
     }
 
-    private static string Data(HistoryAnalysisResult historyAnalysisResult)
+    private static string Data(ChangeLog changeLog)
     {
-      var data = historyAnalysisResult.History.Select(change => "'" + change.Complexity.ToString(CultureInfo.InvariantCulture) + "'");
+      var data = changeLog.Entries.Select(change => "'" + change.Complexity.ToString(CultureInfo.InvariantCulture) + "'");
       return string.Join(", ", data);
     }
 
-    private static string Labels(HistoryAnalysisResult historyAnalysisResult)
+    private static string Labels(ChangeLog changeLog)
     {
-      var data = historyAnalysisResult.History.Select(change => 
+      var data = changeLog.Entries.Select(change => 
         "'" + change.ChangeDate.ToString("dd mm yyyy", CultureInfo.InvariantCulture) + "'");
       return string.Join(", ", data);
     }

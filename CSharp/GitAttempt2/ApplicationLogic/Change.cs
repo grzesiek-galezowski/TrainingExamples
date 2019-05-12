@@ -1,21 +1,23 @@
 ﻿using System;
 
-namespace GitAttempt2
+namespace ApplicationLogic
 {
     public sealed class Change : IEquatable<Change>
     {
+      public string Path { get; }
       public DateTimeOffset ChangeDate { get; }
       public string Text { get; }
       public double Complexity { get; }
 
-      public Change(string text, double complexity, DateTimeOffset changeDate)
+      public Change(string path, string text, double complexity, DateTimeOffset changeDate)
       {
+        Path = path;
         ChangeDate = changeDate;
         Text = text;
         Complexity = complexity;
       }
 
-      public bool Equals(Change other)
+      public bool Equals(Change other) //bug change these equals to something else
       {
         if (ReferenceEquals(null, other)) return false;
         if (ReferenceEquals(this, other)) return true;

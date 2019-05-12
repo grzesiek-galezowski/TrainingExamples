@@ -1,20 +1,19 @@
+using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Functional.Maybe;
 
-namespace GitAttempt2
+namespace ApplicationLogic
 {
   public static class ComplexityMetrics
   {
-    public static double CalculateComplexityFor(string repositoryPath, string path)
+    public static double CalculateComplexityFor(string contentText)
     {
-      var linesInFile = File.ReadLines(Path.Combine(repositoryPath, path)).ToArray();
-      var complexity = CalculateComplexityFor(linesInFile);
-      return complexity;
+      return CalculateComplexityFor(Regex.Split(contentText, @"\r\n|\r|\n"));
     }
 
-    public static double CalculateComplexityFor(IReadOnlyCollection<string> linesInFile)
+    private static double CalculateComplexityFor(IReadOnlyCollection<string> linesInFile)
     {
       var totalWhitespaces = 0;
       var currentIndentationLength = Maybe<int>.Nothing;
