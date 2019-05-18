@@ -1,4 +1,6 @@
 ﻿using System.Configuration;
+using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
 
@@ -7,12 +9,18 @@ namespace SpecFlowExample
   [Binding]
   public class SimpleMessagingSteps
   {
-    private ChatScenarioContext _context;
+    private readonly ChatScenarioContext _context;
+
+    public SimpleMessagingSteps(ChatScenarioContext context)
+    {
+      _context = context;
+    }
 
     [Given(@"a user (.*)")]
     public void GivenAUser(string name)
     {
       var user = new User(name);
+      user.RegisterInSystem();
       _context.Register(user);
     }
 
@@ -22,26 +30,31 @@ namespace SpecFlowExample
       _context.UserInTheSpotlight().AddFriend(_context.LocateUser(userName));
     }
 
-    [Given(@"that he is not a friend of Johnny")]
-    public void GivenThatHeIsNotAFriendOfJohnny()
-    {
-      ScenarioContext.Current.Pending();
-    }
-
     [When(@"They send the following messages in order:")]
     public void WhenTheySendTheFollowingMessagesInOrder(Table table)
     {
-      ScenarioContext.Current.Pending();
+      foreach (var tableRow in table.Rows)
+      {
+        var from = _context.LocateUser(tableRow[0]);
+        var to = _context.LocateUser(tableRow[1]);
+        var messageText = tableRow[3];
+
+        from.SendDirectMessage(to, messageText);
+      }
     }
 
-    [When(@"Johnny sends a message ""(.*)"" to Benjamin")]
-    public void WhenJohnnySendsAMessageToBenjamin(string p0)
+    [When(@"(.*) sends a message ""(.*)"" to (.*)")]
+    public void WhenJohnnySendsAMessageToBenjamin(
+      string senderName, string messageText, string recipientName)
     {
-      ScenarioContext.Current.Pending();
+      var sender = _context.LocateUser(senderName);
+      var recipient = _context.LocateUser(recipientName);
+
+      sender.SendDirectMessage(recipient, messageText);
     }
 
-    [Then(@"Johnny should see:")]
-    public void ThenJohnnyShouldSee(Table table)
+    [Then(@"(.*) should see:")]
+    public void ThenJohnnyShouldSee(string userName, Table table)
     {
       ScenarioContext.Current.Pending();
     }

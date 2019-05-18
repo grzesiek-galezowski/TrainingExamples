@@ -51,5 +51,20 @@ namespace SpecFlowExample
     {
       //a call to production code API
     }
+
+    public void SendDirectMessage(User recipient, string messageText)
+    {
+      //a call to production code API
+    }
+
+    public void DeleteFromSystem()
+    {
+      //a call to production code API
+    }
+
+    public void RegisterInSystem()
+    {
+      //a call to production code API
+    }
   }
 }

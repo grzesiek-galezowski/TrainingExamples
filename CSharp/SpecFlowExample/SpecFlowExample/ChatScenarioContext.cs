@@ -27,5 +27,13 @@ namespace SpecFlowExample
     {
       return _users.Last();
     }
+
+    public void RemoveUsers()
+    {
+      foreach (var user in _users)
+      {
+        user.DeleteFromSystem();
+      }
+    }
   }
 }
