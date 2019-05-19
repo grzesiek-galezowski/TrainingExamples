@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using SpecFlowExample.AutomationLayer.Data;
 
-namespace SpecFlowExample
+namespace SpecFlowExample.AutomationLayer.Actors
 {
   public class User : IEquatable<User>
   {
@@ -63,6 +64,16 @@ namespace SpecFlowExample
     }
 
     public void RegisterInSystem()
+    {
+      //a call to production code API
+    }
+
+    public void ShouldSee(IEnumerable<DisplayedMessage> expectedMessages)
+    {
+      //an assertion 
+    }
+
+    public void SendDirectMessage(ChatRoom recipient, string messageText)
     {
       //a call to production code API
     }

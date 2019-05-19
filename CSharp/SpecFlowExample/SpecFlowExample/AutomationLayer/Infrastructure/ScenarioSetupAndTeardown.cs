@@ -1,7 +1,6 @@
-﻿using System;
-using TechTalk.SpecFlow;
+﻿using TechTalk.SpecFlow;
 
-namespace SpecFlowExample
+namespace SpecFlowExample.AutomationLayer.Infrastructure
 {
   [Binding]
   public class ScenarioSetupAndTeardown
@@ -24,6 +23,7 @@ namespace SpecFlowExample
     [AfterScenario]
     public void Teardown()
     {
+      _chatScenarioContext.RemoveChatRooms();
       _chatScenarioContext.RemoveUsers();
     }
   }

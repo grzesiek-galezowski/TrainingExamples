@@ -18,7 +18,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="OneToOneMessaging.feature.cs">
+    <Compile Update="Features\ChatRoomMessaging.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ChatRoomMessaging.feature</DependentUpon>
+    </Compile>
+    <Compile Update="Features\OneToOneMessaging.feature.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>OneToOneMessaging.feature</DependentUpon>
@@ -33,7 +38,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <SpecFlowFeatureFiles Update="OneToOneMessaging.feature">
+    <SpecFlowFeatureFiles Update="Features\ChatRoomMessaging.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ChatRoomMessaging.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\OneToOneMessaging.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>OneToOneMessaging.feature.cs</LastGenOutput>
     </SpecFlowFeatureFiles>
