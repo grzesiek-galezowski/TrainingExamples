@@ -7,7 +7,7 @@ namespace SpecFlowExample.StepDefinitions
   [Binding]
   public class ProvisioningSteps
   {
-    private ChatScenarioContext _context;
+    private readonly ChatScenarioContext _context;
 
     public ProvisioningSteps(ChatScenarioContext context)
     {
