@@ -1,4 +1,5 @@
 using System;
+using ApplicationLogic;
 using LibGit2Sharp;
 
 namespace GitAttempt2
@@ -13,10 +14,10 @@ namespace GitAttempt2
         {
           case TreeEntryTargetType.Blob:
           {
-            Blob blob = (Blob) treeEntry.Target;
+            var blob = (Blob) treeEntry.Target;
             if (!blob.IsBinary)
             {
-              visitor.OnBlob(treeEntry, commit, blob);
+              visitor.OnBlob(treeEntry.Path, blob.GetContentText(), commit.Author.When);
             }
 
             break;

@@ -1,7 +1,6 @@
 using System;
-using ApplicationLogic;
 
-namespace GitAttempt2
+namespace ApplicationLogic
 {
   public static class ChangeFactory
   {

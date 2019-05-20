@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using ApplicationLogic;
-using Functional.Maybe;
 using LibGit2Sharp;
 
 namespace GitAttempt2
@@ -66,7 +64,7 @@ namespace GitAttempt2
             var blob = LibSpecificExtractions.BlobFrom(treeEntry, currentCommit);
             if (!blob.IsBinary)
             {
-              treeVisitor.OnAdded(treeEntry, currentCommit, blob);
+              treeVisitor.OnAdded(treeEntry.Path, blob.GetContentText(), currentCommit.Author.When);
             }
             break;
           }
@@ -77,7 +75,7 @@ namespace GitAttempt2
             var blob = LibSpecificExtractions.BlobFrom(treeEntry, currentCommit);
             if (!blob.IsBinary)
             {
-              treeVisitor.OnModified(treeEntry, currentCommit, blob);
+              treeVisitor.OnModified(treeEntry.Path, blob.GetContentText(), currentCommit.Author.When);
             }
 
             break;
@@ -87,7 +85,7 @@ namespace GitAttempt2
             var blob = LibSpecificExtractions.BlobFrom(treeEntry, currentCommit);
             if (!blob.IsBinary)
             {
-              treeVisitor.OnRenamed(treeEntry);
+              treeVisitor.OnRenamed(treeEntry.Path, treeEntry.OldPath);
             } 
             break;
           }
@@ -96,7 +94,7 @@ namespace GitAttempt2
             var blob = LibSpecificExtractions.BlobFrom(treeEntry, currentCommit);
             if (!blob.IsBinary)
             {
-              treeVisitor.OnCopied(treeEntry, currentCommit, blob);
+              treeVisitor.OnCopied(treeEntry.Path, blob.GetContentText(), currentCommit.Author.When);
             }
 
             break;

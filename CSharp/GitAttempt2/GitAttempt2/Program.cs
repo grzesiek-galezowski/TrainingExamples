@@ -10,20 +10,13 @@ namespace GitAttempt2
   {
     static void Main(string[] args)
     {
-      var analysisResults = RepoAnalysis.Analyze(@"c:\Users\grzes\Documents\GitHub\nscan\", "master")
+      var changeLogs = RepoAnalysis.Analyze(@"c:\Users\grzes\Documents\GitHub\nscan\", "master")
         .OrderByDescending(h => h.ChangesCount() * h.ComplexityOfLastVersion()).ToArray();
 
-      foreach (var trunkFile in analysisResults)
-      {
-        Console.WriteLine(
-          trunkFile.PathOfLastVersion() + " => " + 
-          trunkFile.ChangesCount() + ":" + 
-          trunkFile.ComplexityOfLastVersion());
-      }
+      new ConsoleRendering().Show(changeLogs);
 
       var htmlChartRendering = new HtmlChartOutput();
-      htmlChartRendering.InstantiateTemplate(analysisResults);
-      htmlChartRendering.Render();
+      htmlChartRendering.InstantiateTemplate(changeLogs);
       htmlChartRendering.Show();
     }
   }
