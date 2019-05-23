@@ -8,6 +8,9 @@ namespace GitAttempt2
 {
   public class Program
   {
+    //TODO calculate age of code (1st commit to now)
+    //TODO calculate age of code (1st commit to last commit)
+    //TODO calculate time since last commit
     static void Main(string[] args)
     {
       var changeLogs = RepoAnalysis.Analyze(@"c:\Users\grzes\Documents\GitHub\nscan\", "master")
