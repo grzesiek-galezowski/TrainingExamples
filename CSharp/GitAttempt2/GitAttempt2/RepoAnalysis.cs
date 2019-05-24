@@ -7,9 +7,24 @@ using static GitAttempt2.LibSpecificExtractions;
 
 namespace GitAttempt2
 {
+  public class AnalysisResult
+  {
+    public IEnumerable<ChangeLog> _returnValue;
+
+    public AnalysisResult(IEnumerable<ChangeLog> returnValue)
+    {
+      _returnValue = returnValue;
+    }
+
+    public ChangeLog[] EntriesByHotSpotRank()
+    {
+      return _returnValue.OrderByDescending(h => h.HotSpotRank()).ToArray();
+    }
+  }
+
   public static class RepoAnalysis
   {
-    public static IEnumerable<ChangeLog> Analyze(string repositoryPath, string branchName)
+    public static AnalysisResult Analyze(string repositoryPath, string branchName)
     {
       //using var repo = new Repository(@"c:\Users\ftw637\Documents\GitHub\TrainingExamples\");
       //using var repo = new Repository(@"C:\Users\grzes\Documents\GitHub\nscan\");
@@ -24,7 +39,7 @@ namespace GitAttempt2
       CollectResults(repo, commits, analysisMetadata);
 
       var trunkFiles = analysisMetadata.Where(am => pathsInTrunk.Contains(am.Key)).Select(x => x.Value);
-      return trunkFiles;
+      return new AnalysisResult(trunkFiles);
     }
 
     private static void CollectResults(

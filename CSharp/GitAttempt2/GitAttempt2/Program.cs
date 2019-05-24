@@ -14,8 +14,8 @@ namespace GitAttempt2
     static void Main(string[] args)
     {
       Console.WriteLine(TimeSpan.FromDays(12));
-      var changeLogs = RepoAnalysis.Analyze(@"C:\Users\ftw637\Documents\GitHub\TrainingExamples\", "master")
-        .OrderByDescending(h => h.HotSpotRank()).ToArray();
+      var analysisResult = RepoAnalysis.Analyze(@"C:\Users\grzes\Documents\GitHub\nscan\", "master");
+      var changeLogs = analysisResult.EntriesByHotSpotRank();
 
       new ConsoleRendering().Show(changeLogs);
 

@@ -32,5 +32,6 @@ namespace ApplicationLogic
         public DateTimeOffset LastChangeDate() => Entries.Last().ChangeDate;
         public TimeSpan ActivityPeriod() => LastChangeDate() - CreationDate();
         public TimeSpan Age() => DateTime.UtcNow - CreationDate();
+        public TimeSpan TimeSinceLastChange() => DateTime.UtcNow - LastChangeDate();
     }
 }
