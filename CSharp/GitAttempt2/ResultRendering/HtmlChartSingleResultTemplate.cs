@@ -14,6 +14,10 @@ namespace ResultRendering
       var replace = template
         .Replace("___COMPLEXITY___", analysisResult.ComplexityOfLastVersion().ToString(CultureInfo.InvariantCulture))
         .Replace("___CHANGES___", analysisResult.ChangesCount().ToString())
+        .Replace("___CREATION_DATE___", analysisResult.CreationDate().ToString())
+        .Replace("___LAST_CHANGED___", analysisResult.LastChangeDate().ToString())
+        .Replace("___ACTIVE_PERIOD___", analysisResult.ActivityPeriod().ToString())
+        .Replace("___AGE___", analysisResult.Age().ToString())
         .Replace("___CHARTNUM___", elementNum.ToString())
         .Replace("___TITLE___", elementNum + ". " + analysisResult.PathOfLastVersion())
         .Replace("___Y_TITLE___", "Complexity per change")

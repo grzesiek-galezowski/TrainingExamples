@@ -13,8 +13,9 @@ namespace GitAttempt2
     //TODO calculate time since last commit
     static void Main(string[] args)
     {
+      Console.WriteLine(TimeSpan.FromDays(12));
       var changeLogs = RepoAnalysis.Analyze(@"c:\Users\grzes\Documents\GitHub\nscan\", "master")
-        .OrderByDescending(h => h.ChangesCount() * h.ComplexityOfLastVersion()).ToArray();
+        .OrderByDescending(h => h.HotSpotPosition()).ToArray();
 
       new ConsoleRendering().Show(changeLogs);
 

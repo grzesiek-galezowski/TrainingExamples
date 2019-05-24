@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace ApplicationLogic
 {
@@ -23,24 +22,15 @@ namespace ApplicationLogic
             }
         }
 
-        private bool HasTheSameContent(Change change)
-        {
-            return _entries.Last().TextWithoutWhitespaces.Equals(change.TextWithoutWhitespaces);
-        }
+        private bool HasTheSameContent(Change change) => _entries.Last().TextWithoutWhitespaces.Equals(change.TextWithoutWhitespaces);
 
-        public string PathOfLastVersion()
-        {
-            return Entries.Last().Path;
-        }
-
-        public int ChangesCount()
-        {
-            return Entries.Count;
-        }
-
-        public double ComplexityOfLastVersion()
-        {
-            return Entries.Last().Complexity;
-        }
+        public string PathOfLastVersion() => Entries.Last().Path;
+        public int ChangesCount() => Entries.Count;
+        public double ComplexityOfLastVersion() => Entries.Last().Complexity;
+        public double HotSpotPosition() => ChangesCount() * ComplexityOfLastVersion();
+        public DateTimeOffset CreationDate() => _entries.First().ChangeDate;
+        public DateTimeOffset LastChangeDate() => _entries.Last().ChangeDate;
+        public TimeSpan ActivityPeriod() => LastChangeDate() - _entries.First().ChangeDate;
+        public TimeSpan Age() => DateTime.UtcNow - _entries.First().ChangeDate;
     }
 }

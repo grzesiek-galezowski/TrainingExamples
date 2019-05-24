@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ApplicationLogic;
 using LibGit2Sharp;
+using static GitAttempt2.LibSpecificExtractions;
 
 namespace GitAttempt2
 {
@@ -22,9 +23,7 @@ namespace GitAttempt2
       CollectPathsFrom(commits.Last().Tree, pathsInTrunk);
       CollectResults(repo, commits, analysisMetadata);
 
-
-      var trunkFiles = analysisMetadata.Where(am => pathsInTrunk.Contains(am.Key))
-        .Select(x => x.Value);
+      var trunkFiles = analysisMetadata.Where(am => pathsInTrunk.Contains(am.Key)).Select(x => x.Value);
       return trunkFiles;
     }
 
@@ -61,7 +60,7 @@ namespace GitAttempt2
             break;
           case ChangeKind.Added:
           {
-            var blob = LibSpecificExtractions.BlobFrom(treeEntry, currentCommit);
+            var blob = BlobFrom(treeEntry, currentCommit);
             if (!blob.IsBinary)
             {
               treeVisitor.OnAdded(treeEntry.Path, blob.GetContentText(), currentCommit.Author.When);
@@ -72,7 +71,7 @@ namespace GitAttempt2
             break;
           case ChangeKind.Modified:
           {
-            var blob = LibSpecificExtractions.BlobFrom(treeEntry, currentCommit);
+            var blob = BlobFrom(treeEntry, currentCommit);
             if (!blob.IsBinary)
             {
               treeVisitor.OnModified(treeEntry.Path, blob.GetContentText(), currentCommit.Author.When);
@@ -82,7 +81,7 @@ namespace GitAttempt2
           }
           case ChangeKind.Renamed:
           {
-            var blob = LibSpecificExtractions.BlobFrom(treeEntry, currentCommit);
+            var blob = BlobFrom(treeEntry, currentCommit);
             if (!blob.IsBinary)
             {
               treeVisitor.OnRenamed(treeEntry.Path, treeEntry.OldPath);
@@ -91,7 +90,7 @@ namespace GitAttempt2
           }
           case ChangeKind.Copied:
           {
-            var blob = LibSpecificExtractions.BlobFrom(treeEntry, currentCommit);
+            var blob = BlobFrom(treeEntry, currentCommit);
             if (!blob.IsBinary)
             {
               treeVisitor.OnCopied(treeEntry.Path, blob.GetContentText(), currentCommit.Author.When);
