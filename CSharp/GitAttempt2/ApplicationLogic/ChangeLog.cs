@@ -27,10 +27,10 @@ namespace ApplicationLogic
         public string PathOfLastVersion() => Entries.Last().Path;
         public int ChangesCount() => Entries.Count;
         public double ComplexityOfLastVersion() => Entries.Last().Complexity;
-        public double HotSpotPosition() => ChangesCount() * ComplexityOfLastVersion();
-        public DateTimeOffset CreationDate() => _entries.First().ChangeDate;
-        public DateTimeOffset LastChangeDate() => _entries.Last().ChangeDate;
-        public TimeSpan ActivityPeriod() => LastChangeDate() - _entries.First().ChangeDate;
-        public TimeSpan Age() => DateTime.UtcNow - _entries.First().ChangeDate;
+        public double HotSpotRank() => ChangesCount() * ComplexityOfLastVersion();
+        public DateTimeOffset CreationDate() => Entries.First().ChangeDate;
+        public DateTimeOffset LastChangeDate() => Entries.Last().ChangeDate;
+        public TimeSpan ActivityPeriod() => LastChangeDate() - CreationDate();
+        public TimeSpan Age() => DateTime.UtcNow - CreationDate();
     }
 }
