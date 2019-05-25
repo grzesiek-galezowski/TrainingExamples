@@ -1,16 +1,20 @@
 using System;
 using ApplicationLogic;
+using GitAttempt2;
 
 internal class ConsoleRendering
 {
-  public void Show(ChangeLog[] changeLogs)
+  public void Show(AnalysisResult result)
   {
+    //result.EntriesByHotSpotRank()
+
+    /*
     foreach (var changeLog in changeLogs)
     {
       Console.WriteLine(
-        changeLog.PathOfLastVersion() + " => " +
+        changeLog.PathOfCurrentVersion() + " => " +
         changeLog.ChangesCount() + ":" +
-        changeLog.ComplexityOfLastVersion());
-    }
+        changeLog.ComplexityOfCurrentVersion());
+    }*/
   }
 }

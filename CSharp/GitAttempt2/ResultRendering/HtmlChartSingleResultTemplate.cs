@@ -12,7 +12,7 @@ namespace ResultRendering
     {
       var template = File.ReadAllText("chartTemplate.html");
       var replace = template
-        .Replace("___COMPLEXITY___", analysisResult.ComplexityOfLastVersion().ToString(CultureInfo.InvariantCulture))
+        .Replace("___COMPLEXITY___", analysisResult.ComplexityOfCurrentVersion().ToString(CultureInfo.InvariantCulture))
         .Replace("___CHANGES___", analysisResult.ChangesCount().ToString())
         .Replace("___CREATION_DATE___", analysisResult.CreationDate().ToString("d"))
         .Replace("___LAST_CHANGED___", analysisResult.LastChangeDate().ToString("d"))
@@ -20,7 +20,7 @@ namespace ResultRendering
         .Replace("___ACTIVE_PERIOD___", (int)analysisResult.ActivityPeriod().TotalDays + " days")
         .Replace("___AGE___", (int)analysisResult.Age().TotalDays + " days")
         .Replace("___CHARTNUM___", elementNum.ToString())
-        .Replace("___TITLE___", elementNum + ". " + analysisResult.PathOfLastVersion())
+        .Replace("___TITLE___", elementNum + ". " + analysisResult.PathOfCurrentVersion())
         .Replace("___Y_TITLE___", "Complexity per change")
         .Replace("___LABELS___", Labels(analysisResult))
         .Replace("___DATA___", Data(analysisResult));

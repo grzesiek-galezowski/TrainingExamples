@@ -17,7 +17,7 @@ namespace GitAttempt2
       var analysisResult = RepoAnalysis.Analyze(@"C:\Users\grzes\Documents\GitHub\nscan\", "master");
       var changeLogs = analysisResult.EntriesByHotSpotRank();
 
-      new ConsoleRendering().Show(changeLogs);
+      new ConsoleRendering().Show(analysisResult);
 
       var htmlChartRendering = new HtmlChartOutput();
       htmlChartRendering.InstantiateTemplate(changeLogs);
