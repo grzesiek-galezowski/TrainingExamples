@@ -15,7 +15,6 @@ namespace GitAttempt2
       //using var repo = new Repository(@"C:\Users\grzes\Documents\GitHub\nscan\");
 
       using var repo = new Repository(repositoryPath);
-
       var commits = repo.Branches[branchName].Commits.Reverse().ToArray();
       var analysisMetadata = new Dictionary<string, ChangeLog>();
       var pathsInTrunk = new List<string>();
@@ -24,7 +23,7 @@ namespace GitAttempt2
       CollectResults(repo, commits, analysisMetadata);
 
       var trunkFiles = analysisMetadata.Where(am => pathsInTrunk.Contains(am.Key)).Select(x => x.Value);
-      var analysisResult = new AnalysisResult(trunkFiles);
+      var analysisResult = new AnalysisResult(trunkFiles, repo.Info.Path);
       return analysisResult;
     }
 
