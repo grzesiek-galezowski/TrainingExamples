@@ -1,5 +1,5 @@
-﻿using DataAccess.Ports;
-using DataAccess.Ports.Secondary;
+﻿using System;
+using Persistence.Ports;
 
 namespace Database
 {

@@ -1,6 +1,6 @@
-﻿using DataAccess.Ports;
-using DataAccess.Ports.Primary;
-using DataAccess.Ports.Secondary;
+﻿using System;
+using Persistence.Ports;
+using View.Ports;
 
 namespace Domain
 {
