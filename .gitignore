@@ -159,7 +159,6 @@ Java/path-values/.idea/*
 Java/validations-kata/.idea/modules/test-output/*
 Java/mars-rover-functional/.gradle/buildOutputCleanup/cache.properties
 Java/value-objects/.gradle/buildOutputCleanup/cache.properties
-Java/digits-randori/.idea/libraries/Gradle__com_github_autofixture_autofixturegenerator_1_0_5.xml
 Java/digits-randori/.idea/*
 
 Java/functional-fundamentals/.gradle/buildOutputCleanup/cache.properties
@@ -168,6 +167,8 @@ Java/xunit-test-patterns/.gradle/buildOutputCleanup/cache.properties
 Java/digits-randori/build/*
 Java/functional-fundamentals/build/*
 Java/empty-pacman-randori2/.idea/*
+Java/fizz-buzz-randori/.gradle/*
+Java/fizz-buzz-randori/.idea/*
 CSharp/AutomatedRefactorings/.vs/AutomatedRefactorings/v15/Server/sqlite3/storage.ide-shm
 *.ide-wal
 CSharp/NullIssues/**/obj/*
@@ -183,3 +184,4 @@ CSharp/VotingSystem_EMPTY/.vs/VotingSystem/DesignTimeBuild/.dtbcache
 CSharp/GitAttempt2/.vs/GitAttempt2/DesignTimeBuild/.dtbcache
 CSharp/SpecFlowExample/.vs/SpecFlowExample/DesignTimeBuild/.dtbcache
 CSharp/CommandComparison/.vs/CommandComparison/DesignTimeBuild/.dtbcache
+
