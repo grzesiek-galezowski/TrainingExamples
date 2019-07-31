@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using NSubstitute;
+using TddXt.XNSubstitute.Root;
 using Xunit;
 
 /*
@@ -20,7 +21,7 @@ namespace ValidationsKata
     public void ShouldWHAT()
     {
       //GIVEN
-      
+
 
       //WHEN
 
