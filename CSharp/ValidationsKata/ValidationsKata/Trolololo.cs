@@ -27,6 +27,5 @@ namespace ValidationsKata
       //THEN
       true.Should().BeFalse();
     }
-
   }
 }

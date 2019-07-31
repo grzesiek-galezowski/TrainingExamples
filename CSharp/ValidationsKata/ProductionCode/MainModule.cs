@@ -3,10 +3,10 @@
 namespace ProductionCode
 {
   [CrazyStuff]
-  public class SupahKontroller
+  public class MainModule
   {
     [WeirdRoutingInfo]
-    public void PerformFor(SubscriptionRequestData requestData)
+    public void Handle(SubscriptionRequestData requestData)
     {
       
     }
