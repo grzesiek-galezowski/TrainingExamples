@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventAnomalies", "EventAnomalies\EventAnomalies.csproj", "{25E66B60-0366-4376-9531-14B9F5604D57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateMethodsAsEventHandlers", "PrivateMethodsAsEventHandlers\PrivateMethodsAsEventHandlers.csproj", "{E6912F3B-9462-4C59-B3E3-D6EC03D2E44E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PrivateMethodsAsEventHandlers", "PrivateMethodsAsEventHandlers\PrivateMethodsAsEventHandlers.csproj", "{E6912F3B-9462-4C59-B3E3-D6EC03D2E44E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrivateMethodsAsEventHandlersRegisteredInMethod", "PrivateMethodsAsEventHandlersRegisteredInMethod\PrivateMethodsAsEventHandlersRegisteredInMethod.csproj", "{AF17CFA8-3D32-4E86-8E8A-DBA7E7967537}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{E6912F3B-9462-4C59-B3E3-D6EC03D2E44E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6912F3B-9462-4C59-B3E3-D6EC03D2E44E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6912F3B-9462-4C59-B3E3-D6EC03D2E44E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF17CFA8-3D32-4E86-8E8A-DBA7E7967537}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF17CFA8-3D32-4E86-8E8A-DBA7E7967537}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF17CFA8-3D32-4E86-8E8A-DBA7E7967537}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF17CFA8-3D32-4E86-8E8A-DBA7E7967537}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
