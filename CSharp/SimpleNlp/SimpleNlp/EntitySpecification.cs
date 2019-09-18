@@ -26,7 +26,7 @@ namespace SimpleNlp
     {
       recognizedEntities.AddRange(
         from pattern in _patterns 
-        where pattern.Equals(token, StringComparison.InvariantCultureIgnoreCase) 
+        where pattern.Equals(token, StringComparison.InvariantCultureIgnoreCase) //bug value object
         select RecognizedEntity.Value(_entityName, pattern));
     }
 

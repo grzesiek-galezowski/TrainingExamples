@@ -9,7 +9,7 @@ namespace SimpleNlp
   {
     private const string IntentNone = "None";
     private readonly Dictionary<EntityName, EntitySpecification> _entitySpecifications = new Dictionary<EntityName, EntitySpecification>();
-    private IntentSpecification _intentSpecification;
+    private readonly List<IntentSpecification> _intentSpecifications = new List<IntentSpecification>();
 
     public void AddEntity(EntityName entityName, string value)
     {
@@ -18,6 +18,12 @@ namespace SimpleNlp
         _entitySpecifications[entityName] = new EntitySpecification(entityName);
       }
       _entitySpecifications[entityName].AddPattern(value);
+    }
+
+    public void AddIntent(string intentName, IEnumerable<EntityName> entityNames)
+    {
+      //bug multiple
+      _intentSpecifications.Add(new IntentSpecification(intentName, entityNames));
     }
 
     public RecognitionResult Recognize(string text)
@@ -31,13 +37,12 @@ namespace SimpleNlp
 
     private string TopIntent(IEnumerable<RecognizedEntity> recognizedEntities)
     {
-      if (_intentSpecification != null) //todo remove later
+      foreach (var intentSpec in _intentSpecifications)
       {
-        if (_intentSpecification.IsMatchedBy(recognizedEntities))
+        if (intentSpec.IsMatchedBy(recognizedEntities))
         {
-          return _intentSpecification.IntentName;
+          return intentSpec.IntentName;
         }
-        return IntentNone;
       }
 
       return IntentNone;
@@ -60,9 +65,5 @@ namespace SimpleNlp
       return tokensUnderPreparation;
     }
 
-    public void AddIntent(string intentName, IEnumerable<EntityName> entityNames)
-    {
-      _intentSpecification = new IntentSpecification(intentName, entityNames);
-    }
   }
 }
