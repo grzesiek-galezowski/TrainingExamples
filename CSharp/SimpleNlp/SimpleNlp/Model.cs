@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace SimpleNlp
@@ -8,16 +7,12 @@ namespace SimpleNlp
   public class Model
   {
     private const string IntentNone = "None";
-    private readonly Dictionary<EntityName, EntitySpecification> _entitySpecifications = new Dictionary<EntityName, EntitySpecification>();
+    private readonly List<EntitySpecification> _entitySpecifications = new List<EntitySpecification>();
     private readonly List<IntentSpecification> _intentSpecifications = new List<IntentSpecification>();
 
     public void AddEntity(EntityName entityName, string value)
     {
-      if (!_entitySpecifications.ContainsKey(entityName))
-      {
-        _entitySpecifications[entityName] = new EntitySpecification(entityName);
-      }
-      _entitySpecifications[entityName].AddPattern(value);
+      _entitySpecifications.Add(new EntitySpecification(entityName, value));
     }
 
     public void AddIntent(string intentName, IEnumerable<EntityName> entityNames)
@@ -30,7 +25,7 @@ namespace SimpleNlp
     {
       text = Normalize(text);
       var tokensUnderPreparation = Tokenize(text);
-      var recognizedEntities = tokensUnderPreparation.TranslateToEntitiesUsing(_entitySpecifications.Values);
+      var recognizedEntities = tokensUnderPreparation.TranslateToEntitiesUsing(_entitySpecifications);
 
       return new RecognitionResult(recognizedEntities.ToImmutableList(), TopIntent(recognizedEntities));
     }
@@ -57,7 +52,7 @@ namespace SimpleNlp
     {
       var tokensUnderPreparation = TokensUnderPreparation.CreateInitial(text);
 
-      foreach (var entitySpecification in _entitySpecifications.Values)
+      foreach (var entitySpecification in _entitySpecifications)
       {
         entitySpecification.ApplyTo(tokensUnderPreparation);
       }

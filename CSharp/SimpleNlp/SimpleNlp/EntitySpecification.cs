@@ -1,38 +1,30 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace SimpleNlp
 {
   public class EntitySpecification
   {
     private readonly EntityName _entityName;
-    private readonly List<string> _patterns = new List<string>();
+    private readonly string _pattern;
 
-    public EntitySpecification(EntityName entityName)
+    public EntitySpecification(EntityName entityName, string pattern)
     {
       _entityName = entityName;
+      _pattern = pattern;
     }
 
     public void ApplyTo(TokensUnderPreparation tokensUnderPreparation)
     {
-      foreach (var pattern in _patterns)
-      {
-        tokensUnderPreparation.PartitionBasedOn(pattern);
-      }
+      tokensUnderPreparation.PartitionBasedOn(_pattern);
     }
 
     public void TryToMatch(string token, List<RecognizedEntity> recognizedEntities)
     {
-      recognizedEntities.AddRange(
-        from pattern in _patterns 
-        where pattern.Equals(token, StringComparison.InvariantCultureIgnoreCase) //bug value object
-        select RecognizedEntity.Value(_entityName, pattern));
-    }
-
-    public void AddPattern(string value)
-    {
-      _patterns.Add(value);
+      if (_pattern.Equals(token, StringComparison.InvariantCultureIgnoreCase))
+      {
+        recognizedEntities.Add(new RecognizedEntity(_entityName, _pattern));
+      }
     }
   }
 }

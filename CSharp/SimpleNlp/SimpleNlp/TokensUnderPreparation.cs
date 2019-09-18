@@ -1,11 +1,10 @@
 using System.Collections.Generic;
-using System.Collections.Immutable;
 
 namespace SimpleNlp
 {
   public class TokensUnderPreparation
   {
-    public string[] _tokens;
+    private string[] _tokens;
 
     public TokensUnderPreparation(string[] tokens)
     {
