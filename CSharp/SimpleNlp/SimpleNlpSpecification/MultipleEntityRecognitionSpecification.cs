@@ -50,7 +50,6 @@ namespace SimpleNlpSpecification
 
       var result = model.Recognize("driver license license plate driver license");
 
-      result.Entities.Should().HaveCount(3);
       result.Entities.Should().BeEquivalentTo(new[]
       {
         RecognizedEntity.Value(EntityName.Value("DRIVER_LICENSE"), "driver license"),

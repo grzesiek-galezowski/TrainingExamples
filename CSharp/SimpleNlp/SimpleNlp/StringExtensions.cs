@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace SimpleNlp
 {
@@ -7,18 +7,8 @@ namespace SimpleNlp
   {
     public static IEnumerable<string> SplitAndKeep(this string s, string separator)
     {
-      var obj = s.Split(new[] { separator }, StringSplitOptions.None);
-      var tokens = new List<string>();
-      for (int i = 0; i < obj.Length; i++)
-      {
-        tokens.Add(obj[i]);
-        if (i != obj.Length - 1)
-        {
-          tokens.Add(separator);
-        }
-
-      }
-      return tokens;
+      var forbiddenDelimiter = "[^0-9a-zA-Z'`]";
+      return Regex.Split(s, $"(?:{forbiddenDelimiter}|^)({separator})(?:{forbiddenDelimiter}|$)");
     }
   }
 }

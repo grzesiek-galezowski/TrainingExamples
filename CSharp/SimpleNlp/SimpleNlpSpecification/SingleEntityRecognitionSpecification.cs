@@ -26,17 +26,36 @@ namespace SimpleNlpSpecification
     }
 
     [Fact]
+    public void ShouldNotRecognizeEntitiesInCenterOfOtherWords()
+    {
+      //GIVEN
+      var model = new Model();
+      model.AddEntity(EntityName.Value("PLATE"), "plate");
+
+      //WHEN
+      var result1 = model.Recognize("plateau");
+      var result2 = model.Recognize("unplated");
+
+      //THEN
+      result1.Entities.Should().BeEmpty();
+      result2.Entities.Should().BeEmpty();
+    }
+
+    [Fact]
     public void ShouldBeAbleToRecognizeSingleEntityWithSynonyms()
     {
+      //GIVEN
       var model = new Model();
       model.AddEntity(EntityName.Value("DRIVER_LICENSE"), "driver license");
       model.AddEntity(EntityName.Value("DRIVER_LICENSE"), "driver licence");
       model.AddEntity(EntityName.Value("DRIVER_LICENSE"), "driving license");
 
+      //WHEN
       var result1 = model.Recognize("driver license");
       var result2 = model.Recognize("driver licence");
       var result3 = model.Recognize("driving license");
 
+      //THEN
       result1.ShouldContainOnly("DRIVER_LICENSE", "driver license");
       result2.ShouldContainOnly("DRIVER_LICENSE", "driver licence");
       result3.ShouldContainOnly("DRIVER_LICENSE", "driving license");
