@@ -40,9 +40,23 @@ namespace SimpleNlpSpecification
       result1.Entities.Should().BeEmpty();
       result2.Entities.Should().BeEmpty();
     }
+    
+    [Fact]
+    public void ShouldRecognizeEntitiesWithSynonyms()
+    {
+      //GIVEN
+      var model = new Model();
+      model.AddEntity(EntityName.Value("PLATE"), "plate", new [] { "steel" });
+
+      //WHEN
+      var result1 = model.Recognize("steel");
+
+      //THEN
+      result1.ShouldContainOnly("PLATE", "plate");
+    }
 
     [Fact]
-    public void ShouldBeAbleToRecognizeSingleEntityWithSynonyms()
+    public void ShouldBeAbleToRecognizeSingleEntityWithDifferentPatterns()
     {
       //GIVEN
       var model = new Model();

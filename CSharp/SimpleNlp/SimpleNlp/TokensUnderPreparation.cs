@@ -11,12 +11,12 @@ namespace SimpleNlp
       _tokens = tokens;
     }
 
-    public void PartitionBasedOn(string synonym)
+    public void PartitionBasedOn(string pattern)
     {
       var newTokens = new List<string>();
       foreach (var token in _tokens)
       {
-        var strings = token.SplitAndKeep(synonym);
+        var strings = token.SplitAndKeep(pattern);
         newTokens.AddRange(strings);
       }
 

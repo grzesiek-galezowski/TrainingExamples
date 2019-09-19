@@ -12,7 +12,12 @@ namespace SimpleNlp
 
     public void AddEntity(EntityName entityName, string value)
     {
-      _entitySpecifications.Add(new EntitySpecification(entityName, value));
+      _entitySpecifications.Add(new EntitySpecification(entityName, value, new string[] {}));
+    }
+
+    public void AddEntity(EntityName entityName, string value, string[] synonyms)
+    {
+      _entitySpecifications.Add(new EntitySpecification(entityName, value, synonyms));
     }
 
     public void AddIntent(string intentName, IEnumerable<EntityName> entityNames)
