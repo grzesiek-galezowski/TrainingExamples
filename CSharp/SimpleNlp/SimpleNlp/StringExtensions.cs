@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace SimpleNlp
+namespace TddXt.SimpleNlp
 {
   public static class StringExtensions
   {

@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Text.RegularExpressions;
 
-namespace SimpleNlp
+namespace TddXt.SimpleNlp
 {
-  public class Model
+  public class RecognitionModel
   {
     private const string IntentNone = "None";
     private readonly List<EntitySpecification> _entitySpecifications = new List<EntitySpecification>();
@@ -22,7 +22,6 @@ namespace SimpleNlp
 
     public void AddIntent(string intentName, IEnumerable<EntityName> entityNames)
     {
-      //bug multiple
       _intentSpecifications.Add(new IntentSpecification(intentName, entityNames));
     }
 

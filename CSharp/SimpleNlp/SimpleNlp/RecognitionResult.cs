@@ -1,6 +1,6 @@
 using System.Collections.Immutable;
 
-namespace SimpleNlp
+namespace TddXt.SimpleNlp
 {
   public class RecognitionResult
   {

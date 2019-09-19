@@ -1,6 +1,6 @@
 using System.Linq;
 using FluentAssertions;
-using SimpleNlp;
+using TddXt.SimpleNlp;
 
 namespace SimpleNlpSpecification
 {

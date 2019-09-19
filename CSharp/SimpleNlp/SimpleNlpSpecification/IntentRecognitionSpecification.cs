@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using FluentAssertions;
-using SimpleNlp;
+using TddXt.SimpleNlp;
 using Xunit;
 
 namespace SimpleNlpSpecification
@@ -12,7 +12,7 @@ namespace SimpleNlpSpecification
     public void ShouldRecognizeNoIntentWhenNothingHasBeenConfigured()
     {
       //GIVEN
-      var model = new Model();
+      var model = new RecognitionModel();
       
       //WHEN
       var recognitionResult = model.Recognize("Trolololo");
@@ -25,7 +25,7 @@ namespace SimpleNlpSpecification
     public void ShouldRecognizeNoIntentWhenTextDoesNotContainAnyOfIntentEntities()
     {
       //GIVEN
-      var model = new Model();
+      var model = new RecognitionModel();
       
       model.AddEntity(EntityName.Value("NO"), "no");
       model.AddIntent("INTENT_REFUSE", new [] { EntityName.Value("NO") });
@@ -44,7 +44,7 @@ namespace SimpleNlpSpecification
     public void ShouldRecognizeIntentWithSingleEntity(string text)
     {
       //GIVEN
-      var model = new Model();
+      var model = new RecognitionModel();
       
       model.AddEntity(EntityName.Value("YES"), "yes");
       model.AddEntity(EntityName.Value("NO"), "no");
@@ -62,7 +62,7 @@ namespace SimpleNlpSpecification
     public void ShouldRecognizeIntentWithMultipleEntitiesMatchingExactlyTheOnesRecognized()
     {
       //GIVEN
-      var model = new Model();
+      var model = new RecognitionModel();
       
       model.AddEntity(EntityName.Value("YES"), "yes");
       model.AddEntity(EntityName.Value("PLEASE"), "please");
@@ -79,7 +79,7 @@ namespace SimpleNlpSpecification
     public void ShouldReturnFirstExactlyMatchedIntent()
     {
       //GIVEN
-      var model = new Model();
+      var model = new RecognitionModel();
       
       model.AddEntity(EntityName.Value("YES"), "yes");
       model.AddEntity(EntityName.Value("PLEASE"), "please");
@@ -97,7 +97,7 @@ namespace SimpleNlpSpecification
     public void ShouldBeAbleToMatchMultipleIntents()
     {
       //GIVEN
-      var model = new Model();
+      var model = new RecognitionModel();
       
       model.AddEntity(EntityName.Value("YES"), "yes");
       model.AddEntity(EntityName.Value("NO"), "no");
@@ -125,7 +125,7 @@ namespace SimpleNlpSpecification
     public void ShouldBeAbleToMatchMultipleIntentPatterns()
     {
       //GIVEN
-      var model = new Model();
+      var model = new RecognitionModel();
       
       model.AddEntity(EntityName.Value("YES"), "yes");
       model.AddEntity(EntityName.Value("NO"), "no");

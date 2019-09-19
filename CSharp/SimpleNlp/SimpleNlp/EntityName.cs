@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Value;
 
-namespace SimpleNlp
+namespace TddXt.SimpleNlp
 {
   public class EntityName : ValueType<EntityName>
   {

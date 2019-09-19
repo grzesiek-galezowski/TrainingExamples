@@ -1,5 +1,5 @@
 using FluentAssertions;
-using SimpleNlp;
+using TddXt.SimpleNlp;
 using Xunit;
 
 namespace SimpleNlpSpecification
@@ -17,7 +17,7 @@ namespace SimpleNlpSpecification
     [InlineData("LICENSE_PLATE", "license plate", "license plate, will ya?")] //works for suffixed values?
     public void ShouldBeAbleToRecognizeSingleEntity(string entityName, string entityValue, string text)
     {
-      var model = new Model();
+      var model = new RecognitionModel();
       model.AddEntity(EntityName.Value(entityName), entityValue);
 
       var result = model.Recognize(text);
@@ -29,7 +29,7 @@ namespace SimpleNlpSpecification
     public void ShouldNotRecognizeEntitiesInCenterOfOtherWords()
     {
       //GIVEN
-      var model = new Model();
+      var model = new RecognitionModel();
       model.AddEntity(EntityName.Value("PLATE"), "plate");
 
       //WHEN
@@ -45,7 +45,7 @@ namespace SimpleNlpSpecification
     public void ShouldRecognizeEntitiesWithSynonyms()
     {
       //GIVEN
-      var model = new Model();
+      var model = new RecognitionModel();
       model.AddEntity(EntityName.Value("PLATE"), "plate", new [] { "steel" });
 
       //WHEN
@@ -59,7 +59,7 @@ namespace SimpleNlpSpecification
     public void ShouldBeAbleToRecognizeSingleEntityWithDifferentPatterns()
     {
       //GIVEN
-      var model = new Model();
+      var model = new RecognitionModel();
       model.AddEntity(EntityName.Value("DRIVER_LICENSE"), "driver license");
       model.AddEntity(EntityName.Value("DRIVER_LICENSE"), "driver licence");
       model.AddEntity(EntityName.Value("DRIVER_LICENSE"), "driving license");
@@ -78,7 +78,7 @@ namespace SimpleNlpSpecification
     [Fact]
     public void ShouldReturnEmptyListWhenNoEntitiesWereDefined()
     {
-      var model = new Model();
+      var model = new RecognitionModel();
 
       var result1 = model.Recognize("driver license");
 
@@ -88,7 +88,7 @@ namespace SimpleNlpSpecification
     [Fact]
     public void ShouldReturnEmptyListWhenNoTextDoesNotMatch()
     {
-      var model = new Model();
+      var model = new RecognitionModel();
       model.AddEntity(EntityName.Value("DRIVER_LICENSE"), "driver license");
 
       var result = model.Recognize("Trolololo");

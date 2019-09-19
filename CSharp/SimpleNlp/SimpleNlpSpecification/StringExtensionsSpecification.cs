@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using SimpleNlp;
+using TddXt.SimpleNlp;
 using Xunit;
 
 namespace SimpleNlpSpecification

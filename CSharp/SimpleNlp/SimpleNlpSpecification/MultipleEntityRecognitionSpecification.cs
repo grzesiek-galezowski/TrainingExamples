@@ -1,5 +1,5 @@
 using FluentAssertions;
-using SimpleNlp;
+using TddXt.SimpleNlp;
 using Xunit;
 
 namespace SimpleNlpSpecification
@@ -11,7 +11,7 @@ namespace SimpleNlpSpecification
     [Fact]
     public void ShouldBeAbleToRecognizeTheSameEntityMultipleTimes()
     {
-      var model = new Model();
+      var model = new RecognitionModel();
       model.AddEntity(EntityName.Value("DRIVER_LICENSE"), "driver license");
 
       var result = model.Recognize("driver license driver license");
@@ -27,7 +27,7 @@ namespace SimpleNlpSpecification
     [Fact]
     public void ShouldBeAbleToRecognizeTheSameEntityMultipleTimesWithSeveralPatterns()
     {
-      var model = new Model();
+      var model = new RecognitionModel();
       model.AddEntity(EntityName.Value("DRIVER_LICENSE"), "driver license");
       model.AddEntity(EntityName.Value("DRIVER_LICENSE"), "driver's license");
 
@@ -44,7 +44,7 @@ namespace SimpleNlpSpecification
     [Fact]
     public void ShouldBeAbleToRecognizeTheDifferentEntities()
     {
-      var model = new Model();
+      var model = new RecognitionModel();
       model.AddEntity(EntityName.Value("DRIVER_LICENSE"), "driver license");
       model.AddEntity(EntityName.Value("LICENSE_PLATE"), "license plate");
 
@@ -61,7 +61,7 @@ namespace SimpleNlpSpecification
     [Fact]
     public void ShouldBeAbleToRecognizeTheDifferentEntities2()
     {
-      var model = new Model();
+      var model = new RecognitionModel();
       model.AddEntity(EntityName.Value("DRIVER_LICENSE"), "driver license");
       model.AddEntity(EntityName.Value("nato"), "alpha");
       model.AddEntity(EntityName.Value("nato"), "bravo");

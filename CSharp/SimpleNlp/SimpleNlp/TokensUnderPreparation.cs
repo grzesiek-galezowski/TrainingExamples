@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace SimpleNlp
+namespace TddXt.SimpleNlp
 {
   public class TokensUnderPreparation
   {
