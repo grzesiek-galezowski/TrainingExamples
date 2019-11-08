@@ -51,7 +51,7 @@ namespace IoCContainerCons
 
         protected override string Period()
         {
-            return "yearly";
+            return "monthly";
         }
     }
 
