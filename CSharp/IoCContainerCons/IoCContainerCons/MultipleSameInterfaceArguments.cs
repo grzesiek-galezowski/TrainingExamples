@@ -4,10 +4,14 @@ using Autofac.Core;
 using Autofac.Features.AttributeFilters;
 using NUnit.Framework;
 
-//bug decorators
-//bug events
 //bug object encapsulation (check if this is possible in a container)
+//it is to some extent by using child scopes(?) but that makes these places dependent on the container
 
+/// <summary>
+/// "Note that some relationships are based on types that are in Autofac (e.g., IIndex<X, B>).
+/// Using those relationship types do tie you to at least having a reference to Autofac, even
+/// if you choose to use a different IoC container for the actual resolution of services." 
+/// </summary>
 namespace IoCContainerCons
 {
     public class TwoImplementationsOfTheSameInterface
@@ -23,7 +27,7 @@ namespace IoCContainerCons
         }
 
         [Test]
-        //also: keyed and indexed
+        //also: keyed (below) and indexed (and named parameters for constants)
         public void ContainerCompositionWithNamed()
         {
             var containerBuilder = new ContainerBuilder();
@@ -41,7 +45,7 @@ namespace IoCContainerCons
         }
 
         [Test]
-        public void ContainerCompositionThroughResolveComponents()
+        public void ContainerCompositionThroughResolveKeyedComponents()
         {
             var containerBuilder = new ContainerBuilder();
             containerBuilder.RegisterType<LocalDataStorage>().Keyed<IDataStorage>("localStorage");
@@ -62,6 +66,26 @@ namespace IoCContainerCons
         }
 
         [Test]
+        public void ContainerCompositionThroughRegistrationOfResolvedParameters()
+        {
+            var containerBuilder = new ContainerBuilder();
+            containerBuilder.RegisterType<LocalDataStorage>().Keyed<IDataStorage>("localStorage");
+            containerBuilder.RegisterType<RemoteDataStorage>().Keyed<IDataStorage>("remoteStorage");
+            containerBuilder.RegisterType<ArchiveService>()
+                .WithParameter(new ResolvedParameter(
+                (info, context) => info.Name == "localStorage",
+                (info, context) => context.ResolveKeyed<IDataStorage>("localStorage")))
+                .WithParameter(new ResolvedParameter(
+                    (info, context) => info.Name == "remoteStorage",
+                    (info, context) => context.ResolveKeyed<IDataStorage>("remoteStorage")));
+
+            using var container = containerBuilder.Build();
+            var archiveService = container.Resolve<ArchiveService>();
+            Assert.IsInstanceOf<LocalDataStorage>(archiveService.LocalStorage);
+            Assert.IsInstanceOf<RemoteDataStorage>(archiveService.RemoteStorage);
+        }
+
+        [Test]
         public void ContainerCompositionWithAttributes()
         {
             var containerBuilder = new ContainerBuilder();
@@ -74,6 +98,24 @@ namespace IoCContainerCons
             Assert.IsInstanceOf<LocalDataStorage>(archiveService.LocalStorage);
             Assert.IsInstanceOf<RemoteDataStorage>(archiveService.RemoteStorage);
         }
+
+        [Test]
+        public void ContainerCompositionThroughNamedParameters()
+        {
+            //only for up-front known values and constants - cannot resolve from container each time
+            //prone to name change(?)
+            var containerBuilder = new ContainerBuilder();
+            containerBuilder.RegisterType<ArchiveService>()
+                .WithParameter("localStorage", new LocalDataStorage())
+                .WithParameter("remoteStorage", new RemoteDataStorage());
+
+            using var container = containerBuilder.Build();
+            var archiveService = container.Resolve<ArchiveService>();
+            
+            Assert.IsInstanceOf<LocalDataStorage>(archiveService.LocalStorage);
+            Assert.IsInstanceOf<RemoteDataStorage>(archiveService.RemoteStorage);
+        }
+
     }
 
     public class LocalDataStorage : IDataStorage

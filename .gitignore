@@ -189,3 +189,6 @@ CSharp/ValidationsKata/.vs/ValidationsKata/DesignTimeBuild/.dtbcache
 CSharp/EventAnomalies/.vs/EventAnomalies/DesignTimeBuild/.dtbcache
 CSharp/ImageArchivistKata/.vs/ImageArchivistKata/DesignTimeBuild/.dtbcache
 CSharp/IoCContainerCons/.vs/IoCContainerCons/DesignTimeBuild/.dtbcache
+CSharp/FizzBuzzCore/FizzBuzzCore/obj/project.assets.json
+CSharp/FizzBuzzCore/FizzBuzzCore/obj/FizzBuzzCore.csproj.nuget.g.targets
+CSharp/FizzBuzzCore/FizzBuzzCore/obj/FizzBuzzCore.csproj.nuget.g.props

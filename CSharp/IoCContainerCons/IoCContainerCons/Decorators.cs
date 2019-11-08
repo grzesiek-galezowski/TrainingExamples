@@ -32,7 +32,7 @@ namespace IoCContainerCons
             builder.RegisterType<Answer>().As<IAnswer>();
             builder.RegisterDecorator<TracedAnswer, IAnswer>();
             builder.RegisterDecorator<SynchronizedAnswer, IAnswer>();
-            //nothing more that can be done with it, e.g. cannot pass NamedParameter
+            //nothing more that can be done with it, e.g. cannot pass NamedParameter -> .WithParameter()
 
             using var container = builder.Build();
             var answer = container.Resolve<IAnswer>();
