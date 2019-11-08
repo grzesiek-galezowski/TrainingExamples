@@ -5,6 +5,14 @@ using System.Text;
 
 namespace IoCContainerCons
 {
+    public class Lol
+    {
+        public void DoWork()
+        {
+            new YearlyReport().Setup();
+            new MonthlyReport().Setup();
+        }
+    }
     public abstract class AbstractReport
     {
         private readonly List<string> _lines = new List<string>();
@@ -17,6 +25,7 @@ namespace IoCContainerCons
 
         protected void AddLine(string line)
         {
+            Console.WriteLine($"Added {line}");
             _lines.Add(line);
         }
 
