@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 
 namespace IoCContainerCons
@@ -51,7 +52,7 @@ namespace IoCContainerCons
 
         protected override string Period()
         {
-            return "monthly";
+            return "monthly for" + DateTime.Now.Month;
         }
     }
 
