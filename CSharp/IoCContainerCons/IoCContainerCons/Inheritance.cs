@@ -9,8 +9,13 @@ namespace IoCContainerCons
     {
         public void DoWork()
         {
-            new YearlyReport().Setup();
-            new MonthlyReport().Setup();
+            var yearlyReport = new YearlyReport();
+            yearlyReport.Setup();
+            yearlyReport.Print();
+            
+            var monthlyReport = new MonthlyReport();
+            monthlyReport.Setup();
+            monthlyReport.Print();
         }
     }
     public abstract class AbstractReport
@@ -21,6 +26,11 @@ namespace IoCContainerCons
         {
             AddLine($"This is a {Period()} report");
             FillTheRestOfTheReport();
+        }
+
+        public void Print()
+        {
+            Console.WriteLine(Period().ToUpperInvariant() + string.Join(Environment.NewLine, _lines));
         }
 
         protected void AddLine(string line)
