@@ -36,7 +36,7 @@ namespace BotLogic
       StateNames stateName,
       CancellationToken cancellationToken)
     {
-      _currentState = _states.GetState(stateName);
+      _currentState = _states.GetState(stateName); //different!
       await _persistentState.SetCurrentStateAsync(stateName, cancellationToken);
       await _currentState.OnEnterAsync(cancellationToken);
     }
