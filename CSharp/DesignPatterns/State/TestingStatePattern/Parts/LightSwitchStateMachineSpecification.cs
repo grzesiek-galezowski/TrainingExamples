@@ -11,7 +11,7 @@ namespace TestingStatePattern.Parts
     public void ShouldEnterItsInitialStateOnCreation()
     {
       //GIVEN
-      var initialState = Substitute.For<LightSwitchState>();
+      var initialState = Substitute.For<ILightSwitchState>();
       ;
 
       //WHEN
@@ -25,9 +25,9 @@ namespace TestingStatePattern.Parts
     public void ShouldEnterItsNextStateAndRouteSignalsToItAfterMovingToNextState()
     {
       //GIVEN
-      var initialState = Substitute.For<LightSwitchState>();
+      var initialState = Substitute.For<ILightSwitchState>();
       ;
-      var nextState = Substitute.For<LightSwitchState>();
+      var nextState = Substitute.For<ILightSwitchState>();
       ;
       var machine = new LightSwitchStateMachine(initialState);
 
@@ -44,7 +44,7 @@ namespace TestingStatePattern.Parts
     public void ShouldRouteSwitchOnRequestToCurrentState()
     {
       //GIVEN
-      var initialState = Substitute.For<LightSwitchState>();
+      var initialState = Substitute.For<ILightSwitchState>();
       var machine = new LightSwitchStateMachine(initialState);
 
       //WHEN
@@ -57,7 +57,7 @@ namespace TestingStatePattern.Parts
 
     //etc. etc.
 
-    private static void AssertMachineIsIn(LightSwitchState nextState, LightSwitchContext machine)
+    private static void AssertMachineIsIn(ILightSwitchState nextState, ILightSwitchContext machine)
     {
       nextState.Received(1).SwitchOn(machine);
     }

@@ -4,7 +4,7 @@ using State.States;
 
 namespace State
 {
-  public class LightSwitchStatesFactory : LightSwitchStates
+  public class LightSwitchStatesFactory : ILightSwitchStates
   {
     private readonly Light _light;
 
@@ -13,12 +13,12 @@ namespace State
       _light = light;
     }
 
-    public LightSwitchState SwitchedOff()
+    public ILightSwitchState SwitchedOff()
     {
       return new SwitchedOffState(this, _light);
     }
 
-    public LightSwitchState SwitchedOn()
+    public ILightSwitchState SwitchedOn()
     {
       return new SwitchedOnState(this, _light);
     }

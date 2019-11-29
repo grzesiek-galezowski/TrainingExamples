@@ -80,7 +80,7 @@ namespace TestingStatePattern.BlackBox
       return lightSwitchStateMachine;
     }
 
-    private static void AssertSwitchesCount(int numSwitches, LightSwitch lightSwitchStateMachine)
+    private static void AssertSwitchesCount(int numSwitches, ILightSwitch lightSwitchStateMachine)
     {
       var output = Substitute.For<Output>();
       lightSwitchStateMachine.ShowSwitchesCountOn(output);

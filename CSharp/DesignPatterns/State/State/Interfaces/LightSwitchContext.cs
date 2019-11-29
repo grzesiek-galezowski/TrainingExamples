@@ -1,8 +1,8 @@
 ﻿namespace State.Interfaces
 {
-  public interface LightSwitchContext
+  public interface ILightSwitchContext
   {
-    void MoveTo(LightSwitchState nextState);
+    void MoveTo(ILightSwitchState nextState);
     void RegisterSwitchOn();
   }
 }

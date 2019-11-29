@@ -1,8 +1,8 @@
 ﻿namespace State.Interfaces
 {
-  public interface LightSwitchStates
+  public interface ILightSwitchStates
   {
-    LightSwitchState SwitchedOff();
-    LightSwitchState SwitchedOn();
+    ILightSwitchState SwitchedOff();
+    ILightSwitchState SwitchedOn();
   }
 }

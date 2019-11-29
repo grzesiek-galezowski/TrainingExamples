@@ -47,9 +47,9 @@
     <Compile Include="OtherServices\Light.cs" />
     <Compile Include="OtherServices\ConsoleOutput.cs" />
     <Compile Include="MainObject.cs" />
-    <Compile Include="Interfaces\LightSwitch.cs" />
+    <Compile Include="Interfaces\ILightSwitch.cs" />
     <Compile Include="Interfaces\LightSwitchContext.cs" />
-    <Compile Include="Interfaces\LightSwitchState.cs" />
+    <Compile Include="Interfaces\ILightSwitchState.cs" />
     <Compile Include="LightSwitchStateMachine.cs" />
     <Compile Include="Interfaces\LightSwitchStates.cs" />
     <Compile Include="LightSwitchStatesFactory.cs" />

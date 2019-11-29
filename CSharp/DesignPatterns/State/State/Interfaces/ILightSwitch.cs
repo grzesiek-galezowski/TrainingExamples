@@ -2,7 +2,7 @@
 
 namespace State.Interfaces
 {
-  public interface LightSwitch
+  public interface ILightSwitch
   {
     void SwitchOn();
     void SwitchOff();

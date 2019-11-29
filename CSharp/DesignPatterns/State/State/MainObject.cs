@@ -22,26 +22,23 @@ namespace State
     public static void Main(string[] args)
     {
       var consoleOutput = new ConsoleOutput();
-      var light = new DiningRoomLight();
-      var lightSwitchStatesFactory = new LightSwitchStatesFactory(light);
-      var lightSwitchStateMachine = 
-        CreateLightSwitchStateMachine(lightSwitchStatesFactory.SwitchedOff());
-      lightSwitchStateMachine.SwitchOn();
-      lightSwitchStateMachine.SwitchOff();
-      lightSwitchStateMachine.SwitchOn();
-      lightSwitchStateMachine.SwitchOff();
-      lightSwitchStateMachine.SwitchOff();
-      lightSwitchStateMachine.SwitchOn();
-      lightSwitchStateMachine.SwitchOn();
-      lightSwitchStateMachine.SwitchOff();
-      lightSwitchStateMachine.ShowSwitchesCountOn(consoleOutput);
+      var statesFactory = new LightSwitchStatesFactory(new DiningRoomLight());
+      var lightSwitch = CreateLightSwitchStateMachine(statesFactory.SwitchedOff());
+      lightSwitch.SwitchOn();
+      lightSwitch.SwitchOff();
+      lightSwitch.SwitchOn();
+      lightSwitch.SwitchOff();
+      lightSwitch.SwitchOff();
+      lightSwitch.SwitchOn();
+      lightSwitch.SwitchOn();
+      lightSwitch.SwitchOff();
+      lightSwitch.ShowSwitchesCountOn(consoleOutput);
     }
 
-    private static SynchronizedLightSwitch CreateLightSwitchStateMachine(
-      LightSwitchState lightSwitchState)
+    private static ILightSwitch CreateLightSwitchStateMachine(
+      ILightSwitchState initialState)
     {
-      return new SynchronizedLightSwitch(new LightSwitchStateMachine(
-        lightSwitchState));
+      return new LightSwitchStateMachine(initialState);
     }
   }
 }

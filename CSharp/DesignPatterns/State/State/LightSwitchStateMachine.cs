@@ -3,12 +3,12 @@ using State.OtherServices;
 
 namespace State
 {
-  public class LightSwitchStateMachine : LightSwitch, LightSwitchContext
+  public class LightSwitchStateMachine : ILightSwitch, ILightSwitchContext
   {
-    private LightSwitchState _currentState;
+    private ILightSwitchState _currentState;
     private int _numSwitches = 0;
 
-    public LightSwitchStateMachine(LightSwitchState initialState)
+    public LightSwitchStateMachine(ILightSwitchState initialState)
     {
       MoveTo(initialState); //has to be the last line!!! Alternative - Start() method
     }
@@ -23,7 +23,7 @@ namespace State
       _currentState.SwitchOff(this);
     }
 
-    public void MoveTo(LightSwitchState nextState)
+    public void MoveTo(ILightSwitchState nextState)
     {
       _currentState = nextState;
       _currentState.OnEnter(this); //what about OnExit()?

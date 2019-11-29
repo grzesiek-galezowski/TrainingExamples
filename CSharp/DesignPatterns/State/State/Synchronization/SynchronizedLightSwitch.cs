@@ -3,12 +3,12 @@ using State.OtherServices;
 
 namespace State.Synchronization
 {
-  public class SynchronizedLightSwitch : LightSwitch
+  public class SynchronizedLightSwitch : ILightSwitch
   {
-    private readonly LightSwitch _lightSwitch;
+    private readonly ILightSwitch _lightSwitch;
     private readonly object _syncRoot = new object();
 
-    public SynchronizedLightSwitch(LightSwitch lightSwitch)
+    public SynchronizedLightSwitch(ILightSwitch lightSwitch)
     {
       _lightSwitch = lightSwitch;
     }
