@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FunctionalState.OtherServices
+namespace ProceduralStateMachine.OtherServices
 {
   public class DiningRoomLight : Light
   {

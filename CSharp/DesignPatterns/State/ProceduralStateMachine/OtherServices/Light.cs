@@ -1,4 +1,4 @@
-﻿namespace FunctionalState.OtherServices
+﻿namespace ProceduralStateMachine.OtherServices
 {
   public interface Light
   {

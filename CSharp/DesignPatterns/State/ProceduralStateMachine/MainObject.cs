@@ -1,39 +1,22 @@
 ﻿using System;
-using FunctionalState.OtherServices;
-using static FunctionalState.LightSwitchStateMachine;
 
-namespace FunctionalState
+namespace ProceduralStateMachine
 {
   public class MainObject
   {
-
     public static void Main(string[] args)
     {
+      var lightSwitch = new LightSwitchStateMachine();
 
-      var consoleOutput = new ConsoleOutput();
-      var light = new DiningRoomLight();
-      var powerUpLight = new Func<object>(() => PowerUpLight(light));
-      var powerDownLight = new Func<object>(() => PowerDownLight(light));
-      
-    }
-
-    private static object PowerDownLight(Light light)
-    {
-      light.PowerDown();
-      return null;
-    }
-
-    private static object PowerUpLight(Light light)
-    {
-      light.PowerUp();
-      return null;
-    }
-
-    private static object ShowOutput(ConsoleOutput consoleOutput, int num)
-    {
-      consoleOutput.Show(num);
-      return null;
+      Console.WriteLine("=== Turn on 1");
+      lightSwitch.TurnOn();
+      Console.WriteLine("=== Turn on 2");
+      lightSwitch.TurnOn();
+      Console.WriteLine("=== Turn off 1");
+      lightSwitch.TurnOff();
+      Console.WriteLine("=== Turn off 2");
+      lightSwitch.TurnOff();
     }
   }
 
-  }
+}
