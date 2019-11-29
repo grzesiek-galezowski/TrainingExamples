@@ -13,30 +13,31 @@ namespace State
       MoveTo(initialState); //has to be the last line!!! Alternative - Start() method
     }
 
-    public void SwitchOn()
+    public void SwitchOn() //ILightSwitch
     {
       _currentState.SwitchOn(this);
     }
 
-    public void SwitchOff()
+    public void SwitchOff() //ILightSwitch
     {
       _currentState.SwitchOff(this);
     }
 
-    public void MoveTo(ILightSwitchState nextState)
+    public void ShowSwitchesCountOn(Output output) //ILightSwitch
+    {
+      output.Show(_numSwitches); //does not require state!
+    }
+
+    public void MoveTo(ILightSwitchState nextState) //ILightSwitchContext
     {
       _currentState = nextState;
       _currentState.OnEnter(this); //what about OnExit()?
     }
 
-    public void RegisterSwitchOn()
+    public void RegisterSwitchOn() //ILightSwitchContext
     {
       _numSwitches++;
     }
 
-    public void ShowSwitchesCountOn(Output output)
-    {
-      output.Show(_numSwitches); //does not require state!
-    }
   }
 }

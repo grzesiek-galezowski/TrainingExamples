@@ -10,7 +10,6 @@ namespace BotLogic
   {
     Task OnStartGameAsync(CancellationToken cancellationToken);
     Task OnKillCharacterAsync(ICharacter character, CancellationToken cancellationToken);
-
     Task OnTalkToAsync(ICharacter character, CancellationToken cancellationToken);
     Task OnSomeWordsAsync(Words words, CancellationToken cancellationToken);
     Task OnQuestionWhoAsync(in CancellationToken cancellationToken);

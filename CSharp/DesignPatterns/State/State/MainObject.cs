@@ -22,8 +22,7 @@ namespace State
     public static void Main(string[] args)
     {
       var consoleOutput = new ConsoleOutput();
-      var statesFactory = new LightSwitchStatesFactory(new DiningRoomLight());
-      var lightSwitch = CreateLightSwitchStateMachine(statesFactory.SwitchedOff());
+      var lightSwitch = CreateLightSwitchStateMachine();
       lightSwitch.SwitchOn();
       lightSwitch.SwitchOff();
       lightSwitch.SwitchOn();
@@ -35,10 +34,10 @@ namespace State
       lightSwitch.ShowSwitchesCountOn(consoleOutput);
     }
 
-    private static ILightSwitch CreateLightSwitchStateMachine(
-      ILightSwitchState initialState)
+    private static ILightSwitch CreateLightSwitchStateMachine()
     {
-      return new LightSwitchStateMachine(initialState);
+      var statesFactory = new LightSwitchStatesFactory(new DiningRoomLight());
+      return new LightSwitchStateMachine(statesFactory.SwitchedOff());
     }
   }
 }
