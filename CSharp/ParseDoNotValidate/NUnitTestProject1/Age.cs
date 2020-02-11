@@ -20,7 +20,7 @@ namespace NUnitTestProject1
 
         public static Age Of(int value)
         {
-            return new Age(value);   
+            return new Age(value);
         }
 
         public override string ToString()
