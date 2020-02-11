@@ -20,5 +20,10 @@ namespace NUnitTestProject1
         {
             return new Name(value);
         }
+
+        public override string ToString()
+        {
+          return _value;
+        }
     }
 }

@@ -11,6 +11,8 @@ namespace NUnitTestProject1
             _value = value;
         }
 
+        public int Value => _value;
+
         protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()
         {
             yield return _value;
@@ -20,5 +22,11 @@ namespace NUnitTestProject1
         {
             return new Age(value);   
         }
+
+        public override string ToString()
+        {
+          return _value.ToString();
+        }
+
     }
 }
