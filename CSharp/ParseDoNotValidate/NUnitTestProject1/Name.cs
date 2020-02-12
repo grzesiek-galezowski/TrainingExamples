@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace NUnitTestProject1
@@ -6,24 +7,28 @@ namespace NUnitTestProject1
     {
         private readonly string _value;
 
-        private Name(string value)
+        public static Name Value(string value)
         {
-            _value = value;
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+            if(value == string.Empty)
+            {
+                throw new EmptyNameException();
+            }
+
+            return new Name(value);
         }
+
+        private Name(string value) => _value = value;
+        public override string ToString() => _value;
 
         protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()
         {
             yield return _value;
         }
 
-        public static Name Value(string value)
-        {
-            return new Name(value);
-        }
 
-        public override string ToString()
-        {
-          return _value;
-        }
     }
 }

@@ -4,15 +4,22 @@ namespace NUnitTestProject1
 {
     public class Age : Value.ValueType<Age>
     {
-        private readonly int _value;
-        private Age(in int value) => _value = value;
-        public int Value => _value;
-        public static Age Of(int value) => new Age(value);
-        public override string ToString() => _value.ToString();
+        public static Age Of(int value)
+        {
+            if (value < 0)
+            {
+                throw new IllegalAgeException("a negative value");
+            }
+            return new Age(value);
+        }
+
+        private Age(in int value) => Value = value;
+        public int Value { get; }
+        public override string ToString() => Value.ToString();
 
         protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()
         {
-            yield return _value;
+            yield return Value;
         }
 
     }
