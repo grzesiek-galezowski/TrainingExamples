@@ -2,6 +2,7 @@ using System;
 using FluentAssertions;
 using Newtonsoft.Json;
 using NUnit.Framework;
+using NUnitTestProject1.Json;
 
 namespace NUnitTestProject1
 {

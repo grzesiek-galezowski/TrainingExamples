@@ -1,4 +1,4 @@
-namespace NUnitTestProject1
+namespace NUnitTestProject1.Json
 {
     public static class JsonExtensions
     {

@@ -1,7 +1,7 @@
 using System;
 using Newtonsoft.Json;
 
-namespace NUnitTestProject1
+namespace NUnitTestProject1.Json
 {
     public class ValueConverter<T, U> : JsonConverter<T> where T : class
     {
