@@ -1,4 +1,4 @@
-namespace NUnitTestProject1.Json
+namespace ParseNotValidate.Json
 {
     public static class JsonExtensions
     {

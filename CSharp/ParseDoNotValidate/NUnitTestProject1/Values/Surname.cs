@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace NUnitTestProject1
+namespace ParseNotValidate.Values
 {
     public class Surname : Value.ValueType<Surname>
     {
@@ -22,7 +22,7 @@ namespace NUnitTestProject1
             return new Surname(value);
         }
 
-        private Surname(string value) => _value = value;
+        internal Surname(string value) => _value = value;
         public override string ToString() => _value;
 
         protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()

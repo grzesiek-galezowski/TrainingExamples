@@ -2,9 +2,11 @@ using System;
 using FluentAssertions;
 using Newtonsoft.Json;
 using NUnit.Framework;
-using NUnitTestProject1.Json;
+using ParseNotValidate.Json;
+using ParseNotValidate.Values;
+using static TddXt.AnyRoot.Root;
 
-namespace NUnitTestProject1
+namespace ParseNotValidate
 {
   public class Tests
   {
@@ -35,27 +37,27 @@ namespace NUnitTestProject1
         CreatePersonjSON(null, "Lolek", 12)
             .Invoking(s => JsonConvert.DeserializeObject<UserDto>(s, MyAppSerializationSettings.Get()))
             .Should().ThrowExactly<Exception>()
-            .WithMessage("Failed to parse property Name with value null to type NUnitTestProject1.Name");
+            .WithMessage("Failed to parse property Name with value null to type ParseNotValidate.Values.Name");
         
         CreatePersonjSON(string.Empty, "Lolek", 12)
             .Invoking(s => JsonConvert.DeserializeObject<UserDto>(s, MyAppSerializationSettings.Get()))
             .Should().ThrowExactly<Exception>()
-            .WithMessage("Failed to parse property Name with value  to type NUnitTestProject1.Name");
+            .WithMessage("Failed to parse property Name with value  to type ParseNotValidate.Values.Name");
 
         CreatePersonjSON("Zenek", null, 12)
             .Invoking(s => JsonConvert.DeserializeObject<UserDto>(s, MyAppSerializationSettings.Get()))
             .Should().ThrowExactly<Exception>()
-            .WithMessage("Failed to parse property Surname with value null to type NUnitTestProject1.Surname");
+            .WithMessage("Failed to parse property Surname with value null to type ParseNotValidate.Values.Surname");
 
         CreatePersonjSON("Zenek", string.Empty, 12)
             .Invoking(s => JsonConvert.DeserializeObject<UserDto>(s, MyAppSerializationSettings.Get()))
             .Should().ThrowExactly<Exception>()
-            .WithMessage("Failed to parse property Surname with value  to type NUnitTestProject1.Surname");
+            .WithMessage("Failed to parse property Surname with value  to type ParseNotValidate.Values.Surname");
 
         CreatePersonjSON("Zenek", "Lolek", -1)
             .Invoking(s => JsonConvert.DeserializeObject<UserDto>(s, MyAppSerializationSettings.Get()))
             .Should().ThrowExactly<Exception>()
-            .WithMessage("Failed to parse property Age with value -1 to type NUnitTestProject1.Age");
+            .WithMessage("Failed to parse property Age with value -1 to type ParseNotValidate.Values.Age");
 
     }
 
@@ -67,6 +69,14 @@ namespace NUnitTestProject1
                $"\"Age\":{age}," +
                "\"Birthday\":\"1990-01-01T00:00:00\"" +
                "}";
+    }
+
+    [Test]
+    public void ShouldBeAbleToCreateAnyInstances()
+    {
+      var age = Any.Instance<Age>();
+      var name = Any.Instance<Name>();
+      var surname = Any.Instance<Surname>();
     }
   }
 }

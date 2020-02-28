@@ -1,6 +1,7 @@
 using System;
+using ParseNotValidate.Values;
 
-namespace NUnitTestProject1
+namespace ParseNotValidate
 {
     public class UserDto
     {

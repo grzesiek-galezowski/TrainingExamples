@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace NUnitTestProject1
+namespace ParseNotValidate.Values
 {
     public class Age : Value.ValueType<Age>
     {
@@ -13,7 +13,7 @@ namespace NUnitTestProject1
             return new Age(value);
         }
 
-        private Age(in int value) => Value = value;
+        internal Age(int value) => Value = value;
         public int Value { get; }
         public override string ToString() => Value.ToString();
 

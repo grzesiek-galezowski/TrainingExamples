@@ -1,6 +1,6 @@
 using System;
 
-namespace NUnitTestProject1
+namespace ParseNotValidate.Values
 {
     public class EmptyNameException : Exception
     {

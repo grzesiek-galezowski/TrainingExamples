@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
+using ParseNotValidate.Values;
 
-namespace NUnitTestProject1.Json
+namespace ParseNotValidate.Json
 {
     static internal class MyAppSerializationSettings
     {
