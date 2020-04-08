@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Core.Maybe;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ControllerImplementations.Controllers.CommandHandlerBasedApi
@@ -24,43 +25,33 @@ namespace ControllerImplementations.Controllers.CommandHandlerBasedApi
         [Route("posts")]
         public async Task<IActionResult> AddPost([FromBody] PostDto post)
         {
-            try
+            var addPostCommand = new AddPostCommand
             {
-                var addPostCommand = new AddPostCommand
-                {
-                    Post = post
-                };
-                await _addPostHandler.HandleAsync(addPostCommand);
+                Post = post //bug commands should not really contain DTOs
+            };
+            await _addPostHandler.HandleAsync(addPostCommand);
 
-                return Ok(addPostCommand.ResponseCreatedPost);
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e);
-            }
+            return addPostCommand.Error
+                .Select(info => (IActionResult)BadRequest(info.E))
+                .OrElse(Ok(addPostCommand.ResponseCreatedPost));
         }
 
         [HttpPost]
         [Route("posts/{id1}/link/{id2}")]
         public async Task<IActionResult> LinkPostsPost(string id1, string id2)
         {
-            try
+            var linkPostsCommand = new LinkPostsCommand
             {
-                var addPostCommand = new LinkPostsCommand
-                {
-                    Id1 = id1,
-                    Id2 = id2,
-                };
-                await _linkPostsHandler.HandleAsync(addPostCommand);
+                Id1 = id1,
+                Id2 = id2
+            };
+            await _linkPostsHandler.HandleAsync(linkPostsCommand);
 
-                return Ok();
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e);
-            }
+            return linkPostsCommand.Error
+                .Select(info => (IActionResult)BadRequest(info.E))
+                .OrElse(Ok(linkPostsCommand.Id1));
 
         }
     }
 }
-}
+
