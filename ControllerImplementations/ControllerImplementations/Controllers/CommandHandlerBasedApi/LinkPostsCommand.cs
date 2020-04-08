@@ -6,6 +6,6 @@ namespace ControllerImplementations.Controllers.CommandHandlerBasedApi
     {
         public string Id1 { get; set; }
         public string Id2 { get; set; }
-        public Maybe<ErrorInfo> Error { get; set; }
+        public Either<string, ErrorInfo> Result { get; set; }
     }
 }

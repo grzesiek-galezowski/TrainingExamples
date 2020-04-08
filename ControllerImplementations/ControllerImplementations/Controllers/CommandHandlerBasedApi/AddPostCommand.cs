@@ -4,8 +4,8 @@ namespace ControllerImplementations.Controllers.CommandHandlerBasedApi
 {
     public class AddPostCommand
     {
-        public PostDto Post { get; set; }
-        public PostCreatedDto ResponseCreatedPost { get; set; }
-        public Maybe<ErrorInfo> Error { get; set; }
+        public Either<PostCreatedDto, ErrorInfo> Result { get; set; }
+        public string Content { get; set; }
+        public string Author { get; set; }
     }
 }

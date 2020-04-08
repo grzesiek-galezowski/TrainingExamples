@@ -27,13 +27,14 @@ namespace ControllerImplementations.Controllers.CommandHandlerBasedApi
         {
             var addPostCommand = new AddPostCommand
             {
-                Post = post //bug commands should not really contain DTOs
+                Content = post.Content, //bug commands should not really contain DTOs
+                Author = post.Author,
             };
             await _addPostHandler.HandleAsync(addPostCommand);
 
-            return addPostCommand.Error
-                .Select(info => (IActionResult)BadRequest(info.E))
-                .OrElse(Ok(addPostCommand.ResponseCreatedPost));
+            return addPostCommand.Result
+                .Match(Ok, error => (IActionResult) BadRequest(error.E));
+
         }
 
         [HttpPost]
@@ -47,10 +48,8 @@ namespace ControllerImplementations.Controllers.CommandHandlerBasedApi
             };
             await _linkPostsHandler.HandleAsync(linkPostsCommand);
 
-            return linkPostsCommand.Error
-                .Select(info => (IActionResult)BadRequest(info.E))
-                .OrElse(Ok(linkPostsCommand.Id1));
-
+            return linkPostsCommand.Result
+                .Match(Ok, error => (IActionResult) BadRequest(error.E));
         }
     }
 }
