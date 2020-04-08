@@ -19,14 +19,7 @@ namespace ControllerImplementations.Controllers.CommandBasedApi
             _commandFactory = commandFactory;
         }
 
-        // GET: api/ReservationController_Commands
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        [HttpPost()]
+        [HttpPost]
         [Route("posts")]
         public async Task<IActionResult> AddPost([FromBody] PostDto post)
         {
