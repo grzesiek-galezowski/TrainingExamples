@@ -9,11 +9,14 @@ using Microsoft.AspNetCore.Mvc;
 //4. #nocontroller
 
 
-//variations:
+//0 decorated command
 //1 result in progress as field
 //2 result in progress as part of command
+//2 result in progress as bool
 //3 result in progress as "this"
 //4 boolean result for command and command<T>
+//5 Synchronous/asynchronous command factory
+//6 dispatcher
 namespace ControllerImplementations.Controllers.CommandBasedApi
 {
     [Route("api/[controller]")]
