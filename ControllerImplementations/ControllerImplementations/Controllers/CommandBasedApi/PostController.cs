@@ -1,7 +1,18 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
+//only commands, no queries
+//1. Command based API
+//2. Handler based API
+//3. MediatR
+//4. #nocontroller
+
+
+//variations:
+//1 result in progress as field
+//2 result in progress as part of command
+//3 result in progress as "this"
+//4 boolean result for command and command<T>
 namespace ControllerImplementations.Controllers.CommandBasedApi
 {
     [Route("api/[controller]")]
