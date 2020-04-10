@@ -6,6 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ControllerImplementations.Controllers.CommandHandlerBasedApi
 {
+    //variations:
+    //1. Returned result
+    //2. Exception filters / middleware
+
     [Route("api/[controller]")]
     [ApiController]
     public class PostController : ControllerBase

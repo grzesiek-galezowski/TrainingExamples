@@ -1,23 +1,29 @@
 ﻿using System;
+using Core.Maybe;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ControllerImplementations.Controllers.CommandBasedApi
 {
     internal class AddingInProgress : IActionResultBasedAddingInProgress
     {
+        private Maybe<IActionResult> _actionResult = Maybe<IActionResult>.Nothing;
+
         public void SavedSuccessfully(PostDto postDto, string id)
         {
-            throw new NotImplementedException();
+            _actionResult = new OkObjectResult(postDto).JustObject<IActionResult>();
         }
 
         public void FailedBecauseOf(Exception exception)
         {
-            throw new NotImplementedException();
+            _actionResult = new JsonResult(exception)
+            {
+                StatusCode = 500
+            }.JustObject<IActionResult>();
         }
 
         public IActionResult Result()
         {
-            throw new NotImplementedException();
+            return _actionResult.Value();
         }
     }
 }

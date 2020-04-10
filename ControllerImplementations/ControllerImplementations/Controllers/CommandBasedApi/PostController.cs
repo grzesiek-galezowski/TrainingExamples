@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 //only commands, no queries
+//0. Facade
 //1. Command based API
 //2. Handler based API
 //3. MediatR
