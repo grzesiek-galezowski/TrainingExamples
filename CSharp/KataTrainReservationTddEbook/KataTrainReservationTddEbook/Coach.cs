@@ -2,7 +2,6 @@
 {
   public interface Coach
   {
-    bool HasPreferredRoomFor(in uint seatCount);
-    bool HasRoomFor(uint seatCount);
+    void Reserve(in uint seatCount, ReservationInProgress reservationInProgress);
   }
 }

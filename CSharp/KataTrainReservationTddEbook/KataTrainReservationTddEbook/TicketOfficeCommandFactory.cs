@@ -10,7 +10,12 @@ namespace KataTrainReservationTddEbook
     public ReservationCommand CreateReservationCommand(ReservationRequestDto requestDto,
       ReservationInProgress reservationInProgress)
     {
-      return new TrainReservationCommand(requestDto.seatCount, reservationInProgress, new ReservableTrain(null));
+      return new TrainReservationCommand(
+        requestDto.trainId,
+        requestDto.seatCount, 
+        new ReferenceService(), 
+        new PercentageBasedSearchEngine(), 
+        reservationInProgress);
     }
   }
 

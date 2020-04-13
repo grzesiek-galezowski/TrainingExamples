@@ -2,9 +2,7 @@
 {
   public interface Train
   {
-    bool HasRoomInPreferredCoachFor(uint seatCount);
-    void ReserveSeatsInPreferredCoach(uint seatCount, ReservationInProgress reservationInProgress);
-    bool HasRoomInAnyCoachFor(uint seatCount);
-    void ReserveSeatsInAnyFreeCoach(uint seatCount, ReservationInProgress reservationInProgress);
+    void Reserve(in uint seatCount, SearchEngine searchEngine, ReservationInProgress reservationInProgress);
+    bool MeetsReserveInAdvanceCriteriaFor(in uint seatCount);
   }
 }

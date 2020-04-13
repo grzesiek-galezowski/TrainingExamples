@@ -1,7 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
+using Functional.Maybe;
+using Functional.Maybe.Just;
 using NSubstitute;
+using TddXt.AnyRoot;
+using TddXt.AnyRoot.Collections;
 using TddXt.AnyRoot.Numbers;
 using Xunit;
 using static TddXt.AnyRoot.Root;
@@ -17,29 +22,10 @@ namespace KataTrainReservationTddEbook
       _coaches = coaches;
     }
 
-    public bool HasRoomInPreferredCoachFor(uint seatCount)
+    public void Reserve(in uint seatCount, SearchEngine searchEngine, ReservationInProgress reservationInProgress)
     {
-      throw new System.NotImplementedException();
-    }
-
-    public void ReserveSeatsInPreferredCoach(uint seatCount, ReservationInProgress reservationInProgress)
-    {
-      throw new System.NotImplementedException();
-    }
-
-    public bool HasRoomInAnyCoachFor(uint seatCount)
-    {
-      return _coaches.Any(c => c.HasRoomFor(seatCount));
-    }
-
-    public void ReserveSeatsInAnyFreeCoach(uint seatCount, ReservationInProgress reservationInProgress)
-    {
-      throw new System.NotImplementedException();
-    }
-
-    public bool HasPreferredRoomFor(uint seatCount)
-    {
-      return _coaches.Any(c => c.HasPreferredRoomFor(seatCount));
+      var chosenCoach = searchEngine.FindCoachForReservation(_coaches, seatCount);
+      chosenCoach.Value.Reserve(seatCount, reservationInProgress);
     }
   }
 
@@ -49,84 +35,40 @@ namespace KataTrainReservationTddEbook
     public void ShouldDOWHAT()
     {
       //GIVEN
-      var coach1 = Substitute.For<Coach>();
-      var coach2 = Substitute.For<Coach>();
-      var coach3 = Substitute.For<Coach>();
+      var coaches = Any.Enumerable<Coach>();
+      var train = new ReservableTrain(coaches);
       var seatCount = Any.UnsignedInt();
-      var coaches = new List<Coach>
-      {
-         coach1,
-         coach2,
-         coach3,
-      };
+      var searchEngine = Substitute.For<SearchEngine>();
+      var reservationInProgress = Any.Instance<ReservationInProgress>();
+      var matchingCoach = Substitute.For<Coach>();
 
-      coach1.HasPreferredRoomFor(seatCount).Returns(false);
-      coach2.HasPreferredRoomFor(seatCount).Returns(true);
-      coach3.HasPreferredRoomFor(seatCount).Returns(false);
-
-      var reservableTrain = new ReservableTrain(coaches);
+      searchEngine.FindCoachForReservation(coaches, seatCount).Returns(matchingCoach.Just());
 
       //WHEN
-      var hasEnoughRoom = reservableTrain.HasPreferredRoomFor(seatCount);
+      train.Reserve(seatCount, searchEngine, reservationInProgress);
 
       //THEN
-      hasEnoughRoom.Should().BeTrue();
+      matchingCoach.Received(1).Reserve(seatCount, reservationInProgress);
     }
     
     [Fact]
     public void ShouldDOWHAT2()
     {
       //GIVEN
-      var coach1 = Substitute.For<Coach>();
-      var coach2 = Substitute.For<Coach>();
-      var coach3 = Substitute.For<Coach>();
+      var coaches = Any.Enumerable<Coach>();
+      var train = new ReservableTrain(coaches);
       var seatCount = Any.UnsignedInt();
-      var coaches = new List<Coach>
-      {
-         coach1,
-         coach2,
-         coach3,
-      };
+      var searchEngine = Substitute.For<SearchEngine>();
+      var reservationInProgress = Any.Instance<ReservationInProgress>();
+      var matchingCoach = Substitute.For<Coach>();
 
-      coach1.HasPreferredRoomFor(seatCount).Returns(false);
-      coach2.HasPreferredRoomFor(seatCount).Returns(false);
-      coach3.HasPreferredRoomFor(seatCount).Returns(false);
-
-      var reservableTrain = new ReservableTrain(coaches);
+      searchEngine.FindCoachForReservation(coaches, seatCount).Returns(Maybe<Coach>.Nothing);
 
       //WHEN
-      var hasEnoughRoom = reservableTrain.HasPreferredRoomFor(seatCount);
+      train.Reserve(seatCount, searchEngine, reservationInProgress);
 
       //THEN
-      hasEnoughRoom.Should().BeFalse();
-    }
-
-    [Fact]
-    public void ShouldDOWHAT3()
-    {
-      //GIVEN
-      var coach1 = Substitute.For<Coach>();
-      var coach2 = Substitute.For<Coach>();
-      var coach3 = Substitute.For<Coach>();
-      var seatCount = Any.UnsignedInt();
-      var coaches = new List<Coach>
-      {
-         coach1,
-         coach2,
-         coach3,
-      };
-
-      coach1.HasRoomFor(seatCount).Returns(false);
-      coach2.HasRoomFor(seatCount).Returns(false);
-      coach3.HasRoomFor(seatCount).Returns(false);
-
-      var reservableTrain = new ReservableTrain(coaches);
-
-      //WHEN
-      var hasEnoughRoom = reservableTrain.HasRoomInAnyCoachFor(seatCount);
-
-      //THEN
-      hasEnoughRoom.Should().BeFalse();
+      reservationInProgress.Received(1).NoMatchingCoachFoundFor(seatCount);
     }
   }
 }

@@ -9,7 +9,12 @@ namespace KataTrainReservationTddEbook
       throw new NotImplementedException();
     }
 
-    public void NoRoomInTrainFor(uint seatCount)
+    public void NoRoomInTrainFor(in uint seatCount)
+    {
+      throw new NotImplementedException();
+    }
+
+    public void NoMatchingCoachFoundFor(in uint seatCount)
     {
       throw new NotImplementedException();
     }
