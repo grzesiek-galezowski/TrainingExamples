@@ -21,18 +21,7 @@ namespace KataTrainReservationTddEbook
 
     public void Execute()
     {
-      if (_train.HasRoomInPreferredCoachFor(_seatCount))
-      {
-        _train.ReserveSeatsInPreferredCoach(_seatCount, _reservationInProgress);
-      }
-      else if (_train.HasRoomInAnyCoachFor(_seatCount))
-      {
-        _train.ReserveSeatsInAnyFreeCoach(_seatCount, _reservationInProgress);
-      }
-      else
-      {
-        _reservationInProgress.NoRoomInTrainFor(_seatCount);
-      }
+
     }
   }
 
@@ -57,44 +46,6 @@ namespace KataTrainReservationTddEbook
       train.Received(1).ReserveSeatsInPreferredCoach(seatCount, reservationInProgress);
     }
 
-    [Fact]
-    public void ShouldDOWHAT12()
-    {
-      //GIVEN
-      var reservationInProgress = Any.Instance<ReservationInProgress>();
-      var seatCount = Any.UnsignedInt();
-      var train = Substitute.For<Train>();
-      var command = new TrainReservationCommand(seatCount, reservationInProgress, train);
 
-      train.HasRoomInPreferredCoachFor(seatCount).Returns(false);
-      train.HasRoomInAnyCoachFor(seatCount).Returns(true);
-
-      //WHEN
-      command.Execute();
-
-      //THEN
-      //bug XReceived.Only()
-      train.Received(1).ReserveSeatsInAnyFreeCoach(seatCount, reservationInProgress);
-    }
-
-    [Fact]
-    public void ShouldDOWHAT2()
-    {
-      //GIVEN
-      var reservationInProgress = Substitute.For<ReservationInProgress>();
-      var seatCount = Any.UnsignedInt();
-      var train = Substitute.For<Train>();
-      var command = new TrainReservationCommand(seatCount, reservationInProgress, train);
-
-      train.HasRoomInPreferredCoachFor(seatCount).Returns(false);
-      train.HasRoomInAnyCoachFor(seatCount).Returns(false);
-
-      //WHEN
-      command.Execute();
-
-      //THEN
-      reservationInProgress.Received(1).NoRoomInTrainFor(seatCount);
-      train.DidNotReceiveWithAnyArgs().ReserveSeatsInPreferredCoach(default, default);
-    }
   }
 }
