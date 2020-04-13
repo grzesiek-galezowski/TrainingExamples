@@ -193,3 +193,5 @@ CSharp/FizzBuzzCore/FizzBuzzCore/obj/project.assets.json
 CSharp/FizzBuzzCore/FizzBuzzCore/obj/FizzBuzzCore.csproj.nuget.g.targets
 CSharp/FizzBuzzCore/FizzBuzzCore/obj/FizzBuzzCore.csproj.nuget.g.props
 CSharp/ParseDoNotValidate/ParseDoNotValidate/.vs/ParseDoNotValidate/DesignTimeBuild/.dtbcache
+*.v2
+CSharp/KataTrainReservationTddEbook/.vs/KataTrainReservationTddEbook/DesignTimeBuild/.dtbcache
