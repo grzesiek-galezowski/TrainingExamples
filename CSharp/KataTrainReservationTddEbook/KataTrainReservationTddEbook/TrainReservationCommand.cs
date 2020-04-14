@@ -28,9 +28,15 @@ namespace KataTrainReservationTddEbook
     public void Execute()
     {
       var train = _trains.RetrieveBy(_trainId);
-      //bug overall condition on free places
-      train.Reserve(_seatCount, _searchEngine, _reservationInProgress);
-      _trains.Update(train);
+      if (train.MeetsReserveInAdvanceCriteriaFor(_seatCount))
+      {
+        train.Reserve(_seatCount, _searchEngine, _reservationInProgress);
+        _trains.Update(train);
+      }
+      else
+      {
+        _reservationInProgress.NoRoomInTrainFor(_seatCount);
+      }
     }
   }
 
@@ -71,7 +77,7 @@ namespace KataTrainReservationTddEbook
     public void ShouldDOWHAT2()
     {
       //GIVEN
-      var reservationInProgress = Any.Instance<ReservationInProgress>();
+      var reservationInProgress = Substitute.For<ReservationInProgress>();
       var seatCount = Any.UnsignedInt();
       var train = Substitute.For<Train>();
       var trains = Substitute.For<Trains>();

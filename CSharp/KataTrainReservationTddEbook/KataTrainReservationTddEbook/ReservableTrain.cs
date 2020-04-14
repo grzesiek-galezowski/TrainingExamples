@@ -25,7 +25,19 @@ namespace KataTrainReservationTddEbook
     public void Reserve(in uint seatCount, SearchEngine searchEngine, ReservationInProgress reservationInProgress)
     {
       var chosenCoach = searchEngine.FindCoachForReservation(_coaches, seatCount);
-      chosenCoach.Value.Reserve(seatCount, reservationInProgress);
+      if (chosenCoach.HasValue)
+      {
+        chosenCoach.Value.Reserve(seatCount, reservationInProgress);
+      }
+      else
+      {
+        reservationInProgress.NoMatchingCoachFoundFor(seatCount);
+      }
+    }
+
+    public bool MeetsReserveInAdvanceCriteriaFor(in uint seatCount)
+    {
+      throw new NotImplementedException();
     }
   }
 
@@ -48,7 +60,7 @@ namespace KataTrainReservationTddEbook
       train.Reserve(seatCount, searchEngine, reservationInProgress);
 
       //THEN
-      matchingCoach.Received(1).Reserve(seatCount, reservationInProgress);
+      matchingCoach.Received(1).Reserve(seatCount, reservationInProgress); //bug XReceived.Only()
     }
     
     [Fact]
@@ -59,8 +71,7 @@ namespace KataTrainReservationTddEbook
       var train = new ReservableTrain(coaches);
       var seatCount = Any.UnsignedInt();
       var searchEngine = Substitute.For<SearchEngine>();
-      var reservationInProgress = Any.Instance<ReservationInProgress>();
-      var matchingCoach = Substitute.For<Coach>();
+      var reservationInProgress = Substitute.For<ReservationInProgress>();
 
       searchEngine.FindCoachForReservation(coaches, seatCount).Returns(Maybe<Coach>.Nothing);
 
@@ -68,7 +79,7 @@ namespace KataTrainReservationTddEbook
       train.Reserve(seatCount, searchEngine, reservationInProgress);
 
       //THEN
-      reservationInProgress.Received(1).NoMatchingCoachFoundFor(seatCount);
+      reservationInProgress.Received(1).NoMatchingCoachFoundFor(seatCount); //bug XReceived.Only()
     }
   }
 }
