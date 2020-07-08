@@ -195,3 +195,4 @@ CSharp/FizzBuzzCore/FizzBuzzCore/obj/FizzBuzzCore.csproj.nuget.g.props
 CSharp/ParseDoNotValidate/ParseDoNotValidate/.vs/ParseDoNotValidate/DesignTimeBuild/.dtbcache
 *.v2
 CSharp/KataTrainReservationTddEbook/.vs/KataTrainReservationTddEbook/DesignTimeBuild/.dtbcache
+CSharp/VotingSystem_EMPTY/.vs/VotingSystem/config/applicationhost.config

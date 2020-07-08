@@ -1,6 +1,6 @@
 ﻿using ApplicationLogic.Ports;
-using TddXt.AnyRoot;
 using TddXt.AnyRoot.Numbers;
+using static TddXt.AnyRoot.Root;
 
 namespace Lib
 {
@@ -34,7 +34,7 @@ namespace Lib
 
     public static UserDtoBuilder AUser()
     {
-      return new UserDtoBuilder(Root.Any.Integer(), Root.Any.Login(), Root.Any.Password());
+      return new UserDtoBuilder(Any.Integer(), Any.Login(), Any.Password());
     }
 
     public UserDtoBuilder Adult()
