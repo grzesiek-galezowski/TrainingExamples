@@ -28,7 +28,7 @@ namespace KataTrainReservationTddEbook
     public void Execute()
     {
       var train = _trains.RetrieveBy(_trainId);
-      if (train.MeetsReserveInAdvanceCriteriaFor(_seatCount))
+      if (train.HasCapacityForReservationsInAdvance())
       {
         train.Reserve(_seatCount, _searchEngine, _reservationInProgress);
         _trains.Update(train);
@@ -60,7 +60,7 @@ namespace KataTrainReservationTddEbook
         reservationInProgress);
 
       trains.RetrieveBy(trainId).Returns(train);
-      train.MeetsReserveInAdvanceCriteriaFor(seatCount).Returns(true);
+      train.HasCapacityForReservationsInAdvance().Returns(true);
 
       //WHEN
       command.Execute();
@@ -91,7 +91,7 @@ namespace KataTrainReservationTddEbook
         reservationInProgress);
 
       trains.RetrieveBy(trainId).Returns(train);
-      train.MeetsReserveInAdvanceCriteriaFor(seatCount).Returns(false);
+      train.HasCapacityForReservationsInAdvance().Returns(false);
 
       //WHEN
       command.Execute();
@@ -99,7 +99,5 @@ namespace KataTrainReservationTddEbook
       //THEN
       reservationInProgress.Received(1).NoRoomInTrainFor(seatCount);
     }
-
-
   }
 }
