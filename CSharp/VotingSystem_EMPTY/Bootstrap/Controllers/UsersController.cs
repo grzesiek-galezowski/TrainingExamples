@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ApplicationLogic.Ports;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Bootstrap.Controllers
 {
@@ -6,5 +7,10 @@ namespace Bootstrap.Controllers
   [ApiController]
   public class UsersController : ControllerBase
   {
+      [HttpPost]
+      public IActionResult CreateUser(UserDto user)
+      {
+          return null;
+      }
   }
 }

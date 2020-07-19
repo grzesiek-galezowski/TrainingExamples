@@ -1,28 +1,30 @@
-﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using ApplicationLogic;
-using Bootstrap.Controllers;
+﻿using Bootstrap.Controllers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace Bootstrap.CompositionRoot
 {
   public class Startup
   {
+    public Startup(IConfiguration configuration)
+    {
+        Configuration = configuration;
+    }
+
+    public IConfiguration Configuration { get; }
 
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     { 
-      services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
-        .AddControllersAsServices();
-
       services.AddScoped(ctx => new UsersController());
+      services.AddControllers().AddControllersAsServices();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
       if (env.IsDevelopment())
       {
@@ -34,9 +36,15 @@ namespace Bootstrap.CompositionRoot
       }
 
       app.UseHttpsRedirection();
-      app.UseMvc();
 
-      app.Map("a/a/a", builder => )
+      app.UseRouting();
+
+      app.UseAuthorization();
+
+      app.UseEndpoints(endpoints =>
+      {
+          endpoints.MapControllers();
+      });
     }
   }
 }

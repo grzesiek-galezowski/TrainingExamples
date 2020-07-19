@@ -1,24 +1,39 @@
 ﻿using System;
 using System.Net.Http;
 using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using ApplicationLogic.Ports;
 using Bootstrap.CompositionRoot;
 using Lib;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
+using Microsoft.Extensions.Hosting;
 
 namespace EndToEndSpecification.AutomationLayer
 {
   public class AppDriver : IDisposable
   {
-    private readonly TestServer _testServer;
+    private TestServer _testServer;
+    private IHostBuilder _hostBuilder;
 
     public AppDriver()
     {
-      _testServer = new TestServer(new WebHostBuilder()
-        .UseEnvironment("Development")
-        .UseStartup<Startup>());
+        _hostBuilder = Host
+            .CreateDefaultBuilder()
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder
+                    .UseTestServer()
+                    .UseEnvironment("Development")
+                    .UseStartup<Startup>();
+            });
+    }
+
+    public async Task Start()
+    {
+        _testServer = (await _hostBuilder.StartAsync()).GetTestServer();
+        _testServer.AllowSynchronousIO = true;
     }
 
     public async Task<CreateUserResponse> TryToCreate(UserDtoBuilder userDtoBuilder)
