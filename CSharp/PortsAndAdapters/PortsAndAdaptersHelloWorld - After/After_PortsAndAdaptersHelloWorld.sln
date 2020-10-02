@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main", "PortsAndAdaptersHelloWorld\Main.csproj", "{96AF4D14-D473-443C-B7A6-609B96D38397}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{21B28722-5791-4D8B-B8D9-B9797EA1E248}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ports", "DataAccess.Ports\Ports.csproj", "{FF69BEE0-7BEF-445D-8776-0B0D2C18DBAD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{130A00D2-9888-449C-99B0-514C1B4E44D5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,5 +44,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{271A1CFB-E19D-4255-A197-708A3422540A} = {130A00D2-9888-449C-99B0-514C1B4E44D5}
+		{FF69BEE0-7BEF-445D-8776-0B0D2C18DBAD} = {130A00D2-9888-449C-99B0-514C1B4E44D5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {63F30CA0-7544-43BA-BF3D-83B0A383DBF5}
 	EndGlobalSection
 EndGlobal
