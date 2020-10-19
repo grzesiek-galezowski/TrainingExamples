@@ -4,14 +4,20 @@ namespace FrodoEntersTheRoom
 {
   public class KillCharacterIntent
   {
-    public KillCharacterIntent(string characterName)
+    private readonly string _characterName;
+    private readonly IDialog _dialog;
+    private readonly IResponsePhrase _responsePhrase;
+
+    public KillCharacterIntent(string characterName, IDialog dialog, IResponsePhrase responsePhrase)
     {
-      throw new NotImplementedException();
+      _characterName = characterName;
+      _dialog = dialog;
+      _responsePhrase = responsePhrase;
     }
 
     public void Apply()
     {
-      throw new NotImplementedException();
+      _dialog.OnAttemptToKill(_characterName, _responsePhrase);
     }
   }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -44,27 +45,48 @@ namespace FrodoEntersTheRoom
       {
         endpoints.MapPost("messages", async context =>
         {
-          using var streamReader = new StreamReader(context.Request.Body);
-          var body = await streamReader.ReadToEndAsync();
-          var recognitionModel = new RecognitionModel();
-          recognitionModel.AddEntity("Character", "Gandalf", new []{ "gandalf" });
-          recognitionModel.AddEntity("Kill", "Kill", new []{ "kill", "destroy", "attack" });
-          recognitionModel.AddIntent("KillCharacter", new []{ "Kill", "Character" });
-
+          var body = await BodyFrom(context);
+          var recognitionModel = TrainRecognitionModel();
           var recognitionResult = recognitionModel.Recognize(body);
+          
           if (recognitionResult.TopIntent == "KillCharacter")
           {
-            var characterName =
-              recognitionResult.Entities.Single(
-                entity => entity.Entity.Equals(
-                  EntityName.Value("Character"))).CanonicalForm.ToString();
-
-            var intent = new KillCharacterIntent(characterName);
+            var intent = CreateKillCharacterIntentFrom(recognitionResult);
 
             intent.Apply();
           }
         });
       });
+    }
+
+    private static RecognitionModel TrainRecognitionModel()
+    {
+      var recognitionModel = new RecognitionModel();
+      recognitionModel.AddEntity("Character", "Gandalf", new[] {"gandalf"});
+      recognitionModel.AddEntity("Kill", "Kill", new[] {"kill", "destroy", "attack"});
+      recognitionModel.AddIntent("KillCharacter", new[] {"Kill", "Character"});
+      return recognitionModel;
+    }
+
+    private static async Task<string> BodyFrom(HttpContext context)
+    {
+      using (var streamReader = new StreamReader(context.Request.Body))
+      {
+        return await streamReader.ReadToEndAsync();
+      }
+    }
+
+    private static KillCharacterIntent CreateKillCharacterIntentFrom(RecognitionResult recognitionResult)
+    {
+      var characterName =
+        recognitionResult.Entities.Single(
+          entity => entity.Entity.Equals(
+            EntityName.Value("Character"))).CanonicalForm.ToString();
+
+      return new KillCharacterIntent(
+        characterName,
+        new Dialog(), //initial dialog state and cast
+        new ResponsePhraseTodo());
     }
   }
 }

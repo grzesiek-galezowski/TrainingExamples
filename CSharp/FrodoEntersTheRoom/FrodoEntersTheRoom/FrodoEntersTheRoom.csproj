@@ -8,5 +8,9 @@
     <PackageReference Include="SimpleNlp" Version="0.4.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 
 </Project>
