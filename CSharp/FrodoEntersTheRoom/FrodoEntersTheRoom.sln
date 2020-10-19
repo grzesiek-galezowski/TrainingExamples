@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrodoEntersTheRoom", "FrodoEntersTheRoom\FrodoEntersTheRoom.csproj", "{88E90634-3C1A-45E9-9895-55E61EED5822}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrodoEntersTheRoomSpecification", "FrodoEntersTheRoomSpecification\FrodoEntersTheRoomSpecification.csproj", "{C9A44EAA-5319-43ED-8D94-2894F43AEBE9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{88E90634-3C1A-45E9-9895-55E61EED5822}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88E90634-3C1A-45E9-9895-55E61EED5822}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88E90634-3C1A-45E9-9895-55E61EED5822}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88E90634-3C1A-45E9-9895-55E61EED5822}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9A44EAA-5319-43ED-8D94-2894F43AEBE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9A44EAA-5319-43ED-8D94-2894F43AEBE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9A44EAA-5319-43ED-8D94-2894F43AEBE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9A44EAA-5319-43ED-8D94-2894F43AEBE9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {05D1B1AC-0FE8-425E-8373-2C1868D4BDCC}
+	EndGlobalSection
+EndGlobal
