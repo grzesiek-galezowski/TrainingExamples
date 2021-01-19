@@ -2,11 +2,12 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Functional.Maybe" Version="1.1.1" />
+    <PackageReference Include="Functional.Maybe" Version="2.0.20" />
   </ItemGroup>
 
 </Project>

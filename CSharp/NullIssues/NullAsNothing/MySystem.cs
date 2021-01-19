@@ -1,6 +1,4 @@
-﻿using Functional.Maybe;
-
-namespace NullAsNothing
+﻿namespace NullAsNothing
 {
     internal class MySystem
     {
