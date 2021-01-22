@@ -1,4 +1,6 @@
-﻿namespace NullAsNothingRefactored_NRT
+﻿using System;
+
+namespace NullAsNothingRefactored_NRT
 {
     class Program
     {
@@ -9,7 +11,7 @@
                 new RadioCache(), 
                 new GroupCache());
 
-            QueryResult? maybeResult = mySystem.QueryWith(WhateverQuery());
+            QueryResult? maybeResult = mySystem.QueryWith(RadioQuery());
 
             if (maybeResult != null)
             {
@@ -17,7 +19,7 @@
             }
         }
 
-        private static QueryForData WhateverQuery()
+        private static QueryForData RadioQuery()
         {
             return new QueryForData(EntityTypes.Radio, "trolololo");
         }

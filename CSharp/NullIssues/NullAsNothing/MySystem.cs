@@ -29,7 +29,9 @@
             }
             else
             {
-                throw new UnknownEntityTypeException(queryForData.EntityType, queryForData.EntityId);
+                throw new UnknownEntityTypeException(
+                    queryForData.EntityType, 
+                    queryForData.EntityId);
             }
         }
     }

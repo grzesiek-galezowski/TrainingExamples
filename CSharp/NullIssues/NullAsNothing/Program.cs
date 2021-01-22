@@ -9,23 +9,21 @@
                 new RadioCache(), 
                 new GroupCache());
             
-            var result = mySystem.QueryWith(WhateverQuery());
-            result.SendToUser();
-        }
+            var result = mySystem.QueryWith(RadioQuery());
 
-        private static QueryForData WhateverQuery()
-        {
-            return new QueryForData()
+            if (result != null)
             {
-                EntityId = "trolololo",
-                EntityType = EntityTypes.Radio
-            };
+                result.SendToUser();
+            }
+        }
+
+        private static QueryForData RadioQuery()
+        {
+            return new QueryForData(EntityTypes.Radio, "trolololo");
         }
     }
 
-    internal class QueryForData
-    {
-        public EntityTypes EntityType { get; set; }
-        public string EntityId { get; set; }
-    }
+    internal record QueryForData(
+        EntityTypes EntityType, 
+        string EntityId) { }
 }

@@ -24,19 +24,19 @@ namespace NullAsError
         }
     }
 
-    internal class ResourceId
-    {
-    }
-
-    public class UserDto
-    {
-    }
-
     internal class Database
     {
         public ResourceId Save(UserDto userDto)
         {
             return new ResourceId();
         }
+    }
+
+    internal class ResourceId
+    {
+    }
+
+    public class UserDto
+    {
     }
 }

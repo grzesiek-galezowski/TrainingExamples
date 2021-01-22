@@ -11,7 +11,7 @@ namespace NullAsNothingRefactored
                 new RadioCache(), 
                 new GroupCache());
 
-            Maybe<QueryResult> maybeResult = mySystem.QueryWith(WhateverQuery());
+            Maybe<QueryResult> maybeResult = mySystem.QueryWith(RadioQuery());
 
             if (maybeResult.HasValue)
             {
@@ -19,19 +19,13 @@ namespace NullAsNothingRefactored
             }
         }
 
-        private static QueryForData WhateverQuery()
+        private static QueryForData RadioQuery()
         {
-            return new QueryForData()
-            {
-                EntityId = "trolololo",
-                EntityType = EntityTypes.Radio
-            };
+            return new QueryForData(EntityTypes.Radio, "trolololo");
         }
     }
 
-    internal class QueryForData
-    {
-        public EntityTypes EntityType { get; set; }
-        public string EntityId { get; set; }
-    }
+    internal record QueryForData(
+        EntityTypes EntityType, 
+        string EntityId) { }
 }
