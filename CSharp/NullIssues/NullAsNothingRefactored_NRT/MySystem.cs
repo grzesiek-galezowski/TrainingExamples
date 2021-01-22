@@ -1,6 +1,6 @@
-﻿namespace NullAsNothingRefactored2
+﻿namespace NullAsNothingRefactored_NRT
 {
-    public class MySystem
+    internal class MySystem
     {
         private readonly ICache _usersCache;
         private readonly ICache _radioCache;
@@ -13,19 +13,19 @@
             _groupCache = groupCache;
         }
 
-        public QueryResult QueryWith(QueryForData queryForData)
+        public QueryResult? QueryWith(QueryForData queryForData)
         {
             if (queryForData.EntityType == EntityTypes.User)
             {
-                return _usersCache.GetBy(queryForData.EntityId).Value;
+                return _usersCache.GetBy(queryForData.EntityId);
             }
             else if (queryForData.EntityType == EntityTypes.Radio)
             {
-                return _radioCache.GetBy(queryForData.EntityId).Value;
+                return _radioCache.GetBy(queryForData.EntityId);
             }
             else if (queryForData.EntityType == EntityTypes.Group)
             {
-                return _groupCache.GetBy(queryForData.EntityId).Value;
+                return _groupCache.GetBy(queryForData.EntityId);
             }
             else
             {

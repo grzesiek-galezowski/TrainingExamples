@@ -1,6 +1,4 @@
-﻿using System.Net.Cache;
-
-namespace NullAsNothing
+﻿namespace NullAsNothing
 {
     class Program
     {

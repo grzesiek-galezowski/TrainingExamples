@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NullAsNothingRefactored2
+namespace NullAsNothingRefactored_NRT
 {
     internal class UnknownEntityTypeException : Exception
     {
