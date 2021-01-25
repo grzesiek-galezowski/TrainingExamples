@@ -6,12 +6,12 @@ namespace NullAsNothingRefactored_NRT
     {
         static void Main(string[] args)
         {
-            var mySystem = new MySystem(
+            var mySystem = new MainCache(
                 new UsersCache(), 
                 new RadioCache(), 
                 new GroupCache());
 
-            QueryResult? maybeResult = mySystem.QueryWith(RadioQuery());
+            QueryResult? maybeResult = mySystem.QueryWith(QueryForRadio("radio1"));
 
             if (maybeResult != null)
             {
@@ -19,9 +19,9 @@ namespace NullAsNothingRefactored_NRT
             }
         }
 
-        private static QueryForData RadioQuery()
+        private static QueryForData QueryForRadio(string entityId)
         {
-            return new QueryForData(EntityTypes.Radio, "trolololo");
+            return new QueryForData(EntityTypes.Radio, entityId);
         }
     }
 

@@ -1,21 +1,19 @@
-﻿using Functional.Maybe;
-
-namespace NullAsNothingRefactored
+﻿namespace NullAsNothingRefactored_NRT
 {
-    internal class MySystem
+    internal class MainCache
     {
         private readonly ICache _usersCache;
         private readonly ICache _radioCache;
         private readonly ICache _groupCache;
 
-        public MySystem(ICache usersCache, ICache radioCache, ICache groupCache)
+        public MainCache(ICache usersCache, ICache radioCache, ICache groupCache)
         {
             _usersCache = usersCache;
             _radioCache = radioCache;
             _groupCache = groupCache;
         }
 
-        public Maybe<QueryResult> QueryWith(QueryForData queryForData)
+        public QueryResult? QueryWith(QueryForData queryForData)
         {
             if (queryForData.EntityType == EntityTypes.User)
             {

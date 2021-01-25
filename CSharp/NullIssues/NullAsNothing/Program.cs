@@ -4,12 +4,12 @@
     {
         static void Main(string[] args)
         {
-            var mySystem = new MySystem(
+            var mySystem = new MainCache(
                 new UsersCache(), 
                 new RadioCache(), 
                 new GroupCache());
             
-            var result = mySystem.QueryWith(RadioQuery());
+            var result = mySystem.QueryWith(QueryForRadio("radio1"));
 
             if (result != null)
             {
@@ -17,9 +17,9 @@
             }
         }
 
-        private static QueryForData RadioQuery()
+        private static QueryForData QueryForRadio(string entityId)
         {
-            return new QueryForData(EntityTypes.Radio, "trolololo");
+            return new QueryForData(EntityTypes.Radio, entityId);
         }
     }
 
