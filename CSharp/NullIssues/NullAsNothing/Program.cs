@@ -4,12 +4,12 @@
     {
         static void Main(string[] args)
         {
-            var mySystem = new MainCache(
+            var mainCache = new MainCache(
                 new UsersCache(), 
                 new RadioCache(), 
                 new GroupCache());
             
-            var result = mySystem.QueryWith(QueryForRadio("radio1"));
+            var result = mainCache.QueryWith(QueryForRadio("radio1"));
 
             if (result != null)
             {

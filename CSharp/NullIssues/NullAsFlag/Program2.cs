@@ -12,17 +12,17 @@ namespace NullAsFlag
             var localDataCenter = new DataCenter();
             var remoteDataCenter = new DataCenter();
 
-            var myController = new SomeKindOfLogic(
+            var logic = new SomeKindOfLogic(
                 myNotificationsEngine, 
                 localDataCenter, 
                 remoteDataCenter);
 
             //somewhere
-            myController.HandleMessageFromUser("message");
+            logic.HandleMessageFromUser("message");
 
 
             //somewhere else
-            myController.HandleReplicatedMessage("message");
+            logic.HandleReplicatedMessage("message");
         }
     }
 

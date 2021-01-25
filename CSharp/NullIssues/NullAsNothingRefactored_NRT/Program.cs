@@ -6,12 +6,12 @@ namespace NullAsNothingRefactored_NRT
     {
         static void Main(string[] args)
         {
-            var mySystem = new MainCache(
+            var mainCache = new MainCache(
                 new UsersCache(), 
                 new RadioCache(), 
                 new GroupCache());
 
-            QueryResult? maybeResult = mySystem.QueryWith(QueryForRadio("radio1"));
+            QueryResult? maybeResult = mainCache.QueryWith(QueryForRadio("radio1"));
 
             if (maybeResult != null)
             {

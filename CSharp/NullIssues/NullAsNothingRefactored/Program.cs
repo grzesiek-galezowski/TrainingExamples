@@ -6,12 +6,12 @@ namespace NullAsNothingRefactored
     {
         static void Main(string[] args)
         {
-            var mySystem = new MainCache(
+            var mainCache = new MainCache(
                 new UsersCache(), 
                 new RadioCache(), 
                 new GroupCache());
 
-            Maybe<QueryResult> maybeResult = mySystem.QueryWith(QueryForRadio("radio1"));
+            Maybe<QueryResult> maybeResult = mainCache.QueryWith(QueryForRadio("radio1"));
 
             if (maybeResult.HasValue)
             {
