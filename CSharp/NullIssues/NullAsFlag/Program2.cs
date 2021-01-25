@@ -4,6 +4,7 @@ namespace NullAsFlag
 {
     class Program2
     {
+        //null as do-nothing/flag - parameter
         static void Main2(string[] args)
         {
             var myNotificationsEngine = new MyNotificationsEngine();
@@ -11,7 +12,7 @@ namespace NullAsFlag
             var localDataCenter = new DataCenter();
             var remoteDataCenter = new DataCenter();
 
-            var myController = new MyController(
+            var myController = new SomeKindOfLogic(
                 myNotificationsEngine, 
                 localDataCenter, 
                 remoteDataCenter);
@@ -25,13 +26,13 @@ namespace NullAsFlag
         }
     }
 
-    internal class MyController
+    internal class SomeKindOfLogic
     {
         private readonly MyNotificationsEngine _myNotificationsEngine;
         private readonly DataCenter _localDataCenter;
         private readonly DataCenter _remoteDataCenter;
 
-        public MyController(
+        public SomeKindOfLogic(
             MyNotificationsEngine myNotificationsEngine, 
             DataCenter localDataCenter, 
             DataCenter remoteDataCenter)

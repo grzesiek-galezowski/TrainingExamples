@@ -17,11 +17,11 @@ namespace NullAsFlagRefactored
     {
         public IConfigurationCommand CreateCommandFrom(string[] args)
         {
-            if (args.Length == 1)
+            if (IsChangeIdCommand(args))
             {
                 return new ChangeIdCommand();
             }
-            else if (args.Length == 2)
+            else if (IsSynchronizeAllCommand(args))
             {
                 return new SynchronizeAllCommand();
             }
@@ -29,6 +29,16 @@ namespace NullAsFlagRefactored
             {
                 return new IgnoredCommand();
             }
+        }
+
+        private static bool IsSynchronizeAllCommand(string[] args)
+        {
+            return args.Length == 2;
+        }
+
+        private static bool IsChangeIdCommand(string[] args)
+        {
+            return args.Length == 1;
         }
     }
 

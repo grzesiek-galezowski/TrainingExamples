@@ -4,6 +4,7 @@ namespace NullAsFlag
 {
     class Program
     {
+        //null as do-nothing - returned value
         static void Main(string[] args)
         {
             var commandFactory = new CommandFactory();
@@ -21,11 +22,11 @@ namespace NullAsFlag
     {
         public IConfigurationCommand CreateCommandFrom(string[] args)
         {
-            if (args.Length == 1)
+            if (IsChangeIdCommand(args))
             {
                 return new ChangeIdCommand();
             }
-            else if (args.Length == 2)
+            else if (IsSynchronizeCommand(args))
             {
                 return new SynchronizeAllCommand();
             }
@@ -33,6 +34,18 @@ namespace NullAsFlag
             {
                 return null;
             }
+        }
+
+
+
+        private static bool IsSynchronizeCommand(string[] args)
+        {
+            return args.Length == 2;
+        }
+
+        private static bool IsChangeIdCommand(string[] args)
+        {
+            return args.Length == 1;
         }
     }
 

@@ -11,7 +11,7 @@ namespace NullAsFlagRefactored
             var localDataCenter = new DataCenter();
             var remoteDataCenter = new DataCenter();
 
-            var myController = new MyController(
+            var myController = new SomeKindOfLogic(
                 myNotificationsEngine, 
                 localDataCenter, 
                 remoteDataCenter);
@@ -25,13 +25,13 @@ namespace NullAsFlagRefactored
         }
     }
 
-    internal class MyController
+    internal class SomeKindOfLogic
     {
         private readonly MyNotificationsEngine _myNotificationsEngine;
         private readonly IDataCenter _localDataCenter;
         private readonly IDataCenter _remoteDataCenter;
 
-        public MyController(
+        public SomeKindOfLogic(
             MyNotificationsEngine myNotificationsEngine, 
             IDataCenter localDataCenter, 
             IDataCenter remoteDataCenter)
