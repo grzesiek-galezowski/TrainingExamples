@@ -19,8 +19,7 @@ namespace NullAsErrorRefactored
             }
             catch (DatabaseConnectionException e)
             {
-                LogError(
-                    $"Could not connect to db to save user {userDto}");
+                LogError(e, $"Could not connect to db to save user {userDto}");
             }
         }
 
@@ -28,7 +27,7 @@ namespace NullAsErrorRefactored
 
 
 
-        private static void LogError(string s)
+        private static void LogError(DatabaseConnectionException databaseConnectionException, string s)
         {
             Console.WriteLine(s);
         }
