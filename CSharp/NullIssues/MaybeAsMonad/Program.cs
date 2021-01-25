@@ -11,9 +11,11 @@ namespace MaybeAsMonad
         {
             var database = new Database();
 
+            //1. Compare to null propagation
+            //2. Execute it!
             var userOfFirstContact = GetAddressBook()
                 .Select(b => b.Contacts)
-                .SelectMany(c => c.FirstOrDefault().ToMaybe())
+                .SelectMany(c => c.FirstMaybe())
                 .Select(c => c.Name)
                 .Select(name => database.LoadByName(name))
                 .OrElse(() => new Person("Zenek"));
