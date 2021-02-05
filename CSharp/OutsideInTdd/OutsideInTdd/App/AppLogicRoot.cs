@@ -2,7 +2,7 @@ namespace OutsideInTdd.App
 {
     public class AppLogicRoot
     {
-        public TodoCommandFactory CommandFactory { get; }
+        public ITodoCommandFactory CommandFactory { get; }
 
         public AppLogicRoot(ITodoNoteDao todoNoteDao)
         {

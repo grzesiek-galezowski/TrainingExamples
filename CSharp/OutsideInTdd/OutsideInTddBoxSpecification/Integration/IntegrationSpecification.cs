@@ -14,7 +14,7 @@ using NSubstitute;
 using NUnit.Framework;
 using OutsideInTdd.Adapters;
 using OutsideInTdd.App;
-using TddXt.AnyRoot;
+using static TddXt.AnyRoot.Root;
 
 namespace OutsideInTddBoxSpecification.Integration
 {
@@ -24,6 +24,8 @@ namespace OutsideInTddBoxSpecification.Integration
         public async Task ShouldNAME() //bug
         {
             //GIVEN
+            var todoNoteDto = Any.Instance<TodoNoteDto>();
+            var todoCommandFactory = Substitute.For<ITodoCommandFactory>();
             using var host = Host.CreateDefaultBuilder()
                 .ConfigureWebHostDefaults(builder =>
                     builder
@@ -32,17 +34,22 @@ namespace OutsideInTddBoxSpecification.Integration
                         {
                             collection.RemoveAll<EndpointsRoot>();
                             collection.AddSingleton(ctx => new EndpointsRoot(
-                                Substitute.For<TodoCommandFactory>(),
-                                Root.Any.Instance<ITodoNoteDao>()));
+                                todoCommandFactory,
+                                Any.Instance<ITodoNoteDao>()));
                         })
                         .UseTestServer()).Build();
             await host.StartAsync();
+
+            //bug extract interface from command
+            todoCommandFactory.CreateAddNoteCommand(todoNoteDto, Arg.Any<IAddTodoResponse>())
+                .Returns(command);
 
             //opakowujemy klientem Flurla HttpClienta którego daje nam TestServer!
             using var client = new FlurlClient(host.GetTestServer().CreateClient());
             //bug finish
             
             //WHEN
+            await client.Request("Todo").PostJsonAsync(todoNoteDto);
 
             //THEN
             true.Should().BeFalse("not implemented");

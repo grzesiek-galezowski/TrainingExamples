@@ -9,7 +9,7 @@ namespace OutsideInTdd.Adapters
         public AddTodoEndpoint AddTodoEndpoint { get; }
         public GetAllTodosEndpoint AllTodosEndpoint { get; }
 
-        public EndpointsRoot(TodoCommandFactory todoCommandFactory, ITodoNoteDao todoNoteDao)
+        public EndpointsRoot(ITodoCommandFactory todoCommandFactory, ITodoNoteDao todoNoteDao)
         {
             NoteDao = todoNoteDao;
             _noteDeserializer = new NoteDeserializer();

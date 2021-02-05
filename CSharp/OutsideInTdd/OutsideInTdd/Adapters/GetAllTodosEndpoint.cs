@@ -6,9 +6,9 @@ namespace OutsideInTdd.Adapters
 {
     public class GetAllTodosEndpoint : ITodoEndpoint
     {
-        private readonly TodoCommandFactory _todoCommandFactory;
+        private readonly ITodoCommandFactory _todoCommandFactory;
 
-        public GetAllTodosEndpoint(TodoCommandFactory todoCommandFactory)
+        public GetAllTodosEndpoint(ITodoCommandFactory todoCommandFactory)
         {
             _todoCommandFactory = todoCommandFactory;
         }

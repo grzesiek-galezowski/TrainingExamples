@@ -18,10 +18,10 @@ namespace OutsideInTddSpecification
         public void Test1() //bug rename
         {
             //bug make it work
-            Types().That().ResideInNamespace("**App**")
+            Types().That().ResideInNamespace("App")
                 .Should()
                 .NotDependOnAnyTypesThat()
-                .ResideInNamespace("**Adapters**")
+                .ResideInNamespace("Adapters")
                 .Check(Architecture);
         }
     }

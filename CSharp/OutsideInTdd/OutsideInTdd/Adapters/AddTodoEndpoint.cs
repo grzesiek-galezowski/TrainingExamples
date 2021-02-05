@@ -7,11 +7,11 @@ namespace OutsideInTdd.Adapters
     public class AddTodoEndpoint : ITodoEndpoint
     {
         private readonly NoteDeserializer _noteDeserializer;
-        private readonly TodoCommandFactory _todoCommandFactory;
+        private readonly ITodoCommandFactory _todoCommandFactory;
 
         public AddTodoEndpoint(
             NoteDeserializer noteDeserializer, 
-            TodoCommandFactory todoCommandFactory)
+            ITodoCommandFactory todoCommandFactory)
         {
             _noteDeserializer = noteDeserializer;
             _todoCommandFactory = todoCommandFactory;

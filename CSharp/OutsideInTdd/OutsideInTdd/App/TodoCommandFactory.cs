@@ -2,7 +2,17 @@ using OutsideInTdd.Adapters;
 
 namespace OutsideInTdd.App
 {
-    public class TodoCommandFactory
+    public interface ITodoCommandFactory
+    {
+        AddNoteCommand CreateAddNoteCommand(
+            TodoNoteDto dto, 
+            IAddTodoResponse addTodoResponse);
+
+        RetrieveAllNotesCommand CreateRetrieveAllNotesCommand(
+            IRetrieveTodoResponse retrieveTodoResponse);
+    }
+
+    public class TodoCommandFactory : ITodoCommandFactory
     {
         private readonly ITodoNoteDao _todoNoteDao;
 
