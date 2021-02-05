@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutsideInTdd", "OutsideInTdd\OutsideInTdd.csproj", "{B29B880E-2BA0-408F-8B52-EF9BC44433E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OutsideInTdd", "OutsideInTdd\OutsideInTdd.csproj", "{B29B880E-2BA0-408F-8B52-EF9BC44433E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutsideInTddBoxSpecification", "OutsideInTddBoxSpecification\OutsideInTddBoxSpecification.csproj", "{5DEBB97C-80DC-4234-94D5-A1EA07EA5E08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OutsideInTddBoxSpecification", "OutsideInTddBoxSpecification\OutsideInTddBoxSpecification.csproj", "{5DEBB97C-80DC-4234-94D5-A1EA07EA5E08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutsideInTddSpecification", "OutsideInTddSpecification\OutsideInTddSpecification.csproj", "{BE50EA8A-BF9F-4626-9D61-F0440C59891F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{5DEBB97C-80DC-4234-94D5-A1EA07EA5E08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DEBB97C-80DC-4234-94D5-A1EA07EA5E08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DEBB97C-80DC-4234-94D5-A1EA07EA5E08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE50EA8A-BF9F-4626-9D61-F0440C59891F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE50EA8A-BF9F-4626-9D61-F0440C59891F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE50EA8A-BF9F-4626-9D61-F0440C59891F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE50EA8A-BF9F-4626-9D61-F0440C59891F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

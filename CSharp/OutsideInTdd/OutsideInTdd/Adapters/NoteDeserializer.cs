@@ -1,9 +1,10 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using OutsideInTdd.App;
 
-namespace OutsideInTdd
+namespace OutsideInTdd.Adapters
 {
-    public class NoteParser
+    public class NoteDeserializer
     {
         public async Task<TodoNoteDto> ReadNoteFrom(HttpRequest contextRequest)
         {

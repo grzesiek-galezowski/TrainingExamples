@@ -1,14 +1,15 @@
 using System.Collections.Generic;
+using OutsideInTdd.App;
 
-namespace OutsideInTdd
+namespace OutsideInTdd.Adapters
 {
-    public class TodoNoteDao
+    public class TodoNoteDao : ITodoNoteDao
     {
         public static TodoNoteDto? Dto;
 
-        public TodoNoteDto Save(TodoNoteDto dto)
+        public void Save(TodoNoteDto dto)
         {
-            return Dto = dto;
+            Dto = dto;
         }
 
         public List<TodoNoteDto> LoadAllItems()

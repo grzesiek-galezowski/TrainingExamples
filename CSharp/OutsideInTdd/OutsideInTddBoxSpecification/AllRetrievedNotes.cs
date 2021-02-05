@@ -1,7 +1,6 @@
-using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using OutsideInTdd;
+using OutsideInTdd.App;
 
 namespace OutsideInTddBoxSpecification
 {

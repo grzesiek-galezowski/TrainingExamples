@@ -1,19 +1,15 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using OutsideInTdd.App;
 
-namespace OutsideInTdd
+namespace OutsideInTdd.Adapters
 {
-    public interface ITodoResponse
-    {
-        Task ReportRetrievedData(List<TodoNoteDto> allItems);
-    }
-
-    public class TodoResponse : ITodoResponse
+    public class RetrieveTodoResponse : IRetrieveTodoResponse
     {
         private readonly HttpContext _context;
 
-        public TodoResponse(HttpContext context)
+        public RetrieveTodoResponse(HttpContext context)
         {
             _context = context;
         }

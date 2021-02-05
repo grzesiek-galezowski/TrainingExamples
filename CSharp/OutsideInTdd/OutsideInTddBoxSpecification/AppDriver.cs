@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Flurl.Http;
 using Microsoft.AspNetCore.Mvc.Testing;
-using OutsideInTdd;
+using OutsideInTdd.Adapters;
+using OutsideInTdd.App;
 
 namespace OutsideInTddBoxSpecification
 {
