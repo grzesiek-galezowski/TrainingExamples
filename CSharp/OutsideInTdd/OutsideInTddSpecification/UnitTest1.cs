@@ -1,5 +1,6 @@
 using ArchUnitNET.Domain;
 using ArchUnitNET.Loader;
+using ArchUnitNET.NUnit;
 using NUnit.Framework;
 using OutsideInTdd.Adapters;
 using static ArchUnitNET.Fluent.ArchRuleDefinition;
@@ -16,11 +17,12 @@ namespace OutsideInTddSpecification
         [Test]
         public void Test1() //bug rename
         {
+            //bug make it work
             Types().That().ResideInNamespace("**App**")
                 .Should()
                 .NotDependOnAnyTypesThat()
                 .ResideInNamespace("**Adapters**")
-                .Evaluate(Architecture);
+                .Check(Architecture);
         }
     }
 }
