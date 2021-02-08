@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
-namespace XUnitTestPatterns._01_SetupTeardownDataLife
+namespace XUnitTestPatterns._07_FixtureManagement
 {
-  public class FixtureLifecycle
+  public class _01_MutableSharedFixture
   {
     private int _number = 0;
 
@@ -26,6 +21,7 @@ namespace XUnitTestPatterns._01_SetupTeardownDataLife
     }
   }
 
+  //bonus - how to enable instance per test case
   [FixtureLifeCycle(LifeCycle.InstancePerTestCase)]
   public class FixtureLifecycle2
   {
