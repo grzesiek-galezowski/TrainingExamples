@@ -1,6 +1,6 @@
 using System;
 
-namespace XUnitTestPatterns._04_CustomAssertions_AssertionObject
+namespace XUnitTestPatterns._05_AssertionObject
 {
   public class NumberAssertion
   {

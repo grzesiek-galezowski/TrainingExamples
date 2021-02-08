@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace XUnitTestPatterns._07_FixtureManagement
+namespace XUnitTestPatterns._08_FixtureManagement
 {
   public class _01_MutableSharedFixture
   {

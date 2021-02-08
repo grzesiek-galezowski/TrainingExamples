@@ -1,4 +1,4 @@
-namespace XUnitTestPatterns._06_PickingTestValues
+namespace XUnitTestPatterns._07_PickingTestValues
 {
   public class UserNameCheck
   {

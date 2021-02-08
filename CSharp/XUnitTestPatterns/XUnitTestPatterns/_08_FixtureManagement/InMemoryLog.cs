@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace XUnitTestPatterns._07_FixtureManagement
+namespace XUnitTestPatterns._08_FixtureManagement
 {
   public class InMemoryLog
   {

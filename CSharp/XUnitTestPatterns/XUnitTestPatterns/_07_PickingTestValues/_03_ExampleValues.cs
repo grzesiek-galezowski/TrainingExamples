@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace XUnitTestPatterns._06_PickingTestValues
+namespace XUnitTestPatterns._07_PickingTestValues
 {
   public class _03_ExampleValues
   {

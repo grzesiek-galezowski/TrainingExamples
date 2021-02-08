@@ -9,7 +9,7 @@ using TddXt.AnyRoot.Strings;
 using TddXt.AnyRoot.Time;
 using static TddXt.AnyRoot.Root;
 
-namespace XUnitTestPatterns._06_PickingTestValues
+namespace XUnitTestPatterns._07_PickingTestValues
 {
   public class _01_ConstrainedNonDeterminism
   {

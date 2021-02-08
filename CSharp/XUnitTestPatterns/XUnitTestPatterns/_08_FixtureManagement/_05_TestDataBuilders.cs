@@ -1,10 +1,9 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using TddXt.AnyRoot.Numbers;
 using TddXt.AnyRoot.Strings;
 using static TddXt.AnyRoot.Root;
 
-namespace XUnitTestPatterns._07_FixtureManagement
+namespace XUnitTestPatterns._08_FixtureManagement
 {
   public class _05_TestDataBuilders //2 examples
   {
@@ -51,7 +50,7 @@ namespace XUnitTestPatterns._07_FixtureManagement
         return new User(_name, _surname, _age);
       }
     }
-    
+
     [Test]
     public void ShouldIncludeUserNameInAppendedUserLog2()
     {

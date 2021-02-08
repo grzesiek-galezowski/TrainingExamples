@@ -1,4 +1,4 @@
-namespace XUnitTestPatterns._07_FixtureManagement
+namespace XUnitTestPatterns._08_FixtureManagement
 {
   public class User //typically, DO NOT unit test data structures
   {

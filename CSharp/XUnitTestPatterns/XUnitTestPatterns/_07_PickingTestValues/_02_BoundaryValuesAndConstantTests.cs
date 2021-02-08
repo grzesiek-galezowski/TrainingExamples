@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using XUnitTestPatterns._03_ParameterizedTests;
 
-namespace XUnitTestPatterns._06_PickingTestValues
+namespace XUnitTestPatterns._07_PickingTestValues
 {
   public class _02_BoundaryValuesAndConstantTests
   {
