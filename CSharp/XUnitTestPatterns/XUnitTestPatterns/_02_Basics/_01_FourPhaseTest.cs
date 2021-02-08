@@ -2,7 +2,7 @@ using NUnit.Framework;
 
 namespace XUnitTestPatterns._02_Basics
 {
-  public class Ex01FourPhaseTest
+  public class _01_FourPhaseTest
   {
     [Test]
     public void ShouldAllowAccessingItsName()

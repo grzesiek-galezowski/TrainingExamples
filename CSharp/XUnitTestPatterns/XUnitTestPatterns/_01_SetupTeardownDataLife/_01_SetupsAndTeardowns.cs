@@ -3,8 +3,7 @@ using NUnit.Framework;
 
 namespace XUnitTestPatterns._01_SetupTeardownDataLife
 {
-
-  public class SetupsAndTeardowns
+  public class _01_SetupsAndTeardowns
   {
     [OneTimeSetUp]
     public void OneTimeSetup()

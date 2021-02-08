@@ -6,7 +6,7 @@ using static TddXt.AnyRoot.Root;
 
 namespace XUnitTestPatterns._02_Basics
 {
-  public class Ex02SingleLogicalAssertion
+  public class _02_SingleLogicalAssertion
   {
     //example 1: multiple runtime assertions
     [Test]
