@@ -2,7 +2,7 @@ using NUnit.Framework;
 
 namespace XUnitTestPatterns._03_ParameterizedTests
 {
-  public class Ex04ParameterizedTestPersonSpecification
+  public class _01_ParameterizedTests
   {
     [TestCase(17, false)]
     [TestCase(18, true)]

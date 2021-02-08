@@ -13,7 +13,7 @@ namespace XUnitTestPatterns._07_PickingTestValues
 {
   public class _01_ConstrainedNonDeterminism
   {
-    [Test]
+    [Test]//How to debug these tests?
     public void ShouldReturnItsInputWhenItIsNotNull()
     {
       //GIVEN

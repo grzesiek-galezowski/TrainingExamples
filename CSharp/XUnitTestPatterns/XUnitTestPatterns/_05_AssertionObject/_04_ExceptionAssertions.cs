@@ -6,7 +6,6 @@ namespace XUnitTestPatterns._05_AssertionObject
 {
   public class _04_ExceptionAssertions
   {
-
     [Test]
     public void ShouldThrowWhenValueIsNegative1()
     {
