@@ -1,4 +1,5 @@
-﻿using NSubstitute;
+﻿using System.Threading.Tasks;
+using NSubstitute;
 using NUnit.Framework;
 using OutsideInTdd.App;
 using TddXt.AnyRoot.Strings;
@@ -9,10 +10,10 @@ namespace OutsideInTddSpecification.ComponentSpecification
     public class ComponentSpecification
     {
         [Test]
-        public void ShouldReportErrorWhenInappropriateWordDetected()
+        public async Task ShouldReportErrorWhenInappropriateWordDetected()
         {
             //GIVEN
-            var response = Substitute.For<IAddTodoResponse>();
+            var response = Substitute.For<IAddTodoResponseInProgress>();
             var appLogicRoot = new AppLogicRoot(Any.Instance<ITodoNoteDao>());
             var inappropriateWord = "Banan";
             var dto = new TodoNoteDto(
@@ -20,10 +21,10 @@ namespace OutsideInTddSpecification.ComponentSpecification
                 Any.StringContaining(inappropriateWord));
         
             //WHEN
-            appLogicRoot.CommandFactory.CreateAddNoteCommand(dto, response).Execute();
+            await appLogicRoot.CommandFactory.CreateAddNoteCommand(dto, response).Execute();
         
             //THEN
-            response.Received(1)
+            await response.Received(1)
                 .ReportFailureBecauseOfInappropriateWord(inappropriateWord);
         }
     }

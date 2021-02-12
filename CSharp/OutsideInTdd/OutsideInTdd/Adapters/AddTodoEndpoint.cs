@@ -20,8 +20,8 @@ namespace OutsideInTdd.Adapters
         public async Task HandleAsync(HttpContext context)
         {
             var dto = await _noteDeserializer.ReadNoteFrom(context.Request);
-            _todoCommandFactory.CreateAddNoteCommand(dto,
-                new AddTodoResponse(context)).Execute();
+            await _todoCommandFactory.CreateAddNoteCommand(dto,
+                new AddTodoResponseInProgress(context)).Execute();
         }
     }
 }

@@ -5,7 +5,7 @@ namespace OutsideInTdd.Adapters
 {
     public class TodoNoteDao : ITodoNoteDao
     {
-        public static TodoNoteDto? Dto;
+        private static TodoNoteDto? Dto;
 
         public void Save(TodoNoteDto dto)
         {
@@ -16,7 +16,7 @@ namespace OutsideInTdd.Adapters
         {
             return new List<TodoNoteDto>()
             {
-                Dto
+                Dto,
             };
         }
     }

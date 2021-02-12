@@ -1,12 +1,10 @@
-using OutsideInTdd.Adapters;
-
 namespace OutsideInTdd.App
 {
     public interface ITodoCommandFactory
     {
         ITodoCommand CreateAddNoteCommand(
             TodoNoteDto dto, 
-            IAddTodoResponse addTodoResponse);
+            IAddTodoResponseInProgress addTodoResponse);
 
         RetrieveAllNotesCommand CreateRetrieveAllNotesCommand(
             IRetrieveTodoResponse retrieveTodoResponse);
@@ -23,7 +21,7 @@ namespace OutsideInTdd.App
 
         public ITodoCommand CreateAddNoteCommand(
             TodoNoteDto dto, 
-            IAddTodoResponse addTodoResponse)
+            IAddTodoResponseInProgress addTodoResponse)
         {
             return new AddNoteCommand(new NewNoteRequest(dto), _todoNoteDao, addTodoResponse);
         }

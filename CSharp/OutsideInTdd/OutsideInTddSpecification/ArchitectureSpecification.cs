@@ -7,7 +7,7 @@ using static ArchUnitNET.Fluent.ArchRuleDefinition;
 
 namespace OutsideInTddSpecification
 {
-    public class Tests
+    public class ArchitectureSpecification
     {
         private static readonly Architecture Architecture =
             new ArchLoader().LoadAssemblies(
@@ -15,9 +15,8 @@ namespace OutsideInTddSpecification
                 .Build();
 
         [Test]
-        public void Test1() //bug rename
+        public void ShouldNotContainDependenciesFromAppToAdapters()
         {
-            //bug make it work
             Types().That().ResideInNamespace("App")
                 .Should()
                 .NotDependOnAnyTypesThat()

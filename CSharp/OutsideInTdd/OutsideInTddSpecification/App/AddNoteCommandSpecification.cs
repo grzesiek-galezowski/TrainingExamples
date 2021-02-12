@@ -1,10 +1,7 @@
-﻿using FluentAssertions;
+﻿using System.Threading.Tasks;
 using NSubstitute;
-using NSubstitute.Core.Arguments;
-using NSubstitute.ExceptionExtensions;
 using NUnit.Framework;
 using OutsideInTdd.App;
-using TddXt.AnyRoot;
 using static TddXt.AnyRoot.Root;
 
 namespace OutsideInTddSpecification.App
@@ -12,7 +9,7 @@ namespace OutsideInTddSpecification.App
     public class AddNoteCommandSpecification
     {
         [Test]
-        public void ShouldSaveTodoNoteWhenExecuted()
+        public async Task ShouldSaveTodoNoteWhenExecuted()
         {
             //GIVEN
             var request = Substitute.For<INewNoteRequest>();
@@ -21,23 +18,23 @@ namespace OutsideInTddSpecification.App
                 new AddNoteCommand(
                     request, 
                     storage, 
-                    Any.Instance<IAddTodoResponse>());
+                    Any.Instance<IAddTodoResponseInProgress>());
             
             //WHEN
-            addNoteCommand.Execute();
+            await addNoteCommand.Execute();
         
             //THEN
             request.Received(1).CreateNoteIn(storage);
         }
         
         [Test]
-        public void ShouldReportFailureWhenInappropriateWordDetected()
+        public async Task ShouldReportFailureWhenInappropriateWordDetected()
         {
             //GIVEN
             var request = Substitute.For<INewNoteRequest>();
             var storage = Any.Instance<ITodoNoteDao>();
             var exception = Any.Instance<InappropriateWordException>();
-            var response = Substitute.For<IAddTodoResponse>();
+            var response = Substitute.For<IAddTodoResponseInProgress>();
             var addNoteCommand = 
                 new AddNoteCommand(
                     request, 
@@ -48,10 +45,10 @@ namespace OutsideInTddSpecification.App
                 .Throw(exception);
 
             //WHEN
-            addNoteCommand.Execute();
+            await addNoteCommand.Execute();
         
             //THEN
-            response.Received(1).ReportFailureBecauseOfInappropriateWord(exception.Word);
+            await response.Received(1).ReportFailureBecauseOfInappropriateWord(exception.Word);
             request.DidNotReceive().CreateNoteIn(Arg.Any<ITodoNoteDao>());
         }
     }

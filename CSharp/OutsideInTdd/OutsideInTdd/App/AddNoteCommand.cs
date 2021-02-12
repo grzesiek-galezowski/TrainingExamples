@@ -1,22 +1,24 @@
+using System.Threading.Tasks;
+
 namespace OutsideInTdd.App
 {
     public class AddNoteCommand : ITodoCommand
     {
         private readonly ITodoNoteDao _storage;
-        private readonly IAddTodoResponse _addTodoResponse;
+        private readonly IAddTodoResponseInProgress _addTodoResponse;
         private readonly INewNoteRequest _newNoteRequest;
 
         public AddNoteCommand(
             INewNoteRequest newNoteRequest, 
             ITodoNoteDao storage, 
-            IAddTodoResponse addTodoResponse)
+            IAddTodoResponseInProgress addTodoResponse)
         {
             _newNoteRequest = newNoteRequest;
             _storage = storage;
             _addTodoResponse = addTodoResponse;
         }
 
-        public void Execute()
+        public async Task Execute()
         {
             try
             {
@@ -25,7 +27,7 @@ namespace OutsideInTdd.App
             }
             catch (InappropriateWordException e)
             {
-                _addTodoResponse.ReportFailureBecauseOfInappropriateWord(e.Word);
+                await _addTodoResponse.ReportFailureBecauseOfInappropriateWord(e.Word);
             }
         } //bug catch generic exception as well!
     }

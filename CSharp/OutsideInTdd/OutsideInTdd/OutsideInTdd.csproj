@@ -5,7 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Ports\" />
+    <Compile Remove="Ports\**" />
+    <Content Remove="Ports\**" />
+    <EmbeddedResource Remove="Ports\**" />
+    <None Remove="Ports\**" />
   </ItemGroup>
 
 
