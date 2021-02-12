@@ -8,7 +8,7 @@ namespace OutsideInTdd.App
 
     public class NewNoteRequest : INewNoteRequest
     {
-        public readonly TodoNoteDto _dto; //bug make private
+        private readonly TodoNoteDto _dto; //bug make private
 
         public NewNoteRequest(TodoNoteDto dto)
         {
@@ -26,9 +26,7 @@ namespace OutsideInTdd.App
             {
                 throw new InappropriateWordException("Banan");
             }
-            //bug UT
-            
-            //bug throw new System.NotImplementedException();
+            //bug should have added UTs
         }
     }
 }

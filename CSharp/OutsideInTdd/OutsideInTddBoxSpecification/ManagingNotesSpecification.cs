@@ -5,7 +5,7 @@ using static TddXt.AnyRoot.Root;
 
 namespace OutsideInTddBoxSpecification
 {
-    public class Tests
+    public class ManagingNotesSpecification
     {
         //TODO different users
         //TODO validate title and content (e.g. length)
