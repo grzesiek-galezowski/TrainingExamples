@@ -21,11 +21,12 @@ namespace OutsideInTddBoxSpecification.Integration
     public class IntegrationSpecification
     {
         [Test]
-        public async Task ShouldNAME() //bug
+        public async Task ShouldReturnOkWhenAddingTodoNoteFinishesWithoutException()
         {
             //GIVEN
             var todoNoteDto = Any.Instance<TodoNoteDto>();
             var todoCommandFactory = Substitute.For<ITodoCommandFactory>();
+            var command = Substitute.For<ITodoCommand>();
             using var host = Host.CreateDefaultBuilder()
                 .ConfigureWebHostDefaults(builder =>
                     builder
@@ -33,26 +34,23 @@ namespace OutsideInTddBoxSpecification.Integration
                         .ConfigureServices(collection =>
                         {
                             collection.RemoveAll<EndpointsRoot>();
-                            collection.AddSingleton(ctx => new EndpointsRoot(
+                            collection.AddSingleton(_ => new EndpointsRoot(
                                 todoCommandFactory,
                                 Any.Instance<ITodoNoteDao>()));
                         })
                         .UseTestServer()).Build();
             await host.StartAsync();
-
-            //bug extract interface from command
+        
             todoCommandFactory.CreateAddNoteCommand(todoNoteDto, Arg.Any<IAddTodoResponse>())
                 .Returns(command);
-
-            //opakowujemy klientem Flurla HttpClienta którego daje nam TestServer!
+        
             using var client = new FlurlClient(host.GetTestServer().CreateClient());
-            //bug finish
             
             //WHEN
-            await client.Request("Todo").PostJsonAsync(todoNoteDto);
+            var response = await client.Request("Todo").AllowAnyHttpStatus().PostJsonAsync(todoNoteDto);
 
             //THEN
-            true.Should().BeFalse("not implemented");
+            response.StatusCode.Should().Be(200);
         }
     }
 }

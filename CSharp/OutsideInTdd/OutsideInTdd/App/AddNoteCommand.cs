@@ -1,6 +1,6 @@
 namespace OutsideInTdd.App
 {
-    public class AddNoteCommand
+    public class AddNoteCommand : ITodoCommand
     {
         private readonly ITodoNoteDao _storage;
         private readonly IAddTodoResponse _addTodoResponse;

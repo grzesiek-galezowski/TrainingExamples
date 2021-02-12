@@ -4,7 +4,7 @@ namespace OutsideInTdd.App
 {
     public interface ITodoCommandFactory
     {
-        AddNoteCommand CreateAddNoteCommand(
+        ITodoCommand CreateAddNoteCommand(
             TodoNoteDto dto, 
             IAddTodoResponse addTodoResponse);
 
@@ -21,7 +21,7 @@ namespace OutsideInTdd.App
             _todoNoteDao = todoNoteDao;
         }
 
-        public AddNoteCommand CreateAddNoteCommand(
+        public ITodoCommand CreateAddNoteCommand(
             TodoNoteDto dto, 
             IAddTodoResponse addTodoResponse)
         {
