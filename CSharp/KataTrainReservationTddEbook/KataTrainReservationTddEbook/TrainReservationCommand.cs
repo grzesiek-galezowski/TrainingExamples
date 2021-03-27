@@ -27,7 +27,7 @@ namespace KataTrainReservationTddEbook
 
     public void Execute()
     {
-      var train = _trains.RetrieveBy(_trainId);
+      var train = _trains.RetrieveBy(new TrainId(_trainId));
       if (train.HasCapacityForReservationsInAdvance())
       {
         train.Reserve(_seatCount, _searchEngine, _reservationInProgress);
@@ -59,7 +59,7 @@ namespace KataTrainReservationTddEbook
         searchEngine,
         reservationInProgress);
 
-      trains.RetrieveBy(trainId).Returns(train);
+      trains.RetrieveBy(new TrainId(trainId)).Returns(train);
       train.HasCapacityForReservationsInAdvance().Returns(true);
 
       //WHEN
@@ -90,7 +90,7 @@ namespace KataTrainReservationTddEbook
         searchEngine,
         reservationInProgress);
 
-      trains.RetrieveBy(trainId).Returns(train);
+      trains.RetrieveBy(new TrainId(trainId)).Returns(train);
       train.HasCapacityForReservationsInAdvance().Returns(false);
 
       //WHEN

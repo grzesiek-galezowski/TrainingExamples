@@ -2,7 +2,7 @@
 {
   public interface Trains
   {
-    Train RetrieveBy(string trainId);
+    Train RetrieveBy(TrainId trainId);
     void Update(Train train);
   }
 }

@@ -2,7 +2,7 @@
 {
   public class ReferenceService : Trains
   {
-    public Train RetrieveBy(string trainId)
+    public Train RetrieveBy(TrainId trainId)
     {
       throw new System.NotImplementedException();
     }
