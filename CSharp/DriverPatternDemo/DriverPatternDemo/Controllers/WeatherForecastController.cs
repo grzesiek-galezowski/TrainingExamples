@@ -3,7 +3,9 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
+using Flurl.Http;
 using Microsoft.EntityFrameworkCore;
 
 namespace DriverPatternDemo.Controllers
@@ -14,13 +16,16 @@ namespace DriverPatternDemo.Controllers
   {
     private readonly WeatherForecastDbContext _db;
     private readonly ILogger<WeatherForecastController> _logger;
+    private readonly IFlurlClient _flurlClient;
 
     public WeatherForecastController(
       WeatherForecastDbContext db,
-      ILogger<WeatherForecastController> logger)
+      ILogger<WeatherForecastController> logger,
+      IFlurlClient flurlClient)
     {
       _db = db;
       _logger = logger;
+      _flurlClient = flurlClient;
     }
 
     [HttpGet("{id}")]
@@ -29,6 +34,8 @@ namespace DriverPatternDemo.Controllers
       var persistentWeatherForecastDto = await _db.WeatherForecasts.SingleAsync(dto => dto.Id == id);
 
       return new WeatherForecastDto(
+        persistentWeatherForecastDto.TenantId,
+        persistentWeatherForecastDto.UserId,
         persistentWeatherForecastDto.Date, 
         persistentWeatherForecastDto.TemperatureC, 
         persistentWeatherForecastDto.Summary);
@@ -37,7 +44,12 @@ namespace DriverPatternDemo.Controllers
     [HttpGet]
     public IEnumerable<WeatherForecastDto> GetAll()
     {
-      return _db.WeatherForecasts.Select(f => new WeatherForecastDto(f.Date, f.TemperatureC, f.Summary));
+      return _db.WeatherForecasts.Select(f => new WeatherForecastDto(
+        f.TenantId,
+        f.UserId,
+        f.Date, 
+        f.TemperatureC, 
+        f.Summary));
     }
 
     [HttpPost]
@@ -45,11 +57,21 @@ namespace DriverPatternDemo.Controllers
     {
       var persistentWeatherForecastDto = new PersistentWeatherForecastDto(
         Guid.NewGuid(),
+        forecastDto.TenantId,
+        forecastDto.UserId,
         forecastDto.Date,
         forecastDto.TemperatureC,
         forecastDto.Summary);
+
       var entityEntry = await _db.WeatherForecasts.AddAsync(persistentWeatherForecastDto);
       await _db.SaveChangesAsync();
+
+      await _flurlClient.Request("notifications").PostJsonAsync(
+        new WeatherForecastSuccessfullyReportedEventDto(
+          forecastDto.TenantId,
+          forecastDto.UserId,
+          forecastDto.TemperatureC));
+
       return Ok(new ForecastCreationResultDto(entityEntry.Entity.Id));
     }
   }

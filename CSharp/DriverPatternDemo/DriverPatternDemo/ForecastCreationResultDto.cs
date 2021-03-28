@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DriverPatternDemo.Controllers
+namespace DriverPatternDemo
 {
   public record ForecastCreationResultDto(Guid Id) { }
 }

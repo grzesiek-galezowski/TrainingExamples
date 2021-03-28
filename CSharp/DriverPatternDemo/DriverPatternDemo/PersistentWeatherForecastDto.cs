@@ -3,8 +3,10 @@ using System;
 namespace DriverPatternDemo
 {
   public record PersistentWeatherForecastDto(
-    Guid Id, 
-    DateTime Date, 
-    int TemperatureC, 
+    Guid Id,
+    string TenantId,
+    string UserId,
+    DateTime Date,
+    int TemperatureC,
     string Summary) {}
 }
