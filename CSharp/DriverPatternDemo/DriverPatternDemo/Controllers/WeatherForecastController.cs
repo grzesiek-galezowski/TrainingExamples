@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace DriverPatternDemo.Controllers
 {
@@ -22,10 +23,10 @@ namespace DriverPatternDemo.Controllers
       _logger = logger;
     }
 
-    [HttpGet]
+    [HttpGet("{id}")]
     public async Task<WeatherForecastDto> Get(Guid id)
     {
-      var persistentWeatherForecastDto = await _db.WeatherForecasts.FindAsync(id);
+      var persistentWeatherForecastDto = await _db.WeatherForecasts.SingleAsync(dto => dto.Id == id);
 
       return new WeatherForecastDto(
         persistentWeatherForecastDto.Date, 
@@ -48,7 +49,8 @@ namespace DriverPatternDemo.Controllers
         forecastDto.TemperatureC,
         forecastDto.Summary);
       var entityEntry = await _db.WeatherForecasts.AddAsync(persistentWeatherForecastDto);
-      return Ok(new {id = entityEntry.Entity.Id});
+      await _db.SaveChangesAsync();
+      return Ok(new ForecastCreationResultDto(entityEntry.Entity.Id));
     }
   }
 }

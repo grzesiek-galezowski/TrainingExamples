@@ -20,7 +20,11 @@ namespace DriverPatternDemo
     public void ConfigureServices(IServiceCollection services)
     {
 
-      services.AddDbContext<WeatherForecastDbContext>(options => options.UseInMemoryDatabase(databaseName: "Weather"));
+      services.AddEntityFrameworkInMemoryDatabase();
+      services.AddDbContext<WeatherForecastDbContext>(
+        (services, options) => 
+          options.UseInMemoryDatabase(databaseName: "Weather")
+            .UseInternalServiceProvider(services));
       services.AddControllers();
     }
 
