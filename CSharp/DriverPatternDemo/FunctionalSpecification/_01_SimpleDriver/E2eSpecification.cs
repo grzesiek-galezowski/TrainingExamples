@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using DriverPatternDemo;
@@ -9,9 +11,13 @@ using Functional.Maybe;
 using Functional.Maybe.Just;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using TddXt.AnyRoot.Numbers;
 using TddXt.AnyRoot.Strings;
+using WireMock.RequestBuilders;
+using WireMock.ResponseBuilders;
+using WireMock.Server;
 using Xunit;
 using static TddXt.AnyRoot.Root;
 
@@ -51,17 +57,37 @@ namespace FunctionalSpecification._01_SimpleDriver
     private Maybe<WeatherForecastDto> _lastInputForecastDto; //not pretty
     private readonly string _tenantId = Any.String();
     private readonly string _userId = Any.String();
+    private WireMockServer _notificationRecipient;
 
     private FlurlClient HttpClient => new(_host.Value.GetTestClient());
 
+    public AppDriver()
+    {
+      _notificationRecipient = WireMockServer.Start();
+    }
+
     public async Task StartAsync()
     {
+      _notificationRecipient.Given(
+        Request.Create()
+          .WithPath("/notifications")
+          .UsingPost()).RespondWith(
+        Response.Create()
+          .WithStatusCode(HttpStatusCode.OK));
+
       _host = Host
         .CreateDefaultBuilder()
         .ConfigureWebHostDefaults(webBuilder =>
         {
           webBuilder
             .UseTestServer()
+            .ConfigureAppConfiguration(appConfig =>
+            {
+              appConfig.AddInMemoryCollection(new Dictionary<string, string>
+              {
+                ["NotificationsConfiguration:BaseUrl"] = _notificationRecipient.Urls.Single()
+              });
+            })
             .UseEnvironment("Development")
             .UseStartup<Startup>();
         }).Build().Just();
