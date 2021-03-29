@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 using TddXt.AnyRoot.Numbers;
 using TddXt.AnyRoot.Strings;
 using WireMock.RequestBuilders;
@@ -39,10 +40,11 @@ namespace FunctionalSpecification._01_SimpleDriver
 
       //THEN
       await retrievedForecast.ShouldBeTheSameAsReported();
+      
+      //not really part of the scenario...
+      driver.NotificationAboutForecastReportedShouldBeSent();
     }
   }
-
-  //bug tenant id
 
   //Four deficiencies of this driver:
   //1) There may be a lot of methods, so the interface might get heavy, especially when there are wiremocks
@@ -57,7 +59,7 @@ namespace FunctionalSpecification._01_SimpleDriver
     private Maybe<WeatherForecastDto> _lastInputForecastDto; //not pretty
     private readonly string _tenantId = Any.String();
     private readonly string _userId = Any.String();
-    private WireMockServer _notificationRecipient;
+    private readonly WireMockServer _notificationRecipient;
 
     private FlurlClient HttpClient => new(_host.Value.GetTestClient());
 
@@ -126,6 +128,20 @@ namespace FunctionalSpecification._01_SimpleDriver
         await host.StopAsync();
         host.Dispose();
       });
+      _notificationRecipient.Dispose();
+    }
+
+    public void NotificationAboutForecastReportedShouldBeSent()
+    {
+      _notificationRecipient.LogEntries.Should().ContainSingle(entry =>
+        entry.RequestMatchResult.IsPerfectMatch
+        && entry.RequestMessage.Path == "/notifications"
+        && entry.RequestMessage.Method == "POST"
+        && JsonConvert.DeserializeObject<WeatherForecastSuccessfullyReportedEventDto>(
+          entry.RequestMessage.Body) == new WeatherForecastSuccessfullyReportedEventDto(
+          _tenantId, 
+          _userId, 
+          _lastInputForecastDto.Value.TemperatureC));
     }
   }
 

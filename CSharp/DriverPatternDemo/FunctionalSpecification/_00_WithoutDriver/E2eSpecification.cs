@@ -2,22 +2,21 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Threading;
 using System.Threading.Tasks;
 using DriverPatternDemo;
-using DriverPatternDemo.Controllers;
 using FluentAssertions;
 using Flurl.Http;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 using TddXt.AnyRoot.Numbers;
 using TddXt.AnyRoot.Strings;
+using WireMock.FluentAssertions;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
 using WireMock.Server;
-using WireMock.Settings;
 using Xunit;
 using static TddXt.AnyRoot.Root;
 
@@ -66,7 +65,7 @@ namespace FunctionalSpecification._00_WithoutDriver
 
       var client = new FlurlClient(host.GetTestClient());
 
-      var postJsonAsync = await client.Request("WeatherForecast")
+      using var postJsonAsync = await client.Request("WeatherForecast")
         .PostJsonAsync(inputForecastDto);
       var resultDto = await postJsonAsync.GetJsonAsync<ForecastCreationResultDto>();
 
@@ -77,6 +76,14 @@ namespace FunctionalSpecification._00_WithoutDriver
 
       var weatherForecastDto = await httpResponse.GetJsonAsync<WeatherForecastDto>();
       weatherForecastDto.Should().BeEquivalentTo(inputForecastDto);
+
+      notificationRecipient.LogEntries.Should().ContainSingle(entry =>
+        entry.RequestMatchResult.IsPerfectMatch
+        && entry.RequestMessage.Path == "/notifications"
+        && entry.RequestMessage.Method == "POST"
+        && JsonConvert.DeserializeObject<WeatherForecastSuccessfullyReportedEventDto>(
+           entry.RequestMessage.Body) == new WeatherForecastSuccessfullyReportedEventDto(
+           tenantId, userId, inputForecastDto.TemperatureC));
     }
   }
 }
