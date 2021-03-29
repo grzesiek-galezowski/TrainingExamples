@@ -53,7 +53,7 @@ namespace FunctionalSpecification._03_DriverCustomizableWithLambdaBuilders
 
       //WHEN
       using var reportForecastResponse = await driver.WeatherForecastApi.AttemptToReportForecast(
-        request => request.WithTempC(-101));
+        request => request with {TemperatureC = -101});
 
       //THEN
       reportForecastResponse.ShouldBeRejectedAsBadRequest();
@@ -179,34 +179,20 @@ namespace FunctionalSpecification._03_DriverCustomizableWithLambdaBuilders
     void SaveAsLastReportedForecast(WeatherForecastDto forecastDto);
   }
 
-  public class WeatherForecastReportBuilder
+  public record WeatherForecastReportBuilder(string UserId, string TenantId)
   {
-    private readonly string _tenantId;
-    private readonly string _userId;
-    private readonly DateTime _dateTime = Any.Instance<DateTime>();
-    private int _temperatureC = Any.Integer();
-    private readonly string _summary = Any.String();
-
-    public WeatherForecastReportBuilder(string userId, string tenantId)
-    {
-      _userId = userId;
-      _tenantId = tenantId;
-    }
+    public DateTime Time { get; init; } = Any.Instance<DateTime>();
+    public int TemperatureC { get; init; } = Any.Integer();
+    public string Summary { get; init; } = Any.String();
 
     public WeatherForecastDto Build()
     {
       return new(
-        _tenantId,
-        _userId,
-        _dateTime,
-        _temperatureC,
-        _summary);
-    }
-
-    public WeatherForecastReportBuilder WithTempC(int temp)
-    {
-      _temperatureC = temp;
-      return this;
+        TenantId, 
+        UserId, 
+        Time,
+        TemperatureC,
+        Summary);
     }
   }
 
