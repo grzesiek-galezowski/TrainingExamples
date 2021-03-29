@@ -55,6 +55,11 @@ namespace DriverPatternDemo.Controllers
     [HttpPost]
     public async Task<ActionResult> ReportWeather(WeatherForecastDto forecastDto)
     {
+      if (forecastDto.TemperatureC < -100)
+      {
+        return BadRequest();
+      }
+
       var persistentWeatherForecastDto = new PersistentWeatherForecastDto(
         Guid.NewGuid(),
         forecastDto.TenantId,

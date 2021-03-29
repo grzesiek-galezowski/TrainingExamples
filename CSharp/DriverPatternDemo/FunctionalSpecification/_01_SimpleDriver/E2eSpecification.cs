@@ -36,7 +36,7 @@ namespace FunctionalSpecification._01_SimpleDriver
       await driver.ReportWeatherForecast();
 
       //WHEN
-      var retrievedForecast = await driver.GetReportedForecast();
+      using var retrievedForecast = await driver.GetReportedForecast();
 
       //THEN
       await retrievedForecast.ShouldBeTheSameAsReported();
@@ -145,7 +145,7 @@ namespace FunctionalSpecification._01_SimpleDriver
     }
   }
 
-  public class RetrievedForecast
+  public class RetrievedForecast : IDisposable
   {
     private readonly IFlurlResponse _httpResponse;
     private readonly WeatherForecastDto _lastInputForecastDto;
@@ -161,6 +161,11 @@ namespace FunctionalSpecification._01_SimpleDriver
       _httpResponse.StatusCode.Should().Be((int)HttpStatusCode.OK);
       var weatherForecastDto = await _httpResponse.GetJsonAsync<WeatherForecastDto>();
       weatherForecastDto.Should().BeEquivalentTo(_lastInputForecastDto);
+    }
+
+    public void Dispose()
+    {
+      _httpResponse.Dispose();
     }
   }
 }

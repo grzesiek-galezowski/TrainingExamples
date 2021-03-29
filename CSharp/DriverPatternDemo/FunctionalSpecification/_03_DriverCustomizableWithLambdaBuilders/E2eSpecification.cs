@@ -21,7 +21,7 @@ using WireMock.Server;
 using Xunit;
 using static TddXt.AnyRoot.Root;
 
-namespace FunctionalSpecification._02_DriverWithExtensionObjects
+namespace FunctionalSpecification._03_DriverCustomizableWithLambdaBuilders
 {
   public class E2ESpecification
   {
@@ -31,7 +31,7 @@ namespace FunctionalSpecification._02_DriverWithExtensionObjects
       //GIVEN
       await using var driver = new AppDriver();
       await driver.StartAsync();
-      
+
       await driver.WeatherForecastApi.ReportForecast();
 
       //WHEN
@@ -39,16 +39,31 @@ namespace FunctionalSpecification._02_DriverWithExtensionObjects
 
       //THEN
       await retrievedForecast.ShouldBeTheSameAsReported();
-      
+
       //not really part of the scenario...
       driver.Notifications.ShouldIncludeNotificationAboutReportedForecast();
     }
+
+    [Fact]
+    public async Task ShouldRejectForecastReportAsBadRequestWhenTemperatureIsLessThanMinus100()
+    {
+      //GIVEN
+      await using var driver = new AppDriver();
+      await driver.StartAsync();
+
+      //WHEN
+      using var reportForecastResponse = await driver.WeatherForecastApi.AttemptToReportForecast(
+        request => request.WithTempC(-101));
+
+      //THEN
+      reportForecastResponse.ShouldBeRejectedAsBadRequest();
+      driver.Notifications.ShouldNotIncludeAnything();
+    }
   }
 
-  //Three deficiencies of this driver:
-  //1) All the values are decided internally, (see tenant id), so it might be difficult to override default values
-  //2) _lastInput lifetime is managed internally
-  //3) _lastOutput lifetime is managed internally
+  //Two deficiencies of this driver:
+  //1) _lastInput lifetime is managed internally
+  //2) _lastOutput lifetime is managed internally
 
   public class AppDriver : IAsyncDisposable, IAppDriverContext
   {
@@ -101,9 +116,9 @@ namespace FunctionalSpecification._02_DriverWithExtensionObjects
     }
 
     //Note explicit implementation
-    void IAppDriverContext.SaveAsLastReportedForecast(WeatherForecastDto dto)
+    void IAppDriverContext.SaveAsLastReportedForecast(WeatherForecastDto forecastDto)
     {
-      _lastInputForecastDto = dto.Just();
+      _lastInputForecastDto = forecastDto.Just();
     }
 
     public async ValueTask DisposeAsync()
@@ -119,7 +134,7 @@ namespace FunctionalSpecification._02_DriverWithExtensionObjects
     public NotificationsDriverExtension Notifications =>
       new(_userId, _tenantId, _notificationRecipient, _lastInputForecastDto.Value);
 
-    public WeatherForecastApiDriverExtension WeatherForecastApi 
+    public WeatherForecastApiDriverExtension WeatherForecastApi
       => new(this, _tenantId, _userId, HttpClient, _lastReportResult, _lastInputForecastDto);
   }
 
@@ -130,7 +145,8 @@ namespace FunctionalSpecification._02_DriverWithExtensionObjects
     private readonly string _tenantId;
     private readonly string _userId;
 
-    public NotificationsDriverExtension(string userId, string tenantId, WireMockServer wireMockServer, WeatherForecastDto weatherForecastDto)
+    public NotificationsDriverExtension(string userId, string tenantId, WireMockServer wireMockServer,
+      WeatherForecastDto weatherForecastDto)
     {
       _userId = userId;
       _tenantId = tenantId;
@@ -150,12 +166,48 @@ namespace FunctionalSpecification._02_DriverWithExtensionObjects
           _userId,
           _weatherForecastDto.TemperatureC));
     }
+
+    public void ShouldNotIncludeAnything()
+    {
+      _wireMockServer.LogEntries.Should().BeEmpty();
+    }
   }
 
-      public interface IAppDriverContext
+  public interface IAppDriverContext
   {
-    void SaveAsLastForecastReportResult(ForecastCreationResultDto dto);
+    void SaveAsLastForecastReportResult(ForecastCreationResultDto jsonResponse);
     void SaveAsLastReportedForecast(WeatherForecastDto forecastDto);
+  }
+
+  public class WeatherForecastReportBuilder
+  {
+    private readonly string _tenantId;
+    private readonly string _userId;
+    private readonly DateTime _dateTime = Any.Instance<DateTime>();
+    private int _temperatureC = Any.Integer();
+    private readonly string _summary = Any.String();
+
+    public WeatherForecastReportBuilder(string userId, string tenantId)
+    {
+      _userId = userId;
+      _tenantId = tenantId;
+    }
+
+    public WeatherForecastDto Build()
+    {
+      return new(
+        _tenantId,
+        _userId,
+        _dateTime,
+        _temperatureC,
+        _summary);
+    }
+
+    public WeatherForecastReportBuilder WithTempC(int temp)
+    {
+      _temperatureC = temp;
+      return this;
+    }
   }
 
   public class WeatherForecastApiDriverExtension
@@ -168,11 +220,11 @@ namespace FunctionalSpecification._02_DriverWithExtensionObjects
     private readonly IAppDriverContext _driverContext;
 
     public WeatherForecastApiDriverExtension(
-      IAppDriverContext driverContext, 
-      string tenantId, 
-      string userId, 
+      IAppDriverContext driverContext,
+      string tenantId,
+      string userId,
       IFlurlClient httpClient,
-      Maybe<ForecastCreationResultDto> lastReportResult, 
+      Maybe<ForecastCreationResultDto> lastReportResult,
       Maybe<WeatherForecastDto> lastInputForecastDto)
     {
       _driverContext = driverContext;
@@ -185,20 +237,33 @@ namespace FunctionalSpecification._02_DriverWithExtensionObjects
 
     public async Task ReportForecast()
     {
-      var forecastDto = new WeatherForecastDto(
-        _tenantId, 
-        _userId,
-        Any.Instance<DateTime>(),
-        Any.Integer(),
-        Any.String());
-
-      using var httpResponse = await _httpClient
-        .Request("WeatherForecast")
-        .PostJsonAsync(forecastDto);
+      var httpResponse = await AttemptToReportForecastViaHttp(_ => _);
       var jsonResponse = await httpResponse.GetJsonAsync<ForecastCreationResultDto>();
-
-      _driverContext.SaveAsLastReportedForecast(forecastDto);
       _driverContext.SaveAsLastForecastReportResult(jsonResponse);
+    }
+
+    public async Task<ReportForecastResponse> AttemptToReportForecast()
+    {
+      var httpResponse = await AttemptToReportForecastViaHttp(_ => _);
+      return new ReportForecastResponse(httpResponse);
+    }
+
+    public async Task<ReportForecastResponse> AttemptToReportForecast(Func<WeatherForecastReportBuilder, WeatherForecastReportBuilder> customize)
+    {
+      var httpResponse = await AttemptToReportForecastViaHttp(customize);
+      return new ReportForecastResponse(httpResponse);
+    }
+
+    private async Task<IFlurlResponse> AttemptToReportForecastViaHttp(Func<WeatherForecastReportBuilder, WeatherForecastReportBuilder> customize)
+    {
+      var forecastDto = customize(new WeatherForecastReportBuilder(_userId, _tenantId)).Build();
+      _driverContext.SaveAsLastReportedForecast(forecastDto);
+
+      var httpResponse = await _httpClient
+        .Request("WeatherForecast")
+        .AllowAnyHttpStatus()
+        .PostJsonAsync(forecastDto);
+      return httpResponse;
     }
 
     public async Task<RetrievedForecast> GetReportedForecast()
@@ -209,6 +274,27 @@ namespace FunctionalSpecification._02_DriverWithExtensionObjects
         .GetAsync();
 
       return new RetrievedForecast(httpResponse, _lastInputForecastDto.Value);
+    }
+
+  }
+
+  public class ReportForecastResponse : IDisposable
+  {
+    private readonly IFlurlResponse _httpResponse;
+
+    public ReportForecastResponse(IFlurlResponse httpResponse)
+    {
+      _httpResponse = httpResponse;
+    }
+
+    public void Dispose()
+    {
+      _httpResponse.Dispose();
+    }
+
+    public void ShouldBeRejectedAsBadRequest()
+    {
+      _httpResponse.StatusCode.Should().Be((int) HttpStatusCode.BadRequest);
     }
   }
 
@@ -225,7 +311,7 @@ namespace FunctionalSpecification._02_DriverWithExtensionObjects
 
     public async Task ShouldBeTheSameAsReported()
     {
-      _httpResponse.StatusCode.Should().Be((int)HttpStatusCode.OK);
+      _httpResponse.StatusCode.Should().Be((int) HttpStatusCode.OK);
       var weatherForecastDto = await _httpResponse.GetJsonAsync<WeatherForecastDto>();
       weatherForecastDto.Should().BeEquivalentTo(_lastInputForecastDto);
     }
