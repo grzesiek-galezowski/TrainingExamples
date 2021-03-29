@@ -15,13 +15,14 @@ using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using TddXt.AnyRoot.Numbers;
 using TddXt.AnyRoot.Strings;
+using TddXt.AnyRoot.Time;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
 using WireMock.Server;
 using Xunit;
 using static TddXt.AnyRoot.Root;
 
-namespace FunctionalSpecification._03_DriverCustomizableWithLambdaBuilders
+namespace FunctionalSpecification._04_DriverCustomizableWithExtensionObjects
 {
   public class E2ESpecification
   {
@@ -52,8 +53,9 @@ namespace FunctionalSpecification._03_DriverCustomizableWithLambdaBuilders
       await driver.StartAsync();
 
       //WHEN
-      using var reportForecastResponse = await driver.WeatherForecastApi.AttemptToReportForecast(
-        request => request with {TemperatureC = -101});
+      using var reportForecastResponse = await driver.WeatherForecastApi
+        .WithTemperatureOf(-101)
+        .AttemptToReportForecast();
 
       //THEN
       reportForecastResponse.ShouldBeRejectedAsBadRequest();
@@ -179,23 +181,6 @@ namespace FunctionalSpecification._03_DriverCustomizableWithLambdaBuilders
     void SaveAsLastReportedForecast(WeatherForecastDto forecastDto);
   }
 
-  public record WeatherForecastReportBuilder(string UserId, string TenantId)
-  {
-    public DateTime Time { get; init; } = Any.Instance<DateTime>();
-    public int TemperatureC { get; init; } = Any.Integer();
-    public string Summary { get; init; } = Any.String();
-
-    public WeatherForecastDto Build()
-    {
-      return new(
-        TenantId, 
-        UserId, 
-        Time,
-        TemperatureC,
-        Summary);
-    }
-  }
-
   public class WeatherForecastApiDriverExtension
   {
     private readonly IFlurlClient _httpClient;
@@ -204,6 +189,9 @@ namespace FunctionalSpecification._03_DriverCustomizableWithLambdaBuilders
     private readonly string _userId;
     private readonly string _tenantId;
     private readonly IAppDriverContext _driverContext;
+    private readonly DateTime _dateTime = Any.DateTime();
+    private int _temperatureC = Any.Integer();
+    private readonly string _summary = Any.String();
 
     public WeatherForecastApiDriverExtension(
       IAppDriverContext driverContext,
@@ -223,25 +211,20 @@ namespace FunctionalSpecification._03_DriverCustomizableWithLambdaBuilders
 
     public async Task ReportForecast()
     {
-      var httpResponse = await AttemptToReportForecastViaHttp(_ => _);
+      var httpResponse = await AttemptToReportForecastViaHttp();
       var jsonResponse = await httpResponse.GetJsonAsync<ForecastCreationResultDto>();
       _driverContext.SaveAsLastForecastReportResult(jsonResponse);
     }
 
-    public Task<ReportForecastResponse> AttemptToReportForecast()
+    public async Task<ReportForecastResponse> AttemptToReportForecast()
     {
-      return AttemptToReportForecast(_ => _);
-    }
-
-    public async Task<ReportForecastResponse> AttemptToReportForecast(Func<WeatherForecastReportBuilder, WeatherForecastReportBuilder> customize)
-    {
-      var httpResponse = await AttemptToReportForecastViaHttp(customize);
+      var httpResponse = await AttemptToReportForecastViaHttp();
       return new ReportForecastResponse(httpResponse);
     }
 
-    private async Task<IFlurlResponse> AttemptToReportForecastViaHttp(Func<WeatherForecastReportBuilder, WeatherForecastReportBuilder> customize)
+    private async Task<IFlurlResponse> AttemptToReportForecastViaHttp()
     {
-      var forecastDto = customize(new WeatherForecastReportBuilder(_userId, _tenantId)).Build();
+      var forecastDto = new WeatherForecastDto(_tenantId, _userId, _dateTime, _temperatureC, _summary);
       _driverContext.SaveAsLastReportedForecast(forecastDto);
 
       var httpResponse = await _httpClient
@@ -261,6 +244,11 @@ namespace FunctionalSpecification._03_DriverCustomizableWithLambdaBuilders
       return new RetrievedForecast(httpResponse, _lastInputForecastDto.Value);
     }
 
+    public WeatherForecastApiDriverExtension WithTemperatureOf(int temperature)
+    {
+      _temperatureC = temperature;
+      return this;
+    }
   }
 
   public class ReportForecastResponse : IDisposable
