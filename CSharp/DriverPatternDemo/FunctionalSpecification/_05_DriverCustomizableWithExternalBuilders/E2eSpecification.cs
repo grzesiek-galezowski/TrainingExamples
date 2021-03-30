@@ -13,38 +13,38 @@ using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
-using TddXt.AnyExtensibility;
 using TddXt.AnyRoot.Numbers;
 using TddXt.AnyRoot.Strings;
-using TddXt.AnyRoot.Time;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
 using WireMock.Server;
 using Xunit;
 using static TddXt.AnyRoot.Root;
 
-namespace FunctionalSpecification._05_DriverCustomizableExternalBuilders
+namespace FunctionalSpecification._05_DriverCustomizableWithExternalBuilders
 {
   public class E2ESpecification
   {
+    private static WeatherForecastReportBuilder ForecastReport() => new();
+
     [Fact]
     public async Task ShouldAllowRetrievingReportedForecast()
     {
       //GIVEN
       await using var driver = new AppDriver();
       await driver.StartAsync();
-      var weatherForecastDto = Any.WeatherForecast();
+      var weatherForecast = ForecastReport();
 
-      await driver.WeatherForecastApi.Report(weatherForecastDto);
+      await driver.WeatherForecastApi.Report(weatherForecast);
 
       //WHEN
       using var retrievedForecast = await driver.WeatherForecastApi.GetReportedForecast();
 
       //THEN
-      await retrievedForecast.ShouldBeTheSameAs(weatherForecastDto); //bug builder
+      await retrievedForecast.ShouldBeTheSameAs(weatherForecast);
 
       //not really part of the scenario...
-      driver.Notifications.ShouldIncludeNotificationAbout(weatherForecastDto);
+      driver.Notifications.ShouldIncludeNotificationAbout(weatherForecast);
     }
 
     [Fact]
@@ -56,7 +56,7 @@ namespace FunctionalSpecification._05_DriverCustomizableExternalBuilders
 
       //WHEN
       using var reportForecastResponse = await driver.WeatherForecastApi
-        .AttemptToReportForecast(Any.WeatherForecast() with {TemperatureC = -101});
+        .AttemptToReportForecast(ForecastReport() with {TemperatureC = -101});
 
       //THEN
       reportForecastResponse.ShouldBeRejectedAsBadRequest();
@@ -65,9 +65,8 @@ namespace FunctionalSpecification._05_DriverCustomizableExternalBuilders
   }
 
   //Two deficiencies of this driver:
-  //1) _lastInput lifetime is managed internally
-  //2) _lastOutput lifetime is managed internally
-  //3) more than one "entity"
+  //1) _lastOutput lifetime is managed internally
+  //2) so issue with more than one "entity"
 
   public class AppDriver : IAsyncDisposable, IAppDriverContext
   {
@@ -142,17 +141,18 @@ namespace FunctionalSpecification._05_DriverCustomizableExternalBuilders
       _wireMockServer = wireMockServer;
     }
 
-    public void ShouldIncludeNotificationAbout(WeatherForecastDto weatherForecastDto)
+    public void ShouldIncludeNotificationAbout(WeatherForecastReportBuilder builder)
     {
+      var dto = builder.Build();
       _wireMockServer.LogEntries.Should().ContainSingle(entry =>
         entry.RequestMatchResult.IsPerfectMatch
         && entry.RequestMessage.Path == "/notifications"
         && entry.RequestMessage.Method == "POST"
         && JsonConvert.DeserializeObject<WeatherForecastSuccessfullyReportedEventDto>(
           entry.RequestMessage.Body) == new WeatherForecastSuccessfullyReportedEventDto(
-          weatherForecastDto.TenantId,
-          weatherForecastDto.UserId,
-          weatherForecastDto.TemperatureC));
+          dto.TenantId,
+          dto.UserId,
+          dto.TemperatureC));
     }
 
     public void ShouldNotIncludeAnything()
@@ -182,25 +182,25 @@ namespace FunctionalSpecification._05_DriverCustomizableExternalBuilders
       _lastReportResult = lastReportResult;
     }
 
-    public async Task Report(WeatherForecastDto weatherForecastDto)
+    public async Task Report(WeatherForecastReportBuilder weatherForecastDto)
     {
       var httpResponse = await AttemptToReportForecastViaHttp(weatherForecastDto);
       var jsonResponse = await httpResponse.GetJsonAsync<ForecastCreationResultDto>();
       _driverContext.SaveAsLastForecastReportResult(jsonResponse);
     }
 
-    public async Task<ReportForecastResponse> AttemptToReportForecast(WeatherForecastDto weatherForecastDto) //bug builder instead of DTO
+    public async Task<ReportForecastResponse> AttemptToReportForecast(WeatherForecastReportBuilder builder)
     {
-      var httpResponse = await AttemptToReportForecastViaHttp(weatherForecastDto);
+      var httpResponse = await AttemptToReportForecastViaHttp(builder);
       return new ReportForecastResponse(httpResponse);
     }
 
-    private async Task<IFlurlResponse> AttemptToReportForecastViaHttp(WeatherForecastDto weatherForecastDto)
+    private async Task<IFlurlResponse> AttemptToReportForecastViaHttp(WeatherForecastReportBuilder builder)
     {
       var httpResponse = await _httpClient
         .Request("WeatherForecast")
         .AllowAnyHttpStatus()
-        .PostJsonAsync(weatherForecastDto);
+        .PostJsonAsync(builder.Build());
       return httpResponse;
     }
 
@@ -244,11 +244,11 @@ namespace FunctionalSpecification._05_DriverCustomizableExternalBuilders
       _httpResponse = httpResponse;
     }
 
-    public async Task ShouldBeTheSameAs(WeatherForecastDto expected)
+    public async Task ShouldBeTheSameAs(WeatherForecastReportBuilder expectedBuilder)
     {
       _httpResponse.StatusCode.Should().Be((int) HttpStatusCode.OK);
       var weatherForecastDto = await _httpResponse.GetJsonAsync<WeatherForecastDto>();
-      weatherForecastDto.Should().BeEquivalentTo(expected);
+      weatherForecastDto.Should().BeEquivalentTo(expectedBuilder.Build());
     }
 
     public void Dispose()
@@ -257,19 +257,22 @@ namespace FunctionalSpecification._05_DriverCustomizableExternalBuilders
     }
   }
 
-  internal static class AnyExtensions //bug rename
+  public record WeatherForecastReportBuilder()
   {
-    private static readonly string TenantId = Any.String();
-    private static readonly string UserId = Any.String();
+    public string TenantId { get; init; } = Any.String();
+    public string UserId { get; init; } = Any.String();
+    public DateTime Time { get; init; } = Any.Instance<DateTime>();
+    public int TemperatureC { get; init; } = Any.Integer();
+    public string Summary { get; init; } = Any.String();
 
-    public static WeatherForecastDto WeatherForecast(this BasicGenerator gen)
+    public WeatherForecastDto Build()
     {
       return new(
         TenantId, 
         UserId, 
-        gen.DateTime(), 
-        gen.Integer(), 
-        gen.String());
+        Time,
+        TemperatureC,
+        Summary);
     }
   }
 }

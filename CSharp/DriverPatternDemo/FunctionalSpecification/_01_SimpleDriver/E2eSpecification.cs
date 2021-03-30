@@ -4,7 +4,6 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using DriverPatternDemo;
-using DriverPatternDemo.Controllers;
 using FluentAssertions;
 using Flurl.Http;
 using Functional.Maybe;
