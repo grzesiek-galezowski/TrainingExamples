@@ -259,11 +259,11 @@ namespace FunctionalSpecification._05_DriverCustomizableWithExternalBuilders
 
   public record WeatherForecastReportBuilder()
   {
-    public string TenantId { get; init; } = Any.String();
-    public string UserId { get; init; } = Any.String();
-    public DateTime Time { get; init; } = Any.Instance<DateTime>();
-    public int TemperatureC { get; init; } = Any.Integer();
-    public string Summary { get; init; } = Any.String();
+    public string TenantId { private get; init; } = Any.String();
+    public string UserId { private get; init; } = Any.String();
+    public DateTime Time { private get; init; } = Any.Instance<DateTime>();
+    public int TemperatureC { private get; init; } = Any.Integer();
+    public string Summary { private get; init; } = Any.String();
 
     public WeatherForecastDto Build()
     {

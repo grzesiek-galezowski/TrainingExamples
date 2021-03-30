@@ -181,9 +181,9 @@ namespace FunctionalSpecification._03_DriverCustomizableWithLambdaBuilders
 
   public record WeatherForecastReportBuilder(string UserId, string TenantId)
   {
-    public DateTime Time { get; init; } = Any.Instance<DateTime>();
-    public int TemperatureC { get; init; } = Any.Integer();
-    public string Summary { get; init; } = Any.String();
+    public DateTime Time { private get; init; } = Any.Instance<DateTime>();
+    public int TemperatureC { private get; init; } = Any.Integer();
+    public string Summary { private get; init; } = Any.String();
 
     public WeatherForecastDto Build()
     {

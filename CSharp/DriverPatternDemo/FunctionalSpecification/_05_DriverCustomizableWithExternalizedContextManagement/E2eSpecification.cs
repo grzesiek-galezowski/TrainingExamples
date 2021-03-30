@@ -47,6 +47,31 @@ namespace FunctionalSpecification._05_DriverCustomizableWithExternalizedContextM
       //not really part of the scenario...
       driver.Notifications.ShouldIncludeNotificationAbout(weatherForecast);
     }
+    
+    [Fact]
+    public async Task ShouldAllowRetrievingReportsFromAParticularUser()
+    {
+      //GIVEN
+      var userId1 = Any.String();
+      var userId2 = Any.String();
+      var tenantId1 = Any.String();
+      var tenantId2 = Any.String();
+      await using var driver = new AppDriver();
+      await driver.StartAsync();
+      var user1Forecast1 = ForecastReport() with {UserId = userId1, TenantId = tenantId1};
+      var user1Forecast2 = ForecastReport() with {UserId = userId1, TenantId = tenantId1};
+      var user2Forecast = ForecastReport() with {UserId = userId2, TenantId = tenantId2};
+
+      using var responseForUser1Forecast1 = await driver.WeatherForecastApi.Report(user1Forecast1);
+      using var responseForUser1Forecast2 = await driver.WeatherForecastApi.Report(user1Forecast2);
+      using var responseForUser2Forecast = await driver.WeatherForecastApi.Report(user2Forecast);
+
+      //WHEN
+      using var retrievedForecast = await driver.WeatherForecastApi.GetReportedForecastsFrom(userId1, tenantId1);
+
+      //THEN
+      await retrievedForecast.ShouldConsistOf(user1Forecast1, user1Forecast2);
+    }
 
     [Fact]
     public async Task ShouldRejectForecastReportAsBadRequestWhenTemperatureIsLessThanMinus100()
@@ -168,6 +193,7 @@ namespace FunctionalSpecification._05_DriverCustomizableWithExternalizedContextM
       return response;
     }
 
+
     public async Task<ReportForecastResponse> AttemptToReportForecast(WeatherForecastReportBuilder builder)
     {
       var httpResponse = await AttemptToReportForecastViaHttp(builder);
@@ -191,6 +217,47 @@ namespace FunctionalSpecification._05_DriverCustomizableWithExternalizedContextM
         .GetAsync();
 
       return new RetrievedForecast(httpResponse);
+    }
+
+    public async Task<RetrievedForecasts> GetReportedForecastsFrom(string userId, string tenantId)
+    {
+      var httpResponse = await _httpClient.Request("WeatherForecast")
+        .AppendPathSegment(tenantId)
+        .AppendPathSegment(userId)
+        .AllowAnyHttpStatus()
+        .GetAsync();
+
+      var reportedForecasts = new RetrievedForecasts(httpResponse);
+      reportedForecasts.ShouldIndicateSuccess();
+      return reportedForecasts;
+    }
+  }
+
+  public class RetrievedForecasts : IDisposable
+  {
+    private readonly IFlurlResponse _flurlResponse;
+
+    public RetrievedForecasts(IFlurlResponse flurlResponse)
+    {
+      _flurlResponse = flurlResponse;
+    }
+
+    public void Dispose()
+    {
+      _flurlResponse.Dispose();
+    }
+
+    public void ShouldIndicateSuccess()
+    {
+      _flurlResponse.StatusCode.Should().Be((int) HttpStatusCode.OK);
+    }
+
+    public async Task ShouldConsistOf(params WeatherForecastReportBuilder[] builders)
+    {
+      var expectedDtos = builders.Select(b => b.Build());
+      var actualDtos = await _flurlResponse.GetJsonAsync<IEnumerable<WeatherForecastDto>>();
+
+      actualDtos.Should().Equal(expectedDtos);
     }
   }
 
@@ -246,13 +313,13 @@ namespace FunctionalSpecification._05_DriverCustomizableWithExternalizedContextM
     }
   }
 
-  public record WeatherForecastReportBuilder()
+  public record WeatherForecastReportBuilder
   {
-    public string TenantId { get; init; } = Any.String();
-    public string UserId { get; init; } = Any.String();
-    public DateTime Time { get; init; } = Any.Instance<DateTime>();
-    public int TemperatureC { get; init; } = Any.Integer();
-    public string Summary { get; init; } = Any.String();
+    public string TenantId { private get; init; } = Any.String();
+    public string UserId { private get; init; } = Any.String();
+    public DateTime Time { private get; init; } = Any.Instance<DateTime>();
+    public int TemperatureC { private get; init; } = Any.Integer();
+    public string Summary { private get; init; } = Any.String();
 
     public WeatherForecastDto Build()
     {

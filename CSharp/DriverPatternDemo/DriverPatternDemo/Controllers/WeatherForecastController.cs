@@ -40,15 +40,17 @@ namespace DriverPatternDemo.Controllers
         persistentWeatherForecastDto.Summary);
     }
 
-    [HttpGet]
-    public IEnumerable<WeatherForecastDto> GetAll()
+    [HttpGet("{tenantId}/{userId}")]
+    public IEnumerable<WeatherForecastDto> GetAllUserForecasts(string tenantId, string userId)
     {
-      return _db.WeatherForecasts.Select(f => new WeatherForecastDto(
-        f.TenantId,
-        f.UserId,
-        f.Date, 
-        f.TemperatureC, 
-        f.Summary));
+      return _db.WeatherForecasts
+        .Where(f => f.TenantId == tenantId && f.UserId == userId)
+        .Select(f => new WeatherForecastDto(
+          f.TenantId,
+          f.UserId,
+          f.Date,
+          f.TemperatureC,
+          f.Summary));
     }
 
     [HttpPost]
