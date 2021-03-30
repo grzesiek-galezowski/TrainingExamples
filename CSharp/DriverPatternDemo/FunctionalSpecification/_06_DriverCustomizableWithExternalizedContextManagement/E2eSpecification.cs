@@ -21,7 +21,7 @@ using WireMock.Server;
 using Xunit;
 using static TddXt.AnyRoot.Root;
 
-namespace FunctionalSpecification._05_DriverCustomizableWithExternalizedContextManagement
+namespace FunctionalSpecification._06_DriverCustomizableWithExternalizedContextManagement
 {
   public class E2ESpecification
   {
