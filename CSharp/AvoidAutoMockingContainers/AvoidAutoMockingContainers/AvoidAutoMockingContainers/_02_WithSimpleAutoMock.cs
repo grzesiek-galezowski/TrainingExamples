@@ -17,7 +17,7 @@ namespace AvoidAutoMockingContainers
             autoSubstitute.Resolve<ISource>().Read().Returns(data);
 
             //WHEN
-            autoSubstitute.Resolve<TransferUtilHelperManager>().TransferData();
+            autoSubstitute.Resolve<DataTransfer>().Commence();
 
             //THEN
             autoSubstitute.Resolve<IDestination>().Received(1).Save(data);

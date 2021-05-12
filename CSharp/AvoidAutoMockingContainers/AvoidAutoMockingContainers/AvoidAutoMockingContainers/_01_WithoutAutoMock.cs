@@ -1,7 +1,7 @@
 using NSubstitute;
 using NUnit.Framework;
-using TddXt.AnyRoot;
 using TddXt.AnyRoot.Numbers;
+using static TddXt.AnyRoot.Root;
 
 namespace AvoidAutoMockingContainers
 {
@@ -11,15 +11,15 @@ namespace AvoidAutoMockingContainers
         public void ShouldSaveDataFromSourceInDestination()
         {
             //GIVEN
-            var data = Root.Any.Integer();
+            var data = Any.Integer();
             var source = Substitute.For<ISource>();
             var destination = Substitute.For<IDestination>();
-            var manager = new TransferUtilHelperManager(destination, source);
+            var transfer = new DataTransfer(destination, source);
 
             source.Read().Returns(data);
 
             //WHEN
-            manager.TransferData();
+            transfer.Commence();
 
             //THEN
             destination.Received(1).Save(data);
