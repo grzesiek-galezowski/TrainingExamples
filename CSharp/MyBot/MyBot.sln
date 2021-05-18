@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28729.10
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameBot", "MyBot\Bot Builder Echo Bot V4\GameBot.csproj", "{585BD21B-7B17-489D-9E5F-7CB654AAB801}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BotLogic", "BotLogic\BotLogic.csproj", "{40F42DAB-43B6-4225-A9CA-FC1883133A80}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComponentSpecification", "ComponentSpecification\ComponentSpecification.csproj", "{F3CB5985-9E77-4E72-A1CD-64C0A2BAFE92}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationSpecification", "IntegrationSpecification\IntegrationSpecification.csproj", "{9B52BEB5-FC3A-43AA-BAC3-64633AA5A6A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adapters.Luis", "Adapters.Luis\Adapters.Luis.csproj", "{A103B03F-7B80-4B19-9468-7304AB705A84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adapters.Luis", "Adapters.Luis\Adapters.Luis.csproj", "{A103B03F-7B80-4B19-9468-7304AB705A84}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameBot", "MyBot\GameBot\GameBot.csproj", "{06BC1D2B-5627-4459-AD55-B98976A661DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{585BD21B-7B17-489D-9E5F-7CB654AAB801}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{585BD21B-7B17-489D-9E5F-7CB654AAB801}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{585BD21B-7B17-489D-9E5F-7CB654AAB801}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{585BD21B-7B17-489D-9E5F-7CB654AAB801}.Release|Any CPU.Build.0 = Release|Any CPU
 		{40F42DAB-43B6-4225-A9CA-FC1883133A80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{40F42DAB-43B6-4225-A9CA-FC1883133A80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40F42DAB-43B6-4225-A9CA-FC1883133A80}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +35,10 @@ Global
 		{A103B03F-7B80-4B19-9468-7304AB705A84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A103B03F-7B80-4B19-9468-7304AB705A84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A103B03F-7B80-4B19-9468-7304AB705A84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06BC1D2B-5627-4459-AD55-B98976A661DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06BC1D2B-5627-4459-AD55-B98976A661DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06BC1D2B-5627-4459-AD55-B98976A661DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06BC1D2B-5627-4459-AD55-B98976A661DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

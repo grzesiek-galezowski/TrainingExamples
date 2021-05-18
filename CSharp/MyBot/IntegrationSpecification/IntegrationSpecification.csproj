@@ -20,7 +20,7 @@
     </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MyBot\Bot Builder Echo Bot V4\GameBot.csproj" />
+    <ProjectReference Include="..\MyBot\GameBot\GameBot.csproj" />
   </ItemGroup>
 
 </Project>
