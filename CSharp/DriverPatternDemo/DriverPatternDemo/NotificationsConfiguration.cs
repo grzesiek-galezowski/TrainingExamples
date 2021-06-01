@@ -1,4 +1,4 @@
-namespace DriverPatternDemo
+namespace IoCContainerRefactoring
 {
   public record NotificationsConfiguration
   {

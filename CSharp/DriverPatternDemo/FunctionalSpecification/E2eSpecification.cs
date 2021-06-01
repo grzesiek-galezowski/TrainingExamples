@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using DriverPatternDemo;
 using FluentAssertions;
 using Flurl.Http;
 using Functional.Maybe;
 using Functional.Maybe.Just;
+using IoCContainerRefactoring;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
@@ -21,7 +21,7 @@ using WireMock.Server;
 using Xunit;
 using static TddXt.AnyRoot.Root;
 
-namespace FunctionalSpecification._07_DriverCustomizableWithActors
+namespace FunctionalSpecification
 {
   public class E2ESpecification
   {

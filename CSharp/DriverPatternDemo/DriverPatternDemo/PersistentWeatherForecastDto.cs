@@ -1,6 +1,6 @@
 using System;
 
-namespace DriverPatternDemo
+namespace IoCContainerRefactoring
 {
   public record PersistentWeatherForecastDto(
     Guid Id,

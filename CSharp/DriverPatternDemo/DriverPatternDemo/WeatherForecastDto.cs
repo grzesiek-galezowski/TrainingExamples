@@ -1,6 +1,6 @@
 using System;
 
-namespace DriverPatternDemo
+namespace IoCContainerRefactoring
 {
   public record WeatherForecastDto(string TenantId, string UserId, DateTime Date, int TemperatureC, string Summary)
   {

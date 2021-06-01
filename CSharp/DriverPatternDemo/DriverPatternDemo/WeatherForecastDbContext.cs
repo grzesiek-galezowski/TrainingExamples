@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace DriverPatternDemo
+namespace IoCContainerRefactoring
 {
   public class WeatherForecastDbContext : DbContext
   {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DriverPatternDemo
+namespace IoCContainerRefactoring
 {
   public record ForecastCreationResultDto(Guid Id) { }
 }
