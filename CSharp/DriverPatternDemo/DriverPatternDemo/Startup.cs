@@ -1,5 +1,6 @@
 using DriverPatternDemo.Controllers;
 using Flurl.Http;
+using Flurl.Http.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -30,12 +31,9 @@ namespace DriverPatternDemo
         (services, options) => 
           options.UseInMemoryDatabase(databaseName: "Weather")
             .UseInternalServiceProvider(services));
-
-      services.AddTransient(ctx => new WeatherForecastController(
-        ctx.GetRequiredService<WeatherForecastDbContext>(),
-        ctx.GetRequiredService<ILogger<WeatherForecastController>>(),
-        new FlurlClient(
-          ctx.GetRequiredService<IOptions<NotificationsConfiguration>>().Value.BaseUrl)
+      services.AddTransient<WeatherForecastController>();
+      services.AddSingleton<IFlurlClient>(services => new FlurlClient(
+        services.GetRequiredService<IOptions<NotificationsConfiguration>>().Value.BaseUrl
       ));
       services.AddControllers().AddControllersAsServices();
     }

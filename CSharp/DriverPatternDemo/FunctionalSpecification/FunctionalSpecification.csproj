@@ -31,7 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DriverPatternDemo\DriverPatternDemo.csproj" />
+    <ProjectReference Include="..\DriverPatternDemo\IoCContainerRefactoring.csproj" />
   </ItemGroup>
 
 </Project>
