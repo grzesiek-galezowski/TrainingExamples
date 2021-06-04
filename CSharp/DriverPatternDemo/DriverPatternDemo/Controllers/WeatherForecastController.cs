@@ -37,6 +37,8 @@ namespace IoCContainerRefactoring.Controllers
     private readonly IWeatherForecastDao _weatherForecastDao;
     private readonly IEventPipe _eventPipe;
     private readonly WeatherForecastDtoFactory _weatherForecastDtoFactory;
+    private readonly PersistentWeatherForecastDtoFactory _persistentWeatherForecastDtoFactory;
+    private readonly IdGenerator _idGenerator;
 
     public WeatherForecastController(
       ILogger<WeatherForecastController> logger, 
@@ -47,6 +49,8 @@ namespace IoCContainerRefactoring.Controllers
       _logger = logger;
       _eventPipe = eventPipe;
       _weatherForecastDtoFactory = new WeatherForecastDtoFactory();
+      _persistentWeatherForecastDtoFactory = new PersistentWeatherForecastDtoFactory();
+      _idGenerator = new IdGenerator();
     }
 
     [HttpGet("{id}")]
@@ -72,14 +76,9 @@ namespace IoCContainerRefactoring.Controllers
         return new BadRequestResult();
       }
 
-      var id = Guid.NewGuid();
-      var persistentWeatherForecastDto = new PersistentWeatherForecastDto(
-        id,
-        forecastDto.TenantId,
-        forecastDto.UserId,
-        forecastDto.Date,
-        forecastDto.TemperatureC,
-        forecastDto.Summary);
+      var id = _idGenerator.NewId();
+      var persistentWeatherForecastDto = _persistentWeatherForecastDtoFactory
+        .CreateFrom(forecastDto, id);
 
       await _weatherForecastDao.SaveAsync(persistentWeatherForecastDto);
 
