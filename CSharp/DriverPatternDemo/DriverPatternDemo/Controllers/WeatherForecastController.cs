@@ -9,22 +9,44 @@ using Microsoft.Extensions.Logging;
 
 namespace IoCContainerRefactoring.Controllers
 {
+  public interface IEventPipe
+  {
+    Task<IFlurlResponse> SendNotificationAsync(WeatherForecastSuccessfullyReportedEventDto eventDto);
+  }
+
+  public class EventPipe : IEventPipe
+  {
+    private readonly IFlurlClient _flurlClient;
+
+    public EventPipe(IFlurlClient flurlClient)
+    {
+      _flurlClient = flurlClient;
+    }
+
+    public Task<IFlurlResponse> SendNotificationAsync(WeatherForecastSuccessfullyReportedEventDto eventDto)
+    {
+      return _flurlClient.Request("notifications").PostJsonAsync(eventDto);
+    }
+  }
+
   [ApiController]
   [Route("[controller]")]
   public class WeatherForecastController : ControllerBase
   {
     private readonly ILogger<WeatherForecastController> _logger;
-    private readonly IFlurlClient _flurlClient;
-    private readonly WeatherForecastDao _weatherForecastDao;
+    private readonly IWeatherForecastDao _weatherForecastDao;
+    private readonly IEventPipe _eventPipe;
+    private readonly WeatherForecastDtoFactory _weatherForecastDtoFactory;
 
     public WeatherForecastController(
-      WeatherForecastDbContext db,
-      ILogger<WeatherForecastController> logger,
-      IFlurlClient flurlClient)
+      ILogger<WeatherForecastController> logger, 
+      IWeatherForecastDao weatherForecastDao, 
+      IEventPipe eventPipe)
     {
-      _weatherForecastDao = new WeatherForecastDao(db);
+      _weatherForecastDao = weatherForecastDao;
       _logger = logger;
-      _flurlClient = flurlClient;
+      _eventPipe = eventPipe;
+      _weatherForecastDtoFactory = new WeatherForecastDtoFactory();
     }
 
     [HttpGet("{id}")]
@@ -32,25 +54,14 @@ namespace IoCContainerRefactoring.Controllers
     {
       var persistentWeatherForecastDto = await _weatherForecastDao.ForecastById(id);
 
-      return new WeatherForecastDto(
-        persistentWeatherForecastDto.TenantId,
-        persistentWeatherForecastDto.UserId,
-        persistentWeatherForecastDto.Date, 
-        persistentWeatherForecastDto.TemperatureC, 
-        persistentWeatherForecastDto.Summary);
+      return _weatherForecastDtoFactory.CreateFrom(persistentWeatherForecastDto);
     }
 
     [HttpGet("{tenantId}/{userId}")]
     public IEnumerable<WeatherForecastDto> GetAllUserForecasts(string tenantId, string userId)
     {
-      return _weatherForecastDao._db.WeatherForecasts
-        .Where(f => f.TenantId == tenantId && f.UserId == userId)
-        .Select(f => new WeatherForecastDto(
-          f.TenantId,
-          f.UserId,
-          f.Date,
-          f.TemperatureC,
-          f.Summary));
+      return _weatherForecastDtoFactory.CreateFrom(
+        _weatherForecastDao.ForecastsOf(userId, tenantId));
     }
 
     [HttpPost]
@@ -61,24 +72,24 @@ namespace IoCContainerRefactoring.Controllers
         return new BadRequestResult();
       }
 
+      var id = Guid.NewGuid();
       var persistentWeatherForecastDto = new PersistentWeatherForecastDto(
-        Guid.NewGuid(),
+        id,
         forecastDto.TenantId,
         forecastDto.UserId,
         forecastDto.Date,
         forecastDto.TemperatureC,
         forecastDto.Summary);
 
-      var entityEntry = await _weatherForecastDao._db.WeatherForecasts.AddAsync(persistentWeatherForecastDto);
-      await _weatherForecastDao._db.SaveChangesAsync();
+      await _weatherForecastDao.SaveAsync(persistentWeatherForecastDto);
 
-      await _flurlClient.Request("notifications").PostJsonAsync(
-        new WeatherForecastSuccessfullyReportedEventDto(
-          forecastDto.TenantId,
-          forecastDto.UserId,
-          forecastDto.TemperatureC));
+      var eventDto = new WeatherForecastSuccessfullyReportedEventDto(
+        forecastDto.TenantId,
+        forecastDto.UserId,
+        forecastDto.TemperatureC);
+      await _eventPipe.SendNotificationAsync(eventDto);
 
-      return new OkObjectResult(new ForecastCreationResultDto(entityEntry.Entity.Id));
+      return new OkObjectResult(new ForecastCreationResultDto(id));
     }
   }
 }

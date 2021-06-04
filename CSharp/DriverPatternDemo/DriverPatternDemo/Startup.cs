@@ -30,9 +30,11 @@ namespace IoCContainerRefactoring
           options.UseInMemoryDatabase(databaseName: "Weather")
             .UseInternalServiceProvider(services));
       services.AddTransient<WeatherForecastController>();
+      services.AddTransient<IWeatherForecastDao, WeatherForecastDao>();
       services.AddSingleton<IFlurlClient>(services => new FlurlClient(
         services.GetRequiredService<IOptions<NotificationsConfiguration>>().Value.BaseUrl
       ));
+      services.AddSingleton<IEventPipe, EventPipe>();
       services.AddControllers().AddControllersAsServices();
     }
 
