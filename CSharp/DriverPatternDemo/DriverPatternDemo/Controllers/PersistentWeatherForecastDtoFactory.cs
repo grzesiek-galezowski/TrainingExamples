@@ -2,7 +2,12 @@ using System;
 
 namespace IoCContainerRefactoring.Controllers
 {
-  internal class PersistentWeatherForecastDtoFactory
+  public interface IPersistentWeatherForecastDtoFactory
+  {
+    PersistentWeatherForecastDto CreateFrom(WeatherForecastDto forecastDto, Guid id);
+  }
+
+  public class PersistentWeatherForecastDtoFactory : IPersistentWeatherForecastDtoFactory
   {
     public PersistentWeatherForecastDto CreateFrom(WeatherForecastDto forecastDto, Guid id)
     {

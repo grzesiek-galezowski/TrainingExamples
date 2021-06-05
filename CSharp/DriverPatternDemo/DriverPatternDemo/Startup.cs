@@ -27,14 +27,18 @@ namespace IoCContainerRefactoring
       services.AddEntityFrameworkInMemoryDatabase();
       services.AddDbContext<WeatherForecastDbContext>(
         (services, options) => 
-          options.UseInMemoryDatabase(databaseName: "Weather")
+          options.UseInMemoryDatabase("Weather")
             .UseInternalServiceProvider(services));
       services.AddTransient<WeatherForecastController>();
       services.AddTransient<IWeatherForecastDao, WeatherForecastDao>();
+      services.AddSingleton<ITechSupport, TechSupportViaLogger>();
+      services.AddSingleton<IPersistentWeatherForecastDtoFactory, PersistentWeatherForecastDtoFactory>();
+      services.AddSingleton<IWeatherForecastDtoFactory, WeatherForecastDtoFactory>();
       services.AddSingleton<IFlurlClient>(services => new FlurlClient(
         services.GetRequiredService<IOptions<NotificationsConfiguration>>().Value.BaseUrl
       ));
       services.AddSingleton<IEventPipe, EventPipe>();
+      services.AddSingleton<IIdGenerator, IdGenerator>();
       services.AddControllers().AddControllersAsServices();
     }
 

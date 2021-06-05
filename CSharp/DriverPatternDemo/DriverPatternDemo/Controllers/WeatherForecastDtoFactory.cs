@@ -3,7 +3,13 @@ using System.Linq;
 
 namespace IoCContainerRefactoring.Controllers
 {
-  internal class WeatherForecastDtoFactory
+  public interface IWeatherForecastDtoFactory
+  {
+    WeatherForecastDto CreateFrom(PersistentWeatherForecastDto persistentWeatherForecastDto);
+    IEnumerable<WeatherForecastDto> CreateFrom(IEnumerable<PersistentWeatherForecastDto> persistentWeatherForecastDtos);
+  }
+
+  public class WeatherForecastDtoFactory : IWeatherForecastDtoFactory
   {
     public WeatherForecastDto CreateFrom(PersistentWeatherForecastDto persistentWeatherForecastDto)
     {

@@ -2,7 +2,12 @@ using System;
 
 namespace IoCContainerRefactoring.Controllers
 {
-  internal class IdGenerator
+  public interface IIdGenerator
+  {
+    Guid NewId();
+  }
+
+  public class IdGenerator : IIdGenerator
   {
     public Guid NewId()
     {
