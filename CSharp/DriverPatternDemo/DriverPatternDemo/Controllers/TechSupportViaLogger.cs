@@ -9,6 +9,8 @@ namespace IoCContainerRefactoring.Controllers
 
     void NotifyTemperatureTooLowIn(object source,
       WeatherForecastDto forecastDto);
+
+    void NotifyReportWeatherStarted(object source);
   }
 
   public class TechSupportViaLogger : ITechSupport
@@ -32,6 +34,11 @@ namespace IoCContainerRefactoring.Controllers
     {
       _loggerFactory.CreateLogger(source.GetType())
         .LogWarning($"Validation failed, because the temperature reported is {forecastDto.TemperatureC}");
+    }
+
+    public void NotifyReportWeatherStarted(object source)
+    {
+      _loggerFactory.CreateLogger(source.GetType()).LogInformation("Started reporting weather forecast");
     }
   }
 }

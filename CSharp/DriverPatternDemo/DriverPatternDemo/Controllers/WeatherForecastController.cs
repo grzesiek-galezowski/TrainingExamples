@@ -9,11 +9,16 @@ namespace IoCContainerRefactoring.Controllers
   public class WeatherForecastController : ControllerBase
   {
     private readonly IWeatherForecastDao _weatherForecastDao;
+    private readonly ITechSupport _support;
     private readonly IWeatherCommandFactory _weatherCommandFactory;
 
-    public WeatherForecastController(IWeatherForecastDao weatherForecastDao, IWeatherCommandFactory weatherCommandFactory)
+    public WeatherForecastController(
+      IWeatherForecastDao weatherForecastDao,
+      IWeatherCommandFactory weatherCommandFactory,
+      ITechSupport support)
     {
       _weatherForecastDao = weatherForecastDao;
+      _support = support;
       _weatherCommandFactory = weatherCommandFactory;
     }
 
@@ -39,6 +44,8 @@ namespace IoCContainerRefactoring.Controllers
     [HttpPost]
     public async Task<IActionResult> ReportWeather(WeatherForecastDto forecastDto)
     {
+      _support.NotifyReportWeatherStarted(this);
+
       var responseInProgress = new ReportWeatherResponseInProgress();
       var reportWeatherCommand = _weatherCommandFactory
         .CreateReportWeatherCommand(forecastDto, responseInProgress, _weatherForecastDao);
