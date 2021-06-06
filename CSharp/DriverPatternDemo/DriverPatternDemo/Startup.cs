@@ -39,6 +39,7 @@ namespace IoCContainerRefactoring
       ));
       services.AddSingleton<IEventPipe, EventPipe>();
       services.AddSingleton<IIdGenerator, IdGenerator>();
+      services.AddSingleton<IWeatherCommandFactory, WeatherCommandFactory>();
       services.AddControllers().AddControllersAsServices();
     }
 
