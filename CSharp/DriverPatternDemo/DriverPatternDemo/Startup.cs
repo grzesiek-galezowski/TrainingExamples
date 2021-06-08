@@ -49,8 +49,8 @@ namespace IoCContainerRefactoring
       services.AddSingleton<ITechSupport, TechSupportViaLogger>();
       services.AddSingleton<IPersistentWeatherForecastDtoFactory, PersistentWeatherForecastDtoFactory>();
       services.AddSingleton<IWeatherForecastDtoFactory, WeatherForecastDtoFactory>();
-      services.AddSingleton<IFlurlClient>(ctx => new FlurlClient(
-        ctx.GetRequiredService<IOptions<NotificationsConfiguration>>().Value.BaseUrl
+      services.AddSingleton<IFlurlClient>(p => new FlurlClient(
+        p.GetRequiredService<IOptions<NotificationsConfiguration>>().Value.BaseUrl
       ));
       services.AddSingleton<IEventPipe, EventPipe>();
       services.AddSingleton<IIdGenerator, IdGenerator>();
