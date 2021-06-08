@@ -10,6 +10,17 @@ using Microsoft.Extensions.Options;
 
 namespace IoCContainerRefactoring
 {
+  //- Change every registration (every scope) to lambda
+  //- Replace singletons that are resolved in a single place
+  //- Define Service Logic Root
+  //- For every singleton that is used in more than one place,
+  //   define accessor function and bind it to a field in the service logic root.
+  //- Move root singleton to service logic root and adjust its lifestyle
+  //- Replace (very carefully) scoped and transients - if they are used in more than one place,
+  //   follow a similar approach to singletons used in more than one place
+  //- Objects owned by ASP.Net Core must be passed as constructor
+  //   or method parameters depending on their lifestyle
+  //- Fix diposables
   public class Startup
   {
     public Startup(IConfiguration configuration)
