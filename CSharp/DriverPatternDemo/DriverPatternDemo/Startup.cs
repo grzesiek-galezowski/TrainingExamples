@@ -25,12 +25,16 @@ namespace IoCContainerRefactoring
       services.AddOptions();
       services.Configure<NotificationsConfiguration>(Configuration.GetSection(nameof(NotificationsConfiguration)));
       services.AddEntityFrameworkInMemoryDatabase();
+
+      //Scoped/Transient
       services.AddDbContext<WeatherForecastDbContext>(
         (ctx, options) => 
           options.UseInMemoryDatabase("Weather")
             .UseInternalServiceProvider(ctx));
       services.AddTransient<WeatherForecastController>();
       services.AddTransient<IWeatherForecastDao, WeatherForecastDao>();
+      
+      //Singletons
       services.AddSingleton<ITechSupport, TechSupportViaLogger>();
       services.AddSingleton<IPersistentWeatherForecastDtoFactory, PersistentWeatherForecastDtoFactory>();
       services.AddSingleton<IWeatherForecastDtoFactory, WeatherForecastDtoFactory>();
@@ -40,6 +44,7 @@ namespace IoCContainerRefactoring
       services.AddSingleton<IEventPipe, EventPipe>();
       services.AddSingleton<IIdGenerator, IdGenerator>();
       services.AddSingleton<IWeatherCommandFactory, WeatherCommandFactory>();
+      
       services.AddControllers().AddControllersAsServices();
     }
 
