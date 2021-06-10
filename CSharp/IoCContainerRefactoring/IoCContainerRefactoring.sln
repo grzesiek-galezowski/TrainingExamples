@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IoCContainerRefactoring", "DriverPatternDemo\IoCContainerRefactoring.csproj", "{DD6BB1E9-89C6-4C0C-9E34-8FE201DDD473}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunctionalSpecification", "FunctionalSpecification\FunctionalSpecification.csproj", "{2A7D5A1C-E8FE-4C47-9BCB-F72B8D6D9EC6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IoCContainerRefactoring", "IoCContainerRefactoring\IoCContainerRefactoring.csproj", "{9961DDE0-40F6-4068-B07F-012A8C85A74A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DD6BB1E9-89C6-4C0C-9E34-8FE201DDD473}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DD6BB1E9-89C6-4C0C-9E34-8FE201DDD473}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DD6BB1E9-89C6-4C0C-9E34-8FE201DDD473}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DD6BB1E9-89C6-4C0C-9E34-8FE201DDD473}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2A7D5A1C-E8FE-4C47-9BCB-F72B8D6D9EC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2A7D5A1C-E8FE-4C47-9BCB-F72B8D6D9EC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A7D5A1C-E8FE-4C47-9BCB-F72B8D6D9EC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A7D5A1C-E8FE-4C47-9BCB-F72B8D6D9EC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9961DDE0-40F6-4068-B07F-012A8C85A74A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9961DDE0-40F6-4068-B07F-012A8C85A74A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9961DDE0-40F6-4068-B07F-012A8C85A74A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9961DDE0-40F6-4068-B07F-012A8C85A74A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
