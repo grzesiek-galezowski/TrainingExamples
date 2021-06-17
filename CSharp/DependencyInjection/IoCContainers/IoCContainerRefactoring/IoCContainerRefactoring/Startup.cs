@@ -20,7 +20,7 @@ namespace IoCContainerRefactoring
   //   follow a similar approach to singletons used in more than one place
   //- Objects owned by ASP.Net Core must be passed as constructor
   //   or method parameters depending on their lifestyle
-  //- Fix diposables
+  //- Fix disposables
   public class Startup
   {
     public Startup(IConfiguration configuration)
