@@ -1,4 +1,3 @@
-using Flurl.Http;
 using IoCContainerRefactoring.Controllers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -6,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace IoCContainerRefactoring
@@ -26,26 +26,18 @@ namespace IoCContainerRefactoring
       services.Configure<NotificationsConfiguration>(Configuration.GetSection(nameof(NotificationsConfiguration)));
       services.AddEntityFrameworkInMemoryDatabase();
 
-      //Scoped/Transient
+      //Scoped & Transient
       services.AddDbContext<WeatherForecastDbContext>(
         (ctx, options) => 
           options.UseInMemoryDatabase("Weather")
             .UseInternalServiceProvider(ctx));
-      services.AddTransient<WeatherForecastController>();
-      services.AddTransient<IWeatherForecastDao, WeatherForecastDao>();
+      services.AddTransient(
+        provider => provider.GetService<ServiceLogicRoot>()
+          .CreateWeatherForecastController(
+            provider.GetService<WeatherForecastDbContext>()));
       
       //Singletons
-      services.AddSingleton<ITechSupport, TechSupportViaLogger>();
-      services.AddSingleton<IPersistentWeatherForecastDtoFactory, PersistentWeatherForecastDtoFactory>();
-      services.AddSingleton<IWeatherForecastDtoFactory, WeatherForecastDtoFactory>();
-      services.AddSingleton<IFlurlClient>(
-          provider => new FlurlClient(
-              provider.GetRequiredService<IOptions<NotificationsConfiguration>>().Value.BaseUrl
-      ));
-      services.AddSingleton<IEventPipe, EventPipe>();
-      services.AddSingleton<IIdGenerator, IdGenerator>();
-      services.AddSingleton<IWeatherCommandFactory, WeatherCommandFactory>();
-      
+      services.AddSingleton(provider => new ServiceLogicRoot(provider.GetRequiredService<IOptions<NotificationsConfiguration>>().Value.BaseUrl, provider.GetService<ILoggerFactory>()));
       services.AddControllers().AddControllersAsServices();
     }
 
