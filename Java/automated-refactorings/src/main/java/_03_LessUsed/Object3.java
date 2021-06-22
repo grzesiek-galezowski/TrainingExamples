@@ -12,7 +12,7 @@
 
 public class Object3 {
   public void doSomething() {
-    final MyMessage message = new MyMessage(5, 6);
+    final var message = new MyMessage(5, 6);
     message.send();
   }
 }

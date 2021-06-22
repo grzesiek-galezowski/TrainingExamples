@@ -1,7 +1,5 @@
 ﻿package _03_LessUsed;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 public class MyMessage {
   private final int innerValue1;
   private final int innerValue2;
@@ -20,6 +18,6 @@ public class MyMessage {
   }
 
   public void send() {
-    throw new NotImplementedException();
+    throw new RuntimeException();
   }
 }

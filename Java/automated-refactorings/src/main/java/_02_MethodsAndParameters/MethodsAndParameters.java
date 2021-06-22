@@ -16,10 +16,10 @@ public class MethodsAndParameters {
   private final MessageDestination destination = new ConsoleDestination();
 
   public void processInvitationMessage() {
-    final String sender = "zenek";
-    final String recipient = "jasiek";
+    final var sender = "zenek";
+    final var recipient = "jasiek";
 
-    FriendlyMessage message = createFriendlyMessageFrom(sender);
+    var message = createFriendlyMessageFrom(sender);
 
     message.To = Character.isLowerCase(recipient.charAt(0)) ?
         StringUtils.capitalize(recipient.toLowerCase()) : recipient;
@@ -31,7 +31,7 @@ public class MethodsAndParameters {
   }
 
   private FriendlyMessage createFriendlyMessageFrom(String sender) {
-    final FriendlyMessage message = new FriendlyMessage();
+    final var message = new FriendlyMessage();
 
     message.From = Character.isLowerCase(sender.charAt(0))
         ? StringUtils.capitalize(sender.toLowerCase())
