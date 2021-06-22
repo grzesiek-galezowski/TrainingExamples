@@ -1,0 +1,11 @@
+﻿- Change every registration (every scope) to lambda
+- Replace singletons that are resolved in a single place
+- Define Service Logic Root
+- For every singleton that is used in more than one place,
+   define accessor function and bind it to a field in the service logic root.
+- Move root singleton (one on which other singletons don't depend) to service logic root and bind it to a field.
+- Replace (very carefully) scoped and transients - if they are used in more than one place,
+   follow a similar approach to singletons used in more than one place, but use factory methods rather than fields.
+- Objects owned by ASP.Net Core must be passed as constructor
+   or method parameters depending on their lifestyle
+- Fix disposables
