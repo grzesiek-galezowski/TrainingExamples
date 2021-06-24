@@ -38,32 +38,33 @@ namespace IoCContainerCons
       Assert.IsInstanceOf<Constructor1Argument>(resolvedInstance._arg);
     }
 
-  }
-
-  public class ObjectWithTwoConstructors
-  {
-    public readonly ConstructorArgument _arg;
-
-    public ObjectWithTwoConstructors(Constructor1Argument arg)
+    public class ObjectWithTwoConstructors
     {
-      _arg = arg;
+      public readonly ConstructorArgument _arg;
+
+      public ObjectWithTwoConstructors(Constructor1Argument arg)
+      {
+        _arg = arg;
+      }
+      public ObjectWithTwoConstructors(Constructor2Argument arg)
+      {
+        _arg = arg;
+      }
     }
-    public ObjectWithTwoConstructors(Constructor2Argument arg)
+
+    public interface ConstructorArgument
     {
-      _arg = arg;
+
+    }
+
+    public class Constructor1Argument : ConstructorArgument
+    {
+    }
+
+    public class Constructor2Argument : ConstructorArgument
+    {
     }
   }
 
-  public interface ConstructorArgument
-  {
 
-  }
-
-  public class Constructor1Argument : ConstructorArgument
-  {
-  }
-
-  public class Constructor2Argument : ConstructorArgument
-  {
-  }
 }
