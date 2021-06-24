@@ -38,6 +38,7 @@ namespace IoCContainerCons
         }
         //bug literals
         //bug two registrations of the same type - with different lifestyles
+        //bug multiple constructors
     }
 
 

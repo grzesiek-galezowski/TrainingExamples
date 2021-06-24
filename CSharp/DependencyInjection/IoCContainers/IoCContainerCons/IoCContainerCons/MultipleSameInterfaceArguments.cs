@@ -8,7 +8,7 @@ using NUnit.Framework;
 //it is to some extent by using child scopes(?) but that makes these places dependent on the container
 
 /// <summary>
-/// "Note that some relationships are based on types that are in Autofac (e.g., IIndex<X, B>).
+/// "Note that some relationships are based on types that are in Autofac.
 /// Using those relationship types do tie you to at least having a reference to Autofac, even
 /// if you choose to use a different IoC container for the actual resolution of services." 
 /// </summary>
