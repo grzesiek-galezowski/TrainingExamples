@@ -1,4 +1,4 @@
-﻿package _02_MethodsAndParameters;
+package _02_MethodsAndParameters;
 
 //TODO encapsulate fields of message (encapsulate fields)
 //TODO assume the encapsulated type is third party. Copy type -> generate delegating members

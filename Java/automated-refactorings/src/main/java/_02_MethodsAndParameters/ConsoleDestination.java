@@ -1,4 +1,4 @@
-﻿package _02_MethodsAndParameters;
+package _02_MethodsAndParameters;
 
 class ConsoleDestination implements MessageDestination {
   public void send(String s) {

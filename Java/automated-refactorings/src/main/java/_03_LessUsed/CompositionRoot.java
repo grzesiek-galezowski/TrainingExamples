@@ -1,4 +1,4 @@
-﻿package _03_LessUsed;
+package _03_LessUsed;
 
 public class CompositionRoot {
   public MySystem resolve() {

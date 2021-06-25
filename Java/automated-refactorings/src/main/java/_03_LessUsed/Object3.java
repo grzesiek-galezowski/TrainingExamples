@@ -1,4 +1,4 @@
-﻿package _03_LessUsed;
+package _03_LessUsed;
 //TODO replace constructor with factory method
 //TODO copy type MyMessage with factory method / move static method
 //TODO replace static method with instance one (not automated)

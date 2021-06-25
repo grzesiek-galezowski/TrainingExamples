@@ -1,4 +1,4 @@
-﻿package _02_MethodsAndParameters;
+package _02_MethodsAndParameters;
 
 public class FriendlyMessage {
   public String From;
