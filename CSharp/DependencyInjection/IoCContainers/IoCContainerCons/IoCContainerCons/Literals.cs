@@ -3,31 +3,30 @@ using NUnit.Framework;
 
 namespace IoCContainerCons
 {
-    public class DeadCode
+    public class Literals
     {
         [Test]
-        public void ContainerContainsSomeDeadCode()
+        public void ShouldResolveObjectWithLiterals()
         {
             //GIVEN
             var builder = new ContainerBuilder();
             builder.RegisterType<Dependency>().SingleInstance();
-            builder.RegisterType<DependencyConsumer>().SingleInstance();
-            //dead code
-            builder.RegisterType<DeadCode>().InstancePerDependency();
+            builder.RegisterType<DependencyConsumer>()
+                .WithParameter("x", 2).SingleInstance();
             using var container = builder.Build();
 
             //WHEN
             var resolvedInstance = container.Resolve<DependencyConsumer>();
             
             //THEN
-            Assert.NotNull(resolvedInstance);
+            Assert.AreEqual(2, resolvedInstance._x);
         }
 
         [Test]
         public void VanillaDiContainsDeadCode()
         {
             //GIVEN
-            var consumer = new DependencyConsumer(new Dependency());
+            var consumer = new DependencyConsumer(new Dependency(), 2);
             var deadCode = new DeadCode();
 
             //WHEN
@@ -35,18 +34,22 @@ namespace IoCContainerCons
             //THEN
             Assert.NotNull(consumer);
         }
-        //bug two registrations of the same type - with different lifestyles
-    }
+        
+        public class DependencyConsumer
+        {
+            public readonly int _x;
 
+            public DependencyConsumer(Dependency dependency, int x)
+            {
+                _x = x;
+            }
+        }
 
-    public class DependencyConsumer
-    {
-        public DependencyConsumer(Dependency dependency)
+        public class Dependency
         {
         }
     }
 
-    public class Dependency
-    {
-    }
+
+
 }
