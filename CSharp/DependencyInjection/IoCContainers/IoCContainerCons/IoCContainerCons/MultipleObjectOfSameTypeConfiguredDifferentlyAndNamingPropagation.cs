@@ -88,10 +88,12 @@ namespace IoCContainerCons
       Assert.AreEqual(6, o.A2.B2.X1);
       Assert.AreEqual(4, o.A2.B1.C2.X2);
     }
+    //bug add version refactored to modules
 
     [Test]
     public void ShouldXXXXXXXXXXXXXXXXXXXXXXX() //bug
     {
+      //bug add version refactored to methods
       //GIVEN
       //WHEN
       var o = new O(
