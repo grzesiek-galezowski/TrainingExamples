@@ -13,33 +13,33 @@ namespace IoCContainerCons
       builder.RegisterType<O>()
         .As<O>()
         .WithParameter(
-          (info, context) => info.Position == 0,
-          (info, context) => context.ResolveNamed<A>("firstA"))
+          (info, _) => info.Position == 0,
+          (_, context) => context.ResolveNamed<A>("firstA"))
         .WithParameter(
-          (info, context) => info.Position == 1,
-          (info, context) => context.ResolveNamed<A>("secondA"))
+          (info, _) => info.Position == 1,
+          (_, context) => context.ResolveNamed<A>("secondA"))
         .SingleInstance();
       
-      builder.RegisterType<A>().As<A>()
+      builder.RegisterType<A>()
         .WithParameter(
-          (info, context) => info.Position == 0,
-          (info, context) => context.ResolveNamed<B1>("firstB1")
+          (info, _) => info.Position == 0,
+          (_, context) => context.ResolveNamed<B1>("firstB1")
         )
         .WithParameter(
-          (info, context) => info.Position == 1,
-          (info, context) => context.ResolveNamed<B2>("firstB2")
+          (info, _) => info.Position == 1,
+          (_, context) => context.ResolveNamed<B2>("firstB2")
         )
         .Named<A>("firstA")
         .SingleInstance();
 
-      builder.RegisterType<A>().As<A>()
+      builder.RegisterType<A>()
         .WithParameter(
-          (info, context) => info.Position == 0,
-          (info, context) => context.ResolveNamed<B1>("secondB1")
+          (info, _) => info.Position == 0,
+          (_, context) => context.ResolveNamed<B1>("secondB1")
           )
         .WithParameter(
-          (info, context) => info.Position == 1,
-          (info, context) => context.ResolveNamed<B2>("secondB2")
+          (info, _) => info.Position == 1,
+          (_, context) => context.ResolveNamed<B2>("secondB2")
           )
         .Named<A>("secondA")
         .SingleInstance();
@@ -51,7 +51,7 @@ namespace IoCContainerCons
         .WithParameter(
           (info, _) =>  info.Position == 1,
           (_, context) => context.ResolveNamed<C2>("firstC2"))
-        .As<B1>().Named<B1>("firstB1").SingleInstance();
+        .Named<B1>("firstB1").SingleInstance();
 
       builder.RegisterType<B1>()
         .WithParameter(
@@ -60,7 +60,7 @@ namespace IoCContainerCons
         .WithParameter(
           (info, _) =>  info.Position == 1,
           (_, context) => context.ResolveNamed<C2>("secondC2"))
-        .As<B1>().Named<B1>("secondB1").SingleInstance();
+        .Named<B1>("secondB1").SingleInstance();
       
       builder.RegisterType<C1>().Named<C1>("firstC1").SingleInstance();
       builder.RegisterType<C1>().Named<C1>("secondC1").SingleInstance();
@@ -74,7 +74,6 @@ namespace IoCContainerCons
             
       //WHEN
       var o = container.Resolve<O>();
-      
     
       //THEN
       Assert.AreNotSame(o.A1, o.A2);
