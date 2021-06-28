@@ -3,6 +3,7 @@ package _01_Basic;
 //Refactor this
 //ctrl+alt+...
 //alt+enter
+//ALT + INSERT
 //git experiments (refactor and view changelog)
 
 //TODO 1. rename begin
