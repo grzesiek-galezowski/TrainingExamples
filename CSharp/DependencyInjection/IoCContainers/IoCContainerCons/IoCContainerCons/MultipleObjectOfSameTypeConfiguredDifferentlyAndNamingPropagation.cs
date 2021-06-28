@@ -111,8 +111,6 @@ namespace IoCContainerCons
       Assert.AreEqual(4, o.A2.Armor.BreastPlate.Defense);
     }
 
-    //bug add version refactored to modules
-
     [Test]
     public void ShouldResolveTwoSimilarObjectGraphsWithDifferentLeavesFromVanillaDi()
     {
@@ -146,8 +144,8 @@ namespace IoCContainerCons
     {
       //GIVEN
       var o = new World(
-        CreateA(4, 2),
-        CreateA(6, 4));
+        Soldier(4, 2),
+        Soldier(6, 4));
 
       //THEN
       Assert.AreNotSame(o.A1, o.A2);
@@ -163,7 +161,7 @@ namespace IoCContainerCons
       Assert.AreEqual(4, o.A2.Armor.BreastPlate.Defense);
     }
 
-    private static Character CreateA(int x1, int x2)
+    private static Character Soldier(int x1, int x2)
     {
       return new Character(
         new Armor(
