@@ -1,11 +1,12 @@
 package _01_Basic;
 
-//TODO 1. rename
+//TODO 1. rename begin
 //TODO 2. move
 //TODO 3. copy type
 //TODO 4. safe delete
 public class BasicRefactorings {
   public void Start() {
+    begin();
     begin(1);
     middle(2, 3);
     end(3);
@@ -13,6 +14,10 @@ public class BasicRefactorings {
 
   private void begin(int i) {
     System.out.println(i);
+  }
+
+  private void begin() {
+    begin(1);
   }
 
   private void middle(int i, int notNeeded) {
