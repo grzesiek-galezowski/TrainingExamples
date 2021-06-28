@@ -1,5 +1,8 @@
 package _01_Basic;
 
+//Refactor this
+//ctrl+alt+...
+
 //TODO 1. rename begin
 //TODO 2. move
 //TODO 3. copy type
