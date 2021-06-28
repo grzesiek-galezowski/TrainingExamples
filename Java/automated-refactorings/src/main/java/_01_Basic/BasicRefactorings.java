@@ -8,6 +8,7 @@ package _01_Basic;
 //TODO 3. copy type
 //TODO 4. safe delete
 public class BasicRefactorings {
+  int i2 = 123;
   public void Start() {
     begin();
     begin(1);
@@ -17,6 +18,7 @@ public class BasicRefactorings {
 
   private void begin(int i) {
     System.out.println(i);
+    System.out.println(i2);
   }
 
   private void begin() {
