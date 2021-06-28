@@ -1,13 +1,14 @@
 package _02_MethodsAndParameters;
 
 //TODO encapsulate fields of message (encapsulate fields)
-//TODO assume the encapsulated type is third party. Copy type -> generate delegating members
+//TODO assume the encapsulated type is third party. Wrap method return value, generate delegating members, move .getValue() to send() call only - everything compiles
 //TODO deal with unclear responsibility in CreateFriendlyMessageFrom() (inline method)
 //TODO remove duplication of title casing (extract both methods, make one delegate to other, inline method)
-//TODO in this order, content, recipient and sender as parameters (introduce parameters)
+//TODO in this order, content, recipient and sender as parameters (introduce parameters in the processInvitationMessage() method)
+//TODO move the send message inside the our created MyMessage wrapper
 //TODO allow using different formattings in Send (extract method => introduce field => introduce parameter)
 //     optionally: get to Format(from, to, content), make method non static, extract again to make Format(message), non static again, extract class
-//TODO get rid of destination dependency and inline Send() method (introduce field, inline field, introduce parameter, inline method)
+//TODO get rid of ConsoleDestination dependencies from the _02_MethodsAndParameters class
 //TODO rearrange ProcessInvitationMessage() signature parameters in from-to-what fashion
 
 import org.apache.commons.lang3.StringUtils;
