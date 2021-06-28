@@ -7,7 +7,7 @@ namespace IoCContainerCons
   class MultipleObjectOfSameTypeConfiguredDifferentlyAndNamingPropagation
   {
     [Test]
-    public void ShouldXXXXXXXXXXXXXXXX() //bug
+    public void ShouldResolveTwoSimilarObjectGraphsWithDifferentLeavesFromContainer()
     {
       //GIVEN
       var builder = new ContainerBuilder();
@@ -72,7 +72,7 @@ namespace IoCContainerCons
     }
 
     [Test]
-    public void ShouldXXXXXXXXXXXXXXXX2() //bug
+    public void ShouldResolveTwoSimilarObjectGraphsWithDifferentLeavesFromContainerModules()
     {
       //GIVEN
       var firstCategory = Guid.NewGuid().ToString();
@@ -114,7 +114,7 @@ namespace IoCContainerCons
     //bug add version refactored to modules
 
     [Test]
-    public void ShouldXXXXXXXXXXXXXXXXXXXXXXX() //bug
+    public void ShouldResolveTwoSimilarObjectGraphsWithDifferentLeavesFromVanillaDi()
     {
       var o = new O(
         new A(
@@ -142,11 +142,9 @@ namespace IoCContainerCons
     }
 
     [Test]
-    public void ShouldXXXXXXXXXXXXXXXXXXXXXXX2() //bug
+    public void ShouldResolveTwoSimilarObjectGraphsWithDifferentLeavesFromVanillaDiDried()
     {
-      //bug add version refactored to methods
       //GIVEN
-      //WHEN
       var o = new O(
         CreateA(4, 2),
         CreateA(6, 4));
