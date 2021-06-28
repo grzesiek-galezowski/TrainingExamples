@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using Autofac;
+using Autofac.Core;
+using Autofac.Core.Activators.Reflection;
 using NUnit.Framework;
 
 namespace IoCContainerCons
@@ -15,7 +18,7 @@ namespace IoCContainerCons
         .As<World>()
         .WithParameter(
           (info, _) => info.Position == 1,
-          (_, context) => context.ResolveNamed<Character>("secondA"))
+          (_, context) => context.ResolveNamed<Character>("secondCharacter"))
         .SingleInstance();
       
       builder.RegisterType<Character>().SingleInstance();
@@ -23,13 +26,13 @@ namespace IoCContainerCons
       builder.RegisterType<Character>()
         .WithParameter(
           (info, _) => info.Position == 0,
-          (_, context) => context.ResolveNamed<Armor>("secondB1")
+          (_, context) => context.ResolveNamed<Armor>("secondArmor")
           )
         .WithParameter(
           (info, _) => info.Position == 1,
-          (_, context) => context.ResolveNamed<Sword>("secondB2")
+          (_, context) => context.ResolveNamed<Sword>("secondSword")
           )
-        .Named<Character>("secondA")
+        .Named<Character>("secondCharacter")
         .SingleInstance();
 
       builder.RegisterType<Armor>().SingleInstance();
@@ -37,21 +40,31 @@ namespace IoCContainerCons
       builder.RegisterType<Armor>()
         .WithParameter(
           (info, _) =>  info.Position == 0,
-          (_, context) => context.ResolveNamed<Helmet>("secondC1"))
+          (_, context) => context.ResolveNamed<Helmet>("secondHelmet"))
         .WithParameter(
           (info, _) =>  info.Position == 1,
-          (_, context) => context.ResolveNamed<BreastPlate>("secondC2"))
-        .Named<Armor>("secondB1")
+          (_, context) => context.ResolveNamed<BreastPlate>("secondBreastPlate"))
+        .Named<Armor>("secondArmor")
         .SingleInstance();
       
       builder.RegisterType<Helmet>().SingleInstance();
-      builder.RegisterType<Helmet>().Named<Helmet>("secondC1").SingleInstance();
+      builder.RegisterType<Helmet>()
+        .Named<Helmet>("secondHelmet")
+        .SingleInstance();
       
-      builder.RegisterType<BreastPlate>().WithParameter("Defense", 2).SingleInstance();
-      builder.RegisterType<BreastPlate>().Named<BreastPlate>("secondC2").WithParameter("Defense", 4).SingleInstance();
+      builder.RegisterType<BreastPlate>()
+        .WithParameter("Defense", 2)
+        .SingleInstance();
+      builder.RegisterType<BreastPlate>()
+        .Named<BreastPlate>("secondBreastPlate")
+        .WithParameter("Defense", 4).SingleInstance();
       
-      builder.RegisterType<Sword>().WithParameter("Attack", 4).SingleInstance();
-      builder.RegisterType<Sword>().Named<Sword>("secondB2").WithParameter("Attack", 6).SingleInstance();
+      builder.RegisterType<Sword>()
+        .WithParameter("Attack", 4)
+        .SingleInstance();
+      builder.RegisterType<Sword>()
+        .Named<Sword>("secondSword")
+        .WithParameter("Attack", 6).SingleInstance();
       using var container = builder.Build();
             
       //WHEN
@@ -89,8 +102,8 @@ namespace IoCContainerCons
           (_, context) => context.ResolveNamed<Character>($"{secondCategory}Character"))
         .SingleInstance();
 
-      builder.RegisterModule(new AModule(4, 2, firstCategory));
-      builder.RegisterModule(new AModule(6, 4, secondCategory));
+      builder.RegisterModule(new SoldierModule(4, 2, firstCategory));
+      builder.RegisterModule(new SoldierModule(6, 4, secondCategory));
 
       using var container = builder.Build();
 
@@ -177,18 +190,16 @@ namespace IoCContainerCons
     public record Helmet;
     public record Sword(int Attack);
 
-
-
-    public class AModule : Module
+    public class SoldierModule : Module
     {
-      private readonly int _x1;
-      private readonly int _x2;
+      private readonly int _swordAttack;
+      private readonly int _breastplateDefense;
       private readonly string _category;
 
-      public AModule(int x1, int x2, string category)
+      public SoldierModule(int swordAttack, int breastplateDefense, string category)
       {
-        _x1 = x1;
-        _x2 = x2;
+        _swordAttack = swordAttack;
+        _breastplateDefense = breastplateDefense;
         _category = category;
       }
 
@@ -213,11 +224,20 @@ namespace IoCContainerCons
           .WithParameter(
             (info, _) => info.Position == 1,
             (_, context) => context.ResolveNamed<BreastPlate>($"{_category}BreastPlate"))
-          .Named<Armor>($"{_category}Armor").SingleInstance();
+          .Named<Armor>($"{_category}Armor")
+          .SingleInstance();
 
-        builder.RegisterType<Sword>().Named<Sword>($"{_category}Sword").SingleInstance().WithParameter("Attack", _x1);
-        builder.RegisterType<Helmet>().Named<Helmet>($"{_category}Helmet").SingleInstance();
-        builder.RegisterType<BreastPlate>().Named<BreastPlate>($"{_category}BreastPlate").SingleInstance().WithParameter("Defense", _x2);
+        builder.RegisterType<Sword>()
+          .Named<Sword>($"{_category}Sword")
+          .WithParameter("Attack", _swordAttack)
+          .SingleInstance();
+        builder.RegisterType<Helmet>()
+          .Named<Helmet>($"{_category}Helmet")
+          .SingleInstance();
+        builder.RegisterType<BreastPlate>()
+          .Named<BreastPlate>($"{_category}BreastPlate")
+          .WithParameter("Defense", _breastplateDefense)
+          .SingleInstance();
 
       }
     }
