@@ -1,7 +1,7 @@
 package _03_LessUsed;
 //Way 1:
 //TODO replace constructor with factory method
-//TODO Move
+//TODO Move static factory method to MyMessageFactory (new class)
 //TODO replace static method with instance one (not automated)
 //TODO change returned type and rename to MyMessageFactory
 //TODO use MyMessageFactory
