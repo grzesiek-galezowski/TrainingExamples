@@ -2,6 +2,7 @@ package _01_Basic;
 
 //Refactor this
 //ctrl+alt+...
+//alt+enter
 
 //TODO 1. rename begin
 //TODO 2. move
