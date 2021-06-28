@@ -1,5 +1,5 @@
-﻿using Autofac;
-using Autofac.Core;
+﻿using System;
+using Autofac;
 using NUnit.Framework;
 
 namespace IoCContainerCons
@@ -14,24 +14,11 @@ namespace IoCContainerCons
       builder.RegisterType<O>()
         .As<O>()
         .WithParameter(
-          (info, _) => info.Position == 0,
-          (_, context) => context.ResolveNamed<A>("firstA"))
-        .WithParameter(
           (info, _) => info.Position == 1,
           (_, context) => context.ResolveNamed<A>("secondA"))
         .SingleInstance();
       
-      builder.RegisterType<A>()
-        .WithParameter(
-          (info, _) => info.Position == 0,
-          (_, context) => context.ResolveNamed<B1>("firstB1")
-        )
-        .WithParameter(
-          (info, _) => info.Position == 1,
-          (_, context) => context.ResolveNamed<B2>("firstB2")
-        )
-        .Named<A>("firstA")
-        .SingleInstance();
+      builder.RegisterType<A>().SingleInstance();
 
       builder.RegisterType<A>()
         .WithParameter(
@@ -45,14 +32,7 @@ namespace IoCContainerCons
         .Named<A>("secondA")
         .SingleInstance();
 
-      builder.RegisterType<B1>()        
-        .WithParameter(
-          (info, _) =>  info.Position == 0,
-          (_, context) => context.ResolveNamed<C1>("firstC1"))
-        .WithParameter(
-          (info, _) =>  info.Position == 1,
-          (_, context) => context.ResolveNamed<C2>("firstC2"))
-        .Named<B1>("firstB1").SingleInstance();
+      builder.RegisterType<B1>().SingleInstance();
 
       builder.RegisterType<B1>()
         .WithParameter(
@@ -61,15 +41,16 @@ namespace IoCContainerCons
         .WithParameter(
           (info, _) =>  info.Position == 1,
           (_, context) => context.ResolveNamed<C2>("secondC2"))
-        .Named<B1>("secondB1").SingleInstance();
+        .Named<B1>("secondB1")
+        .SingleInstance();
       
-      builder.RegisterType<C1>().Named<C1>("firstC1").SingleInstance();
+      builder.RegisterType<C1>().SingleInstance();
       builder.RegisterType<C1>().Named<C1>("secondC1").SingleInstance();
       
-      builder.RegisterType<C2>().Named<C2>("firstC2").SingleInstance().WithParameter("X2", 2);
+      builder.RegisterType<C2>().WithParameter("X2", 2).SingleInstance();
       builder.RegisterType<C2>().Named<C2>("secondC2").WithParameter("X2", 4).SingleInstance();
       
-      builder.RegisterType<B2>().Named<B2>("firstB2").SingleInstance().WithParameter("X1", 4);
+      builder.RegisterType<B2>().WithParameter("X1", 4).SingleInstance();
       builder.RegisterType<B2>().Named<B2>("secondB2").WithParameter("X1", 6).SingleInstance();
       using var container = builder.Build();
             
@@ -94,19 +75,22 @@ namespace IoCContainerCons
     public void ShouldXXXXXXXXXXXXXXXX2() //bug
     {
       //GIVEN
+      var firstCategory = Guid.NewGuid().ToString();
+      var secondCategory = Guid.NewGuid().ToString();
+
       var builder = new ContainerBuilder();
       builder.RegisterType<O>()
         .As<O>()
         .WithParameter(
           (info, _) => info.Position == 0,
-          (_, context) => context.ResolveNamed<A>("firstA"))
+          (_, context) => context.ResolveNamed<A>($"{firstCategory}A"))
         .WithParameter(
           (info, _) => info.Position == 1,
-          (_, context) => context.ResolveNamed<A>("secondA"))
+          (_, context) => context.ResolveNamed<A>($"{secondCategory}A"))
         .SingleInstance();
 
-      builder.RegisterModule(new AModule(4, 2, "first"));
-      builder.RegisterModule(new AModule(6, 4, "second"));
+      builder.RegisterModule(new AModule(4, 2, firstCategory));
+      builder.RegisterModule(new AModule(6, 4, secondCategory));
 
       using var container = builder.Build();
 
@@ -132,9 +116,6 @@ namespace IoCContainerCons
     [Test]
     public void ShouldXXXXXXXXXXXXXXXXXXXXXXX() //bug
     {
-      //bug add version refactored to methods
-      //GIVEN
-      //WHEN
       var o = new O(
         new A(
           new B1(
@@ -147,7 +128,6 @@ namespace IoCContainerCons
             new C2(4)),
           new B2(6)));
 
-      //THEN
       Assert.AreNotSame(o.A1, o.A2);
       Assert.AreNotSame(o.A1.B1, o.A2.B1);
       Assert.AreNotSame(o.A1.B1.C1, o.A2.B1.C1);
