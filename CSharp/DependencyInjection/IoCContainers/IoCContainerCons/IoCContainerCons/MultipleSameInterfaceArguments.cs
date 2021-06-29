@@ -7,14 +7,14 @@ using NUnit.Framework;
 //bug object encapsulation (check if this is possible in a container)
 //it is to some extent by using child scopes(?) but that makes these places dependent on the container
 
-/// <summary>
-/// "Note that some relationships are based on types that are in Autofac.
-/// Using those relationship types do tie you to at least having a reference to Autofac, even
-/// if you choose to use a different IoC container for the actual resolution of services." 
-/// </summary>
 namespace IoCContainerCons
 {
-    public class TwoImplementationsOfTheSameInterface
+  /// <summary>
+  /// "Note that some relationships are based on types that are in Autofac.
+  /// Using those relationship types do tie you to at least having a reference to Autofac, even
+  /// if you choose to use a different IoC container for the actual resolution of services." 
+  /// </summary>
+  public class TwoImplementationsOfTheSameInterface
     {
         [Test]
         public void HandMadeComposition()
