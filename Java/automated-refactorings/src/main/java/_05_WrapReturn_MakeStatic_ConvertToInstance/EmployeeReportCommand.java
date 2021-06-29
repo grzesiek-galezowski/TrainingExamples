@@ -23,28 +23,34 @@ public class EmployeeReportCommand {
   public void execute() {
     final ArrayList<EmployeeDto> employeeDtos = Database.loadEmployees();
     StringBuilder report = new StringBuilder("");
+
+    //report header
     report.append("=== BEGIN ===").append(System.lineSeparator());
 
+    //underpaid employees header
     report.append("UNDERPAID EMPLOYEES").append(System.lineSeparator());
 
     //underpaid employees
     for(EmployeeDto e : employeeDtos) {
       if(e.getPay() < averagePay * 0.8) {
-        report.append(e.toString()).append(System.lineSeparator());
+        report.append(e).append(System.lineSeparator());
       }
     }
 
+    //Overpaid employees header
     report.append("OVERPAID EMPLOYEES").append(System.lineSeparator());
 
     //overpaid employees
     for(EmployeeDto e : employeeDtos) {
       if(e.getPay() > averagePay * 1.2) {
-        report.append(e.toString()).append(System.lineSeparator());
+        report.append(e).append(System.lineSeparator());
       }
     }
 
+    //footer
     report.append("=== END ===").append(System.lineSeparator());
 
-    System.out.println(report.toString());
+    //print the report
+    System.out.println(report);
   }
 }
