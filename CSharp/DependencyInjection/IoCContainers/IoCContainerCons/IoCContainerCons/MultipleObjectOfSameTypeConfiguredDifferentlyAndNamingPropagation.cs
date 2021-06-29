@@ -71,17 +71,17 @@ namespace IoCContainerCons
       var o = container.Resolve<World>();
     
       //THEN
-      Assert.AreNotSame(o.A1, o.A2);
-      Assert.AreNotSame(o.A1.Armor, o.A2.Armor);
-      Assert.AreNotSame(o.A1.Armor.Helmet, o.A2.Armor.Helmet);
-      Assert.AreNotSame(o.A1.Armor.BreastPlate, o.A2.Armor.BreastPlate);
-      Assert.AreNotSame(o.A1.Armor.BreastPlate.Defense, o.A2.Armor.BreastPlate.Defense);
-      Assert.AreNotSame(o.A1.Sword, o.A2.Sword);
+      Assert.AreNotSame(o.Character1, o.Character2);
+      Assert.AreNotSame(o.Character1.Armor, o.Character2.Armor);
+      Assert.AreNotSame(o.Character1.Armor.Helmet, o.Character2.Armor.Helmet);
+      Assert.AreNotSame(o.Character1.Armor.BreastPlate, o.Character2.Armor.BreastPlate);
+      Assert.AreNotSame(o.Character1.Armor.BreastPlate.Defense, o.Character2.Armor.BreastPlate.Defense);
+      Assert.AreNotSame(o.Character1.Sword, o.Character2.Sword);
 
-      Assert.AreEqual(4, o.A1.Sword.Attack);
-      Assert.AreEqual(2, o.A1.Armor.BreastPlate.Defense);
-      Assert.AreEqual(6, o.A2.Sword.Attack);
-      Assert.AreEqual(4, o.A2.Armor.BreastPlate.Defense);
+      Assert.AreEqual(4, o.Character1.Sword.Attack);
+      Assert.AreEqual(2, o.Character1.Armor.BreastPlate.Defense);
+      Assert.AreEqual(6, o.Character2.Sword.Attack);
+      Assert.AreEqual(4, o.Character2.Armor.BreastPlate.Defense);
     }
 
     [Test]
@@ -111,17 +111,17 @@ namespace IoCContainerCons
       var o = container.Resolve<World>();
 
       //THEN
-      Assert.AreNotSame(o.A1, o.A2);
-      Assert.AreNotSame(o.A1.Armor, o.A2.Armor);
-      Assert.AreNotSame(o.A1.Armor.Helmet, o.A2.Armor.Helmet);
-      Assert.AreNotSame(o.A1.Armor.BreastPlate, o.A2.Armor.BreastPlate);
-      Assert.AreNotSame(o.A1.Armor.BreastPlate.Defense, o.A2.Armor.BreastPlate.Defense);
-      Assert.AreNotSame(o.A1.Sword, o.A2.Sword);
+      Assert.AreNotSame(o.Character1, o.Character2);
+      Assert.AreNotSame(o.Character1.Armor, o.Character2.Armor);
+      Assert.AreNotSame(o.Character1.Armor.Helmet, o.Character2.Armor.Helmet);
+      Assert.AreNotSame(o.Character1.Armor.BreastPlate, o.Character2.Armor.BreastPlate);
+      Assert.AreNotSame(o.Character1.Armor.BreastPlate.Defense, o.Character2.Armor.BreastPlate.Defense);
+      Assert.AreNotSame(o.Character1.Sword, o.Character2.Sword);
 
-      Assert.AreEqual(4, o.A1.Sword.Attack);
-      Assert.AreEqual(2, o.A1.Armor.BreastPlate.Defense);
-      Assert.AreEqual(6, o.A2.Sword.Attack);
-      Assert.AreEqual(4, o.A2.Armor.BreastPlate.Defense);
+      Assert.AreEqual(4, o.Character1.Sword.Attack);
+      Assert.AreEqual(2, o.Character1.Armor.BreastPlate.Defense);
+      Assert.AreEqual(6, o.Character2.Sword.Attack);
+      Assert.AreEqual(4, o.Character2.Armor.BreastPlate.Defense);
     }
 
     [Test]
@@ -139,17 +139,17 @@ namespace IoCContainerCons
             new BreastPlate(4)),
           new Sword(6)));
 
-      Assert.AreNotSame(o.A1, o.A2);
-      Assert.AreNotSame(o.A1.Armor, o.A2.Armor);
-      Assert.AreNotSame(o.A1.Armor.Helmet, o.A2.Armor.Helmet);
-      Assert.AreNotSame(o.A1.Armor.BreastPlate, o.A2.Armor.BreastPlate);
-      Assert.AreNotSame(o.A1.Armor.BreastPlate.Defense, o.A2.Armor.BreastPlate.Defense);
-      Assert.AreNotSame(o.A1.Sword, o.A2.Sword);
+      Assert.AreNotSame(o.Character1, o.Character2);
+      Assert.AreNotSame(o.Character1.Armor, o.Character2.Armor);
+      Assert.AreNotSame(o.Character1.Armor.Helmet, o.Character2.Armor.Helmet);
+      Assert.AreNotSame(o.Character1.Armor.BreastPlate, o.Character2.Armor.BreastPlate);
+      Assert.AreNotSame(o.Character1.Armor.BreastPlate.Defense, o.Character2.Armor.BreastPlate.Defense);
+      Assert.AreNotSame(o.Character1.Sword, o.Character2.Sword);
 
-      Assert.AreEqual(4, o.A1.Sword.Attack);
-      Assert.AreEqual(2, o.A1.Armor.BreastPlate.Defense);
-      Assert.AreEqual(6, o.A2.Sword.Attack);
-      Assert.AreEqual(4, o.A2.Armor.BreastPlate.Defense);
+      Assert.AreEqual(4, o.Character1.Sword.Attack);
+      Assert.AreEqual(2, o.Character1.Armor.BreastPlate.Defense);
+      Assert.AreEqual(6, o.Character2.Sword.Attack);
+      Assert.AreEqual(4, o.Character2.Armor.BreastPlate.Defense);
     }
 
     [Test]
@@ -161,17 +161,17 @@ namespace IoCContainerCons
         Soldier(6, 4));
 
       //THEN
-      Assert.AreNotSame(o.A1, o.A2);
-      Assert.AreNotSame(o.A1.Armor, o.A2.Armor);
-      Assert.AreNotSame(o.A1.Armor.Helmet, o.A2.Armor.Helmet);
-      Assert.AreNotSame(o.A1.Armor.BreastPlate, o.A2.Armor.BreastPlate);
-      Assert.AreNotSame(o.A1.Armor.BreastPlate.Defense, o.A2.Armor.BreastPlate.Defense);
-      Assert.AreNotSame(o.A1.Sword, o.A2.Sword);
+      Assert.AreNotSame(o.Character1, o.Character2);
+      Assert.AreNotSame(o.Character1.Armor, o.Character2.Armor);
+      Assert.AreNotSame(o.Character1.Armor.Helmet, o.Character2.Armor.Helmet);
+      Assert.AreNotSame(o.Character1.Armor.BreastPlate, o.Character2.Armor.BreastPlate);
+      Assert.AreNotSame(o.Character1.Armor.BreastPlate.Defense, o.Character2.Armor.BreastPlate.Defense);
+      Assert.AreNotSame(o.Character1.Sword, o.Character2.Sword);
 
-      Assert.AreEqual(4, o.A1.Sword.Attack);
-      Assert.AreEqual(2, o.A1.Armor.BreastPlate.Defense);
-      Assert.AreEqual(6, o.A2.Sword.Attack);
-      Assert.AreEqual(4, o.A2.Armor.BreastPlate.Defense);
+      Assert.AreEqual(4, o.Character1.Sword.Attack);
+      Assert.AreEqual(2, o.Character1.Armor.BreastPlate.Defense);
+      Assert.AreEqual(6, o.Character2.Sword.Attack);
+      Assert.AreEqual(4, o.Character2.Armor.BreastPlate.Defense);
     }
 
     private static Character Soldier(int x1, int x2)
@@ -183,7 +183,7 @@ namespace IoCContainerCons
         new Sword(x1));
     }
 
-    public record World(Character A1, Character A2);
+    public record World(Character Character1, Character Character2);
     public record Character(Armor Armor, Sword Sword);
     public record Armor(Helmet Helmet, BreastPlate BreastPlate);
     public record BreastPlate(int Defense);
