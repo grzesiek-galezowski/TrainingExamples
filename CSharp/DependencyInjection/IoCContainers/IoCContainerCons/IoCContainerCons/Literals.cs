@@ -12,42 +12,30 @@ namespace IoCContainerCons
             var builder = new ContainerBuilder();
             builder.RegisterType<Dependency>().SingleInstance();
             builder.RegisterType<DependencyConsumer>()
-                .WithParameter("x", 2).SingleInstance();
+                .WithParameter("X", 2).SingleInstance();
             using var container = builder.Build();
 
             //WHEN
             var resolvedInstance = container.Resolve<DependencyConsumer>();
             
             //THEN
-            Assert.AreEqual(2, resolvedInstance._x);
+            Assert.AreEqual(2, resolvedInstance.X);
         }
 
         [Test]
-        public void VanillaDiContainsDeadCode()
+        public void ShouldResolveObjectWithLiteralsUsingVanillaDi()
         {
             //GIVEN
             var consumer = new DependencyConsumer(new Dependency(), 2);
-            var deadCode = new DeadCode();
 
             //WHEN
             
             //THEN
             Assert.NotNull(consumer);
         }
-        
-        public class DependencyConsumer
-        {
-            public readonly int _x;
 
-            public DependencyConsumer(Dependency dependency, int x)
-            {
-                _x = x;
-            }
-        }
-
-        public class Dependency
-        {
-        }
+        public record DependencyConsumer(Dependency Dependency, int X);
+        public record Dependency;
     }
 
 

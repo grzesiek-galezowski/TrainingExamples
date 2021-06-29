@@ -9,67 +9,51 @@ using NUnit.Framework;
 
 namespace IoCContainerCons
 {
-    public class Decorators
+  public class Decorators
+  {
+    //TODO passing part of the chain to one object and full chain to another
+    [Test]
+    public void ShouldAssembleDecoratorsByHand()
     {
-        //TODO passing part of the chain to one object and full chain to another
-        [Test]
-        public void ShouldAssembleDecoratorsByHand()
-        {
-            var answer = new SynchronizedAnswer(
-                new TracedAnswer(
-                    new Answer()));
-            
-            Assert.IsInstanceOf<SynchronizedAnswer>(answer);
-            Assert.IsInstanceOf<TracedAnswer>(answer.NestedAnswer);
-            Assert.IsInstanceOf<Answer>(answer.NestedAnswer.NestedAnswer);
-        }
+      var answer = new SynchronizedAnswer(
+        new TracedAnswer(
+          new Answer()));
 
-        [Test]
-        public void ShouldAssembleDecoratorsUsingContainer()
-        {
-            var builder = new ContainerBuilder();
-
-            builder.RegisterType<Answer>().As<IAnswer>();
-            builder.RegisterDecorator<TracedAnswer, IAnswer>();
-            builder.RegisterDecorator<SynchronizedAnswer, IAnswer>();
-            //nothing more that can be done with it, e.g. cannot pass NamedParameter -> .WithParameter()
-
-            using var container = builder.Build();
-            var answer = container.Resolve<IAnswer>();
-            Assert.IsInstanceOf<SynchronizedAnswer>(answer);
-            Assert.IsInstanceOf<TracedAnswer>(answer.NestedAnswer);
-            Assert.IsInstanceOf<Answer>(answer.NestedAnswer.NestedAnswer);
-
-        }
+      Assert.IsInstanceOf<SynchronizedAnswer>(answer);
+      Assert.IsInstanceOf<TracedAnswer>(answer.NestedAnswer);
+      Assert.IsInstanceOf<Answer>(answer.NestedAnswer.NestedAnswer);
     }
 
-    public class TracedAnswer : IAnswer
+    [Test]
+    public void ShouldAssembleDecoratorsUsingContainer()
     {
-        public IAnswer NestedAnswer { get; }
+      var builder = new ContainerBuilder();
 
-        public TracedAnswer(IAnswer answer)
-        {
-            NestedAnswer = answer;
-        }
+      builder.RegisterType<Answer>().As<IAnswer>();
+      builder.RegisterDecorator<TracedAnswer, IAnswer>();
+      builder.RegisterDecorator<SynchronizedAnswer, IAnswer>();
+      //nothing more that can be done with it, e.g. cannot pass NamedParameter -> .WithParameter()
+
+      using var container = builder.Build();
+      var answer = container.Resolve<IAnswer>();
+      Assert.IsInstanceOf<SynchronizedAnswer>(answer);
+      Assert.IsInstanceOf<TracedAnswer>(answer.NestedAnswer);
+      Assert.IsInstanceOf<Answer>(answer.NestedAnswer.NestedAnswer);
+
     }
-
-    public class SynchronizedAnswer : IAnswer
-    {
-        public IAnswer NestedAnswer { get; }
-
-        public SynchronizedAnswer(IAnswer answer)
-        {
-            NestedAnswer = answer;
-        }
-    }
-
     public interface IAnswer
     {
-        IAnswer NestedAnswer { get; }
+      IAnswer NestedAnswer { get; }
     }
 
-    public class Answer : IAnswer
+    public record TracedAnswer(IAnswer NestedAnswer) : IAnswer;
+    public record SynchronizedAnswer(IAnswer NestedAnswer) : IAnswer;
+    public record Answer : IAnswer
     {
-        public IAnswer NestedAnswer => null;
+      public IAnswer NestedAnswer => null;
     }
+
+  }
+
+
 }
