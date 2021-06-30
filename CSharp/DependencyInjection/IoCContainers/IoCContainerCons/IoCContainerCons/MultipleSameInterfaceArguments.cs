@@ -44,7 +44,7 @@ namespace IoCContainerCons
             Assert.IsInstanceOf<RemoteDataStorage>(archiveService.RemoteStorage);
         }
 
-        [Test]
+        [Test] //bug enum as key?
         public void ContainerCompositionThroughResolveKeyedComponents()
         {
             var containerBuilder = new ContainerBuilder();

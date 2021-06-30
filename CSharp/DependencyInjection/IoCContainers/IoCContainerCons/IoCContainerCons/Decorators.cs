@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Autofac.Features.Decorators;
 using NUnit.Framework;
 
 //CONS:
@@ -17,7 +18,8 @@ namespace IoCContainerCons
     {
       var answer = new SynchronizedAnswer(
         new TracedAnswer(
-          new Answer()));
+          new Answer()), 
+        1);
 
       Assert.IsInstanceOf<SynchronizedAnswer>(answer);
       Assert.IsInstanceOf<TracedAnswer>(answer.NestedAnswer);
@@ -31,23 +33,26 @@ namespace IoCContainerCons
 
       builder.RegisterType<Answer>().As<IAnswer>();
       builder.RegisterDecorator<TracedAnswer, IAnswer>();
-      builder.RegisterDecorator<SynchronizedAnswer, IAnswer>();
-      //nothing more that can be done with it, e.g. cannot pass NamedParameter -> .WithParameter()
+      //To use .WithParameter(), do this:
+      builder.RegisterType<SynchronizedAnswer>()
+        .As(new DecoratorService(typeof(IAnswer)))
+        .WithParameter("X", 1);
 
       using var container = builder.Build();
       var answer = container.Resolve<IAnswer>();
       Assert.IsInstanceOf<SynchronizedAnswer>(answer);
       Assert.IsInstanceOf<TracedAnswer>(answer.NestedAnswer);
       Assert.IsInstanceOf<Answer>(answer.NestedAnswer.NestedAnswer);
-
+      Assert.AreEqual(1, ((SynchronizedAnswer)answer).X);
     }
+
     public interface IAnswer
     {
       IAnswer NestedAnswer { get; }
     }
 
     public record TracedAnswer(IAnswer NestedAnswer) : IAnswer;
-    public record SynchronizedAnswer(IAnswer NestedAnswer) : IAnswer;
+    public record SynchronizedAnswer(IAnswer NestedAnswer, int X) : IAnswer;
     public record Answer : IAnswer
     {
       public IAnswer NestedAnswer => null;
