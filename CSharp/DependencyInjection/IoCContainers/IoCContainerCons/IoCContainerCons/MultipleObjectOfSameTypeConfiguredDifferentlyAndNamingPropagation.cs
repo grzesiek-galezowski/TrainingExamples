@@ -38,22 +38,22 @@ namespace IoCContainerCons
     public void ShouldResolveTwoSimilarObjectGraphsWithDifferentLeavesFromVanillaDiDried()
     {
       //GIVEN
-      var o = new World(
+      var world = new World(
         Soldier(4, 2),
         Soldier(6, 4));
 
       //THEN
-      Assert.AreNotSame(o.Hero, o.Enemy);
-      Assert.AreNotSame(o.Hero.Armor, o.Enemy.Armor);
-      Assert.AreNotSame(o.Hero.Armor.Helmet, o.Enemy.Armor.Helmet);
-      Assert.AreNotSame(o.Hero.Armor.BreastPlate, o.Enemy.Armor.BreastPlate);
-      Assert.AreNotSame(o.Hero.Armor.BreastPlate.Defense, o.Enemy.Armor.BreastPlate.Defense);
-      Assert.AreNotSame(o.Hero.Sword, o.Enemy.Sword);
+      Assert.AreNotSame(world.Hero, world.Enemy);
+      Assert.AreNotSame(world.Hero.Armor, world.Enemy.Armor);
+      Assert.AreNotSame(world.Hero.Armor.Helmet, world.Enemy.Armor.Helmet);
+      Assert.AreNotSame(world.Hero.Armor.BreastPlate, world.Enemy.Armor.BreastPlate);
+      Assert.AreNotSame(world.Hero.Armor.BreastPlate.Defense, world.Enemy.Armor.BreastPlate.Defense);
+      Assert.AreNotSame(world.Hero.Sword, world.Enemy.Sword);
 
-      Assert.AreEqual(4, o.Hero.Sword.Attack);
-      Assert.AreEqual(2, o.Hero.Armor.BreastPlate.Defense);
-      Assert.AreEqual(6, o.Enemy.Sword.Attack);
-      Assert.AreEqual(4, o.Enemy.Armor.BreastPlate.Defense);
+      Assert.AreEqual(4, world.Hero.Sword.Attack);
+      Assert.AreEqual(2, world.Hero.Armor.BreastPlate.Defense);
+      Assert.AreEqual(6, world.Enemy.Sword.Attack);
+      Assert.AreEqual(4, world.Enemy.Armor.BreastPlate.Defense);
     }
 
 
@@ -110,20 +110,20 @@ namespace IoCContainerCons
       using var container = builder.Build();
 
       //WHEN
-      var o = container.Resolve<World>();
+      var world = container.Resolve<World>();
 
       //THEN
-      Assert.AreNotSame(o.Hero, o.Enemy);
-      Assert.AreNotSame(o.Hero.Armor, o.Enemy.Armor);
-      Assert.AreNotSame(o.Hero.Armor.Helmet, o.Enemy.Armor.Helmet);
-      Assert.AreNotSame(o.Hero.Armor.BreastPlate, o.Enemy.Armor.BreastPlate);
-      Assert.AreNotSame(o.Hero.Armor.BreastPlate.Defense, o.Enemy.Armor.BreastPlate.Defense);
-      Assert.AreNotSame(o.Hero.Sword, o.Enemy.Sword);
+      Assert.AreNotSame(world.Hero, world.Enemy);
+      Assert.AreNotSame(world.Hero.Armor, world.Enemy.Armor);
+      Assert.AreNotSame(world.Hero.Armor.Helmet, world.Enemy.Armor.Helmet);
+      Assert.AreNotSame(world.Hero.Armor.BreastPlate, world.Enemy.Armor.BreastPlate);
+      Assert.AreNotSame(world.Hero.Armor.BreastPlate.Defense, world.Enemy.Armor.BreastPlate.Defense);
+      Assert.AreNotSame(world.Hero.Sword, world.Enemy.Sword);
 
-      Assert.AreEqual(4, o.Hero.Sword.Attack);
-      Assert.AreEqual(2, o.Hero.Armor.BreastPlate.Defense);
-      Assert.AreEqual(6, o.Enemy.Sword.Attack);
-      Assert.AreEqual(4, o.Enemy.Armor.BreastPlate.Defense);
+      Assert.AreEqual(4, world.Hero.Sword.Attack);
+      Assert.AreEqual(2, world.Hero.Armor.BreastPlate.Defense);
+      Assert.AreEqual(6, world.Enemy.Sword.Attack);
+      Assert.AreEqual(4, world.Enemy.Armor.BreastPlate.Defense);
     }
 
     [Test]
@@ -150,20 +150,20 @@ namespace IoCContainerCons
       using var container = builder.Build();
 
       //WHEN
-      var o = container.Resolve<World>();
+      var world = container.Resolve<World>();
 
       //THEN
-      Assert.AreNotSame(o.Hero, o.Enemy);
-      Assert.AreNotSame(o.Hero.Armor, o.Enemy.Armor);
-      Assert.AreNotSame(o.Hero.Armor.Helmet, o.Enemy.Armor.Helmet);
-      Assert.AreNotSame(o.Hero.Armor.BreastPlate, o.Enemy.Armor.BreastPlate);
-      Assert.AreNotSame(o.Hero.Armor.BreastPlate.Defense, o.Enemy.Armor.BreastPlate.Defense);
-      Assert.AreNotSame(o.Hero.Sword, o.Enemy.Sword);
+      Assert.AreNotSame(world.Hero, world.Enemy);
+      Assert.AreNotSame(world.Hero.Armor, world.Enemy.Armor);
+      Assert.AreNotSame(world.Hero.Armor.Helmet, world.Enemy.Armor.Helmet);
+      Assert.AreNotSame(world.Hero.Armor.BreastPlate, world.Enemy.Armor.BreastPlate);
+      Assert.AreNotSame(world.Hero.Armor.BreastPlate.Defense, world.Enemy.Armor.BreastPlate.Defense);
+      Assert.AreNotSame(world.Hero.Sword, world.Enemy.Sword);
 
-      Assert.AreEqual(4, o.Hero.Sword.Attack);
-      Assert.AreEqual(2, o.Hero.Armor.BreastPlate.Defense);
-      Assert.AreEqual(6, o.Enemy.Sword.Attack);
-      Assert.AreEqual(4, o.Enemy.Armor.BreastPlate.Defense);
+      Assert.AreEqual(4, world.Hero.Sword.Attack);
+      Assert.AreEqual(2, world.Hero.Armor.BreastPlate.Defense);
+      Assert.AreEqual(6, world.Enemy.Sword.Attack);
+      Assert.AreEqual(4, world.Enemy.Armor.BreastPlate.Defense);
     }
 
     private static Character Soldier(int x1, int x2)
