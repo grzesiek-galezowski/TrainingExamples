@@ -24,6 +24,7 @@ namespace IoCContainerCons
       Assert.IsInstanceOf<SynchronizedAnswer>(answer);
       Assert.IsInstanceOf<TracedAnswer>(answer.NestedAnswer);
       Assert.IsInstanceOf<Answer>(answer.NestedAnswer.NestedAnswer);
+      Assert.AreEqual(1, answer.X);
     }
 
     [Test]
