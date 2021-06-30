@@ -56,7 +56,6 @@ namespace IoCContainerCons
       Assert.AreEqual(4, world.Enemy.Armor.BreastPlate.Defense);
     }
 
-
     [Test]
     public void ShouldResolveTwoSimilarObjectGraphsWithDifferentLeavesFromContainer()
     {
