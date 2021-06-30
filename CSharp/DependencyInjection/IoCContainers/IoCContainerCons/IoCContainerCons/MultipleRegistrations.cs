@@ -19,7 +19,7 @@ namespace IoCContainerCons
       var resolvedInstance = container.Resolve<ObjectWithConstructorArgument>();
 
       //THEN
-      Assert.IsInstanceOf<Constructor2Argument>(resolvedInstance._arg);
+      Assert.IsInstanceOf<Constructor2Argument>(resolvedInstance.Arg);
     }
     
     
@@ -41,33 +41,16 @@ namespace IoCContainerCons
       var resolvedInstance = container.Resolve<ObjectWithConstructorArgument>();
 
       //THEN
-      Assert.IsInstanceOf<Constructor1Argument>(resolvedInstance._arg);
+      Assert.IsInstanceOf<Constructor1Argument>(resolvedInstance.Arg);
     }
 
 
 
-    public class ObjectWithConstructorArgument
-    {
-      public readonly ConstructorArgument _arg;
+    public record ObjectWithConstructorArgument(ConstructorArgument Arg);
 
-      public ObjectWithConstructorArgument(ConstructorArgument arg)
-      {
-        _arg = arg;
-      }
-    }
-
-    public interface ConstructorArgument
-    {
-
-    }
-
-    public class Constructor1Argument : ConstructorArgument
-    {
-    }
-
-    public class Constructor2Argument : ConstructorArgument
-    {
-    }
+    public interface ConstructorArgument { }
+    public record Constructor1Argument : ConstructorArgument;
+    public record Constructor2Argument : ConstructorArgument;
   }
 
 
