@@ -1,13 +1,17 @@
+using ShopModule;
+
 namespace ModularMonolith
 {
   public class Monolith
   {
+    private readonly ShopModuleInstance _shopModule;
+
     public Monolith()
     {
-      var shopModule = new ShopModule.ShopModule();
-      GetProductsEndpoint = new GetProductsEndpoint(shopModule);
+      _shopModule = new ShopModuleInstance();
     }
 
-    public GetProductsEndpoint GetProductsEndpoint { get; }
+    public GetProductsEndpoint CreateProductsEndpoint(ShopDbContext shopDbContext) 
+      => new(_shopModule, shopDbContext);
   }
 }

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -19,8 +20,15 @@ namespace ModularMonolith
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
+      services.AddEntityFrameworkInMemoryDatabase();
 
-      services.AddControllers();
+      //Scoped & Transient
+      services.AddDbContext<ShopDbContext>(
+        (ctx, options) => 
+          options.UseInMemoryDatabase("Weather")
+            .UseInternalServiceProvider(ctx));
+      //bug logger
+      services.AddSingleton(context => new Monolith());
       services.AddSwaggerGen(c =>
       {
         c.SwaggerDoc("v1", new OpenApiInfo { Title = "ModularMonolith", Version = "v1" });
@@ -46,10 +54,17 @@ namespace ModularMonolith
 
       app.UseEndpoints(endpoints =>
       {
+        var monolith = endpoints.ServiceProvider.GetRequiredService<Monolith>();
+
         endpoints.MapGet("/shop/products", async context =>
         {
-          await context.RequestServices.GetRequiredService<Monolith>()
-            .GetProductsEndpoint.HandleAsync(context.Request, context.Response, context.RequestAborted);
+          var shopDbContext = context.RequestServices.GetRequiredService<ShopDbContext>();
+
+          await monolith
+            .CreateProductsEndpoint(shopDbContext).HandleAsync(
+              context.Request, 
+              context.Response, 
+              context.RequestAborted);
         });
       });
     }

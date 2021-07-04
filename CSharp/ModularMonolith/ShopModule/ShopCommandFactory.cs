@@ -2,9 +2,11 @@ namespace ShopModule
 {
   public class ShopCommandFactory
   {
-    public CreateGetProductsCommand CreateGetProductsCommand(IGetProductsResponseInProgress responseInProgress)
+    public CreateGetProductsCommand CreateGetProductsCommand(
+      IGetProductsResponseInProgress responseInProgress,
+      IProductsDao productsDao)
     {
-      return new CreateGetProductsCommand();
+      return new CreateGetProductsCommand(responseInProgress, productsDao);
     }
   }
 }

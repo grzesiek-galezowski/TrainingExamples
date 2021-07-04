@@ -1,8 +1,8 @@
 namespace ShopModule
 {
-  public class ShopModule
+  public class ShopModuleInstance
   {
-    public ShopModule()
+    public ShopModuleInstance()
     {
       CommandFactory = new ShopCommandFactory();
     }
