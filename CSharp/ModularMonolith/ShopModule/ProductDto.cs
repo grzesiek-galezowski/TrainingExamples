@@ -1,4 +1,4 @@
-namespace ModularMonolith
+namespace ShopModule
 {
   public class ProductDto
   {

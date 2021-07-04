@@ -18,7 +18,7 @@ namespace ShopModule
 
     public async Task ExecuteAsync(CancellationToken cancellationToken)
     {
-      throw new System.NotImplementedException();
+      var allProducts = _productsDao.GetAllProducts();
     }
   }
 }

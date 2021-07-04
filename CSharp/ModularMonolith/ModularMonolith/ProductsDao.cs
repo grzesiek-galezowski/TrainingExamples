@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using ShopModule;
 
 namespace ModularMonolith
@@ -9,6 +11,11 @@ namespace ModularMonolith
     public ProductsDao(ShopDbContext shopDbContext)
     {
       _shopDbContext = shopDbContext;
+    }
+
+    public IEnumerable<ProductDto> GetAllProducts()
+    {
+      return _shopDbContext.Products.AsEnumerable();
     }
   }
 }

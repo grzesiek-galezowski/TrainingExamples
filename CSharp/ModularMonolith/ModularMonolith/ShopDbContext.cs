@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using ShopModule;
 
 namespace ModularMonolith
 {
