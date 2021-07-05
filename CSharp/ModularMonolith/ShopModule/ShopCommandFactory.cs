@@ -9,9 +9,10 @@ namespace ShopModule
       return new CreateGetProductsCommand(responseInProgress, productsDao);
     }
 
-    public BuyProductCommand CreateBuyProductCommand(ProductChoiceDto choiceDto, IBuyProductResponseInProgress buyProductResponseInProgress)
+    public BuyProductCommand CreateBuyProductCommand(ProductChoiceDto choiceDto, IProductsDao productsDao,
+      IBuyProductResponseInProgress buyProductResponseInProgress)
     {
-      throw new System.NotImplementedException();
+      return new BuyProductCommand(choiceDto, productsDao, buyProductResponseInProgress);
     }
   }
 }

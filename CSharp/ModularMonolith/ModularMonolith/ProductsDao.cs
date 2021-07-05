@@ -17,5 +17,10 @@ namespace ModularMonolith
     {
       return _shopDbContext.Products.AsEnumerable();
     }
+
+    public void Save(ProductDto product)
+    {
+      //bug
+    }
   }
 }

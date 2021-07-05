@@ -24,7 +24,9 @@ namespace ModularMonolith
       var choiceDto = await request.ReadFromJsonAsync<ProductChoiceDto>();
       await _shopModule.CommandFactory.CreateBuyProductCommand(
         choiceDto,
-        new BuyProductResponseInProgress(response)).ExecuteAsync();
+        _daoFactory.CreateProductsDao(),
+        new BuyProductResponseInProgress(response))
+        .ExecuteAsync(cancellationToken);
 
     }
   }
