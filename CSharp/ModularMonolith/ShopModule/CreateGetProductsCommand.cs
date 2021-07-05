@@ -19,6 +19,7 @@ namespace ShopModule
     public async Task ExecuteAsync(CancellationToken cancellationToken)
     {
       var allProducts = _productsDao.GetAllProducts();
+      await _responseInProgress.Success(allProducts, cancellationToken);
     }
   }
 }

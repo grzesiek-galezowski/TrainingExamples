@@ -7,13 +7,13 @@ namespace ModularMonolith
 {
   public class GetProductsEndpoint
   {
-    private readonly ShopModule.ShopModuleInstance _shopModuleInstance;
-    private readonly ShopDbContext _shopDbContext;
+    private readonly ShopModuleInstance _shopModuleInstance;
+    private readonly DaoFactory _daoFactory;
 
-    public GetProductsEndpoint(ShopModuleInstance shopModuleInstance, ShopDbContext shopDbContext)
+    public GetProductsEndpoint(ShopModuleInstance shopModuleInstance, DaoFactory daoFactory)
     {
       _shopModuleInstance = shopModuleInstance;
-      _shopDbContext = shopDbContext;
+      _daoFactory = daoFactory;
     }
 
     public async Task HandleAsync(
@@ -23,7 +23,7 @@ namespace ModularMonolith
     {
       await _shopModuleInstance.CommandFactory.CreateGetProductsCommand(
           new GetProductsResponseInProgress(response),
-          new ProductsDao(_shopDbContext))
+          _daoFactory.CreateProductsDao())
         .ExecuteAsync(cancellationToken);
     }
   }

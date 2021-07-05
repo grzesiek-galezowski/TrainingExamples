@@ -4,14 +4,14 @@ namespace ModularMonolith
 {
   public class Monolith
   {
-    private readonly ShopModuleInstance _shopModule;
-
-    public Monolith()
+    public Monolith(DaoFactory daoFactory)
     {
-      _shopModule = new ShopModuleInstance();
+      var shopModule = new ShopModuleInstance();
+      GetProductsEndpoint = new GetProductsEndpoint(shopModule, daoFactory);
+      BuyProductEndpoint = new BuyProductEndpoint(shopModule, daoFactory);
     }
 
-    public GetProductsEndpoint CreateProductsEndpoint(ShopDbContext shopDbContext) 
-      => new(_shopModule, shopDbContext);
+    public GetProductsEndpoint GetProductsEndpoint { get; }
+    public BuyProductEndpoint BuyProductEndpoint { get; }
   }
 }

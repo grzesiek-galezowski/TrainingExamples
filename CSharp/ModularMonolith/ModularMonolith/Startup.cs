@@ -28,7 +28,7 @@ namespace ModularMonolith
           options.UseInMemoryDatabase("Weather")
             .UseInternalServiceProvider(ctx));
       //bug logger
-      services.AddSingleton(context => new Monolith());
+      services.AddSingleton(context => new Monolith(new DaoFactory(context)));
       services.AddSwaggerGen(c =>
       {
         c.SwaggerDoc("v1", new OpenApiInfo { Title = "ModularMonolith", Version = "v1" });
@@ -58,10 +58,16 @@ namespace ModularMonolith
 
         endpoints.MapGet("/shop/products", async context =>
         {
-          var shopDbContext = context.RequestServices.GetRequiredService<ShopDbContext>();
-
           await monolith
-            .CreateProductsEndpoint(shopDbContext).HandleAsync(
+            .GetProductsEndpoint.HandleAsync(
+              context.Request, 
+              context.Response, 
+              context.RequestAborted);
+        });
+        endpoints.MapPost("/shop/products", async context =>
+        {
+          await monolith
+            .BuyProductEndpoint.HandleAsync(
               context.Request, 
               context.Response, 
               context.RequestAborted);
