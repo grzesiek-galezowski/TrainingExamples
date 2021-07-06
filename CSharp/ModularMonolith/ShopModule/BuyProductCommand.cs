@@ -8,6 +8,7 @@ namespace ShopModule
     private readonly ProductChoiceDto _choiceDto;
     private readonly IProductsDao _productsDao;
     private readonly IBuyProductResponseInProgress _buyProductResponseInProgress;
+    private IWarehouseApi _warehouseApi;
 
     public BuyProductCommand(
       ProductChoiceDto choiceDto,
@@ -24,7 +25,15 @@ namespace ShopModule
       var product = await _productsDao.ProductById(_choiceDto.ProductId, cancellationToken);
       product = product with { Quantity = product.Quantity - 1 };
       await _productsDao.Save(product, cancellationToken);
+      await _warehouseApi.OrderDelivery(
+        _choiceDto.ProductId, 
+        _choiceDto.DeliveryAddress, 
+        cancellationToken);
       await _buyProductResponseInProgress.Success(product, cancellationToken);
     }
+  }
+
+  internal interface IWarehouseApi
+  {
   }
 }

@@ -16,7 +16,7 @@ namespace ModularMonolith
 
     public async Task Success(ProductDto product, CancellationToken cancellationToken)
     {
-      await _response.WriteAsJsonAsync(product);
+      await _response.WriteAsJsonAsync(product, cancellationToken);
     }
   }
 }

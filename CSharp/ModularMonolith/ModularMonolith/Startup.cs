@@ -47,11 +47,8 @@ namespace ModularMonolith
       }
 
       app.UseHttpsRedirection();
-
       app.UseRouting();
-
       app.UseAuthorization();
-
       app.UseEndpoints(endpoints =>
       {
         var monolith = endpoints.ServiceProvider.GetRequiredService<Monolith>();
