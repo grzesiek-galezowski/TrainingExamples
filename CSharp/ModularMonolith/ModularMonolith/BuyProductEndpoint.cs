@@ -17,8 +17,8 @@ namespace ModularMonolith
     }
 
     public async Task HandleAsync(
-      HttpRequest request, 
-      HttpResponse response, 
+      HttpRequest request,
+      HttpResponse response,
       CancellationToken cancellationToken)
     {
       var choiceDto = await request.ReadFromJsonAsync<ProductChoiceDto>();

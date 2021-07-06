@@ -24,7 +24,7 @@ namespace ModularMonolith
 
       //Scoped & Transient
       services.AddDbContext<ShopDbContext>(
-        (ctx, options) => 
+        (ctx, options) =>
           options.UseInMemoryDatabase("Weather")
             .UseInternalServiceProvider(ctx));
       //bug logger
@@ -32,7 +32,7 @@ namespace ModularMonolith
       services.AddSwaggerGen(c =>
       {
         c.SwaggerDoc("v1", new OpenApiInfo { Title = "ModularMonolith", Version = "v1" });
-        
+
       });
     }
 
@@ -60,16 +60,16 @@ namespace ModularMonolith
         {
           await monolith
             .GetProductsEndpoint.HandleAsync(
-              context.Request, 
-              context.Response, 
+              context.Request,
+              context.Response,
               context.RequestAborted);
         });
         endpoints.MapPost("/shop/products", async context =>
         {
           await monolith
             .BuyProductEndpoint.HandleAsync(
-              context.Request, 
-              context.Response, 
+              context.Request,
+              context.Response,
               context.RequestAborted);
         });
       });

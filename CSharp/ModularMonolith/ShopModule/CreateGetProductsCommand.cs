@@ -9,7 +9,7 @@ namespace ShopModule
     private readonly IProductsDao _productsDao;
 
     public CreateGetProductsCommand(
-      IGetProductsResponseInProgress responseInProgress, 
+      IGetProductsResponseInProgress responseInProgress,
       IProductsDao productsDao)
     {
       _responseInProgress = responseInProgress;

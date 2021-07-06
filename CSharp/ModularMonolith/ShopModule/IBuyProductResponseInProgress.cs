@@ -5,6 +5,6 @@ namespace ShopModule
 {
   public interface IBuyProductResponseInProgress
   {
-      Task Success(ProductDto product, CancellationToken cancellationToken);
+    Task Success(ProductDto product, CancellationToken cancellationToken);
   }
 }

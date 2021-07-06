@@ -1,4 +1,5 @@
 using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using ShopModule;
 
@@ -6,16 +7,16 @@ namespace ModularMonolith
 {
   public class BuyProductResponseInProgress : IBuyProductResponseInProgress
   {
-      private readonly HttpResponse _response;
+    private readonly HttpResponse _response;
 
-      public BuyProductResponseInProgress(HttpResponse response)
-      {
-          _response = response;
-      }
-
-    public void Success(ProductDto product, CancellationToken cancellationToken)
+    public BuyProductResponseInProgress(HttpResponse response)
     {
-            await _response.WriteAsJsonAsync(product)
+      _response = response;
+    }
+
+    public async Task Success(ProductDto product, CancellationToken cancellationToken)
+    {
+      await _response.WriteAsJsonAsync(product);
     }
   }
 }

@@ -10,7 +10,7 @@ namespace ShopModule
     private readonly IBuyProductResponseInProgress _buyProductResponseInProgress;
 
     public BuyProductCommand(
-      ProductChoiceDto choiceDto, 
+      ProductChoiceDto choiceDto,
       IProductsDao productsDao,
       IBuyProductResponseInProgress buyProductResponseInProgress)
     {
@@ -21,10 +21,10 @@ namespace ShopModule
 
     public async Task ExecuteAsync(CancellationToken cancellationToken)
     {
-        var product = await _productsDao.ProductById(_choiceDto.ProductId, cancellationToken);
-        product = product with {Quantity = product.Quantity - 1};
-        await _productsDao.Save(product, cancellationToken);
-        await _buyProductResponseInProgress.Success(product, cancellationToken);
+      var product = await _productsDao.ProductById(_choiceDto.ProductId, cancellationToken);
+      product = product with { Quantity = product.Quantity - 1 };
+      await _productsDao.Save(product, cancellationToken);
+      await _buyProductResponseInProgress.Success(product, cancellationToken);
     }
   }
 }

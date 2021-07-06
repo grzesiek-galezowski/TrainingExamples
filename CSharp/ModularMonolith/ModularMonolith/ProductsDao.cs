@@ -23,13 +23,13 @@ namespace ModularMonolith
 
     public Task Save(ProductDto product, CancellationToken cancellationToken)
     {
-        _shopDbContext.Products.Update(product);
-        return _shopDbContext.SaveChangesAsync(cancellationToken);
+      _shopDbContext.Products.Update(product);
+      return _shopDbContext.SaveChangesAsync(cancellationToken);
     }
 
     public ValueTask<ProductDto> ProductById(ProductId productId, CancellationToken cancellationToken)
     {
-        return _shopDbContext.Products.FindAsync(productId);
+      return _shopDbContext.Products.FindAsync(productId);
     }
   }
 }
