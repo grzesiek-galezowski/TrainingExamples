@@ -1,6 +1,5 @@
 namespace ShopModule
 {
-  public class ProductChoiceDto
-  {
-  }
+    public record ProductChoiceDto(ProductId ProductId);
+    public record ProductId(string Value);
 }

@@ -1,6 +1,4 @@
 namespace ShopModule
 {
-  public class ProductDto
-  {
-  }
+    public record ProductDto(int Quantity);
 }

@@ -21,9 +21,10 @@ namespace ShopModule
 
     public async Task ExecuteAsync(CancellationToken cancellationToken)
     {
-      var product = _productsDao.ProductById(_choiceDto.ProductId);
-      product.Quantity--;
-      _productsDao.Save(product);
+        var product = await _productsDao.ProductById(_choiceDto.ProductId, cancellationToken);
+        product = product with {Quantity = product.Quantity - 1};
+        await _productsDao.Save(product, cancellationToken);
+        await _buyProductResponseInProgress.Success(product, cancellationToken);
     }
   }
 }

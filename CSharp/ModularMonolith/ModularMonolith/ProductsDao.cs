@@ -1,5 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using ShopModule;
 
 namespace ModularMonolith
@@ -18,9 +21,15 @@ namespace ModularMonolith
       return _shopDbContext.Products.AsEnumerable();
     }
 
-    public void Save(ProductDto product)
+    public Task Save(ProductDto product, CancellationToken cancellationToken)
     {
-      //bug
+        _shopDbContext.Products.Update(product);
+        return _shopDbContext.SaveChangesAsync(cancellationToken);
+    }
+
+    public ValueTask<ProductDto> ProductById(ProductId productId, CancellationToken cancellationToken)
+    {
+        return _shopDbContext.Products.FindAsync(productId);
     }
   }
 }
