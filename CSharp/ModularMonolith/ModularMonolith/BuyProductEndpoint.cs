@@ -21,7 +21,7 @@ namespace ModularMonolith
       HttpResponse response,
       CancellationToken cancellationToken)
     {
-      var choiceDto = await request.ReadFromJsonAsync<ProductChoiceDto>();
+      var choiceDto = await request.ReadFromJsonAsync<ProductChoiceDto>(cancellationToken);
       await _shopModule.CommandFactory.CreateBuyProductCommand(
         choiceDto,
         _daoFactory.CreateProductsDao(),

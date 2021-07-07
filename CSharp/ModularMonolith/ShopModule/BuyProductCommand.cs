@@ -8,16 +8,18 @@ namespace ShopModule
     private readonly ProductChoiceDto _choiceDto;
     private readonly IProductsDao _productsDao;
     private readonly IBuyProductResponseInProgress _buyProductResponseInProgress;
-    private IWarehouseApi _warehouseApi;
+    private readonly IWarehouseApi _warehouseApi;
 
     public BuyProductCommand(
       ProductChoiceDto choiceDto,
       IProductsDao productsDao,
-      IBuyProductResponseInProgress buyProductResponseInProgress)
+      IBuyProductResponseInProgress buyProductResponseInProgress, 
+      IWarehouseApi warehouseApi)
     {
       _choiceDto = choiceDto;
       _productsDao = productsDao;
       _buyProductResponseInProgress = buyProductResponseInProgress;
+      _warehouseApi = warehouseApi;
     }
 
     public async Task ExecuteAsync(CancellationToken cancellationToken)
@@ -31,9 +33,5 @@ namespace ShopModule
         cancellationToken);
       await _buyProductResponseInProgress.Success(product, cancellationToken);
     }
-  }
-
-  internal interface IWarehouseApi
-  {
   }
 }

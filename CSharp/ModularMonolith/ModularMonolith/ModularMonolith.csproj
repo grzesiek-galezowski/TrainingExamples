@@ -10,7 +10,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Lib\Lib.csproj" />
     <ProjectReference Include="..\ShopModule\ShopModule.csproj" />
+    <ProjectReference Include="..\WarehouseModule\WarehouseModule.csproj" />
   </ItemGroup>
 
 </Project>
