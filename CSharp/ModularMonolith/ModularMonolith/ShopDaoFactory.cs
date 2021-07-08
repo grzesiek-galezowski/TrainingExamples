@@ -4,11 +4,11 @@ using ShopModule;
 
 namespace ModularMonolith
 {
-  public class DaoFactory : IDaoFactory
+  public class ShopDaoFactory : IShopDaoFactory
   {
     private readonly IServiceProvider _context;
 
-    public DaoFactory(IServiceProvider context)
+    public ShopDaoFactory(IServiceProvider context)
     {
       _context = context;
     }

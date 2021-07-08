@@ -4,14 +4,14 @@ using WarehouseModule;
 
 namespace ModularMonolith
 {
-  public class Monolith : IDisposable
+  public class MonolithApplicationLogicCompositionRoot : IDisposable
   {
-    public Monolith(DaoFactory daoFactory)
+    public MonolithApplicationLogicCompositionRoot(ShopDaoFactory shopDaoFactory)
     {
       var warehouseModule = new WarehouseModuleInstance();
       var shopModule = new ShopModuleInstance(new WarehouseApiTo(warehouseModule));
-      GetProductsEndpoint = new GetProductsEndpoint(shopModule, daoFactory);
-      BuyProductEndpoint = new BuyProductEndpoint(shopModule, daoFactory);
+      GetProductsEndpoint = new GetProductsEndpoint(shopModule, shopDaoFactory);
+      BuyProductEndpoint = new BuyProductEndpoint(shopModule, shopDaoFactory);
     }
 
     public GetProductsEndpoint GetProductsEndpoint { get; }

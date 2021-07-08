@@ -25,10 +25,15 @@ namespace ModularMonolith
       //Scoped & Transient
       services.AddDbContext<ShopDbContext>(
         (ctx, options) =>
-          options.UseInMemoryDatabase("Weather")
+          options.UseInMemoryDatabase("Shop")
             .UseInternalServiceProvider(ctx));
+      services.AddDbContext<OrdersDbContext>(
+        (ctx, options) =>
+          options.UseInMemoryDatabase("Shop")
+            .UseInternalServiceProvider(ctx));
+
       //bug logger
-      services.AddSingleton(context => new Monolith(new DaoFactory(context)));
+      services.AddSingleton(context => new MonolithApplicationLogicCompositionRoot(new ShopDaoFactory(context)));
       services.AddSwaggerGen(c =>
       {
         c.SwaggerDoc("v1", new OpenApiInfo { Title = "ModularMonolith", Version = "v1" });
@@ -51,7 +56,7 @@ namespace ModularMonolith
       app.UseAuthorization();
       app.UseEndpoints(endpoints =>
       {
-        var monolith = endpoints.ServiceProvider.GetRequiredService<Monolith>();
+        var monolith = endpoints.ServiceProvider.GetRequiredService<MonolithApplicationLogicCompositionRoot>();
 
         endpoints.MapGet("/shop/products", async context =>
         {

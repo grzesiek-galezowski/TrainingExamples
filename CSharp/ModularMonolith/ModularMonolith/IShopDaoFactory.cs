@@ -1,6 +1,6 @@
 namespace ModularMonolith
 {
-  public interface IDaoFactory
+  public interface IShopDaoFactory
   {
   }
 }

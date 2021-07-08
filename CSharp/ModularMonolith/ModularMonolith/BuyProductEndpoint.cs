@@ -8,12 +8,12 @@ namespace ModularMonolith
   public class BuyProductEndpoint
   {
     private readonly ShopModuleInstance _shopModule;
-    private readonly DaoFactory _daoFactory;
+    private readonly ShopDaoFactory _shopDaoFactory;
 
-    public BuyProductEndpoint(ShopModuleInstance shopModule, DaoFactory daoFactory)
+    public BuyProductEndpoint(ShopModuleInstance shopModule, ShopDaoFactory shopDaoFactory)
     {
       _shopModule = shopModule;
-      _daoFactory = daoFactory;
+      _shopDaoFactory = shopDaoFactory;
     }
 
     public async Task HandleAsync(
@@ -24,7 +24,7 @@ namespace ModularMonolith
       var choiceDto = await request.ReadFromJsonAsync<ProductChoiceDto>(cancellationToken);
       await _shopModule.CommandFactory.CreateBuyProductCommand(
         choiceDto,
-        _daoFactory.CreateProductsDao(),
+        _shopDaoFactory.CreateProductsDao(),
         new BuyProductResponseInProgress(response))
         .ExecuteAsync(cancellationToken);
 
