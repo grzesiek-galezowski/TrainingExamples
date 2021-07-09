@@ -8,9 +8,9 @@ namespace ModularMonolith
   public class GetProductsEndpoint
   {
     private readonly ShopModuleInstance _shopModuleInstance;
-    private readonly ShopDaoFactory _shopDaoFactory;
+    private readonly IShopDaoFactory _shopDaoFactory;
 
-    public GetProductsEndpoint(ShopModuleInstance shopModuleInstance, ShopDaoFactory shopDaoFactory)
+    public GetProductsEndpoint(ShopModuleInstance shopModuleInstance, IShopDaoFactory shopDaoFactory)
     {
       _shopModuleInstance = shopModuleInstance;
       _shopDaoFactory = shopDaoFactory;

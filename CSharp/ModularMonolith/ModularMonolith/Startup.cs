@@ -33,7 +33,11 @@ namespace ModularMonolith
             .UseInternalServiceProvider(ctx));
 
       //bug logger
-      services.AddSingleton(context => new MonolithApplicationLogicCompositionRoot(new ShopDaoFactory(context)));
+      services.AddSingleton(context => new 
+        MonolithApplicationLogicCompositionRoot(
+          new ShopDaoFactory(context),
+          new OrdersDaoFactory(context), 
+          new EmailCustomerNotifications()));
       services.AddSwaggerGen(c =>
       {
         c.SwaggerDoc("v1", new OpenApiInfo { Title = "ModularMonolith", Version = "v1" });

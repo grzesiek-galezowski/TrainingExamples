@@ -6,9 +6,12 @@ namespace ModularMonolith
 {
   public class MonolithApplicationLogicCompositionRoot : IDisposable
   {
-    public MonolithApplicationLogicCompositionRoot(ShopDaoFactory shopDaoFactory)
+    public MonolithApplicationLogicCompositionRoot(
+      IShopDaoFactory shopDaoFactory,
+      IOrdersDaoFactory ordersDaoFactory, 
+      ICustomerNotifications customerNotifications)
     {
-      var warehouseModule = new WarehouseModuleInstance();
+      var warehouseModule = new WarehouseModuleInstance(ordersDaoFactory, customerNotifications);
       var shopModule = new ShopModuleInstance(new WarehouseApiTo(warehouseModule));
       GetProductsEndpoint = new GetProductsEndpoint(shopModule, shopDaoFactory);
       BuyProductEndpoint = new BuyProductEndpoint(shopModule, shopDaoFactory);

@@ -2,9 +2,9 @@ namespace WarehouseModule
 {
   public class WarehouseModuleInstance
   {
-    public WarehouseModuleInstance()
+    public WarehouseModuleInstance(IOrdersDaoFactory ordersDaoFactory, ICustomerNotifications customerNotifications)
     {
-      CommandFactory = new();
+      CommandFactory = new WarehouseCommandFactory(ordersDaoFactory, customerNotifications);
     }
 
     public WarehouseCommandFactory CommandFactory { get; }

@@ -5,11 +5,6 @@ using WarehouseModule;
 
 namespace ModularMonolith
 {
-  public interface IOrdersDaoFactory
-  {
-
-  }
-
   public class OrdersDaoFactory : IOrdersDaoFactory
   {
     private readonly IServiceProvider _context;
@@ -19,9 +14,9 @@ namespace ModularMonolith
       _context = context;
     }
 
-    public IOrdersDao CreateProductsDao()
+    public IOrdersDao CreateOrdersDao()
     {
-      return new OrdersDao(_context.GetRequiredService<OrdersDbContext>());
+      return new OrdersDao(_context.GetService<OrdersDbContext>());
     }
   }
 }

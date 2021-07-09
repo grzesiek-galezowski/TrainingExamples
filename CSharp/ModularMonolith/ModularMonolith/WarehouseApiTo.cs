@@ -16,7 +16,8 @@ namespace ModularMonolith
       _warehouseModule = warehouseModule;
     }
 
-    public async Task OrderDelivery(ProductId productId, string deliveryAddress, CancellationToken cancellationToken)
+    public async Task OrderDelivery(
+      ProductId productId, string deliveryAddress, CancellationToken cancellationToken)
     {
       await _warehouseModule.CommandFactory.CreateOrderDeliveryCommand(productId, deliveryAddress)
         .Execute(cancellationToken);

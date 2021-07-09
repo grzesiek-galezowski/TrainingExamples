@@ -1,6 +1,6 @@
+using Lib;
+
 namespace WarehouseModule
 {
-  public class OrderDto
-  {
-  }
+  public record OrderDto(ProductId ProductId, string DeliveryAddress, OrderStates OrderState);
 }

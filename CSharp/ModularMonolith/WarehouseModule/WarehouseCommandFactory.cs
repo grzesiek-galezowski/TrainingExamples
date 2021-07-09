@@ -4,9 +4,23 @@ namespace WarehouseModule
 {
   public class WarehouseCommandFactory
   {
-    public OrderDeliveryCommand CreateOrderDeliveryCommand(ProductId productId, string deliveryAddress)
+    private readonly IOrdersDaoFactory _ordersDaoFactory;
+    private readonly ICustomerNotifications _customerNotifications;
+
+    public WarehouseCommandFactory(IOrdersDaoFactory ordersDaoFactory, ICustomerNotifications customerNotifications)
     {
-      return new OrderDeliveryCommand(productId, deliveryAddress);
+      _ordersDaoFactory = ordersDaoFactory;
+      _customerNotifications = customerNotifications;
+    }
+
+    public OrderDeliveryCommand CreateOrderDeliveryCommand(
+      ProductId productId, string deliveryAddress)
+    {
+      return new OrderDeliveryCommand(
+        productId, 
+        deliveryAddress, 
+        _ordersDaoFactory.CreateOrdersDao(),
+        _customerNotifications);
     }
   }
 }
