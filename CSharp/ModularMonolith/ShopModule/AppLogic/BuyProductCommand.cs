@@ -22,7 +22,7 @@ namespace ShopModule.AppLogic
       _warehouseApi = warehouseApi;
     }
 
-    public async Task ExecuteAsync(CancellationToken cancellationToken)
+    public async Task Execute(CancellationToken cancellationToken)
     {
       var product = await _productsDao.ProductById(_choiceDto.ProductId, cancellationToken);
       product = product with { Quantity = product.Quantity - 1 };

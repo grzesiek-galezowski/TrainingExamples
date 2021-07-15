@@ -16,7 +16,7 @@ namespace ShopModule.AppLogic
       _productsDao = productsDao;
     }
 
-    public async Task ExecuteAsync(CancellationToken cancellationToken)
+    public async Task Execute(CancellationToken cancellationToken)
     {
       var allProducts = _productsDao.GetAllProducts();
       await _responseInProgress.Success(allProducts, cancellationToken);

@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using LiteDB;
@@ -14,6 +15,12 @@ namespace WarehouseModule.Persistence
       col.Insert(orderDto);
 
       return Task.CompletedTask;
+    }
+
+
+    public async Task<OrderDto> FindById(Guid orderId, CancellationToken cancellationToken)
+    {
+      throw new NotImplementedException();
     }
   }
 }

@@ -14,14 +14,14 @@ namespace ModularMonolith.GetProducts
       _shopModuleInstance = shopModuleInstance;
     }
 
-    public Task HandleAsync(
+    public Task Handle(
       HttpRequest request,
       HttpResponse response,
       CancellationToken cancellationToken)
     {
       return _shopModuleInstance.CommandFactory.CreateGetProductsCommand(
           new GetProductsResponseInProgress(response))
-        .ExecuteAsync(cancellationToken);
+        .Execute(cancellationToken);
     }
   }
 }

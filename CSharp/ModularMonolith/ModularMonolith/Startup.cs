@@ -50,15 +50,26 @@ namespace ModularMonolith
         endpoints.MapGet("/shop/products", async context =>
         {
           await monolith
-            .GetProductsEndpoint.HandleAsync(
+            .GetProductsEndpoint.Handle(
               context.Request,
               context.Response,
               context.RequestAborted);
         });
-        endpoints.MapPost("/shop/products", async context =>
+        //bug the routes are messed up...
+        endpoints.MapPost("/shop/products/", async context =>
         {
           await monolith
-            .BuyProductEndpoint.HandleAsync(
+            .BuyProductEndpoint.Handle(
+              context.Request,
+              context.Response,
+              context.RequestAborted);
+        });
+
+        //bug the routes are messed up...
+        endpoints.MapPost("/orders/states/", async context =>
+        {
+          await monolith
+            .UpdateOrderEndpoint.Handle(
               context.Request,
               context.Response,
               context.RequestAborted);

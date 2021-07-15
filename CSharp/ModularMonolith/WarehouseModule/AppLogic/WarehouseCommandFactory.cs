@@ -1,3 +1,4 @@
+using System;
 using Lib;
 
 namespace WarehouseModule.AppLogic
@@ -21,6 +22,11 @@ namespace WarehouseModule.AppLogic
         deliveryAddress,
         _createOrdersDao,
         _customerNotifications);
+    }
+
+    public UpdateOrderStateCommand CreateUpdateOrderCommand(Guid orderId, OrderStates newState)
+    {
+      return new UpdateOrderStateCommand(orderId, newState);
     }
   }
 }

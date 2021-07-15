@@ -15,7 +15,7 @@ namespace ModularMonolith.BuyProduct
       _shopModule = shopModule;
     }
 
-    public async Task HandleAsync(
+    public async Task Handle(
       HttpRequest request,
       HttpResponse response,
       CancellationToken cancellationToken)
@@ -24,7 +24,7 @@ namespace ModularMonolith.BuyProduct
       await _shopModule.CommandFactory.CreateBuyProductCommand(
         choiceDto,
         new BuyProductResponseInProgress(response))
-        .ExecuteAsync(cancellationToken);
+        .Execute(cancellationToken);
 
     }
   }
