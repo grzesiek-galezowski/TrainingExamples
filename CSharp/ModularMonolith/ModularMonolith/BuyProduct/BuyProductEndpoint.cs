@@ -2,18 +2,17 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using ShopModule;
+using ShopModule.AppLogic;
 
-namespace ModularMonolith
+namespace ModularMonolith.BuyProduct
 {
   public class BuyProductEndpoint
   {
     private readonly ShopModuleInstance _shopModule;
-    private readonly IShopDaoFactory _shopDaoFactory;
 
-    public BuyProductEndpoint(ShopModuleInstance shopModule, IShopDaoFactory shopDaoFactory)
+    public BuyProductEndpoint(ShopModuleInstance shopModule)
     {
       _shopModule = shopModule;
-      _shopDaoFactory = shopDaoFactory;
     }
 
     public async Task HandleAsync(
@@ -24,7 +23,6 @@ namespace ModularMonolith
       var choiceDto = await request.ReadFromJsonAsync<ProductChoiceDto>(cancellationToken);
       await _shopModule.CommandFactory.CreateBuyProductCommand(
         choiceDto,
-        _shopDaoFactory.CreateProductsDao(),
         new BuyProductResponseInProgress(response))
         .ExecuteAsync(cancellationToken);
 

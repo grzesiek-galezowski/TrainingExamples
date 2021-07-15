@@ -1,7 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace WarehouseModule
+namespace WarehouseModule.AppLogic
 {
   public interface IOrdersDao
   {

@@ -1,6 +1,6 @@
 using Lib;
 
-namespace ShopModule
+namespace ShopModule.AppLogic
 {
   public record ProductChoiceDto(ProductId ProductId, string DeliveryAddress); //bug not a string?
 }

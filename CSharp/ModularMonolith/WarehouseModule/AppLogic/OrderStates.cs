@@ -1,4 +1,4 @@
-namespace WarehouseModule
+namespace WarehouseModule.AppLogic
 {
   public enum OrderStates
   {

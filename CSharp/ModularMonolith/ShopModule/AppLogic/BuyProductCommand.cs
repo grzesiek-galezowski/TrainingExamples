@@ -1,7 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ShopModule
+namespace ShopModule.AppLogic
 {
   public class BuyProductCommand
   {
@@ -13,7 +13,7 @@ namespace ShopModule
     public BuyProductCommand(
       ProductChoiceDto choiceDto,
       IProductsDao productsDao,
-      IBuyProductResponseInProgress buyProductResponseInProgress, 
+      IBuyProductResponseInProgress buyProductResponseInProgress,
       IWarehouseApi warehouseApi)
     {
       _choiceDto = choiceDto;
@@ -28,8 +28,8 @@ namespace ShopModule
       product = product with { Quantity = product.Quantity - 1 };
       await _productsDao.Save(product, cancellationToken);
       await _warehouseApi.OrderDelivery(
-        _choiceDto.ProductId, 
-        _choiceDto.DeliveryAddress, 
+        _choiceDto.ProductId,
+        _choiceDto.DeliveryAddress,
         cancellationToken);
       await _buyProductResponseInProgress.Success(product, cancellationToken);
     }

@@ -1,7 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ShopModule
+namespace ShopModule.AppLogic
 {
   public class CreateGetProductsCommand
   {

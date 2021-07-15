@@ -2,7 +2,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Lib;
 
-namespace ShopModule
+namespace ShopModule.AppLogic
 {
   public interface IWarehouseApi
   {

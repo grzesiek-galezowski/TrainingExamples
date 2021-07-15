@@ -1,11 +1,10 @@
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Lib;
-using ShopModule;
+using ShopModule.AppLogic;
 using WarehouseModule;
 
-namespace ModularMonolith
+namespace ModularMonolith.InternalCommunication
 {
   public class WarehouseApiTo : IWarehouseApi
   {

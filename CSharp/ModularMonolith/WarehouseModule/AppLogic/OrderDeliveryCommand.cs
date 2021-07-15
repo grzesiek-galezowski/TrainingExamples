@@ -2,7 +2,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Lib;
 
-namespace WarehouseModule
+namespace WarehouseModule.AppLogic
 {
   public class OrderDeliveryCommand
   {
@@ -12,9 +12,9 @@ namespace WarehouseModule
     private readonly ICustomerNotifications _system;
 
     public OrderDeliveryCommand(
-      ProductId productId, 
-      string deliveryAddress, 
-      IOrdersDao ordersDao, 
+      ProductId productId,
+      string deliveryAddress,
+      IOrdersDao ordersDao,
       ICustomerNotifications system)
     {
       _productId = productId;

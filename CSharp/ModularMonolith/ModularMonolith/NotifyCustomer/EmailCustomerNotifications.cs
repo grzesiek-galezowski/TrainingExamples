@@ -1,6 +1,6 @@
-using WarehouseModule;
+using WarehouseModule.AppLogic;
 
-namespace ModularMonolith
+namespace ModularMonolith.NotifyCustomer
 {
   public class EmailCustomerNotifications : ICustomerNotifications
   {

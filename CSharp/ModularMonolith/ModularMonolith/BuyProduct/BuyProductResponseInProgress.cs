@@ -1,9 +1,9 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using ShopModule;
+using ShopModule.AppLogic;
 
-namespace ModularMonolith
+namespace ModularMonolith.BuyProduct
 {
   public class BuyProductResponseInProgress : IBuyProductResponseInProgress
   {

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ShopModule
+namespace ShopModule.AppLogic
 {
   public interface IGetProductsResponseInProgress
   {
