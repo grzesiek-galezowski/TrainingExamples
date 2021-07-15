@@ -10,7 +10,7 @@ namespace WarehouseModule
       CommandFactory = new WarehouseCommandFactory(customerNotifications, ordersDao);
     }
 
-    public static WarehouseModuleInstance WithPersistence(ICustomerNotifications customerNotifications)
+    public static WarehouseModuleInstance Full(ICustomerNotifications customerNotifications)
     {
       return new WarehouseModuleInstance(customerNotifications, new LiteDbOrdersDao());
     }

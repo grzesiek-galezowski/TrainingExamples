@@ -13,8 +13,8 @@ namespace ModularMonolith
     public MonolithApplicationLogicCompositionRoot(
         ICustomerNotifications customerNotifications)
     {
-      var warehouseModule = WarehouseModuleInstance.WithPersistence(customerNotifications);
-      var shopModule = ShopModuleInstance.WithPersistence(new WarehouseApiTo(warehouseModule));
+      var warehouseModule = WarehouseModuleInstance.Full(customerNotifications);
+      var shopModule = ShopModuleInstance.Full(new WarehouseApiTo(warehouseModule));
       GetProductsEndpoint = new GetProductsEndpoint(shopModule);
       BuyProductEndpoint = new BuyProductEndpoint(shopModule);
     }

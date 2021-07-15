@@ -10,7 +10,7 @@ namespace ShopModule
       CommandFactory = new ShopCommandFactory(warehouseApi, productsDao);
     }
 
-    public static ShopModuleInstance WithPersistence(IWarehouseApi warehouseApi)
+    public static ShopModuleInstance Full(IWarehouseApi warehouseApi)
     {
       return new ShopModuleInstance(warehouseApi, new LiteDbProductsDao());
     }
