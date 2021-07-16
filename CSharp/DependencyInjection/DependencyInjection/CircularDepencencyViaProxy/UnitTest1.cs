@@ -62,6 +62,9 @@ namespace CircularDepencencyViaProxy
         }
     }
 
+    /// <summary>
+    /// This is purely infrastructural code.
+    /// </summary>
     public class WindowProxy : IWindow
     {
         internal IWindow Inner { get; set; }
