@@ -1,6 +1,6 @@
 ﻿using ServiceLocatorDIAntipattern._2_ServiceLocator.Inbound;
 using ServiceLocatorDIAntipattern._2_ServiceLocator.Outbound;
-using Microsoft.Practices.Unity;
+using Unity;
 
 namespace ServiceLocatorDIAntipattern._2_ServiceLocator.Core
 {

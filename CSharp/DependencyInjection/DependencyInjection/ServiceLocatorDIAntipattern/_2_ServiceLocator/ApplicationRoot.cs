@@ -1,10 +1,12 @@
 ﻿using System;
-using Microsoft.Practices.Unity;
 using ServiceLocatorDIAntipattern._2_ServiceLocator.Core;
 using ServiceLocatorDIAntipattern._2_ServiceLocator.InMessages;
 using ServiceLocatorDIAntipattern._2_ServiceLocator.Inbound;
 using ServiceLocatorDIAntipattern._2_ServiceLocator.Outbound;
 using ServiceLocatorDIAntipattern._2_ServiceLocator.Services;
+using Unity;
+using Unity.Injection;
+using Unity.Lifetime;
 
 namespace ServiceLocatorDIAntipattern._2_ServiceLocator
 {
@@ -26,13 +28,13 @@ namespace ServiceLocatorDIAntipattern._2_ServiceLocator
         
         //not container controlled
         Context.RegisterType<IOutboundMessage, OutboundMessage>();
-        Context.RegisterType<Random>(new InjectionFactory(container => new Random()));
+        Context.RegisterFactory<Random>(_ => new Random());
         Context.RegisterType<NullMessage>();
         Context.RegisterType<StartMessage>();
         Context.RegisterType<StopMessage>();
       }
 
-      public static void Main(string[] args)
+      public static void Main2(string[] args)
       {
         try
         {
