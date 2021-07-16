@@ -21,7 +21,7 @@ namespace WarehouseModule.AppLogic
     public async Task Execute(CancellationToken cancellationToken)
     {
       var order = await _ordersDao.FindById(_orderId, cancellationToken);
-      await _ordersDao.Save(order with {OrderState = _newState}, cancellationToken);
+      await _ordersDao.Save(order with { OrderState = _newState }, cancellationToken);
     }
   }
 }

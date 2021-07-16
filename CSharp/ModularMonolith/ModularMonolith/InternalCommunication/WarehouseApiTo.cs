@@ -1,6 +1,5 @@
 using System.Threading;
 using System.Threading.Tasks;
-using Lib;
 using ShopModule.AppLogic;
 using WarehouseModule;
 
@@ -15,10 +14,12 @@ namespace ModularMonolith.InternalCommunication
       _warehouseModule = warehouseModule;
     }
 
-    public async Task OrderDelivery(
+    public Task OrderDelivery(
       ProductId productId, string deliveryAddress, CancellationToken cancellationToken)
     {
-      await _warehouseModule.CommandFactory.CreateOrderDeliveryCommand(productId, deliveryAddress)
+      return _warehouseModule.CommandFactory.CreateOrderDeliveryCommand(
+              new WarehouseModule.AppLogic.ProductId(productId.Value),
+              deliveryAddress)
         .Execute(cancellationToken);
     }
   }
