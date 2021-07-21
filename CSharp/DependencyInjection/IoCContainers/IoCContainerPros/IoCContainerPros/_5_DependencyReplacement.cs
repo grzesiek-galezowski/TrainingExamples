@@ -37,6 +37,11 @@ namespace IoCContainerPros
     }
   }
 
+  public interface ITroublesomeDependency
+  {
+    void DoSomething();
+  }
+
   public class TroublesomeDependency : ITroublesomeDependency
   {
     public void DoSomething()
@@ -45,9 +50,9 @@ namespace IoCContainerPros
     }
   }
 
-  public interface ITroublesomeDependency
+  public interface ISomeLogic
   {
-    void DoSomething();
+    void Execute();
   }
 
   public class SomeLogic : ISomeLogic
@@ -65,8 +70,34 @@ namespace IoCContainerPros
     }
   }
 
-  public interface ISomeLogic
+  public class LogicRoot
   {
-    void Execute();
+    private readonly SomeLogic _someLogic;
+
+    public LogicRoot()
+    {
+      _someLogic = new SomeLogic(CreateTroublesomeDependency());
+    }
+
+    protected virtual ITroublesomeDependency CreateTroublesomeDependency()
+    {
+      return new TroublesomeDependency();
+    }
+
+    public SomeLogic GetSomeLogic()
+    {
+      return _someLogic;
+    }
+  }
+
+  public class LogicRootForTests : LogicRoot
+  {
+    protected override ITroublesomeDependency CreateTroublesomeDependency()
+    {
+      return TroublesomeDependency;
+    }
+
+    public ITroublesomeDependency TroublesomeDependency { get; } 
+      = Substitute.For<ITroublesomeDependency>();
   }
 }
