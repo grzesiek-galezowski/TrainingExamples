@@ -1,29 +1,36 @@
-using Lib;
+
+using System;
+using WarehouseModule.AppLogic;
 
 namespace WarehouseModule
 {
   public class WarehouseCommandFactory
   {
-    private readonly IOrdersDaoFactory _ordersDaoFactory;
     private readonly ICustomerNotifications _customerNotifications;
+    private IOrdersDao _createOrdersDao;
 
-    public WarehouseCommandFactory(IOrdersDaoFactory ordersDaoFactory, ICustomerNotifications customerNotifications)
+    public WarehouseCommandFactory(ICustomerNotifications customerNotifications, IOrdersDao ordersDao)
     {
-      _ordersDaoFactory = ordersDaoFactory;
       _customerNotifications = customerNotifications;
+      _createOrdersDao = ordersDao;
     }
 
     public OrderDeliveryCommand CreateOrderDeliveryCommand(
-      ProductId productId, 
+      ProductId productId,
       string deliveryAddress,
       string recipientEmailAddress)
     {
       return new OrderDeliveryCommand(
-        productId, 
-        deliveryAddress, 
+        productId,
+        deliveryAddress,
         recipientEmailAddress,
-        _ordersDaoFactory.CreateOrdersDao(),
+        _createOrdersDao,
         _customerNotifications);
+    }
+
+    public UpdateOrderStateCommand CreateUpdateOrderCommand(Guid orderId, OrderStates newState)
+    {
+      return new UpdateOrderStateCommand(orderId, newState);
     }
   }
 }

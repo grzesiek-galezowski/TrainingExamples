@@ -1,6 +1,4 @@
-using System.Threading.Tasks;
-
-namespace WarehouseModule
+namespace WarehouseModule.AppLogic
 {
   public interface ICustomerNotifications
   {

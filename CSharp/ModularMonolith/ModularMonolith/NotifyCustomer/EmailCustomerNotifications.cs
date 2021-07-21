@@ -1,6 +1,4 @@
 using System.Net.Mail;
-using System.Threading.Tasks;
-using WarehouseModule;
 using WarehouseModule.AppLogic;
 
 namespace ModularMonolith.NotifyCustomer

@@ -15,11 +15,15 @@ namespace ModularMonolith.InternalCommunication
     }
 
     public Task OrderDelivery(
-      ProductId productId, string deliveryAddress, CancellationToken cancellationToken)
+      ProductId productId,
+      string deliveryAddress,
+      string recipientEmailAddress,
+      CancellationToken cancellationToken)
     {
       return _warehouseModule.CommandFactory.CreateOrderDeliveryCommand(
               new WarehouseModule.AppLogic.ProductId(productId.Value),
-              deliveryAddress)
+              deliveryAddress,
+              recipientEmailAddress)
         .Execute(cancellationToken);
     }
   }
