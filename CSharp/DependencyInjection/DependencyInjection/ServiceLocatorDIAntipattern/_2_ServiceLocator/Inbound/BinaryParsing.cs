@@ -1,6 +1,6 @@
 ﻿using ServiceLocatorDIAntipattern._2_ServiceLocator.InMessages;
 using ServiceLocatorDIAntipattern._2_ServiceLocator.Interfaces;
-using Microsoft.Practices.Unity;
+using Unity;
 
 namespace ServiceLocatorDIAntipattern._2_ServiceLocator.Inbound
 {

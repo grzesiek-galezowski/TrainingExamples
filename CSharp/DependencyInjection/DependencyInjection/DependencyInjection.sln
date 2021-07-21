@@ -1,17 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyInjectionBefore", "DependencyInjection\DependencyInjectionBefore.csproj", "{D5987ECE-D625-4155-90CF-D5494BC686AC}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DependencyInjectionBefore", "DependencyInjection\DependencyInjectionBefore.csproj", "{D5987ECE-D625-4155-90CF-D5494BC686AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceLocatorDIAntipattern", "ServiceLocatorDIAntipattern\ServiceLocatorDIAntipattern.csproj", "{ABD6A39F-9BBB-4FBC-800D-34E004834544}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceLocatorDIAntipattern", "ServiceLocatorDIAntipattern\ServiceLocatorDIAntipattern.csproj", "{ABD6A39F-9BBB-4FBC-800D-34E004834544}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConformingContainerAntipattern", "ConformingContainerAntipattern\ConformingContainerAntipattern.csproj", "{54AE2D4E-DF8B-4569-B1B1-5A42A22A5A1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConformingContainerAntipattern", "ConformingContainerAntipattern\ConformingContainerAntipattern.csproj", "{54AE2D4E-DF8B-4569-B1B1-5A42A22A5A1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BastardInjection", "BastardInjection\BastardInjection.csproj", "{D72B425B-9950-4738-AC46-A3FABA32986F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BastardInjection", "BastardInjection\BastardInjection.csproj", "{D72B425B-9950-4738-AC46-A3FABA32986F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChangingBehaviorThroughComposition", "ChangingBehaviorThroughComposition\ChangingBehaviorThroughComposition.csproj", "{A3A72133-1E75-402D-81F6-52A8386D88AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChangingBehaviorThroughComposition", "ChangingBehaviorThroughComposition\ChangingBehaviorThroughComposition.csproj", "{A3A72133-1E75-402D-81F6-52A8386D88AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyInjectionAfter", "DependencyInjectionAfter\DependencyInjectionAfter.csproj", "{27B34C67-229E-4ABC-985E-4BA6571E9EA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DependencyInjectionAfter", "DependencyInjectionAfter\DependencyInjectionAfter.csproj", "{27B34C67-229E-4ABC-985E-4BA6571E9EA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CircularDepencencyViaProxy", "CircularDepencencyViaProxy\CircularDepencencyViaProxy.csproj", "{39A768D6-0F8C-469D-9A79-452A020435AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,8 +47,15 @@ Global
 		{27B34C67-229E-4ABC-985E-4BA6571E9EA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27B34C67-229E-4ABC-985E-4BA6571E9EA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27B34C67-229E-4ABC-985E-4BA6571E9EA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39A768D6-0F8C-469D-9A79-452A020435AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39A768D6-0F8C-469D-9A79-452A020435AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39A768D6-0F8C-469D-9A79-452A020435AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39A768D6-0F8C-469D-9A79-452A020435AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9AFDCD54-7E72-44F4-B414-F693B9B60D1D}
 	EndGlobalSection
 EndGlobal

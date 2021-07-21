@@ -4,7 +4,6 @@ using ConformingContainerAntipattern._3_ConformingContainer.Core;
 using ConformingContainerAntipattern._3_ConformingContainer.Services;
 using NSubstitute;
 using NUnit.Framework;
-using Microsoft.Practices.Unity;
 
 namespace ConformingContainerAntipattern
 {

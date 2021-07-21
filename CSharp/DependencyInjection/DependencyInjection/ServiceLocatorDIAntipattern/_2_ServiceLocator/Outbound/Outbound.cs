@@ -1,5 +1,5 @@
 ﻿using ServiceLocatorDIAntipattern._2_ServiceLocator.Interfaces;
-using Microsoft.Practices.Unity;
+using Unity;
 
 namespace ServiceLocatorDIAntipattern._2_ServiceLocator.Outbound
 {

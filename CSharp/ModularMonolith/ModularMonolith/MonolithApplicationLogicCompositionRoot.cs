@@ -1,22 +1,27 @@
 using System;
+using ModularMonolith.BuyProduct;
+using ModularMonolith.GetProducts;
+using ModularMonolith.InternalCommunication;
+using ModularMonolith.UpdateOrder;
 using ShopModule;
 using WarehouseModule;
+using WarehouseModule.AppLogic;
 
 namespace ModularMonolith
 {
   public class MonolithApplicationLogicCompositionRoot : IDisposable
   {
     public MonolithApplicationLogicCompositionRoot(
-      IShopDaoFactory shopDaoFactory,
-      IOrdersDaoFactory ordersDaoFactory, 
-      ICustomerNotifications customerNotifications)
+        ICustomerNotifications customerNotifications)
     {
-      var warehouseModule = new WarehouseModuleInstance(ordersDaoFactory, customerNotifications);
-      var shopModule = new ShopModuleInstance(new WarehouseApiTo(warehouseModule));
-      GetProductsEndpoint = new GetProductsEndpoint(shopModule, shopDaoFactory);
-      BuyProductEndpoint = new BuyProductEndpoint(shopModule, shopDaoFactory);
+      var warehouseModule = WarehouseModuleInstance.Full(customerNotifications);
+      var shopModule = ShopModuleInstance.Full(new WarehouseApiTo(warehouseModule));
+      GetProductsEndpoint = new GetProductsEndpoint(shopModule);
+      BuyProductEndpoint = new BuyProductEndpoint(shopModule);
+      UpdateOrderEndpoint = new UpdateOrderEndpoint(warehouseModule);
     }
 
+    public UpdateOrderEndpoint UpdateOrderEndpoint { get; }
     public GetProductsEndpoint GetProductsEndpoint { get; }
     public BuyProductEndpoint BuyProductEndpoint { get; }
 

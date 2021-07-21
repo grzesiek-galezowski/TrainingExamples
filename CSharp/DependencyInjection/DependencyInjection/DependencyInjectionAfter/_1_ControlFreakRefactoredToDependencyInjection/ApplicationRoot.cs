@@ -3,7 +3,8 @@ using DependencyInjectionAfter._1_ControlFreakRefactoredToDependencyInjection.In
 using DependencyInjectionAfter._1_ControlFreakRefactoredToDependencyInjection.Interfaces;
 using DependencyInjectionAfter._1_ControlFreakRefactoredToDependencyInjection.Outbound;
 using DependencyInjectionAfter._1_ControlFreakRefactoredToDependencyInjection.Services;
-using Microsoft.Practices.Unity;
+using Unity;
+using Unity.Lifetime;
 
 namespace DependencyInjectionAfter._1_ControlFreakRefactoredToDependencyInjection
 {
@@ -47,7 +48,6 @@ namespace DependencyInjectionAfter._1_ControlFreakRefactoredToDependencyInjectio
       {
         using (var container = new UnityContainer())
         {
-
           //Register
           container
             .RegisterType<DataDestination, SqlDataDestination>(

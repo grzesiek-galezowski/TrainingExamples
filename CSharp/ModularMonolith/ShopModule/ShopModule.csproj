@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Lib\Lib.csproj" />
+    <PackageReference Include="LiteDB" Version="5.0.10" />
   </ItemGroup>
 
 </Project>

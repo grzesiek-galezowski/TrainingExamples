@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using ModularMonolith.NotifyCustomer;
 
 namespace ModularMonolith
 {
@@ -20,28 +20,12 @@ namespace ModularMonolith
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-      services.AddEntityFrameworkInMemoryDatabase();
-
-      //Scoped & Transient
-      services.AddDbContext<ShopDbContext>(
-        (ctx, options) =>
-          options.UseInMemoryDatabase("Shop")
-            .UseInternalServiceProvider(ctx));
-      services.AddDbContext<OrdersDbContext>(
-        (ctx, options) =>
-          options.UseInMemoryDatabase("Shop")
-            .UseInternalServiceProvider(ctx));
-
       //bug logger
-      services.AddSingleton(context => new 
-        MonolithApplicationLogicCompositionRoot(
-          new ShopDaoFactory(context),
-          new OrdersDaoFactory(context), 
-          new EmailCustomerNotifications()));
+      services.AddSingleton(context => new
+        MonolithApplicationLogicCompositionRoot(new EmailCustomerNotifications()));
       services.AddSwaggerGen(c =>
       {
         c.SwaggerDoc("v1", new OpenApiInfo { Title = "ModularMonolith", Version = "v1" });
-
       });
     }
 
@@ -65,15 +49,26 @@ namespace ModularMonolith
         endpoints.MapGet("/shop/products", async context =>
         {
           await monolith
-            .GetProductsEndpoint.HandleAsync(
+            .GetProductsEndpoint.Handle(
               context.Request,
               context.Response,
               context.RequestAborted);
         });
-        endpoints.MapPost("/shop/products", async context =>
+        //bug the routes are messed up...
+        endpoints.MapPost("/shop/products/", async context =>
         {
           await monolith
-            .BuyProductEndpoint.HandleAsync(
+            .BuyProductEndpoint.Handle(
+              context.Request,
+              context.Response,
+              context.RequestAborted);
+        });
+
+        //bug the routes are messed up...
+        endpoints.MapPost("/orders/states/", async context =>
+        {
+          await monolith
+            .UpdateOrderEndpoint.Handle(
               context.Request,
               context.Response,
               context.RequestAborted);

@@ -3,8 +3,9 @@ using NSubstitute;
 using NUnit.Framework;
 using ServiceLocatorDIAntipattern._2_ServiceLocator;
 using ServiceLocatorDIAntipattern._2_ServiceLocator.Core;
-using Microsoft.Practices.Unity;
 using ServiceLocatorDIAntipattern._2_ServiceLocator.Services;
+using Unity;
+using Unity.Lifetime;
 
 namespace ServiceLocatorDIAntipattern
 {
