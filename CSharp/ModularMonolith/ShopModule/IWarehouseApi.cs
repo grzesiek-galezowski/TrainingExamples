@@ -6,6 +6,7 @@ namespace ShopModule
 {
   public interface IWarehouseApi
   {
-    Task OrderDelivery(ProductId productId, string deliveryAddress, CancellationToken cancellationToken);
+    Task OrderDelivery(ProductId productId, string deliveryAddress,
+      string recipientEmailAddress, CancellationToken cancellationToken);
   }
 }

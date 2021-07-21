@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+
 namespace WarehouseModule
 {
   public interface ICustomerNotifications

@@ -30,6 +30,7 @@ namespace ShopModule
       await _warehouseApi.OrderDelivery(
         _choiceDto.ProductId, 
         _choiceDto.DeliveryAddress, 
+        _choiceDto.RecipientEmailAddress, 
         cancellationToken);
       await _buyProductResponseInProgress.Success(product, cancellationToken);
     }

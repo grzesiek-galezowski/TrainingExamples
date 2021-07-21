@@ -1,3 +1,5 @@
+using System.Net.Mail;
+using System.Threading.Tasks;
 using WarehouseModule;
 
 namespace ModularMonolith
@@ -6,7 +8,14 @@ namespace ModularMonolith
   {
     public void NotifyCustomerOfOrderState(OrderDto orderDto)
     {
-      throw new System.NotImplementedException();
+      var smtpClient = new SmtpClient("127.0.0.1");
+
+      smtpClient.SendAsync(new MailMessage(
+        new MailAddress("shop.com"),
+        new MailAddress(orderDto.RecipientEmail))
+      {
+        Body = "Your order is " + orderDto.OrderState
+      }, new object());
     }
   }
 }

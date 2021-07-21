@@ -14,11 +14,14 @@ namespace WarehouseModule
     }
 
     public OrderDeliveryCommand CreateOrderDeliveryCommand(
-      ProductId productId, string deliveryAddress)
+      ProductId productId, 
+      string deliveryAddress,
+      string recipientEmailAddress)
     {
       return new OrderDeliveryCommand(
         productId, 
         deliveryAddress, 
+        recipientEmailAddress,
         _ordersDaoFactory.CreateOrdersDao(),
         _customerNotifications);
     }
