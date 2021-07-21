@@ -17,8 +17,8 @@ namespace WarehouseModule.AppLogic
 
     public OrderDeliveryCommand CreateOrderDeliveryCommand(
       ProductId productId,
-      string deliveryAddress,
-      string recipientEmailAddress)
+      DeliveryAddress deliveryAddress,
+      RecipientEmailAddress recipientEmailAddress)
     {
       return new OrderDeliveryCommand(
         productId,
@@ -28,11 +28,11 @@ namespace WarehouseModule.AppLogic
         _customerNotifications);
     }
 
-    public UpdateOrderStateCommand CreateUpdateOrderCommand(
-      Guid orderId,
-      OrderStates newState)
+    public UpdateOrderStateCommand CreateUpdateOrderCommand(Guid orderId,
+      OrderStates newState, 
+      IUpdateOrderStateResponseInProgress responseInProgress)
     {
-      return new UpdateOrderStateCommand(orderId, newState, _createOrdersDao);
+      return new UpdateOrderStateCommand(orderId, newState, _createOrdersDao, responseInProgress);
     }
   }
 }

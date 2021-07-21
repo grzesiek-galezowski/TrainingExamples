@@ -15,7 +15,7 @@ namespace ModularMonolith
         ICustomerNotifications customerNotifications)
     {
       var warehouseModule = WarehouseModuleInstance.Full(customerNotifications);
-      var shopModule = ShopModuleInstance.Full(new WarehouseApiTo(warehouseModule));
+      var shopModule = ShopModuleInstance.Full(new ShopToWarehouseApiTo(warehouseModule));
       GetProductsEndpoint = new GetProductsEndpoint(shopModule);
       BuyProductEndpoint = new BuyProductEndpoint(shopModule);
       UpdateOrderEndpoint = new UpdateOrderEndpoint(warehouseModule);

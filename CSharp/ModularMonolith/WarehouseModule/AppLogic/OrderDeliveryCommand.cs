@@ -6,15 +6,15 @@ namespace WarehouseModule.AppLogic
   public class OrderDeliveryCommand
   {
     private readonly ProductId _productId;
-    private readonly string _deliveryAddress;
+    private readonly DeliveryAddress _deliveryAddress;
     private readonly IOrdersDao _ordersDao;
     private readonly ICustomerNotifications _system;
-    private readonly string _recipientEmailAddress;
+    private readonly RecipientEmailAddress _recipientEmailAddress;
 
     public OrderDeliveryCommand(
       ProductId productId,
-      string deliveryAddress,
-      string recipientEmailAddress,
+      DeliveryAddress deliveryAddress,
+      RecipientEmailAddress recipientEmailAddress,
       IOrdersDao ordersDao,
       ICustomerNotifications system)
     {

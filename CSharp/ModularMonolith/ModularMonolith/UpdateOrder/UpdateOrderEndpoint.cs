@@ -22,9 +22,11 @@ namespace ModularMonolith.UpdateOrder
       //bug response in progress
       var first = request.Query["orderId"].First();
       var newGuid = Guid.Parse(first);
+      var readFromJsonAsync = await request.ReadFromJsonAsync<OrderStates>(cancellationToken);
       await _warehouseModule.CommandFactory.CreateUpdateOrderCommand(
           newGuid,
-          await request.ReadFromJsonAsync<OrderStates>(cancellationToken))
+          readFromJsonAsync,
+          new UpdateOrderStateResponseInProgress(response))
         .Execute(cancellationToken);
     }
   }

@@ -2,12 +2,12 @@ namespace ShopModule.AppLogic
 {
   public class ShopCommandFactory
   {
-    private readonly IWarehouseApi _warehouseApi;
+    private readonly IShopToWarehouseApi _shopToWarehouseApi;
     private readonly IProductsDao _productsDao;
 
-    public ShopCommandFactory(IWarehouseApi warehouseApi, IProductsDao productsDao)
+    public ShopCommandFactory(IShopToWarehouseApi shopToWarehouseApi, IProductsDao productsDao)
     {
-      _warehouseApi = warehouseApi;
+      _shopToWarehouseApi = shopToWarehouseApi;
       _productsDao = productsDao;
     }
 
@@ -20,7 +20,7 @@ namespace ShopModule.AppLogic
         ProductChoiceDto choiceDto,
       IBuyProductResponseInProgress buyProductResponseInProgress)
     {
-      return new BuyProductCommand(choiceDto, _productsDao, buyProductResponseInProgress, _warehouseApi);
+      return new BuyProductCommand(choiceDto, _productsDao, buyProductResponseInProgress, _shopToWarehouseApi);
     }
   }
 }

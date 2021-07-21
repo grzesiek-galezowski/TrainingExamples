@@ -5,25 +5,24 @@ using WarehouseModule;
 
 namespace ModularMonolith.InternalCommunication
 {
-  public class WarehouseApiTo : IWarehouseApi
+  public class ShopToWarehouseApiTo : IShopToWarehouseApi
   {
     private readonly WarehouseModuleInstance _warehouseModule;
 
-    public WarehouseApiTo(WarehouseModuleInstance warehouseModule)
+    public ShopToWarehouseApiTo(WarehouseModuleInstance warehouseModule)
     {
       _warehouseModule = warehouseModule;
     }
 
-    public Task OrderDelivery(
-      ProductId productId,
-      string deliveryAddress,
-      string recipientEmailAddress,
+    public Task OrderDelivery(ProductId productId,
+      DeliveryAddress deliveryAddress,
+      RecipientEmailAddress recipientEmailAddress,
       CancellationToken cancellationToken)
     {
       return _warehouseModule.CommandFactory.CreateOrderDeliveryCommand(
               new WarehouseModule.AppLogic.ProductId(productId.Value),
-              deliveryAddress,
-              recipientEmailAddress)
+              new WarehouseModule.AppLogic.DeliveryAddress(deliveryAddress.Value),
+              new WarehouseModule.AppLogic.RecipientEmailAddress(recipientEmailAddress.Value))
         .Execute(cancellationToken);
     }
   }

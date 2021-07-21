@@ -11,7 +11,7 @@ namespace ModularMonolith.NotifyCustomer
 
       smtpClient.SendAsync(new MailMessage(
         new MailAddress("shop.com"),
-        new MailAddress(orderDto.RecipientEmail))
+        new MailAddress(orderDto.RecipientEmail.Value))
       {
         Body = "Your order is " + orderDto.OrderState
       }, new object());

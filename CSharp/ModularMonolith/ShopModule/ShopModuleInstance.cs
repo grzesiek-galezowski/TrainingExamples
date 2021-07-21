@@ -5,14 +5,14 @@ namespace ShopModule
 {
   public class ShopModuleInstance
   {
-    public ShopModuleInstance(IWarehouseApi warehouseApi, IProductsDao productsDao)
+    public ShopModuleInstance(IShopToWarehouseApi shopToWarehouseApi, IProductsDao productsDao)
     {
-      CommandFactory = new ShopCommandFactory(warehouseApi, productsDao);
+      CommandFactory = new ShopCommandFactory(shopToWarehouseApi, productsDao);
     }
 
-    public static ShopModuleInstance Full(IWarehouseApi warehouseApi)
+    public static ShopModuleInstance Full(IShopToWarehouseApi shopToWarehouseApi)
     {
-      return new ShopModuleInstance(warehouseApi, new LiteDbProductsDao());
+      return new ShopModuleInstance(shopToWarehouseApi, new LiteDbProductsDao());
     }
 
     public ShopCommandFactory CommandFactory { get; }
