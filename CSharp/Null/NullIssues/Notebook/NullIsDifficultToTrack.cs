@@ -8,24 +8,24 @@ namespace Notebook
         public void ShouldShowStackTraceBeingLostWhenNullReturnIsPropagated()
         {
             int num = GetNum();
-            string result = A(num);
+            string result = Step1(num);
 
-            Assert.NotNull(result);
+            //uncomment this: Assert.NotNull(result);
         }
 
-        private static string A(int num)
+        private static string Step1(int num)
         {
             if (num > 120) return null;
-            else return B(num);
+            else return Step2(num);
         }
 
-        private static string B(int num)
+        private static string Step2(int num)
         {
             if (num > 110) return null;
-            else return C(num);
+            else return Step3(num);
         }
 
-        private static string C(int num)
+        private static string Step3(int num)
         {
             if (num > 100) return null;
             else return num.ToString();
