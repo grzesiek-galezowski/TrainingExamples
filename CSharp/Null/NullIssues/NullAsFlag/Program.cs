@@ -2,6 +2,8 @@
 
 namespace NullAsFlag
 {
+    // This is one of the programs invoked in a chain with a command
+    // not every program supports all the commands
     class Program
     {
         //null as do-nothing - returned value
@@ -32,6 +34,8 @@ namespace NullAsFlag
             }
             else
             {
+                //Assume this isn't an error. This cmdline
+                //tool just doesn't support all the commands
                 return null;
             }
         }

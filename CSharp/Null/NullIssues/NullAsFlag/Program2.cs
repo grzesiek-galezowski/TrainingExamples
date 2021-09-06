@@ -5,6 +5,7 @@ namespace NullAsFlag
     class Program2
     {
         //null as do-nothing/flag - parameter
+        //see drawing on slides
         static void Main2(string[] args)
         {
             var myNotificationsEngine = new MyNotificationsEngine();
