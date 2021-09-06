@@ -42,6 +42,7 @@ namespace NullAsFlagRefactored
         }
     }
 
+    //null object pattern implements a __NEUTRAL_OPERATION__
     public class IgnoredCommand : IConfigurationCommand
     {
         public void Execute()
