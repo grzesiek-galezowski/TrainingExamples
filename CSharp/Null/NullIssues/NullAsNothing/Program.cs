@@ -11,9 +11,11 @@
             
             var result = mainCache.QueryWith(QueryForRadio("radio1"));
 
+            //if the null check wasn't here, it would be hard to
+            //track where the NullReferenceException came from...
             if (result != null)
             {
-                result.SendToUser();
+              result.SendToUser();
             }
         }
 
