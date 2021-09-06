@@ -21,6 +21,13 @@ namespace NullAsErrorRefactored
             {
                 LogError(e, $"Could not connect to db to save user {userDto}");
             }
+            //btw, typically, this is a better way:
+            //catch (Exception e)
+            //{
+            //    //the details are in the exception
+            //    LogError(e, $"Request failed");
+            //}
+
         }
 
 
