@@ -43,7 +43,10 @@ namespace NullAsFlagRefactored
 
         public void HandleMessageFromUser(string message)
         {
-            _myNotificationsEngine.NotifyNewData(_localDataCenter, _remoteDataCenter, message);
+            _myNotificationsEngine.NotifyNewData(
+                _localDataCenter, 
+                _remoteDataCenter, 
+                message);
         }
 
         public void HandleReplicatedMessage(string message)
