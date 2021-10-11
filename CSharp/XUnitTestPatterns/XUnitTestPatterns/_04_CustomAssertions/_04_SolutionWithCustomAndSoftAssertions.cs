@@ -28,19 +28,8 @@ namespace XUnitTestPatterns._04_CustomAssertions
       });
     }
 
-    class PersonData
+    record PersonData(string Name, string Surname, int Age)
     {
-      public readonly string Name;
-      public readonly string Surname;
-      public readonly int Age;
-
-      PersonData(string name, string surname, int age)
-      {
-        this.Name = name;
-        this.Surname = surname;
-        this.Age = age;
-      }
-
       public static PersonData ClarkKent()
       {
         return new PersonData("Clark", "Kent", 35);

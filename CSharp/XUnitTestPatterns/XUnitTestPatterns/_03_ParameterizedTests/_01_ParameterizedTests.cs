@@ -31,6 +31,8 @@ namespace XUnitTestPatterns._03_ParameterizedTests
       Assert.AreEqual(expectedIsAdult, isAdult);
     }
 
+    // Also show when several parameter lists have the same string representation
+    // - in such a case, the tests may not be detected correctly
     private static object[] ShouldBeAdultDependingOnAgeData() => new object[]
     {
       new object[] {17, false},

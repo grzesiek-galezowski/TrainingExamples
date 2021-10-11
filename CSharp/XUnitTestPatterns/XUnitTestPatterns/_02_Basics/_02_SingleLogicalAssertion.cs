@@ -71,7 +71,7 @@ namespace XUnitTestPatterns._02_Basics
       {
         for (var j = 0; j < list.Count; j++)
         {
-          if (i != j)
+          if (i != j) // conditional logic in tests?
           {
             Console.WriteLine("assertion!");
             Assert.AreNotEqual(list[j], list[i]);

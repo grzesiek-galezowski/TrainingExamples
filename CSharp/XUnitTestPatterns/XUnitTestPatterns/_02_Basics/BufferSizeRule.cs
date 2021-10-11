@@ -4,7 +4,7 @@ namespace XUnitTestPatterns._02_Basics
   {
     public bool CanHandle(string s)
     {
-      return s != null && s.Length < 4;
+      return s is { Length: < 4 };
     }
   }
 }

@@ -19,19 +19,8 @@ namespace XUnitTestPatterns._04_CustomAssertions
       superman.Should().BeEquivalentTo(clark);
     }
 
-    class PersonData
+    record PersonData(string Name, string Surname, int Age)
     {
-      public readonly string Name;
-      public readonly string Surname;
-      public readonly int Age;
-
-      PersonData(string name, string surname, int age)
-      {
-        this.Name = name;
-        this.Surname = surname;
-        this.Age = age;
-      }
-
       public static PersonData ClarkKent()
       {
         return new PersonData("Clark", "Kent", 35);
@@ -39,7 +28,7 @@ namespace XUnitTestPatterns._04_CustomAssertions
 
       public static PersonData Superman()
       {
-        return new PersonData("Clark", "Kent", 351);
+        return new PersonData("Clark", "Kent", 35); //break this assertion
       }
     }
   }

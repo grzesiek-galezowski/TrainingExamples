@@ -48,9 +48,9 @@ namespace XUnitTestPatterns._04_CustomAssertions
 
       PersonData(string name, string surname, int age)
       {
-        this.Name = name;
-        this.Surname = surname;
-        this.Age = age;
+        Name = name;
+        Surname = surname;
+        Age = age;
       }
 
       public static PersonData ClarkKent()
