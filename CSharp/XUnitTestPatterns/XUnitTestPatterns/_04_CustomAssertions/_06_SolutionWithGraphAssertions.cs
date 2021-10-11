@@ -17,6 +17,7 @@ namespace XUnitTestPatterns._04_CustomAssertions
 
       //THEN
       superman.Should().BeEquivalentTo(clark);
+      //btw, this is a record, so .AreEqual could work as well...
     }
 
     record PersonData(string Name, string Surname, int Age)
