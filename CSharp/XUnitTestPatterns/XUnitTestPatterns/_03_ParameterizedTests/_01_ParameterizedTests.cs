@@ -19,7 +19,10 @@ namespace XUnitTestPatterns._03_ParameterizedTests
     }
 
     [Test, TestCaseSource(nameof(ShouldBeAdultDependingOnAgeData))]
-    public void ShouldBeAdultDependingOnAge2(int age, bool expectedIsAdult)
+    public void ShouldBeAdultDependingOnAge2(
+      int age, 
+      bool expectedIsAdult, 
+      object o) //show how this looks in both resharper and NCrunch and VSTest
     {
       //GIVEN
       var person = new Person(age);
@@ -35,8 +38,9 @@ namespace XUnitTestPatterns._03_ParameterizedTests
     // - in such a case, the tests may not be detected correctly
     private static object[] ShouldBeAdultDependingOnAgeData() => new object[]
     {
-      new object[] {17, false},
-      new object[] {18, true},
+      new object[] {17, false, new object()},
+      new object[] {18, true, new object()},
+      new object[] {18, true, new object()},
     };
   }
 }
