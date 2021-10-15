@@ -13,7 +13,7 @@ namespace OutsideInTddBoxSpecification.Integration
         public void ShouldAllowRetrievingAddedTodoItem()
         {
             //GIVEN
-            var dao = new TodoNoteDao();
+            using var dao = new TodoNoteDao();
             var dto1 = Any.Instance<TodoNoteDto>();
             dao.Save(dto1);
 
