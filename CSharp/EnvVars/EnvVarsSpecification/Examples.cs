@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using EnvVars;
+using NullableReferenceTypesExtensions;
 
 namespace EnvVarsSpecification;
 
@@ -9,7 +11,7 @@ public class Examples
   public void ShouldDoManyThings()
   {
     var isOn = "IS_ON";
-    var variable = UndefinedVariable<bool>
+    DefinedVariable<bool> variable = UndefinedVariable<bool>
       .ProcessWide(isOn, bool.Parse, b => b.ToString())
       .Define(true);
     variable.Value().Should().Be(true);
@@ -23,7 +25,7 @@ public class Examples
     variable.Value().Should().Be(true);
     Environment.GetEnvironmentVariable(isOn).Should().Be("True");
 
-    var undefinedVariable = variable.Delete();
+    UndefinedVariable<bool> undefinedVariable = variable.Delete();
     Environment.GetEnvironmentVariable(isOn).Should().BeNull();
     EnvironmentVariablesNames().Should().NotContain(isOn);
     variable = undefinedVariable.Define(false);
@@ -31,29 +33,53 @@ public class Examples
   }
 
   [Test]
-  public void ShouldDetectConflicts()
+  public void ShouldDetectConflictsStartingFromUndefinedVariable()
   {
     //GIVEN
     var undefinedVariable = UndefinedVariable<string>.ProcessWide("lol", s => s, s => s);
-    var variable1 = undefinedVariable.Define("a");
+    var definedVariable = undefinedVariable.Define("a");
     undefinedVariable.Invoking(v => v.Define("b"))
       .Should().ThrowExactly<InvalidVariableStateException>()
-      .WithMessage("a");
+      .WithMessage("You cannot Define a variable in a Defined state*" +
+                   $"{OperationVerb.CreateContainer}*{OperationVerb.Define}*");
 
     //WHEN
+    var newUndefinedVariable = definedVariable.Delete();
+    definedVariable.Invoking(v => v.Delete())
+      .Should().ThrowExactly<InvalidVariableStateException>()
+      .WithMessage("Delete operation requires variable to be in state Defined, but was in Deleted." +
+                   $"*{OperationVerb.CreateContainer}*{OperationVerb.Define}*{OperationVerb.Delete}*");
+    definedVariable.Invoking(v => v.ChangeValue("b"))
+      .Should().ThrowExactly<InvalidVariableStateException>()
+      .WithMessage("Modify operation requires variable to be in state Defined, but was in Deleted." +
+                   $"*{OperationVerb.CreateContainer}*{OperationVerb.Define}*{OperationVerb.Delete}*");
+  }
+  [Test]
+  public void ShouldDetectConflictsStartingFromUnknownVariable()
+  {
+    //GIVEN
+    Environment.SetEnvironmentVariable("lol", "a");
+    var unknownVariable = UnknownVariable<string>.ProcessWide("lol", s => s, s => s);
+    var definedVariable = unknownVariable.Read();
+    unknownVariable.Invoking(v => v.Read())
+      .Should().ThrowExactly<InvalidVariableStateException>()
+      .WithMessage("Read operation requires variable to be in state Unknown, but was in Defined*" +
+                   $"{OperationVerb.CreateContainer}*{OperationVerb.Read}*");
 
-    //THEN
-    Assert.Fail("unfinished");
+    //WHEN
+    var newUndefinedVariable = definedVariable.Delete();
+    definedVariable.Invoking(v => v.Delete())
+      .Should().ThrowExactly<InvalidVariableStateException>()
+      .WithMessage("Delete operation requires variable to be in state Defined, but was in Deleted." +
+                   $"*| {OperationVerb.CreateContainer}*| {OperationVerb.Read}*| {OperationVerb.Delete}*");
+    definedVariable.Invoking(v => v.ChangeValue("b"))
+      .Should().ThrowExactly<InvalidVariableStateException>()
+      .WithMessage("Modify operation requires variable to be in state Defined, but was in Deleted." +
+                   $"*| {OperationVerb.CreateContainer}*| {OperationVerb.Read}*| {OperationVerb.Delete}*");
   }
 
-  private List<string> EnvironmentVariablesNames()
+  private static IEnumerable<string> EnvironmentVariablesNames()
   {
-    List<string> keys = new List<string>();
-    foreach (var key in Environment.GetEnvironmentVariables().Keys)
-    {
-      keys.Add(key.ToString());
-    }
-
-    return keys;
+    return (from object? key in Environment.GetEnvironmentVariables().Keys select key.ToString().OrThrow()).ToList();
   }
 }
