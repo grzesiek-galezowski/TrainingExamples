@@ -3,7 +3,7 @@ using TddXt.AnyRoot.Strings;
 
 namespace EnvVarsSpecification;
 
-public class StoredVariableSpecification
+public class DefinedVariableSpecification
 {
   [Test]
   public void ShouldAllowAccessingAssignedValue()
@@ -14,7 +14,7 @@ public class StoredVariableSpecification
     Environment.SetEnvironmentVariable(name, value);
     
     //WHEN
-    var storedVariable = new StoredVariable<string>(
+    var storedVariable = new DefinedVariable<string>(
       TestVariableContainers.VariableContainerWithValue(name));
 
     //THEN
@@ -29,7 +29,7 @@ public class StoredVariableSpecification
     var name = Any.AlphaString();
     var value = Any.AlphaString();
     Environment.SetEnvironmentVariable(name, value);
-    var storedVariable = new StoredVariable<string>(
+    var storedVariable = new DefinedVariable<string>(
       TestVariableContainers.VariableContainerWithValue(name));
     
     //WHEN
@@ -48,7 +48,7 @@ public class StoredVariableSpecification
     var value = Any.AlphaString();
     var newValue = Any.AlphaString();
     Environment.SetEnvironmentVariable(name, value);
-    var storedVariable = new StoredVariable<string>(
+    var storedVariable = new DefinedVariable<string>(
       TestVariableContainers.VariableContainerWithValue(name));
     
     //WHEN

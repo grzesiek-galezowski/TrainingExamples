@@ -3,13 +3,13 @@ using TddXt.AnyRoot.Strings;
 
 namespace EnvVarsSpecification;
 
-public class UninitializedVariableSpecification
+public class UnknownVariableSpecification
 {
   [Test]
   public void ShouldAllowAccessingItsName()
   {
     var name = Any.AlphaString();
-    var variable = new UninitializedVariable<string>(name, s => s, s => s);
+    var variable = UnknownVariable<string>.ProcessWide(name, s => s, s => s);
     variable.Name.Should().Be(name);
   }
 
@@ -18,7 +18,8 @@ public class UninitializedVariableSpecification
   {
     //GIVEN
     var name = Any.AlphaString();
-    var variable = new UninitializedVariable<string>(name, s => s, s => s);
+    Environment.SetEnvironmentVariable(name, null);
+    var variable = UnknownVariable<string>.ProcessWide(name, s => s, s => s);
 
     //WHEN - THEN
     variable.Invoking(v => v.Read()).Should().Throw<UndefinedVariableException>()
@@ -26,19 +27,19 @@ public class UninitializedVariableSpecification
   }
 
   [Test]
-  public void ShouldReturnStoredVariableWithCorrectValueWhenReadingAnExistingVariable()
+  public void ShouldReturnDefinedVariableWithCorrectValueWhenReadingAnExistingVariable()
   {
     //GIVEN
     var name = Any.AlphaString();
     var value = Any.AlphaString();
     Environment.SetEnvironmentVariable(name, value);
-    var variable = new UninitializedVariable<string>(name, s => s, s => s);
+    var variable = UnknownVariable<string>.ProcessWide(name, s => s, s => s);
 
     //WHEN
-    StoredVariable<string> storedVariable = variable.Read();
+    DefinedVariable<string> definedVariable = variable.Read();
 
     //THEN
-    storedVariable.Value().Should().Be(value);
+    definedVariable.Value().Should().Be(value);
   }
 
 }

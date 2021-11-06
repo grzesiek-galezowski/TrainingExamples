@@ -3,13 +3,13 @@ using TddXt.AnyRoot.Strings;
 
 namespace EnvVarsSpecification;
 
-public class PotentialVariableSpecification
+public class UndefinedVariableSpecification
 {
   [Test]
   public void ShouldAllowAccessingItsName()
   {
     var name = Any.AlphaString();
-    var potentialVariable = PotentialVariable<string>.ProcessWide(name, s=>s, s=>s);
+    var potentialVariable = UndefinedVariable<string>.ProcessWide(name, s=>s, s=>s);
     potentialVariable.Name.Should().Be(name);
   }
 
@@ -19,7 +19,7 @@ public class PotentialVariableSpecification
     //GIVEN
     var name = Any.AlphaString();
     var value = Any.AlphaString();
-    var potentialVariable = PotentialVariable<string>.ProcessWide(name, s=>s, s=>s);
+    var potentialVariable = UndefinedVariable<string>.ProcessWide(name, s=>s, s=>s);
     
     //WHEN
     var storedVariable = potentialVariable.Define(value);

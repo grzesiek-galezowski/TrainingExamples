@@ -1,26 +1,26 @@
 namespace EnvVars;
 
-public class StoredVariable<T>
+public class DefinedVariable<T>
 {
   private readonly VariableContainer<T> _variableContainer;
 
-  public StoredVariable(VariableContainer<T> variableContainer)
+  internal DefinedVariable(VariableContainer<T> variableContainer)
   {
     _variableContainer = variableContainer;
   }
 
   public string Name => _variableContainer.Name;
 
-  public PotentialVariable<T> Delete()
+  public UndefinedVariable<T> Delete()
   {
     _variableContainer.Delete();
-    return new PotentialVariable<T>(_variableContainer);
+    return new UndefinedVariable<T>(_variableContainer);
   }
 
-  public StoredVariable<T> ChangeValue(T value)
+  public DefinedVariable<T> ChangeValue(T value)
   {
     _variableContainer.ChangeValue(value);
-    return new StoredVariable<T>(_variableContainer);
+    return new DefinedVariable<T>(_variableContainer);
   }
 
   public T Value() => _variableContainer.Value.Value;
