@@ -3,7 +3,7 @@ var app = builder.Build();
 
 app.MapGet("/", (HttpRequest request, HttpResponse response) =>
 {
-  async IAsyncEnumerable<DateTime> GetStrings()
+  async IAsyncEnumerable<DateTime> GetDates()
   {
     while(true)
     {
@@ -12,7 +12,7 @@ app.MapGet("/", (HttpRequest request, HttpResponse response) =>
       Console.WriteLine("Next loop");
     }
   }
-  return GetStrings();
+  return GetDates();
 });
 
 app.Run();
