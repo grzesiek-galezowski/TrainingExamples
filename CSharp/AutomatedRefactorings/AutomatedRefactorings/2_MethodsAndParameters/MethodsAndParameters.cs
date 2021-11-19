@@ -4,14 +4,18 @@ using System.Linq;
 
 namespace AutomatedRefactorings._2_MethodsAndParameters
 {
-  //TODO encapsulate fields of message (encapsulate fields)
-  //TODO assume the encapsulated type is third party. Copy type -> generate delegating members
+  //TODO encapsulate fields of friendly message (encapsulate fields)
+  //TODO assume the encapsulated type is third party. Wrap method return value, generate delegating members, move .Value to Send() call only - everything compiles
   //TODO deal with unclear responsibility in CreateFriendlyMessageFrom() (inline method)
   //TODO remove duplication of title casing (extract both methods, make one delegate to other, inline method)
-  //TODO in this order, content, recipient and sender as parameters (introduce parameters)
+  //TODO in this order, content, recipient and sender as parameters (introduce parameters in the ProcessInvitationMessage())
+  //TODO move the send message inside our created MyMessage wrapper
   //TODO allow using different formattings in Send (extract method => introduce field => introduce parameter)
-  //     optionally: get to Format(from, to, content), make method non static, extract again to make Format(message), non static again, extract class
-  //TODO get rid of destination dependency and inline Send() method (introduce field, inline field, introduce parameter, inline method)
+  //     optionally: get to Format(from, to, content), make method non static, extract again to make Format(message), non static again,
+  //     optionally: extract class
+  //     optionally: add new before, '()' after and quick fix all errors
+  //TODO get rid of destination dependency from the MethodsAndParameters class
+  //     and inline Send() method (introduce field, inline field, introduce parameter, inline method)
   //TODO rearrange ProcessInvitationMessage() signature parameters in from-to-what fashion
 
   public class MethodsAndParameters
