@@ -5,7 +5,10 @@ using System.Linq;
 namespace AutomatedRefactorings._2_MethodsAndParameters
 {
   //TODO encapsulate fields of friendly message (encapsulate fields)
-  //TODO assume the FriendlyMessage type is third party. Wrap method return value, generate delegating members, move .Value to Send() call only - everything compiles
+  //TODO assume the FriendlyMessage type is third party.
+  //     Wrap method return value,
+  //     generate delegating members (due to bug in R#, this requires the field to be private),
+  //     move ._returnValue to Send() call only - everything compiles
   //TODO deal with unclear responsibility in CreateFriendlyMessageFrom() (inline method)
   //TODO remove duplication of title casing (extract both methods, make one delegate to other, inline method)
   //TODO in this order, content, recipient and sender as parameters (introduce parameters in the ProcessInvitationMessage())
