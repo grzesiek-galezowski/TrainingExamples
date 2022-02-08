@@ -8,10 +8,12 @@ using System.Net.Http.Headers;
 using System.Net.Mime;
 using System.Threading.Tasks;
 using FluentAssertions;
+using FluentBuilder;
 using Flurl;
 using Flurl.Http;
 using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using WireMock.Admin.Mappings;
 using WireMock.Matchers;
@@ -28,14 +30,14 @@ namespace ConsumerDrivenContractTests
         public async Task Test1()
         {
             var wireMockServer = WireMockServer.Start();
-            var proxyServer = WireMockServer.Start(new WireMockServerSettings()
+            var proxyServer = WireMockServer.Start(new WireMockServerSettings
             {
-                ProxyAndRecordSettings = new ProxyAndRecordSettings()
+                ProxyAndRecordSettings = new ProxyAndRecordSettings
                 {
                     SaveMapping = true,
                     SaveMappingToFile = true,
                     Url = wireMockServer.Urls.Single(),
-                    ExcludedHeaders = new[] { "Host", "Date", "Server" }
+                    ExcludedHeaders = new[] { "Host", "Date", "Server", "Accept-Encoding" }
                 }
             });
 
@@ -44,7 +46,7 @@ namespace ConsumerDrivenContractTests
                     .WithPath("/lol/lol2")
                     .UsingPost()
                     .WithParam("queryId", "12")
-                    .WithBody(new ExactMatcher("Trolololo"))
+                    .WithBody(new JsonMatcher(new { key = "value"}))
                     .WithHeader(HeaderNames.Accept, MediaTypeNames.Application.Json)
                 ).RespondWith(
                 Response.Create().WithStatusCode(HttpStatusCode.OK)
@@ -57,7 +59,7 @@ namespace ConsumerDrivenContractTests
                 .SetQueryParam("queryId", "12")
                 .WithHeader(HeaderNames.Accept, MediaTypeNames.Application.Json)
                 .AllowAnyHttpStatus()
-                .PostStringAsync("Trolololo");
+                .PostJsonAsync(new { key = "value"});
 
             result.StatusCode.Should().Be(200);
 
@@ -72,7 +74,7 @@ namespace ConsumerDrivenContractTests
 
         private async Task<IFlurlResponse> MakeRequest(string mappingFile, string url)
         {
-            var mapping = JsonConvert.DeserializeObject<Mapping>(
+            var mapping = JsonConvert.DeserializeObject<MappingModel>(
                 await File.ReadAllTextAsync(mappingFile));
 
             var pathSegments = PathOf(mapping.Request);
@@ -103,27 +105,39 @@ namespace ConsumerDrivenContractTests
             return response;
         }
 
-        private Dictionary<string, string> QueryParamsFrom(MapRequest mappingRequest)
+        private Dictionary<string, string> QueryParamsFrom(RequestModel mappingRequest)
         {
-            return mappingRequest.Params.ToDictionary(p => p.Name, p => p.Matchers.Single().Pattern);
+            return mappingRequest.Params.ToDictionary(p => p.Name, p => p.Matchers.Single().Pattern.ToString());
         }
 
-        private string BodyFrom(MapRequest mappingRequest)
+        private string BodyFrom(RequestModel mappingRequest)
         {
-            return mappingRequest.Body.Matcher.Pattern;
+            if (mappingRequest.Body.Matcher.Name == "StringMatcher")
+            {
+                throw new Exception();
+            }
+
+            if (mappingRequest.Body.Matcher.Name == "JsonMatcher")
+            {
+                return ((JObject)mappingRequest.Body.Matcher.Pattern).ToString();
+            }
+
+            throw new NotSupportedException();
         }
 
-        private Dictionary<string, string> HeadersOf(MapRequest mappingRequest)
+        private Dictionary<string, string> HeadersOf(RequestModel mappingRequest)
         {
-            return mappingRequest.Headers.ToDictionary(h => h.Name, h => h.Matchers.Single().Pattern);
+            return mappingRequest.Headers.ToDictionary(h => h.Name, h => h.Matchers.Single().Pattern.ToString());
         }
 
-        private static string[] PathOf(MapRequest mappingRequest)
+        private static string[] PathOf(RequestModel mappingRequest)
         {
-            return mappingRequest.Path.Matchers.Select(m => m.Pattern).ToArray();
+            var obj = (JObject)mappingRequest.Path;
+            var pathModel = obj.ToObject<PathModel>();
+            return pathModel.Matchers.Select(m => m.Pattern.ToString()).ToArray();
         }
 
-        private HttpMethod MethodOf(MapRequest mappingRequest)
+        private HttpMethod MethodOf(RequestModel mappingRequest)
         {
             return mappingRequest.Methods.Single() switch
             {

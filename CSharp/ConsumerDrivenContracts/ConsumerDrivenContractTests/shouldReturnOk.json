@@ -1,5 +1,5 @@
 {
-  "Guid": "7bd2863e-94d7-4223-9d5d-63302b10074f",
+  "Guid": "d2c5ed7d-c933-4971-9e7a-045ccd6a6a3a",
   "Title": "",
   "Request": {
     "Path": {
@@ -26,21 +26,11 @@
         ]
       },
       {
-        "Name": "Accept-Encoding",
-        "Matchers": [
-          {
-            "Name": "WildcardMatcher",
-            "Pattern": "gzip, deflate",
-            "IgnoreCase": true
-          }
-        ]
-      },
-      {
         "Name": "Content-Type",
         "Matchers": [
           {
             "Name": "WildcardMatcher",
-            "Pattern": "text/plain; charset=utf-8",
+            "Pattern": "application/json; charset=UTF-8",
             "IgnoreCase": true
           }
         ]
@@ -50,7 +40,7 @@
         "Matchers": [
           {
             "Name": "WildcardMatcher",
-            "Pattern": "9",
+            "Pattern": "15",
             "IgnoreCase": true
           }
         ]
@@ -69,8 +59,11 @@
     ],
     "Body": {
       "Matcher": {
-        "Name": "ExactMatcher",
-        "Pattern": "Trolololo"
+        "Name": "JsonMatcher",
+        "Pattern": {
+          "key": "value"
+        },
+        "IgnoreCase": true
       }
     }
   },
@@ -81,7 +74,7 @@
     },
     "Headers": {
       "Content-Type": "application/json",
-      "Date": "Tue, 08 Feb 2022 14:45:10 GMT",
+      "Date": "Tue, 08 Feb 2022 15:46:29 GMT",
       "Server": "Kestrel",
       "Transfer-Encoding": "chunked"
     }
