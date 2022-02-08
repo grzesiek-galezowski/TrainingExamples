@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -40,7 +41,12 @@ namespace ConsumerDrivenContractTests
 
             wireMockServer.Given(
                 Request.Create()
-                    .WithUrl(new ExactMatcher(wireMockServer.Urls.Single() + "/lol/lol2")).UsingGet()).RespondWith(
+                    .WithPath("/lol/lol2")
+                    .UsingPost()
+                    .WithParam("queryId", "12")
+                    .WithBody(new ExactMatcher("Trolololo"))
+                    .WithHeader(HeaderNames.Accept, MediaTypeNames.Application.Json)
+                ).RespondWith(
                 Response.Create().WithStatusCode(HttpStatusCode.OK)
                     .WithBodyAsJson(new { text = "hello" })
                     .WithHeader(HeaderNames.ContentType, MediaTypeNames.Application.Json)
@@ -48,96 +54,144 @@ namespace ConsumerDrivenContractTests
 
             var result = await proxyServer.Urls.First()
                 .AppendPathSegment("lol/lol2")
+                .SetQueryParam("queryId", "12")
+                .WithHeader(HeaderNames.Accept, MediaTypeNames.Application.Json)
                 .AllowAnyHttpStatus()
-                .GetAsync();
+                .PostStringAsync("Trolololo");
 
             result.StatusCode.Should().Be(200);
 
-            var mapping = JsonConvert.DeserializeObject<Mapping>(await File.ReadAllTextAsync("shouldReturnOk.json"));
+            var mapping = JsonConvert.DeserializeObject<Mapping>(
+                await File.ReadAllTextAsync("shouldReturnOk.json"));
 
             var pathSegments = PathOf(mapping.Request);
-            var result2 = await wireMockServer.Urls.First()
-                .AppendPathSegments(pathSegments)
-                .AllowAnyHttpStatus()
-                .SendAsync(MethodOf(mapping.Request));
+            var httpMethod = MethodOf(mapping.Request);
+            var headers = HeadersOf(mapping.Request);
+            var queryParams = QueryParamsFrom(mapping.Request);
+            var request = wireMockServer.Urls.Single()
+                .AppendPathSegments(pathSegments.Cast<object>())
+                .WithHeaders(headers)
+                .SetQueryParams(queryParams)
+                .AllowAnyHttpStatus();
 
-            result2.StatusCode.Should().Be(200);
+            IFlurlResponse response = null;
+            if (httpMethod == HttpMethod.Get)
+            {
+                response = await request.GetAsync();
+            }
+            else if (httpMethod == HttpMethod.Post)
+            {
+                var body = BodyFrom(mapping.Request); //bug optional
+                response = await request.PostStringAsync(body);
+            }
+            else
+            {
+                throw new NotSupportedException(httpMethod.ToString());
+            }
+
+            response.StatusCode.Should().Be(200);
 
             wireMockServer.Stop();
             proxyServer.Stop();
         }
 
-        private static string[] PathOf(MappingRequest mappingRequest)
+        private Dictionary<string, string> QueryParamsFrom(MapRequest mappingRequest)
+        {
+            return mappingRequest.Params.ToDictionary(p => p.Name, p => p.Matchers.Single().Pattern);
+        }
+
+        private string BodyFrom(MapRequest mappingRequest)
+        {
+            return mappingRequest.Body.Matcher.Pattern;
+        }
+
+        private Dictionary<string, string> HeadersOf(MapRequest mappingRequest)
+        {
+            return mappingRequest.Headers.ToDictionary(h => h.Name, h => h.Matchers.Single().Pattern);
+        }
+
+        private static string[] PathOf(MapRequest mappingRequest)
         {
             return mappingRequest.Path.Matchers.Select(m => m.Pattern).ToArray();
         }
 
-        private HttpMethod MethodOf(MappingRequest mappingRequest)
+        private HttpMethod MethodOf(MapRequest mappingRequest)
         {
-            switch (mappingRequest.Methods.Single())
+            return mappingRequest.Methods.Single() switch
             {
-                case "GET":
-                    return HttpMethod.Get;
-                case "POST":
-                    return HttpMethod.Post;
-                default:
-                    throw new NotSupportedException(mappingRequest.Methods.Single());
-            }
+                "GET" => HttpMethod.Get,
+                "POST" => HttpMethod.Post,
+                _ => throw new NotSupportedException(mappingRequest.Methods.Single())
+            };
         }
     }
 }
+
+
 
 
 public class Mapping
 {
     public string Guid { get; set; }
     public string Title { get; set; }
-    public MappingRequest Request { get; set; }
-    public MappingResponse Response { get; set; }
+    public MapRequest Request { get; set; }
+    public MapResponse Response { get; set; }
 }
 
-public class MappingRequest
+public class MapRequest
 {
-    public MappingPath Path { get; set; }
+    public MapPath Path { get; set; }
     public string[] Methods { get; set; }
-    public MappingHeader[] Headers { get; set; }
+    public MapHeader[] Headers { get; set; }
+    public MapParam[] Params { get; set; }
+    public MapBody Body { get; set; }
 }
 
-public class MappingPath
+public class MapPath
 {
-    public MappingMatcher[] Matchers { get; set; }
+    public Matcher[] Matchers { get; set; }
 }
 
-public class MappingMatcher
+public class Matcher
 {
     public string Name { get; set; }
     public string Pattern { get; set; }
     public bool IgnoreCase { get; set; }
 }
 
-public class MappingHeader
+public class MapBody
+{
+    public Matcher Matcher { get; set; }
+}
+
+public class MapHeader
 {
     public string Name { get; set; }
-    public MappingMatcher[] Matchers { get; set; }
+    public Matcher[] Matchers { get; set; }
 }
 
-public class MappingResponse
+public class MapParam
+{
+    public string Name { get; set; }
+    public Matcher[] Matchers { get; set; }
+}
+
+public class MapResponse
 {
     public int StatusCode { get; set; }
-    public MappingBodyAsJson BodyAsJson { get; set; }
-    public MappingHeaders Headers { get; set; }
+    public MapBodyAsJson BodyAsJson { get; set; }
+    public MapHeaders Headers { get; set; }
 }
 
-public class MappingBodyAsJson
+public class MapBodyAsJson
 {
     public string text { get; set; }
 }
 
-public class MappingHeaders
+public class MapHeaders
 {
     public string ContentType { get; set; }
     public string Date { get; set; }
     public string Server { get; set; }
     public string TransferEncoding { get; set; }
 }
-

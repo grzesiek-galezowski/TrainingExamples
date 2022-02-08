@@ -1,5 +1,5 @@
 {
-  "Guid": "9167c5fd-da35-4f5f-8616-862d649a3a60",
+  "Guid": "7bd2863e-94d7-4223-9d5d-63302b10074f",
   "Title": "",
   "Request": {
     "Path": {
@@ -12,9 +12,19 @@
       ]
     },
     "Methods": [
-      "GET"
+      "POST"
     ],
     "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ]
+      },
       {
         "Name": "Accept-Encoding",
         "Matchers": [
@@ -24,8 +34,45 @@
             "IgnoreCase": true
           }
         ]
+      },
+      {
+        "Name": "Content-Type",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "text/plain; charset=utf-8",
+            "IgnoreCase": true
+          }
+        ]
+      },
+      {
+        "Name": "Content-Length",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "9",
+            "IgnoreCase": true
+          }
+        ]
       }
-    ]
+    ],
+    "Params": [
+      {
+        "Name": "queryId",
+        "Matchers": [
+          {
+            "Name": "ExactMatcher",
+            "Pattern": "12"
+          }
+        ]
+      }
+    ],
+    "Body": {
+      "Matcher": {
+        "Name": "ExactMatcher",
+        "Pattern": "Trolololo"
+      }
+    }
   },
   "Response": {
     "StatusCode": 200,
@@ -34,7 +81,7 @@
     },
     "Headers": {
       "Content-Type": "application/json",
-      "Date": "Tue, 08 Feb 2022 07:46:14 GMT",
+      "Date": "Tue, 08 Feb 2022 14:45:10 GMT",
       "Server": "Kestrel",
       "Transfer-Encoding": "chunked"
     }
