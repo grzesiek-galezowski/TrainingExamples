@@ -61,27 +61,38 @@ namespace ConsumerDrivenContractTests
 
             result.StatusCode.Should().Be(200);
 
+            var response = await 
+                MakeRequest("shouldReturnOk.json", wireMockServer.Urls.Single());
+
+            response.StatusCode.Should().Be(200);
+
+            wireMockServer.Stop();
+            proxyServer.Stop();
+        }
+
+        private async Task<IFlurlResponse> MakeRequest(string mappingFile, string url)
+        {
             var mapping = JsonConvert.DeserializeObject<Mapping>(
-                await File.ReadAllTextAsync("shouldReturnOk.json"));
+                await File.ReadAllTextAsync(mappingFile));
 
             var pathSegments = PathOf(mapping.Request);
             var httpMethod = MethodOf(mapping.Request);
             var headers = HeadersOf(mapping.Request);
             var queryParams = QueryParamsFrom(mapping.Request);
-            var request = wireMockServer.Urls.Single()
+            var request = url
                 .AppendPathSegments(pathSegments.Cast<object>())
                 .WithHeaders(headers)
                 .SetQueryParams(queryParams)
                 .AllowAnyHttpStatus();
 
-            IFlurlResponse response = null;
+            IFlurlResponse response;
             if (httpMethod == HttpMethod.Get)
             {
                 response = await request.GetAsync();
             }
             else if (httpMethod == HttpMethod.Post)
             {
-                var body = BodyFrom(mapping.Request); //bug optional
+                var body = BodyFrom(mapping.Request);
                 response = await request.PostStringAsync(body);
             }
             else
@@ -89,10 +100,7 @@ namespace ConsumerDrivenContractTests
                 throw new NotSupportedException(httpMethod.ToString());
             }
 
-            response.StatusCode.Should().Be(200);
-
-            wireMockServer.Stop();
-            proxyServer.Stop();
+            return response;
         }
 
         private Dictionary<string, string> QueryParamsFrom(MapRequest mappingRequest)
