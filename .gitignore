@@ -205,3 +205,4 @@ CSharp/CSharpTricks/_NCrunch_CSharpTricks/*
 *.testlog
 *.manifest
 **/.vs/**/project-colors.json
+CSharp/ConsumerDrivenContracts/.vs/ConsumerDrivenContracts/config/applicationhost.config

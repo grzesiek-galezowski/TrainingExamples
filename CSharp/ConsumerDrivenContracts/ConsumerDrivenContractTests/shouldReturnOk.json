@@ -1,0 +1,42 @@
+{
+  "Guid": "9167c5fd-da35-4f5f-8616-862d649a3a60",
+  "Title": "",
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/lol/lol2",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "GET"
+    ],
+    "Headers": [
+      {
+        "Name": "Accept-Encoding",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "gzip, deflate",
+            "IgnoreCase": true
+          }
+        ]
+      }
+    ]
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "text": "hello"
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Date": "Tue, 08 Feb 2022 07:46:14 GMT",
+      "Server": "Kestrel",
+      "Transfer-Encoding": "chunked"
+    }
+  }
+}
