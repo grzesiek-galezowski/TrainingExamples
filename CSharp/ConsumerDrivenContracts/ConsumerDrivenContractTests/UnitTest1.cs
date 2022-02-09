@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Mime;
+using System.Threading;
 using System.Threading.Tasks;
 using FluentAssertions;
 using FluentBuilder;
@@ -21,6 +22,7 @@ using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
 using WireMock.Server;
 using WireMock.Settings;
+using MediaTypeHeaderValue = System.Net.Http.Headers.MediaTypeHeaderValue;
 
 namespace ConsumerDrivenContractTests
 {
@@ -63,20 +65,25 @@ namespace ConsumerDrivenContractTests
 
             result.StatusCode.Should().Be(200);
 
-            var response = await 
-                MakeRequest("shouldReturnOk.json", wireMockServer.Urls.Single());
+            var mappingModel = JsonConvert.DeserializeObject<MappingModel>(
+                await File.ReadAllTextAsync("shouldReturnOk.json"));
+            var response = await MakeRequest(wireMockServer.Urls.Single(), mappingModel);
 
-            response.StatusCode.Should().Be(200);
+
+            AssertResponse(response, mappingModel);
 
             wireMockServer.Stop();
             proxyServer.Stop();
         }
 
-        private async Task<IFlurlResponse> MakeRequest(string mappingFile, string url)
+        private static void AssertResponse(IFlurlResponse response, MappingModel mappingModel)
         {
-            var mapping = JsonConvert.DeserializeObject<MappingModel>(
-                await File.ReadAllTextAsync(mappingFile));
+            response.StatusCode.Should().Be(int.Parse(mappingModel.Response.StatusCode.ToString()));
+            response.Headers.ToDictionary(h => h.Name, h => h.Value).Should().Contain(mappingModel.Response.Headers.ToDictionary(h => h.Key, h => h.Value.ToString()));
+        }
 
+        private async Task<IFlurlResponse> MakeRequest(string url, MappingModel mapping)
+        {
             var pathSegments = PathOf(mapping.Request);
             var httpMethod = MethodOf(mapping.Request);
             var headers = HeadersOf(mapping.Request);
@@ -94,8 +101,7 @@ namespace ConsumerDrivenContractTests
             }
             else if (httpMethod == HttpMethod.Post)
             {
-                var body = BodyFrom(mapping.Request);
-                response = await request.PostStringAsync(body);
+                response = await Post(request, mapping.Request.Body);
             }
             else
             {
@@ -105,24 +111,30 @@ namespace ConsumerDrivenContractTests
             return response;
         }
 
+        private static async Task<IFlurlResponse> Post(IFlurlRequest request, BodyModel requestBody)
+        {
+            IFlurlResponse response;
+            if (requestBody.Matcher.Name == "StringMatcher")
+            {
+                var body = requestBody.Matcher.Pattern.ToString();
+                response = await request.PostStringAsync(body);
+            }
+            else if (requestBody.Matcher.Name == "JsonMatcher")
+            {
+                var body = ((JObject)requestBody.Matcher.Pattern).ToObject<Dictionary<string, object>>();
+                response = await request.PostJsonAsync(body);
+            }
+            else
+            {
+                throw new NotSupportedException();
+            }
+
+            return response;
+        }
+
         private Dictionary<string, string> QueryParamsFrom(RequestModel mappingRequest)
         {
             return mappingRequest.Params.ToDictionary(p => p.Name, p => p.Matchers.Single().Pattern.ToString());
-        }
-
-        private string BodyFrom(RequestModel mappingRequest)
-        {
-            if (mappingRequest.Body.Matcher.Name == "StringMatcher")
-            {
-                throw new Exception();
-            }
-
-            if (mappingRequest.Body.Matcher.Name == "JsonMatcher")
-            {
-                return ((JObject)mappingRequest.Body.Matcher.Pattern).ToString();
-            }
-
-            throw new NotSupportedException();
         }
 
         private Dictionary<string, string> HeadersOf(RequestModel mappingRequest)
