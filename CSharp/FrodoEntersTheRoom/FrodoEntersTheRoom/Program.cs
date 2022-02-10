@@ -26,7 +26,3 @@ app.MapPost("/utterances", async context =>
 });
 
 app.Run();
-
-namespace FrodoEntersTheRoom
-{
-}

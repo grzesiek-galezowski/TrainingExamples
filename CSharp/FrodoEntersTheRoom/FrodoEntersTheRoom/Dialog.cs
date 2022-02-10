@@ -11,7 +11,9 @@ public class Dialog : IDialog
     switch (_dialogState) 
     {
       case DialogState.EnteredTheRoom:
-        await response.Respond("GameOver", _dialogState);
+        await response.Respond(
+          "Gandalf killed you. - I should've just taken the eagles... " +
+          "- he mumbles. GameOver", _dialogState);
         _dialogState = DialogState.GameOver;
         break;
       case DialogState.GameOver:
@@ -29,8 +31,9 @@ public class Dialog : IDialog
       case DialogState.GameOver:
         await response.Respond("Not sure I understand you, but it's game over anyway, so...", _dialogState);
         break;
+      case DialogState.EnteredTheRoom:
       default:
-        await response.Respond("Not sure I understand you", _dialogState);
+        await response.Respond("Not sure I understand you..", _dialogState);
         break;
     }
   }

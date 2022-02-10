@@ -1,10 +1,10 @@
 namespace FrodoEntersTheRoom;
 
-public class ResponseCommunicatingThroughHttp : IResponse
+public class HttpBasedResponse : IResponse
 {
   private readonly HttpContext _httpContext;
 
-  public ResponseCommunicatingThroughHttp(HttpContext httpContext)
+  public HttpBasedResponse(HttpContext httpContext)
   {
     _httpContext = httpContext;
   }
