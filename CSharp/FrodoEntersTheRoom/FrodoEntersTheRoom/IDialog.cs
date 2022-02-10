@@ -1,7 +1,6 @@
-namespace FrodoEntersTheRoom
+namespace FrodoEntersTheRoom;
+
+public interface IDialog
 {
-  public interface IDialog
-  {
-    void OnAttemptToKill(string characterName, IResponsePhrase responsePhrase);
-  }
+  Task OnAttemptToKill(string characterName, IResponse response);
 }

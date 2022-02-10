@@ -12,7 +12,7 @@ namespace FrodoEntersTheRoomSpecification
     public void ShouldTranslateTheIntentToDialogSignalWithCharacterName()
     {
       var character = Any.String();
-      var responsePhrase = Any.Instance<IResponsePhrase>();
+      var responsePhrase = Any.Instance<IResponse>();
       var dialog = Substitute.For<IDialog>();
       var killCharacterIntent = new KillCharacterIntent(character, dialog, responsePhrase);
 
