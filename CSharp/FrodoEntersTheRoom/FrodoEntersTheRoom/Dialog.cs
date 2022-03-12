@@ -1,12 +1,40 @@
 using System;
 
-namespace FrodoEntersTheRoom
+namespace FrodoEntersTheRoom;
+
+public class Dialog : IDialog
 {
-  public class Dialog : IDialog
+  private DialogState _dialogState = DialogState.EnteredTheRoom;
+
+  public async Task OnAttemptToKill(string characterName, IResponse response)
   {
-    public void OnAttemptToKill(string characterName, IResponsePhrase responsePhrase)
+    switch (_dialogState) 
     {
-      throw new NotImplementedException();
+      case DialogState.EnteredTheRoom:
+        await response.Respond(
+          "Gandalf killed you. - I should've just taken the eagles... " +
+          "- he mumbles. GameOver", _dialogState);
+        _dialogState = DialogState.GameOver;
+        break;
+      case DialogState.GameOver:
+        await response.Respond("No, GameOver!", _dialogState);
+        break;
+      default:
+        throw new ArgumentOutOfRangeException();
+    }
+  }
+
+  public async Task OnUnknownPhrase(IResponse response)
+  {
+    switch (_dialogState)
+    {
+      case DialogState.GameOver:
+        await response.Respond("Not sure I understand you, but it's game over anyway, so...", _dialogState);
+        break;
+      case DialogState.EnteredTheRoom:
+      default:
+        await response.Respond("Not sure I understand you..", _dialogState);
+        break;
     }
   }
 }

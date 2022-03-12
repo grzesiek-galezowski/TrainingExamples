@@ -1,5 +1,3 @@
-using FrodoEntersTheRoom;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -18,11 +16,13 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var serviceLogicRoot = new ServiceLogicRoot();
-
-app.MapPost("/utterances", async context =>
+app.MapGet("/hello", (HttpRequest request, HttpResponse response) =>
 {
-    await serviceLogicRoot.Handle(context);
+    return "";
 });
 
 app.Run();
+
+public partial class Program
+{
+}

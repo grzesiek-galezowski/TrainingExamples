@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace AutomatedRefactorings._1_Basic
 {
@@ -31,7 +32,9 @@ namespace AutomatedRefactorings._1_Basic
     }
   }
 
-  public class DontWantToBeHere //TODO move it to another namespace and another file
+  //TODO show differences between move to separate file quick fix for VS vs R#
+  //TODO refactor: move to namespace, to folder and another file
+  public class DontWantToBeHere
   {
     public void Lol()
     {

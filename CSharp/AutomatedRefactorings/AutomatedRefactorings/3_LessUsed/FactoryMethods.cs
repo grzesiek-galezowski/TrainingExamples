@@ -6,16 +6,15 @@ using System.Threading.Tasks;
 
 namespace AutomatedRefactorings._3_LessUsed
 {
-  //TODO replace constructor with factory method
-  //TODO copy type MyMessage with factory method / move static method
-  //TODO replace static method with instance one (not automated)
-  //TODO change returned type and rename to MyMessageFactory
+  //TODO replace constructor with factory method, make constructor public again
+  //TODO Move static factory method to MyMessageFactory (new class)
+  //TODO replace static method with instance one (make non-static trick or quick fix)
   //TODO use MyMessageFactory
   //TODO inline method
   //TODO for factory - introduce field (initialized from constructor)
   //TODO for factory constructor invocation - introduce parameter
   //TODO for factory - extract interface
-  //TODO for factory - use base type where possible
+  //TODO for factory - use interface where possible
 
   public class Object1
   {

@@ -1,0 +1,82 @@
+{
+  "Guid": "d2c5ed7d-c933-4971-9e7a-045ccd6a6a3a",
+  "Title": "",
+  "Request": {
+    "Path": {
+      "Matchers": [
+        {
+          "Name": "WildcardMatcher",
+          "Pattern": "/lol/lol2",
+          "IgnoreCase": false
+        }
+      ]
+    },
+    "Methods": [
+      "POST"
+    ],
+    "Headers": [
+      {
+        "Name": "Accept",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json",
+            "IgnoreCase": true
+          }
+        ]
+      },
+      {
+        "Name": "Content-Type",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "application/json; charset=UTF-8",
+            "IgnoreCase": true
+          }
+        ]
+      },
+      {
+        "Name": "Content-Length",
+        "Matchers": [
+          {
+            "Name": "WildcardMatcher",
+            "Pattern": "15",
+            "IgnoreCase": true
+          }
+        ]
+      }
+    ],
+    "Params": [
+      {
+        "Name": "queryId",
+        "Matchers": [
+          {
+            "Name": "ExactMatcher",
+            "Pattern": "12"
+          }
+        ]
+      }
+    ],
+    "Body": {
+      "Matcher": {
+        "Name": "JsonMatcher",
+        "Pattern": {
+          "key": "value"
+        },
+        "IgnoreCase": true
+      }
+    }
+  },
+  "Response": {
+    "StatusCode": 200,
+    "BodyAsJson": {
+      "text": "hello"
+    },
+    "Headers": {
+      "Content-Type": "application/json",
+      "Date": "Tue, 08 Feb 2022 15:46:29 GMT",
+      "Server": "Kestrel",
+      "Transfer-Encoding": "chunked"
+    }
+  }
+}

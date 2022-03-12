@@ -4,31 +4,13 @@ using System.Text;
 
 namespace AutomatedRefactorings._5_MakeNotStaticFavouriteTrick
 {
-  public class Database
-  {
-    public static List<EmployeeDto> LoadEmployees()
-    {
-      return new List<EmployeeDto>();
-    }
-  }
-
-  public class EmployeeDto
-  {
-    public EmployeeDto(int pay)
-    {
-      this.Pay = pay;
-    }
-
-    public int Pay { get; }
-  }
-
   public class EmployeeReportCommand
   {
     private readonly int _averagePay;
 
     public EmployeeReportCommand(int averagePay)
     {
-      this._averagePay = averagePay;
+      _averagePay = averagePay;
     }
 
     //todo apply to report
@@ -73,5 +55,22 @@ namespace AutomatedRefactorings._5_MakeNotStaticFavouriteTrick
 
       Console.WriteLine(report.ToString());
     }
+  }
+  public class Database
+  {
+      public static List<EmployeeDto> LoadEmployees()
+      {
+          return new List<EmployeeDto>();
+      }
+  }
+
+  public class EmployeeDto
+  {
+      public EmployeeDto(int pay)
+      {
+          Pay = pay;
+      }
+
+      public int Pay { get; }
   }
 }

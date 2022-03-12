@@ -23,7 +23,7 @@
     <PackageReference Include="Bot.Builder.Community.Recognizers.FuzzyRecognizer" Version="4.3.10" />
     <PackageReference Include="Functional.Maybe" Version="2.0.10" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
     <PackageReference Include="AsyncUsageAnalyzers" Version="1.0.0-alpha003" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Bot.Builder" Version="4.3.2" />
     <PackageReference Include="Microsoft.Bot.Builder.AI.Luis" Version="4.3.2" />
