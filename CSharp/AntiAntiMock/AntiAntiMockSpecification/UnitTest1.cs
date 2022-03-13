@@ -2,58 +2,69 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using AntiAntiMock;
 using FluentAssertions;
-using Flurl;
 using Flurl.Http;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Configuration.Memory;
+using NSubstitute;
 using NUnit.Framework;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
 using WireMock.Server;
-using WireMock.Util;
 
-namespace AntiAntiMockSpecification
+namespace AntiAntiMockSpecification;
+
+public class Tests
 {
-  public class Tests
+  [Test]
+  public async Task ShouldCallHttpMock1ThenHttpMock2()
   {
-    [Test]
-    public async Task Test1()
-    {
-      //GIVEN
-      using var mock1 = WireMockServer.Start();
-      using var mock2 = WireMockServer.Start();
-      var mock1Url = mock1.Urls.Single() + "/";
-      var mock2Url = mock2.Urls.Single() + "/";
+    //GIVEN
+    using var mock1 = WireMockServer.Start();
+    mock1.Given(Request.Create())
+      .RespondWith(Response.Create().WithStatusCode(HttpStatusCode.OK));
+    using var mock2 = WireMockServer.Start();
+    mock2.Given(Request.Create())
+      .RespondWith(Response.Create().WithStatusCode(HttpStatusCode.OK));
+    var mock1Url = mock1.Urls.Single() + "/";
+    var mock2Url = mock2.Urls.Single() + "/";
 
-      mock1.Given(Request.Create())
-        .RespondWith(Response.Create().WithStatusCode(HttpStatusCode.OK));
-      mock2.Given(Request.Create())
-        .RespondWith(Response.Create().WithStatusCode(HttpStatusCode.OK));
-      
-      await using var host = new WebApplicationFactory<Program>()
-        .WithWebHostBuilder(
-          builder =>
+    await using var app = new WebApplicationFactory<Program>()
+      .WithWebHostBuilder(
+        builder => builder.ConfigureAppConfiguration((_, configurationBuilder)
+          => configurationBuilder.AddInMemoryCollection(new Dictionary<string, string>
           {
-            builder.ConfigureAppConfiguration((_, configurationBuilder) =>
-            {
-              configurationBuilder.AddInMemoryCollection(new Dictionary<string, string>
-              {
-                ["Urls:Url1"] = mock1Url,
-                ["Urls:Url2"] = mock2Url,
-              });
-            });
-          });
-      using var client = new FlurlClient(host.CreateClient());
+            ["Urls:Url1"] = mock1Url, ["Urls:Url2"] = mock2Url,
+          })));
+    using var client = new FlurlClient(app.CreateClient());
 
-      //WHEN
-      await client.Request("/broadcast").PostJsonAsync(new WorkDto());
+    //WHEN
+    await client.Request("/broadcast").PostJsonAsync(new Work());
 
-      //THEN
-      var logEntries = mock1.LogEntries.Concat(mock2.LogEntries).OrderBy(entry => entry.RequestMessage.DateTime).ToList();
-      logEntries[0].RequestMessage.AbsoluteUrl.Should().Be(mock1Url);
-      logEntries[1].RequestMessage.AbsoluteUrl.Should().Be(mock2Url);
-    }
+    //THEN
+    var logEntries = mock1.LogEntries.Concat(mock2.LogEntries).OrderBy(entry => entry.RequestMessage.DateTime).ToList();
+    logEntries[0].RequestMessage.AbsoluteUrl.Should().Be(mock1Url);
+    logEntries[1].RequestMessage.AbsoluteUrl.Should().Be(mock2Url);
+  }
+
+  [Test]
+  public void ShouldCallMock1ThenMock2()
+  {
+    //GIVEN
+    var mock1 = Substitute.For<IRecipient>();
+    var mock2 = Substitute.For<IRecipient>();
+    var broadcast = new Broadcast(mock1, mock2);
+    var work = new Work();
+    
+    //WHEN
+    broadcast.MakeFor(work);
+
+    //THEN
+    Received.InOrder(() =>
+    {
+      mock1.Handle(work);
+      mock2.Handle(work);
+    });
   }
 }

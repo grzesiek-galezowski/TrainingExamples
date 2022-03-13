@@ -1,3 +1,4 @@
+using AntiAntiMock;
 using Flurl.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,7 +9,7 @@ var app = builder.Build();
 var urls = new Urls();
 app.Configuration.Bind("Urls", urls);
 
-app.MapPost("/broadcast", async ([FromBody] WorkDto workDto) =>
+app.MapPost("/broadcast", async ([FromBody] Work workDto) =>
 {
   await urls.Url1.PostJsonAsync(workDto);
   await urls.Url2.PostJsonAsync(workDto);
@@ -16,7 +17,7 @@ app.MapPost("/broadcast", async ([FromBody] WorkDto workDto) =>
 
 app.Run();
 
-public record WorkDto;
+public record Work;
 
 public partial class Program
 {
