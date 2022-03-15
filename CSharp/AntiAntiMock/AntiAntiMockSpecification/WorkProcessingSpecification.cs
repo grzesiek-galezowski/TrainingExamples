@@ -58,8 +58,5 @@ public class WorkProcessing
             firstPart.Process(work);
             secondPart.Process(work);
         });
-
     }
-
-
 }
