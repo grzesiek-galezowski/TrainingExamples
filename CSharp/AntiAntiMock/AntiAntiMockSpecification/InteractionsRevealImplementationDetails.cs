@@ -8,7 +8,7 @@ using static TddXt.AnyRoot.Root;
 
 namespace AntiAntiMockSpecification
 {
-    internal class BrittleMockBasedTest
+    internal class InteractionsRevealImplementationDetails
     {
         [Test]
         public void ShouldInsertTextWithPrefixIntoCacheAndReturnItsId()
@@ -54,7 +54,7 @@ namespace AntiAntiMockSpecification
 
         public Guid Insert(IText text)
         {
-            var prefix = _textFactory.CreateText("[PREFIX]");
+            var prefix = _textFactory.CreateText("[PREFIX]"); //could this be Create("[PRE").Append(Create("FIX])) ?
             var finalText = text.Prepend(prefix); //could this be Append()?
             var id = _guidFactory.GetNewGuid();
             _dictionary.Add(id, finalText);
