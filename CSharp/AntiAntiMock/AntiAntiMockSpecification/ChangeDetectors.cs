@@ -15,7 +15,7 @@ using WireMock.Server;
 
 namespace AntiAntiMockSpecification;
 
-public class Tests
+public class ChangeDetectors
 {
   [Test]
   public async Task ShouldCallHttpMock1ThenHttpMock2()
