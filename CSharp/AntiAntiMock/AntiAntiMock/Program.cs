@@ -17,8 +17,6 @@ app.MapPost("/broadcast", async ([FromBody] Work workDto) =>
 
 app.Run();
 
-public record Work;
-
 public partial class Program
 {
-};
+}
