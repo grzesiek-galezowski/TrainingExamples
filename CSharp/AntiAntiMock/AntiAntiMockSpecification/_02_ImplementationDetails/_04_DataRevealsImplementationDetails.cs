@@ -60,11 +60,13 @@ internal class NumberScaler
 
   public OperationResult Scale(OperationResult result)
   {
-    if (result.Status != HttpStatusCode.OK) {
+    if (result.Status != HttpStatusCode.OK)
+    {
       return result;
     }
 
-    if (result.Number > 3) {
+    if (result.Number > 3)
+    {
       return result;
     }
 

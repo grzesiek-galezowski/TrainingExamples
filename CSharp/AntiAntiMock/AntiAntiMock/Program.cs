@@ -11,8 +11,8 @@ app.Configuration.Bind("Urls", urls);
 
 app.MapPost("/broadcast", async ([FromBody] Work workDto) =>
 {
-    await urls.Url1.PostJsonAsync(workDto);
-    await urls.Url2.PostJsonAsync(workDto);
+  await urls.Url1.PostJsonAsync(workDto);
+  await urls.Url2.PostJsonAsync(workDto);
 });
 
 app.Run();
