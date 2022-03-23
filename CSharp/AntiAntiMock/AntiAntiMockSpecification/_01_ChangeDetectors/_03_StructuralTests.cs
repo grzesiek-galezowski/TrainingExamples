@@ -1,6 +1,5 @@
 using System.Reflection;
 using FluentAssertions;
-using MockNoMock;
 using NUnit.Framework;
 
 namespace MockNoMockSpecification._01_ChangeDetectors;
