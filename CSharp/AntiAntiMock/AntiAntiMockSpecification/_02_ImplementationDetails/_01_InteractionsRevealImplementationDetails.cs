@@ -8,7 +8,7 @@ using static TddXt.AnyRoot.Root;
 
 namespace MockNoMockSpecification._02_ImplementationDetails
 {
-  internal class InteractionsRevealImplementationDetails
+  internal class _01_InteractionsRevealImplementationDetails
   {
     [Test]
     public void ShouldInsertTextWithPrefixIntoCacheAndReturnItsId()
