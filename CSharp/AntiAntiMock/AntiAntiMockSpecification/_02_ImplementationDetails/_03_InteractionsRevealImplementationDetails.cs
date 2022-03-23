@@ -31,7 +31,7 @@ namespace MockNoMockSpecification._02_ImplementationDetails
       var id = textCache.Insert(insertedText);
 
       //THEN
-      id.Should().Be(generatedId);
+      id.Should().Be(generatedId); //CQS violation
       dictionary.Received(1).Add(id, prefixedText);
     }
   }
