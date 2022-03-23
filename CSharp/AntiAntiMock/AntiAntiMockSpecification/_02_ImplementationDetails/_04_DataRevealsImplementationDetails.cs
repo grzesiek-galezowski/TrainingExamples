@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace MockNoMockSpecification._02_ImplementationDetails;
 
-internal class DataRevealsImplementationDetails
+internal class _04_DataRevealsImplementationDetails
 {
   [Test]
   public void ShouldScaleUpWhenResultIsOkAndLessThan4()

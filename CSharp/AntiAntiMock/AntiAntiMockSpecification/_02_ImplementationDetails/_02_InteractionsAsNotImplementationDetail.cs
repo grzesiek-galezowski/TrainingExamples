@@ -1,6 +1,5 @@
 ﻿using System.Collections.Concurrent;
 using System.Collections.Generic;
-using FluentAssertions;
 using NSubstitute;
 using NUnit.Framework;
 using TddXt.AnyRoot.Strings;
@@ -9,7 +8,7 @@ using static TddXt.AnyRoot.Root;
 namespace MockNoMockSpecification._02_ImplementationDetails;
 
 //WARNING: THIS IS A ___TOY___ EXAMPLE (and probably bad design and a bad test)
-internal class _03_InteractionsAsNotImplementationDetail
+internal class _02_InteractionsAsNotImplementationDetail
 {
   [Test]
   public void ShouldSendWorkToRemoteSubscriberViaConnection()

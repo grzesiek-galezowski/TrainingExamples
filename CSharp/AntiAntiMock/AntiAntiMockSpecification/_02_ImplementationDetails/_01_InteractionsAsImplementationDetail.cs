@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using NSubstitute;
 using NUnit.Framework;
 using TddXt.AnyRoot.Strings;
 using static TddXt.AnyRoot.Root;
@@ -7,7 +6,7 @@ using static TddXt.AnyRoot.Root;
 namespace MockNoMockSpecification._02_ImplementationDetails;
 
 //WARNING: THIS IS A ___TOY___ EXAMPLE (and probably bad design)
-internal class _02_InteractionsAsImplementationDetail
+internal class _01_InteractionsAsImplementationDetail
 {
   [Test]
   public void ShouldSendWorkToRemoteSubscriber()
