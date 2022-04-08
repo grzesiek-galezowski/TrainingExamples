@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AntiAntiMock\AntiAntiMock.csproj" />
+    <ProjectReference Include="..\AntiAntiMock\MockNoMock.csproj" />
   </ItemGroup>
 
 </Project>

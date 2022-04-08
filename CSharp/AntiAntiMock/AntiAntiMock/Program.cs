@@ -1,6 +1,6 @@
-using AntiAntiMock;
 using Flurl.Http;
 using Microsoft.AspNetCore.Mvc;
+using MockNoMock;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,8 +17,6 @@ app.MapPost("/broadcast", async ([FromBody] Work workDto) =>
 
 app.Run();
 
-public record Work;
-
 public partial class Program
 {
-};
+}

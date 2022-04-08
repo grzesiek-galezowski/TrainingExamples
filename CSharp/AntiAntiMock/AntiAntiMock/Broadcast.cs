@@ -1,4 +1,4 @@
-namespace AntiAntiMock;
+namespace MockNoMock;
 
 public class Broadcast
 {
