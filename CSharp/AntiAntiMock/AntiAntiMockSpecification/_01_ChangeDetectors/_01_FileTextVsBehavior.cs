@@ -1,9 +1,6 @@
 ﻿using AtmaFileSystem;
 using AtmaFileSystem.IO;
-using FluentAssertions;
 using MockNoMock;
-using NSubstitute;
-using NUnit.Framework;
 
 namespace MockNoMockSpecification._01_ChangeDetectors;
 

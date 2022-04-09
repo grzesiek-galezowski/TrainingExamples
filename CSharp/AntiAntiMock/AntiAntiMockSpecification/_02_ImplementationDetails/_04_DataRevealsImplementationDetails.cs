@@ -1,6 +1,4 @@
 ﻿using System.Net;
-using FluentAssertions;
-using NUnit.Framework;
 
 namespace MockNoMockSpecification._02_ImplementationDetails;
 

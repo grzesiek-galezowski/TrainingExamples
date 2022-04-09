@@ -1,11 +1,4 @@
 ﻿using System;
-using FluentAssertions;
-using NSubstitute;
-using NUnit.Framework;
-using TddXt.AnyRoot.Numbers;
-using TddXt.AnyRoot.Strings;
-using TddXt.AnyRoot.Time;
-using static TddXt.AnyRoot.Root;
 
 namespace MockNoMockSpecification._03_MocksReturningMocks;
 

@@ -1,10 +1,4 @@
-﻿using System.Collections.Generic;
-using NSubstitute;
-using NUnit.Framework;
-using TddXt.AnyRoot.Numbers;
-using static TddXt.AnyRoot.Root;
-
-namespace MockNoMockSpecification._04_RddUsingMocks;
+﻿namespace MockNoMockSpecification._04_RddUsingMocks;
 
 internal class TicketOfficeSpecification
 {
