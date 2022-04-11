@@ -17,6 +17,9 @@ app.MapPost("/broadcast", async ([FromBody] Work workDto) =>
 
 app.Run();
 
-public partial class Program
+namespace MockNoMock
 {
+  public partial class Program
+  {
+  }
 }
