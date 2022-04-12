@@ -1,63 +1,31 @@
 ﻿using System.Threading.Tasks;
-using WireMock.Server;
 
 namespace MockNoMockSpecification._07_IntegrationOrAdapterTests;
 
-internal class UserApiAdapterTests
+public class UserApiAdapterTests
 {
   [Test]
-  public async Task ShouldXXXXXXXXXXXXX() //bug
+  public async Task ShouldNotThrowWhenConfigServiceRespondsWith200OkToCreatingNewUser()
   {
-    using var httpConfigServer = WireMockServer.Start();
+     await using var driver = new UserApiAdapterDriver();
+     var addedUser = new UserDto("Zenek", "Kopytko");
 
-    //GIVEN
-    var adapter = new UserApiAdapter(
-      Substitute.For<IUserApiSupport>(),
-      "some kind of url");
+     driver.ConfigServiceResponds200OkToCreating(addedUser);
 
-    //WHEN
-    await adapter.UserApi.CreateNewUser(new UserDto("Zenek", "Kopytko"));
-
-    //THEN
-    Assert.Fail("unfinished");
+    //GIVEN - THEN
+    await driver.Awaiting(d => d.CreateNewUser(addedUser)).Should().NotThrowAsync();
   }
 
-}
-
-internal class UserApiAdapter
-{
-  public UserApiAdapter(IUserApiSupport support, string uri)
+  [Test]
+  public async Task ShouldThrowAndLogErrorWhenConfigServiceRespondsWith409Conflict()
   {
-    UserApi = new HttpBasedUserApi(support, uri);
-  }
+     await using var driver = new UserApiAdapterDriver();
+     var addedUser = new UserDto("Zenek", "Kopytko");
 
-  public IHttpBasedUserApi UserApi { get; }
-}
+     driver.ConfigServiceResponds409ConflictToCreating(addedUser);
 
-internal interface IHttpBasedUserApi
-{
-  Task CreateNewUser(UserDto userDto);
-}
-
-internal class HttpBasedUserApi : IHttpBasedUserApi
-{
-  private readonly IUserApiSupport _support;
-  private readonly string _uri;
-
-  public HttpBasedUserApi(IUserApiSupport support, string uri)
-  {
-    _support = support;
-    _uri = uri;
-  }
-
-  public async Task CreateNewUser(UserDto userDto)
-  {
-    throw new System.NotImplementedException();
+    //GIVEN - THEN
+    await driver.Awaiting(d => d.CreateNewUser(addedUser)).Should().ThrowAsync<DuplicateUserException>();
+    driver.LogsShouldContainErrorAboutDuplicateUser(addedUser);
   }
 }
-
-internal interface IUserApiSupport
-{
-}
-
-public readonly record struct UserDto(string Name, string Surname);
