@@ -1,8 +1,9 @@
 ﻿using System.Threading.Tasks;
+using MockNoMock.UsersApp.Adapter.UserApi;
 
 namespace MockNoMockSpecification._07_IntegrationOrAdapterTests;
 
-public class UserApiAdapterTests
+public class UserApiAdapterSpecification
 {
   [Test]
   public async Task ShouldNotThrowWhenConfigServiceRespondsWith200OkToCreatingNewUser()

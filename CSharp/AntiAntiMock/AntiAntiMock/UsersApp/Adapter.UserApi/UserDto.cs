@@ -1,3 +1,3 @@
-﻿namespace MockNoMockSpecification._07_IntegrationOrAdapterTests;
+﻿namespace MockNoMock.UsersApp.Adapter.UserApi;
 
 public readonly record struct UserDto(string Name, string Surname);

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
+using MockNoMock.UsersApp.Adapter.UserApi;
 using Newtonsoft.Json;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
@@ -20,7 +22,8 @@ internal class UserApiAdapterDriver : IAsyncDisposable
     _httpConfigServer = WireMockServer.Start();
     _userApiSupport = Substitute.For<IUserApiSupport>();
     _adapter = new UserApiAdapter(
-      _userApiSupport, _httpConfigServer.Urls.Single());
+      _userApiSupport, 
+      _httpConfigServer.Urls.Single());
   }
 
   public void ConfigServiceResponds200OkToCreating(UserDto addedUser)
@@ -54,6 +57,6 @@ internal class UserApiAdapterDriver : IAsyncDisposable
 
   public void LogsShouldContainErrorAboutDuplicateUser(UserDto addedUser)
   {
-    _userApiSupport.Received(1).DuplicateUserFound(ApiV1Users, Arg.Any<DuplicateUserException>(), addedUser);
+    _userApiSupport.Received(1).DuplicateUserFound(ApiV1Users, Arg.Any<HttpRequestException>(), addedUser);
   }
 }
