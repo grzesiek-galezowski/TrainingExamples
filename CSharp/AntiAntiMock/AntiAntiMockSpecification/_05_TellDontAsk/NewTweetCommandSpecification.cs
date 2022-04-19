@@ -12,12 +12,12 @@ internal class NewTweetCommandSpecification
     var newTweet = Substitute.For<INewTweetRequest>();
     var postedTweets = Any.Instance<IPostedTweets>();
     var followers = Any.Instance<IFollowers>();
-    var operationStatus = Any.Instance<IAddingOperationStatus>();
+    var runningOperationStatus = Any.Instance<IAddingOperationStatus>();
     var newTweetCommand = new NewTweetCommand(
       newTweet,
       postedTweets,
       followers,
-      operationStatus);
+      runningOperationStatus);
 
     //WHEN
     await newTweetCommand.Execute();
@@ -27,8 +27,8 @@ internal class NewTweetCommandSpecification
     {
       newTweet.AssertContentIsOfRequiredLength();
       newTweet.AssertContentContainsNoInappropriateWords();
-      newTweet.AddTo(postedTweets, operationStatus);
-      newTweet.Notify(followers, operationStatus);
+      newTweet.AddTo(postedTweets, runningOperationStatus);
+      newTweet.Notify(followers, runningOperationStatus);
     });
   }
 }
