@@ -1,6 +1,6 @@
 ﻿namespace MockNoMockSpecification._04_RddUsingMocks;
 
-internal class TicketOfficeSpecification
+public class TicketOfficeSpecification
 {
   //[Test]
   //public void ShouldReserveSeatsThereAreEnoughFreeSeatsInSpecifiedTrain()
