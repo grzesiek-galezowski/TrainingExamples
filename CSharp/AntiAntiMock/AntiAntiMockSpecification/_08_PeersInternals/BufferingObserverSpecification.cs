@@ -24,7 +24,6 @@ public class BufferingObserverSpecification
 
     //WHEN
     bufferedObserver.Flush();
-    bufferedObserver.Flush();
 
     //THEN
     observer.Received(1).Send(event1, event2, event3, event4);
