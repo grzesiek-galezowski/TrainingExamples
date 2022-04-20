@@ -1,5 +1,10 @@
 ﻿namespace MockNoMock.MarsRide;
 
+//Other examples:
+//- string
+//- TimeSpan
+//- DateTime
+//- Guid
 public sealed record Position(int X, int Y)
 {
   //incomplete implementation
@@ -7,11 +12,11 @@ public sealed record Position(int X, int Y)
   {
     if (currentDirection == Directions.North)
     {
-      return this with { Y = Y + 1 };
+      return new Position(X, Y + 1);
     }
     else
     {
-      return this with { Y = Y - 1 };
+      return new Position(X, Y - 1);
     }
   }
 }
