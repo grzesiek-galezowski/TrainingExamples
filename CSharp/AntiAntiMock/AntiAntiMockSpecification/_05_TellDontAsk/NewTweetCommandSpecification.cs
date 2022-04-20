@@ -3,7 +3,7 @@ using MockNoMock.Twitter;
 
 namespace MockNoMockSpecification._05_TellDontAsk;
 
-internal class NewTweetCommandSpecification
+public class NewTweetCommandSpecification
 {
   [Test]
   public async Task ShouldValidateAndPostTweetThenNotifyAllFollowers()
