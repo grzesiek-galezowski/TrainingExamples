@@ -1,9 +1,8 @@
-﻿namespace NullAsNothingRefactored_NRT
+﻿namespace NullAsNothingRefactored_NRT;
+
+internal enum EntityTypes
 {
-    internal enum EntityTypes
-    {
-        User,
-        Radio,
-        Group
-    }
+    User,
+    Radio,
+    Group
 }

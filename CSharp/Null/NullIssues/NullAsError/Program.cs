@@ -1,42 +1,41 @@
 ﻿using System;
 
-namespace NullAsError
+namespace NullAsError;
+
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
+        var database = new Database();
+        var userDto = new UserDto();
+
+        var id = database.Save(userDto);
+
+        if (id == null)
         {
-            var database = new Database();
-            var userDto = new UserDto();
-
-            var id = database.Save(userDto);
-
-            if (id == null)
-            {
-                LogError(
-                    $"Could not connect to db to save user {userDto}");
-            }
-        }
-
-        private static void LogError(string s)
-        {
-            Console.WriteLine(s);
+            LogError(
+                $"Could not connect to db to save user {userDto}");
         }
     }
 
-    internal class Database
+    private static void LogError(string s)
     {
-        public ResourceId Save(UserDto userDto)
-        {
-            return new ResourceId();
-        }
+        Console.WriteLine(s);
     }
+}
 
-    internal class ResourceId
+internal class Database
+{
+    public ResourceId Save(UserDto userDto)
     {
+        return new ResourceId();
     }
+}
 
-    public class UserDto
-    {
-    }
+internal class ResourceId
+{
+}
+
+public class UserDto
+{
 }

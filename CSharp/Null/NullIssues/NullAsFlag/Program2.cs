@@ -1,85 +1,84 @@
 ﻿using System;
 
-namespace NullAsFlag
+namespace NullAsFlag;
+
+class Program2
 {
-    class Program2
+    //null as do-nothing/flag - parameter
+    //see drawing on slides
+    static void Main2(string[] args)
     {
-        //null as do-nothing/flag - parameter
-        //see drawing on slides
-        static void Main2(string[] args)
-        {
-            var myNotificationsEngine = new MyNotificationsEngine();
+        var myNotificationsEngine = new MyNotificationsEngine();
 
-            var localDataCenter = new DataCenter();
-            var remoteDataCenter = new DataCenter();
+        var localDataCenter = new DataCenter();
+        var remoteDataCenter = new DataCenter();
 
-            var logic = new SomeKindOfLogic(
-                myNotificationsEngine, 
-                localDataCenter, 
-                remoteDataCenter);
+        var logic = new SomeKindOfLogic(
+            myNotificationsEngine, 
+            localDataCenter, 
+            remoteDataCenter);
 
-            //somewhere
-            logic.HandleMessageFromUser("message");
+        //somewhere
+        logic.HandleMessageFromUser("message");
 
 
-            //somewhere else
-            logic.HandleReplicatedMessage("message");
-        }
+        //somewhere else
+        logic.HandleReplicatedMessage("message");
+    }
+}
+
+internal class SomeKindOfLogic
+{
+    private readonly MyNotificationsEngine _myNotificationsEngine;
+    private readonly DataCenter _localDataCenter;
+    private readonly DataCenter _remoteDataCenter;
+
+    public SomeKindOfLogic(
+        MyNotificationsEngine myNotificationsEngine, 
+        DataCenter localDataCenter, 
+        DataCenter remoteDataCenter)
+    {
+        _myNotificationsEngine = myNotificationsEngine;
+        _localDataCenter = localDataCenter;
+        _remoteDataCenter = remoteDataCenter;
     }
 
-    internal class SomeKindOfLogic
+    public void HandleMessageFromUser(string message)
     {
-        private readonly MyNotificationsEngine _myNotificationsEngine;
-        private readonly DataCenter _localDataCenter;
-        private readonly DataCenter _remoteDataCenter;
-
-        public SomeKindOfLogic(
-            MyNotificationsEngine myNotificationsEngine, 
-            DataCenter localDataCenter, 
-            DataCenter remoteDataCenter)
-        {
-            _myNotificationsEngine = myNotificationsEngine;
-            _localDataCenter = localDataCenter;
-            _remoteDataCenter = remoteDataCenter;
-        }
-
-        public void HandleMessageFromUser(string message)
-        {
-            _myNotificationsEngine.NotifyNewData(
-                _localDataCenter, 
-                _remoteDataCenter, 
-                message);
-        }
-
-        public void HandleReplicatedMessage(string message)
-        {
-            _myNotificationsEngine.NotifyNewData(
-                _localDataCenter, 
-                null, 
-                message);
-        }
+        _myNotificationsEngine.NotifyNewData(
+            _localDataCenter, 
+            _remoteDataCenter, 
+            message);
     }
 
-    public class DataCenter
+    public void HandleReplicatedMessage(string message)
     {
-        public void Send(string message)
-        {
-            Console.WriteLine(message);     
-        }
+        _myNotificationsEngine.NotifyNewData(
+            _localDataCenter, 
+            null, 
+            message);
     }
+}
 
-    internal class MyNotificationsEngine
+public class DataCenter
+{
+    public void Send(string message)
     {
-        public void NotifyNewData(
-            DataCenter localDataCenter, 
-            DataCenter remoteDataCenter /* = null  */, 
-            string message)
+        Console.WriteLine(message);     
+    }
+}
+
+internal class MyNotificationsEngine
+{
+    public void NotifyNewData(
+        DataCenter localDataCenter, 
+        DataCenter remoteDataCenter /* = null  */, 
+        string message)
+    {
+        localDataCenter.Send(message);
+        if (remoteDataCenter != null)
         {
-            localDataCenter.Send(message);
-            if (remoteDataCenter != null)
-            {
-                remoteDataCenter.Send(message);
-            }
+            remoteDataCenter.Send(message);
         }
     }
 }

@@ -1,12 +1,11 @@
 ﻿using System;
 
-namespace NullAsNothingRefactored_NRT
+namespace NullAsNothingRefactored_NRT;
+
+internal class UnknownEntityTypeException : Exception
 {
-    internal class UnknownEntityTypeException : Exception
+    public UnknownEntityTypeException(object entityType, object entityId)
     {
-        public UnknownEntityTypeException(object entityType, object entityId)
-        {
             
-        }
     }
 }

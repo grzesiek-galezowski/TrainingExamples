@@ -1,36 +1,35 @@
-﻿namespace NullAsNothingRefactored_NRT
+﻿namespace NullAsNothingRefactored_NRT;
+
+internal class MainCache
 {
-    internal class MainCache
+    private readonly ICache _usersCache;
+    private readonly ICache _radioCache;
+    private readonly ICache _groupCache;
+
+    public MainCache(ICache usersCache, ICache radioCache, ICache groupCache)
     {
-        private readonly ICache _usersCache;
-        private readonly ICache _radioCache;
-        private readonly ICache _groupCache;
+        _usersCache = usersCache;
+        _radioCache = radioCache;
+        _groupCache = groupCache;
+    }
 
-        public MainCache(ICache usersCache, ICache radioCache, ICache groupCache)
+    public QueryResult? QueryWith(QueryForData queryForData)
+    {
+        if (queryForData.EntityType == EntityTypes.User)
         {
-            _usersCache = usersCache;
-            _radioCache = radioCache;
-            _groupCache = groupCache;
+            return _usersCache.GetBy(queryForData.EntityId);
         }
-
-        public QueryResult? QueryWith(QueryForData queryForData)
+        else if (queryForData.EntityType == EntityTypes.Radio)
         {
-            if (queryForData.EntityType == EntityTypes.User)
-            {
-                return _usersCache.GetBy(queryForData.EntityId);
-            }
-            else if (queryForData.EntityType == EntityTypes.Radio)
-            {
-                return _radioCache.GetBy(queryForData.EntityId);
-            }
-            else if (queryForData.EntityType == EntityTypes.Group)
-            {
-                return _groupCache.GetBy(queryForData.EntityId);
-            }
-            else
-            {
-                throw new UnknownEntityTypeException(queryForData.EntityType, queryForData.EntityId);
-            }
+            return _radioCache.GetBy(queryForData.EntityId);
+        }
+        else if (queryForData.EntityType == EntityTypes.Group)
+        {
+            return _groupCache.GetBy(queryForData.EntityId);
+        }
+        else
+        {
+            throw new UnknownEntityTypeException(queryForData.EntityType, queryForData.EntityId);
         }
     }
 }

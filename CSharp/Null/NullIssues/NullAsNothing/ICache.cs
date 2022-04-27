@@ -1,7 +1,6 @@
-﻿namespace NullAsNothing
+﻿namespace NullAsNothing;
+
+internal interface ICache
 {
-    internal interface ICache
-    {
-        QueryResult GetBy(string entityId);
-    }
+    QueryResult GetBy(string entityId);
 }

@@ -1,12 +1,11 @@
-﻿using Functional.Maybe;
+﻿using Core.Maybe;
 
-namespace NullAsNothingRefactored
+namespace NullAsNothingRefactored;
+
+internal class RadioCache : ICache
 {
-    internal class RadioCache : ICache
+    public Maybe<QueryResult> GetBy(string entityId)
     {
-        public Maybe<QueryResult> GetBy(string entityId)
-        {
-            return ((QueryResult) null).ToMaybe();
-        }
+        return ((QueryResult) null).ToMaybe();
     }
 }

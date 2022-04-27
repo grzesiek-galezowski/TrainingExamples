@@ -1,9 +1,8 @@
-﻿namespace NullAsNothing
+﻿namespace NullAsNothing;
+
+internal enum EntityTypes
 {
-    internal enum EntityTypes
-    {
-        User,
-        Radio,
-        Group
-    }
+    User,
+    Radio,
+    Group
 }

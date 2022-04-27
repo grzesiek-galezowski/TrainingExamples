@@ -1,58 +1,57 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Functional.Maybe;
+using Core.Maybe;
 
-namespace MaybeAsMonad
+namespace MaybeAsMonad;
+
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            var database = new Database();
+        var database = new Database();
 
-            //1. Compare to null propagation
-            //2. Execute it!
-            var userOfFirstContact = GetAddressBook()
-                .Select(b => b.Contacts)
-                .SelectMany(c => c.FirstMaybe())
-                .Select(c => c.Name)
-                .Select(name => database.LoadByName(name))
-                .OrElse(() => new Person("Zenek"));
-            Console.WriteLine(userOfFirstContact.Name);
-        }
-
-        private static Maybe<AddressBook> GetAddressBook()
-        {
-            return Maybe<AddressBook>.Nothing;
-        }
+        //1. Compare to null propagation
+        //2. Execute it!
+        var userOfFirstContact = GetAddressBook()
+            .Select(b => b.Contacts)
+            .SelectMany(c => c.FirstMaybe())
+            .Select(c => c.Name)
+            .Select(name => database.LoadByName(name))
+            .OrElse(() => new Person("Zenek"));
+        Console.WriteLine(userOfFirstContact.Name);
     }
 
-    public class AddressBook
+    private static Maybe<AddressBook> GetAddressBook()
     {
-        public List<Contact> Contacts { get; set; }
+        return Maybe<AddressBook>.Nothing;
+    }
+}
+
+public class AddressBook
+{
+    public List<Contact> Contacts { get; set; }
+}
+
+public class Contact
+{
+    public string Name { get; set; }
+}
+
+public class Database
+{
+    public Person LoadByName(string name)
+    {
+        return null;
+    }
+}
+
+public class Person
+{
+    public Person(string zenek)
+    {
+        Name = zenek;
     }
 
-    public class Contact
-    {
-        public string Name { get; set; }
-    }
-
-    public class Database
-    {
-        public Person LoadByName(string name)
-        {
-            return null;
-        }
-    }
-
-    public class Person
-    {
-        public Person(string zenek)
-        {
-            Name = zenek;
-        }
-
-        public string Name { get; set; }
-    }
+    public string Name { get; set; }
 }

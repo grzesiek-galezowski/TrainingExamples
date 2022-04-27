@@ -1,10 +1,9 @@
-﻿namespace NullAsNothing
+﻿namespace NullAsNothing;
+
+internal class QueryResult
 {
-    internal class QueryResult
+    public void SendToUser()
     {
-        public void SendToUser()
-        {
             
-        }
     }
 }

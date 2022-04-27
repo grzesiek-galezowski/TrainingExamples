@@ -1,12 +1,11 @@
 ﻿using System;
 
-namespace NullAsNothing
+namespace NullAsNothing;
+
+internal class UnknownEntityTypeException : Exception
 {
-    internal class UnknownEntityTypeException : Exception
+    public UnknownEntityTypeException(object entityType, object entityId)
     {
-        public UnknownEntityTypeException(object entityType, object entityId)
-        {
             
-        }
     }
 }

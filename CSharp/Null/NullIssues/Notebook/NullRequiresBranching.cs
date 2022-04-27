@@ -1,13 +1,12 @@
 using NUnit.Framework;
 
-namespace Notebook
+namespace Notebook;
+
+public class NullRequiresBranching
 {
-    public class NullRequiresBranching
+    [Test]
+    public void Trolololol()
     {
-        [Test]
-        public void Trolololol()
-        {
-            //see slides
-        }
+        //see slides
     }
 }

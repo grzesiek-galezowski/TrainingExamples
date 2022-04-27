@@ -1,10 +1,9 @@
-﻿namespace NullAsNothing
+﻿namespace NullAsNothing;
+
+internal class UsersCache : ICache
 {
-    internal class UsersCache : ICache
+    public QueryResult GetBy(string entityId)
     {
-        public QueryResult GetBy(string entityId)
-        {
-            return new QueryResult();
-        }
+        return new QueryResult();
     }
 }

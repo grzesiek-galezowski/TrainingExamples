@@ -1,74 +1,73 @@
 ﻿using System;
 
-namespace NullAsFlagRefactored
+namespace NullAsFlagRefactored;
+
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            var commandFactory = new CommandFactory();
-            var command = commandFactory.CreateCommandFrom(args);
+        var commandFactory = new CommandFactory();
+        var command = commandFactory.CreateCommandFrom(args);
 
-            command.Execute();
+        command.Execute();
+    }
+}
+
+internal class CommandFactory
+{
+    public IConfigurationCommand CreateCommandFrom(string[] args)
+    {
+        if (IsChangeIdCommand(args))
+        {
+            return new ChangeIdCommand();
+        }
+        else if (IsSynchronizeAllCommand(args))
+        {
+            return new SynchronizeAllCommand();
+        }
+        else
+        {
+            return new IgnoredCommand();
         }
     }
 
-    internal class CommandFactory
+    private static bool IsSynchronizeAllCommand(string[] args)
     {
-        public IConfigurationCommand CreateCommandFrom(string[] args)
-        {
-            if (IsChangeIdCommand(args))
-            {
-                return new ChangeIdCommand();
-            }
-            else if (IsSynchronizeAllCommand(args))
-            {
-                return new SynchronizeAllCommand();
-            }
-            else
-            {
-                return new IgnoredCommand();
-            }
-        }
-
-        private static bool IsSynchronizeAllCommand(string[] args)
-        {
-            return args.Length == 2;
-        }
-
-        private static bool IsChangeIdCommand(string[] args)
-        {
-            return args.Length == 1;
-        }
+        return args.Length == 2;
     }
 
-    //null object pattern implements a __NEUTRAL_OPERATION__
-    public class IgnoredCommand : IConfigurationCommand
+    private static bool IsChangeIdCommand(string[] args)
     {
-        public void Execute()
-        {
-            //do nothing or log something
-        }
+        return args.Length == 1;
     }
+}
 
-    internal class SynchronizeAllCommand : IConfigurationCommand
+//null object pattern implements a __NEUTRAL_OPERATION__
+public class IgnoredCommand : IConfigurationCommand
+{
+    public void Execute()
     {
-        public void Execute()
-        {
-            throw new NotImplementedException();
-        }
+        //do nothing or log something
     }
+}
 
-    internal class ChangeIdCommand : IConfigurationCommand
+internal class SynchronizeAllCommand : IConfigurationCommand
+{
+    public void Execute()
     {
-        public void Execute()
-        {
-            throw new NotImplementedException();
-        }
+        throw new NotImplementedException();
     }
+}
 
-    internal interface IConfigurationCommand
+internal class ChangeIdCommand : IConfigurationCommand
+{
+    public void Execute()
     {
-        void Execute();
+        throw new NotImplementedException();
     }
+}
+
+internal interface IConfigurationCommand
+{
+    void Execute();
 }

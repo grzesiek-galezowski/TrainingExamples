@@ -1,61 +1,59 @@
 ﻿using System;
 
-namespace NullAsErrorRefactored
+namespace NullAsErrorRefactored;
+//exceptions have 2 things nulls do not:
+//1. A name
+//2. A stack trace
+
+class Program
 {
-    //exceptions have 2 things nulls do not:
-    //1. A name
-    //2. A stack trace
-
-    class Program
+    public static void Main(string[] args)
     {
-        public static void Main(string[] args)
+        var database = new Database();
+        var userDto = new UserDto();
+
+        try
         {
-            var database = new Database();
-            var userDto = new UserDto();
-
-            try
-            {
-                database.Save(userDto);
-            }
-            catch (DatabaseConnectionException e)
-            {
-                LogError(e, $"Could not connect to db to save user {userDto}");
-            }
-            //btw, sometimes, this is a better way:
-            //catch (Exception e)
-            //{
-            //    //the details are in the exception
-            //    LogError(e, $"Request failed");
-            //}
-
+            database.Save(userDto);
         }
-
-
-
-
-
-        private static void LogError(DatabaseConnectionException databaseConnectionException, string s)
+        catch (DatabaseConnectionException e)
         {
-            Console.WriteLine(s);
+            LogError(e, $"Could not connect to db to save user {userDto}");
         }
+        //btw, sometimes, this is a better way:
+        //catch (Exception e)
+        //{
+        //    //the details are in the exception
+        //    LogError(e, $"Request failed");
+        //}
+
     }
 
-    internal class DatabaseConnectionException : Exception
-    {
-    }
 
-    internal class ResourceId
-    {
-    }
 
-    public class UserDto
-    {
-    }
 
-    internal class Database
+
+    private static void LogError(DatabaseConnectionException databaseConnectionException, string s)
     {
-        public void Save(UserDto userDto)
-        {
-        }
+        Console.WriteLine(s);
+    }
+}
+
+internal class DatabaseConnectionException : Exception
+{
+}
+
+internal class ResourceId
+{
+}
+
+public class UserDto
+{
+}
+
+internal class Database
+{
+    public void Save(UserDto userDto)
+    {
     }
 }

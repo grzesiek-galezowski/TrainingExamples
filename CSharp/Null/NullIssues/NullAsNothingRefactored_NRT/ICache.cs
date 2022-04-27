@@ -1,7 +1,6 @@
-﻿namespace NullAsNothingRefactored_NRT
+﻿namespace NullAsNothingRefactored_NRT;
+
+internal interface ICache
 {
-    internal interface ICache
-    {
-        QueryResult? GetBy(string entityId);
-    }
+    QueryResult? GetBy(string entityId);
 }

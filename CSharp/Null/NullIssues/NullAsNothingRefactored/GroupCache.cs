@@ -1,12 +1,11 @@
-﻿using Functional.Maybe;
+﻿using Core.Maybe;
 
-namespace NullAsNothingRefactored
+namespace NullAsNothingRefactored;
+
+internal class GroupCache : ICache
 {
-    internal class GroupCache : ICache
+    public Maybe<QueryResult> GetBy(string entityId)
     {
-        public Maybe<QueryResult> GetBy(string entityId)
-        {
-            return new QueryResult().ToMaybe();
-        }
+        return new QueryResult().ToMaybe();
     }
 }

@@ -1,31 +1,30 @@
-﻿namespace NullAsNothing
+﻿namespace NullAsNothing;
+
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            var mainCache = new MainCache(
-                new UsersCache(), 
-                new RadioCache(), 
-                new GroupCache());
+        var mainCache = new MainCache(
+            new UsersCache(), 
+            new RadioCache(), 
+            new GroupCache());
             
-            var result = mainCache.QueryWith(QueryForRadio("radio1"));
+        var result = mainCache.QueryWith(QueryForRadio("radio1"));
 
-            //if the null check wasn't here, it would be hard to
-            //track where the NullReferenceException came from...
-            if (result != null)
-            {
-              result.SendToUser();
-            }
-        }
-
-        private static QueryForData QueryForRadio(string entityId)
+        //if the null check wasn't here, it would be hard to
+        //track where the NullReferenceException came from...
+        if (result != null)
         {
-            return new QueryForData(EntityTypes.Radio, entityId);
+            result.SendToUser();
         }
     }
 
-    internal record QueryForData(
-        EntityTypes EntityType, 
-        string EntityId) { }
+    private static QueryForData QueryForRadio(string entityId)
+    {
+        return new QueryForData(EntityTypes.Radio, entityId);
+    }
 }
+
+internal record QueryForData(
+    EntityTypes EntityType, 
+    string EntityId);

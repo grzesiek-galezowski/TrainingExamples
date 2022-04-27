@@ -1,10 +1,9 @@
-﻿namespace NullAsNothingRefactored_NRT
+﻿namespace NullAsNothingRefactored_NRT;
+
+internal class GroupCache : ICache
 {
-    internal class GroupCache : ICache
+    public QueryResult? GetBy(string entityId)
     {
-        public QueryResult? GetBy(string entityId)
-        {
-            return new QueryResult();
-        }
+        return new QueryResult();
     }
 }

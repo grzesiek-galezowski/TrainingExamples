@@ -1,10 +1,9 @@
-﻿namespace NullAsNothing
+﻿namespace NullAsNothing;
+
+internal class RadioCache : ICache
 {
-    internal class RadioCache : ICache
+    public QueryResult GetBy(string entityId)
     {
-        public QueryResult GetBy(string entityId)
-        {
-            return null;
-        }
+        return null;
     }
 }

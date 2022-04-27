@@ -1,10 +1,9 @@
-﻿namespace NullAsNothingRefactored
-{
-    public class QueryResult
-    {
-        public void SendToUser()
-        {
+﻿namespace NullAsNothingRefactored;
 
-        }
+public class QueryResult
+{
+    public void SendToUser()
+    {
+
     }
 }

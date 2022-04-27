@@ -1,10 +1,9 @@
-﻿namespace NullAsNothingRefactored_NRT
-{
-    public class QueryResult
-    {
-        public void SendToUser()
-        {
+﻿namespace NullAsNothingRefactored_NRT;
 
-        }
+public class QueryResult
+{
+    public void SendToUser()
+    {
+
     }
 }
