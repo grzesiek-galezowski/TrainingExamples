@@ -2,7 +2,7 @@
 
 namespace NullAsFlag;
 
-class Program2
+class _02_PassingNull
 {
     //null as do-nothing/flag - parameter
     //see drawing on slides
@@ -20,7 +20,6 @@ class Program2
 
         //somewhere
         logic.HandleMessageFromUser("message");
-
 
         //somewhere else
         logic.HandleReplicatedMessage("message");

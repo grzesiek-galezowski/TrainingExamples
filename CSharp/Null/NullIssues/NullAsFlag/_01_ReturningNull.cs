@@ -4,7 +4,7 @@ namespace NullAsFlag;
 
 // This is one of the programs invoked in a chain with a command
 // not every program supports all the commands
-class Program
+class _01_ReturningNull
 {
     //null as do-nothing - returned value
     static void Main(string[] args)
