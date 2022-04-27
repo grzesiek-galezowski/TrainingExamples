@@ -27,6 +27,7 @@ class Program
         //    LogError(e, $"Request failed");
         //}
 
+        //btw, what about monadic return types like Either? Or error callbacks?
     }
 
 
