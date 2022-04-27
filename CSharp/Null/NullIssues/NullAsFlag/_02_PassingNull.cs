@@ -75,7 +75,7 @@ internal class MyNotificationsEngine
         string message)
     {
         localDataCenter.Send(message);
-        if (remoteDataCenter != null)
+        if (remoteDataCenter != null) //null propagation doesn't help
         {
             remoteDataCenter.Send(message);
         }
