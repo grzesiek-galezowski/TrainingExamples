@@ -1,4 +1,5 @@
 ﻿using System;
+using Core.Maybe;
 
 namespace NullAsNothingRefactored_NRT;
 
@@ -12,6 +13,7 @@ class Program
             new GroupCache());
 
         QueryResult? maybeResult = mainCache.QueryWith(QueryForRadio("radio1"));
+        //btw is var a nullable type or not?
 
         if (maybeResult != null)
         {

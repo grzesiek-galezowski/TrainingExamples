@@ -2,14 +2,14 @@
 
 namespace NullAsFlagRefactored;
 
-class Program
+class _01_ReturningNull
 {
     static void Main(string[] args)
     {
         var commandFactory = new CommandFactory();
         var command = commandFactory.CreateCommandFrom(args);
 
-        command.Execute();
+        command.Execute(); //btw, what design allows null objects?
     }
 }
 

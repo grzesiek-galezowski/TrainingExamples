@@ -2,7 +2,7 @@
 
 namespace NullAsFlagRefactored;
 
-class Program2
+class _02_PassingNull
 {
     static void Main2(string[] args)
     {
