@@ -20,13 +20,14 @@ class Program
         {
             LogError(e, $"Could not connect to db to save user {userDto}");
         }
-        //btw, sometimes, this is a better way:
+        //btw, often, this is a better way:
         //catch (Exception e)
         //{
         //    //the details are in the exception
         //    LogError(e, $"Request failed");
         //}
 
+        //btw, "throw exceptions in exceptional situations" - what about it?
         //btw, what about monadic return types like Either? Or error callbacks?
     }
 
