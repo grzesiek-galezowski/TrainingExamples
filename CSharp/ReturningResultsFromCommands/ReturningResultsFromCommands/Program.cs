@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Logging.Abstractions;
 using ReturningResultsFromCommands;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -67,7 +68,9 @@ app.MapPost("/todo3", () =>
         new FakeApi(), 
         new FakeValidation());
 
-    var responseInProgress = new AspNetCoreAddTodoResponseInProgress();
+    var responseInProgress = new AspNetCoreAddTodoResponseInProgress(
+        loggerFactory.CreateLogger<AspNetCoreAddTodoResponseInProgress>());
+
     service.AddTodo(new Todo("Do the slides"), responseInProgress);
     return responseInProgress.ToAspNetCoreResult();
 });
