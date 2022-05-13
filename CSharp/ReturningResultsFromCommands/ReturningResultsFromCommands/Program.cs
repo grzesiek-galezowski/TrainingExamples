@@ -64,6 +64,11 @@ app.MapPost("/todo2", () =>
 
 app.MapPost("/todo3", () =>
 {
+    //ADVANTAGE: No knowledge of asp.net core
+    //ADVANTAGE: tell don't ask + CQS (logging, telemetry)
+    //ADVANTAGE: no additional ifs (polymorphism instead of data interpretation, choice is pushed inside)
+    //DISADVANTAGE: multiple or not calls can be made!!!
+
     var service = new TodoServiceAcceptingPolymorphicObject(
         new FakeApi(), 
         new FakeValidation());
