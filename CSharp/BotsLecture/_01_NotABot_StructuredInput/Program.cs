@@ -5,19 +5,38 @@ public static class Program
   public static void Main(string[] args)
   {
     //try this:
-    //{ "Number": "ABC1234", "State": "Alabama" }
-    //{ "Number": "ABC1235", "State": "Alabama" }
-    //{ "Number": "ABC12", "State": "New York" }
+    //{ "Intent": "Plate", "Number": "ABC1234", "State": "Alabama" }
+    //{ "Intent": "Plate", "Number": "ABC1235", "State": "Alabama" }
+    //{ "Intent": "Plate", "Number": "ABC12", "State": "New York" }
 
     while (true)
     {
-      var text = Console.ReadLine();
-      var queryData = JsonSerializer.Deserialize<LicensePlateQueryData>(text);
+      try
+      {
+        var text = Console.ReadLine();
+        var indentData = JsonSerializer.Deserialize<IntentData>(text);
 
-      var findCar = FindCar(queryData);
-      Console.WriteLine(
-        $"The car with license plate: {queryData.Number} in state {queryData.State} is " + findCar);
+        if (indentData is { Intent: "Plate" })
+        {
+          var queryData = JsonSerializer.Deserialize<LicensePlateQueryData>(text);
 
+          var carMake = FindCar(queryData);
+
+          Console.WriteLine(
+            "The car with " +
+            $"license plate: {queryData.Number} " +
+            $"in state {queryData.State} " +
+            $"is {carMake}");
+        }
+        else
+        {
+          Console.WriteLine("Sorry, I don't know what you mean");
+        }
+      }
+      catch
+      {
+        Console.WriteLine("Invalid input!");
+      }
     }
   }
 
@@ -33,4 +52,5 @@ public static class Program
   }
 }
 
+public record IntentData(string Intent);
 public record LicensePlateQueryData(string Number, string State);

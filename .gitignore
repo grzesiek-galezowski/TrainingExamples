@@ -206,3 +206,5 @@ CSharp/CSharpTricks/_NCrunch_CSharpTricks/*
 *.manifest
 **/.vs/**/project-colors.json
 CSharp/ConsumerDrivenContracts/.vs/ConsumerDrivenContracts/config/applicationhost.config
+*.vsidx
+*.vsidx
