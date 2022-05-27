@@ -1,4 +1,5 @@
-﻿using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime;
+﻿using Lib;
+using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime;
 using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime.Models;
 using Newtonsoft.Json.Linq;
 
@@ -19,7 +20,7 @@ namespace _02_UnstructuredInput
           {
             var queryData = GetEntitiesFrom(data);
 
-            var carMake = FindCar(queryData);
+            var carMake = FederalDatabase.FindCar(queryData);
 
             Console.WriteLine(
               "The car with " +
@@ -49,9 +50,9 @@ namespace _02_UnstructuredInput
 
     private static async Task<Prediction> GetStructuredOutputFrom(string text)
     {
-      var luisKey = await File.ReadAllTextAsync($"{Environment.SpecialFolder.MyDocuments}\\__KEYS\\luis.txt");
-      var luisAppId = await File.ReadAllTextAsync($"{Environment.SpecialFolder.MyDocuments}\\__KEYS\\luisApp.txt");
-      var luisAppUrl = await File.ReadAllTextAsync($"{Environment.SpecialFolder.MyDocuments}\\__KEYS\\luisAppUrl.txt");
+      var luisKey = await SecretStore.ReadLuisKey();
+      var luisAppId = await SecretStore.ReadLuisApp();
+      var luisAppUrl = await SecretStore.ReadLuisUrl();
       var credentials = new ApiKeyServiceClientCredentials(luisKey);
       var runtimeClient 
         = new LUISRuntimeClient(credentials) { Endpoint = luisAppUrl };
@@ -62,18 +63,5 @@ namespace _02_UnstructuredInput
 
       return result.Body.Prediction;
     }
-
-    private static string FindCar(LicensePlateQueryData queryData)
-    {
-      return queryData switch
-      {
-        { State: "Alabama", Number: "ABC1234" } => "Alfa Romeo",
-        { State: "Alabama", Number: "ABC1235" } => "Cadillac",
-        { State: "New York", Number: "ABC12" } => "Rolls Royce",
-        _ => "Unknown"
-      };
-    }
   }
-
-  public record LicensePlateQueryData(string Number, string State);
 }

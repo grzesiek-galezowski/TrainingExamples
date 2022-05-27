@@ -12,4 +12,8 @@
     <PackageReference Include="Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime" Version="3.1.0-preview.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Lib\Lib.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using Lib;
 
 namespace _01_NotABot_StructuredInput
 {
@@ -22,7 +23,7 @@ namespace _01_NotABot_StructuredInput
           {
             var queryData = JsonSerializer.Deserialize<LicensePlateQueryData>(text);
 
-            var carMake = FindCar(queryData);
+            var carMake = FederalDatabase.FindCar(queryData);
 
             Console.WriteLine(
               "The car with " +
@@ -42,19 +43,7 @@ namespace _01_NotABot_StructuredInput
         }
       }
     }
-
-    private static string FindCar(LicensePlateQueryData queryData)
-    {
-      return queryData switch
-      {
-        { State: "Alabama", Number: "ABC1234" } => "Alfa Romeo",
-        { State: "Alabama", Number: "ABC1235" } => "Cadillac",
-        { State: "New York", Number: "ABC12" } => "Rolls Royce",
-        _ => "Unknown"
-      };
-    }
   }
 
   public record IntentData(string Intent);
-  public record LicensePlateQueryData(string Number, string State);
 }
