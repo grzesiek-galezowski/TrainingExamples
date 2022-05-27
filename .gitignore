@@ -208,3 +208,4 @@ CSharp/CSharpTricks/_NCrunch_CSharpTricks/*
 CSharp/ConsumerDrivenContracts/.vs/ConsumerDrivenContracts/config/applicationhost.config
 *.vsidx
 *.vsidx
+*.vsidx

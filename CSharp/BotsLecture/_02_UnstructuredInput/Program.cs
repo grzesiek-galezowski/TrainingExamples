@@ -1,17 +1,13 @@
 ﻿using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime;
 using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime.Models;
 using Newtonsoft.Json.Linq;
+using static System.Environment.SpecialFolder;
 using ApiKeyServiceClientCredentials = Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime.ApiKeyServiceClientCredentials;
 
 public static class Program
 {
   public static async Task Main(string[] args)
   {
-    //try this:
-    //{ "Intent": "Plate", "Number": "ABC1234", "State": "Alabama" }
-    //{ "Intent": "Plate", "Number": "ABC1235", "State": "Alabama" }
-    //{ "Intent": "Plate", "Number": "ABC12", "State": "New York" }
-
     while (true)
     {
       try
@@ -52,19 +48,16 @@ public static class Program
 
   private static async Task<Prediction> GetFromLuis(string text)
   {
-    var luisKey = await File.ReadAllTextAsync("C:\\Users\\HYPERBOOK\\Documents\\__KEYS\\luis.txt");
-    var luisAppId = await File.ReadAllTextAsync("C:\\Users\\HYPERBOOK\\Documents\\__KEYS\\luisApp.txt");
-    var luisAppUrl = await File.ReadAllTextAsync("C:\\Users\\HYPERBOOK\\Documents\\__KEYS\\luisAppUrl.txt");
+    var luisKey = await File.ReadAllTextAsync($"{MyDocuments}\\__KEYS\\luis.txt");
+    var luisAppId = await File.ReadAllTextAsync($"{MyDocuments}\\__KEYS\\luisApp.txt");
+    var luisAppUrl = await File.ReadAllTextAsync($"{MyDocuments}\\__KEYS\\luisAppUrl.txt");
     var credentials = new ApiKeyServiceClientCredentials(luisKey);
     var runtimeClient 
       = new LUISRuntimeClient(credentials) { Endpoint = luisAppUrl };
     var result = await runtimeClient.Prediction.GetSlotPredictionWithHttpMessagesAsync(
       Guid.Parse(luisAppId), 
       "staging", 
-      new PredictionRequest()
-      {
-        Query = text
-      });
+      new PredictionRequest(text));
 
     return result.Body.Prediction;
   }
