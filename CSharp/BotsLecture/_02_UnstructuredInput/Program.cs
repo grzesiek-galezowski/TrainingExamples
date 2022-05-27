@@ -1,7 +1,4 @@
 ﻿using Lib;
-using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime;
-using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime.Models;
-using Newtonsoft.Json.Linq;
 
 namespace _02_UnstructuredInput
 {

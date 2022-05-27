@@ -1,6 +1,6 @@
 ﻿using Lib;
 
-namespace _03_AudioInput
+namespace _04_AudioOutput
 {
   public static class Program
   {
@@ -20,23 +20,29 @@ namespace _03_AudioInput
             var queryData = PlateIntent.GetEntitiesFrom(data);
             var carMake = FederalDatabase.FindCar(queryData);
 
-            Console.WriteLine(
-              "The car with " +
-              $"license plate: {queryData.Number} " +
-              $"in state {queryData.State} " +
-              $"is {carMake}");
+            var response = "The car with " +
+                             $"license plate: {queryData.Number} " +
+                             $"in state {queryData.State} " +
+                             $"is {carMake}";
+            await Output(response);
           }
           else
           {
-            Console.WriteLine("Sorry, I don't know what you mean");
+            await Output("Sorry, I don't know what you mean");
           }
         }
         catch(Exception e)
         {
-          Console.WriteLine("Invalid input!");
+          await Output("Invalid input!");
           Console.WriteLine(e.Message);
         }
       }
+    }
+
+    private static async Task Output(string response)
+    {
+      Console.WriteLine(response);
+      await SpeechService.SynthesizeAndRead(response);
     }
   }
 }

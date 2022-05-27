@@ -1,6 +1,7 @@
-using Lib;
 using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime;
 using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime.Models;
+
+namespace Lib;
 
 public static class LuisApi
 {
