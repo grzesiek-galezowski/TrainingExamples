@@ -14,11 +14,11 @@ namespace _02_UnstructuredInput
         try
         {
           var text = Console.ReadLine();
-          var data = await GetStructuredOutputFrom(text);
+          var data = await LuisApi.GetStructuredOutputFrom(text);
 
           if (data.TopIntent == "Plate")
           {
-            var queryData = GetEntitiesFrom(data);
+            var queryData = PlateIntent.GetEntitiesFrom(data);
 
             var carMake = FederalDatabase.FindCar(queryData);
 
@@ -39,29 +39,6 @@ namespace _02_UnstructuredInput
           Console.WriteLine(e.Message);
         }
       }
-    }
-
-    private static LicensePlateQueryData GetEntitiesFrom(Prediction data)
-    {
-      return new LicensePlateQueryData(
-        ((JArray)data.Entities["PlateNumber"]).First.ToString(),
-        ((JArray)data.Entities["State"]).First.ToString());
-    }
-
-    private static async Task<Prediction> GetStructuredOutputFrom(string text)
-    {
-      var luisKey = await SecretStore.ReadLuisKey();
-      var luisAppId = await SecretStore.ReadLuisApp();
-      var luisAppUrl = await SecretStore.ReadLuisUrl();
-      var credentials = new ApiKeyServiceClientCredentials(luisKey);
-      var runtimeClient 
-        = new LUISRuntimeClient(credentials) { Endpoint = luisAppUrl };
-      var result = await runtimeClient.Prediction.GetSlotPredictionWithHttpMessagesAsync(
-        Guid.Parse(luisAppId), 
-        "staging", 
-        new PredictionRequest(text));
-
-      return result.Body.Prediction;
     }
   }
 }
