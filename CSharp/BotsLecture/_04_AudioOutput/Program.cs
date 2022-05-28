@@ -20,29 +20,22 @@ namespace _04_AudioOutput
             var queryData = PlateIntent.GetEntitiesFrom(data);
             var carMake = FederalDatabase.FindCar(queryData);
 
-            var response = "The car with " +
-                             $"license plate: {queryData.Number} " +
-                             $"in state {queryData.State} " +
-                             $"is {carMake}";
-            await Output(response);
+            await User.RespondWith("The car with " +
+                                   $"license plate: {queryData.Number} " +
+                                   $"in state {queryData.State} " +
+                                   $"is {carMake}");
           }
           else
           {
-            await Output("Sorry, I don't know what you mean");
+            await User.RespondWith("Sorry, I don't know what you mean");
           }
         }
         catch(Exception e)
         {
-          await Output("Invalid input!");
+          await User.RespondWith("Invalid input!");
           Console.WriteLine(e.Message);
         }
       }
-    }
-
-    private static async Task Output(string response)
-    {
-      Console.WriteLine(response);
-      await SpeechService.SynthesizeAndRead(response);
     }
   }
 }

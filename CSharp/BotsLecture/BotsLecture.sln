@@ -20,6 +20,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_04_AudioOutput", "_04_Audi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_05_Form", "_05_Form\_05_Form.csproj", "{99FDA780-A49A-4322-8AA6-820A134D25F9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_06_Dialog", "_06_Dialog\_06_Dialog.csproj", "{522CD66C-32DE-49D3-B823-078C8AB831E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,10 @@ Global
 		{99FDA780-A49A-4322-8AA6-820A134D25F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99FDA780-A49A-4322-8AA6-820A134D25F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99FDA780-A49A-4322-8AA6-820A134D25F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{522CD66C-32DE-49D3-B823-078C8AB831E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{522CD66C-32DE-49D3-B823-078C8AB831E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{522CD66C-32DE-49D3-B823-078C8AB831E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{522CD66C-32DE-49D3-B823-078C8AB831E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

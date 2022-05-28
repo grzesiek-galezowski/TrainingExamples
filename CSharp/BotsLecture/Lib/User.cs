@@ -1,6 +1,6 @@
-using Lib;
+namespace Lib;
 
-static internal class User
+public static class User
 {
   public static async Task RespondWith(string response)
   {
