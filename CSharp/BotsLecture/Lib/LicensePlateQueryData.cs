@@ -1,4 +1,4 @@
 ﻿namespace Lib
 {
-  public record LicensePlateQueryData(string Number, string State);
+  public record LicensePlateQueryData(string? Number, string? State);
 }

@@ -12,11 +12,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib", "Lib\Lib.csproj", "{70296D25-51C0-4C6C-9BBF-1872691551B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lib", "Lib\Lib.csproj", "{70296D25-51C0-4C6C-9BBF-1872691551B8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_03_AudioInput", "_03_AudioInput\_03_AudioInput.csproj", "{279E5313-2B2A-4CE3-B659-C08A3FFDD812}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_04_AudioOutput", "_04_AudioOutput\_04_AudioOutput.csproj", "{418EA7CD-7680-4367-821A-33A3A8CD714A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_04_AudioOutput", "_04_AudioOutput\_04_AudioOutput.csproj", "{418EA7CD-7680-4367-821A-33A3A8CD714A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_05_Form", "_05_Form\_05_Form.csproj", "{99FDA780-A49A-4322-8AA6-820A134D25F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +46,10 @@ Global
 		{418EA7CD-7680-4367-821A-33A3A8CD714A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{418EA7CD-7680-4367-821A-33A3A8CD714A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{418EA7CD-7680-4367-821A-33A3A8CD714A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99FDA780-A49A-4322-8AA6-820A134D25F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99FDA780-A49A-4322-8AA6-820A134D25F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99FDA780-A49A-4322-8AA6-820A134D25F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99FDA780-A49A-4322-8AA6-820A134D25F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
