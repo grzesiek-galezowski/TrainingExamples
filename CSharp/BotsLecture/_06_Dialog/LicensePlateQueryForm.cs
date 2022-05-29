@@ -1,6 +1,6 @@
 ﻿using Lib;
 
-namespace _05_Form;
+namespace _06_Dialog;
 
 public class LicensePlateQueryForm
 {
@@ -42,5 +42,10 @@ public class LicensePlateQueryForm
       .Select(t => t.Item1);
 
     return $"Missing fields: {string.Join(" and ", missingFields)}.";
+  }
+
+  public void Clear()
+  {
+    _queryData = new LicensePlateQueryData(null, null);
   }
 }

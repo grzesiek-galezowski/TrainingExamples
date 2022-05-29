@@ -1,40 +1,39 @@
 ﻿using Lib;
 
-namespace _02_UnstructuredInput
+namespace _02_UnstructuredInput;
+
+public static class Program
 {
-  public static class Program
+  public static async Task Main(string[] args)
   {
-    public static async Task Main(string[] args)
+    while (true)
     {
-      while (true)
+      try
       {
-        try
+        var text = Console.ReadLine();
+        var data = await LuisApi.GetStructuredOutputFrom(text);
+
+        if (data.TopIntent == "Plate")
         {
-          var text = Console.ReadLine();
-          var data = await LuisApi.GetStructuredOutputFrom(text);
+          var queryData = PlateIntent.GetEntitiesFrom(data);
 
-          if (data.TopIntent == "Plate")
-          {
-            var queryData = PlateIntent.GetEntitiesFrom(data);
+          var carMake = FederalDatabase.FindCar(queryData);
 
-            var carMake = FederalDatabase.FindCar(queryData);
-
-            Console.WriteLine(
-              "The car with " +
-              $"license plate: {queryData.Number} " +
-              $"in state {queryData.State} " +
-              $"is {carMake}");
-          }
-          else
-          {
-            Console.WriteLine("Sorry, I don't know what you mean");
-          }
+          Console.WriteLine(
+            "The car with " +
+            $"license plate: {queryData.Number} " +
+            $"in state {queryData.State} " +
+            $"is {carMake}");
         }
-        catch(Exception e)
+        else
         {
-          Console.WriteLine("Invalid input!");
-          Console.WriteLine(e.Message);
+          Console.WriteLine("Sorry, I don't know what you mean");
         }
+      }
+      catch(Exception e)
+      {
+        Console.WriteLine("Invalid input!");
+        Console.WriteLine(e.Message);
       }
     }
   }

@@ -1,49 +1,48 @@
 ﻿using System.Text.Json;
 using Lib;
 
-namespace _01_NotABot_StructuredInput
+namespace _01_NotABot_StructuredInput;
+
+public static class Program
 {
-  public static class Program
+  public static void Main(string[] args)
   {
-    public static void Main(string[] args)
+    //try this:
+    //{ "Intent": "Plate", "Number": "ABC1234", "State": "Alabama" }
+    //{ "Intent": "Plate", "Number": "ABC1235", "State": "Alabama" }
+    //{ "Intent": "Plate", "Number": "ABC12", "State": "New York" }
+
+    while (true)
     {
-      //try this:
-      //{ "Intent": "Plate", "Number": "ABC1234", "State": "Alabama" }
-      //{ "Intent": "Plate", "Number": "ABC1235", "State": "Alabama" }
-      //{ "Intent": "Plate", "Number": "ABC12", "State": "New York" }
-
-      while (true)
+      try
       {
-        try
+        var text = Console.ReadLine();
+        var indentData = JsonSerializer.Deserialize<IntentData>(text);
+
+        if (indentData is { Intent: "Plate" })
         {
-          var text = Console.ReadLine();
-          var indentData = JsonSerializer.Deserialize<IntentData>(text);
+          var queryData = JsonSerializer.Deserialize<LicensePlateQueryData>(text);
 
-          if (indentData is { Intent: "Plate" })
-          {
-            var queryData = JsonSerializer.Deserialize<LicensePlateQueryData>(text);
+          var carMake = FederalDatabase.FindCar(queryData);
 
-            var carMake = FederalDatabase.FindCar(queryData);
-
-            Console.WriteLine(
-              "The car with " +
-              $"license plate: {queryData.Number} " +
-              $"in state {queryData.State} " +
-              $"is {carMake}");
-          }
-          else
-          {
-            Console.WriteLine("Sorry, I don't know what you mean");
-          }
+          Console.WriteLine(
+            "The car with " +
+            $"license plate: {queryData.Number} " +
+            $"in state {queryData.State} " +
+            $"is {carMake}");
         }
-        catch(Exception e)
+        else
         {
-          Console.WriteLine("Invalid input!");
-          Console.WriteLine(e.Message);
+          Console.WriteLine("Sorry, I don't know what you mean");
         }
+      }
+      catch(Exception e)
+      {
+        Console.WriteLine("Invalid input!");
+        Console.WriteLine(e.Message);
       }
     }
   }
-
-  public record IntentData(string Intent);
 }
+
+public record IntentData(string Intent);
