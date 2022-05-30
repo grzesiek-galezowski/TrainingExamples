@@ -6,19 +6,23 @@ namespace _06_Dialog
   public interface IDialogContext
   {
     Task PromptForMissingFields();
-    Task SubmitForm();
-    bool IsFormComplete();
-    void UpdateFormFrom(Prediction data);
-    void ClearForm();
     Task MoveTo(IDialogState initial);
     Task PromptForQueryType();
     Task PromptOnlyForMissingFields();
+    Task EvaluateForm(Prediction data);
+    void ClearForm();
   }
 
   public class Dialog : IDialogContext
   {
     private readonly LicensePlateQueryForm _form = new();
     private IDialogState _currentState;
+    private readonly FormFlow _formFlow;
+
+    public Dialog()
+    {
+      _formFlow = new FormFlow();
+    }
 
     public async Task Initialize()
     {
@@ -56,30 +60,19 @@ namespace _06_Dialog
       return _form.PromptForMissingFields();
     }
 
-    public Task SubmitForm()
+    public async Task OnContextFreePlateDataIntent(Prediction data)
     {
-      return _form.Submit();
+      await _currentState.OnContextFreePlateDataIntent(data, this);
     }
 
-    public bool IsFormComplete()
+    public async Task EvaluateForm(Prediction data)
     {
-      return _form.IsComplete();
-    }
-
-    public void UpdateFormFrom(Prediction data)
-    {
-      var queryData = PlateIntent.GetEntitiesFrom(data);
-      _form.UpdateWith(queryData);
+      await _formFlow.Evaluate(_form, this, PlateIntent.GetEntitiesFrom(data));
     }
 
     public void ClearForm()
     {
       _form.Clear();
-    }
-
-    public async Task OnContextFreePlateDataIntent(Prediction data)
-    {
-      await _currentState.OnContextFreePlateDataIntent(data, this);
     }
   }
 }

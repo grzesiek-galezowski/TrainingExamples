@@ -9,9 +9,9 @@ namespace _06_Dialog
       await context.PromptOnlyForMissingFields();
     }
 
-    public Task OnContextFreePlateDataIntent(Prediction data, IDialogContext context)
+    public async Task OnContextFreePlateDataIntent(Prediction data, IDialogContext context)
     {
-      throw new NotImplementedException();
+      await context.EvaluateForm(data);
     }
 
     public async Task OnEnter(IDialogContext context)

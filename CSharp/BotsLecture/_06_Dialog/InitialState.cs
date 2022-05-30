@@ -11,16 +11,7 @@ namespace _06_Dialog
 
     public async Task OnCheckLicensePlateIntent(Prediction data, IDialogContext context)
     {
-      context.UpdateFormFrom(data);
-      if (context.IsFormComplete())
-      {
-        await context.SubmitForm();
-        await context.MoveTo(DialogStates.Initial);
-      }
-      else
-      {
-        await context.MoveTo(DialogStates.WaitingForMissingData);
-      }
+      await context.EvaluateForm(data);
     }
 
     public async Task OnContextFreePlateDataIntent(Prediction data, IDialogContext context)
