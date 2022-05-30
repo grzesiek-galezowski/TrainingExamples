@@ -16,13 +16,8 @@ namespace _06_Dialog
   public class Dialog : IDialogContext
   {
     private readonly LicensePlateQueryForm _form = new();
-    private IDialogState _currentState;
-    private readonly FormFlow _formFlow;
-
-    public Dialog()
-    {
-      _formFlow = new FormFlow();
-    }
+    private IDialogState _currentState = new InvalidState();
+    private readonly FormFlow _formFlow = new();
 
     public async Task Initialize()
     {

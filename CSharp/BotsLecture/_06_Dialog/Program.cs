@@ -21,7 +21,7 @@ public static class Program
         {
           await dialog.OnCheckLicensePlateIntent(data);
         }
-        if (data.TopIntent == "ContextFreePlateData")
+        else if (data.TopIntent == "ContextFreePlateData")
         {
           await dialog.OnContextFreePlateDataIntent(data);
         }

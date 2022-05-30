@@ -9,8 +9,8 @@ public class LicensePlateQueryForm
   public void UpdateWith(LicensePlateQueryData queryData)
   {
     _queryData = new LicensePlateQueryData(
-      queryData.Number ?? queryData.Number,
-      queryData.State ?? queryData.State);
+      queryData.Number ?? _queryData.Number,
+      queryData.State ?? _queryData.State);
   }
 
   public bool IsComplete()
