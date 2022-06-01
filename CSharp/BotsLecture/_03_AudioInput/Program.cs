@@ -1,6 +1,6 @@
 ﻿using Lib;
 
-namespace _02_UnstructuredInput;
+namespace _03_AudioInput;
 
 public static class Program
 {
@@ -10,13 +10,14 @@ public static class Program
     {
       try
       {
-        var text = Console.ReadLine();
+        Console.WriteLine("Speak into your microphone.");
+        var text = await SpeechService.MicrophoneSpeechToText();
+        Console.WriteLine($"Recognized {text}");
         var data = await LuisApi.GetStructuredOutputFrom(text);
 
         if (data.TopIntent == "Plate")
         {
           var queryData = PlateIntent.GetEntitiesFrom(data);
-
           var carMake = FederalDatabase.FindCar(queryData);
 
           Console.WriteLine(
