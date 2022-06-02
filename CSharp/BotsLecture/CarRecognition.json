@@ -1,0 +1,179 @@
+{
+  "luis_schema_version": "7.0.0",
+  "intents": [
+    {
+      "name": "ContextFreePlateData",
+      "features": []
+    },
+    {
+      "name": "None",
+      "features": []
+    },
+    {
+      "name": "Plate",
+      "features": []
+    }
+  ],
+  "entities": [
+    {
+      "name": "State",
+      "children": [],
+      "roles": [],
+      "features": []
+    }
+  ],
+  "hierarchicals": [],
+  "composites": [],
+  "closedLists": [
+    {
+      "name": "plate keyword",
+      "subLists": [
+        {
+          "canonicalForm": "license plate",
+          "list": []
+        },
+        {
+          "canonicalForm": "plate",
+          "list": []
+        }
+      ],
+      "roles": []
+    }
+  ],
+  "prebuiltEntities": [],
+  "utterances": [
+    {
+      "text": "abc123 alabama",
+      "intent": "Plate",
+      "entities": [
+        {
+          "entity": "State",
+          "startPos": 7,
+          "endPos": 13,
+          "children": []
+        }
+      ]
+    },
+    {
+      "text": "abc1234",
+      "intent": "ContextFreePlateData",
+      "entities": []
+    },
+    {
+      "text": "abk44532",
+      "intent": "ContextFreePlateData",
+      "entities": []
+    },
+    {
+      "text": "alabama",
+      "intent": "ContextFreePlateData",
+      "entities": [
+        {
+          "entity": "State",
+          "startPos": 0,
+          "endPos": 6,
+          "children": []
+        }
+      ]
+    },
+    {
+      "text": "alabama abc123",
+      "intent": "Plate",
+      "entities": [
+        {
+          "entity": "State",
+          "startPos": 0,
+          "endPos": 6,
+          "children": []
+        }
+      ]
+    },
+    {
+      "text": "alaska",
+      "intent": "ContextFreePlateData",
+      "entities": [
+        {
+          "entity": "State",
+          "startPos": 0,
+          "endPos": 5,
+          "children": []
+        }
+      ]
+    },
+    {
+      "text": "license plate",
+      "intent": "Plate",
+      "entities": []
+    },
+    {
+      "text": "license plate abcde123432",
+      "intent": "Plate",
+      "entities": []
+    },
+    {
+      "text": "license plate in alaska",
+      "intent": "Plate",
+      "entities": [
+        {
+          "entity": "State",
+          "startPos": 17,
+          "endPos": 22,
+          "children": []
+        }
+      ]
+    },
+    {
+      "text": "license plate new york anc123",
+      "intent": "Plate",
+      "entities": [
+        {
+          "entity": "State",
+          "startPos": 14,
+          "endPos": 21,
+          "children": []
+        }
+      ]
+    },
+    {
+      "text": "license plate state new york, number abc123",
+      "intent": "Plate",
+      "entities": [
+        {
+          "entity": "State",
+          "startPos": 20,
+          "endPos": 27,
+          "children": []
+        }
+      ]
+    },
+    {
+      "text": "new york",
+      "intent": "ContextFreePlateData",
+      "entities": [
+        {
+          "entity": "State",
+          "startPos": 0,
+          "endPos": 7,
+          "children": []
+        }
+      ]
+    }
+  ],
+  "versionId": "0.1",
+  "name": "CarRecognition",
+  "desc": "",
+  "culture": "en-us",
+  "tokenizerVersion": "1.0.0",
+  "patternAnyEntities": [],
+  "regex_entities": [
+    {
+      "name": "PlateNumber",
+      "regexPattern": "[A-Z]+\\s*[0-9]+",
+      "roles": []
+    }
+  ],
+  "phraselists": [],
+  "regex_features": [],
+  "patterns": [],
+  "settings": []
+}
