@@ -8,6 +8,9 @@ public static class Program
   {
     while (true)
     {
+      //1. Demo
+      //2. Luis portal
+      //3. Code walkthrough
       try
       {
         var text = Console.ReadLine();

@@ -17,9 +17,9 @@ public static class Program
       try
       {
         var text = Console.ReadLine();
-        var indentData = JsonSerializer.Deserialize<IntentData>(text);
+        var intent = JsonSerializer.Deserialize<IntentData>(text).Intent;
 
-        if (indentData is { Intent: "Plate" })
+        if (intent == "Plate")
         {
           var queryData = JsonSerializer.Deserialize<LicensePlateQueryData>(text);
 
