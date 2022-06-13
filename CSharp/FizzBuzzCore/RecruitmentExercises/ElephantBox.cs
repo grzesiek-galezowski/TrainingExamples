@@ -1,6 +1,11 @@
+using System.Collections.Generic;
+using NUnit.Framework;
+
+namespace RecruitmentExercises;
+
 public interface IContainable
 {
-  //Propose method inherited by both Elephant
+  //Propose a method inherited by both Elephant
   //and Box that will allow getting the elephant count
 }
 
