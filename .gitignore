@@ -209,3 +209,5 @@ CSharp/ConsumerDrivenContracts/.vs/ConsumerDrivenContracts/config/applicationhos
 *.vsidx
 *.vsidx
 *.vsidx
+CSharp/FizzBuzzCore/FizzBuzzCore/obj/FizzBuzzCore.csproj.nuget.g.props
+CSharp/FizzBuzzCore/FizzBuzzCore/obj/FizzBuzzCore.csproj.nuget.g.targets
