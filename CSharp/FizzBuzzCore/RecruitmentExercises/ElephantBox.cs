@@ -18,7 +18,6 @@ class Box : IContainable
   }
 }
 
-
 public class Tests
 {
   [Test]
