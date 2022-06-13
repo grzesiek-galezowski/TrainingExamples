@@ -8,14 +8,14 @@ namespace XUnitTestPatterns._02_Basics
     public void ShouldAllowAccessingItsName()
     {
       //GIVEN
-      var anyName = "Zenek";
-      var user = new User(anyName, "Ziomal");
+      var initialName = "Zenek";
+      var user = new User(initialName, "Ziomal");
 
       //WHEN
-      var name = user.Name;
+      var retrievedName = user.Name;
 
       //THEN
-      Assert.AreEqual(anyName, name);
+      Assert.AreEqual(initialName, retrievedName);
     }
 
     //TODO where is the 4th phase?
@@ -25,14 +25,14 @@ namespace XUnitTestPatterns._02_Basics
     {
       //we don't use this convention
       //ARRANGE
-      var anyName = "Zenek";
-      var user = new User(anyName, "Ziomal");
+      var initialName = "Zenek";
+      var user = new User(initialName, "Ziomal");
 
       //ACT
-      var name = user.Name;
+      var retrievedName = user.Name;
 
       //ASSERT
-      Assert.AreEqual(anyName, name);
+      Assert.AreEqual(initialName, retrievedName);
 
       //ANNIHILATE
       //...
