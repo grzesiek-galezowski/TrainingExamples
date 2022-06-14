@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace XUnitTestPatterns._02_Basics
 {
-  public class UniqueFilter
+  public class DistinctFilter
   {
     public List<int> ApplyTo(params int[] args)
     {
