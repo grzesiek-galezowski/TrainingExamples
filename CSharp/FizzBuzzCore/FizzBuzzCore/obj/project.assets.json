@@ -6092,19 +6092,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\HYPERBOOK\\.nuget\\packages\\": {}
+    "C:\\Users\\ftw637\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HYPERBOOK\\Documents\\GitHub\\TrainingExamples\\CSharp\\FizzBuzzCore\\FizzBuzzCore\\FizzBuzzCore.csproj",
+      "projectUniqueName": "C:\\Users\\ftw637\\Documents\\GitHub\\TrainingExamples\\CSharp\\FizzBuzzCore\\FizzBuzzCore\\FizzBuzzCore.csproj",
       "projectName": "FizzBuzzCore",
-      "projectPath": "C:\\Users\\HYPERBOOK\\Documents\\GitHub\\TrainingExamples\\CSharp\\FizzBuzzCore\\FizzBuzzCore\\FizzBuzzCore.csproj",
-      "packagesPath": "C:\\Users\\HYPERBOOK\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HYPERBOOK\\Documents\\GitHub\\TrainingExamples\\CSharp\\FizzBuzzCore\\FizzBuzzCore\\obj\\",
+      "projectPath": "C:\\Users\\ftw637\\Documents\\GitHub\\TrainingExamples\\CSharp\\FizzBuzzCore\\FizzBuzzCore\\FizzBuzzCore.csproj",
+      "packagesPath": "C:\\Users\\ftw637\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ftw637\\Documents\\GitHub\\TrainingExamples\\CSharp\\FizzBuzzCore\\FizzBuzzCore\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\HYPERBOOK\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ftw637\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6112,7 +6112,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://msi-cie.pkgs.visualstudio.com/_packaging/vp-common/nuget/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.1": {

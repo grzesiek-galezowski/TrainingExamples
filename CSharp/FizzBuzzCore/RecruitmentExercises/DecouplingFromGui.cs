@@ -2,6 +2,8 @@
 
 namespace RecruitmentExercises;
 
+/***************** GUI CODE **********************************/
+
 public class Gui
 {
   private readonly Logic _logic = new Logic();
@@ -22,7 +24,7 @@ public class MessageBox
   public static string LastMessage { get; private set; }
 }
 
-/*************************************************************/
+/***************** APP LOGIC **********************************/
 
 public class Logic
 {
@@ -37,7 +39,7 @@ public class Logic
   }
 }
 
-/*************************************************************/
+/********************* DATABASE ******************************/
 
 public class Database
 {
