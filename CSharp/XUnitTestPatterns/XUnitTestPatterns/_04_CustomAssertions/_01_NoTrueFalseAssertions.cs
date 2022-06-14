@@ -32,37 +32,6 @@ namespace XUnitTestPatterns._04_CustomAssertions
       Assert.True(AreTheSame(clark, superman));
     }
 
-    [Test]
-    public void ShouldCreateSupermanWithIdenticalDataAsClarkKent__MultipleMode()
-    {
-      //GIVEN
-      var clark = PersonData.ClarkKent();
-
-      //WHEN
-      var superman = PersonData.Superman();
-
-      //THEN
-      Assert.Multiple(() =>
-      {
-        Assert.AreEqual(clark.Age, superman.Age);
-        Assert.AreEqual(clark.Name, superman.Name);
-        Assert.AreEqual(clark.Surname, superman.Surname);
-      });
-    }
-    
-    [Test]
-    public void ShouldCreateSupermanWithIdenticalDataAsClarkKent__EqualityObject()
-    {
-      //GIVEN
-      var clark = PersonData.ClarkKent();
-
-      //WHEN
-      var superman = PersonData.Superman();
-
-      //THEN
-      Assert.AreEqual(new EquatablePerson(clark), new EquatablePerson(superman));
-    }
-
     private bool AreTheSame(PersonData clark, PersonData superman)
     {
       return clark.Age == superman.Age
@@ -93,29 +62,5 @@ namespace XUnitTestPatterns._04_CustomAssertions
         return new PersonData("Clark", "Kent", 35);
       }
     }
-    
-    private class EquatablePerson
-    {
-      public readonly PersonData Actual;
-
-      public EquatablePerson(PersonData actual)
-      {
-        Actual = actual;
-      }
-
-      override public bool Equals(object obj)
-      {
-        var other = (EquatablePerson) obj;
-        return Actual.Surname == other.Actual.Surname
-               && Actual.Age == other.Actual.Age
-               && Actual.Name == other.Actual.Name;
-      }
-
-      override public string ToString()
-      {
-        return $"{Actual.Name} {Actual.Surname}, age {Actual.Age}";
-      }
-    }
   }
-
 }

@@ -9,7 +9,7 @@ namespace XUnitTestPatterns._05_AssertionObject
   public class _01_TypeSpecificAssertions
   {
     [Test]
-    public void Trololololo()
+    public void SomeExamples()
     {
       3.Should().BeGreaterThan(2);
 
