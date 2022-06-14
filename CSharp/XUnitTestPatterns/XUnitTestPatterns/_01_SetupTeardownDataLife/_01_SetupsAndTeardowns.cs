@@ -5,6 +5,21 @@ namespace XUnitTestPatterns._01_SetupTeardownDataLife
 {
   public class _01_SetupsAndTeardowns
   {
+    /*
+     * OneTimeSetUp
+     *
+     * SetUp
+     * Test1
+     * TearDown
+     *
+     * SetUp
+     * Test2
+     * TearDown
+     *
+     * OneTimeTearDown
+     */
+
+
     [OneTimeSetUp]
     public void OneTimeSetup()
     {
