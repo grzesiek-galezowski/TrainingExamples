@@ -5,7 +5,6 @@ namespace XUnitTestPatterns._04_CustomAssertions
 {
   public class _01_NoTrueFalseAssertions
   {
-
     [Test]
     public void UsingAssertTrue()
     {

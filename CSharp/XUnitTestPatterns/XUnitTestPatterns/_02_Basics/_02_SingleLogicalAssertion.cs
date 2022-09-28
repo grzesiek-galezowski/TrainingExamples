@@ -13,10 +13,10 @@ namespace XUnitTestPatterns._02_Basics
     public void ShouldLeaveUniqueItems()
     {
       //GIVEN
-      var uniqueFilter = new UniqueFilter();
+      var distinctFilter = new DistinctFilter();
 
       //WHEN
-      var result = uniqueFilter.ApplyTo(1, 2, 3, 3, 4, 3, 3);
+      var result = distinctFilter.ApplyTo(1, 2, 3, 3, 4, 3, 3);
 
       //THEN
       AssertHasUniqueItems(result);
@@ -27,10 +27,10 @@ namespace XUnitTestPatterns._02_Basics
     public void ShouldLeaveLast3UniqueItems()
     {
       //GIVEN
-      var uniqueFilter = new UniqueFilter();
+      var distinctFilter = new DistinctFilter();
 
       //WHEN
-      var result = uniqueFilter.Apply3To(1, 2, 3, 3, 4, 3, 3);
+      var result = distinctFilter.Apply3To(1, 2, 3, 3, 4, 3, 3);
 
       //THEN
       Assert.AreNotEqual(result[1], result[0]);

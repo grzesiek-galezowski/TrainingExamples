@@ -23,7 +23,7 @@ class Box : IContainable
   }
 }
 
-public class Tests
+public class ElephantBoxExamples
 {
   [Test]
   public void Example()
