@@ -211,3 +211,7 @@ CSharp/ConsumerDrivenContracts/.vs/ConsumerDrivenContracts/config/applicationhos
 *.vsidx
 CSharp/FizzBuzzCore/FizzBuzzCore/obj/FizzBuzzCore.csproj.nuget.g.props
 CSharp/FizzBuzzCore/FizzBuzzCore/obj/FizzBuzzCore.csproj.nuget.g.targets
+CSharp/OutsideInTdd2/TodoApp1/.cr/personal/Editor/Painting/Code Metrics.xml
+CSharp/OutsideInTdd2/TodoApp1/.cr/personal/FavoritesList/List.xml
+CSharp/OutsideInTdd2/TodoApp1/.vs/ProjectEvaluation/todoapp1.metadata.v5.1
+CSharp/OutsideInTdd2/TodoApp1/.vs/ProjectEvaluation/todoapp1.projects.v5.1
