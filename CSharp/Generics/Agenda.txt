@@ -1,9 +1,35 @@
+0. Nie będę mówił o NRT, bo mocno komplikuje kod generyczny
+0. Nie będę mówił o statycznych metodach w interfejsach bo tego jeszcze nie ma
 1. Co to są typy uogólnione?
+2. Czym różnią się od np. szablonów z C++ albo generycznych typów z Javy?
 2. Gdzie można ich używać?
-- klasy
+- klasy 
+  - pola statyczne  w klasach generycznych
 - metody
 - interfejsy
+  - dziedziczenie po kilku interfejsach generycznych
 - atrybuty
-3. Ograniczenia typów generycznych
-4. Ograniczenia vs polimorfizm (można wymusić dziedziczenie po kilku interfejsach)
+3. Koszt typów generycznych
+- nie można nic zrobić z wartością dopóki nie ma ograniczeń (kolekcje tego nie potrzebują, podobnie inne typy "kontenerowe", np. Maybe)
+- generyczne typy raczej w klasach (bo zawsze można wrzucić przez konstruktor implementację dla konkretnego typu, np. IntFoo : IFoo<int>)
+- generyczne metody <T> to prawie zawsze rzutowanie w dół albo refleksja (przykład - deserializacja)
+- chyba że przekażemy gdzieś funkcję albo metodę albo obiekt operujący na takim typie. Patrz Select na IEnumerable
+- nie można używać == i != np. arg1 == arg2
+- porównanie z nullem jest ryzykowne (jest default, ale też ryzykowny, bo np. dla inta jest to 1)
+3. Ograniczenia typów generycznych https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/constraints-on-type-parameters
+- T : struct (np. tylko inty, często używane z np. int?)/class + nullowalne typy generyczne 
+=> Console.WriteLine(arg.Value)
+=> public void Lol2<T1>(Nullable<T1> arg) where T1 : struct
+- T : new (musi być ostatni) - nie używać, lepiej przekazać metodę wytwórczą
+- T : notnull
+- T : Lol albo T : Lol? - bez sensu przy argumentach, bo polimorfizm, ale można używać np. 
+- T : enum =>
+    public void Lol2<T2>(T2 arg, T2 arg2) where T2 : struct, Enum
+    {
+        var strings = Enum.GetNames<T2>();
+    }
+=> przy wartościach zwracanych, np. T GetX<T, U>(U u) where T : U albo T GetX<T, U>(U u) where T : IEnumerable<U>
+=> where T : Collection<int>, Collection<string>
+=> (T a, U b)<T, U> where T : U
 5. Curiously recurring template pattern
+6. Otwarte typy generyczne
