@@ -1,5 +1,6 @@
 0. Nie będę mówił o NRT, bo mocno komplikuje kod generyczny
 0. Nie będę mówił o statycznych metodach w interfejsach bo tego jeszcze nie ma
+0. Nie będzie o atrybutach generycznych
 1. Co to są typy uogólnione?
 2. Czym różnią się od np. szablonów z C++ albo generycznych typów z Javy?
 2. Gdzie można ich używać?
@@ -8,7 +9,7 @@
 - metody
 - interfejsy
   - dziedziczenie po kilku interfejsach generycznych
-- atrybuty
+
 3. Koszt typów generycznych
 - nie można nic zrobić z wartością dopóki nie ma ograniczeń (kolekcje tego nie potrzebują, podobnie inne typy "kontenerowe", np. Maybe)
 - generyczne typy raczej w klasach (bo zawsze można wrzucić przez konstruktor implementację dla konkretnego typu, np. IntFoo : IFoo<int>)
