@@ -1,0 +1,9 @@
+1. Co to są typy uogólnione?
+2. Gdzie można ich używać?
+- klasy
+- metody
+- interfejsy
+- atrybuty
+3. Ograniczenia typów generycznych
+4. Ograniczenia vs polimorfizm (można wymusić dziedziczenie po kilku interfejsach)
+5. Curiously recurring template pattern
