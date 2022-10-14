@@ -8,7 +8,6 @@ public class _04_GenericMethods
   class Serializer
   {
     //generic methods typically mean reflection or downcasting
-    //- see the Select method implementation below for imperfect downcasting example
     public static string Serialize<T>(T obj)
     {
       string str = "";
