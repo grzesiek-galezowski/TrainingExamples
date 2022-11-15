@@ -15,9 +15,9 @@ public class ServiceLogicRoot : IEndpointsRoot
         _endpointsAdapterRoot = new EndpointsAdapterRoot(applicationLogicRoot.TodoCommandFactory);
     }
 
-    public AddTodoEndpoint AddTodoEndpoint =>
+    public IEndpoint AddTodoEndpoint =>
       _endpointsAdapterRoot.AddTodoEndpoint;
 
-    public RetrieveTodoNoteEndpoint RetrieveTodoNoteEndpoint =>
+    public IEndpoint RetrieveTodoNoteEndpoint =>
       _endpointsAdapterRoot.RetrieveTodoNoteEndpoint;
 }

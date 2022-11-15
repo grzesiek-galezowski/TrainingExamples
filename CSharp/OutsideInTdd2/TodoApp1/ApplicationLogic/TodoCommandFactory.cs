@@ -1,3 +1,4 @@
+using ApplicationLogic.AddNewTodoNote;
 using ApplicationLogic.Ports;
 
 namespace ApplicationLogic;
@@ -16,8 +17,8 @@ public class TodoCommandFactory : ITodoCommandFactory
     {
         return new AddTodoCommand(
           _inMemoryTodoNoteDao,
-          newTodoNoteDefinitionDto,
-          addTodoResponseInProgress);
+          new NotifyRequesterOnSuccessfulNotePersistence(addTodoResponseInProgress),
+          new NoteDefinitionByDto(newTodoNoteDefinitionDto));
     }
 
     public ITodoAppCommand CreateRetrieveTodoNoteCommand(Guid id, IGetTodoNoteResponseInProgress responseInProgress)

@@ -37,10 +37,15 @@ public class EndpointsAdapterDriver : IAsyncDisposable
 
   public async Task<AddTodoItemResponse> AttemptToAddATodoItem(NewTodoNoteDefinitionTestDto dto)
   {
+    return await AttemptToAddATodoItem(dto, r =>r);
+  }
+
+  public async Task<AddTodoItemResponse> AttemptToAddATodoItem(
+    NewTodoNoteDefinitionTestDto dto, Func<AddTodoItemRequest, AddTodoItemRequest> customize)
+  {
+    var addTodoItemRequest = customize(new AddTodoItemRequest(TodoEndpoint()));
     return new AddTodoItemResponse(
-      await TodoEndpoint()
-        .AllowAnyHttpStatus()
-        .PostJsonAsync(dto));
+      await addTodoItemRequest.AttemptToExecuteWith(dto));
   }
 
   public async Task<RetrieveTodoItemResponse> AttemptToRetrieveATodoItem(Guid id)

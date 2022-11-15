@@ -1,7 +1,7 @@
 ﻿using ApplicationLogic.Ports;
 using Core.Maybe;
 
-namespace TodoApp1Tests.AppLogicTests.Automation;
+namespace ApplicationLogicTests.AppLogicTests.Automation;
 
 public class FakeTodoNoteDao : ITodoNoteDao
 {

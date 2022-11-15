@@ -3,7 +3,7 @@ using Core.NullableReferenceTypesExtensions;
 
 namespace TodoApp1.Endpoints;
 
-public class AddTodoEndpoint
+public class AddTodoEndpoint : IEndpoint
 {
     private readonly ITodoCommandFactory _todoCommandFactory;
 
