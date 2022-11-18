@@ -2,7 +2,7 @@ using ApplicationLogic.Ports;
 
 namespace TodoApp1.Endpoints;
 
-public class RetrieveTodoNoteEndpoint
+public class RetrieveTodoNoteEndpoint : IEndpoint
 {
     private readonly ITodoCommandFactory _todoCommandFactory;
 

@@ -4,23 +4,8 @@ using TodoApp1Tests.TestDtos;
 
 namespace TodoApp1Tests.AdapterTests.Endpoints;
 
-public class Tests
+public class RetrieveTodoEndpointTests
 {
-  [Test]
-  public async Task ShouldRespondWithSuccessWhenCommandReportsASuccessToAddingATodoItem()
-  {
-    //GIVEN
-    await using var driver = new EndpointsAdapterDriver();
-
-    //WHEN
-    var addTodoItemResponse = await driver.AttemptToAddATodoItem(
-      Any.Instance<NewTodoNoteDefinitionTestDto>());
-
-    //THEN
-    addTodoItemResponse.ShouldBeSuccessful();
-    await addTodoItemResponse.ShouldContainFilledMetadata();
-  }
-
   [Test]
   public async Task ShouldRespondWithSuccessWhenCommandReportsASuccessToRetrievingATodoItem()
   {

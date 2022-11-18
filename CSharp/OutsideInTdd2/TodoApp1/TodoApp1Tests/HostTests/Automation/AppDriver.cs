@@ -1,6 +1,7 @@
 using Flurl.Http;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Net.Http.Headers;
 using TodoApp1;
 using TodoApp1Tests.TestDtos;
 
@@ -19,8 +20,7 @@ public class AppDriver : IAsyncDisposable
             {
               configurationBuilder.AddInMemoryCollection(new Dictionary<string, string>()
               {
-                ["Database:Path"] = 
-                  Path.Combine(Path.GetTempPath(), "TodoApp1", Path.GetTempFileName())
+                ["Database:Path"] = Path.GetTempFileName()
               });
             });
           }));
@@ -39,7 +39,7 @@ public class AppDriver : IAsyncDisposable
     public async Task<AttemptToCreateTodoNoteResponse> AttemptToCreateATodoNote(NewTodoNoteDefinitionTestDto dto)
     {
       return new AttemptToCreateTodoNoteResponse(
-        await TodoEndpointRequest()
+        await TodoEndpointAddRequest()
           .AllowAnyHttpStatus()
           .PostJsonAsync(dto));
     }
@@ -51,7 +51,7 @@ public class AppDriver : IAsyncDisposable
 
     public async Task<CreateTodoNoteResponse> CreateATodoNote(NewTodoNoteDefinitionTestDto dto)
     {
-      var flurlResponse = await TodoEndpointRequest().PostJsonAsync(dto);
+      var flurlResponse = await TodoEndpointAddRequest().PostJsonAsync(dto);
       var result = new CreateTodoNoteResponse(
         await flurlResponse.GetJsonAsync<TodoNoteMetadataTestDto>());
       return result;
@@ -66,7 +66,14 @@ public class AppDriver : IAsyncDisposable
 
     private IFlurlRequest TodoEndpointRequest()
     {
-      return FlurlClient.Request("/todo");
+      return FlurlClient
+        .Request("/todo");
+    }
+
+    private IFlurlRequest TodoEndpointAddRequest()
+    {
+      return TodoEndpointRequest()
+        .WithHeader(HeaderNames.Accept, "application/json");
     }
 
     private FlurlClient FlurlClient => new(_webApplicationFactory.CreateClient());

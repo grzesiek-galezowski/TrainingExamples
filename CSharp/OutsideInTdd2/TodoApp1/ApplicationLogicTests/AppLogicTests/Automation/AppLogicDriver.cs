@@ -2,7 +2,7 @@
 using ApplicationLogic.Ports;
 using NSubstitute;
 
-namespace TodoApp1Tests.AppLogicTests.Automation;
+namespace ApplicationLogicTests.AppLogicTests.Automation;
 
 public class AppLogicDriver
 {

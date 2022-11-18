@@ -18,8 +18,7 @@ public class DatabaseAdapterDriver
 
     public static DatabaseAdapterDriver Default()
     {
-        return new DatabaseAdapterDriver(
-          Path.Combine(Path.GetTempPath(), "TodoApp1", Path.GetTempFileName()));
+      return new DatabaseAdapterDriver(Path.GetTempFileName());
     }
 
     public static DatabaseAdapterDriver WithPath(string filePath)

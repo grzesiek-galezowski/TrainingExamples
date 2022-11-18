@@ -24,4 +24,9 @@ public class AddTodoItemResponse
         todoNoteMetadataTestDto.Should().NotBeNull();
         todoNoteMetadataTestDto.Id.Should().NotBeEmpty();
     }
+
+    public void ShouldBeBadRequest()
+    {
+      _response.StatusCode.Should().Be(400);
+    }
 }
