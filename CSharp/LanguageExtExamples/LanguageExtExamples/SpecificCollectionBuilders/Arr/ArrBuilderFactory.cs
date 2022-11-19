@@ -1,7 +1,7 @@
 using LanguageExt;
-using LanguageExtExamples.Framework;
+using LanguageExtCollectionsJson.Framework;
 
-namespace LanguageExtExamples.SpecificCollectionBuilders;
+namespace LanguageExtCollectionsJson.SpecificCollectionBuilders.Arr;
 
 public class ArrBuilderFactory<TElement> : ICollectionBuilderFactory<Arr<TElement>, TElement>
 {

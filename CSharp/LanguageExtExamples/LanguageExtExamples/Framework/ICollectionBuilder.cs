@@ -1,4 +1,4 @@
-namespace LanguageExtExamples.Framework;
+namespace LanguageExtCollectionsJson.Framework;
 
 public interface ICollectionBuilder<out TCollection, in TElement> where TCollection : IEnumerable<TElement>
 {

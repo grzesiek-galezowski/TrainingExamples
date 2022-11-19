@@ -1,7 +1,7 @@
 using LanguageExt;
-using LanguageExtExamples.Framework;
+using LanguageExtCollectionsJson.Framework;
 
-namespace LanguageExtExamples.SpecificCollectionBuilders;
+namespace LanguageExtCollectionsJson.SpecificCollectionBuilders.Lst;
 
 public class LstBuilder<TElement> : ICollectionBuilder<Lst<TElement>, TElement>
 {

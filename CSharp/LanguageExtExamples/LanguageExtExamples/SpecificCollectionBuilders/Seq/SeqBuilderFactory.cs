@@ -1,7 +1,7 @@
 using LanguageExt;
-using LanguageExtExamples.Framework;
+using LanguageExtCollectionsJson.Framework;
 
-namespace LanguageExtExamples.SpecificCollectionBuilders;
+namespace LanguageExtCollectionsJson.SpecificCollectionBuilders.Seq;
 
 public class SeqBuilderFactory<TElement> : ICollectionBuilderFactory<Seq<TElement>, TElement>
 {
