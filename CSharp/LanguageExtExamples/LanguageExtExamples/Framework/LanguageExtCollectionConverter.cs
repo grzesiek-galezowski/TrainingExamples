@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 using JsonConverter = System.Text.Json.Serialization.JsonConverter;
 using JsonException = System.Text.Json.JsonException;
 
-namespace LanguageExtExamples.Framework;
+namespace LanguageExtCollectionsJson.Framework;
 
 public class LanguageExtCollectionConverter : JsonConverterFactory
 {
@@ -87,11 +87,11 @@ public class LanguageExtCollectionConverter<TCollection, TElement> : JsonConvert
     throw new JsonException();
   }
 
-  public override void Write(Utf8JsonWriter writer, TCollection seq, JsonSerializerOptions options)
+  public override void Write(Utf8JsonWriter writer, TCollection collection, JsonSerializerOptions options)
   {
     writer.WriteStartArray();
 
-    foreach (var value in seq)
+    foreach (var value in collection)
     {
       _jsonConverter.Write(writer, value, options);
     }
