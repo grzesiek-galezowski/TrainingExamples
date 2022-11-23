@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tb03Gui", "Tb03Gui\Tb03Gui.csproj", "{84B0EE7C-3B7C-4C6B-AF78-008C95FB35D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tb03Gui", "Tb03Gui\Tb03Gui.csproj", "{84B0EE7C-3B7C-4C6B-AF78-008C95FB35D9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MidiPlayground", "MidiPlayground\MidiPlayground.csproj", "{EA2F2629-FA85-4235-9508-F1DE1ACAB7D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{84B0EE7C-3B7C-4C6B-AF78-008C95FB35D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84B0EE7C-3B7C-4C6B-AF78-008C95FB35D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84B0EE7C-3B7C-4C6B-AF78-008C95FB35D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA2F2629-FA85-4235-9508-F1DE1ACAB7D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA2F2629-FA85-4235-9508-F1DE1ACAB7D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA2F2629-FA85-4235-9508-F1DE1ACAB7D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA2F2629-FA85-4235-9508-F1DE1ACAB7D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -81,6 +81,20 @@ namespace Tb03Gui
         InsertNoteIntoSequencer(e);
         ForwardSequencerPosition();
       }
+      else if (e.Key == Key.Left)
+      {
+        UnmarkCurrentSequencerPosition();
+        TryBacktrackingSequencerPosition();
+        MarkCurrentSequencerPosition();
+      }
+    }
+
+    private void TryBacktrackingSequencerPosition()
+    {
+      if (_sequencerPosition > 0)
+      {
+        _sequencerPosition--;
+      }
     }
 
     private void InsertNoteIntoSequencer(KeyEventArgs e)
@@ -90,13 +104,17 @@ namespace Tb03Gui
 
     private void ForwardSequencerPosition()
     {
+      UnmarkCurrentSequencerPosition();
+      TryAdvancingSequencerPosition();
+      MarkCurrentSequencerPosition();
+    }
+
+    private void TryAdvancingSequencerPosition()
+    {
       if (_sequencerPosition < _sequencer.Length - 1)
       {
         _sequencerPosition++;
       }
-
-      UnmarkPreviousSequencerPosition();
-      MarkCurrentSequencerPosition();
     }
 
     private void MarkCurrentSequencerPosition()
@@ -104,11 +122,11 @@ namespace Tb03Gui
       _sequencer[_sequencerPosition].Background = new SolidColorBrush(Colors.AliceBlue);
     }
 
-    private void UnmarkPreviousSequencerPosition()
+    private void UnmarkCurrentSequencerPosition()
     {
-      if (_sequencerPosition > 0)
+      if (_sequencerPosition >= 0 && _sequencerPosition < _sequencer.Length)
       {
-        _sequencer[_sequencerPosition - 1].Background = new SolidColorBrush(Colors.LightGray);
+        _sequencer[_sequencerPosition].Background = new SolidColorBrush(Colors.LightGray);
       }
     }
   }
