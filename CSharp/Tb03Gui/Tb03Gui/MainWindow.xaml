@@ -1,0 +1,241 @@
+﻿<Window x:Class="Tb03Gui.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" WindowState="Maximized" Width="1042" Height="800" KeyDown="UIElement_OnKeyDown" KeyUp="MainWindow_OnKeyUp">
+  <Grid Background="Silver">
+    <Label Content="" HorizontalAlignment="Left" Height="200" Margin="49,300,0,0" VerticalAlignment="Top" Width="96"
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+
+    <Button Name="C"
+      Content="🛑" 
+      Foreground="Red" 
+      HorizontalAlignment="Left" 
+      Height="72" 
+      Width="46"
+      Margin="74,400,0,0"
+      VerticalAlignment="Top" />
+    <Label 
+      Content="" 
+      HorizontalAlignment="Left" 
+      Height="200" 
+      Width="96"
+      Margin="140,300,0,0" 
+      VerticalAlignment="Top" 
+      Background="LightGray" 
+      BorderBrush="Black" 
+      BorderThickness="5" />
+    <Button Name="D"
+      Content="🛑" 
+      Foreground="Red" 
+      HorizontalAlignment="Left" 
+      Height="72" 
+      Margin="166,400,0,0"
+      VerticalAlignment="Top" 
+      Width="44" />
+    <Label 
+      Content="" 
+      HorizontalAlignment="Left" 
+      Height="95" 
+      Margin="111,300,0,0" 
+      VerticalAlignment="Top" 
+      Width="64"
+      Background="black" />
+    <Button Name="CSharp"
+      Content="🛑" 
+      Foreground="Red" 
+      HorizontalAlignment="Left" 
+      Height="72" 
+      Width="46" 
+      Margin="120,307,0,0"
+      VerticalAlignment="Top" 
+      />
+    <Label Content="" HorizontalAlignment="Left" Height="200" Margin="230,300,0,0" VerticalAlignment="Top" Width="96"
+      Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+    <Button Name="E"
+      Content="🛑" 
+      Foreground="Red" 
+      HorizontalAlignment="Left" 
+      Height="72" 
+      Width="46"
+      Margin="255,400,0,0"
+      VerticalAlignment="Top" />
+    <Label 
+      Content="" 
+      HorizontalAlignment="Left" 
+      Height="200" 
+      Width="96"
+      Margin="321,300,0,0" 
+      VerticalAlignment="Top" 
+      Background="LightGray" 
+      BorderBrush="Black" 
+      BorderThickness="5" />
+    <Button Name="F"
+      Content="🛑" 
+      Foreground="Red" 
+      HorizontalAlignment="Left" 
+      Height="72" 
+      Margin="347,400,0,0"
+      VerticalAlignment="Top" 
+      Width="44" />
+    <Label 
+      Content="" 
+      HorizontalAlignment="Left" 
+      Height="95" 
+      Margin="201,300,0,0" 
+      VerticalAlignment="Top" 
+      Width="64"
+      Background="black" />
+    <Button Name="DSharp"
+      Content="🛑" 
+      Foreground="Red" 
+      HorizontalAlignment="Left" 
+      Height="72" 
+      Width="46" 
+      Margin="210,307,0,0"
+      VerticalAlignment="Top" 
+      />
+    <Label Content="" HorizontalAlignment="Left" Height="200" Margin="412,300,0,0" VerticalAlignment="Top" Width="96"
+      Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+    <Button Name="G"
+      Content="🛑" 
+      Foreground="Red" 
+      HorizontalAlignment="Left" 
+      Height="72" 
+      Width="46"
+      Margin="437,400,0,0"
+      VerticalAlignment="Top" />
+    <Label 
+      Content="" 
+      HorizontalAlignment="Left" 
+      Height="200" 
+      Width="96"
+      Margin="503,300,0,0" 
+      VerticalAlignment="Top" 
+      Background="LightGray" 
+      BorderBrush="Black" 
+      BorderThickness="5" />
+    <Button Name="A"
+      Content="🛑" 
+      Foreground="Red" 
+      HorizontalAlignment="Left" 
+      Height="72" 
+      Margin="529,400,0,0"
+      VerticalAlignment="Top" 
+      Width="44" />
+    <Label 
+      Content="" 
+      HorizontalAlignment="Left" 
+      Height="95" 
+      Margin="474,300,0,0" 
+      VerticalAlignment="Top" 
+      Width="64"
+      Background="black" />
+    <Button Name="GSharp"
+      Content="🛑" 
+      Foreground="Red" 
+      HorizontalAlignment="Left" 
+      Height="72" 
+      Width="46" 
+      Margin="483,307,0,0"
+      VerticalAlignment="Top" 
+      />
+    <Label Content="" HorizontalAlignment="Left" Height="200" Margin="593,300,0,0" VerticalAlignment="Top" Width="96"
+      Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+    <Button Name="B"
+      Content="🛑" 
+      Foreground="Red" 
+      HorizontalAlignment="Left" 
+      Height="72" 
+      Width="46"
+      Margin="618,400,0,0"
+      VerticalAlignment="Top" />
+    <Label 
+      Content="" 
+      HorizontalAlignment="Left" 
+      Height="200" 
+      Width="96"
+      Margin="684,300,0,0" 
+      VerticalAlignment="Top" 
+      Background="LightGray" 
+      BorderBrush="Black" 
+      BorderThickness="5" />
+    <Button Name="CUp"
+      Content="🛑" 
+      Foreground="Red" 
+      HorizontalAlignment="Left" 
+      Height="72" 
+      Margin="710,400,0,0"
+      VerticalAlignment="Top" 
+      Width="45" />
+    <Label 
+      Content="" 
+      HorizontalAlignment="Left" 
+      Height="95" 
+      Margin="564,300,0,0" 
+      VerticalAlignment="Top" 
+      Width="64"
+      Background="black" />
+    <Button Name="ASharp"
+      Content="🛑" 
+      Foreground="Red" 
+      HorizontalAlignment="Left" 
+      Height="72" 
+      Width="46" 
+      Margin="573,307,0,0"
+      VerticalAlignment="Top" 
+      />
+    <Label 
+      Content="" 
+      HorizontalAlignment="Left" 
+      Height="94" 
+      Margin="383,301,0,0" 
+      VerticalAlignment="Top" 
+      Width="64"
+      Background="black" />
+    <Button Name="FSharp"
+      Content="🛑" 
+      Foreground="Red" 
+      HorizontalAlignment="Left" 
+      Height="72" 
+      Width="46" 
+      Margin="392,307,0,0"
+      VerticalAlignment="Top" 
+      />
+    <Label Name="P1" Content="" HorizontalAlignment="Left" Height="105" Margin="49,33,0,0" VerticalAlignment="Top" Width="96"
+      Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+    <Label Name="P2" Content="" HorizontalAlignment="Left" Height="105" Margin="140,33,0,0" VerticalAlignment="Top" Width="96"
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+    <Label Name="P3" Content="" HorizontalAlignment="Left" Height="105" Margin="230,33,0,0" VerticalAlignment="Top" Width="96"
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+    <Label Name="P4" Content="" HorizontalAlignment="Left" Height="105" Margin="321,33,0,0" VerticalAlignment="Top" Width="96"
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+    <Label Name="P5" Content="" HorizontalAlignment="Left" Height="105" Margin="412,33,0,0" VerticalAlignment="Top" Width="96"
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+    <Label Name="P6" Content="" HorizontalAlignment="Left" Height="105" Margin="503,33,0,0" VerticalAlignment="Top" Width="96"
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+    <Label Name="P7" Content="" HorizontalAlignment="Left" Height="105" Margin="593,33,0,0" VerticalAlignment="Top" Width="96"
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+    <Label Name="P8" Content="" HorizontalAlignment="Left" Height="105" Margin="684,33,0,0" VerticalAlignment="Top" Width="96"
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+    <Label Name="P9" Content="" HorizontalAlignment="Left" Height="105" Margin="49,143,0,0" VerticalAlignment="Top" Width="96"
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+    <Label Name="P10" Content="" HorizontalAlignment="Left" Height="105" Margin="140,143,0,0" VerticalAlignment="Top" Width="96"
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+    <Label Name="P11" Content="" HorizontalAlignment="Left" Height="105" Margin="230,143,0,0" VerticalAlignment="Top" Width="96"
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+    <Label Name="P12" Content="" HorizontalAlignment="Left" Height="105" Margin="321,143,0,0" VerticalAlignment="Top" Width="96"
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+    <Label Name="P13" Content="" HorizontalAlignment="Left" Height="105" Margin="412,143,0,0" VerticalAlignment="Top" Width="96"
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+    <Label Name="P14" Content="" HorizontalAlignment="Left" Height="105" Margin="503,143,0,0" VerticalAlignment="Top" Width="96"
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+    <Label Name="P15" Content="" HorizontalAlignment="Left" Height="105" Margin="593,143,0,0" VerticalAlignment="Top" Width="96"
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+    <Label Name="P16" Content="" HorizontalAlignment="Left" Height="105" Margin="684,143,0,0" VerticalAlignment="Top" Width="96"
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+
+  </Grid>
+</Window>
