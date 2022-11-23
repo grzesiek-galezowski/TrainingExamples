@@ -4,21 +4,19 @@ namespace MidiPlayground;
 
 public class Tb03Backup
 {
+  private readonly AbsoluteDirectoryPath _rootPath;
+
   public Tb03Backup(AbsoluteDirectoryPath absoluteDirectoryPath)
   {
-    RootPath = absoluteDirectoryPath;
+    _rootPath = absoluteDirectoryPath;
   }
 
-  private AbsoluteDirectoryPath RootPath { get; }
-
-  public PrmPattern Pattern(
+  public Tb03Pattern Pattern(
     Tb03PatternGroupNumber patternGroup, 
     Tb03PatternNumberInGroup number)
   {
-    return new PrmPattern(
-      File.ReadAllText(
-        RootPath.AddFileName(
-            $"TB03_PTN{(int)patternGroup}_{((int)number).ToString("D2")}.PRM")
-          .ToString()));
+    var prmString = PrmFile.Read(_rootPath, patternGroup, number);
+    var sequenceStepDtos = PrmParser.ParseIntoPattern(prmString);
+    return new Tb03Pattern(sequenceStepDtos);
   }
 }

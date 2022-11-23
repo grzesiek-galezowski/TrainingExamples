@@ -3,7 +3,7 @@ using Midi.Enums;
 
 namespace MidiPlayground;
 
-internal class Synth : IDisposable
+public class Synth : IDisposable
 {
   private readonly IOutputDevice _outputDevice;
   private TimeSpan _delay;

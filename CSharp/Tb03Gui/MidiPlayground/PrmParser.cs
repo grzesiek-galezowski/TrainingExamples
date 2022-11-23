@@ -1,18 +1,10 @@
 using Midi.Enums;
+using MidiPlayground;
 using Superpower;
 using Superpower.Parsers;
 
-namespace MidiPlayground;
-
-public class PrmPattern
+static internal class PrmParser
 {
-  public string PrmString;
-
-  public PrmPattern(string prmString)
-  {
-    PrmString = prmString;
-  }
-
   private const string PrmNewLine = "\n";
 
   public static SequenceStepDto[] ParseIntoPattern(string prmString)
@@ -81,11 +73,5 @@ public class PrmPattern
     }
 
     return melody;
-  }
-
-  public List<Pitch> ReadMelody()
-  {
-    var pattern = PrmPattern.ParseIntoPattern(PrmString);
-    return PrmPattern.TranslateIntoMidiPitches(pattern);
   }
 }
