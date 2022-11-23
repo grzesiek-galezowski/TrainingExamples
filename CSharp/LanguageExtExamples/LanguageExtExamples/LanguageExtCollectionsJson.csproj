@@ -5,7 +5,22 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <WarningsAsErrors>nullable</WarningsAsErrors>
-    <IsPackable>false</IsPackable>
+    <IsPackable>true</IsPackable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>TddXt.$(AssemblyName)</PackageId>
+    <Authors>Grzegorz Gałęzowski</Authors>
+    <Company>Grzegorz Gałęzowski</Company>
+    <Product>TddXt</Product>
+    <Description>Some converters for LanguageExt collections to make them usable with System.Text.Json</Description>
+    <Copyright>Grzegorz Gałęzowski</Copyright>
+    <PackageProjectUrl>https://github.com/grzesiek-galezowski/langext-collections-json</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/grzesiek-galezowski/langext-collections-json</RepositoryUrl>
+    <NeutralLanguage>en</NeutralLanguage>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <IncludeSymbols>True</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <TieredPGO>true</TieredPGO>
+    <Title>TddXt.$(AssemblyName)</Title>
   </PropertyGroup>
 
   <ItemGroup>
