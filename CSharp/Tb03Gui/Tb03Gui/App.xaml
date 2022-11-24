@@ -1,8 +1,7 @@
 ﻿<Application x:Class="Tb03Gui.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Tb03Gui"
-             StartupUri="MainWindow.xaml">
+             xmlns:local="clr-namespace:Tb03Gui">
     <Application.Resources>
          
     </Application.Resources>
