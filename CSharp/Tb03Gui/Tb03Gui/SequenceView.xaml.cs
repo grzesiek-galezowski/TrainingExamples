@@ -1,5 +1,12 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
+using Midi.Enums;
+using MidiPlayground;
 
 namespace Tb03Gui;
 
@@ -9,14 +16,34 @@ namespace Tb03Gui;
 public partial class SequenceView : UserControl
 {
   private int _sequencerPosition;
-  private readonly Label[] _sequencer;
+  private readonly Label[] _sequencerPads;
+  private readonly Synth _synth;
+  private readonly Dictionary<string, int> _midiCodeByNote;
+  private readonly int _octave;
 
   public SequenceView()
   {
+    _synth = Synth.Create();
     InitializeComponent();
+    _octave = 4;
+    _midiCodeByNote = new Dictionary<string, int>
+    {
+      { "C", 0 },
+      { "C#", 1 },
+      { "D", 2 },
+      { "D#", 3 },
+      { "E", 4 },
+      { "F", 5 },
+      { "F#", 6 },
+      { "G", 7 },
+      { "G#", 8 },
+      { "A", 9 },
+      { "A#", 10 },
+      { "B", 11 },
+    };
 
     _sequencerPosition = 0;
-    _sequencer = new[]
+    _sequencerPads = new[]
     {
       P1,
       P2,
@@ -62,7 +89,7 @@ public partial class SequenceView : UserControl
 
   private void InsertNoteIntoSequencer(Tb03Note note)
   {
-    _sequencer[_sequencerPosition].Content = note.Name;
+    _sequencerPads[_sequencerPosition].Content = note.Name;
   }
 
   private void ForwardSequencerPosition()
@@ -74,7 +101,7 @@ public partial class SequenceView : UserControl
 
   private void TryAdvancingSequencerPosition()
   {
-    if (_sequencerPosition < _sequencer.Length - 1)
+    if (_sequencerPosition < _sequencerPads.Length - 1)
     {
       _sequencerPosition++;
     }
@@ -82,15 +109,31 @@ public partial class SequenceView : UserControl
 
   private void MarkCurrentSequencerPosition()
   {
-    _sequencer[_sequencerPosition].Background = new SolidColorBrush(Colors.AliceBlue);
+    _sequencerPads[_sequencerPosition].Background = new SolidColorBrush(Colors.AliceBlue);
   }
 
   private void UnmarkCurrentSequencerPosition()
   {
-    if (_sequencerPosition >= 0 && _sequencerPosition < _sequencer.Length)
+    if (_sequencerPosition >= 0 && _sequencerPosition < _sequencerPads.Length)
     {
-      _sequencer[_sequencerPosition].Background = new SolidColorBrush(Colors.LightGray);
+      _sequencerPads[_sequencerPosition].Background = new SolidColorBrush(Colors.LightGray);
     }
   }
 
+  private async void PlayPause_Click(object sender, RoutedEventArgs e)
+  {
+    try
+    {
+      var pitches = _sequencerPads
+        .Where(x => x.Content is string s && s != string.Empty)
+        .Select(x => x.Content.ToString())
+        .Select(c => _midiCodeByNote[c] + (_octave*12))
+        .Select(p => (Pitch)p).ToList(); //bug maybe put the pitches directly
+      await _synth.Play(pitches);
+    }
+    catch (Exception exception)
+    {
+      MessageBox.Show(exception.ToString());
+    }
+  }
 }

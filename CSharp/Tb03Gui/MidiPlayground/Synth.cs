@@ -34,7 +34,10 @@ public class Synth : IDisposable
 
   public static Synth Create()
   {
-    return new Synth(DeviceManager.OutputDevices[0]);
+    var synth = new Synth(DeviceManager.OutputDevices[0]);
+    synth.TurnOn();
+    synth.SetBpm(120);
+    return synth;
   }
 
   public async Task Play(List<Pitch> melody)

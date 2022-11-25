@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" WindowState="Maximized" Width="1042" Height="800" KeyDown="UIElement_OnKeyDown" KeyUp="MainWindow_OnKeyUp">
   <Grid Background="Silver">
-    <views1:KeyboardView x:Name="KeyboardView"/>
-    <views1:SequenceView x:Name="SequenceView" Margin="82,47,82,503"/>
+    <views1:KeyboardView x:Name="KeyboardView" Margin="154,514,156,58"/>
+    <views1:SequenceView x:Name="SequenceView" Margin="82,275,82,275"/>
   </Grid>
 </Window>

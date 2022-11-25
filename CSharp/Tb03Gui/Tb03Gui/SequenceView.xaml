@@ -45,6 +45,6 @@
       Height="215" 
       Width="124"
       Margin="10,10,0,0"
-      VerticalAlignment="Top" />
+      VerticalAlignment="Top" Click="PlayPause_Click" />
   </Grid>
 </UserControl>
