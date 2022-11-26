@@ -19,7 +19,7 @@ public partial class SequenceView : UserControl
   private readonly Label[] _sequencerPads;
   private readonly Synth _synth;
   private readonly Dictionary<string, int> _midiCodeByNote;
-  private readonly int _octave;
+  private int _octave;
 
   public SequenceView()
   {
@@ -127,7 +127,7 @@ public partial class SequenceView : UserControl
       var pitches = _sequencerPads
         .Where(x => x.Content is string s && s != string.Empty)
         .Select(x => x.Content.ToString())
-        .Select(c => _midiCodeByNote[c] + (_octave*12))
+        .Select(c => _midiCodeByNote[c] + _octave*12)
         .Select(p => (Pitch)p).ToList(); //bug maybe put the pitches directly
       await _synth.Play(pitches);
     }
@@ -135,5 +135,10 @@ public partial class SequenceView : UserControl
     {
       MessageBox.Show(exception.ToString());
     }
+  }
+
+  public void Octave(int newOctave)
+  {
+    _octave = newOctave;
   }
 }
