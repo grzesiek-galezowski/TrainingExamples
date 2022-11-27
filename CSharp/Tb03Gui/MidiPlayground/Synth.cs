@@ -46,6 +46,7 @@ public class Synth : IDisposable
     {
       _outputDevice.SendNoteOn(_currentChannel, pitch, 80);
       await Task.Delay(_delay);
+      _outputDevice.SendNoteOff(_currentChannel, pitch, 80);
     }
   }
 

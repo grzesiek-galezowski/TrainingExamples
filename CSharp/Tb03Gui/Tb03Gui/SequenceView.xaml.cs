@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -18,15 +17,13 @@ public partial class SequenceView : UserControl
   private int _sequencerPosition;
   private readonly Label[] _sequencerPads;
   private readonly Synth _synth;
-  private readonly Dictionary<string, int> _midiCodeByNote;
-  private int _octave;
+  private Tb03Octave _octave;
 
   public SequenceView()
   {
     _synth = Synth.Create();
     InitializeComponent();
-    _octave = 4;
-    _midiCodeByNote = new Dictionary<string, int>
+    new Dictionary<string, int>
     {
       { "C", 0 },
       { "C#", 1 },
@@ -89,7 +86,7 @@ public partial class SequenceView : UserControl
 
   private void InsertNoteIntoSequencer(Tb03Note note)
   {
-    _sequencerPads[_sequencerPosition].Content = note.Name;
+    _sequencerPads[_sequencerPosition].Content = note.TransposeTo(_octave);
   }
 
   private void ForwardSequencerPosition()
@@ -125,10 +122,9 @@ public partial class SequenceView : UserControl
     try
     {
       var pitches = _sequencerPads
-        .Where(x => x.Content is string s && s != string.Empty)
-        .Select(x => x.Content.ToString())
-        .Select(c => _midiCodeByNote[c] + _octave*12)
-        .Select(p => (Pitch)p).ToList(); //bug maybe put the pitches directly
+        .Where(x => x.Content is Tb03Note)
+        .Select(x => (Tb03Note)x.Content)
+        .Select(p => (Pitch)p.Pitch).ToList(); //bug maybe put the pitches directly
       await _synth.Play(pitches);
     }
     catch (Exception exception)
@@ -137,7 +133,7 @@ public partial class SequenceView : UserControl
     }
   }
 
-  public void Octave(int newOctave)
+  public void OnOctaveChanged(Tb03Octave newOctave)
   {
     _octave = newOctave;
   }

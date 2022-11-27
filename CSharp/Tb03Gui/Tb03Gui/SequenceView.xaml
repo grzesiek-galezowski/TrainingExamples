@@ -7,37 +7,37 @@
              mc:Ignorable="d" Height="234" Width="879">
   <Grid>
     <Label Name="P1" Content="" HorizontalAlignment="Left" Height="105" Margin="139,10,0,0" VerticalAlignment="Top" Width="96"
-           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
     <Label Name="P2" Content="" HorizontalAlignment="Left" Height="105" Margin="230,10,0,0" VerticalAlignment="Top" Width="96"
-           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
     <Label Name="P3" Content="" HorizontalAlignment="Left" Height="105" Margin="320,10,0,0" VerticalAlignment="Top" Width="96"
-           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
     <Label Name="P4" Content="" HorizontalAlignment="Left" Height="105" Margin="411,10,0,0" VerticalAlignment="Top" Width="96"
-           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
     <Label Name="P5" Content="" HorizontalAlignment="Left" Height="105" Margin="502,10,0,0" VerticalAlignment="Top" Width="96"
-           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
     <Label Name="P6" Content="" HorizontalAlignment="Left" Height="105" Margin="593,10,0,0" VerticalAlignment="Top" Width="96"
-           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
     <Label Name="P7" Content="" HorizontalAlignment="Left" Height="105" Margin="683,10,0,0" VerticalAlignment="Top" Width="96"
-           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
     <Label Name="P8" Content="" HorizontalAlignment="Left" Height="105" Margin="774,10,0,0" VerticalAlignment="Top" Width="96"
-           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
     <Label Name="P9" Content="" HorizontalAlignment="Left" Height="105" Margin="139,120,0,0" VerticalAlignment="Top" Width="96"
-           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
     <Label Name="P10" Content="" HorizontalAlignment="Left" Height="105" Margin="230,120,0,0" VerticalAlignment="Top" Width="96"
-           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
     <Label Name="P11" Content="" HorizontalAlignment="Left" Height="105" Margin="320,120,0,0" VerticalAlignment="Top" Width="96"
-           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
     <Label Name="P12" Content="" HorizontalAlignment="Left" Height="105" Margin="411,120,0,0" VerticalAlignment="Top" Width="96"
-           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
     <Label Name="P13" Content="" HorizontalAlignment="Left" Height="105" Margin="502,120,0,0" VerticalAlignment="Top" Width="96"
-           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
     <Label Name="P14" Content="" HorizontalAlignment="Left" Height="105" Margin="593,120,0,0" VerticalAlignment="Top" Width="96"
-           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
     <Label Name="P15" Content="" HorizontalAlignment="Left" Height="105" Margin="683,120,0,0" VerticalAlignment="Top" Width="96"
-           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
     <Label Name="P16" Content="" HorizontalAlignment="Left" Height="105" Margin="774,120,0,0" VerticalAlignment="Top" Width="96"
-           Background="LightGray" BorderBrush="Black" BorderThickness="5" />
+           Background="LightGray" BorderBrush="Black" BorderThickness="5" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
     <Button x:Name="PlayPause"
       Content="Start/Stop" 
       FontSize="20"

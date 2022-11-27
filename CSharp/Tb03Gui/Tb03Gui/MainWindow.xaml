@@ -9,10 +9,6 @@
   <Grid Background="Silver">
     <views1:KeyboardView x:Name="KeyboardView" Margin="154,514,156,58"/>
     <views1:SequenceView x:Name="SequenceView" Margin="82,275,82,275"/>
-    <Button Name="Octave1" Background="LightGray" Content="1" FontSize="60" HorizontalAlignment="Left" Height="89" Margin="104,165,0,0" VerticalAlignment="Top" Width="88" Click="Octave1_Click"/>
-    <Button Name="Octave2" Background="LightGray" Content="2" FontSize="60" HorizontalAlignment="Left" Height="89" Margin="197,165,0,0" VerticalAlignment="Top" Width="88" Click="Octave2_Click"/>
-    <Button Name="Octave3" Background="LightGray" Content="3" FontSize="60" HorizontalAlignment="Left" Height="89" Margin="290,165,0,0" VerticalAlignment="Top" Width="88" Click="Octave3_Click"/>
-    <Button Name="Octave4" Background="LightGray" Content="4" FontSize="60" HorizontalAlignment="Left" Height="89" Margin="383,165,0,0" VerticalAlignment="Top" Width="88" Click="Octave4_Click"/>
-    <Button Name="Octave5" Background="LightGray" Content="5" FontSize="60" HorizontalAlignment="Left" Height="89" Margin="475,165,0,0" VerticalAlignment="Top" Width="88" Click="Octave5_Click"/>
+    <views1:OctavePanelView x:Name="OctavePanelView" Margin="216,131,362,560"/>
   </Grid>
 </Window>
