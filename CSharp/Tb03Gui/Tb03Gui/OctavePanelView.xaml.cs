@@ -38,27 +38,27 @@ public partial class OctavePanelView : UserControl
 
   private void Octave1_Click(object sender, RoutedEventArgs e)
   {
-    SwitchToOctave(Octave1, Tb03Octave.Octave1);
+    SwitchToOctave1();
   }
 
   private void Octave2_Click(object sender, RoutedEventArgs e)
   {
-    SwitchToOctave(Octave2, Tb03Octave.Octave2);
+    SwitchToOctave2();
   }
 
   private void Octave3_Click(object sender, RoutedEventArgs e)
   {
-    SwitchToOctave(Octave3, Tb03Octave.Octave3);
+    SwitchToOctave3();
   }
 
   private void Octave4_Click(object sender, RoutedEventArgs e)
   {
-    SwitchToOctave(Octave4, Tb03Octave.Octave4);
+    SwitchToOctave4();
   }
 
   private void Octave5_Click(object sender, RoutedEventArgs e)
   {
-    SwitchToOctave(Octave5, Tb03Octave.Octave5);
+    SwitchToOctave5();
   }
 
   private void SwitchToOctave(Button octave1, Tb03Octave newOctave)
@@ -66,6 +66,31 @@ public partial class OctavePanelView : UserControl
     ResetOctaveButtons();
     MarkOctaveButton(octave1);
     Observer.OnOctaveChanged(newOctave);
+  }
+
+  public void SwitchToOctave1()
+  {
+    SwitchToOctave(Octave1, Tb03Octave.Octave1);
+  }
+
+  public void SwitchToOctave2()
+  {
+    SwitchToOctave(Octave2, Tb03Octave.Octave2);
+  }
+
+  public void SwitchToOctave3()
+  {
+    SwitchToOctave(Octave3, Tb03Octave.Octave3);
+  }
+
+  public void SwitchToOctave4()
+  {
+    SwitchToOctave(Octave4, Tb03Octave.Octave4);
+  }
+
+  public void SwitchToOctave5()
+  {
+    SwitchToOctave(Octave5, Tb03Octave.Octave5);
   }
 
   private static void MarkOctaveButton(Button button)

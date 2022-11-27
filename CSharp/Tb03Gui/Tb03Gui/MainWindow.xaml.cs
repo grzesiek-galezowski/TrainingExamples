@@ -31,15 +31,29 @@ public partial class MainWindow : Window
       var note = KeyboardView.GetNoteFor(e.Key);
       SequenceView.HandleNote(note);
     }
-    else
+    else if (e.Key == Key.Left)
     {
-      if (e.Key == Key.Left)
-      {
-        SequenceView.Back();
-      }
+      SequenceView.Back();
+    }
+    else if (e.Key == Key.D1)
+    {
+      OctavePanelView.SwitchToOctave1();
+    }
+    else if (e.Key == Key.D2)
+    {
+      OctavePanelView.SwitchToOctave2();
+    }
+    else if (e.Key == Key.D3)
+    {
+      OctavePanelView.SwitchToOctave3();
+    }
+    else if (e.Key == Key.D4)
+    {
+      OctavePanelView.SwitchToOctave4();
+    }
+    else if (e.Key == Key.D5)
+    {
+      OctavePanelView.SwitchToOctave5();
     }
   }
-
-
-
 }
