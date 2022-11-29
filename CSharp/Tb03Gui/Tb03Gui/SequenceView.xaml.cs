@@ -1,45 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using Midi.Enums;
-using MidiPlayground;
 
 namespace Tb03Gui;
 
 /// <summary>
 /// Interaction logic for SequenceView.xaml
 /// </summary>
-public partial class SequenceView : UserControl
+public partial class SequenceView : UserControl, ISequencerPositionObserver
 {
-  private int _sequencerPosition;
-  private readonly Label[] _sequencerPads;
-  private readonly Synth _synth;
-  private Tb03Octave _octave;
+  private readonly Label[] _sequencerPads; //bug
 
   public SequenceView()
   {
-    _synth = Synth.Create();
     InitializeComponent();
-    new Dictionary<string, int>
-    {
-      { "C", 0 },
-      { "C#", 1 },
-      { "D", 2 },
-      { "D#", 3 },
-      { "E", 4 },
-      { "F", 5 },
-      { "F#", 6 },
-      { "G", 7 },
-      { "G#", 8 },
-      { "A", 9 },
-      { "A#", 10 },
-      { "B", 11 },
-    };
-
-    _sequencerPosition = 0;
     _sequencerPads = new[]
     {
       P1,
@@ -59,73 +34,26 @@ public partial class SequenceView : UserControl
       P15,
       P16,
     };
-    MarkCurrentSequencerPosition();
+    MarkSequencerPosition(Sequencer.InitialSequencerPosition);
   }
 
-  public void HandleNote(Tb03Note name)
+  public AppLogic App { get; set; }
+
+  private void MarkSequencerPosition(int sequencerPosition)
   {
-    InsertNoteIntoSequencer(name);
-    ForwardSequencerPosition();
+    _sequencerPads[sequencerPosition].Background = new SolidColorBrush(Colors.AliceBlue);
   }
 
-  public void Back()
+  private void UnmarkSequencerPosition(int position)
   {
-    UnmarkCurrentSequencerPosition();
-    TryBacktrackingSequencerPosition();
-    MarkCurrentSequencerPosition();
-  }
-
-
-  private void TryBacktrackingSequencerPosition()
-  {
-    if (_sequencerPosition > 0)
-    {
-      _sequencerPosition--;
-    }
-  }
-
-  private void InsertNoteIntoSequencer(Tb03Note note)
-  {
-    _sequencerPads[_sequencerPosition].Content = note.TransposeTo(_octave);
-  }
-
-  private void ForwardSequencerPosition()
-  {
-    UnmarkCurrentSequencerPosition();
-    TryAdvancingSequencerPosition();
-    MarkCurrentSequencerPosition();
-  }
-
-  private void TryAdvancingSequencerPosition()
-  {
-    if (_sequencerPosition < _sequencerPads.Length - 1)
-    {
-      _sequencerPosition++;
-    }
-  }
-
-  private void MarkCurrentSequencerPosition()
-  {
-    _sequencerPads[_sequencerPosition].Background = new SolidColorBrush(Colors.AliceBlue);
-  }
-
-  private void UnmarkCurrentSequencerPosition()
-  {
-    if (_sequencerPosition >= 0 && _sequencerPosition < _sequencerPads.Length)
-    {
-      _sequencerPads[_sequencerPosition].Background = new SolidColorBrush(Colors.LightGray);
-    }
+    _sequencerPads[position].Background = new SolidColorBrush(Colors.LightGray);
   }
 
   private async void PlayPause_Click(object sender, RoutedEventArgs e)
   {
     try
     {
-      var pitches = _sequencerPads
-        .Where(x => x.Content is Tb03Note)
-        .Select(x => (Tb03Note)x.Content)
-        .Select(p => (Pitch)p.Pitch).ToList(); //bug maybe put the pitches directly
-      await _synth.Play(pitches);
+      await App.Play();
     }
     catch (Exception exception)
     {
@@ -133,8 +61,19 @@ public partial class SequenceView : UserControl
     }
   }
 
-  public void OnOctaveChanged(Tb03Octave newOctave)
+  public void OnSequencerPositionChange(int prevPosition, int newPosition)
   {
-    _octave = newOctave;
+    UnmarkSequencerPosition(prevPosition);
+    MarkSequencerPosition(newPosition);
+  }
+
+  public void OnNoteInsert(int sequencerPosition, Tb03Note latestNote)
+  {
+    _sequencerPads[sequencerPosition].Content = latestNote;
+  }
+
+  public int SequencerPatternLength()
+  {
+    return _sequencerPads.Length;
   }
 }

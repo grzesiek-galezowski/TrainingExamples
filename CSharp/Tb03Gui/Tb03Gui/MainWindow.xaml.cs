@@ -12,14 +12,15 @@ public partial class MainWindow : Window
   public MainWindow()
   {
     InitializeComponent();
-    OctavePanelView.Observer = SequenceView;
   }
+
+  public AppLogic App { get; set; }
 
   private void UIElement_OnKeyDown(object sender, KeyEventArgs e)
   {
     if (KeyboardView.Supports(e))
     {
-      KeyboardView.Handle(e);
+      KeyboardView.HandleKeyDown(e);
     }
   }
 
@@ -27,33 +28,33 @@ public partial class MainWindow : Window
   {
     if (KeyboardView.Supports(e))
     {
-      KeyboardView.RestoreKeyPress(e);
       var note = KeyboardView.GetNoteFor(e.Key);
-      SequenceView.HandleNote(note);
+      App.InsertNoteIntoSequencer(note);
+      KeyboardView.HandleKeyUp(e);
     }
     else if (e.Key == Key.Left)
     {
-      SequenceView.Back();
+      App.PreviousSequencerPosition();
     }
     else if (e.Key == Key.D1)
     {
-      OctavePanelView.SwitchToOctave1();
+      App.SwitchToOctave(Tb03Octave.Octave1);
     }
     else if (e.Key == Key.D2)
     {
-      OctavePanelView.SwitchToOctave2();
+      App.SwitchToOctave(Tb03Octave.Octave2);
     }
     else if (e.Key == Key.D3)
     {
-      OctavePanelView.SwitchToOctave3();
+      App.SwitchToOctave(Tb03Octave.Octave3);
     }
     else if (e.Key == Key.D4)
     {
-      OctavePanelView.SwitchToOctave4();
+      App.SwitchToOctave(Tb03Octave.Octave4);
     }
     else if (e.Key == Key.D5)
     {
-      OctavePanelView.SwitchToOctave5();
+      App.SwitchToOctave(Tb03Octave.Octave5);
     }
   }
 }

@@ -6,10 +6,10 @@
              xmlns:local="clr-namespace:Tb03Gui"
              mc:Ignorable="d" Height="93" Width="464">
   <Grid>
-    <Button Name="Octave1" Background="LightGray" Content="1" FontSize="60" HorizontalAlignment="Left" Height="89" Margin="4,0,0,0" VerticalAlignment="Top" Width="88" Click="Octave1_Click"/>
-    <Button Name="Octave2" Background="LightGray" Content="2" FontSize="60" HorizontalAlignment="Left" Height="89" Margin="97,0,0,0" VerticalAlignment="Top" Width="88" Click="Octave2_Click"/>
-    <Button Name="Octave3" Background="LightGray" Content="3" FontSize="60" HorizontalAlignment="Left" Height="89" Margin="190,0,0,0" VerticalAlignment="Top" Width="88" Click="Octave3_Click"/>
-    <Button Name="Octave4" Background="LightGray" Content="4" FontSize="60" HorizontalAlignment="Left" Height="89" Margin="283,0,0,0" VerticalAlignment="Top" Width="88" Click="Octave4_Click"/>
-    <Button Name="Octave5" Background="LightGray" Content="5" FontSize="60" HorizontalAlignment="Left" Height="89" Margin="375,0,0,0" VerticalAlignment="Top" Width="88" Click="Octave5_Click"/>
+    <local:OctavePad x:Name="Octave1Pad" Text="1" AssignedOctave="Octave1"/>
+    <local:OctavePad x:Name="Octave2Pad" Text="2" AssignedOctave="Octave2" Margin="97,0,-97,0"/>
+    <local:OctavePad x:Name="Octave3Pad" Text="3" AssignedOctave="Octave3" Margin="190,0,-190,0"/>
+    <local:OctavePad x:Name="Octave4Pad" Text="4" AssignedOctave="Octave4" Margin="283,0,-283,0"/>
+    <local:OctavePad x:Name="Octave5Pad" Text="5" AssignedOctave="Octave5" Margin="376,0,0,0"/>
   </Grid>
 </UserControl>

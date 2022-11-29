@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Midi.Instruments;
+using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -36,9 +37,9 @@ public partial class KeyboardView : UserControl
     return KeyDictionary.ContainsKey(e.Key);
   }
 
-  public void Handle(KeyEventArgs e)
+  public void HandleKeyUp(KeyEventArgs e)
   {
-    KeyDictionary[e.Key].Mark();
+    KeyDictionary[e.Key].UnMark();
   }
 
   public Tb03Note GetNoteFor(Key key)
@@ -46,8 +47,8 @@ public partial class KeyboardView : UserControl
     return KeyDictionary[key].GetNote();
   }
 
-  public void RestoreKeyPress(KeyEventArgs e)
+  public void HandleKeyDown(KeyEventArgs e)
   {
-    KeyDictionary[e.Key].UnMark();
+    KeyDictionary[e.Key].Mark();
   }
 }
