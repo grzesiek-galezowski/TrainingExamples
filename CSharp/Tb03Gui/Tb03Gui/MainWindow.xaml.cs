@@ -1,5 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using AtmaFileSystem;
+using Midi.Messages;
+using Ookii.Dialogs.Wpf;
 
 namespace Tb03Gui;
 
@@ -8,7 +11,6 @@ namespace Tb03Gui;
 /// </summary>
 public partial class MainWindow : Window
 {
-
   public MainWindow()
   {
     InitializeComponent();
@@ -55,6 +57,19 @@ public partial class MainWindow : Window
     else if (e.Key == Key.D5)
     {
       App.SwitchToOctave(Tb03Octave.Octave5);
+    }
+  }
+
+  private void Button_Click(object sender, RoutedEventArgs e)
+  {
+    var openFolderDialog = new VistaFolderBrowserDialog();
+    if (openFolderDialog.ShowDialog().GetValueOrDefault())
+    {
+      var folderPath = AbsoluteDirectoryPath.Value(openFolderDialog.SelectedPath);
+      new CheckThatFolderContainsOnlyPrmFilesStep(
+          new CheckGroupsAndPatternsCount(
+            new PopulateInfoStep(SelectTb03BackupFolderButton)))
+        .Handle(folderPath);
     }
   }
 }

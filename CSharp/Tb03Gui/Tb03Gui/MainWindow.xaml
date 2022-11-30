@@ -10,5 +10,6 @@
     <views1:KeyboardView x:Name="KeyboardView" Margin="154,514,156,58"/>
     <views1:SequenceView x:Name="SequenceView" Margin="82,275,82,275"/>
     <views1:OctavePanelView x:Name="OctavePanelView" Margin="216,131,362,560"/>
+    <Button Name="SelectTb03BackupFolderButton" Content="Click to select folder" HorizontalAlignment="Left" Height="41" Margin="55,47,0,0" VerticalAlignment="Top" Width="906" Click="Button_Click"/>
   </Grid>
 </Window>

@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using Core.Maybe;
 using Midi.Enums;
 using MidiPlayground;
 
@@ -7,17 +8,15 @@ namespace Tb03Gui;
 
 public class Sequencer
 {
-  private readonly SequenceView _view;
-  private int _sequencerPosition; //bug make private
+  private int _sequencerPosition;
   private readonly int _sequenceLength;
-  private readonly Tb03Note[] _notes;
+  private readonly Maybe<Tb03Note>[] _notes;
 
-  public Sequencer(SequenceView view, int sequencerLength)
+  public Sequencer(int sequencerLength)
   {
     _sequencerPosition = InitialSequencerPosition;
-    _view = view;
     _sequenceLength = sequencerLength;
-    _notes = new Tb03Note[sequencerLength];
+    _notes = new Maybe<Tb03Note>[sequencerLength];
   }
 
   public void TryBacktrackingSequencerPosition(ISequencerPositionObserver observer)
@@ -29,7 +28,7 @@ public class Sequencer
     }
   }
 
-  public void TryAdvancingSequencerPosition()
+  private void TryAdvancingSequencerPosition()
   {
     if (_sequencerPosition < _sequenceLength - 1)
     {
@@ -43,10 +42,15 @@ public class Sequencer
     Tb03Octave currentOctave)
   {
     var latestNode = note.TransposeTo(currentOctave);
-    _notes[_sequencerPosition] = latestNode;
+    InsertNote(latestNode);
     sequencerPositionObserver.OnNoteInsert(_sequencerPosition, latestNode);
     TryAdvancingSequencerPosition();
     sequencerPositionObserver.OnSequencerPositionChange(_sequencerPosition-1, _sequencerPosition);
+  }
+
+  private void InsertNote(Tb03Note latestNode)
+  {
+    _notes[_sequencerPosition] = latestNode.Just();
   }
 
   public const int InitialSequencerPosition = 0;
@@ -54,6 +58,8 @@ public class Sequencer
   public async Task PlayOn(Synth synth)
   {
     var pitches = _notes
+      .Where(n => n.HasValue)
+      .Select(n => n.Value())
       .Select(p => (Pitch)p.Pitch).ToList();
     await synth.Play(pitches);
   }
