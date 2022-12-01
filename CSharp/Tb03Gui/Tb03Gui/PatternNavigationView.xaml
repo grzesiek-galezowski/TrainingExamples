@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="Tb03Gui.PatternNavigationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Tb03Gui"
+             mc:Ignorable="d" 
+             d:DesignHeight="155.769" d:DesignWidth="824.88">
+  <Grid Margin="0,0,56,0" HorizontalAlignment="Right" Width="734" Height="202" VerticalAlignment="Top">
+    <Button Name="SelectTb03BackupFolderButton" Content="Click to select folder" HorizontalAlignment="Left" Height="41" VerticalAlignment="Top" Width="643" Click="Button_Click"/>
+    <Button Content="1" Name="Group1Button" HorizontalAlignment="Left" Height="44" Margin="3,49,0,0" VerticalAlignment="Top" Width="44"/>
+    <Button Content="2" Name="Group2Button" HorizontalAlignment="Left" Height="44" Margin="47,49,0,0" VerticalAlignment="Top" Width="44"/>
+    <Button Content="3" Name="Group3Button" HorizontalAlignment="Left" Height="44" Margin="3,93,0,0" VerticalAlignment="Top" Width="44"/>
+    <Button Content="4" Name="Group4Button" HorizontalAlignment="Left" Height="44" Margin="47,93,0,0" VerticalAlignment="Top" Width="44"/>
+    
+    <Button Content="1" HorizontalAlignment="Left" Height="44" Margin="123,49,0,0" VerticalAlignment="Top" Width="44"/>
+    <Button Content="2" HorizontalAlignment="Left" Height="44" Margin="168,49,0,0" VerticalAlignment="Top" Width="44"/>
+    <Button Content="14" HorizontalAlignment="Left" Height="44" Margin="124,93,0,0" VerticalAlignment="Top" Width="44"/>
+    <Button Content="15" HorizontalAlignment="Left" Height="44" Margin="168,93,0,0" VerticalAlignment="Top" Width="44"/>
+    <Button Content="3" HorizontalAlignment="Left" Height="44" Margin="214,49,0,0" VerticalAlignment="Top" Width="44"/>
+    <Button Content="4" HorizontalAlignment="Left" Height="44" Margin="258,49,0,0" VerticalAlignment="Top" Width="44"/>
+    <Button Content="16" HorizontalAlignment="Left" Height="44" Margin="214,93,0,0" VerticalAlignment="Top" Width="44"/>
+    <Button Content="17" HorizontalAlignment="Left" Height="44" Margin="258,93,0,0" VerticalAlignment="Top" Width="44"/>
+    <Button Content="5" HorizontalAlignment="Left" Height="44" Margin="303,49,0,0" VerticalAlignment="Top" Width="44"/>
+    <Button Content="6" HorizontalAlignment="Left" Height="44" Margin="347,49,0,0" VerticalAlignment="Top" Width="44"/>
+    <Button Content="18" HorizontalAlignment="Left" Height="44" Margin="303,93,0,0" VerticalAlignment="Top" Width="44"/>
+    <Button Content="19" HorizontalAlignment="Left" Height="44" Margin="347,93,0,0" VerticalAlignment="Top" Width="44"/>
+    <Button Content="7" HorizontalAlignment="Left" Height="44" Margin="401,49,0,0" VerticalAlignment="Top" Width="44"/>
+    <Button Content="8" HorizontalAlignment="Left" Height="44" Margin="447,49,0,0" VerticalAlignment="Top" Width="44"/>
+    <Button Content="20" HorizontalAlignment="Left" Height="44" Margin="398,93,0,0" VerticalAlignment="Top" Width="44"/>
+    <Button Content="21" HorizontalAlignment="Left" Height="44" Margin="448,93,0,0" VerticalAlignment="Top" Width="44"/>
+    <Button Content="9" HorizontalAlignment="Left" Height="44" Margin="500,49,0,0" VerticalAlignment="Top" Width="44"/>
+    <Button Content="10" HorizontalAlignment="Left" Height="44" Margin="545,49,0,0" VerticalAlignment="Top" Width="44"/>
+    <Button Content="22" HorizontalAlignment="Left" Height="44" Margin="501,93,0,0" VerticalAlignment="Top" Width="44"/>
+    <Button Content="23" HorizontalAlignment="Left" Height="44" Margin="544,93,0,0" VerticalAlignment="Top" Width="44"/>
+    <Button Content="11" HorizontalAlignment="Left" Height="44" Margin="605,49,0,0" VerticalAlignment="Top" Width="44"/>
+    <Button Content="12" HorizontalAlignment="Left" Height="44" Margin="648,49,0,0" VerticalAlignment="Top" Width="44"/>
+    <Button Content="24" HorizontalAlignment="Left" Height="44" Margin="605,93,0,0" VerticalAlignment="Top" Width="44"/>
+    <Button Content="25" HorizontalAlignment="Left" Height="44" Margin="648,93,0,0" VerticalAlignment="Top" Width="44"/>
+
+  </Grid>
+</UserControl>

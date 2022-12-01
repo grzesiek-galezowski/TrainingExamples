@@ -25,7 +25,8 @@ public partial class App : Application
           mainWindow.OctavePanelView.Octave4Pad,
           mainWindow.OctavePanelView.Octave5Pad
         }),
-      mainWindow.SequenceView
+      mainWindow.SequenceView,
+      mainWindow.PatternNavigationView
     );
 
     mainWindow.App = appLogic;
@@ -36,6 +37,7 @@ public partial class App : Application
     mainWindow.OctavePanelView.Octave3Pad.App = appLogic;
     mainWindow.OctavePanelView.Octave4Pad.App = appLogic;
     mainWindow.OctavePanelView.Octave5Pad.App = appLogic;
+    mainWindow.PatternNavigationView.App = appLogic;
     mainWindow.Show();
   }
 }

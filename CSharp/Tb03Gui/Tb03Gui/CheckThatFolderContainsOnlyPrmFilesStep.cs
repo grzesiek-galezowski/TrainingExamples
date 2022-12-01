@@ -1,27 +1,26 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using AtmaFileSystem;
+﻿using AtmaFileSystem;
 using AtmaFileSystem.IO;
 
 namespace Tb03Gui;
 
 public class CheckThatFolderContainsOnlyPrmFilesStep : ISelectedTb03BackupFolderProcessingStep
 {
+  private readonly ITb03FolderProcessingObserver _observer;
   private readonly ISelectedTb03BackupFolderProcessingStep _next;
 
-  public CheckThatFolderContainsOnlyPrmFilesStep(
-    ISelectedTb03BackupFolderProcessingStep next)
+  public CheckThatFolderContainsOnlyPrmFilesStep(ITb03FolderProcessingObserver observer, ISelectedTb03BackupFolderProcessingStep next)
   {
+    _observer = observer;
     _next = next;
   }
 
   public void Handle(AbsoluteDirectoryPath folderPath)
   {
-    foreach (var fileSystemEntry in folderPath.GetFiles())
+    foreach (var filePath in folderPath.GetFiles())
     {
-      if (!fileSystemEntry.Has(FileExtension.Value(".PRM")))
+      if (!filePath.Has(FileExtension.Value(".PRM")))
       {
-        MessageBox.Show("The file " + fileSystemEntry.FileName() + " is not a proper PRM file");
+        _observer.NotATb03File(filePath);
         return;
       }
     }

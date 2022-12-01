@@ -59,17 +59,4 @@ public partial class MainWindow : Window
       App.SwitchToOctave(Tb03Octave.Octave5);
     }
   }
-
-  private void Button_Click(object sender, RoutedEventArgs e)
-  {
-    var openFolderDialog = new VistaFolderBrowserDialog();
-    if (openFolderDialog.ShowDialog().GetValueOrDefault())
-    {
-      var folderPath = AbsoluteDirectoryPath.Value(openFolderDialog.SelectedPath);
-      new CheckThatFolderContainsOnlyPrmFilesStep(
-          new CheckGroupsAndPatternsCount(
-            new PopulateInfoStep(SelectTb03BackupFolderButton)))
-        .Handle(folderPath);
-    }
-  }
 }

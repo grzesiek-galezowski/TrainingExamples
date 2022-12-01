@@ -1,19 +1,18 @@
-﻿using System.Windows.Controls;
-using AtmaFileSystem;
+﻿using AtmaFileSystem;
 
 namespace Tb03Gui;
 
 internal class PopulateInfoStep : ISelectedTb03BackupFolderProcessingStep
 {
-  private readonly Button _selectTb03BackupFolderButton;
+  private readonly ITb03FolderProcessingObserver _observer;
 
-  public PopulateInfoStep(Button selectTb03BackupFolderButton)
+  public PopulateInfoStep(ITb03FolderProcessingObserver observer)
   {
-    _selectTb03BackupFolderButton = selectTb03BackupFolderButton;
+    _observer = observer;
   }
 
   public void Handle(AbsoluteDirectoryPath folderPath)
   {
-    _selectTb03BackupFolderButton.Content = folderPath.ToString();
+    _observer.PathIsOk(folderPath);
   }
 }
