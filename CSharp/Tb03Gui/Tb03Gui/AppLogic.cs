@@ -11,24 +11,18 @@ public class AppLogic
   private readonly IOctaveObserver _octaveObserver;
   private readonly ISequencerPositionObserver _sequencerPositionObserver;
   private readonly Synth _synth;
-  private readonly CheckThatFolderContainsOnlyPrmFilesStep _folderProcessingChain;
+  private readonly PatternNavigation _patternNavigation;
 
   public AppLogic(Sequencer sequencer,
     IOctaveObserver octaveObserver,
     ISequencerPositionObserver sequencerPositionObserver, 
-    ITb03FolderProcessingObserver folderProcessingObserver)
+    PatternNavigation patternNavigation)
   {
     _sequencer = sequencer;
     _octaveObserver = octaveObserver;
     _sequencerPositionObserver = sequencerPositionObserver;
+    _patternNavigation = patternNavigation;
     _synth = Synth.Create();
-    _folderProcessingChain =
-      new CheckThatFolderContainsOnlyPrmFilesStep(
-        folderProcessingObserver,
-        new CheckGroupsAndPatternsCount(
-          folderProcessingObserver,
-          new PopulateInfoStep(
-            folderProcessingObserver)));
   }
 
   public void SwitchToOctave(Tb03Octave newOctave)
@@ -52,9 +46,18 @@ public class AppLogic
     await _sequencer.PlayOn(_synth);
   }
 
-  public void HandleTb03FolderPath(AbsoluteDirectoryPath folderPath, ITb03FolderProcessingObserver observer)
+  public void ActivateTb03FolderPath(AbsoluteDirectoryPath folderPath, ITb03FolderProcessingObserver observer)
   {
-    _folderProcessingChain
-      .Handle(folderPath);
+    _patternNavigation.Activate(folderPath);
+  }
+
+  public void PatternGroupWasSelected(int patternGroupNumber) //bug enum?
+  {
+    _patternNavigation.SelectPatternGroup(patternGroupNumber);
+  }
+
+  public void PatternWasSelected(int patternNumber)
+  {
+    _patternNavigation.SelectPattern(patternNumber);
   }
 }

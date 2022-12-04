@@ -1,9 +1,10 @@
 using Midi.Enums;
-using MidiPlayground;
 using Superpower;
 using Superpower.Parsers;
 
-static internal class PrmParser
+namespace MidiPlayground;
+
+public static class PrmParser
 {
   private const string PrmNewLine = "\n";
 

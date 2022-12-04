@@ -11,7 +11,7 @@ internal class PopulateInfoStep : ISelectedTb03BackupFolderProcessingStep
     _observer = observer;
   }
 
-  public void Handle(AbsoluteDirectoryPath folderPath)
+  public void Activate(AbsoluteDirectoryPath folderPath)
   {
     _observer.PathIsOk(folderPath);
   }

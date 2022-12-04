@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using AtmaFileSystem;
 using Ookii.Dialogs.Wpf;
 
@@ -20,22 +8,52 @@ namespace Tb03Gui;
 /// <summary>
 /// Interaction logic for PatternNavigationView.xaml
 /// </summary>
-public partial class PatternNavigationView : UserControl, ITb03FolderProcessingObserver
+public partial class PatternNavigationView : UserControl, ITb03FolderProcessingObserver, IPatternNavigationObserver
 {
-  private readonly Button[] _patternGroupPads;
+  private readonly PatternGroupPad[] _patternGroupPads;
+  private readonly PatternPad[] _patternPads;
 
   public PatternNavigationView()
   {
     InitializeComponent();
     _patternGroupPads = new[]
     {
-      Group1Button,
-      Group2Button,
-      Group3Button,
-      Group4Button
+      Group1Pad,
+      Group2Pad,
+      Group3Pad,
+      Group4Pad
     };
 
-    //bug _patternPads = new[]
+    _patternPads = new[]
+    {
+      Pattern1Pad,
+      Pattern2Pad,
+      Pattern3Pad,
+      Pattern4Pad,
+      Pattern5Pad,
+      Pattern6Pad,
+      Pattern7Pad,
+      Pattern8Pad,
+      Pattern9Pad,
+      Pattern10Pad,
+      Pattern11Pad,
+      Pattern12Pad,
+      Pattern13Pad,
+      Pattern14Pad,
+      Pattern15Pad,
+      Pattern16Pad,
+      Pattern17Pad,
+      Pattern18Pad,
+      Pattern19Pad,
+      Pattern20Pad,
+      Pattern21Pad,
+      Pattern22Pad,
+      Pattern23Pad,
+      Pattern24Pad
+    };
+
+    _patternGroupPads[PatternNavigationConstants.InitialPatternGroup-1].Mark();
+    _patternPads[PatternNavigationConstants.InitialPattern-1].Mark();
   }
 
   public AppLogic App { get; set; }
@@ -46,7 +64,7 @@ public partial class PatternNavigationView : UserControl, ITb03FolderProcessingO
     if (openFolderDialog.ShowDialog().GetValueOrDefault())
     {
       var folderPath = AbsoluteDirectoryPath.Value(openFolderDialog.SelectedPath);
-      App.HandleTb03FolderPath(folderPath, this);
+      App.ActivateTb03FolderPath(folderPath, this);
     }
   }
 
@@ -64,5 +82,22 @@ public partial class PatternNavigationView : UserControl, ITb03FolderProcessingO
   public void PathIsOk(AbsoluteDirectoryPath folderPath)
   {
     SelectTb03BackupFolderButton.Content = folderPath.ToString();
+  }
+
+  public void OnPatternGroupSelectionChanged(int patternGroupNumber)
+  {
+    foreach (var patternGroupPad in _patternGroupPads)
+    {
+      patternGroupPad.Unmark();
+    }
+  }
+
+  public void OnPatternSelectionChanged(int patternNumber)
+  {
+    foreach (var patternPad in _patternPads)
+    {
+      patternPad.Unmark();
+    }
+
   }
 }

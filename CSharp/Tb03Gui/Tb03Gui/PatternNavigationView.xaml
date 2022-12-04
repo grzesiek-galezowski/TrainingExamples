@@ -8,35 +8,35 @@
              d:DesignHeight="155.769" d:DesignWidth="824.88">
   <Grid Margin="0,0,56,0" HorizontalAlignment="Right" Width="734" Height="202" VerticalAlignment="Top">
     <Button Name="SelectTb03BackupFolderButton" Content="Click to select folder" HorizontalAlignment="Left" Height="41" VerticalAlignment="Top" Width="643" Click="Button_Click"/>
-    <Button Content="1" Name="Group1Button" HorizontalAlignment="Left" Height="44" Margin="3,49,0,0" VerticalAlignment="Top" Width="44"/>
-    <Button Content="2" Name="Group2Button" HorizontalAlignment="Left" Height="44" Margin="47,49,0,0" VerticalAlignment="Top" Width="44"/>
-    <Button Content="3" Name="Group3Button" HorizontalAlignment="Left" Height="44" Margin="3,93,0,0" VerticalAlignment="Top" Width="44"/>
-    <Button Content="4" Name="Group4Button" HorizontalAlignment="Left" Height="44" Margin="47,93,0,0" VerticalAlignment="Top" Width="44"/>
+    <local:PatternGroupPad PatternGroupNumber="1" x:Name="Group1Pad" HorizontalAlignment="Left" Height="44" Margin="3,49,0,0" VerticalAlignment="Top" Width="44"/>
+    <local:PatternGroupPad PatternGroupNumber="2" x:Name="Group2Pad" HorizontalAlignment="Left" Height="44" Margin="47,49,0,0" VerticalAlignment="Top" Width="44"/>
+    <local:PatternGroupPad PatternGroupNumber="3" x:Name="Group3Pad" HorizontalAlignment="Left" Height="44" Margin="3,93,0,0" VerticalAlignment="Top" Width="44"/>
+    <local:PatternGroupPad PatternGroupNumber="4" x:Name="Group4Pad" HorizontalAlignment="Left" Height="44" Margin="47,93,0,0" VerticalAlignment="Top" Width="44"/>
     
-    <Button Content="1" HorizontalAlignment="Left" Height="44" Margin="123,49,0,0" VerticalAlignment="Top" Width="44"/>
-    <Button Content="2" HorizontalAlignment="Left" Height="44" Margin="168,49,0,0" VerticalAlignment="Top" Width="44"/>
-    <Button Content="14" HorizontalAlignment="Left" Height="44" Margin="124,93,0,0" VerticalAlignment="Top" Width="44"/>
-    <Button Content="15" HorizontalAlignment="Left" Height="44" Margin="168,93,0,0" VerticalAlignment="Top" Width="44"/>
-    <Button Content="3" HorizontalAlignment="Left" Height="44" Margin="214,49,0,0" VerticalAlignment="Top" Width="44"/>
-    <Button Content="4" HorizontalAlignment="Left" Height="44" Margin="258,49,0,0" VerticalAlignment="Top" Width="44"/>
-    <Button Content="16" HorizontalAlignment="Left" Height="44" Margin="214,93,0,0" VerticalAlignment="Top" Width="44"/>
-    <Button Content="17" HorizontalAlignment="Left" Height="44" Margin="258,93,0,0" VerticalAlignment="Top" Width="44"/>
-    <Button Content="5" HorizontalAlignment="Left" Height="44" Margin="303,49,0,0" VerticalAlignment="Top" Width="44"/>
-    <Button Content="6" HorizontalAlignment="Left" Height="44" Margin="347,49,0,0" VerticalAlignment="Top" Width="44"/>
-    <Button Content="18" HorizontalAlignment="Left" Height="44" Margin="303,93,0,0" VerticalAlignment="Top" Width="44"/>
-    <Button Content="19" HorizontalAlignment="Left" Height="44" Margin="347,93,0,0" VerticalAlignment="Top" Width="44"/>
-    <Button Content="7" HorizontalAlignment="Left" Height="44" Margin="401,49,0,0" VerticalAlignment="Top" Width="44"/>
-    <Button Content="8" HorizontalAlignment="Left" Height="44" Margin="447,49,0,0" VerticalAlignment="Top" Width="44"/>
-    <Button Content="20" HorizontalAlignment="Left" Height="44" Margin="398,93,0,0" VerticalAlignment="Top" Width="44"/>
-    <Button Content="21" HorizontalAlignment="Left" Height="44" Margin="448,93,0,0" VerticalAlignment="Top" Width="44"/>
-    <Button Content="9" HorizontalAlignment="Left" Height="44" Margin="500,49,0,0" VerticalAlignment="Top" Width="44"/>
-    <Button Content="10" HorizontalAlignment="Left" Height="44" Margin="545,49,0,0" VerticalAlignment="Top" Width="44"/>
-    <Button Content="22" HorizontalAlignment="Left" Height="44" Margin="501,93,0,0" VerticalAlignment="Top" Width="44"/>
-    <Button Content="23" HorizontalAlignment="Left" Height="44" Margin="544,93,0,0" VerticalAlignment="Top" Width="44"/>
-    <Button Content="11" HorizontalAlignment="Left" Height="44" Margin="605,49,0,0" VerticalAlignment="Top" Width="44"/>
-    <Button Content="12" HorizontalAlignment="Left" Height="44" Margin="648,49,0,0" VerticalAlignment="Top" Width="44"/>
-    <Button Content="24" HorizontalAlignment="Left" Height="44" Margin="605,93,0,0" VerticalAlignment="Top" Width="44"/>
-    <Button Content="25" HorizontalAlignment="Left" Height="44" Margin="648,93,0,0" VerticalAlignment="Top" Width="44"/>
+    <local:PatternPad PatternNumber="1"  x:Name="Pattern1Pad" HorizontalAlignment="Left" Height="44" Margin="123,49,0,0" VerticalAlignment="Top" Width="44"/>
+    <local:PatternPad PatternNumber="2"  x:Name="Pattern2Pad" HorizontalAlignment="Left" Height="44" Margin="168,49,0,0" VerticalAlignment="Top" Width="44"/>
+    <local:PatternPad PatternNumber="3"  x:Name="Pattern3Pad" HorizontalAlignment="Left" Height="44" Margin="214,49,0,0" VerticalAlignment="Top" Width="44"/>
+    <local:PatternPad PatternNumber="4"  x:Name="Pattern4Pad" HorizontalAlignment="Left" Height="44" Margin="258,49,0,0" VerticalAlignment="Top" Width="44"/>
+    <local:PatternPad PatternNumber="5"  x:Name="Pattern5Pad" HorizontalAlignment="Left" Height="44" Margin="303,49,0,0" VerticalAlignment="Top" Width="44"/>
+    <local:PatternPad PatternNumber="6"  x:Name="Pattern6Pad" HorizontalAlignment="Left" Height="44" Margin="347,49,0,0" VerticalAlignment="Top" Width="44"/>
+    <local:PatternPad PatternNumber="7"  x:Name="Pattern7Pad" HorizontalAlignment="Left" Height="44" Margin="401,49,0,0" VerticalAlignment="Top" Width="44"/>
+    <local:PatternPad PatternNumber="8"  x:Name="Pattern8Pad" HorizontalAlignment="Left" Height="44" Margin="447,49,0,0" VerticalAlignment="Top" Width="44"/>
+    <local:PatternPad PatternNumber="9"  x:Name="Pattern9Pad" HorizontalAlignment="Left" Height="44" Margin="500,49,0,0" VerticalAlignment="Top" Width="44"/>
+    <local:PatternPad PatternNumber="10" x:Name="Pattern10Pad" HorizontalAlignment="Left" Height="44" Margin="545,49,0,0" VerticalAlignment="Top" Width="44"/>
+    <local:PatternPad PatternNumber="11" x:Name="Pattern11Pad" HorizontalAlignment="Left" Height="44" Margin="605,49,0,0" VerticalAlignment="Top" Width="44"/>
+    <local:PatternPad PatternNumber="12" x:Name="Pattern12Pad" HorizontalAlignment="Left" Height="44" Margin="648,49,0,0" VerticalAlignment="Top" Width="44"/>
+    <local:PatternPad PatternNumber="13" x:Name="Pattern13Pad" HorizontalAlignment="Left" Height="44" Margin="124,93,0,0" VerticalAlignment="Top" Width="44"/>
+    <local:PatternPad PatternNumber="14" x:Name="Pattern14Pad" HorizontalAlignment="Left" Height="44" Margin="168,93,0,0" VerticalAlignment="Top" Width="44"/>
+    <local:PatternPad PatternNumber="15" x:Name="Pattern15Pad" HorizontalAlignment="Left" Height="44" Margin="214,93,0,0" VerticalAlignment="Top" Width="44"/>
+    <local:PatternPad PatternNumber="16" x:Name="Pattern16Pad" HorizontalAlignment="Left" Height="44" Margin="258,93,0,0" VerticalAlignment="Top" Width="44"/>
+    <local:PatternPad PatternNumber="17" x:Name="Pattern17Pad" HorizontalAlignment="Left" Height="44" Margin="303,93,0,0" VerticalAlignment="Top" Width="44"/>
+    <local:PatternPad PatternNumber="18" x:Name="Pattern18Pad" HorizontalAlignment="Left" Height="44" Margin="347,93,0,0" VerticalAlignment="Top" Width="44"/>
+    <local:PatternPad PatternNumber="19" x:Name="Pattern19Pad" HorizontalAlignment="Left" Height="44" Margin="398,93,0,0" VerticalAlignment="Top" Width="44"/>
+    <local:PatternPad PatternNumber="20" x:Name="Pattern20Pad" HorizontalAlignment="Left" Height="44" Margin="448,93,0,0" VerticalAlignment="Top" Width="44"/>
+    <local:PatternPad PatternNumber="21" x:Name="Pattern21Pad" HorizontalAlignment="Left" Height="44" Margin="501,93,0,0" VerticalAlignment="Top" Width="44"/>
+    <local:PatternPad PatternNumber="22" x:Name="Pattern22Pad" HorizontalAlignment="Left" Height="44" Margin="544,93,0,0" VerticalAlignment="Top" Width="44"/>
+    <local:PatternPad PatternNumber="23" x:Name="Pattern23Pad" HorizontalAlignment="Left" Height="44" Margin="605,93,0,0" VerticalAlignment="Top" Width="44"/>
+    <local:PatternPad PatternNumber="24" x:Name="Pattern24Pad" HorizontalAlignment="Left" Height="44" Margin="648,93,0,0" VerticalAlignment="Top" Width="44"/>
 
   </Grid>
 </UserControl>

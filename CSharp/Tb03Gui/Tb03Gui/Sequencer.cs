@@ -6,7 +6,7 @@ using MidiPlayground;
 
 namespace Tb03Gui;
 
-public class Sequencer
+public class Sequencer : IPatternNotesObserver
 {
   private int _sequencerPosition;
   private readonly int _sequenceLength;
@@ -62,5 +62,13 @@ public class Sequencer
       .Select(n => n.Value())
       .Select(p => (Pitch)p.Pitch).ToList();
     await synth.Play(pitches);
+  }
+
+  public void PatternLoaded(SequenceStepDto[] steps)
+  {
+    foreach (var sequenceStepDto in steps)
+    {
+      
+    }
   }
 }

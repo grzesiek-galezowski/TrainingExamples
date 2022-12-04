@@ -1,8 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Input;
-using AtmaFileSystem;
-using Midi.Messages;
-using Ookii.Dialogs.Wpf;
 
 namespace Tb03Gui;
 

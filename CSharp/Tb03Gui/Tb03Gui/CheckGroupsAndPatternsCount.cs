@@ -1,6 +1,5 @@
 ﻿using System.Collections.Immutable;
 using System.Linq;
-using System.Windows;
 using AtmaFileSystem;
 using AtmaFileSystem.IO;
 
@@ -22,7 +21,7 @@ public class CheckGroupsAndPatternsCount : ISelectedTb03BackupFolderProcessingSt
     _errorObserver = errorObserver;
   }
 
-  public void Handle(AbsoluteDirectoryPath folderPath)
+  public void Activate(AbsoluteDirectoryPath folderPath)
   {
     var fileNames = folderPath.GetFiles().Select(p => p.FileName()).ToImmutableArray();
     for (var groupNumber = MinGroupNumber; groupNumber <= MaxGroupNumber; groupNumber++)
@@ -37,6 +36,6 @@ public class CheckGroupsAndPatternsCount : ISelectedTb03BackupFolderProcessingSt
         }
       }
     }
-    _next.Handle(folderPath);
+    _next.Activate(folderPath);
   }
 }

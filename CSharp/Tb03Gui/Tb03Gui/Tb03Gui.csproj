@@ -16,4 +16,10 @@
     <ProjectReference Include="..\MidiPlayground\MidiPlayground.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="PatternPad.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>

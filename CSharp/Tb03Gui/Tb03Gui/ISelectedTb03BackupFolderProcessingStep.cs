@@ -4,5 +4,5 @@ namespace Tb03Gui;
 
 public interface ISelectedTb03BackupFolderProcessingStep
 {
-  void Handle(AbsoluteDirectoryPath folderPath);
+  void Activate(AbsoluteDirectoryPath folderPath);
 }

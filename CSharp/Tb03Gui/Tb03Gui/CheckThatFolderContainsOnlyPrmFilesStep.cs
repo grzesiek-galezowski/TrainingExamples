@@ -14,7 +14,7 @@ public class CheckThatFolderContainsOnlyPrmFilesStep : ISelectedTb03BackupFolder
     _next = next;
   }
 
-  public void Handle(AbsoluteDirectoryPath folderPath)
+  public void Activate(AbsoluteDirectoryPath folderPath)
   {
     foreach (var filePath in folderPath.GetFiles())
     {
@@ -24,6 +24,6 @@ public class CheckThatFolderContainsOnlyPrmFilesStep : ISelectedTb03BackupFolder
         return;
       }
     }
-    _next.Handle(folderPath);
+    _next.Activate(folderPath);
   }
 }
