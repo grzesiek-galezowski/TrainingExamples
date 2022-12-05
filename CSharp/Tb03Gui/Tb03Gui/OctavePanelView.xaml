@@ -6,10 +6,10 @@
              xmlns:local="clr-namespace:Tb03Gui"
              mc:Ignorable="d" Height="93" Width="464">
   <Grid>
-    <local:OctavePad x:Name="Octave1Pad" Text="1" AssignedOctave="Octave1"/>
-    <local:OctavePad x:Name="Octave2Pad" Text="2" AssignedOctave="Octave2" Margin="97,0,-97,0"/>
-    <local:OctavePad x:Name="Octave3Pad" Text="3" AssignedOctave="Octave3" Margin="190,0,-190,0"/>
-    <local:OctavePad x:Name="Octave4Pad" Text="4" AssignedOctave="Octave4" Margin="283,0,-283,0"/>
-    <local:OctavePad x:Name="Octave5Pad" Text="5" AssignedOctave="Octave5" Margin="376,0,0,0"/>
+    <local:OctavePad x:Name="Octave1Pad" Text="2" AssignedOctave="Octave2"/>
+    <local:OctavePad x:Name="Octave2Pad" Text="3" AssignedOctave="Octave3" Margin="97,0,-97,0"/>
+    <local:OctavePad x:Name="Octave3Pad" Text="4" AssignedOctave="Octave4" Margin="190,0,-190,0"/>
+    <local:OctavePad x:Name="Octave4Pad" Text="5" AssignedOctave="Octave5" Margin="283,0,-283,0"/>
+    <local:OctavePad x:Name="Octave5Pad" Text="6" AssignedOctave="Octave6" Margin="376,0,0,0"/>
   </Grid>
 </UserControl>

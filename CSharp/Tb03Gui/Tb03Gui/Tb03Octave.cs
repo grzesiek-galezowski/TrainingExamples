@@ -6,5 +6,7 @@ public enum Tb03Octave
   Octave2, 
   Octave3, 
   Octave4, 
-  Octave5
+  Octave5,
+  Octave6,
+  Octave7,
 }
