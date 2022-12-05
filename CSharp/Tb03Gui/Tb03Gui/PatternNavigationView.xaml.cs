@@ -64,7 +64,7 @@ public partial class PatternNavigationView : UserControl, ITb03FolderProcessingO
     if (openFolderDialog.ShowDialog().GetValueOrDefault())
     {
       var folderPath = AbsoluteDirectoryPath.Value(openFolderDialog.SelectedPath);
-      App.ActivateTb03FolderPath(folderPath, this);
+      App.ActivateTb03FolderPath(folderPath);
     }
   }
 
@@ -90,6 +90,7 @@ public partial class PatternNavigationView : UserControl, ITb03FolderProcessingO
     {
       patternGroupPad.Unmark();
     }
+    _patternGroupPads[patternGroupNumber - 1].Mark();
   }
 
   public void OnPatternSelectionChanged(int patternNumber)
@@ -98,6 +99,8 @@ public partial class PatternNavigationView : UserControl, ITb03FolderProcessingO
     {
       patternPad.Unmark();
     }
+
+    _patternPads[patternNumber - 1].Mark();
 
   }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Immutable;
 
 namespace Tb03Gui;
 
@@ -9,6 +10,20 @@ public record Tb03Note(string Name, int BasePitch, Tb03Octave Octave)
   {
     return $"{Name}{Environment.NewLine}({(int)Octave+1})";
   }
+
+  private static readonly ImmutableDictionary<int, Tb03Note> NoteByBasePitch = ImmutableDictionary<int, Tb03Note>.Empty
+    .Add(C0().BasePitch, C0())
+    .Add(CSharp0().BasePitch, CSharp0())
+    .Add(D0().BasePitch, D0())
+    .Add(DSharp0().BasePitch, DSharp0())
+    .Add(E0().BasePitch, E0())
+    .Add(F0().BasePitch, F0())
+    .Add(FSharp0().BasePitch, FSharp0())
+    .Add(G0().BasePitch, G0())
+    .Add(GSharp0().BasePitch, GSharp0())
+    .Add(A0().BasePitch, A0())
+    .Add(ASharp0().BasePitch, ASharp0())
+    .Add(B0().BasePitch, B0());
 
   public static Tb03Note B0()
   {
@@ -73,5 +88,12 @@ public record Tb03Note(string Name, int BasePitch, Tb03Octave Octave)
   public Tb03Note TransposeTo(Tb03Octave octave)
   {
     return this with { Octave = octave };
+  }
+
+  public static Tb03Note From(int pitch)
+  {
+    var basePitch = pitch % 12;
+    var octave = pitch / 12;
+    return NoteByBasePitch[basePitch] with { Octave = (Tb03Octave)octave};
   }
 }

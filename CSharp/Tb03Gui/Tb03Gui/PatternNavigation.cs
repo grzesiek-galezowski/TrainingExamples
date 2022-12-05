@@ -25,6 +25,8 @@ public class PatternNavigation
   {
     _folderProcessingChain.Activate(folderPath);
     _folder = new ActiveFolder(folderPath, _sequencer);
+    SelectPatternGroup(_patternGroupNumber);
+    SelectPattern(_patternNumber);
   }
 
   public void SelectPatternGroup(int patternGroupNumber)

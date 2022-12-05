@@ -38,7 +38,7 @@ public class AppLogic
 
   public void InsertNoteIntoSequencer(Tb03Note note)
   {
-    _sequencer.InsertNoteIntoSequencer(note, _sequencerPositionObserver, _octave);
+    _sequencer.InsertNoteIntoSequencer(note.TransposeTo(_octave));
   }
 
   public async Task Play()
@@ -46,7 +46,7 @@ public class AppLogic
     await _sequencer.PlayOn(_synth);
   }
 
-  public void ActivateTb03FolderPath(AbsoluteDirectoryPath folderPath, ITb03FolderProcessingObserver observer)
+  public void ActivateTb03FolderPath(AbsoluteDirectoryPath folderPath)
   {
     _patternNavigation.Activate(folderPath);
   }

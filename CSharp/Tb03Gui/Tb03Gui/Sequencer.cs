@@ -10,13 +10,16 @@ public class Sequencer : IPatternNotesObserver
 {
   private int _sequencerPosition;
   private readonly int _sequenceLength;
-  private readonly Maybe<Tb03Note>[] _notes;
+  private readonly ISequencerPositionObserver _positionObserver;
+  private Maybe<Tb03Note>[] _notes;
+  public const int InitialSequencerPosition = 0;
 
-  public Sequencer(int sequencerLength)
+  public Sequencer(int sequencerLength, ISequencerPositionObserver positionObserver)
   {
     _sequencerPosition = InitialSequencerPosition;
     _sequenceLength = sequencerLength;
-    _notes = new Maybe<Tb03Note>[sequencerLength];
+    _positionObserver = positionObserver;
+    _notes = EmptySequence();
   }
 
   public void TryBacktrackingSequencerPosition(ISequencerPositionObserver observer)
@@ -36,24 +39,18 @@ public class Sequencer : IPatternNotesObserver
     }
   }
 
-  public void InsertNoteIntoSequencer(
-    Tb03Note note, 
-    ISequencerPositionObserver sequencerPositionObserver,
-    Tb03Octave currentOctave)
+  public void InsertNoteIntoSequencer(Tb03Note latestNode)
   {
-    var latestNode = note.TransposeTo(currentOctave);
-    InsertNote(latestNode);
-    sequencerPositionObserver.OnNoteInsert(_sequencerPosition, latestNode);
+    InsertNoteAtCurrentSequencerPosition(latestNode);
+    _positionObserver.OnNoteInsert(_sequencerPosition, latestNode);
     TryAdvancingSequencerPosition();
-    sequencerPositionObserver.OnSequencerPositionChange(_sequencerPosition-1, _sequencerPosition);
+    _positionObserver.OnSequencerPositionChange(_sequencerPosition - 1, _sequencerPosition);
   }
 
-  private void InsertNote(Tb03Note latestNode)
+  private void InsertNoteAtCurrentSequencerPosition(Tb03Note latestNode)
   {
     _notes[_sequencerPosition] = latestNode.Just();
   }
-
-  public const int InitialSequencerPosition = 0;
 
   public async Task PlayOn(Synth synth)
   {
@@ -66,9 +63,27 @@ public class Sequencer : IPatternNotesObserver
 
   public void PatternLoaded(SequenceStepDto[] steps)
   {
-    foreach (var sequenceStepDto in steps)
+    ClearSequence();
+    FillSequenceWith(steps);
+  }
+
+  private void FillSequenceWith(SequenceStepDto[] steps)
+  {
+    for (var i = 0; i < steps.Length; i++)
     {
-      
+      var note = Tb03Note.From(steps[i].Note);
+      InsertNoteIntoSequencer(note);
     }
+  }
+
+  private void ClearSequence()
+  {
+    _notes = EmptySequence();
+    _sequencerPosition = InitialSequencerPosition;
+  }
+
+  private Maybe<Tb03Note>[] EmptySequence()
+  {
+    return new Maybe<Tb03Note>[_sequenceLength];
   }
 }

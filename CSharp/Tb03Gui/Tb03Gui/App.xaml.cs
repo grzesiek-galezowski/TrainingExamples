@@ -13,7 +13,10 @@ public partial class App : Application
     base.OnStartup(e);
 
     var mainWindow = new MainWindow();
-    var sequencer = new Sequencer(mainWindow.SequenceView.SequencerPatternLength());
+    var sequencer = new Sequencer(
+      mainWindow.SequenceView.SequencerPatternLength(),
+      mainWindow.SequenceView
+      );
     var appLogic = new AppLogic(
       sequencer,
       new BroadcastingOctaveObserver(

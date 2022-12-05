@@ -30,7 +30,6 @@ public partial class PatternGroupPad : UserControl
   private void GroupButton_Click(object sender, System.Windows.RoutedEventArgs e)
   {
     App.PatternGroupWasSelected(PatternGroupNumber);
-    Mark();
   }
 
   public void Mark()
