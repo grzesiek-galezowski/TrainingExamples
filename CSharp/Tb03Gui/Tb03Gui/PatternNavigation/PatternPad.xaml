@@ -1,0 +1,11 @@
+﻿<UserControl x:Class="Tb03Gui.PatternNavigation.PatternPad"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Tb03Gui"
+             mc:Ignorable="d" d:DesignWidth="44.089" Height="44">
+  <Grid Height="44" VerticalAlignment="Center">
+    <Button Name="PatternButton" HorizontalAlignment="Left" Height="44" VerticalAlignment="Top" Width="44" Click="PatternButton_Click"/>
+  </Grid>
+</UserControl>

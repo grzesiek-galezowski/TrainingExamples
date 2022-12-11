@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
+using Tb03Gui.ApplicationLogic;
 
 namespace Tb03Gui;
 
@@ -13,7 +14,7 @@ public partial class App : Application
     base.OnStartup(e);
 
     var mainWindow = new MainWindow();
-    var sequencer = new Sequencer(
+    var sequencer = new ApplicationLogic.Sequencer(
       mainWindow.SequenceView.SequencerPatternLength(),
       mainWindow.SequenceView
       );
@@ -29,7 +30,7 @@ public partial class App : Application
           mainWindow.OctavePanelView.Octave5Pad
         }),
       mainWindow.SequenceView, 
-      new PatternNavigation(
+      new ApplicationLogic.PatternNavigation(
         sequencer,
         mainWindow.PatternNavigationView,
         new CheckThatFolderContainsOnlyPrmFilesStep(

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Tb03Gui.ApplicationLogic;
 
 namespace Tb03Gui;
 

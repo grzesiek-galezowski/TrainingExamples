@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="Tb03Gui.Sequencer.SequenceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Tb03Gui"
+             xmlns:sequencer="clr-namespace:Tb03Gui.Sequencer"
+             mc:Ignorable="d" Height="310" Width="969">
+  <Grid>
+    <sequencer:SequencerPad x:Name="P1" HorizontalAlignment="Left" Height="129" Margin="139,10,0,0" VerticalAlignment="Top" Width="96"
+           HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+    <sequencer:SequencerPad x:Name="P2" HorizontalAlignment="Left" Height="129" Margin="233,10,0,0" VerticalAlignment="Top" Width="96"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+    <sequencer:SequencerPad x:Name="P3" HorizontalAlignment="Left" Height="129" Margin="328,10,0,0" VerticalAlignment="Top" Width="96"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+    <sequencer:SequencerPad x:Name="P4" HorizontalAlignment="Left" Height="129" Margin="423,10,0,0" VerticalAlignment="Top" Width="96"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+    <sequencer:SequencerPad x:Name="P5" HorizontalAlignment="Left" Height="129" Margin="518,10,0,0" VerticalAlignment="Top" Width="96"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+    <sequencer:SequencerPad x:Name="P6" HorizontalAlignment="Left" Height="129" Margin="613,10,0,0" VerticalAlignment="Top" Width="96"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+    <sequencer:SequencerPad x:Name="P7" HorizontalAlignment="Left" Height="129" Margin="706,10,0,0" VerticalAlignment="Top" Width="96"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+    <sequencer:SequencerPad x:Name="P8" HorizontalAlignment="Left" Height="129" Margin="798,10,0,0" VerticalAlignment="Top" Width="96"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+    <sequencer:SequencerPad x:Name="P9" HorizontalAlignment="Left" Height="129" Margin="139,146,0,0" VerticalAlignment="Top" Width="96"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+    <sequencer:SequencerPad x:Name="P10" HorizontalAlignment="Left" Height="129" Margin="235,146,0,0" VerticalAlignment="Top" Width="96"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+    <sequencer:SequencerPad x:Name="P11" HorizontalAlignment="Left" Height="129" Margin="331,146,0,0" VerticalAlignment="Top" Width="96"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+    <sequencer:SequencerPad x:Name="P12" HorizontalAlignment="Left" Height="129" Margin="426,146,0,0" VerticalAlignment="Top" Width="96"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+    <sequencer:SequencerPad x:Name="P13" HorizontalAlignment="Left" Height="129" Margin="520,146,0,0" VerticalAlignment="Top" Width="96"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+    <sequencer:SequencerPad x:Name="P14" HorizontalAlignment="Left" Height="129" Margin="613,146,0,0" VerticalAlignment="Top" Width="96"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+    <sequencer:SequencerPad x:Name="P15" HorizontalAlignment="Left" Height="129" Margin="706,146,0,0" VerticalAlignment="Top" Width="96"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+    <sequencer:SequencerPad x:Name="P16" HorizontalAlignment="Left" Height="129" Margin="798,146,0,0" VerticalAlignment="Top" Width="96"
+                            HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+    <Button x:Name="PlayPause"
+      Content="Start/Stop" 
+      FontSize="20"
+      HorizontalAlignment="Left" 
+      Height="266" 
+      Width="124"
+      Margin="10,10,0,0"
+      VerticalAlignment="Top" Click="PlayPause_Click" />
+  </Grid>
+</UserControl>

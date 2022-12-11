@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="PatternPad.xaml.cs">
+    <Compile Update="PatternNavigation\PatternPad.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
