@@ -88,13 +88,5 @@ public class _01_ConstrainedNonDeterminism {
         //THEN
         assertThat(anonymous.instance).isNotEqualTo(2); //TODO change to isEqualTo()
     }
-
-    class MyClass<T> {
-        public T instance;
-
-        public MyClass(T instance) {
-            this.instance = instance;
-        }
-    }
-
 }
+
