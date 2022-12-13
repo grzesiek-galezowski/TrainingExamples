@@ -1,16 +1,11 @@
-package _05_custom_assertions;
+package _04_custom_assertions;
 
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
 import lombok.val;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class Ex02SolutionWithLombok {
-
-    @ToString
-    @EqualsAndHashCode
+public class Ex06SolutionWithGraphAssertions {
     static class PersonData {
         public final String name;
         public final String surname;
@@ -27,7 +22,7 @@ public class Ex02SolutionWithLombok {
         }
 
         public static PersonData superman() {
-            return new PersonData("Clark", "Kent", 35);
+            return new PersonData("Clark", "Kent", 351);
         }
     }
 
@@ -40,8 +35,7 @@ public class Ex02SolutionWithLombok {
         val superman = PersonData.superman();
 
         //THEN
-        assertThat(superman).isEqualTo(clark);
+        assertThat(superman).isEqualToComparingFieldByFieldRecursively(clark);
     }
+
 }
-
-

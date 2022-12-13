@@ -1,4 +1,4 @@
-package _05_custom_assertions;
+package _04_custom_assertions;
 
 import lombok.val;
 import org.junit.jupiter.api.Test;

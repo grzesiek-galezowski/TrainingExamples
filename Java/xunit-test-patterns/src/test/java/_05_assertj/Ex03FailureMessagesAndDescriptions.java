@@ -1,4 +1,4 @@
-package _04_assertj;
+package _05_assertj;
 
 import org.junit.jupiter.api.Test;
 
