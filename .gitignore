@@ -218,4 +218,5 @@ CSharp/OutsideInTdd2/TodoApp1/.vs/ProjectEvaluation/todoapp1.projects.v5.1
 *.2
 CSharp/Tb03Gui/.cr/personal/FavoritesList/List.xml
 Java/xunit-test-patterns/.gradle/vcs-1/gc.properties
-Java/xunit-test-patterns/build/lombok/**/*
+Java/xunit-test-patterns/build/**/*
+Java/xunit-test-patterns/test-output/**/*

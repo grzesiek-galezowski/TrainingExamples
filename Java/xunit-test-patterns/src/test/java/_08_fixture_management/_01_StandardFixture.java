@@ -1,7 +1,7 @@
 package _08_fixture_management;
 
 import lombok.val;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 public class _01_StandardFixture {
 

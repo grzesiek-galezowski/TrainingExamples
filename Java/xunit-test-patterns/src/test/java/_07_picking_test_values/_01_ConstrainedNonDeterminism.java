@@ -2,7 +2,7 @@ package _07_picking_test_values;
 
 import autofixture.publicinterface.Any;
 import autofixture.publicinterface.InstanceOf;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 import java.util.Collection;

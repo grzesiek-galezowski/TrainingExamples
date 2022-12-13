@@ -3,7 +3,7 @@ package _05_custom_assertions;
 import com.github.grzesiek_galezowski.test_environment.XAssert;
 import lombok.val;
 import org.assertj.core.api.SoftAssertions;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 public class Ex04SolutionWithCustomAndSoftAssertions {
     static class PersonData {

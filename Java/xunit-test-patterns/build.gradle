@@ -15,8 +15,15 @@ sourceCompatibility = 1.8
 
 dependencies {
     testImplementation 'com.github.grzesiek-galezowski:tdd-toolkit-java:1.2.5'
+    testImplementation(platform('org.junit:junit-bom:5.9.1'))
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.9.1'
 }
 
 wrapper {
     gradleVersion = '7.3'
+}
+
+test {
+    useJUnitPlatform()
 }

@@ -3,7 +3,7 @@ package _02_basics;
 import autofixture.publicinterface.Any;
 import lombok.val;
 import lombok.var;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 

@@ -1,25 +1,28 @@
 package _07_picking_test_values;
 
 import lombok.val;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class _03_ExampleValues {
 
-    @DataProvider
-    public static Object[][] shouldCorrectlyCheckNamesData() {
-        return new Object[][]{
-            {"aaaaa", false}, //must start with capital letter
-            {"A"    , false}, //cannot be a one-letter name
-            {"Aa"   , true }, //valid input
-            {"0"    , false}, //cannot have digits
-            {"&"    , false}  //cannot have special chars
-        };
+    public static Stream<Arguments> shouldCorrectlyCheckNamesData() {
+        return Stream.of(
+            Arguments.of("aaaaa", false), //must start with capital letter
+            Arguments.of("A"    , false), //cannot be a one-letter name
+            Arguments.of("Aa"   , true ), //valid input
+            Arguments.of("0"    , false), //cannot have digits
+            Arguments.of("&"    , false)  //cannot have special chars
+        );
     }
 
-    @Test(dataProvider = "shouldCorrectlyCheckNamesData")
+    @ParameterizedTest
+    @MethodSource("shouldCorrectlyCheckNamesData")
     public void shouldCorrectlyCheckNames(
         String nameString,
         boolean expectedResult) {
