@@ -18,7 +18,7 @@ public class Ex04ParameterizedTest_PersonSpecification {
         );
     }
 
-    //@ParameterizedTest(name = "lol {0} {1}")
+    @ParameterizedTest //(name = "lol {0} {1}")
     @MethodSource("shouldBeAdultDependingOnAgeData")
     public void shouldBeAdultDependingOnAge(int age, boolean expectedIsAdult) {
         //GIVEN
