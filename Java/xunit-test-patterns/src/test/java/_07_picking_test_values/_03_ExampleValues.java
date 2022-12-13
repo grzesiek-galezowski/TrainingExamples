@@ -13,7 +13,7 @@ public class _03_ExampleValues {
 
     public static Stream<Arguments> shouldCorrectlyCheckNamesData() {
         return Stream.of(
-            Arguments.of("a", false), //must start with capital letter
+            Arguments.of("aa", false), //must start with capital letter
             Arguments.of("A"    , false), //cannot be a one-letter name
             Arguments.of("Aa"   , true ), //valid input
             Arguments.of("0"    , false), //cannot have digits
