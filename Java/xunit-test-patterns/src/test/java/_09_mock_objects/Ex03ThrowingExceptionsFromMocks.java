@@ -2,7 +2,7 @@ package _09_mock_objects;
 
 import autofixture.publicinterface.Any;
 import lombok.val;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.mockito.Mockito.any;

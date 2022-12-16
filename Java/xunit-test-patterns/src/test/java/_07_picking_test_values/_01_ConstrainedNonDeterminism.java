@@ -2,7 +2,7 @@ package _07_picking_test_values;
 
 import autofixture.publicinterface.Any;
 import autofixture.publicinterface.InstanceOf;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
@@ -88,13 +88,5 @@ public class _01_ConstrainedNonDeterminism {
         //THEN
         assertThat(anonymous.instance).isNotEqualTo(2); //TODO change to isEqualTo()
     }
-
-    class MyClass<T> {
-        public T instance;
-
-        public MyClass(T instance) {
-            this.instance = instance;
-        }
-    }
-
 }
+

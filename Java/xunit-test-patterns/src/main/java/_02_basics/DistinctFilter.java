@@ -5,7 +5,7 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
-public class UniqueFilter {
+public class DistinctFilter {
     public List<Integer> applyTo(int... args) {
         return Arrays.stream(args)
             .distinct()

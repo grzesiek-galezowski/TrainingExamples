@@ -1,9 +1,9 @@
-package _05_custom_assertions;
+package _04_custom_assertions;
 
 import lombok.val;
 import org.assertj.core.api.Condition;
 import org.assertj.core.api.SoftAssertions;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import static java.util.stream.Collectors.joining;
 import static org.assertj.core.api.Assertions.assertThat;

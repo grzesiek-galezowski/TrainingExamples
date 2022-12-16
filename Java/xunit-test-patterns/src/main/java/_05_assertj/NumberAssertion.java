@@ -1,4 +1,4 @@
-package _04_assertj;
+package _05_assertj;
 
 public class NumberAssertion {
     public void applyTo(int i) {

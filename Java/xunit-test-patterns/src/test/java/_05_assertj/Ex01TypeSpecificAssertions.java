@@ -1,15 +1,13 @@
-package _04_assertj;
+package _05_assertj;
 
-import org.testng.annotations.Test;
-
-import javax.jws.WebService;
+import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static org.assertj.core.api.Assertions.assertThat;
 
-@WebService
+@Deprecated
 public class Ex01TypeSpecificAssertions {
     @Test
     public void trololololo() {
@@ -24,7 +22,7 @@ public class Ex01TypeSpecificAssertions {
             .containsSubsequence(1,2);
 
         assertThat(this.getClass())
-            .hasAnnotations(WebService.class);
+            .hasAnnotations(Deprecated.class);
 
         assertThat(Optional.of("lol"))
             .isNotEmpty()

@@ -1,11 +1,16 @@
-package _05_custom_assertions;
+package _04_custom_assertions;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.val;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class Ex03SolutionWithPurelyCustomAssertions {
+public class Ex02SolutionWithLombok {
+
+    @ToString
+    @EqualsAndHashCode
     static class PersonData {
         public final String name;
         public final String surname;
@@ -35,14 +40,8 @@ public class Ex03SolutionWithPurelyCustomAssertions {
         val superman = PersonData.superman();
 
         //THEN
-        assertThatAreTheSamePerson(superman, clark);
+        assertThat(superman).isEqualTo(clark);
     }
-
-    private void assertThatAreTheSamePerson(PersonData superman, PersonData clark) {
-        assertThat(superman.name).as("name").isEqualTo(clark.name);
-        assertThat(superman.surname).as("surname").isEqualTo(clark.surname);
-        assertThat(superman.age).as("age").isEqualTo(clark.age);
-    }
-
-
 }
+
+

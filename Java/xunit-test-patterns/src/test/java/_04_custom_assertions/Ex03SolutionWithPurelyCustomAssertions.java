@@ -1,11 +1,11 @@
-package _05_custom_assertions;
+package _04_custom_assertions;
 
 import lombok.val;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class Ex06SolutionWithGraphAssertions {
+public class Ex03SolutionWithPurelyCustomAssertions {
     static class PersonData {
         public final String name;
         public final String surname;
@@ -22,7 +22,7 @@ public class Ex06SolutionWithGraphAssertions {
         }
 
         public static PersonData superman() {
-            return new PersonData("Clark", "Kent", 351);
+            return new PersonData("Clark", "Kent", 35);
         }
     }
 
@@ -35,7 +35,14 @@ public class Ex06SolutionWithGraphAssertions {
         val superman = PersonData.superman();
 
         //THEN
-        assertThat(superman).isEqualToComparingFieldByFieldRecursively(clark);
+        assertThatAreTheSamePerson(superman, clark);
     }
+
+    private void assertThatAreTheSamePerson(PersonData superman, PersonData clark) {
+        assertThat(superman.name).as("name").isEqualTo(clark.name);
+        assertThat(superman.surname).as("surname").isEqualTo(clark.surname);
+        assertThat(superman.age).as("age").isEqualTo(clark.age);
+    }
+
 
 }

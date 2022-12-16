@@ -3,7 +3,7 @@ package _02_basics;
 import autofixture.publicinterface.Any;
 import lombok.val;
 import lombok.var;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class Ex02SingleLogicalAssertion {
     @Test
     public void shouldLeaveUniqueItems() {
         //GIVEN
-        val uniqueFilter = new UniqueFilter();
+        val uniqueFilter = new DistinctFilter();
 
         //WHEN
         val result = uniqueFilter.applyTo(1, 2, 3, 3, 4, 3, 3);
@@ -28,10 +28,10 @@ public class Ex02SingleLogicalAssertion {
     @Test
     public void shouldLeaveLast3UniqueItems() {
         //GIVEN
-        val uniqueFilter = new UniqueFilter();
+        val distinctFilter = new DistinctFilter();
 
         //WHEN
-        val result = uniqueFilter
+        val result = distinctFilter
             .apply3To(1, 2, 3, 3, 4, 3, 3);
 
         //THEN
