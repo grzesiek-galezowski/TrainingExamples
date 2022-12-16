@@ -9,9 +9,8 @@
     <Grid>
         <Label Name="PadLabel" Content="" HorizontalAlignment="Left" Height="96" VerticalAlignment="Top" Width="96"
              Background="LightGray" BorderBrush="Black" BorderThickness="5" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Button Content="Acc" HorizontalAlignment="Left" Margin="0,96,0,0" VerticalAlignment="Top" Height="32" Width="32" RenderTransformOrigin="0.915,-1.572"/>
-        <Button Content="Sli" HorizontalAlignment="Left" Margin="32,96,0,0" VerticalAlignment="Top" Height="32" Width="32"/>
-        <Button Content="1" HorizontalAlignment="Left" Margin="64,96,0,0" VerticalAlignment="Top" Height="32" Width="32"/>
-
+        <Button x:Name="AccentButton"  Content="Acc" Background="LightGray" HorizontalAlignment="Left" Margin="0,96,0,0" VerticalAlignment="Top" Height="32" Width="32" Click="AccentButton_Click"/>
+        <Button x:Name="SlideButton" Content="Sli" Background="LightGray" HorizontalAlignment="Left" Margin="32,96,0,0" VerticalAlignment="Top" Height="32" Width="32"/>
+        <Button x:Name="StateButton" Content="1" Background="LightGray" HorizontalAlignment="Left" Margin="64,96,0,0" VerticalAlignment="Top" Height="32" Width="32"/>
     </Grid>
 </UserControl>

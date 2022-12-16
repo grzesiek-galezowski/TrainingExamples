@@ -1,7 +1,7 @@
 using AtmaFileSystem;
 using MidiPlayground;
 
-static internal class PrmFile
+internal static class PrmFile
 {
   public static string Read(AbsoluteDirectoryPath absoluteDirectoryPath, Tb03PatternGroupNumber patternGroup, Tb03PatternNumberInGroup number)
   {

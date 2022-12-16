@@ -46,6 +46,22 @@ public partial class App : Application
 
     mainWindow.App = appLogic;
     mainWindow.SequenceView.App = appLogic;
+    mainWindow.SequenceView.P1.App = appLogic;
+    mainWindow.SequenceView.P2.App = appLogic;
+    mainWindow.SequenceView.P3.App = appLogic;
+    mainWindow.SequenceView.P4.App = appLogic;
+    mainWindow.SequenceView.P5.App = appLogic;
+    mainWindow.SequenceView.P6.App = appLogic;
+    mainWindow.SequenceView.P7.App = appLogic;
+    mainWindow.SequenceView.P8.App = appLogic;
+    mainWindow.SequenceView.P9.App = appLogic;
+    mainWindow.SequenceView.P10.App = appLogic;
+    mainWindow.SequenceView.P11.App = appLogic;
+    mainWindow.SequenceView.P12.App = appLogic;
+    mainWindow.SequenceView.P13.App = appLogic;
+    mainWindow.SequenceView.P14.App = appLogic;
+    mainWindow.SequenceView.P15.App = appLogic;
+    mainWindow.SequenceView.P16.App = appLogic;
     mainWindow.OctavePanelView.App = appLogic;
     mainWindow.OctavePanelView.Octave1Pad.App = appLogic;
     mainWindow.OctavePanelView.Octave2Pad.App = appLogic;

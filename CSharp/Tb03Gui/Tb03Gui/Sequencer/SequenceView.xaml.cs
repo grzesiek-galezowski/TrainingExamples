@@ -59,7 +59,7 @@ public partial class SequenceView : UserControl, ISequencerPositionObserver
 
   public void OnNoteInsert(int sequencerPosition, Tb03Note latestNote)
   {
-    _sequencerPads[sequencerPosition].Content = latestNote;
+    _sequencerPads[sequencerPosition].SetNote(latestNote);
   }
 
   public int SequencerPatternLength()
