@@ -7,10 +7,17 @@
              xmlns:octavePanel="clr-namespace:Tb03Gui.OctavePanel"
              mc:Ignorable="d" Height="93" Width="464">
   <Grid>
-    <octavePanel:OctavePad x:Name="Octave1Pad" Text="2" AssignedOctave="Octave2"/>
-    <octavePanel:OctavePad x:Name="Octave2Pad" Text="3" AssignedOctave="Octave3" Margin="97,0,-97,0"/>
-    <octavePanel:OctavePad x:Name="Octave3Pad" Text="4" AssignedOctave="Octave4" Margin="190,0,-190,0"/>
-    <octavePanel:OctavePad x:Name="Octave4Pad" Text="5" AssignedOctave="Octave5" Margin="283,0,-283,0"/>
-    <octavePanel:OctavePad x:Name="Octave5Pad" Text="6" AssignedOctave="Octave6" Margin="376,0,0,0"/>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition/>
+      <ColumnDefinition/>
+      <ColumnDefinition/>
+      <ColumnDefinition/>
+      <ColumnDefinition/>
+    </Grid.ColumnDefinitions>
+    <octavePanel:OctavePad Grid.Column="0" x:Name="Octave1Pad" Text="2" AssignedOctave="Octave2"/>
+    <octavePanel:OctavePad Grid.Column="1" x:Name="Octave2Pad" Text="3" AssignedOctave="Octave3"/>
+    <octavePanel:OctavePad Grid.Column="2" x:Name="Octave3Pad" Text="4" AssignedOctave="Octave4"/>
+    <octavePanel:OctavePad Grid.Column="3" x:Name="Octave4Pad" Text="5" AssignedOctave="Octave5"/>
+    <octavePanel:OctavePad Grid.Column="4" x:Name="Octave5Pad" Text="6" AssignedOctave="Octave6"/>
   </Grid>
 </UserControl>

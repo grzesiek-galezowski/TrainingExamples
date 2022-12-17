@@ -6,38 +6,65 @@
              xmlns:local="clr-namespace:Tb03Gui"
              xmlns:patternNavigation="clr-namespace:Tb03Gui.PatternNavigation"
              mc:Ignorable="d" 
-             d:DesignHeight="155.769" d:DesignWidth="824.88">
-  <Grid Margin="0,0,56,0" HorizontalAlignment="Right" Width="734" Height="202" VerticalAlignment="Top">
-    <Button Name="SelectTb03BackupFolderButton" Content="Click to select folder" HorizontalAlignment="Left" Height="41" VerticalAlignment="Top" Width="643" Click="Button_Click"/>
-    <patternNavigation:PatternGroupPad PatternGroupNumber="1" x:Name="Group1Pad" HorizontalAlignment="Left" Height="44" Margin="3,49,0,0" VerticalAlignment="Top" Width="44"/>
-    <patternNavigation:PatternGroupPad PatternGroupNumber="2" x:Name="Group2Pad" HorizontalAlignment="Left" Height="44" Margin="47,49,0,0" VerticalAlignment="Top" Width="44"/>
-    <patternNavigation:PatternGroupPad PatternGroupNumber="3" x:Name="Group3Pad" HorizontalAlignment="Left" Height="44" Margin="3,93,0,0" VerticalAlignment="Top" Width="44"/>
-    <patternNavigation:PatternGroupPad PatternGroupNumber="4" x:Name="Group4Pad" HorizontalAlignment="Left" Height="44" Margin="47,93,0,0" VerticalAlignment="Top" Width="44"/>
+             d:DesignHeight="210.549" d:DesignWidth="824.88">
+  <Grid Width="734" Height="152">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="1*"/>
+      <RowDefinition Height="2*"/>
+    </Grid.RowDefinitions>
+    <Button Grid.Row="0" Name="SelectTb03BackupFolderButton" Content="Click to select folder" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Click="Button_Click"/>
+    <Grid Grid.Row="1" Height="102" >
+      <Grid.RowDefinitions>
+        <RowDefinition/>
+        <RowDefinition/>
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition/>
+        <ColumnDefinition />
+        <ColumnDefinition />
+        <ColumnDefinition />
+        <ColumnDefinition />
+        <ColumnDefinition />
+        <ColumnDefinition />
+        <ColumnDefinition />
+        <ColumnDefinition />
+        <ColumnDefinition />
+        <ColumnDefinition />
+        <ColumnDefinition />
+        <ColumnDefinition />
+        <ColumnDefinition />
+        <ColumnDefinition />
+      </Grid.ColumnDefinitions>
+      <patternNavigation:PatternGroupPad Grid.Column="0" Grid.Row="0" PatternGroupNumber="1" x:Name="Group1Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+      <patternNavigation:PatternGroupPad Grid.Column="1" Grid.Row="0" PatternGroupNumber="2" x:Name="Group2Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+      <patternNavigation:PatternGroupPad Grid.Column="0" Grid.Row="1" PatternGroupNumber="3" x:Name="Group3Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+      <patternNavigation:PatternGroupPad Grid.Column="1" Grid.Row="1" PatternGroupNumber="4" x:Name="Group4Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
     
-    <patternNavigation:PatternPad PatternNumber="1"  x:Name="Pattern1Pad" HorizontalAlignment="Left" Height="44" Margin="123,49,0,0" VerticalAlignment="Top" Width="44"/>
-    <patternNavigation:PatternPad PatternNumber="2"  x:Name="Pattern2Pad" HorizontalAlignment="Left" Height="44" Margin="168,49,0,0" VerticalAlignment="Top" Width="44"/>
-    <patternNavigation:PatternPad PatternNumber="3"  x:Name="Pattern3Pad" HorizontalAlignment="Left" Height="44" Margin="214,49,0,0" VerticalAlignment="Top" Width="44"/>
-    <patternNavigation:PatternPad PatternNumber="4"  x:Name="Pattern4Pad" HorizontalAlignment="Left" Height="44" Margin="258,49,0,0" VerticalAlignment="Top" Width="44"/>
-    <patternNavigation:PatternPad PatternNumber="5"  x:Name="Pattern5Pad" HorizontalAlignment="Left" Height="44" Margin="303,49,0,0" VerticalAlignment="Top" Width="44"/>
-    <patternNavigation:PatternPad PatternNumber="6"  x:Name="Pattern6Pad" HorizontalAlignment="Left" Height="44" Margin="347,49,0,0" VerticalAlignment="Top" Width="44"/>
-    <patternNavigation:PatternPad PatternNumber="7"  x:Name="Pattern7Pad" HorizontalAlignment="Left" Height="44" Margin="401,49,0,0" VerticalAlignment="Top" Width="44"/>
-    <patternNavigation:PatternPad PatternNumber="8"  x:Name="Pattern8Pad" HorizontalAlignment="Left" Height="44" Margin="447,49,0,0" VerticalAlignment="Top" Width="44"/>
-    <patternNavigation:PatternPad PatternNumber="9"  x:Name="Pattern9Pad" HorizontalAlignment="Left" Height="44" Margin="500,49,0,0" VerticalAlignment="Top" Width="44"/>
-    <patternNavigation:PatternPad PatternNumber="10" x:Name="Pattern10Pad" HorizontalAlignment="Left" Height="44" Margin="545,49,0,0" VerticalAlignment="Top" Width="44"/>
-    <patternNavigation:PatternPad PatternNumber="11" x:Name="Pattern11Pad" HorizontalAlignment="Left" Height="44" Margin="605,49,0,0" VerticalAlignment="Top" Width="44"/>
-    <patternNavigation:PatternPad PatternNumber="12" x:Name="Pattern12Pad" HorizontalAlignment="Left" Height="44" Margin="648,49,0,0" VerticalAlignment="Top" Width="44"/>
-    <patternNavigation:PatternPad PatternNumber="13" x:Name="Pattern13Pad" HorizontalAlignment="Left" Height="44" Margin="124,93,0,0" VerticalAlignment="Top" Width="44"/>
-    <patternNavigation:PatternPad PatternNumber="14" x:Name="Pattern14Pad" HorizontalAlignment="Left" Height="44" Margin="168,93,0,0" VerticalAlignment="Top" Width="44"/>
-    <patternNavigation:PatternPad PatternNumber="15" x:Name="Pattern15Pad" HorizontalAlignment="Left" Height="44" Margin="214,93,0,0" VerticalAlignment="Top" Width="44"/>
-    <patternNavigation:PatternPad PatternNumber="16" x:Name="Pattern16Pad" HorizontalAlignment="Left" Height="44" Margin="258,93,0,0" VerticalAlignment="Top" Width="44"/>
-    <patternNavigation:PatternPad PatternNumber="17" x:Name="Pattern17Pad" HorizontalAlignment="Left" Height="44" Margin="303,93,0,0" VerticalAlignment="Top" Width="44"/>
-    <patternNavigation:PatternPad PatternNumber="18" x:Name="Pattern18Pad" HorizontalAlignment="Left" Height="44" Margin="347,93,0,0" VerticalAlignment="Top" Width="44"/>
-    <patternNavigation:PatternPad PatternNumber="19" x:Name="Pattern19Pad" HorizontalAlignment="Left" Height="44" Margin="398,93,0,0" VerticalAlignment="Top" Width="44"/>
-    <patternNavigation:PatternPad PatternNumber="20" x:Name="Pattern20Pad" HorizontalAlignment="Left" Height="44" Margin="448,93,0,0" VerticalAlignment="Top" Width="44"/>
-    <patternNavigation:PatternPad PatternNumber="21" x:Name="Pattern21Pad" HorizontalAlignment="Left" Height="44" Margin="501,93,0,0" VerticalAlignment="Top" Width="44"/>
-    <patternNavigation:PatternPad PatternNumber="22" x:Name="Pattern22Pad" HorizontalAlignment="Left" Height="44" Margin="544,93,0,0" VerticalAlignment="Top" Width="44"/>
-    <patternNavigation:PatternPad PatternNumber="23" x:Name="Pattern23Pad" HorizontalAlignment="Left" Height="44" Margin="605,93,0,0" VerticalAlignment="Top" Width="44"/>
-    <patternNavigation:PatternPad PatternNumber="24" x:Name="Pattern24Pad" HorizontalAlignment="Left" Height="44" Margin="648,93,0,0" VerticalAlignment="Top" Width="44"/>
+      <patternNavigation:PatternPad Grid.Column="3" Grid.Row="0" PatternNumber="1"  x:Name="Pattern1Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+      <patternNavigation:PatternPad Grid.Column="4" Grid.Row="0" PatternNumber="2"  x:Name="Pattern2Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+      <patternNavigation:PatternPad Grid.Column="5" Grid.Row="0" PatternNumber="3"  x:Name="Pattern3Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+      <patternNavigation:PatternPad Grid.Column="6" Grid.Row="0" PatternNumber="4"  x:Name="Pattern4Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+      <patternNavigation:PatternPad Grid.Column="7" Grid.Row="0" PatternNumber="5"  x:Name="Pattern5Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+      <patternNavigation:PatternPad Grid.Column="8" Grid.Row="0" PatternNumber="6"  x:Name="Pattern6Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+      <patternNavigation:PatternPad Grid.Column="9" Grid.Row="0" PatternNumber="7"  x:Name="Pattern7Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+      <patternNavigation:PatternPad Grid.Column="10" Grid.Row="0" PatternNumber="8"  x:Name="Pattern8Pad"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+      <patternNavigation:PatternPad Grid.Column="11" Grid.Row="0" PatternNumber="9"  x:Name="Pattern9Pad"  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+      <patternNavigation:PatternPad Grid.Column="12" Grid.Row="0" PatternNumber="10" x:Name="Pattern10Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+      <patternNavigation:PatternPad Grid.Column="13" Grid.Row="0" PatternNumber="11" x:Name="Pattern11Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+      <patternNavigation:PatternPad Grid.Column="14" Grid.Row="0" PatternNumber="12" x:Name="Pattern12Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
+      <patternNavigation:PatternPad Grid.Column="3"  Grid.Row="1" PatternNumber="13" x:Name="Pattern13Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+      <patternNavigation:PatternPad Grid.Column="4"  Grid.Row="1" PatternNumber="14" x:Name="Pattern14Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+      <patternNavigation:PatternPad Grid.Column="5"  Grid.Row="1" PatternNumber="15" x:Name="Pattern15Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+      <patternNavigation:PatternPad Grid.Column="6"  Grid.Row="1" PatternNumber="16" x:Name="Pattern16Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+      <patternNavigation:PatternPad Grid.Column="7"  Grid.Row="1" PatternNumber="17" x:Name="Pattern17Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+      <patternNavigation:PatternPad Grid.Column="8"  Grid.Row="1" PatternNumber="18" x:Name="Pattern18Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+      <patternNavigation:PatternPad Grid.Column="9"  Grid.Row="1" PatternNumber="19" x:Name="Pattern19Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+      <patternNavigation:PatternPad Grid.Column="10" Grid.Row="1" PatternNumber="20" x:Name="Pattern20Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+      <patternNavigation:PatternPad Grid.Column="11" Grid.Row="1" PatternNumber="21" x:Name="Pattern21Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+      <patternNavigation:PatternPad Grid.Column="12" Grid.Row="1" PatternNumber="22" x:Name="Pattern22Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+      <patternNavigation:PatternPad Grid.Column="13" Grid.Row="1" PatternNumber="23" x:Name="Pattern23Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+      <patternNavigation:PatternPad Grid.Column="14" Grid.Row="1" PatternNumber="24" x:Name="Pattern24Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+    </Grid>
   </Grid>
 </UserControl>

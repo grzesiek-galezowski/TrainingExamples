@@ -7,10 +7,34 @@
              mc:Ignorable="d" 
              d:DesignHeight="132.876" d:DesignWidth="98.054">
     <Grid>
-        <Label Name="PadLabel" Content="" HorizontalAlignment="Left" Height="96" VerticalAlignment="Top" Width="96"
-             Background="LightGray" BorderBrush="Black" BorderThickness="5" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Button x:Name="AccentButton"  Content="Acc" Background="LightGray" HorizontalAlignment="Left" Margin="0,96,0,0" VerticalAlignment="Top" Height="32" Width="32" Click="AccentButton_Click"/>
-        <Button x:Name="SlideButton" Content="Sli" Background="LightGray" HorizontalAlignment="Left" Margin="32,96,0,0" VerticalAlignment="Top" Height="32" Width="32"/>
-        <Button x:Name="StateButton" Content="1" Background="LightGray" HorizontalAlignment="Left" Margin="64,96,0,0" VerticalAlignment="Top" Height="32" Width="32"/>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="3*"/>
+        <RowDefinition Height="1*"/>
+      </Grid.RowDefinitions> 
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition/>
+        <ColumnDefinition/>
+        <ColumnDefinition/>
+      </Grid.ColumnDefinitions>
+      <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" 
+             x:Name="PadLabel" 
+             Content="" 
+             Height="96" Width="96"
+             Background="LightGray" BorderBrush="Black" BorderThickness="5" FontSize="30"
+             HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+      <Button Grid.Row="1" Grid.Column="0" 
+              x:Name="AccentButton" Content="Acc" Background="LightGray"
+              HorizontalAlignment="Center" VerticalAlignment="Center" 
+              Height="32" Width="32" 
+              Click="AccentButton_Click" />
+      <Button Grid.Row="1" Grid.Column="1" 
+              x:Name="SlideButton" Content="Sli" Background="LightGray"
+              HorizontalAlignment="Center" VerticalAlignment="Center" 
+              Height="32" Width="32" 
+              Click="SlideButton_Click" />
+      <Button Grid.Row="1" Grid.Column="2" 
+              x:Name="StateButton" Content="1" Background="LightGray"
+              HorizontalAlignment="Center" VerticalAlignment="Center" 
+              Height="32" Width="32" />
     </Grid>
 </UserControl>

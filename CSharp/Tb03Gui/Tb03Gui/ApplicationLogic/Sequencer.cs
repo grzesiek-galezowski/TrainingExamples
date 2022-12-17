@@ -92,4 +92,26 @@ public class Sequencer : IPatternNotesObserver
   {
     return new Maybe<Tb03Note>[_sequenceLength];
   }
+
+  public void ToggleAccent(int noteNumber, IParameterToggleObserver parameterToggleObserver)
+  {
+    var note = _notes[noteNumber-1];
+    if (note.HasValue)
+    {
+      var newAccentValue = !note.Value().Accent;
+      _notes[noteNumber-1] = (note.Value() with { Accent = newAccentValue}).Just();
+      parameterToggleObserver.OnAccentChanged(newAccentValue);
+    }
+  }
+
+  public void ToggleSlide(int noteNumber, IParameterToggleObserver parameterToggleObserver)
+  {
+    var note = _notes[noteNumber-1];
+    if (note.HasValue)
+    {
+      var newSlideValue = !note.Value().Slide;
+      _notes[noteNumber-1] = (note.Value() with { Slide = newSlideValue}).Just();
+      parameterToggleObserver.OnSlideChanged(newSlideValue);
+    }
+  }
 }

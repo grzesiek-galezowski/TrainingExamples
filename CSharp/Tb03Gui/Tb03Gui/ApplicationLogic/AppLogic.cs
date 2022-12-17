@@ -60,4 +60,14 @@ public class AppLogic
   {
     _patternNavigation.SelectPattern(patternNumber);
   }
+
+  public void ToggleSequencerNoteAccent(int noteNumber, IParameterToggleObserver parameterToggleObserver)
+  {
+    _sequencer.ToggleAccent(noteNumber, parameterToggleObserver);
+  }
+
+  public void ToggleNoteSlide(int noteNumber, IParameterToggleObserver parameterToggleObserver)
+  {
+    _sequencer.ToggleSlide(noteNumber, parameterToggleObserver);
+  }
 }

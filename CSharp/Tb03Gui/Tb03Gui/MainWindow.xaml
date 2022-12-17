@@ -10,9 +10,15 @@
         mc:Ignorable="d"
         Title="MainWindow" WindowState="Maximized" Width="1042" Height="800" KeyDown="UIElement_OnKeyDown" KeyUp="MainWindow_OnKeyUp">
   <Grid Background="Silver" Margin="0,0,-136,0">
-    <views1:KeyboardView x:Name="KeyboardView" Margin="48,550,398,22"/>
-    <sequencer:SequenceView x:Name="SequenceView" Margin="38,261,171,213"/>
-    <octavePanel:OctavePanelView x:Name="OctavePanelView" Margin="38,163,676,528"/>
-    <patternNavigation:PatternNavigationView x:Name="PatternNavigationView" Margin="10,10,360,626"/>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="1.8*"/>
+      <RowDefinition Height="1.2*"/>
+      <RowDefinition Height="2.6*"/>
+      <RowDefinition Height="2*"/>
+    </Grid.RowDefinitions>
+    <patternNavigation:PatternNavigationView Grid.Row="0" x:Name="PatternNavigationView"/>
+    <octavePanel:OctavePanelView Grid.Row="1" x:Name="OctavePanelView"/>
+    <sequencer:SequenceView Grid.Row="2" x:Name="SequenceView"/>
+    <views1:KeyboardView Grid.Row="3" x:Name="KeyboardView"/>
   </Grid>
 </Window>
