@@ -1,6 +1,8 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using Tb03Gui.ApplicationLogic;
+using Tb03Gui.Track;
 
 namespace Tb03Gui;
 
@@ -12,6 +14,14 @@ public partial class MainWindow : Window
   public MainWindow()
   {
     InitializeComponent();
+    AddTrackSegmentsToTrackGrid();
+  }
+
+  private void AddTrackSegmentsToTrackGrid()
+  {
+    var uiElement = new TrackView();
+    Grid.SetRow(uiElement, 1);
+    TracksGrid.Children.Add(uiElement);
   }
 
   public AppLogic App { get; set; }

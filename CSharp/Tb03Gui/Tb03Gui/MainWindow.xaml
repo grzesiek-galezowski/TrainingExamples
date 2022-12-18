@@ -25,6 +25,13 @@
       </Grid>
     </TabItem>
     <TabItem Header="Tracks">
+      <Grid Name="TracksGrid">
+        <Grid.RowDefinitions>
+          <RowDefinition/>
+          <RowDefinition/>
+        </Grid.RowDefinitions>
+        <patternNavigation:PatternNavigationView Grid.Row="0" x:Name="PatternNavigationForTracksView"/>
+      </Grid>
     </TabItem>
   </TabControl>
 

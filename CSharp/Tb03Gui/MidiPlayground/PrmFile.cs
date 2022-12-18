@@ -1,5 +1,6 @@
 using AtmaFileSystem;
-using MidiPlayground;
+
+namespace MidiPlayground;
 
 internal static class PrmFile
 {
