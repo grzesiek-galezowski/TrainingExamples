@@ -7,30 +7,37 @@
         xmlns:sequencer="clr-namespace:Tb03Gui.Sequencer"
         xmlns:octavePanel="clr-namespace:Tb03Gui.OctavePanel"
         xmlns:patternNavigation="clr-namespace:Tb03Gui.PatternNavigation"
+        xmlns:trackNavigation="clr-namespace:Tb03Gui.TrackNavigation"
         mc:Ignorable="d"
         Title="MainWindow" WindowState="Maximized" Width="1042" Height="800" KeyDown="UIElement_OnKeyDown" KeyUp="MainWindow_OnKeyUp">
   <TabControl>
     <TabItem Header="Patterns">
       <Grid Background="Silver" Margin="0,0,-136,0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="83*"/>
+          <ColumnDefinition Width="1089*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
           <RowDefinition Height="1.8*"/>
           <RowDefinition Height="1.2*"/>
           <RowDefinition Height="2.6*"/>
           <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        <patternNavigation:PatternNavigationView Grid.Row="0" x:Name="PatternNavigationView"/>
-        <octavePanel:OctavePanelView Grid.Row="1" x:Name="OctavePanelView"/>
-        <sequencer:SequenceView Grid.Row="2" x:Name="SequenceView"/>
-        <views1:KeyboardView Grid.Row="3" x:Name="KeyboardView"/>
+        <patternNavigation:PatternNavigationView Grid.Row="0" x:Name="PatternNavigationView" Grid.ColumnSpan="2"/>
+        <octavePanel:OctavePanelView Grid.Row="1" x:Name="OctavePanelView" Grid.Column="1" Margin="271,13,354,13"/>
+        <sequencer:SequenceView Grid.Row="1" x:Name="SequenceView" Grid.Column="1" Margin="19,119,102,148" Grid.RowSpan="3"/>
+        <views1:KeyboardView Grid.Row="2" x:Name="KeyboardView" Grid.Column="1" Margin="137,259,220,-13" Grid.RowSpan="2"/>
       </Grid>
     </TabItem>
     <TabItem Header="Tracks">
-      <Grid Name="TracksGrid">
+      <Grid>
         <Grid.RowDefinitions>
           <RowDefinition/>
           <RowDefinition/>
         </Grid.RowDefinitions>
-        <patternNavigation:PatternNavigationView Grid.Row="0" x:Name="PatternNavigationForTracksView"/>
+        <trackNavigation:TrackNavigationView Grid.Row="0" x:Name="TrackNavigationView"/>
+        <Grid x:Name="TracksGrid" Grid.Row="1">
+        </Grid>
       </Grid>
     </TabItem>
   </TabControl>

@@ -20,6 +20,9 @@
     <Compile Update="PatternNavigation\PatternPad.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="TrackNavigation\TrackPad.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
 </Project>

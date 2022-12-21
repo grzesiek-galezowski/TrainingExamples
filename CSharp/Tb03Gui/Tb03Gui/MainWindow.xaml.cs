@@ -19,9 +19,27 @@ public partial class MainWindow : Window
 
   private void AddTrackSegmentsToTrackGrid()
   {
-    var uiElement = new TrackView();
-    Grid.SetRow(uiElement, 1);
-    TracksGrid.Children.Add(uiElement);
+    var maxPatternsInATrack = 256;
+    var rowCount = 8;
+    var patternsCountInASingleRow = maxPatternsInATrack/rowCount;
+
+    for (int i = 0; i < patternsCountInASingleRow; i++)
+    {
+      TracksGrid.ColumnDefinitions.Add(new ColumnDefinition());
+    }
+
+    for (int i = 0; i < rowCount; i++)
+    {
+      TracksGrid.RowDefinitions.Add(new RowDefinition());
+    }
+
+    for (int i = 0; i < maxPatternsInATrack; i++)
+    {
+      var uiElement = new TrackView();
+      Grid.SetColumn(uiElement, i % patternsCountInASingleRow);
+      Grid.SetRow(uiElement, i/patternsCountInASingleRow);
+      TracksGrid.Children.Add(uiElement);
+    }
   }
 
   public AppLogic App { get; set; }
