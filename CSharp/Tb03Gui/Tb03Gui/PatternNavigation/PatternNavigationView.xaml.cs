@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using AtmaFileSystem;
-using Ookii.Dialogs.Wpf;
 using Tb03Gui.ApplicationLogic;
 
 namespace Tb03Gui.PatternNavigation;
@@ -9,7 +8,7 @@ namespace Tb03Gui.PatternNavigation;
 /// <summary>
 /// Interaction logic for PatternNavigationView.xaml
 /// </summary>
-public partial class PatternNavigationView : UserControl, ITb03FolderProcessingObserver, IPatternNavigationObserver
+public partial class PatternNavigationView : UserControl, IPatternNavigationObserver
 {
   private readonly PatternGroupPad[] _patternGroupPads;
   private readonly PatternPad[] _patternPads;
@@ -58,32 +57,6 @@ public partial class PatternNavigationView : UserControl, ITb03FolderProcessingO
   }
 
   public AppLogic App { get; set; }
-
-  private void Button_Click(object sender, RoutedEventArgs e)
-  {
-    var openFolderDialog = new VistaFolderBrowserDialog();
-    if (openFolderDialog.ShowDialog().GetValueOrDefault())
-    {
-      var folderPath = AbsoluteDirectoryPath.Value(openFolderDialog.SelectedPath);
-      App.ActivateTb03FolderPath(folderPath);
-    }
-  }
-
-
-  public void PatternFileNotFound(AbsoluteDirectoryPath folderPath, FileName fileName)
-  {
-    MessageBox.Show($"Expected to find {fileName} in {folderPath} but couldn't");
-  }
-
-  public void NotATb03File(AbsoluteFilePath filePath)
-  {
-    MessageBox.Show("The file " + filePath.FileName() + " is not a proper PRM file");
-  }
-
-  public void PathIsOk(AbsoluteDirectoryPath folderPath)
-  {
-    SelectTb03BackupFolderButton.Content = folderPath.ToString();
-  }
 
   public void OnPatternGroupSelectionChanged(int patternGroupNumber)
   {

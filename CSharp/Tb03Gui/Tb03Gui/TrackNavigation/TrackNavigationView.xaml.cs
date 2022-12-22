@@ -13,21 +13,20 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Tb03Gui.TrackNavigation
-{
-    /// <summary>
-    /// Interaction logic for TrackNavigationView.xaml
-    /// </summary>
-    public partial class TrackNavigationView : UserControl
-    {
-        public TrackNavigationView()
-        {
-            InitializeComponent();
-        }
+namespace Tb03Gui.TrackNavigation;
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-          throw new NotImplementedException();
-        }
-    }
+/// <summary>
+/// Interaction logic for TrackNavigationView.xaml
+/// </summary>
+public partial class TrackNavigationView : UserControl
+{
+  public TrackNavigationView()
+  {
+    InitializeComponent();
+  }
+
+  private void Button_Click(object sender, RoutedEventArgs e)
+  {
+    throw new NotImplementedException();
+  }
 }

@@ -8,12 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="210.549" d:DesignWidth="824.88">
   <Grid Width="734" Height="152">
-    <Grid.RowDefinitions>
-      <RowDefinition Height="1*"/>
-      <RowDefinition Height="2*"/>
-    </Grid.RowDefinitions>
-    <Button Grid.Row="0" Name="SelectTb03BackupFolderButton" Content="Click to select folder" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Click="Button_Click"/>
-    <Grid Grid.Row="1" Height="102" >
+    <Grid Height="102" >
       <Grid.RowDefinitions>
         <RowDefinition/>
         <RowDefinition/>

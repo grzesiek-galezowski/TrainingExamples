@@ -34,17 +34,18 @@ public partial class App : Application
         sequencer,
         mainWindow.PatternNavigationView,
         new CheckThatFolderContainsOnlyPrmFilesStep(
-          mainWindow.PatternNavigationView,
+          mainWindow.FolderManagement,
           new CheckGroupsAndPatternsCount(
-            mainWindow.PatternNavigationView,
+            mainWindow.FolderManagement,
             new PopulateInfoStep(
-              mainWindow.PatternNavigationView)
+              mainWindow.FolderManagement)
             )
           )
         )
       );
 
     mainWindow.App = appLogic;
+    mainWindow.FolderManagement.App = appLogic;
     mainWindow.SequenceView.App = appLogic;
     mainWindow.SequenceView.P1.App = appLogic;
     mainWindow.SequenceView.P2.App = appLogic;

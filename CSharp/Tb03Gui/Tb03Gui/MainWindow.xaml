@@ -8,9 +8,15 @@
         xmlns:octavePanel="clr-namespace:Tb03Gui.OctavePanel"
         xmlns:patternNavigation="clr-namespace:Tb03Gui.PatternNavigation"
         xmlns:trackNavigation="clr-namespace:Tb03Gui.TrackNavigation"
+        xmlns:folderManagementTab="clr-namespace:Tb03Gui.FolderManagementTab"
         mc:Ignorable="d"
         Title="MainWindow" WindowState="Maximized" Width="1042" Height="800" KeyDown="UIElement_OnKeyDown" KeyUp="MainWindow_OnKeyUp">
   <TabControl>
+    <TabItem Header="Filesystem">
+      <Grid Background="Silver">
+        <folderManagementTab:FolderManagement x:Name="FolderManagement"/>
+      </Grid>
+    </TabItem>
     <TabItem Header="Patterns">
       <Grid Background="Silver" Margin="0,0,-136,0">
         <Grid.ColumnDefinitions>
