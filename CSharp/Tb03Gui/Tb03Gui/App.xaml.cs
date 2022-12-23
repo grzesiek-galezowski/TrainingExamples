@@ -29,20 +29,20 @@ public partial class App : Application
           mainWindow.OctavePanelView.Octave4Pad,
           mainWindow.OctavePanelView.Octave5Pad
         }),
-      mainWindow.SequenceView, 
-      new ApplicationLogic.PatternNavigation(
+      mainWindow.SequenceView,
+      new Patterns(
         sequencer,
-        mainWindow.PatternNavigationView,
-        new CheckThatFolderContainsOnlyPrmFilesStep(
+        mainWindow.PatternNavigationView),
+      new Tracks(),
+      new CheckThatFolderContainsOnlyPrmFilesStep(
+        mainWindow.FolderManagement,
+        new CheckGroupsAndPatternsAndTracksCount(
           mainWindow.FolderManagement,
-          new CheckGroupsAndPatternsCount(
-            mainWindow.FolderManagement,
-            new PopulateInfoStep(
-              mainWindow.FolderManagement)
-            )
-          )
+          new PopulateInfoStep(
+            mainWindow.FolderManagement)
         )
-      );
+      )
+    );
 
     mainWindow.App = appLogic;
     mainWindow.FolderManagement.App = appLogic;

@@ -8,7 +8,9 @@ public class CheckThatFolderContainsOnlyPrmFilesStep : ISelectedTb03BackupFolder
   private readonly ITb03FolderProcessingObserver _observer;
   private readonly ISelectedTb03BackupFolderProcessingStep _next;
 
-  public CheckThatFolderContainsOnlyPrmFilesStep(ITb03FolderProcessingObserver observer, ISelectedTb03BackupFolderProcessingStep next)
+  public CheckThatFolderContainsOnlyPrmFilesStep(
+    ITb03FolderProcessingObserver observer, 
+    ISelectedTb03BackupFolderProcessingStep next)
   {
     _observer = observer;
     _next = next;

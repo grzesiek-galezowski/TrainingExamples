@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using AtmaFileSystem;
 using Ookii.Dialogs.Wpf;
@@ -20,13 +21,19 @@ public partial class FolderManagement : UserControl, ITb03FolderProcessingObserv
 
   private void Button_Click(object sender, RoutedEventArgs e)
   {
-    var openFolderDialog = new VistaFolderBrowserDialog();
-    if (openFolderDialog.ShowDialog().GetValueOrDefault())
+    try
     {
-      var folderPath = AbsoluteDirectoryPath.Value(openFolderDialog.SelectedPath);
-      App.ActivateTb03FolderPath(folderPath);
+      var openFolderDialog = new VistaFolderBrowserDialog();
+      if (openFolderDialog.ShowDialog().GetValueOrDefault())
+      {
+        var folderPath = AbsoluteDirectoryPath.Value(openFolderDialog.SelectedPath);
+        App.ActivateTb03FolderPath(folderPath);
+      }
     }
-
+    catch (Exception ex)
+    {
+      MessageBox.Show(ex.Message);
+    }
   }
 
   public void PatternFileNotFound(AbsoluteDirectoryPath folderPath, FileName fileName)

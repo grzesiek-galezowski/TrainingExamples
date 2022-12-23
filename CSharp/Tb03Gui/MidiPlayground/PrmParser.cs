@@ -75,4 +75,9 @@ public static class PrmParser
 
     return melody;
   }
+
+  public static TrackEntryDto[] ParseIntoTrack(string fileContent)
+  {
+    throw new NotImplementedException();
+  }
 }

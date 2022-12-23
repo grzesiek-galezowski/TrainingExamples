@@ -11,17 +11,24 @@ public class AppLogic
   private readonly IOctaveObserver _octaveObserver;
   private readonly ISequencerPositionObserver _sequencerPositionObserver;
   private readonly Synth _synth;
-  private readonly PatternNavigation _patternNavigation;
+  private readonly Patterns _patterns;
+  private readonly Tracks _tracks;
+  private ISelectedTb03BackupFolderProcessingStep _folderProcessingChain;
 
-  public AppLogic(Sequencer sequencer,
+  public AppLogic(
+    Sequencer sequencer,
     IOctaveObserver octaveObserver,
     ISequencerPositionObserver sequencerPositionObserver, 
-    PatternNavigation patternNavigation)
+    Patterns patterns, 
+    Tracks tracks, 
+    ISelectedTb03BackupFolderProcessingStep folderProcessingChain)
   {
     _sequencer = sequencer;
     _octaveObserver = octaveObserver;
     _sequencerPositionObserver = sequencerPositionObserver;
-    _patternNavigation = patternNavigation;
+    _patterns = patterns;
+    _tracks = tracks;
+    _folderProcessingChain = folderProcessingChain;
     _synth = Synth.Create();
   }
 
@@ -48,17 +55,19 @@ public class AppLogic
 
   public void ActivateTb03FolderPath(AbsoluteDirectoryPath folderPath)
   {
-    _patternNavigation.Activate(folderPath);
+    _folderProcessingChain.Activate(folderPath);
+    _patterns.Initialize(folderPath);
+    _tracks.Initialize(folderPath);
   }
 
   public void PatternGroupWasSelected(int patternGroupNumber) //bug enum?
   {
-    _patternNavigation.SelectPatternGroup(patternGroupNumber);
+    _patterns.SelectPatternGroup(patternGroupNumber);
   }
 
   public void PatternWasSelected(int patternNumber)
   {
-    _patternNavigation.SelectPattern(patternNumber);
+    _patterns.SelectPattern(patternNumber);
   }
 
   public void ToggleSequencerNoteAccent(int noteNumber, IParameterToggleObserver parameterToggleObserver)

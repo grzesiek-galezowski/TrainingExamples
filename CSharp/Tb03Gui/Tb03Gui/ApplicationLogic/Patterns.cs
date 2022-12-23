@@ -2,29 +2,25 @@
 
 namespace Tb03Gui.ApplicationLogic;
 
-public class PatternNavigation
+public class Patterns
 {
-  private readonly CheckThatFolderContainsOnlyPrmFilesStep _folderProcessingChain;
   private int _patternGroupNumber = PatternNavigationConstants.InitialPatternGroup;
   private int _patternNumber = PatternNavigationConstants.InitialPattern;
   private readonly Sequencer _sequencer;
   private readonly IPatternNavigationObserver _patternNavigationObserver;
-  private ITb03Folder _folder = new NoActiveFolder();
+  private ITb03PatternsFolder _patternsFolder = new NoActivePatternsFolder();
 
-  public PatternNavigation(
+  public Patterns(
     Sequencer sequencer, 
-    IPatternNavigationObserver patternNavigationObserver,
-    CheckThatFolderContainsOnlyPrmFilesStep chain)
+    IPatternNavigationObserver patternNavigationObserver)
   {
     _sequencer = sequencer;
     _patternNavigationObserver = patternNavigationObserver;
-    _folderProcessingChain = chain;
   }
 
-  public void Activate(AbsoluteDirectoryPath folderPath)
+  public void Initialize(AbsoluteDirectoryPath folderPath)
   {
-    _folderProcessingChain.Activate(folderPath);
-    _folder = new ActiveFolder(folderPath, _sequencer);
+    _patternsFolder = new ActivePatternsFolder(folderPath, _sequencer);
     SelectPatternGroup(_patternGroupNumber);
     SelectPattern(_patternNumber);
   }
@@ -33,13 +29,13 @@ public class PatternNavigation
   {
     _patternGroupNumber = patternGroupNumber;
     _patternNavigationObserver.OnPatternGroupSelectionChanged(patternGroupNumber);
-    _folder.Load(_patternGroupNumber, _patternNumber);
+    _patternsFolder.LoadPattern(_patternGroupNumber, _patternNumber);
   }
 
   public void SelectPattern(int patternNumber)
   {
     _patternNumber = patternNumber;
     _patternNavigationObserver.OnPatternSelectionChanged(patternNumber);
-    _folder.Load(_patternGroupNumber, _patternNumber);
+    _patternsFolder.LoadPattern(_patternGroupNumber, _patternNumber);
   }
 }

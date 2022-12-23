@@ -1,24 +1,23 @@
 ﻿using System.IO;
 using AtmaFileSystem;
 using MidiPlayground;
-using Tb03Gui.ApplicationLogic;
 
-namespace Tb03Gui;
+namespace Tb03Gui.ApplicationLogic;
 
-public class ActiveFolder : ITb03Folder
+public class ActivePatternsFolder : ITb03PatternsFolder
 {
   private readonly AbsoluteDirectoryPath _folderPath;
   private readonly IPatternNotesObserver _patternNotesObserver;
 
-  public ActiveFolder(
-    AbsoluteDirectoryPath folderPath, 
+  public ActivePatternsFolder(
+    AbsoluteDirectoryPath folderPath,
     IPatternNotesObserver patternNotesObserver)
   {
     _folderPath = folderPath;
     _patternNotesObserver = patternNotesObserver;
   }
 
-  public void Load(int patternGroupNumber, int patternNumber)
+  public void LoadPattern(int patternGroupNumber, int patternNumber)
   {
     var fileName = Tb03PatternFileName.For(_folderPath, patternGroupNumber, patternNumber);
     var fileContent = File.ReadAllText(fileName.ToString());
