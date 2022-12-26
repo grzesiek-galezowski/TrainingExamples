@@ -75,6 +75,5 @@ public partial class PatternNavigationView : UserControl, IPatternNavigationObse
     }
 
     _patternPads[patternNumber - 1].Mark();
-
   }
 }

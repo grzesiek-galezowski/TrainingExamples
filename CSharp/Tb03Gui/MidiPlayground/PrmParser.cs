@@ -65,6 +65,55 @@ public static class PrmParser
     }).ToArray();
   }
 
+  private static TrackDto TrackDtoFrom(int[][] values)
+  {
+    //bug this is incorrect
+    var entries = values.Select(v => new TrackEntryDto(0, v[0])).ToArray();
+    return new TrackDto(entries);
+  }
+
+  public static TrackDto ParseIntoTrack(string prmString)
+  {
+    var line1 = Span.EqualTo("BARS")
+      .Then(_ => Span.WhiteSpace)
+      .Then(_ => Character.EqualTo('='))
+      .Then(_ => Span.WhiteSpace)
+      .Then(_ => Numerics.IntegerInt32)
+      .Then(_ => Span.EqualTo(PrmNewLine));
+
+    var line2 = Span.EqualTo("DS_BAR")
+      .Then(_ => Span.WhiteSpace)
+      .Then(_ => Character.EqualTo('='))
+      .Then(_ => Span.WhiteSpace)
+      .Then(_ => Numerics.IntegerInt32)
+      .Then(_ => Span.EqualTo(PrmNewLine));
+
+    var linesParser = (from barHeader in Span.EqualTo("BAR")
+          .Then(_ => Span.WhiteSpace)
+        from barNumber in
+          Numerics.IntegerInt32
+        from barAssignment in Span.WhiteSpace
+          .Then(_ => Character.EqualTo('='))
+          .Then(_ => Span.WhiteSpace)
+        from patternPreamble in Span.EqualTo("PATTERN=")
+        from patternValue in Numerics.IntegerInt32
+        from transposePreamble in Span.WhiteSpace.Then(_ => Span.EqualTo("TRANSPOSE="))
+        from transposeValue in Numerics.IntegerInt32
+        from endLine in Span.EqualTo(PrmNewLine)
+        select new[] { barNumber, patternValue, transposeValue }
+      ).Many();
+
+    var textParser =
+      from barsText in line1
+      from dsBarText in line2
+      from values in linesParser
+      select TrackDtoFrom(values);
+
+    var pattern = textParser.Parse<TrackDto>(prmString);
+    return pattern;
+    
+  }
+
   public static List<Pitch> TranslateIntoMidiPitches(SequenceStepDto[] pattern)
   {
     var melody = new List<Pitch>();
@@ -76,8 +125,4 @@ public static class PrmParser
     return melody;
   }
 
-  public static TrackEntryDto[] ParseIntoTrack(string fileContent)
-  {
-    throw new NotImplementedException();
-  }
 }

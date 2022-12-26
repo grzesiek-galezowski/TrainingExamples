@@ -33,7 +33,7 @@ public partial class App : Application
       new Patterns(
         sequencer,
         mainWindow.PatternNavigationView),
-      new Tracks(),
+      new Tracks(mainWindow.TrackNavigationView),
       new CheckThatFolderContainsOnlyPrmFilesStep(
         mainWindow.FolderManagement,
         new CheckGroupsAndPatternsAndTracksCount(

@@ -1,5 +1,5 @@
 namespace MidiPlayground;
 
-public class TrackEntryDto
-{
-}
+public record TrackEntryDto(int Group, int Pattern);
+
+//bug revise all ints
