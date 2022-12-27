@@ -11,42 +11,24 @@ public static class PrmParser
 
   public static SequenceStepDto[] ParseIntoPattern(string prmString)
   {
-    var line1 = Span.EqualTo("END_STEP")
-      .Then(_ => Span.WhiteSpace)
-      .Then(_ => Character.EqualTo('='))
-      .Then(_ => Span.WhiteSpace)
-      .Then(_ => Numerics.IntegerInt32)
-      .Then(_ => Span.EqualTo(PrmNewLine));
+    var endStepLine = HeaderLineWithSingleValue("END_STEP", Numerics.IntegerInt32);
+    var tripletLine = HeaderLineWithSingleValue("TRIPLET", Numerics.IntegerInt32);
 
-    var line2 = Span.EqualTo("TRIPLET")
-      .Then(_ => Span.WhiteSpace)
-      .Then(_ => Character.EqualTo('='))
-      .Then(_ => Span.WhiteSpace)
-      .Then(_ => Numerics.IntegerInt32)
-      .Then(_ => Span.EqualTo(PrmNewLine));
-
-    var linesParser = (from stepHeader in Span.EqualTo("STEP")
-          .Then(_ => Span.WhiteSpace)
-        from stepNumber in
-          Numerics.IntegerInt32
-        from stepAssignment in Span.WhiteSpace
-          .Then(_ => Character.EqualTo('='))
-          .Then(_ => Span.WhiteSpace)
-        from statePreamble in Span.EqualTo("STATE=")
-        from stateValue in Numerics.IntegerInt32
-        from notePreamble in Span.WhiteSpace.Then(_ => Span.EqualTo("NOTE="))
-        from noteValue in Numerics.IntegerInt32
-        from accentPreamble in Span.WhiteSpace.Then(_ => Span.EqualTo("ACCENT="))
-        from accentValue in Numerics.IntegerInt32
-        from slidePreamble in Span.WhiteSpace.Then(_ => Span.EqualTo("SLIDE="))
-        from slideValue in Numerics.IntegerInt32
+    var linesParser = (from stepNumber in EntryHeaderValueParser("STEP")
+        from stateValue in EntryValueParser("STATE")
+        from whiteSpace2 in Span.WhiteSpace
+        from noteValue in EntryValueParser("NOTE")
+        from whiteSpace3 in Span.WhiteSpace
+        from accentValue in EntryValueParser("ACCENT")
+        from whiteSpace4 in Span.WhiteSpace
+        from slideValue in EntryValueParser("SLIDE")
         from endLine in Span.EqualTo(PrmNewLine)
         select new[] { stepNumber, stateValue, noteValue, accentValue, slideValue }
       ).Many();
 
     var textParser =
-      from endStepText in line1
-      from tripletText in line2
+      from endStep in endStepLine
+      from triplet in tripletLine
       from values in linesParser
       select PatternDtoFrom(values);
 
@@ -74,36 +56,15 @@ public static class PrmParser
 
   public static TrackDto ParseIntoTrack(string prmString)
   {
-    var barsLine = from barsAssignment in Span.EqualTo("BARS")
-      .Then(_ => Span.WhiteSpace)
-      .Then(_ => Character.EqualTo('='))
-      .Then(_ => Span.WhiteSpace)
-      from barsValue in Numerics.IntegerInt32
+    var barsLine = HeaderLineWithSingleValue("BARS", Numerics.IntegerInt32);
+    var dsBarLine = HeaderLineWithSingleValue("DS_BAR", Numerics.IntegerInt32);
+
+    var linesParser = (from barNumber in EntryHeaderValueParser("BAR")
+      from patternValue in EntryValueParser("PATTERN")
+      from whiteSpace in Span.WhiteSpace
+      from transposeValue in EntryValueParser("TRANSPOSE")
       from endLine in Span.EqualTo(PrmNewLine)
-      select barsValue;
-
-    var dsBarLine = from dsBarAssignment in Span.EqualTo("DS_BAR")
-      .Then(_ => Span.WhiteSpace)
-      .Then(_ => Character.EqualTo('='))
-      .Then(_ => Span.WhiteSpace)
-      from dsBarValue in Numerics.IntegerInt32
-      from newLine in Span.EqualTo(PrmNewLine)
-      select dsBarValue;
-
-    var linesParser = (from barHeader in Span.EqualTo("BAR")
-          .Then(_ => Span.WhiteSpace)
-        from barNumber in
-          Numerics.IntegerInt32
-        from barAssignment in Span.WhiteSpace
-          .Then(_ => Character.EqualTo('='))
-          .Then(_ => Span.WhiteSpace)
-        from patternPreamble in Span.EqualTo("PATTERN=")
-        from patternValue in Numerics.IntegerInt32
-        from transposePreamble in Span.WhiteSpace.Then(_ => Span.EqualTo("TRANSPOSE="))
-        from transposeValue in Numerics.IntegerInt32
-        from endLine in Span.EqualTo(PrmNewLine)
-        select new[] { barNumber, patternValue, transposeValue }
-      ).Many();
+      select new[] { barNumber, patternValue, transposeValue }).Many();
 
     var textParser =
       from barsText in barsLine
@@ -111,9 +72,38 @@ public static class PrmParser
       from values in linesParser
       select TrackDtoFrom(barsText, dsBarText, values);
 
-    var pattern = textParser.Parse<TrackDto>(prmString);
-    return pattern;
-    
+    var trackDto = textParser.Parse<TrackDto>(prmString);
+    return trackDto;
+  }
+
+  private static TextParser<int> EntryValueParser(string key)
+  {
+    return from paramName in Span.EqualTo(key + "=")
+      from paramValue in Numerics.IntegerInt32
+      select paramValue;
+  }
+
+  private static TextParser<int> EntryHeaderValueParser(string header)
+  {
+    return from barHeader in Span.EqualTo(header)
+        .Then(_ => Span.WhiteSpace)
+      from barNumber in
+        Numerics.IntegerInt32
+      from assignment in Span.WhiteSpace
+        .Then(_ => Character.EqualTo('='))
+        .Then(_ => Span.WhiteSpace)
+      select barNumber;
+  }
+
+  private static TextParser<int> HeaderLineWithSingleValue(string key, TextParser<int> valueParser)
+  {
+    return from assignment in Span.EqualTo(key)
+        .Then(_ => Span.WhiteSpace)
+        .Then(_ => Character.EqualTo('='))
+        .Then(_ => Span.WhiteSpace)
+      from value in valueParser
+      from endLine in Span.EqualTo(PrmNewLine)
+      select value;
   }
 
   public static List<Pitch> TranslateIntoMidiPitches(SequenceStepDto[] pattern)
