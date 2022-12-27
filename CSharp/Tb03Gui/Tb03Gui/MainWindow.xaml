@@ -17,7 +17,7 @@
         <folderManagementTab:FolderManagement x:Name="FolderManagement"/>
       </Grid>
     </TabItem>
-    <TabItem Header="Patterns">
+    <TabItem Header="Entries">
       <Grid Background="Silver" Margin="0,0,-136,0">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="83*"/>
@@ -37,13 +37,7 @@
     </TabItem>
     <TabItem Header="Tracks">
       <Grid>
-        <Grid.RowDefinitions>
-          <RowDefinition/>
-          <RowDefinition/>
-        </Grid.RowDefinitions>
-        <trackNavigation:TrackNavigationView Grid.Row="0" x:Name="TrackNavigationView"/>
-        <Grid x:Name="TracksGrid" Grid.Row="1">
-        </Grid>
+        <trackNavigation:TrackNavigationView x:Name="TrackNavigationView"/>
       </Grid>
     </TabItem>
   </TabControl>

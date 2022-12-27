@@ -24,7 +24,7 @@ public partial class TrackNavigationView : UserControl, ITrackPatternsObserver
   private void AddTrackSegmentsToTrackGrid()
   {
     var maxPatternsInATrack = 256;
-    var rowCount = 8;
+    var rowCount = 16;
     var patternsCountInASingleRow = maxPatternsInATrack/rowCount;
 
     for (int i = 0; i < patternsCountInASingleRow; i++)
@@ -56,13 +56,13 @@ public partial class TrackNavigationView : UserControl, ITrackPatternsObserver
 
     for (var i = 0; i < trackDto.Entries.Length; i++)
     {
-      _bars[i].Group.SelectedValue = trackDto.Entries[i].Group;
       _bars[i].Pattern.SelectedValue = trackDto.Entries[i].Pattern;
+      _bars[i].Transpose.SelectedValue = trackDto.Entries[i].Number;
     }
   }
 
   public void OnTrackChanged(int trackNumber)
   {
-    throw new NotImplementedException();
+    //bug throw new NotImplementedException();
   }
 }

@@ -1,5 +1,6 @@
 using Midi.Enums;
 using Superpower;
+using Superpower.Model;
 using Superpower.Parsers;
 
 namespace MidiPlayground;
@@ -65,28 +66,29 @@ public static class PrmParser
     }).ToArray();
   }
 
-  private static TrackDto TrackDtoFrom(int[][] values)
+  private static TrackDto TrackDtoFrom(int bars, int dsBar, int[][] values)
   {
-    //bug this is incorrect
-    var entries = values.Select(v => new TrackEntryDto(0, v[0])).ToArray();
-    return new TrackDto(entries);
+    var entries = values.Select(v => new TrackEntryDto(v[0], v[1], v[2])).ToArray();
+    return new TrackDto(bars, dsBar, entries);
   }
 
   public static TrackDto ParseIntoTrack(string prmString)
   {
-    var line1 = Span.EqualTo("BARS")
+    var barsLine = from barsAssignment in Span.EqualTo("BARS")
       .Then(_ => Span.WhiteSpace)
       .Then(_ => Character.EqualTo('='))
       .Then(_ => Span.WhiteSpace)
-      .Then(_ => Numerics.IntegerInt32)
-      .Then(_ => Span.EqualTo(PrmNewLine));
+      from barsValue in Numerics.IntegerInt32
+      from endLine in Span.EqualTo(PrmNewLine)
+      select barsValue;
 
-    var line2 = Span.EqualTo("DS_BAR")
+    var dsBarLine = from dsBarAssignment in Span.EqualTo("DS_BAR")
       .Then(_ => Span.WhiteSpace)
       .Then(_ => Character.EqualTo('='))
       .Then(_ => Span.WhiteSpace)
-      .Then(_ => Numerics.IntegerInt32)
-      .Then(_ => Span.EqualTo(PrmNewLine));
+      from dsBarValue in Numerics.IntegerInt32
+      from newLine in Span.EqualTo(PrmNewLine)
+      select dsBarValue;
 
     var linesParser = (from barHeader in Span.EqualTo("BAR")
           .Then(_ => Span.WhiteSpace)
@@ -104,10 +106,10 @@ public static class PrmParser
       ).Many();
 
     var textParser =
-      from barsText in line1
-      from dsBarText in line2
+      from barsText in barsLine
+      from dsBarText in dsBarLine
       from values in linesParser
-      select TrackDtoFrom(values);
+      select TrackDtoFrom(barsText, dsBarText, values);
 
     var pattern = textParser.Parse<TrackDto>(prmString);
     return pattern;

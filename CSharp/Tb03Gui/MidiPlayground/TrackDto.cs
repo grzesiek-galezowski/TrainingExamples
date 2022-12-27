@@ -1,5 +1,3 @@
 namespace MidiPlayground;
 
-public record TrackDto(TrackEntryDto[] Entries)
-{
-}
+public record TrackDto(int Bars, int DsBar, TrackEntryDto[] Entries);

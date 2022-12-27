@@ -6,10 +6,10 @@
              xmlns:local="clr-namespace:Tb03Gui.TrackNavigation"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-  <Grid Width="734" Height="152">
+  <Grid>
     <Grid.RowDefinitions>
-      <RowDefinition/>
-      <RowDefinition/>
+      <RowDefinition Height="1*"/>
+      <RowDefinition Height="3*"/>
     </Grid.RowDefinitions>
     <Grid.ColumnDefinitions>
       <ColumnDefinition />
