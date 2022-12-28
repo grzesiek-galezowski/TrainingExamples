@@ -11,9 +11,4 @@ public partial class TrackBarView : UserControl
   {
     InitializeComponent();
   }
-
-  public void Unmark()
-  {
-    throw new System.NotImplementedException();
-  }
 }

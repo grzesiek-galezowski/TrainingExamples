@@ -1,5 +1,4 @@
 ﻿using AtmaFileSystem;
-using MidiPlayground;
 
 namespace Tb03Gui.ApplicationLogic;
 

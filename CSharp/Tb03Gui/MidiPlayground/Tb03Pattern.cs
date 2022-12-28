@@ -4,20 +4,20 @@ namespace MidiPlayground;
 
 public class Tb03Pattern
 {
-  private readonly SequenceStepDto[] _pattern;
+  private readonly SequenceDto _pattern;
 
-  public Tb03Pattern(SequenceStepDto[] parseIntoPattern)
+  public Tb03Pattern(SequenceDto sequenceDto)
   {
-    _pattern = parseIntoPattern;
+    _pattern = sequenceDto;
   }
 
-  public Task PlayOn(Synth synth)
+  public Task PlayOn(Synthesizer synthesizer)
   {
-    return synth.Play(ReadMelody());
+    return synthesizer.Play(ReadMelody());
   }
 
   private List<Pitch> ReadMelody()
   {
-    return PrmParser.TranslateIntoMidiPitches(_pattern);
+    return PrmParser.TranslateIntoMidiPitches(_pattern.Steps);
   }
 }

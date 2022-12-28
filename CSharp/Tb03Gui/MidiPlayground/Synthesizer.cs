@@ -3,13 +3,13 @@ using Midi.Enums;
 
 namespace MidiPlayground;
 
-public class Synth : IDisposable
+public class Synthesizer : IDisposable
 {
   private readonly IOutputDevice _outputDevice;
   private TimeSpan _delay;
   private readonly Channel _currentChannel = Channel.Channel1;
 
-  public Synth(IOutputDevice outputDevice)
+  public Synthesizer(IOutputDevice outputDevice)
   {
     _outputDevice = outputDevice;
   }
@@ -32,9 +32,9 @@ public class Synth : IDisposable
     _delay = CalculateDelayForBpm(bpm);
   }
 
-  public static Synth Create()
+  public static Synthesizer Create()
   {
-    var synth = new Synth(DeviceManager.OutputDevices[0]);
+    var synth = new Synthesizer(DeviceManager.OutputDevices[0]);
     synth.TurnOn();
     synth.SetBpm(120);
     return synth;

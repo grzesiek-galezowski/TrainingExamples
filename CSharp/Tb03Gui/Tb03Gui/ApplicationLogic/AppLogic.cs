@@ -10,7 +10,7 @@ public class AppLogic
   private readonly Sequencer _sequencer;
   private readonly IOctaveObserver _octaveObserver;
   private readonly ISequencerPositionObserver _sequencerPositionObserver;
-  private readonly Synth _synth;
+  private readonly Synthesizer _synthesizer;
   private readonly Patterns _patterns;
   private readonly Tracks _tracks;
   private ISelectedTb03BackupFolderProcessingStep _folderProcessingChain;
@@ -29,7 +29,7 @@ public class AppLogic
     _patterns = patterns;
     _tracks = tracks;
     _folderProcessingChain = folderProcessingChain;
-    _synth = Synth.Create();
+    _synthesizer = Synthesizer.Create();
   }
 
   public void SwitchToOctave(Tb03Octave newOctave)
@@ -50,7 +50,7 @@ public class AppLogic
 
   public async Task Play()
   {
-    await _sequencer.PlayOn(_synth);
+    await _sequencer.PlayOn(_synthesizer);
   }
 
   public void ActivateTb03FolderPath(AbsoluteDirectoryPath folderPath)

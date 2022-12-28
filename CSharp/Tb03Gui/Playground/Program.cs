@@ -1,5 +1,4 @@
 ﻿using NAudio.Midi;
-using System.Threading.Tasks;
 
 // Create a new MIDI output device
 var outputDevice = new MidiOut(0);

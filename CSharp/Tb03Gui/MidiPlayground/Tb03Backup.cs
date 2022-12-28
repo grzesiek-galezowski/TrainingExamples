@@ -16,7 +16,7 @@ public class Tb03Backup
     Tb03PatternNumberInGroup number)
   {
     var prmString = PrmFile.Read(_rootPath, patternGroup, number);
-    var sequenceStepDtos = PrmParser.ParseIntoPattern(prmString);
-    return new Tb03Pattern(sequenceStepDtos);
+    var sequenceDto = PrmParser.ParseIntoPattern(prmString);
+    return new Tb03Pattern(sequenceDto);
   }
 }

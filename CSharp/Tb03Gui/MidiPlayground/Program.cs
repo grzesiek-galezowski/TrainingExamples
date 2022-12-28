@@ -6,7 +6,7 @@ internal class Program
 {
   static async Task Main(string[] args)
   {
-    using var synth = Synth.Create();
+    using var synth = Synthesizer.Create();
     synth.TurnOn();
     synth.SetBpm(100);
 

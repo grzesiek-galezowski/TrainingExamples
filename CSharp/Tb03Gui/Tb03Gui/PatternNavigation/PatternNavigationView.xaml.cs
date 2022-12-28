@@ -1,6 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using AtmaFileSystem;
+﻿using System.Windows.Controls;
 using Tb03Gui.ApplicationLogic;
 
 namespace Tb03Gui.PatternNavigation;

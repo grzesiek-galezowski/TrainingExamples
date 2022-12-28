@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 using MidiPlayground;
 using Tb03Gui.ApplicationLogic;
 using Tb03Gui.Track;
@@ -13,7 +13,7 @@ namespace Tb03Gui.TrackNavigation;
 /// </summary>
 public partial class TrackNavigationView : UserControl, ITrackPatternsObserver
 {
-  private List<TrackBarView> _bars = new();
+  private readonly List<TrackBarView> _bars = new();
 
   public TrackNavigationView()
   {
@@ -56,8 +56,17 @@ public partial class TrackNavigationView : UserControl, ITrackPatternsObserver
 
     for (var i = 0; i < trackDto.Entries.Length; i++)
     {
-      _bars[i].Pattern.SelectedValue = trackDto.Entries[i].Pattern;
-      _bars[i].Transpose.SelectedValue = trackDto.Entries[i].Number;
+      if (i > trackDto.Bars - 1)
+      {
+        _bars[i].Visibility = Visibility.Hidden;
+      }
+      else
+      {
+        _bars[i].Visibility = Visibility.Visible;
+      }
+      _bars[i].Pattern.SelectedIndex = trackDto.Entries[i].Pattern;
+      _bars[i].Transpose.SelectedIndex = trackDto.Entries[i].Number;
+
     }
   }
 

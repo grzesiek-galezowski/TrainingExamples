@@ -1,6 +1,6 @@
+using System.Collections.Immutable;
 using Midi.Enums;
 using Superpower;
-using Superpower.Model;
 using Superpower.Parsers;
 
 namespace MidiPlayground;
@@ -9,7 +9,7 @@ public static class PrmParser
 {
   private const string PrmNewLine = "\n";
 
-  public static SequenceStepDto[] ParseIntoPattern(string prmString)
+  public static SequenceDto ParseIntoPattern(string prmString)
   {
     var endStepLine = HeaderLineWithSingleValue("END_STEP", Numerics.IntegerInt32);
     var tripletLine = HeaderLineWithSingleValue("TRIPLET", Numerics.IntegerInt32);
@@ -32,26 +32,26 @@ public static class PrmParser
       from values in linesParser
       select PatternDtoFrom(values);
 
-    var pattern = textParser.Parse<SequenceStepDto[]>(prmString);
+    var pattern = textParser.Parse<SequenceDto>(prmString);
     return pattern;
   }
 
-  private static SequenceStepDto[] PatternDtoFrom(int[][] values)
+  private static SequenceDto PatternDtoFrom(int[][] values)
   {
-    return values.Select(v => new SequenceStepDto
+    return new SequenceDto(values.Select(v => new SequenceStepDto
     {
       StepNumber = v[0],
       State = v[1], 
       Note = v[2], 
       Accent = v[3], 
       Slide = v[4]
-    }).ToArray();
+    }).ToImmutableArray());
   }
 
-  private static TrackDto TrackDtoFrom(int bars, int dsBar, int[][] values)
+  private static TrackDto TrackDtoFrom(int bars, int dalSegnoBar, int[][] values)
   {
     var entries = values.Select(v => new TrackEntryDto(v[0], v[1], v[2])).ToArray();
-    return new TrackDto(bars, dsBar, entries);
+    return new TrackDto(bars, dalSegnoBar, entries);
   }
 
   public static TrackDto ParseIntoTrack(string prmString)
@@ -67,10 +67,10 @@ public static class PrmParser
       select new[] { barNumber, patternValue, transposeValue }).Many();
 
     var textParser =
-      from barsText in barsLine
-      from dsBarText in dsBarLine
+      from barsValue in barsLine
+      from dalSegnoBarValue in dsBarLine
       from values in linesParser
-      select TrackDtoFrom(barsText, dsBarText, values);
+      select TrackDtoFrom(barsValue, dalSegnoBarValue, values);
 
     var trackDto = textParser.Parse<TrackDto>(prmString);
     return trackDto;
@@ -106,7 +106,7 @@ public static class PrmParser
       select value;
   }
 
-  public static List<Pitch> TranslateIntoMidiPitches(SequenceStepDto[] pattern)
+  public static List<Pitch> TranslateIntoMidiPitches(ImmutableArray<SequenceStepDto> pattern)
   {
     var melody = new List<Pitch>();
     foreach (var stepDto in pattern)

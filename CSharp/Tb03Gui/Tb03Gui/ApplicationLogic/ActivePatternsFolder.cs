@@ -21,7 +21,7 @@ public class ActivePatternsFolder : ITb03PatternsFolder
   {
     var fileName = Tb03PatternFileName.For(_folderPath, patternGroupNumber, patternNumber);
     var fileContent = File.ReadAllText(fileName.ToString());
-    var sequenceStepDtos = PrmParser.ParseIntoPattern(fileContent);
-    _patternNotesObserver.PatternLoaded(sequenceStepDtos);
+    var sequenceDto = PrmParser.ParseIntoPattern(fileContent);
+    _patternNotesObserver.PatternLoaded(sequenceDto);
   }
 }

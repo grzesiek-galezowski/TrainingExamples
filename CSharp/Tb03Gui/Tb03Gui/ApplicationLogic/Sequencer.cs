@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.Maybe;
@@ -20,7 +22,7 @@ public class Sequencer : IPatternNotesObserver
     _sequencerPosition = InitialSequencerPosition;
     _sequenceLength = sequencerLength;
     _positionObserver = positionObserver;
-    _notes = EmptySequence();
+    _notes = CleanSequence();
   }
 
   public void TryBacktrackingSequencerPosition(ISequencerPositionObserver observer)
@@ -53,44 +55,42 @@ public class Sequencer : IPatternNotesObserver
     _notes[_sequencerPosition] = latestNode.Just();
   }
 
-  public async Task PlayOn(Synth synth)
+  public async Task PlayOn(Synthesizer synthesizer)
   {
     var pitches = _notes
       .Where(n => n.HasValue)
       .Select(n => n.Value())
       .Select(p => (Pitch)p.Pitch).ToList();
-    await synth.Play(pitches);
+    await synthesizer.Play(pitches);
   }
 
-  public void PatternLoaded(SequenceStepDto[] steps)
+  public void PatternLoaded(SequenceDto sequence)
   {
     ClearSequence();
-    FillSequenceWith(steps);
+    FillSequenceWith(sequence.Steps);
   }
 
-  private void FillSequenceWith(SequenceStepDto[] steps)
+  private void FillSequenceWith(ImmutableArray<SequenceStepDto> steps)
   {
     //bug support patterns with silence
-    for (var i = 0; i < steps.Length; i++)
+    foreach (var note in NotesFrom(steps))
     {
-      var step = steps[i];
-      var note = Tb03Note.From(step.Note, 
-        Convert.ToBoolean(step.Accent), 
-        Convert.ToBoolean(step.Slide), 
-        step.State);
       InsertNoteIntoSequencer(note);
     }
   }
 
-  private void ClearSequence()
+  private static IEnumerable<Tb03Note> NotesFrom(ImmutableArray<SequenceStepDto> steps)
   {
-    _notes = EmptySequence();
-    _sequencerPosition = InitialSequencerPosition;
+    return steps.Select(step => Tb03Note.From(step.Note, 
+      Convert.ToBoolean(step.Accent), 
+      Convert.ToBoolean(step.Slide), 
+      step.State));
   }
 
-  private Maybe<Tb03Note>[] EmptySequence()
+  private void ClearSequence()
   {
-    return new Maybe<Tb03Note>[_sequenceLength];
+    _notes = CleanSequence();
+    _sequencerPosition = InitialSequencerPosition;
   }
 
   public void ToggleAccent(int noteNumber, IParameterToggleObserver parameterToggleObserver)
@@ -113,5 +113,10 @@ public class Sequencer : IPatternNotesObserver
       _notes[noteNumber-1] = (note.Value() with { Slide = newSlideValue}).Just();
       parameterToggleObserver.OnSlideChanged(newSlideValue);
     }
+  }
+
+  private Maybe<Tb03Note>[] CleanSequence()
+  {
+    return new Maybe<Tb03Note>[_sequenceLength];
   }
 }
