@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
+using MidiPlayground;
 
 namespace Tb03Gui.Track;
 
@@ -10,5 +12,21 @@ public partial class TrackBarView : UserControl
   public TrackBarView()
   {
     InitializeComponent();
+  }
+
+  public void Show()
+  {
+    Visibility = Visibility.Visible;
+  }
+
+  public void Hide()
+  {
+    Visibility = Visibility.Hidden;
+  }
+
+  public void UpdateWith(TrackEntryDto trackDtoEntry)
+  {
+    Pattern.SelectedIndex = trackDtoEntry.Pattern;
+    Transpose.SelectedIndex = trackDtoEntry.Number;
   }
 }

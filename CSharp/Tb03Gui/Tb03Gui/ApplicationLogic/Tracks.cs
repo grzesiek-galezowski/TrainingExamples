@@ -22,7 +22,7 @@ public class Tracks
   public void SelectTrack(int trackNumber) //bug call it from outside
   {
     _trackNumber = trackNumber;
-    _trackPatternsObserver.OnTrackChanged(_trackNumber);
+    _trackPatternsObserver.OnTrackSelectionChanged(_trackNumber);
     _tracksFolder.LoadTrack(_trackNumber);
   }
 }

@@ -56,22 +56,27 @@ public partial class TrackNavigationView : UserControl, ITrackPatternsObserver
 
     for (var i = 0; i < trackDto.Entries.Length; i++)
     {
-      if (i > trackDto.Bars - 1)
+      var currentBar = _bars[i];
+      if (ExceedsDaCapo(i, trackDto))
       {
-        _bars[i].Visibility = Visibility.Hidden;
+        currentBar.Hide();
       }
       else
       {
-        _bars[i].Visibility = Visibility.Visible;
+        currentBar.Show();
       }
-      _bars[i].Pattern.SelectedIndex = trackDto.Entries[i].Pattern;
-      _bars[i].Transpose.SelectedIndex = trackDto.Entries[i].Number;
 
+      currentBar.UpdateWith(trackDto.Entries[i]);
     }
   }
 
-  public void OnTrackChanged(int trackNumber)
+  public void OnTrackSelectionChanged(int trackNumber)
   {
     //bug throw new NotImplementedException();
+  }
+
+  private static bool ExceedsDaCapo(int i, TrackDto trackDto)
+  {
+    return trackDto.Bars < i + 1;
   }
 }
