@@ -101,6 +101,14 @@ public partial class App : Application
     mainWindow.PatternNavigationView.Pattern23Pad.App = appLogic;
     mainWindow.PatternNavigationView.Pattern24Pad.App = appLogic;
 
+    mainWindow.TrackNavigationView.Track1Pad.App = appLogic;
+    mainWindow.TrackNavigationView.Track2Pad.App = appLogic;
+    mainWindow.TrackNavigationView.Track3Pad.App = appLogic;
+    mainWindow.TrackNavigationView.Track4Pad.App = appLogic;
+    mainWindow.TrackNavigationView.Track5Pad.App = appLogic;
+    mainWindow.TrackNavigationView.Track6Pad.App = appLogic;
+    mainWindow.TrackNavigationView.Track7Pad.App = appLogic;
+
     mainWindow.Show();
   }
 }

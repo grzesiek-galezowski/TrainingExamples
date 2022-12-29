@@ -14,10 +14,21 @@ namespace Tb03Gui.TrackNavigation;
 public partial class TrackNavigationView : UserControl, ITrackPatternsObserver
 {
   private readonly List<TrackBarView> _bars = new();
+  private readonly List<TrackPad> _trackPads;
 
   public TrackNavigationView()
   {
     InitializeComponent();
+    _trackPads = new List<TrackPad>()
+    {
+      Track1Pad,
+      Track2Pad,
+      Track3Pad,
+      Track4Pad,
+      Track5Pad,
+      Track6Pad,
+      Track7Pad,
+    };
     AddTrackSegmentsToTrackGrid();
   }
 
@@ -57,7 +68,7 @@ public partial class TrackNavigationView : UserControl, ITrackPatternsObserver
     for (var i = 0; i < trackDto.Entries.Length; i++)
     {
       var currentBar = _bars[i];
-      if (ExceedsDaCapo(i, trackDto))
+      if (ExceedsDaCapoDefinedIn(trackDto, i))
       {
         currentBar.Hide();
       }
@@ -72,10 +83,14 @@ public partial class TrackNavigationView : UserControl, ITrackPatternsObserver
 
   public void OnTrackSelectionChanged(int trackNumber)
   {
-    //bug throw new NotImplementedException();
+    foreach (var trackPad in _trackPads)
+    {
+      trackPad.Unmark();
+    }
+    _trackPads[trackNumber-1].Mark();
   }
 
-  private static bool ExceedsDaCapo(int i, TrackDto trackDto)
+  private static bool ExceedsDaCapoDefinedIn(TrackDto trackDto, int i)
   {
     return trackDto.Bars < i + 1;
   }

@@ -79,4 +79,9 @@ public class AppLogic
   {
     _sequencer.ToggleSlide(noteNumber, parameterToggleObserver);
   }
+
+  public void TrackWasSelected(int trackNumber)
+  {
+    _tracks.SelectTrack(trackNumber);
+  }
 }

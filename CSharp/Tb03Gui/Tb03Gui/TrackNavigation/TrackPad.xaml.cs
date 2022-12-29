@@ -30,8 +30,7 @@ public partial class TrackPad : UserControl
 
   private void PatternButton_Click(object sender, System.Windows.RoutedEventArgs e)
   {
-    App.PatternWasSelected(TrackNumber);
-    Mark();
+    App.TrackWasSelected(TrackNumber);
   }
 
   public void Mark()
@@ -42,10 +41,5 @@ public partial class TrackPad : UserControl
   public void Unmark()
   {
     PatternButton.Background = new SolidColorBrush(Colors.LightGray);
-  }
-
-  private void Button_Click()
-  {
-
   }
 }
