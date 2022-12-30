@@ -47,7 +47,7 @@ public static class PrmParser
       Slide = v[4]
     }).ToImmutableArray());
   }
-
+  
   private static TrackDto TrackDtoFrom(int bars, int dalSegnoBar, int[][] values)
   {
     var entries = values.Select(v => new TrackEntryDto(v[0], v[1], v[2])).ToArray();
@@ -72,7 +72,7 @@ public static class PrmParser
       from values in linesParser
       select TrackDtoFrom(barsValue, dalSegnoBarValue, values);
 
-    var trackDto = textParser.Parse<TrackDto>(prmString);
+    var trackDto = textParser.Parse(prmString);
     return trackDto;
   }
 

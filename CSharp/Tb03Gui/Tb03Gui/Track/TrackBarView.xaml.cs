@@ -27,6 +27,6 @@ public partial class TrackBarView : UserControl
   public void UpdateWith(TrackEntryDto trackDtoEntry)
   {
     Pattern.SelectedIndex = trackDtoEntry.Pattern;
-    Transpose.SelectedIndex = trackDtoEntry.Number;
+    Transpose.SelectedIndex = trackDtoEntry.Transpose;
   }
 }
