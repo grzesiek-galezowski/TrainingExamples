@@ -220,3 +220,6 @@ CSharp/Tb03Gui/.cr/personal/FavoritesList/List.xml
 Java/xunit-test-patterns/.gradle/vcs-1/gc.properties
 Java/xunit-test-patterns/build/**/*
 Java/xunit-test-patterns/test-output/**/*
+Java/tdd-java-17/build/reports/tests/test/classes/org.example.TranslationApplicationSpecification.html
+Java/tdd-java-17/.gradle/file-system.probe
+Java/tdd-java-17/build/reports/tests/test/index.html
