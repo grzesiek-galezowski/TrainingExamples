@@ -43,7 +43,7 @@ public partial class SequenceView : UserControl, ISequencerPositionObserver
   {
     try
     {
-      await App.Play();
+      await App.PlayCurrentPattern();
     }
     catch (Exception exception)
     {

@@ -49,7 +49,7 @@
         <ComboBoxItem Content="23" />
         <ComboBoxItem Content="24" />
       </ComboBox>
-      <Button Content="Play" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" />
+      <Button x:Name="PlayButton" Content="Play" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Click="PlayButton_Click" Margin="-2,0,2,0" />
     </Grid>
   </Border>
 </UserControl>

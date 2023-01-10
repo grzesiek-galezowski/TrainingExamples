@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MidiPlayground", "MidiPlayg
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Playground", "Playground\Playground.csproj", "{28EACEA7-B4F1-4C69-A969-F302A1D2D7C7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tb03GuiSpecification", "Tb03GuiSpecification\Tb03GuiSpecification.csproj", "{DC232505-7C53-480E-A291-49314FDCBE41}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{28EACEA7-B4F1-4C69-A969-F302A1D2D7C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28EACEA7-B4F1-4C69-A969-F302A1D2D7C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28EACEA7-B4F1-4C69-A969-F302A1D2D7C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC232505-7C53-480E-A291-49314FDCBE41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC232505-7C53-480E-A291-49314FDCBE41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC232505-7C53-480E-A291-49314FDCBE41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC232505-7C53-480E-A291-49314FDCBE41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -14,20 +14,29 @@
     <Grid.ColumnDefinitions>
       <ColumnDefinition />
       <ColumnDefinition />
-      <ColumnDefinition />
-      <ColumnDefinition />
-      <ColumnDefinition />
-      <ColumnDefinition />
-      <ColumnDefinition />
     </Grid.ColumnDefinitions>
-    <local:TrackPad Grid.Column="0" Grid.Row="0" TrackNumber="1" x:Name="Track1Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-    <local:TrackPad Grid.Column="1" Grid.Row="0" TrackNumber="2" x:Name="Track2Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-    <local:TrackPad Grid.Column="2" Grid.Row="0" TrackNumber="3" x:Name="Track3Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-    <local:TrackPad Grid.Column="3" Grid.Row="0" TrackNumber="4" x:Name="Track4Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-    <local:TrackPad Grid.Column="4" Grid.Row="0" TrackNumber="5" x:Name="Track5Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-    <local:TrackPad Grid.Column="5" Grid.Row="0" TrackNumber="6" x:Name="Track6Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-    <local:TrackPad Grid.Column="6" Grid.Row="0" TrackNumber="7" x:Name="Track7Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-    <Grid x:Name="TracksGrid" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7">
+    <Grid Grid.Column="0">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition />
+        <ColumnDefinition />
+        <ColumnDefinition />
+        <ColumnDefinition />
+        <ColumnDefinition />
+        <ColumnDefinition />
+        <ColumnDefinition />
+      </Grid.ColumnDefinitions>
+      <local:TrackPad Grid.Column="0" Grid.Row="0" TrackNumber="1" x:Name="Track1Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+      <local:TrackPad Grid.Column="1" Grid.Row="0" TrackNumber="2" x:Name="Track2Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+      <local:TrackPad Grid.Column="2" Grid.Row="0" TrackNumber="3" x:Name="Track3Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+      <local:TrackPad Grid.Column="3" Grid.Row="0" TrackNumber="4" x:Name="Track4Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+      <local:TrackPad Grid.Column="4" Grid.Row="0" TrackNumber="5" x:Name="Track5Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+      <local:TrackPad Grid.Column="5" Grid.Row="0" TrackNumber="6" x:Name="Track6Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+      <local:TrackPad Grid.Column="6" Grid.Row="0" TrackNumber="7" x:Name="Track7Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+    </Grid>
+    <Grid Grid.Column="1">
+      <Button x:Name="PlayTrackButton"/>
+    </Grid>
+    <Grid x:Name="TracksGrid" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
     </Grid>
    
   </Grid>

@@ -1,6 +1,8 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using MidiPlayground;
+using Tb03Gui.ApplicationLogic;
 
 namespace Tb03Gui.Track;
 
@@ -29,4 +31,18 @@ public partial class TrackBarView : UserControl
     Pattern.SelectedIndex = trackDtoEntry.Pattern;
     Transpose.SelectedIndex = trackDtoEntry.Transpose;
   }
+
+  private async void PlayButton_Click(object sender, RoutedEventArgs e)
+  {
+    try
+    {
+      await App.PlayPattern(PatternNumber.FromFlatNumber(Pattern.SelectedIndex + 1)); //bug add transpose
+    }
+    catch (Exception ex)
+    {
+      MessageBox.Show(ex.ToString());
+    }
+  }
+
+  public AppLogic App { get; }
 }

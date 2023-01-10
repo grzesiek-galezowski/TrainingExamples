@@ -48,7 +48,7 @@ public class AppLogic
     _sequencer.InsertNoteIntoSequencer(note.TransposeTo(_octave));
   }
 
-  public async Task Play()
+  public async Task PlayCurrentPattern()
   {
     await _sequencer.PlayOn(_synthesizer);
   }
@@ -83,5 +83,10 @@ public class AppLogic
   public void TrackWasSelected(int trackNumber)
   {
     _tracks.SelectTrack(trackNumber);
+  }
+
+  public async Task PlayPattern(PatternNumber patternNumber)
+  {
+    await _patterns.PlayPatternOutOfContext(patternNumber);
   }
 }
