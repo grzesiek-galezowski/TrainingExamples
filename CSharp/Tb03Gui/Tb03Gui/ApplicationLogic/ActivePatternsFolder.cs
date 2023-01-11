@@ -20,14 +20,14 @@ public class ActivePatternsFolder : ITb03PatternsFolder
   public void LoadPattern(int patternGroupNumber, int patternNumberInGroup)
   {
     var patternNumber = PatternNumber.FromGroupAndNumberInGroup(patternGroupNumber, patternNumberInGroup);
-    var fileName = Tb03PatternFileName.For(_folderPath, patternNumber.PatternGroupNumber, patternNumber.PatternNumberInGroup);
-    var fileContent = File.ReadAllText(fileName.ToString());
-    var sequenceDto = PrmParser.ParseIntoPattern(fileContent);
-    _patternNotesObserver.PatternLoaded(sequenceDto);
+    LoadPattern(patternNumber, _patternNotesObserver);
   }
 
   public void LoadPattern(PatternNumber patternNumber, IPatternNotesObserver patternNotesObserver)
   {
-    throw new System.NotImplementedException();
+    var fileName = Tb03PatternFileName.For(_folderPath, patternNumber.PatternGroupNumber, patternNumber.PatternNumberInGroup);
+    var fileContent = File.ReadAllText(fileName.ToString());
+    var sequenceDto = PrmParser.ParseIntoPattern(fileContent);
+    patternNotesObserver.PatternLoaded(sequenceDto);
   }
 }
