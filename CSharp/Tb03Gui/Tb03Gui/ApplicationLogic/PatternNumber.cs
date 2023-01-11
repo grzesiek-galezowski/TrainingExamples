@@ -7,12 +7,13 @@ public record PatternNumber
   private const int TotalPatternsInGroup = 24;
   public int PatternGroupNumber { get; }
   public int PatternNumberInGroup { get; }
-  public int FlatPatternNumber => ((PatternGroupNumber - 1) * TotalPatternsInGroup) + PatternNumberInGroup;
+  public int FlatPatternNumber { get; }
 
-  private PatternNumber(int patternGroupNumber, int patternNumberInGroup)
+  private PatternNumber(int patternGroupNumber, int patternNumberInGroup, int flatPatternNumber)
   {
     PatternGroupNumber = patternGroupNumber;
     PatternNumberInGroup = patternNumberInGroup;
+    FlatPatternNumber = flatPatternNumber;
   }
 
   public static PatternNumber FromFlatNumber(int patternNumber)
@@ -25,11 +26,15 @@ public record PatternNumber
     }
     return new PatternNumber(
       (int)Math.Ceiling((float)patternNumber / TotalPatternsInGroup), 
-      patternNumberInGroup);
+      patternNumberInGroup, 
+      patternNumber);
   }
 
   public static PatternNumber FromGroupAndNumberInGroup(int patternGroupNumber, int patternNumberInGroup)
   {
-    return new PatternNumber(patternGroupNumber, patternNumberInGroup);
+    return new PatternNumber(
+      patternGroupNumber, 
+      patternNumberInGroup, 
+      (patternGroupNumber - 1) * TotalPatternsInGroup + patternNumberInGroup);
   }
 }

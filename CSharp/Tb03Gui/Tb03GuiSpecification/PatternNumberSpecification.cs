@@ -6,12 +6,21 @@ namespace Tb03GuiSpecification;
 public class Tests
 {
   [TestCaseSource(nameof(FlatNumberToPatternNumberMappings))]
-  public void Test1(int flat, int groupNumber, int numberInGroup)
+  public void ShouldCreateCorrectObjectsFromFlatNumbers(int flat, int groupNumber, int numberInGroup)
   {
     var fromFlatNumber = PatternNumber.FromFlatNumber(flat);
     fromFlatNumber.PatternGroupNumber.Should().Be(groupNumber);
     fromFlatNumber.PatternNumberInGroup.Should().Be(numberInGroup);
     fromFlatNumber.FlatPatternNumber.Should().Be(flat);
+  }
+
+  [TestCaseSource(nameof(FlatNumberToPatternNumberMappings))]
+  public void ShouldCreateCorrectObjectsFromGroupAndPatternNumbers(int flat, int groupNumber, int numberInGroup)
+  {
+    var fromGroupAndNumberInGroup = PatternNumber.FromGroupAndNumberInGroup(groupNumber, numberInGroup);
+    fromGroupAndNumberInGroup.PatternGroupNumber.Should().Be(groupNumber);
+    fromGroupAndNumberInGroup.PatternNumberInGroup.Should().Be(numberInGroup);
+    fromGroupAndNumberInGroup.FlatPatternNumber.Should().Be(flat);
   }
 
   public static object[][] FlatNumberToPatternNumberMappings()
@@ -46,6 +55,9 @@ public class Tests
       new object[] {26, 2, 2},
       new object[] {48, 2, 24},
       new object[] {49, 3, 1},
+      new object[] {72, 3, 24},
+      new object[] {73, 4, 1},
+      new object[] {96, 4, 24},
     };
   }
 }
