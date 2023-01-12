@@ -13,12 +13,17 @@ namespace Tb03Gui.TrackNavigation;
 public partial class TrackNavigationView : UserControl, ITrackPatternsObserver
 {
   private readonly List<TrackBarView> _bars = new();
-  private readonly List<TrackPad> _trackPads;
+  private List<TrackPad> _trackPads = new List<TrackPad>();
 
   public TrackNavigationView()
   {
     InitializeComponent();
-    _trackPads = new List<TrackPad>()
+  }
+
+  public void Initialize(AppLogic appLogic)
+  {
+    App = appLogic;
+    _trackPads = new List<TrackPad>
     {
       Track1Pad,
       Track2Pad,
@@ -49,13 +54,15 @@ public partial class TrackNavigationView : UserControl, ITrackPatternsObserver
 
     for (int i = 0; i < maxPatternsInATrack; i++)
     {
-      var uiElement = new TrackBarView();
+      var uiElement = new TrackBarView(App);
       Grid.SetColumn(uiElement, i % patternsCountInASingleRow);
       Grid.SetRow(uiElement, i/patternsCountInASingleRow);
       TracksGrid.Children.Add(uiElement);
       _bars.Add(uiElement);
     }
   }
+
+  private AppLogic App { get; set; }
 
   public void TrackLoaded(TrackDto trackDto)
   {

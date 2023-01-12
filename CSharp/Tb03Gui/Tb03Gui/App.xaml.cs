@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
+using MidiPlayground;
 using Tb03Gui.ApplicationLogic;
 
 namespace Tb03Gui;
@@ -9,10 +11,13 @@ namespace Tb03Gui;
 /// </summary>
 public partial class App : Application
 {
+  private Synthesizer _synthesizer = null!;
+
   protected override void OnStartup(StartupEventArgs e)
   {
     base.OnStartup(e);
 
+    _synthesizer = Synthesizer.Create();
     var mainWindow = new MainWindow();
     var sequencer = new ApplicationLogic.Sequencer(
       mainWindow.SequenceView.SequencerPatternLength(),
@@ -32,7 +37,8 @@ public partial class App : Application
       mainWindow.SequenceView,
       new Patterns(
         sequencer,
-        mainWindow.PatternNavigationView),
+        mainWindow.PatternNavigationView, 
+        _synthesizer),
       new Tracks(mainWindow.TrackNavigationView),
       new CheckThatFolderContainsOnlyPrmFilesStep(
         mainWindow.FolderManagement,
@@ -41,10 +47,10 @@ public partial class App : Application
           new PopulateInfoStep(
             mainWindow.FolderManagement)
         )
-      )
-    );
+      ), _synthesizer);
 
     mainWindow.App = appLogic;
+    mainWindow.TrackNavigationView.Initialize(appLogic);
     mainWindow.FolderManagement.App = appLogic;
     mainWindow.SequenceView.App = appLogic;
     mainWindow.SequenceView.P1.App = appLogic;
@@ -110,5 +116,11 @@ public partial class App : Application
     mainWindow.TrackNavigationView.Track7Pad.App = appLogic;
 
     mainWindow.Show();
+  }
+
+  protected override void OnExit(ExitEventArgs e)
+  {
+    base.OnExit(e);
+    _synthesizer.Dispose();
   }
 }

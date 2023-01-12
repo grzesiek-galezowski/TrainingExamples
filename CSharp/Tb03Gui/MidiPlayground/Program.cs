@@ -15,6 +15,6 @@ internal class Program
     var prmPattern = tb03Backup
       .Pattern(Tb03PatternGroupNumber.Group1, Tb03PatternNumberInGroup.Pattern1);
 
-    await prmPattern.PlayOn(synth);
+    prmPattern.PlayOn(synth);
   }
 }

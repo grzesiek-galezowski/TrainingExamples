@@ -11,9 +11,9 @@ public class Tb03Pattern
     _pattern = sequenceDto;
   }
 
-  public Task PlayOn(Synthesizer synthesizer)
+  public void PlayOn(Synthesizer synthesizer)
   {
-    return synthesizer.Play(ReadMelody());
+    synthesizer.Play(ReadMelody());
   }
 
   private List<Pitch> ReadMelody()

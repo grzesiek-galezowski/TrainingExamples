@@ -11,8 +11,11 @@ namespace Tb03Gui.Track;
 /// </summary>
 public partial class TrackBarView : UserControl
 {
-  public TrackBarView()
+  private readonly AppLogic _app;
+
+  public TrackBarView(AppLogic appLogic)
   {
+    _app = appLogic;
     InitializeComponent();
   }
 
@@ -32,17 +35,15 @@ public partial class TrackBarView : UserControl
     Transpose.SelectedIndex = trackDtoEntry.Transpose;
   }
 
-  private async void PlayButton_Click(object sender, RoutedEventArgs e)
+  private void PlayButton_Click(object sender, RoutedEventArgs e)
   {
     try
     {
-      await App.PlayPattern(PatternNumber.FromFlatNumber(Pattern.SelectedIndex + 1)); //bug add transpose
+      _app.PlayPattern(PatternNumber.FromFlatNumber(Pattern.SelectedIndex + 1)); //bug add transpose
     }
     catch (Exception ex)
     {
       MessageBox.Show(ex.ToString());
     }
   }
-
-  public AppLogic App { get; }
 }

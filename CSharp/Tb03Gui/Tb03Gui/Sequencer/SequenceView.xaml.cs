@@ -39,11 +39,11 @@ public partial class SequenceView : UserControl, ISequencerPositionObserver
 
   public AppLogic App { get; set; }
 
-  private async void PlayPause_Click(object sender, RoutedEventArgs e)
+  private void PlayPause_Click(object sender, RoutedEventArgs e)
   {
     try
     {
-      await App.PlayCurrentPattern();
+      App.PlayCurrentPattern();
     }
     catch (Exception exception)
     {

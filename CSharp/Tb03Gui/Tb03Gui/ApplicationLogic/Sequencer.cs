@@ -55,13 +55,13 @@ public class Sequencer : IPatternNotesObserver
     _notes[_sequencerPosition] = latestNode.Just();
   }
 
-  public async Task PlayOn(Synthesizer synthesizer)
+  public void PlayOn(Synthesizer synthesizer)
   {
     var pitches = _notes
       .Where(n => n.HasValue)
       .Select(n => n.Value())
       .Select(p => (Pitch)p.Pitch).ToList();
-    await synthesizer.Play(pitches);
+    synthesizer.Play(pitches);
   }
 
   public void PatternLoaded(SequenceDto sequence)
@@ -73,18 +73,10 @@ public class Sequencer : IPatternNotesObserver
   private void FillSequenceWith(ImmutableArray<SequenceStepDto> steps)
   {
     //bug support patterns with silence
-    foreach (var note in NotesFrom(steps))
+    foreach (var note in Tb03Note.NotesFrom(steps))
     {
       InsertNoteIntoSequencer(note);
     }
-  }
-
-  private static IEnumerable<Tb03Note> NotesFrom(ImmutableArray<SequenceStepDto> steps)
-  {
-    return steps.Select(step => Tb03Note.From(step.Note, 
-      Convert.ToBoolean(step.Accent), 
-      Convert.ToBoolean(step.Slide), 
-      step.State));
   }
 
   private void ClearSequence()

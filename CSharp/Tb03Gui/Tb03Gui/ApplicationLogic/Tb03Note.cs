@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Linq;
+using MidiPlayground;
 
 namespace Tb03Gui.ApplicationLogic;
 
-public record Tb03Note(string Name, 
+public record Tb03Note(
+  string Name, 
   int BasePitch, 
   Tb03Octave Octave,
   bool Accent, 
@@ -113,5 +117,13 @@ public record Tb03Note(string Name,
       Slide = slide,
       State = state
     };
+  }
+
+  public static IEnumerable<Tb03Note> NotesFrom(ImmutableArray<SequenceStepDto> steps)
+  {
+    return steps.Select(step => Tb03Note.From(step.Note, 
+      Convert.ToBoolean(step.Accent), 
+      Convert.ToBoolean(step.Slide), 
+      step.State));
   }
 }

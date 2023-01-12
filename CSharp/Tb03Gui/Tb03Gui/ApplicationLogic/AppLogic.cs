@@ -13,7 +13,7 @@ public class AppLogic
   private readonly Synthesizer _synthesizer;
   private readonly Patterns _patterns;
   private readonly Tracks _tracks;
-  private ISelectedTb03BackupFolderProcessingStep _folderProcessingChain;
+  private readonly ISelectedTb03BackupFolderProcessingStep _folderProcessingChain;
 
   public AppLogic(
     Sequencer sequencer,
@@ -21,7 +21,8 @@ public class AppLogic
     ISequencerPositionObserver sequencerPositionObserver, 
     Patterns patterns, 
     Tracks tracks, 
-    ISelectedTb03BackupFolderProcessingStep folderProcessingChain)
+    ISelectedTb03BackupFolderProcessingStep folderProcessingChain, 
+    Synthesizer synthesizer)
   {
     _sequencer = sequencer;
     _octaveObserver = octaveObserver;
@@ -29,7 +30,7 @@ public class AppLogic
     _patterns = patterns;
     _tracks = tracks;
     _folderProcessingChain = folderProcessingChain;
-    _synthesizer = Synthesizer.Create();
+    _synthesizer = synthesizer;
   }
 
   public void SwitchToOctave(Tb03Octave newOctave)
@@ -48,9 +49,9 @@ public class AppLogic
     _sequencer.InsertNoteIntoSequencer(note.TransposeTo(_octave));
   }
 
-  public async Task PlayCurrentPattern()
+  public void PlayCurrentPattern()
   {
-    await _sequencer.PlayOn(_synthesizer);
+    _sequencer.PlayOn(_synthesizer);
   }
 
   public void ActivateTb03FolderPath(AbsoluteDirectoryPath folderPath)
@@ -85,8 +86,8 @@ public class AppLogic
     _tracks.SelectTrack(trackNumber);
   }
 
-  public async Task PlayPattern(PatternNumber patternNumber)
+  public void PlayPattern(PatternNumber patternNumber)
   {
-    await _patterns.PlayPatternOutOfContext(patternNumber);
+    _patterns.PlayPatternOutOfContext(patternNumber);
   }
 }

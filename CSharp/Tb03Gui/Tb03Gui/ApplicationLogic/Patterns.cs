@@ -1,5 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using AtmaFileSystem;
+using Midi.Enums;
 using MidiPlayground;
 
 namespace Tb03Gui.ApplicationLogic;
@@ -11,13 +13,16 @@ public class Patterns : IPatternNotesObserver
   private readonly Sequencer _sequencer;
   private readonly IPatternNavigationObserver _patternNavigationObserver;
   private ITb03PatternsFolder _patternsFolder = new NoActivePatternsFolder();
+  private readonly Synthesizer _synthesizer;
 
   public Patterns(
     Sequencer sequencer, 
-    IPatternNavigationObserver patternNavigationObserver)
+    IPatternNavigationObserver patternNavigationObserver, 
+    Synthesizer synthesizer)
   {
     _sequencer = sequencer;
     _patternNavigationObserver = patternNavigationObserver;
+    _synthesizer = synthesizer;
   }
 
   public void Initialize(AbsoluteDirectoryPath folderPath)
@@ -41,13 +46,16 @@ public class Patterns : IPatternNotesObserver
     _patternsFolder.LoadPattern(_patternGroupNumber, _patternNumberInGroup);
   }
 
-  public async Task PlayPatternOutOfContext(PatternNumber patternNumber)
+  public void PlayPatternOutOfContext(PatternNumber patternNumber)
   {
     _patternsFolder.LoadPattern(patternNumber, this);
   }
 
   public void PatternLoaded(SequenceDto sequence)
   {
-    throw new System.NotImplementedException();
+    var pitches = Tb03Note.NotesFrom(sequence.Steps)
+      .Select(p => (Pitch)p.Pitch).ToList();
+    _synthesizer.Play(pitches);
+
   }
 }

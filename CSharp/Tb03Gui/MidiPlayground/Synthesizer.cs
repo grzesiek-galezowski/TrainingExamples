@@ -40,12 +40,12 @@ public class Synthesizer : IDisposable
     return synth;
   }
 
-  public async Task Play(List<Pitch> melody)
+  public void Play(List<Pitch> melody)
   {
     foreach (var pitch in melody)
     {
       _outputDevice.SendNoteOn(_currentChannel, pitch, 80);
-      await Task.Delay(_delay);
+      Thread.Sleep(_delay);
       _outputDevice.SendNoteOff(_currentChannel, pitch, 80);
     }
   }
