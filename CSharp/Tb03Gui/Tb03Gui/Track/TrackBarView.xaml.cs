@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using Core.NullableReferenceTypesExtensions;
 using MidiPlayground;
 using Tb03Gui.ApplicationLogic;
 
@@ -31,7 +32,9 @@ public partial class TrackBarView : UserControl
 
   public void UpdateWith(TrackEntryDto trackDtoEntry)
   {
-    Pattern.SelectedIndex = trackDtoEntry.Pattern;
+    var patternNumber = PatternNumber.FromFlatNumber(trackDtoEntry.Pattern);
+    Pattern.SelectedIndex = patternNumber.PatternNumberInGroup - 1;
+    PatternGroup.SelectedIndex = patternNumber.PatternGroupNumber - 1;
     Transpose.SelectedIndex = trackDtoEntry.Transpose;
   }
 
@@ -39,11 +42,21 @@ public partial class TrackBarView : UserControl
   {
     try
     {
-      _app.PlayPattern(PatternNumber.FromFlatNumber(Pattern.SelectedIndex + 1)); //bug add transpose
+      _app.PlayPattern(
+        PatternNumber.FromGroupAndNumberInGroup(
+          SelectedIntFrom(PatternGroup),
+          SelectedIntFrom(Pattern)),
+        SelectedIntFrom(Transpose)
+        ); //bug add transpose
     }
     catch (Exception ex)
     {
       MessageBox.Show(ex.ToString());
     }
+  }
+
+  private int SelectedIntFrom(ComboBox patternGroup)
+  {
+    return int.Parse(((ComboBoxItem)patternGroup.SelectedValue).Content.ToString().OrThrow());
   }
 }

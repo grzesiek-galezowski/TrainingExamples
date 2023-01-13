@@ -9,4 +9,8 @@ internal class NoActivePatternsFolder : ITb03PatternsFolder
   public void LoadPattern(PatternNumber patternNumber, IPatternNotesObserver patternNotesObserver)
   {
   }
+
+  public void LoadPattern(PatternNumber patternNumber, int transpose, IPatternNotesObserver patternNotesObserver)
+  {
+  }
 }

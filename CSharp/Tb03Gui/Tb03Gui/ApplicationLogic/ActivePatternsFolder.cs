@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System.Collections.Immutable;
+using System.IO;
+using System.Linq;
 using AtmaFileSystem;
 using MidiPlayground;
 
@@ -23,11 +25,23 @@ public class ActivePatternsFolder : ITb03PatternsFolder
     LoadPattern(patternNumber, _patternNotesObserver);
   }
 
+  //bug needed?
   public void LoadPattern(PatternNumber patternNumber, IPatternNotesObserver patternNotesObserver)
+  {
+    LoadPattern(patternNumber, 0, patternNotesObserver);
+  }
+
+  public void LoadPattern(PatternNumber patternNumber, int transpose, IPatternNotesObserver patternNotesObserver)
   {
     var fileName = Tb03PatternFileName.For(_folderPath, patternNumber.PatternGroupNumber, patternNumber.PatternNumberInGroup);
     var fileContent = File.ReadAllText(fileName.ToString());
     var sequenceDto = PrmParser.ParseIntoPattern(fileContent);
-    patternNotesObserver.PatternLoaded(sequenceDto);
+    patternNotesObserver.PatternLoaded(sequenceDto with { Steps = Transpose(sequenceDto.Steps, transpose)});
+  }
+
+  private ImmutableArray<SequenceStepDto> Transpose(ImmutableArray<SequenceStepDto> sequenceDtoSteps, int transpose)
+  {
+    //bug duplication. Transposition is also handled in another piece of code
+    return sequenceDtoSteps.Select(s => s with { Note = s.Note + 12 * transpose}).ToImmutableArray();
   }
 }

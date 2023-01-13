@@ -86,8 +86,8 @@ public class AppLogic
     _tracks.SelectTrack(trackNumber);
   }
 
-  public void PlayPattern(PatternNumber patternNumber)
+  public void PlayPattern(PatternNumber patternNumber, int transpose)
   {
-    _patterns.PlayPatternOutOfContext(patternNumber);
+    _patterns.PlayPatternOutOfContext(patternNumber, transpose);
   }
 }

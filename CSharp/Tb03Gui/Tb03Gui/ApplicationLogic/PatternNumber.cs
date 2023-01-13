@@ -19,13 +19,13 @@ public record PatternNumber
   public static PatternNumber FromFlatNumber(int patternNumber)
   {
     //bug change the constructor when I add from group and number
-    var patternNumberInGroup = patternNumber % TotalPatternsInGroup;
+    var patternNumberInGroup = (patternNumber+1) % TotalPatternsInGroup;
     if (patternNumberInGroup == 0)
     {
       patternNumberInGroup = TotalPatternsInGroup;
     }
     return new PatternNumber(
-      (int)Math.Ceiling((float)patternNumber / TotalPatternsInGroup), 
+      (int)Math.Ceiling((float)(patternNumber+1) / TotalPatternsInGroup), 
       patternNumberInGroup, 
       patternNumber);
   }
@@ -35,6 +35,6 @@ public record PatternNumber
     return new PatternNumber(
       patternGroupNumber, 
       patternNumberInGroup, 
-      (patternGroupNumber - 1) * TotalPatternsInGroup + patternNumberInGroup);
+      (patternGroupNumber - 1) * TotalPatternsInGroup + (patternNumberInGroup-1));
   }
 }

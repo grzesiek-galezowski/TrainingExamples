@@ -46,9 +46,9 @@ public class Patterns : IPatternNotesObserver
     _patternsFolder.LoadPattern(_patternGroupNumber, _patternNumberInGroup);
   }
 
-  public void PlayPatternOutOfContext(PatternNumber patternNumber)
+  public void PlayPatternOutOfContext(PatternNumber patternNumber, int transpose)
   {
-    _patternsFolder.LoadPattern(patternNumber, this);
+    _patternsFolder.LoadPattern(patternNumber, transpose, this);
   }
 
   public void PatternLoaded(SequenceDto sequence)
