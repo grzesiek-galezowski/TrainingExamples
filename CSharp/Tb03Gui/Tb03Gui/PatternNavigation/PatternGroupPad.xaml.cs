@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Media;
-using Tb03Gui.ApplicationLogic;
+using Application.ApplicationLogic;
 
 namespace Tb03Gui.PatternNavigation;
 

@@ -1,4 +1,4 @@
-using Tb03Gui.ApplicationLogic;
+using Application.ApplicationLogic;
 using FluentAssertions;
 
 namespace Tb03GuiSpecification;

@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
-using MidiPlayground;
-using Tb03Gui.ApplicationLogic;
+using Application.ApplicationLogic;
+using Tb03Gui.Midi;
 
 namespace Tb03Gui;
 
 /// <summary>
 /// Interaction logic for App.xaml
 /// </summary>
-public partial class App : Application
+public partial class App : System.Windows.Application
 {
   private Synthesizer _synthesizer = null!;
 
@@ -19,7 +19,7 @@ public partial class App : Application
 
     _synthesizer = Synthesizer.Create();
     var mainWindow = new MainWindow();
-    var sequencer = new ApplicationLogic.Sequencer(
+    var sequencer = new Application.ApplicationLogic.Sequencer(
       mainWindow.SequenceView.SequencerPatternLength(),
       mainWindow.SequenceView
       );
@@ -38,8 +38,8 @@ public partial class App : Application
       new Patterns(
         sequencer,
         mainWindow.PatternNavigationView, 
-        _synthesizer),
-      new Tracks(mainWindow.TrackNavigationView),
+        _synthesizer, new PatternsFolderFactory()),
+      new Tracks(mainWindow.TrackNavigationView, new ActiveTracksFolderFactory()),
       new CheckThatFolderContainsOnlyPrmFilesStep(
         mainWindow.FolderManagement,
         new CheckGroupsAndPatternsAndTracksCount(

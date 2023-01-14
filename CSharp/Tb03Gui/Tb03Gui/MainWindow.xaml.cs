@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Input;
-using Tb03Gui.ApplicationLogic;
+using Application.ApplicationLogic;
 
 namespace Tb03Gui;
 

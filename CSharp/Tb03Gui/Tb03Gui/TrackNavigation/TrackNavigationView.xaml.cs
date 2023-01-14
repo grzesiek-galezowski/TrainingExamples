@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Controls;
-using MidiPlayground;
-using Tb03Gui.ApplicationLogic;
+using Application.ApplicationLogic;
 using Tb03Gui.Track;
 
 namespace Tb03Gui.TrackNavigation;

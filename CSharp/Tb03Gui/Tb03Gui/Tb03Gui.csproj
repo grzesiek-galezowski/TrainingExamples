@@ -9,11 +9,13 @@
 
   <ItemGroup>
     <PackageReference Include="AtmaFileSystem" Version="6.0.0" />
+    <PackageReference Include="midi-dot-net2" Version="2.0.1" />
     <PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
+    <PackageReference Include="Superpower" Version="3.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MidiPlayground\MidiPlayground.csproj" />
+    <ProjectReference Include="..\Application\Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>

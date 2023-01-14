@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using Tb03Gui.ApplicationLogic;
+using Application.ApplicationLogic;
 
 namespace Tb03Gui.Sequencer;
 
@@ -34,7 +34,7 @@ public partial class SequenceView : UserControl, ISequencerPositionObserver
       P15,
       P16,
     };
-    _sequencerPads[ApplicationLogic.Sequencer.InitialSequencerPosition].Mark();
+    _sequencerPads[Application.ApplicationLogic.Sequencer.InitialSequencerPosition].Mark();
   }
 
   public AppLogic App { get; set; }

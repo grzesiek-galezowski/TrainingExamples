@@ -1,8 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using Application.ApplicationLogic;
 using Core.NullableReferenceTypesExtensions;
-using Tb03Gui.ApplicationLogic;
 
 namespace Tb03Gui.OctavePanel;
 

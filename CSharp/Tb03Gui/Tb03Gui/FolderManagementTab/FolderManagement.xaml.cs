@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using Application.ApplicationLogic;
 using AtmaFileSystem;
 using Ookii.Dialogs.Wpf;
-using Tb03Gui.ApplicationLogic;
 
 namespace Tb03Gui.FolderManagementTab;
 

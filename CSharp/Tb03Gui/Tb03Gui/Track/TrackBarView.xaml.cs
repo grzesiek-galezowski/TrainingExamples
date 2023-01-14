@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using Application.ApplicationLogic;
 using Core.NullableReferenceTypesExtensions;
-using MidiPlayground;
-using Tb03Gui.ApplicationLogic;
 
 namespace Tb03Gui.Track;
 
