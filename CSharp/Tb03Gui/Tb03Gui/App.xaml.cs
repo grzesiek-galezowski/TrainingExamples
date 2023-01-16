@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
-using Application.ApplicationLogic;
+using Application;
+using Application.Ports;
 using Tb03Gui.Midi;
+using Tb03Gui.Prm;
+using Tb03Gui.View;
 
 namespace Tb03Gui;
 
@@ -19,35 +22,21 @@ public partial class App : System.Windows.Application
 
     _synthesizer = Synthesizer.Create();
     var mainWindow = new MainWindow();
-    var sequencer = new Application.ApplicationLogic.Sequencer(
+    var appLogic = AppLogicRoot.CreateAppLogic(
       mainWindow.SequenceView.SequencerPatternLength(),
-      mainWindow.SequenceView
-      );
-    var appLogic = new AppLogic(
-      sequencer,
-      new BroadcastingOctaveObserver(
-        new List<IOctaveObserver>
-        {
-          mainWindow.OctavePanelView.Octave1Pad,
-          mainWindow.OctavePanelView.Octave2Pad,
-          mainWindow.OctavePanelView.Octave3Pad,
-          mainWindow.OctavePanelView.Octave4Pad,
-          mainWindow.OctavePanelView.Octave5Pad
-        }),
       mainWindow.SequenceView,
-      new Patterns(
-        sequencer,
-        mainWindow.PatternNavigationView, 
-        _synthesizer, new PatternsFolderFactory()),
-      new Tracks(mainWindow.TrackNavigationView, new ActiveTracksFolderFactory()),
-      new CheckThatFolderContainsOnlyPrmFilesStep(
-        mainWindow.FolderManagement,
-        new CheckGroupsAndPatternsAndTracksCount(
-          mainWindow.FolderManagement,
-          new PopulateInfoStep(
-            mainWindow.FolderManagement)
-        )
-      ), _synthesizer);
+      new List<IOctaveObserver>
+      {
+        mainWindow.OctavePanelView.Octave1Pad,
+        mainWindow.OctavePanelView.Octave2Pad,
+        mainWindow.OctavePanelView.Octave3Pad,
+        mainWindow.OctavePanelView.Octave4Pad,
+        mainWindow.OctavePanelView.Octave5Pad
+      },
+      mainWindow.PatternNavigationView,
+      _synthesizer,
+      mainWindow.TrackNavigationView,
+      mainWindow.FolderManagement, new PatternsFolderFactory(), new ActiveTracksFolderFactory());
 
     mainWindow.App = appLogic;
     mainWindow.TrackNavigationView.Initialize(appLogic);

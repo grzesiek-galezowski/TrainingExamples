@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
-using Application.ApplicationLogic;
+using Application.Ports;
 using Midi.Devices;
 using Midi.Enums;
 
