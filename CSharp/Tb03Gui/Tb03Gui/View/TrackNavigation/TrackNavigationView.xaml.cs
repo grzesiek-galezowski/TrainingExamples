@@ -99,4 +99,9 @@ public partial class TrackNavigationView : UserControl, ITrackPatternsObserver
   {
     return trackDto.Bars < i + 1;
   }
+
+  private void PlayTrackButton_Click(object sender, System.Windows.RoutedEventArgs e)
+  {
+    App.PlayCurrentTrack();
+  }
 }

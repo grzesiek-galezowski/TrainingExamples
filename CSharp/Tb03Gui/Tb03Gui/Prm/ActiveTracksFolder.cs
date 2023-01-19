@@ -18,11 +18,12 @@ public class ActiveTracksFolder : ITb03TracksFolder
     _trackPatternsObserver = trackPatternsObserver;
   }
 
-  public void LoadTrack(int trackNumber)
+  public void LoadTrack(int trackNumber, ITrackPatternsObserver adHocObserver)
   {
     var fileName = Tb03TrackFileName.For(_folderPath, trackNumber);
     var fileContent = File.ReadAllText(fileName.ToString());
     var trackDto = PrmParser.ParseIntoTrack(fileContent);
     _trackPatternsObserver.TrackLoaded(trackDto);
+    adHocObserver.TrackLoaded(trackDto);
   }
 }

@@ -34,7 +34,7 @@
       <trackNavigation:TrackPad Grid.Column="6" Grid.Row="0" TrackNumber="7" x:Name="Track7Pad" VerticalAlignment="Center" HorizontalAlignment="Center"/>
     </Grid>
     <Grid Grid.Column="1">
-      <Button x:Name="PlayTrackButton"/>
+      <Button x:Name="PlayTrackButton" Content="Play track" Click="PlayTrackButton_Click"/>
     </Grid>
     <Grid x:Name="TracksGrid" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
     </Grid>

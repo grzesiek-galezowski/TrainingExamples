@@ -15,4 +15,5 @@ public interface IAppLogic
   void ToggleNoteSlide(int noteNumber, IParameterToggleObserver parameterToggleObserver);
   void TrackWasSelected(int trackNumber);
   void PlayPattern(PatternNumber patternNumber, int transpose);
+  void PlayCurrentTrack();
 }

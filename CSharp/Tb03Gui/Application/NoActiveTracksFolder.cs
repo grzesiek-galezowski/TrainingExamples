@@ -4,7 +4,7 @@ namespace Application;
 
 internal class NoActiveTracksFolder : ITb03TracksFolder
 {
-  public void LoadTrack(int trackNumber)
+  public void LoadTrack(int trackNumber, ITrackPatternsObserver observer)
   {
 
   }

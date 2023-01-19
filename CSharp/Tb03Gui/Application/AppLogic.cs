@@ -89,4 +89,9 @@ public class AppLogic : IAppLogic
   {
     _patterns.PlayPatternOutOfContext(patternNumber, transpose);
   }
+
+  public void PlayCurrentTrack()
+  {
+    _tracks.PlayCurrentTrackOn(this);
+  }
 }
