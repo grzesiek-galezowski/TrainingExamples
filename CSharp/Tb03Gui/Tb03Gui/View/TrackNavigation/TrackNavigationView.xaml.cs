@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Windows;
 using System.Windows.Controls;
 using Application.Ports;
+using Core.Maybe;
 using Tb03Gui.View.Track;
 
 namespace Tb03Gui.View.TrackNavigation;
@@ -13,6 +16,7 @@ public partial class TrackNavigationView : UserControl, ITrackPatternsObserver
 {
   private readonly List<TrackBarView> _bars = new();
   private List<TrackPad> _trackPads = new();
+  private Maybe<CancellationTokenSource> _cts;
 
   public TrackNavigationView()
   {
@@ -100,8 +104,27 @@ public partial class TrackNavigationView : UserControl, ITrackPatternsObserver
     return trackDto.Bars < i + 1;
   }
 
-  private void PlayTrackButton_Click(object sender, System.Windows.RoutedEventArgs e)
+  private async void PlayTrackButton_Click(object sender, System.Windows.RoutedEventArgs e)
   {
-      App.PlayCurrentTrack();
+    try
+    {
+      if (!_cts.HasValue)
+      {
+        _cts = new CancellationTokenSource().Just();
+        PlayTrackButton.Content = "Stop";
+        await App.PlayCurrentTrack(_cts.Value().Token);
+      }
+      else
+      {
+        _cts.Value().Cancel();
+        _cts = Maybe<CancellationTokenSource>.Nothing;
+        PlayTrackButton.Content = "Play";
+
+      }
+    }
+    catch (Exception ex)
+    {
+      MessageBox.Show(ex.ToString());
+    }
   }
 }

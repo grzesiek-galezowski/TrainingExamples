@@ -33,16 +33,19 @@ public class Tracks : ITrackPatternsObserver
     _tracksFolder.LoadTrack(_trackNumber, this);
   }
 
-  public void PlayCurrentTrackOn(AppLogic appLogic)
+  public async Task PlayCurrentTrackOn(AppLogic appLogic, CancellationToken cancellationToken)
   {
-    _currentTrackData.Do(track =>
+    await _currentTrackData.DoAsync(async track =>
     {
-      for (var index = 0; index < track.Bars; index++)
+      for (var index = 0; 
+           index < track.Bars && !cancellationToken.IsCancellationRequested; 
+           index++)
       {
         var trackEntryDto = track.Entries[index];
-        appLogic.PlayPattern(
+        await appLogic.PlayPattern(
           PatternNumber.FromFlatNumber(trackEntryDto.Pattern),
-          trackEntryDto.Transpose);
+          trackEntryDto.Transpose,
+          cancellationToken);
       }
     });
   }

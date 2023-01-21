@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using Application.Ports;
@@ -39,11 +40,11 @@ public partial class SequenceView : UserControl, ISequencerPositionObserver
 
   public IAppLogic App { get; set; }
 
-  private void PlayPause_Click(object sender, RoutedEventArgs e)
+  private async void PlayPause_Click(object sender, RoutedEventArgs e)
   {
     try
     {
-      App.PlayCurrentPattern();
+      await App.PlayCurrentPattern(new CancellationToken());
     }
     catch (Exception exception)
     {

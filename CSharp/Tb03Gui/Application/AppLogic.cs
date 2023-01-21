@@ -48,26 +48,26 @@ public class AppLogic : IAppLogic
     _sequencer.InsertNoteIntoSequencer(note.TransposeTo(_octave));
   }
 
-  public void PlayCurrentPattern()
+  public async Task PlayCurrentPattern(CancellationToken cancellationToken)
   {
-    _sequencer.PlayOn(_synthesizer);
+    await _sequencer.PlayOn(_synthesizer, cancellationToken);
   }
 
-  public void ActivateTb03FolderPath(AbsoluteDirectoryPath folderPath)
+  public async Task ActivateTb03FolderPath(AbsoluteDirectoryPath folderPath, CancellationToken cancellationToken)
   {
     _folderProcessingChain.Activate(folderPath);
-    _patterns.Initialize(folderPath);
+    await _patterns.Initialize(folderPath, cancellationToken);
     _tracks.Initialize(folderPath);
   }
 
-  public void PatternGroupWasSelected(int patternGroupNumber) //bug enum?
+  public async Task PatternGroupWasSelected(int patternGroupNumber, CancellationToken cancellationToken) //bug enum?
   {
-    _patterns.SelectPatternGroup(patternGroupNumber);
+    await _patterns.SelectPatternGroup(patternGroupNumber, cancellationToken);
   }
 
-  public void PatternWasSelected(int patternNumber)
+  public async Task PatternWasSelected(int patternNumber, CancellationToken cancellationToken)
   {
-    _patterns.SelectPattern(patternNumber);
+    await _patterns.SelectPattern(patternNumber, cancellationToken);
   }
 
   public void ToggleSequencerNoteAccent(int noteNumber, IParameterToggleObserver parameterToggleObserver)
@@ -85,13 +85,13 @@ public class AppLogic : IAppLogic
     _tracks.SelectTrack(trackNumber);
   }
 
-  public void PlayPattern(PatternNumber patternNumber, int transpose)
+  public async Task PlayPattern(PatternNumber patternNumber, int transpose, CancellationToken cancellationToken)
   {
-    _patterns.PlayPatternOutOfContext(patternNumber, transpose);
+    await _patterns.PlayPatternOutOfContext(patternNumber, transpose, cancellationToken);
   }
 
-  public void PlayCurrentTrack()
+  public async Task PlayCurrentTrack(CancellationToken cancellationToken)
   {
-    _tracks.PlayCurrentTrackOn(this);
+    await _tracks.PlayCurrentTrackOn(this, cancellationToken);
   }
 }

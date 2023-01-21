@@ -1,4 +1,7 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Threading;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using Application.Ports;
 
@@ -28,10 +31,17 @@ public partial class PatternPad : UserControl
     }
   }
 
-  private void PatternButton_Click(object sender, System.Windows.RoutedEventArgs e)
+  private async void PatternButton_Click(object sender, RoutedEventArgs e)
   {
-    App.PatternWasSelected(PatternNumber);
-    Mark();
+    try
+    {
+      await App.PatternWasSelected(PatternNumber, new CancellationToken());
+      Mark();
+    }
+    catch (Exception ex)
+    {
+      MessageBox.Show(ex.ToString());
+    }
   }
 
   public void Mark()
@@ -42,10 +52,5 @@ public partial class PatternPad : UserControl
   public void Unmark()
   {
     PatternButton.Background = new SolidColorBrush(Colors.LightGray);
-  }
-
-  private void Button_Click()
-  {
-
   }
 }

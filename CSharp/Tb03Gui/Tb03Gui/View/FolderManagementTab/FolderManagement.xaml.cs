@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using Application.Ports;
@@ -19,7 +20,7 @@ public partial class FolderManagement : UserControl, ITb03FolderProcessingObserv
 
   public IAppLogic App { get; set; }
 
-  private void Button_Click(object sender, RoutedEventArgs e)
+  private async void Button_Click(object sender, RoutedEventArgs e)
   {
     try
     {
@@ -27,7 +28,7 @@ public partial class FolderManagement : UserControl, ITb03FolderProcessingObserv
       if (openFolderDialog.ShowDialog().GetValueOrDefault())
       {
         var folderPath = AbsoluteDirectoryPath.Value(openFolderDialog.SelectedPath);
-        App.ActivateTb03FolderPath(folderPath);
+        await App.ActivateTb03FolderPath(folderPath, new CancellationToken());
       }
     }
     catch (Exception ex)

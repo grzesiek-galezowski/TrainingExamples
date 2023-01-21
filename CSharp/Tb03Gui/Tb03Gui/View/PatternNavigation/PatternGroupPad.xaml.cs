@@ -1,4 +1,7 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Threading;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using Application.Ports;
 
@@ -28,9 +31,16 @@ public partial class PatternGroupPad : UserControl
     }
   }
 
-  private void GroupButton_Click(object sender, System.Windows.RoutedEventArgs e)
+  private async void GroupButton_Click(object sender, RoutedEventArgs e)
   {
-    App.PatternGroupWasSelected(PatternGroupNumber);
+    try
+    {
+      await App.PatternGroupWasSelected(PatternGroupNumber, new CancellationToken());
+    }
+    catch (Exception ex)
+    {
+      MessageBox.Show(ex.ToString());
+    }
   }
 
   public void Mark()

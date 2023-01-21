@@ -7,13 +7,13 @@ public interface IAppLogic
   void SwitchToOctave(Tb03Octave newOctave);
   void PreviousSequencerPosition();
   void InsertNoteIntoSequencer(Tb03Note note);
-  void PlayCurrentPattern();
-  void ActivateTb03FolderPath(AbsoluteDirectoryPath folderPath);
-  void PatternGroupWasSelected(int patternGroupNumber);
-  void PatternWasSelected(int patternNumber);
+  Task PlayCurrentPattern(CancellationToken cancellationToken);
+  Task ActivateTb03FolderPath(AbsoluteDirectoryPath folderPath, CancellationToken cancellationToken);
+  Task PatternGroupWasSelected(int patternGroupNumber, CancellationToken cancellationToken);
+  Task PatternWasSelected(int patternNumber, CancellationToken cancellationToken);
   void ToggleSequencerNoteAccent(int noteNumber, IParameterToggleObserver parameterToggleObserver);
   void ToggleNoteSlide(int noteNumber, IParameterToggleObserver parameterToggleObserver);
   void TrackWasSelected(int trackNumber);
-  void PlayPattern(PatternNumber patternNumber, int transpose);
-  void PlayCurrentTrack();
+  Task PlayPattern(PatternNumber patternNumber, int transpose, CancellationToken cancellationToken);
+  Task PlayCurrentTrack(CancellationToken cancellationToken);
 }

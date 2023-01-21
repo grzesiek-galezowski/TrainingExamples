@@ -4,7 +4,7 @@ namespace Application;
 
 internal class NoActivePatternsFolder : ITb03PatternsFolder
 {
-  public void LoadPattern(int patternGroupNumber, int patternNumberInGroup)
+  public async Task LoadPattern(int patternGroupNumber, int patternNumberInGroup, CancellationToken cancellationToken)
   {
   }
 
@@ -12,7 +12,8 @@ internal class NoActivePatternsFolder : ITb03PatternsFolder
   {
   }
 
-  public void LoadPattern(PatternNumber patternNumber, int transpose, IPatternNotesObserver patternNotesObserver)
+  public async Task LoadPattern(PatternNumber patternNumber, int transpose, IPatternNotesObserver patternNotesObserver,
+    CancellationToken cancellationToken)
   {
   }
 }

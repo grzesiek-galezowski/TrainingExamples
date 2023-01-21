@@ -50,15 +50,15 @@ public class Sequencer : IPatternNotesObserver
     _notes[_sequencerPosition] = latestNode.Just();
   }
 
-  public void PlayOn(ISynthesizer synthesizer)
+  public async Task PlayOn(ISynthesizer synthesizer, CancellationToken cancellationToken)
   {
     var pitches = _notes
       .Where(n => n.HasValue)
       .Select(n => n.Value().Pitch).ToList();
-    synthesizer.Play(pitches);
+    await synthesizer.Play(pitches, cancellationToken);
   }
 
-  public void PatternLoaded(SequenceDto sequence)
+  public async Task PatternLoaded(SequenceDto sequence, CancellationToken cancellationToken)
   {
     ClearSequence();
     FillSequenceWith(sequence.Steps);

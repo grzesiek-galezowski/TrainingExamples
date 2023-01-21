@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 using Application.Ports;
 using Midi.Devices;
 using Midi.Enums;
@@ -44,12 +45,15 @@ public class Synthesizer : IDisposable, ISynthesizer
     return synth;
   }
 
-  public void Play(List<int> melody)
+  public async Task Play(List<int> melody, CancellationToken cancellationToken)
   {
-    foreach (var pitch in melody)
+    for (var index = 0; 
+         index < melody.Count && !cancellationToken.IsCancellationRequested; 
+         index++)
     {
+      var pitch = melody[index];
       _outputDevice.SendNoteOn(_currentChannel, (Pitch)pitch, 80);
-      Thread.Sleep(_delay);
+      await Task.Delay(_delay, CancellationToken.None);
       _outputDevice.SendNoteOff(_currentChannel, (Pitch)pitch, 80);
     }
   }

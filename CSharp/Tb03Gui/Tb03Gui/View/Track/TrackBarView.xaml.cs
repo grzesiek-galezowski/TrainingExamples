@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using Application.Ports;
+using Core.Maybe;
 using Core.NullableReferenceTypesExtensions;
 
 namespace Tb03Gui.View.Track;
@@ -37,16 +39,17 @@ public partial class TrackBarView : UserControl
     Transpose.SelectedIndex = trackDtoEntry.Transpose;
   }
 
-  private void PlayButton_Click(object sender, RoutedEventArgs e)
+  private async void PlayButton_Click(object sender, RoutedEventArgs e)
   {
     try
     {
-      _app.PlayPattern(
-        PatternNumber.FromGroupAndNumberInGroup(
-          SelectedIntFrom(PatternGroup),
-          SelectedIntFrom(Pattern)),
-        SelectedIntFrom(Transpose)
-        ); //bug add transpose
+        await _app.PlayPattern(
+          PatternNumber.FromGroupAndNumberInGroup(
+            SelectedIntFrom(PatternGroup),
+            SelectedIntFrom(Pattern)),
+          SelectedIntFrom(Transpose),
+          new CancellationToken()
+        );
     }
     catch (Exception ex)
     {

@@ -2,5 +2,5 @@
 
 public interface IPatternNotesObserver
 {
-  void PatternLoaded(SequenceDto sequence);
+  Task PatternLoaded(SequenceDto sequence, CancellationToken cancellationToken);
 }

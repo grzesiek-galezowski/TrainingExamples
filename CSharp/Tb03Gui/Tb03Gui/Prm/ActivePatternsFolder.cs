@@ -1,6 +1,8 @@
 ﻿using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using Application;
 using Application.Ports;
 using AtmaFileSystem;
@@ -20,24 +22,27 @@ public class ActivePatternsFolder : ITb03PatternsFolder
     _patternNotesObserver = patternNotesObserver;
   }
 
-  public void LoadPattern(int patternGroupNumber, int patternNumberInGroup)
+  public async Task LoadPattern(int patternGroupNumber, int patternNumberInGroup, CancellationToken cancellationToken)
   {
     var patternNumber = PatternNumber.FromGroupAndNumberInGroup(patternGroupNumber, patternNumberInGroup);
-    LoadPattern(patternNumber, _patternNotesObserver);
+    await LoadPattern(patternNumber, _patternNotesObserver, cancellationToken);
   }
 
-  //bug needed?
-  public void LoadPattern(PatternNumber patternNumber, IPatternNotesObserver patternNotesObserver)
+  //bug fix async
+  public async Task LoadPattern(PatternNumber patternNumber, IPatternNotesObserver patternNotesObserver,
+    CancellationToken cancellationToken)
   {
-    LoadPattern(patternNumber, 0, patternNotesObserver);
+    await LoadPattern(patternNumber, 0, patternNotesObserver, cancellationToken);
   }
 
-  public void LoadPattern(PatternNumber patternNumber, int transpose, IPatternNotesObserver patternNotesObserver)
+  public async Task LoadPattern(PatternNumber patternNumber, int transpose, IPatternNotesObserver patternNotesObserver,
+    CancellationToken cancellationToken)
   {
     var fileName = Tb03PatternFileName.For(_folderPath, patternNumber.PatternGroupNumber, patternNumber.PatternNumberInGroup);
-    var fileContent = File.ReadAllText(fileName.ToString());
+    var fileContent = await File.ReadAllTextAsync(fileName.ToString(), cancellationToken);
     var sequenceDto = PrmParser.ParseIntoPattern(fileContent);
-    patternNotesObserver.PatternLoaded(sequenceDto with { Steps = Transpose(sequenceDto.Steps, transpose)});
+    await patternNotesObserver.PatternLoaded(
+      new SequenceDto(Transpose(sequenceDto.Steps, transpose)), cancellationToken);
   }
 
   private ImmutableArray<SequenceStepDto> Transpose(ImmutableArray<SequenceStepDto> sequenceDtoSteps, int transpose)

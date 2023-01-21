@@ -25,37 +25,38 @@ public class Patterns : IPatternNotesObserver
     _patternsFolderFactory = patternsFolderFactory;
   }
 
-  public void Initialize(AbsoluteDirectoryPath folderPath)
+  public async Task Initialize(AbsoluteDirectoryPath folderPath, CancellationToken cancellationToken)
   {
     _patternsFolder = _patternsFolderFactory.PatternsFolder(_sequencer, folderPath);
-    SelectPatternGroup(_patternGroupNumber);
-    SelectPattern(_patternNumberInGroup);
+    await SelectPatternGroup(_patternGroupNumber, cancellationToken);
+    await SelectPattern(_patternNumberInGroup, cancellationToken);
   }
 
-  public void SelectPatternGroup(int patternGroupNumber)
+  public async Task SelectPatternGroup(int patternGroupNumber, CancellationToken cancellationToken)
   {
     _patternGroupNumber = patternGroupNumber;
     _patternNavigationObserver.OnPatternGroupSelectionChanged(patternGroupNumber);
-    _patternsFolder.LoadPattern(_patternGroupNumber, _patternNumberInGroup);
+    await _patternsFolder.LoadPattern(_patternGroupNumber, _patternNumberInGroup, cancellationToken);
   }
 
-  public void SelectPattern(int patternNumberInGroup)
+  public async Task SelectPattern(int patternNumberInGroup, CancellationToken cancellationToken)
   {
     _patternNumberInGroup = patternNumberInGroup;
     _patternNavigationObserver.OnPatternSelectionChanged(patternNumberInGroup);
-    _patternsFolder.LoadPattern(_patternGroupNumber, _patternNumberInGroup);
+    await _patternsFolder.LoadPattern(_patternGroupNumber, _patternNumberInGroup, cancellationToken);
   }
 
-  public void PlayPatternOutOfContext(PatternNumber patternNumber, int transpose)
+  public async Task PlayPatternOutOfContext(PatternNumber patternNumber, int transpose,
+    CancellationToken cancellationToken)
   {
-    _patternsFolder.LoadPattern(patternNumber, transpose, this);
+    await _patternsFolder.LoadPattern(patternNumber, transpose, this, cancellationToken);
   }
 
-  public void PatternLoaded(SequenceDto sequence)
+  public async Task PatternLoaded(SequenceDto sequence, CancellationToken cancellationToken)
   {
     var pitches = Tb03Note.NotesFrom(sequence.Steps)
       .Select(p => p.Pitch).ToList();
-    _synthesizer.Play(pitches);
+    await _synthesizer.Play(pitches, cancellationToken);
 
   }
 }
