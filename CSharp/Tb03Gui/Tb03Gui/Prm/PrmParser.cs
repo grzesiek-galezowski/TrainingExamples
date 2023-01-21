@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
-using Application;
 using Application.Ports;
 using Midi.Enums;
 using Superpower;

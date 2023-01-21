@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows;
-using Application;
 using Application.Ports;
 using Tb03Gui.Midi;
 using Tb03Gui.Prm;

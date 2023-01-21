@@ -12,7 +12,7 @@ namespace Tb03Gui.View.TrackNavigation;
 public partial class TrackNavigationView : UserControl, ITrackPatternsObserver
 {
   private readonly List<TrackBarView> _bars = new();
-  private List<TrackPad> _trackPads = new List<TrackPad>();
+  private List<TrackPad> _trackPads = new();
 
   public TrackNavigationView()
   {
@@ -102,6 +102,6 @@ public partial class TrackNavigationView : UserControl, ITrackPatternsObserver
 
   private void PlayTrackButton_Click(object sender, System.Windows.RoutedEventArgs e)
   {
-    App.PlayCurrentTrack();
+      App.PlayCurrentTrack();
   }
 }
