@@ -52,6 +52,12 @@ public partial class SequenceView : UserControl, ISequencerPositionObserver
     }
   }
 
+  private void SaveButton_OnClick(object sender, RoutedEventArgs e)
+  {
+    App.SaveCurrentPattern();
+  }
+
+
   public void OnSequencerPositionChange(int prevPosition, int newPosition)
   {
     _sequencerPads[prevPosition].Unmark();

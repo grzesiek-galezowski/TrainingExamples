@@ -8,7 +8,7 @@ using Superpower.Parsers;
 
 namespace Tb03Gui.Prm;
 
-public static class PrmParser
+public static class PrmConvert
 {
   private const string PrmNewLine = "\n";
 
@@ -33,22 +33,28 @@ public static class PrmParser
       from endStep in endStepLine
       from triplet in tripletLine
       from values in linesParser
-      select PatternDtoFrom(values);
+      select PatternDtoFrom(values, endStep, triplet);
 
     var pattern = textParser.Parse<SequenceDto>(prmString);
     return pattern;
   }
 
-  private static SequenceDto PatternDtoFrom(int[][] values)
+  private static SequenceDto PatternDtoFrom(
+    int[][] values, 
+    int endStep, 
+    int triplet)
   {
-    return new SequenceDto(values.Select(v => new SequenceStepDto
-    {
-      StepNumber = v[0],
-      State = v[1], 
-      Note = v[2], 
-      Accent = v[3], 
-      Slide = v[4]
-    }).ToImmutableArray());
+    return new SequenceDto(
+      endStep,
+      triplet,
+      values.Select(v => new SequenceStepDto
+      {
+        StepNumber = v[0],
+        State = v[1],
+        Note = v[2],
+        Accent = v[3],
+        Slide = v[4]
+      }).ToImmutableArray());
   }
   
   private static TrackDto TrackDtoFrom(int bars, int dalSegnoBar, int[][] values)
@@ -120,4 +126,8 @@ public static class PrmParser
     return melody;
   }
 
+  public static object ParseIntoString(ImmutableArray<SequenceStepDto> steps, int endStepIndex, int triplets)
+  {
+    throw new System.NotImplementedException();
+  }
 }

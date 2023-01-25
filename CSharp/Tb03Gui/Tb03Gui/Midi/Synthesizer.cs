@@ -14,7 +14,7 @@ public class Synthesizer : IDisposable, ISynthesizer
   private TimeSpan _delay;
   private readonly Channel _currentChannel = Channel.Channel1;
 
-  public Synthesizer(IOutputDevice outputDevice)
+  private Synthesizer(IOutputDevice outputDevice)
   {
     _outputDevice = outputDevice;
   }

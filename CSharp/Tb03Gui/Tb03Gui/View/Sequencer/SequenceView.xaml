@@ -87,13 +87,20 @@
       x:Name="P16" Number="16" HorizontalAlignment="Left" Height="129" VerticalAlignment="Top" Width="96"
       HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
     <Button 
-      Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
-      x:Name="PlayPause"
+      Grid.Row="0" Grid.Column="0" Grid.RowSpan="1"
+      x:Name="PlayPauseButton"
       Content="Start/Stop" 
       FontSize="20"
-      HorizontalAlignment="Left" 
-      Height="266" 
-      Width="124"
-      VerticalAlignment="Top" Click="PlayPause_Click" />
+      HorizontalAlignment="Stretch" 
+      VerticalAlignment="Stretch" 
+      Click="PlayPause_Click" />
+    <Button 
+      Grid.Row="1" Grid.Column="0" Grid.RowSpan="1"
+      x:Name="SaveButton"
+      Content="Save" 
+      FontSize="20"
+      HorizontalAlignment="Stretch" 
+      VerticalAlignment="Stretch" 
+      Click="SaveButton_OnClick" />
   </Grid>
 </UserControl>

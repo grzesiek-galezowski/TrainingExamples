@@ -59,4 +59,9 @@ public class Patterns : IPatternNotesObserver
     await _synthesizer.Play(pitches, cancellationToken);
 
   }
+
+  public void SaveCurrentPatternFrom(Sequencer sequencer)
+  {
+    sequencer.SavePattern(_patternsFolder, PatternNumber.FromGroupAndNumberInGroup(_patternGroupNumber, _patternNumberInGroup));
+  }
 }

@@ -1,4 +1,5 @@
 ﻿using Application.Ports;
+using Core.Maybe;
 
 namespace Application;
 
@@ -8,12 +9,13 @@ internal class NoActivePatternsFolder : ITb03PatternsFolder
   {
   }
 
-  public void LoadPattern(PatternNumber patternNumber, IPatternNotesObserver patternNotesObserver)
-  {
-  }
-
   public async Task LoadPattern(PatternNumber patternNumber, int transpose, IPatternNotesObserver patternNotesObserver,
     CancellationToken cancellationToken)
   {
+  }
+
+  public void SavePattern(Maybe<Tb03Note>[] notes, int sequenceLength, PatternNumber patternNumber)
+  {
+    
   }
 }

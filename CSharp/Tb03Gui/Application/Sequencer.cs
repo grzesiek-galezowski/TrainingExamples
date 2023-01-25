@@ -104,6 +104,13 @@ public class Sequencer : IPatternNotesObserver
   {
     return new Maybe<Tb03Note>[_sequenceLength];
   }
+
+  public void SavePattern(
+    ITb03PatternsFolder patternsFolder, 
+    PatternNumber patternNumber)
+  {
+    patternsFolder.SavePattern(_notes, _sequenceLength, patternNumber);
+  }
 }
 
 //bug support patterns with silence
