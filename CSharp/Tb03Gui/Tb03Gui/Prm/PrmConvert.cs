@@ -1,8 +1,7 @@
-using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
+using System.Text;
 using Application.Ports;
-using Midi.Enums;
 using Superpower;
 using Superpower.Parsers;
 
@@ -10,21 +9,28 @@ namespace Tb03Gui.Prm;
 
 public static class PrmConvert
 {
+  private const string StateKey = "STATE";
   private const string PrmNewLine = "\n";
+  private const string EndStep = "END_STEP";
+  private const string Triplet = "TRIPLET";
+  private const string Step = "STEP";
+  private const string NoteKey = "NOTE";
+  private const string AccentKey = "ACCENT";
+  private const string SlideKey = "SLIDE";
 
   public static SequenceDto ParseIntoPattern(string prmString)
   {
-    var endStepLine = HeaderLineWithSingleValue("END_STEP", Numerics.IntegerInt32);
-    var tripletLine = HeaderLineWithSingleValue("TRIPLET", Numerics.IntegerInt32);
+    var endStepLine = HeaderLineWithSingleValue(EndStep, Numerics.IntegerInt32);
+    var tripletLine = HeaderLineWithSingleValue(Triplet, Numerics.IntegerInt32);
 
-    var linesParser = (from stepNumber in EntryHeaderValueParser("STEP")
-        from stateValue in EntryValueParser("STATE")
+    var linesParser = (from stepNumber in EntryHeaderValueParser(Step)
+        from stateValue in EntryValueParser(StateKey)
         from whiteSpace2 in Span.WhiteSpace
-        from noteValue in EntryValueParser("NOTE")
+        from noteValue in EntryValueParser(NoteKey)
         from whiteSpace3 in Span.WhiteSpace
-        from accentValue in EntryValueParser("ACCENT")
+        from accentValue in EntryValueParser(AccentKey)
         from whiteSpace4 in Span.WhiteSpace
-        from slideValue in EntryValueParser("SLIDE")
+        from slideValue in EntryValueParser(SlideKey)
         from endLine in Span.EqualTo(PrmNewLine)
         select new[] { stepNumber, stateValue, noteValue, accentValue, slideValue }
       ).Many();
@@ -35,7 +41,7 @@ public static class PrmConvert
       from values in linesParser
       select PatternDtoFrom(values, endStep, triplet);
 
-    var pattern = textParser.Parse<SequenceDto>(prmString);
+    var pattern = textParser.Parse(prmString);
     return pattern;
   }
 
@@ -115,19 +121,70 @@ public static class PrmConvert
       select value;
   }
 
-  public static List<Pitch> TranslateIntoMidiPitches(ImmutableArray<SequenceStepDto> pattern)
+  public static string ParseIntoString(ImmutableArray<SequenceStepDto> steps, int endStepIndex, int triplets)
   {
-    var melody = new List<Pitch>();
-    foreach (var stepDto in pattern)
-    {
-      melody.Add((Pitch)stepDto.Note);
-    }
+    var str = new StringBuilder();
 
-    return melody;
+    AppendGlobal(str, EndStep, endStepIndex);
+    AppendGlobal(str, Triplet, triplets);
+    str.Append(PrmNewLine);
+    foreach (var step in steps)
+    {
+      AppendOption(str, $"STEP {step.StepNumber}", _State(step.State), _Note(step.Note), _Accent(step.Accent), _Slide(step.Slide));
+    }
+    return str.ToString();
   }
 
-  public static object ParseIntoString(ImmutableArray<SequenceStepDto> steps, int endStepIndex, int triplets)
+  private static string _State(int value)
   {
-    throw new System.NotImplementedException();
+    return Suboption(StateKey, value);
+  }
+  private static string _Note(int value)
+  {
+    return Suboption(NoteKey, value);
+  }
+  private static string _Accent(int value)
+  {
+    return Suboption(AccentKey, value);
+  }
+  private static string _Slide(int value)
+  {
+    return Suboption(SlideKey, value);
+  }
+
+  private static string Suboption(string key, int value)
+  {
+    return $"{key}={value}";
+  }
+
+  private static void AppendGlobal(StringBuilder content, string name, int value)
+  {
+    content.Append(name).Append("\t").Append("=").Append(" ").Append(value).Append(PrmNewLine);
+  }
+
+  private static void AppendOption(StringBuilder content, string name, params string[] suboptions)
+  {
+    content.Append(name).Append("\t").Append("=").Append(" ").Append(string.Join(" ", suboptions)).Append(PrmNewLine);
   }
 }
+
+/*
+END_STEP	= 15
+TRIPLET	= 0
+STEP 1	= STATE=1 NOTE=31 ACCENT=0 SLIDE=0
+STEP 2	= STATE=1 NOTE=31 ACCENT=0 SLIDE=0
+STEP 3	= STATE=1 NOTE=31 ACCENT=0 SLIDE=0
+STEP 4	= STATE=1 NOTE=31 ACCENT=0 SLIDE=0
+STEP 5	= STATE=1 NOTE=31 ACCENT=0 SLIDE=0
+STEP 6	= STATE=1 NOTE=31 ACCENT=0 SLIDE=0
+STEP 7	= STATE=1 NOTE=31 ACCENT=0 SLIDE=0
+STEP 8	= STATE=1 NOTE=31 ACCENT=0 SLIDE=0
+STEP 9	= STATE=1 NOTE=34 ACCENT=0 SLIDE=0
+STEP 10	= STATE=1 NOTE=34 ACCENT=0 SLIDE=0
+STEP 11	= STATE=1 NOTE=34 ACCENT=0 SLIDE=0
+STEP 12	= STATE=1 NOTE=34 ACCENT=0 SLIDE=0
+STEP 13	= STATE=1 NOTE=36 ACCENT=0 SLIDE=0
+STEP 14	= STATE=1 NOTE=36 ACCENT=0 SLIDE=0
+STEP 15	= STATE=1 NOTE=36 ACCENT=0 SLIDE=0
+STEP 16	= STATE=1 NOTE=36 ACCENT=0 SLIDE=0
+*/

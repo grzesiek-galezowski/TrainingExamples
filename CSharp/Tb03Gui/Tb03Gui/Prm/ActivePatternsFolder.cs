@@ -56,19 +56,19 @@ public class ActivePatternsFolder : ITb03PatternsFolder
   {
     //bug somehow pass end note and triplet
     //bug the "test" extension is to avoid overriding accidentally the original files.
-    var filePath = FilePathFor(patternNumber).ChangeExtensionTo(FileExtension.Value("test"));
+    var filePath = FilePathFor(patternNumber).ChangeExtensionTo(FileExtension.Value(".test"));
     var contents = PrmConvert.ParseIntoString(
-      notes.Select((n, i) => new SequenceStepDto()
+      notes.Select((n, i) => new SequenceStepDto
       {
         Accent = Convert.ToInt32(n.Value().Accent),
         Note = n.Value().Pitch,
         Slide = Convert.ToInt32(n.Value().Slide),
         State = n.Value().State,
-        StepNumber = i
+        StepNumber = i + 1
       }).ToImmutableArray(), 
       15 /* bug for now using a constant end step index */, 
-      0 /* bug for now constant triplets param value */));
-    //File.WriteAllText(filePath.ToString(), contents);
+      0 /* bug for now constant triplets param value */);
+    File.WriteAllText(filePath.ToString(), contents);
     //bug notify observer await patternNotesObserver.PatternLoaded(
     //  new SequenceDto(Transpose(sequenceDto.Steps, transpose)), cancellationToken);
   }
