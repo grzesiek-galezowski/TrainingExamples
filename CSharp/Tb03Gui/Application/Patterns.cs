@@ -3,18 +3,18 @@ using AtmaFileSystem;
 
 namespace Application;
 
-public class Patterns : IPatternNotesObserver
+public class Patterns : IPatternLoadingObserver
 {
   private int _patternGroupNumber = PatternNavigationConstants.InitialPatternGroup;
   private int _patternNumberInGroup = PatternNavigationConstants.InitialPattern;
-  private readonly IPatternNotesObserver _sequencer;
+  private readonly IPatternLoadingObserver _sequencer;
   private readonly IPatternNavigationObserver _patternNavigationObserver;
   private ITb03PatternsFolder _patternsFolder = new NoActivePatternsFolder();
   private readonly ISynthesizer _synthesizer;
   private readonly IPatternsFolderFactory _patternsFolderFactory;
 
   public Patterns(
-    IPatternNotesObserver sequencer,
+    IPatternLoadingObserver sequencer,
     IPatternNavigationObserver patternNavigationObserver,
     ISynthesizer synthesizer,
     IPatternsFolderFactory patternsFolderFactory)
@@ -60,8 +60,13 @@ public class Patterns : IPatternNotesObserver
 
   }
 
-  public void SaveCurrentPatternFrom(Sequencer sequencer)
+  public void SaveCurrentPatternFrom(
+    Sequencer sequencer, 
+    IPatternSavingObserver savingObserver)
   {
-    sequencer.SavePattern(_patternsFolder, PatternNumber.FromGroupAndNumberInGroup(_patternGroupNumber, _patternNumberInGroup));
+    sequencer.SavePattern(
+      _patternsFolder, 
+      PatternNumber.FromGroupAndNumberInGroup(_patternGroupNumber, _patternNumberInGroup), 
+      savingObserver);
   }
 }

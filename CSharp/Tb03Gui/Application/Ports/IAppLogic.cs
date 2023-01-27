@@ -8,7 +8,7 @@ public interface IAppLogic
   void PreviousSequencerPosition();
   void InsertNoteIntoSequencer(Tb03Note note);
   Task PlayCurrentPattern(CancellationToken cancellationToken);
-  void SaveCurrentPattern();
+  void SaveCurrentPattern(IPatternSavingObserver savingObserver);
   Task ActivateTb03FolderPath(AbsoluteDirectoryPath folderPath, CancellationToken cancellationToken);
   Task PatternGroupWasSelected(int patternGroupNumber, CancellationToken cancellationToken);
   Task PatternWasSelected(int patternNumber, CancellationToken cancellationToken);

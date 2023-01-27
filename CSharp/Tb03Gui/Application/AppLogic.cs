@@ -53,9 +53,9 @@ public class AppLogic : IAppLogic
     await _sequencer.PlayOn(_synthesizer, cancellationToken);
   }
 
-  public void SaveCurrentPattern()
+  public void SaveCurrentPattern(IPatternSavingObserver savingObserver)
   {
-    _patterns.SaveCurrentPatternFrom(_sequencer);
+    _patterns.SaveCurrentPatternFrom(_sequencer, savingObserver);
   }
 
   public async Task ActivateTb03FolderPath(AbsoluteDirectoryPath folderPath, CancellationToken cancellationToken)

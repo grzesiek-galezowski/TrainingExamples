@@ -127,7 +127,6 @@ public static class PrmConvert
 
     AppendGlobal(str, EndStep, endStepIndex);
     AppendGlobal(str, Triplet, triplets);
-    str.Append(PrmNewLine);
     foreach (var step in steps)
     {
       AppendOption(str, $"STEP {step.StepNumber}", _State(step.State), _Note(step.Note), _Accent(step.Accent), _Slide(step.Slide));

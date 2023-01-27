@@ -4,5 +4,5 @@ namespace Application.Ports;
 
 public interface IPatternsFolderFactory
 {
-  ITb03PatternsFolder PatternsFolder(IPatternNotesObserver sequencer, AbsoluteDirectoryPath folderPath);
+  ITb03PatternsFolder PatternsFolder(IPatternLoadingObserver sequencer, AbsoluteDirectoryPath folderPath);
 }

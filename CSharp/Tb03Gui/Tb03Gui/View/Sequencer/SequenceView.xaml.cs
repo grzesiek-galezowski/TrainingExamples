@@ -3,13 +3,14 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using Application.Ports;
+using AtmaFileSystem;
 
 namespace Tb03Gui.View.Sequencer;
 
 /// <summary>
 /// Interaction logic for SequenceView.xaml
 /// </summary>
-public partial class SequenceView : UserControl, ISequencerPositionObserver
+public partial class SequenceView : UserControl, ISequencerPositionObserver, IPatternSavingObserver
 {
   private readonly SequencerPad[] _sequencerPads;
 
@@ -54,7 +55,7 @@ public partial class SequenceView : UserControl, ISequencerPositionObserver
 
   private void SaveButton_OnClick(object sender, RoutedEventArgs e)
   {
-    App.SaveCurrentPattern();
+    App.SaveCurrentPattern(this);
   }
 
 
@@ -72,5 +73,10 @@ public partial class SequenceView : UserControl, ISequencerPositionObserver
   public int SequencerPatternLength()
   {
     return _sequencerPads.Length;
+  }
+
+  public void PatternSaved(AbsoluteFilePath filePath)
+  {
+    MessageBox.Show($"Pattern saved at {filePath}");
   }
 }

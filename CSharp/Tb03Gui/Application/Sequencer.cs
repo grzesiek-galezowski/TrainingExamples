@@ -4,7 +4,7 @@ using Core.Maybe;
 
 namespace Application;
 
-public class Sequencer : IPatternNotesObserver
+public class Sequencer : IPatternLoadingObserver
 {
   private int _sequencerPosition;
   private readonly int _sequenceLength;
@@ -106,10 +106,11 @@ public class Sequencer : IPatternNotesObserver
   }
 
   public void SavePattern(
-    ITb03PatternsFolder patternsFolder, 
-    PatternNumber patternNumber)
+    ITb03PatternsFolder patternsFolder,
+    PatternNumber patternNumber,
+    IPatternSavingObserver savingObserver)
   {
-    patternsFolder.SavePattern(_notes, _sequenceLength, patternNumber);
+    patternsFolder.SavePattern(_notes, _sequenceLength, patternNumber, savingObserver);
   }
 }
 

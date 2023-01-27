@@ -9,12 +9,13 @@ internal class NoActivePatternsFolder : ITb03PatternsFolder
   {
   }
 
-  public async Task LoadPattern(PatternNumber patternNumber, int transpose, IPatternNotesObserver patternNotesObserver,
+  public async Task LoadPattern(PatternNumber patternNumber, int transpose, IPatternLoadingObserver patternLoadingObserver,
     CancellationToken cancellationToken)
   {
   }
 
-  public void SavePattern(Maybe<Tb03Note>[] notes, int sequenceLength, PatternNumber patternNumber)
+  public void SavePattern(Maybe<Tb03Note>[] notes, int sequenceLength, PatternNumber patternNumber,
+    IPatternSavingObserver patternLoadingObserver)
   {
     
   }
