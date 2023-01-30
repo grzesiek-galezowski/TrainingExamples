@@ -1,6 +1,6 @@
 ﻿syntax = "proto3";
 
-option csharp_namespace = "GreetingService";
+option csharp_namespace = "NVidiaAsr";
 
 package greet;
 

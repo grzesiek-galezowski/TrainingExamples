@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\health.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\riva_asr.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\riva_audio.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\riva_nlp.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\riva_nmt.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\riva_tts.proto" GrpcServices="Server" />
   </ItemGroup>
 
   <ItemGroup>

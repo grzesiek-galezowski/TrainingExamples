@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -7,6 +7,15 @@
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Protos\health.proto" />
+    <None Remove="Protos\riva_asr.proto" />
+    <None Remove="Protos\riva_audio.proto" />
+    <None Remove="Protos\riva_nlp.proto" />
+    <None Remove="Protos\riva_nmt.proto" />
+    <None Remove="Protos\riva_tts.proto" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Extensions.Logging.NUnit" Version="1.0.1" />
@@ -32,6 +41,12 @@
 
   <ItemGroup>
     <Protobuf Include="Protos\greet.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\health.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\riva_asr.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\riva_audio.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\riva_nlp.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\riva_nmt.proto" GrpcServices="Client" />
+    <Protobuf Include="Protos\riva_tts.proto" GrpcServices="Client" />
   </ItemGroup>
 
 </Project>
