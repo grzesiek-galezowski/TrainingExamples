@@ -17,4 +17,5 @@ public interface IAppLogic
   void ToggleNoteSlide(int noteNumber, IParameterToggleObserver parameterToggleObserver);
   void TrackWasSelected(int trackNumber);
   Task PlayCurrentTrack(CancellationToken cancellationToken);
+  void ChangeOutputDevice(string deviceName);
 }

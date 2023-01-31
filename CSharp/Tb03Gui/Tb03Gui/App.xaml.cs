@@ -19,7 +19,7 @@ public partial class App : System.Windows.Application
     base.OnStartup(e);
 
     _synthesizer = Synthesizer.Create();
-    var mainWindow = new MainWindow();
+    var mainWindow = new MainWindow(Synthesizer.GetMidiDevices(), _synthesizer.CurrentMidiDevice());
     var appLogic = AppLogicRoot.CreateAppLogic(
       mainWindow.SequenceView.SequencerPatternLength(),
       mainWindow.SequenceView,

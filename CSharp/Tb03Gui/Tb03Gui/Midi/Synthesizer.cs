@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Ports;
@@ -10,7 +12,7 @@ namespace Tb03Gui.Midi;
 
 public class Synthesizer : IDisposable, ISynthesizer
 {
-  private readonly IOutputDevice _outputDevice;
+  private IOutputDevice _outputDevice;
   private TimeSpan _delay;
   private readonly Channel _currentChannel = Channel.Channel1;
 
@@ -58,8 +60,30 @@ public class Synthesizer : IDisposable, ISynthesizer
     }
   }
 
+  public void ChangeOutputDevice(string deviceName)
+  {
+    if (deviceName != _outputDevice.Name)
+    {
+      //bug maybe don't change the internal state. Instead, dispose the old synth and create a new synth with the name
+      //bug what about synchronization? The device can be disposed while playing.
+      _outputDevice.Close();
+      _outputDevice = DeviceManager.OutputDevices.Single(d => d.Name == deviceName);
+      TurnOn();
+    }
+  }
+
   public void Dispose()
   {
     _outputDevice.Close();
+  }
+
+  public static ImmutableArray<string> GetMidiDevices()
+  {
+    return DeviceManager.OutputDevices.Select(d => d.Name).ToImmutableArray();
+  }
+
+  public string CurrentMidiDevice()
+  {
+    return _outputDevice.Name;
   }
 }

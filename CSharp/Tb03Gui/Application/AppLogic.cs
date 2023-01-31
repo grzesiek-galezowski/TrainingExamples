@@ -99,4 +99,9 @@ public class AppLogic : IAppLogic
   {
     await _tracks.PlayCurrentTrackOn(this, cancellationToken);
   }
+
+  public void ChangeOutputDevice(string deviceName)
+  {
+    _synthesizer.ChangeOutputDevice(deviceName);
+  }
 }

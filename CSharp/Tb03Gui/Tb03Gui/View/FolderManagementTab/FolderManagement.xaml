@@ -6,6 +6,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-      <Button Name="SelectTb03BackupFolderButton" Content="Click to select folder" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Click="Button_Click"/>
+      <Button Name="SelectTb03BackupFolderButton" Content="Click to select folder" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Button_Click"/>
     </Grid>
 </UserControl>

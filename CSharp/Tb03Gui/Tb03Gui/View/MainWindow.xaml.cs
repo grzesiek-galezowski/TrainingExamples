@@ -1,4 +1,8 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.Immutable;
+using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using Application.Ports;
 
@@ -9,9 +13,21 @@ namespace Tb03Gui.View;
 /// </summary>
 public partial class MainWindow : Window
 {
-  public MainWindow()
+  private readonly Action<string> _selectionChangedHandler;
+  
+  public MainWindow(ImmutableArray<string> midiDevices, string currentMidiDevice)
   {
+    _selectionChangedHandler = _ => { };
     InitializeComponent();
+    foreach (var midiDevice in midiDevices)
+    {
+      MidiComboBox.Items.Add(midiDevice);
+    }
+    MidiComboBox.SelectedIndex = midiDevices.IndexOf(currentMidiDevice);
+    _selectionChangedHandler = s =>
+    {
+      App.ChangeOutputDevice(s);
+    };
   }
 
   public IAppLogic App { get; set; }
@@ -56,5 +72,10 @@ public partial class MainWindow : Window
     {
       App.SwitchToOctave(Tb03Octave.Octave5);
     }
+  }
+
+  private void MidiComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+  {
+    _selectionChangedHandler(e.AddedItems[0].ToString());
   }
 }
