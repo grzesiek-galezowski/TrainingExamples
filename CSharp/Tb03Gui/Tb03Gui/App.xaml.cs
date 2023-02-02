@@ -1,50 +1,43 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
-using Tb03Gui.ApplicationLogic;
+using Application.Ports;
+using Tb03Gui.Midi;
+using Tb03Gui.Prm;
+using Tb03Gui.View;
 
 namespace Tb03Gui;
 
 /// <summary>
 /// Interaction logic for App.xaml
 /// </summary>
-public partial class App : Application
+public partial class App : System.Windows.Application
 {
+  private Synthesizer _synthesizer = null!;
+
   protected override void OnStartup(StartupEventArgs e)
   {
     base.OnStartup(e);
 
-    var mainWindow = new MainWindow();
-    var sequencer = new ApplicationLogic.Sequencer(
+    _synthesizer = Synthesizer.Create();
+    var mainWindow = new MainWindow(Synthesizer.GetMidiDevices(), _synthesizer.CurrentMidiDevice());
+    var appLogic = AppLogicRoot.CreateAppLogic(
       mainWindow.SequenceView.SequencerPatternLength(),
-      mainWindow.SequenceView
-      );
-    var appLogic = new AppLogic(
-      sequencer,
-      new BroadcastingOctaveObserver(
-        new List<IOctaveObserver>
-        {
-          mainWindow.OctavePanelView.Octave1Pad,
-          mainWindow.OctavePanelView.Octave2Pad,
-          mainWindow.OctavePanelView.Octave3Pad,
-          mainWindow.OctavePanelView.Octave4Pad,
-          mainWindow.OctavePanelView.Octave5Pad
-        }),
       mainWindow.SequenceView,
-      new Patterns(
-        sequencer,
-        mainWindow.PatternNavigationView),
-      new Tracks(mainWindow.TrackNavigationView),
-      new CheckThatFolderContainsOnlyPrmFilesStep(
-        mainWindow.FolderManagement,
-        new CheckGroupsAndPatternsAndTracksCount(
-          mainWindow.FolderManagement,
-          new PopulateInfoStep(
-            mainWindow.FolderManagement)
-        )
-      )
-    );
+      new List<IOctaveObserver>
+      {
+        mainWindow.OctavePanelView.Octave1Pad,
+        mainWindow.OctavePanelView.Octave2Pad,
+        mainWindow.OctavePanelView.Octave3Pad,
+        mainWindow.OctavePanelView.Octave4Pad,
+        mainWindow.OctavePanelView.Octave5Pad
+      },
+      mainWindow.PatternNavigationView,
+      _synthesizer,
+      mainWindow.TrackNavigationView,
+      mainWindow.FolderManagement, new PatternsFolderFactory(), new ActiveTracksFolderFactory());
 
     mainWindow.App = appLogic;
+    mainWindow.TrackNavigationView.Initialize(appLogic);
     mainWindow.FolderManagement.App = appLogic;
     mainWindow.SequenceView.App = appLogic;
     mainWindow.SequenceView.P1.App = appLogic;
@@ -110,5 +103,11 @@ public partial class App : Application
     mainWindow.TrackNavigationView.Track7Pad.App = appLogic;
 
     mainWindow.Show();
+  }
+
+  protected override void OnExit(ExitEventArgs e)
+  {
+    base.OnExit(e);
+    _synthesizer.Dispose();
   }
 }

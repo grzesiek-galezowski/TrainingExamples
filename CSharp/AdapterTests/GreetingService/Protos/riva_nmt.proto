@@ -1,0 +1,139 @@
+// Copyright (c) 2022, NVIDIA CORPORATION.  All rights reserved.
+//
+// NVIDIA CORPORATION and its licensors retain all intellectual property
+// and proprietary rights in and to this software, related documentation
+// and any modifications thereto.  Any use, reproduction, disclosure or
+// distribution of this software and related documentation without an express
+// license agreement from NVIDIA CORPORATION is strictly prohibited.
+
+syntax="proto3";
+
+package nvidia.riva.nmt;
+
+option cc_enable_arenas = true;
+option csharp_namespace = "NVidiaAsr";
+import "Protos/riva_audio.proto";
+import "Protos/riva_asr.proto";
+import "Protos/riva_tts.proto";
+
+/*
+ *  RivaTranslation service provides rpcs to translate between languages.
+ *
+ */
+service RivaTranslation {
+
+  // Translate text to text, from a source to a target language.  Currently source and target language fields is required, along with the model name.
+  // Multiple texts may be passed per request up to the given batch size for the model, which is set at translation pipeline creation time.
+  rpc TranslateText(TranslateTextRequest) returns (TranslateTextResponse) {}
+
+  // Lists the available language pairs and models names to be used for TranslateText
+  rpc ListSupportedLanguagePairs(AvailableLanguageRequest) returns (AvailableLanguageResponse) {}
+
+  //streaming speech to text translation api.
+  rpc StreamingTranslateSpeechToText(stream StreamingTranslateSpeechToTextRequest)
+        returns (stream StreamingTranslateSpeechToTextResponse) {}
+
+  rpc StreamingTranslateSpeechToSpeech(stream StreamingTranslateSpeechToSpeechRequest)
+    returns (stream StreamingTranslateSpeechToSpeechResponse) {}
+
+}
+
+/*
+* Configuration for Translate S2S.  reuse existing protos from other services.
+*/
+message StreamingTranslateSpeechToSpeechConfig {
+   nvidia.riva.asr.StreamingRecognitionConfig asr_config = 1;  //from riva_asr.proto
+   SynthesizeSpeechConfig tts_config = 2;
+   TranslationConfig translation_config = 3;
+}
+
+/*
+* Streaming translate speech to speech used to configure the entire pipline for speech translation.  This can be
+* be backed by a cascade of ASR, NMT, TTS models or an end to end model
+*
+*/
+message StreamingTranslateSpeechToSpeechRequest {
+   oneof streaming_request {
+       StreamingTranslateSpeechToSpeechConfig config = 1;
+       bytes audio_content = 2;
+   }
+}
+
+message TranslationConfig {
+   //BCP-47 "en-US"
+   string source_language_code = 1;
+   string target_language_code = 2;
+   string model_name = 3;
+}
+
+message SynthesizeSpeechConfig {
+        AudioEncoding encoding = 1;
+        int32 sample_rate_hz = 2;
+        string voice_name = 3;
+        string language_code = 4;
+}
+
+/*
+*
+*/
+message StreamingTranslateSpeechToSpeechResponse {
+        nvidia.riva.tts.SynthesizeSpeechResponse speech = 1; //from riva_tts.proto
+}
+
+message StreamingTranslateSpeechToTextRequest {
+  oneof streaming_request {
+     StreamingTranslateSpeechToTextConfig config = 1;
+     bytes audio_content = 2;
+  }
+}
+
+message StreamingTranslateSpeechToTextResponse {
+
+   repeated nvidia.riva.asr.StreamingRecognitionResult results = 1; //from riva_asr.proto
+}
+
+message StreamingTranslateSpeechToTextConfig {
+   nvidia.riva.asr.StreamingRecognitionConfig asr_config = 1; //existing ASR config
+   TranslationConfig translation_config = 2;
+}
+
+
+// request for synchronous translation of each text in texts.
+// Available languages can be queried using ListSupportLanguagePairs RPC.
+// source and target languages must be specified, are currently two character ISO codes, this will likely change to BCP-47 inline with other Riva Services for GA.
+//
+message TranslateTextRequest {
+    repeated string texts = 1;
+    string model = 2;
+    string source_language = 3;
+    string target_language = 4;
+}
+
+// contains a single translation, collecting into the translate text response
+// Includes the target language code, since with multi lingual models there are multiple possibilities.
+message Translation {
+    string text = 1;
+    string language = 2;
+}
+
+// Translations are returned as text:language pairs.  These are 1:1 for the passed in 'texts' from the request.
+message TranslateTextResponse {
+    repeated Translation translations = 1;
+}
+
+// Returns a map of model names to its source and target language pairs.
+// Can specificy a specific model name to retrieve only its language pairs.
+message AvailableLanguageRequest {
+    // If empty returns all available languages.
+    string model = 1;
+}
+
+// Language pairs are the sets of src to tgt languages available per model.
+// languages contains all the model_name -> Language pair
+message AvailableLanguageResponse {
+     message LanguagePair {
+        repeated string src_lang = 1;
+        repeated string tgt_lang = 2;
+    }
+    map<string, LanguagePair> languages = 1;
+}

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\health.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\riva_asr.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\riva_audio.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\riva_nlp.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\riva_nmt.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\riva_tts.proto" GrpcServices="Server" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.49.0" />
+  </ItemGroup>
+
+</Project>
