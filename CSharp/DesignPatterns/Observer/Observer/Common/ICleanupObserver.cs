@@ -1,4 +1,4 @@
-﻿namespace Observer._01_Push_Observer_ByTheBook;
+﻿namespace Observer.Common;
 
 public interface ICleanupObserver
 {

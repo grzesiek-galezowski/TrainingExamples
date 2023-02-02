@@ -1,6 +1,6 @@
 ﻿using Observer.Common;
 
-namespace Observer._01_Push_Observer_ByTheBook;
+namespace Observer._01_PushObserverByTheBook;
 
 internal class CleanupJob
 {

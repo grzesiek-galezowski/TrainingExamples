@@ -1,0 +1,48 @@
+﻿using Observer.Common;
+
+namespace Observer._02_RemovingDetach;
+
+internal class CleanupJob
+{
+  private readonly ICleanedUpDir _cleanedUpDir;
+  private readonly ICleanUpProcedure _cleanupProcedure;
+  private readonly ISupport _support;
+  private readonly IList<ICleanupObserver> _observers = new List<ICleanupObserver>();
+
+  public CleanupJob(
+    ICleanedUpDir cleanedUpDir,
+    ICleanUpProcedure cleanupProcedure,
+    ISupport support)
+  {
+    _cleanedUpDir = cleanedUpDir;
+    _cleanupProcedure = cleanupProcedure;
+    _support = support;
+  }
+
+  public void Attach(ICleanupObserver observer)
+  {
+    _observers.Add(observer);
+  }
+  
+  public void Run()
+  {
+    var files = _cleanedUpDir.GetFilesToCleanup();
+    _cleanupProcedure.RunOn(files);
+    NotifyObserversAboutCleanedUp(files);
+  }
+
+  private void NotifyObserversAboutCleanedUp(IReadOnlyCollection<ICleanedUpFile> files)
+  {
+    foreach (var observer in _observers)
+    {
+      try
+      {
+        observer.OnCleanupSuccessful(files.Count);
+      }
+      catch (Exception e)
+      {
+        _support.NotifyingObserverFailed(e, observer.GetType(), files.Count);
+      }
+    }
+  }
+}
