@@ -42,7 +42,7 @@ internal class ExampleComposition
     var cleanupJob = new CleanupJob(
       new WhateverCleanedUpDir(),
       new WhateverCleanedUpProcedure(),
-      BroadcastingObserverWith(observer1, observer2, observer3));
+      ParallelBroadcastingObserverWith(observer1, observer2, observer3));
   }
   
   public static void NotSoProperAnymoreOneToManyObserver()
@@ -66,6 +66,21 @@ internal class ExampleComposition
     ICleanupObserver observer3)
   {
     var broadcastingObserver = new BroadcastingObserver(new WhateverSupport());
+    broadcastingObserver.Attach(observer1);
+    broadcastingObserver.Attach(observer2);
+    broadcastingObserver.Attach(observer3);
+    return broadcastingObserver;
+  }
+
+  /// <summary>
+  /// If we have the method anyway, why not use the constructor?
+  /// </summary>
+  private static ParallelBroadcastingObserver ParallelBroadcastingObserverWith(
+    ICleanupObserver observer1,
+    ICleanupObserver observer2,
+    ICleanupObserver observer3)
+  {
+    var broadcastingObserver = new ParallelBroadcastingObserver(new WhateverSupport());
     broadcastingObserver.Attach(observer1);
     broadcastingObserver.Attach(observer2);
     broadcastingObserver.Attach(observer3);
