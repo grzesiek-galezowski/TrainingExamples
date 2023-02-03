@@ -6,9 +6,9 @@ internal class ExampleComposition
 {
   public static void MainWannabe()
   {
-    var observer1 = new ConcreteObserver();
-    var observer2 = new ConcreteObserver();
-    var observer3 = new ConcreteObserver();
+    var observer1 = new Telemetry();
+    var observer2 = new ThresholdAlertDetection();
+    var observer3 = new CleanupHistory();
     
     var cleanupJob = new CleanupJob(
       new WhateverCleanedUpDir(),

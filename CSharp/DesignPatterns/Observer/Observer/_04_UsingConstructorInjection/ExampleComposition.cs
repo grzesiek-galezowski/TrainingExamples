@@ -1,30 +1,31 @@
 ﻿using Observer.Common;
+// ReSharper disable UnusedMember.Global
 
 namespace Observer._04_UsingConstructorInjection;
 
 internal class ExampleComposition
 {
-  public static void MainWannabe1()
+  public static void NoObserverAtAll()
   {
     var cleanupJob = new CleanupJob(
       new WhateverCleanedUpDir(),
       new WhateverCleanedUpProcedure(),
-      new NullObserver());
+      new NullCleanupObserver()); //discuss what a null observer can do
   }
   
-  public static void MainWannabe2()
+  public static void JustASingleObserver()
   {
     var cleanupJob = new CleanupJob(
       new WhateverCleanedUpDir(),
       new WhateverCleanedUpProcedure(),
-      new ConcreteObserver());
+      new Telemetry());
   }
   
-  public static void MainWannabe3()
+  public static void ProperOneToManyObserver()
   {
-    var observer1 = new ConcreteObserver();
-    var observer2 = new ConcreteObserver();
-    var observer3 = new ConcreteObserver();
+    var observer1 = new Telemetry();
+    var observer2 = new ThresholdAlertDetection();
+    var observer3 = new CleanupHistory();
 
     var cleanupJob = new CleanupJob(
       new WhateverCleanedUpDir(),
@@ -32,16 +33,28 @@ internal class ExampleComposition
       BroadcastingObserverWith(observer1, observer2, observer3));
   }
   
-  public static void MainWannabe4()
+  public static void ParallelOneToManyObserver()
   {
-    var observer1 = new ConcreteObserver();
-    var observer2 = new ConcreteObserver();
-    var observer3 = new ConcreteObserver();
+    var observer1 = new Telemetry();
+    var observer2 = new ThresholdAlertDetection();
+    var observer3 = new CleanupHistory();
 
     var cleanupJob = new CleanupJob(
       new WhateverCleanedUpDir(),
       new WhateverCleanedUpProcedure(),
-      new CtorBasedBroadcastingObserver(new WhateverSupport(), observer1, observer2, observer3));
+      BroadcastingObserverWith(observer1, observer2, observer3));
+  }
+  
+  public static void NotSoProperAnymoreOneToManyObserver()
+  {
+    var cleanupJob = new CleanupJob(
+      new WhateverCleanedUpDir(),
+      new WhateverCleanedUpProcedure(),
+      new CtorBasedBroadcastingObserver(
+        new WhateverSupport(),
+        new Telemetry(),
+        new ThresholdAlertDetection(),
+        new CleanupHistory()));
   }
 
   /// <summary>

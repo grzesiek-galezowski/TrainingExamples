@@ -1,6 +1,6 @@
 ﻿namespace Observer.Common;
 
-public class NullObserver : ICleanupObserver
+public class NullCleanupObserver : ICleanupObserver
 {
   public void OnCleanupSuccessful(int filesCount)
   {

@@ -1,6 +1,6 @@
 ﻿namespace Observer.Common;
 
-internal class ConcreteObserver : ICleanupObserver
+internal class Telemetry : ICleanupObserver
 {
   public void OnCleanupSuccessful(int filesCount)
   {
