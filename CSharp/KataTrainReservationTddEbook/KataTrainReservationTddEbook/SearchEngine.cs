@@ -3,7 +3,7 @@ using Functional.Maybe;
 
 namespace KataTrainReservationTddEbook;
 
-public interface SearchEngine
+public interface ISearchEngine
 {
-  Maybe<Coach> FindCoachForReservation(IEnumerable<Coach> coaches, in uint seatCount);
+  Maybe<ICoach> FindCoachForReservation(IEnumerable<ICoach> coaches, in uint seatCount);
 }

@@ -1,3 +1,5 @@
+using KataTrainReservationTddEbook.Request;
+using KataTrainReservationTddEbook.Response;
 using NSubstitute;
 using Xunit;
 using static TddXt.AnyRoot.Root;
@@ -11,11 +13,11 @@ public class TicketOfficeSpecification
   {
     //GIVEN
     var requestDto = Any.Instance<ReservationRequestDto>();
-    var commandFactory = Substitute.For<CommandFactory>();
-    var reservationInProgressFactory = Substitute.For<ReservationInProgressFactory>();
-    var reservationInProgress = Substitute.For<ReservationInProgress>();
+    var commandFactory = Substitute.For<ICommandFactory>();
+    var reservationInProgressFactory = Substitute.For<IReservationInProgressFactory>();
+    var reservationInProgress = Substitute.For<IReservationInProgress>();
     var expectedReservationDto = Any.Instance<ReservationDto>();
-    var reservationCommand = Substitute.For<ReservationCommand>();
+    var reservationCommand = Substitute.For<IReservationCommand>();
 
     var ticketOffice = new TicketOffice(
       reservationInProgressFactory,

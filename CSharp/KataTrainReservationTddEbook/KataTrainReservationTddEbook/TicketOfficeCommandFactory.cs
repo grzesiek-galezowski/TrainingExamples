@@ -1,17 +1,18 @@
 ﻿using FluentAssertions;
+using KataTrainReservationTddEbook.Request;
 using Xunit;
 using static TddXt.AnyRoot.Root;
 
 namespace KataTrainReservationTddEbook;
 
-public class TicketOfficeCommandFactory : CommandFactory
+public class TicketOfficeCommandFactory : ICommandFactory
 {
-  public ReservationCommand CreateReservationCommand(ReservationRequestDto requestDto,
-    ReservationInProgress reservationInProgress)
+  public IReservationCommand CreateReservationCommand(ReservationRequestDto requestDto,
+    IReservationInProgress reservationInProgress)
   {
     return new TrainReservationCommand(
-      requestDto.trainId,
-      requestDto.seatCount, 
+      requestDto.TrainId,
+      requestDto.SeatCount, 
       new ReferenceService(), 
       new PercentageBasedSearchEngine(), 
       reservationInProgress);
@@ -21,12 +22,12 @@ public class TicketOfficeCommandFactory : CommandFactory
 public class TicketOfficeCommandFactorySpecification
 {
   [Fact]
-  public void ShouldDOWHAT()
+  public void ShouldDowhat()
   {
     //GIVEN
     var factory = new TicketOfficeCommandFactory();
     var dto = Any.Instance<ReservationRequestDto>();
-    var reservationInProgress = Any.Instance<ReservationInProgress>();
+    var reservationInProgress = Any.Instance<IReservationInProgress>();
 
     //WHEN
     var command = factory.CreateReservationCommand(dto, reservationInProgress);

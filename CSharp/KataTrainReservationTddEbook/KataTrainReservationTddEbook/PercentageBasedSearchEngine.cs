@@ -3,9 +3,9 @@ using Functional.Maybe;
 
 namespace KataTrainReservationTddEbook;
 
-public class PercentageBasedSearchEngine : SearchEngine
+public class PercentageBasedSearchEngine : ISearchEngine
 {
-  public Maybe<Coach> FindCoachForReservation(IEnumerable<Coach> coaches, in uint seatCount)
+  public Maybe<ICoach> FindCoachForReservation(IEnumerable<ICoach> coaches, in uint seatCount)
   {
     throw new System.NotImplementedException();
   }

@@ -1,13 +1,13 @@
 ﻿namespace KataTrainReservationTddEbook;
 
-public class ReferenceService : Trains
+public class ReferenceService : ITrains
 {
-  public Train RetrieveBy(TrainId trainId)
+  public ITrain RetrieveBy(TrainId trainId)
   {
     throw new System.NotImplementedException();
   }
 
-  public void Update(Train train)
+  public void Update(ITrain train)
   {
     throw new System.NotImplementedException();
   }

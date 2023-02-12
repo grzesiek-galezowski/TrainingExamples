@@ -7,8 +7,8 @@ public class Seat
 
   public Seat(string coach, int seatNumber)
   {
-    this.Coach = coach;
-    this.SeatNumber = seatNumber;
+    Coach = coach;
+    SeatNumber = seatNumber;
   }
 
   /// <summary>
@@ -18,6 +18,6 @@ public class Seat
   {
     Seat other = obj as Seat;
 
-    return this.Coach == other.Coach && this.SeatNumber == other.SeatNumber;
+    return Coach == other.Coach && SeatNumber == other.SeatNumber;
   }
 }

@@ -1,14 +1,14 @@
 ﻿namespace KataTrainReservationTddEbook;
 
-public interface Coach
+public interface ICoach
 {
-  void Reserve(in uint seatCount, ReservationInProgress reservationInProgress);
+  void Reserve(in uint seatCount, IReservationInProgress reservationInProgress);
   uint GetPercentageReserved();
 }
 
-public class ReservableCoach : Coach
+public class ReservableCoach : ICoach
 {
-  public void Reserve(in uint seatCount, ReservationInProgress reservationInProgress)
+  public void Reserve(in uint seatCount, IReservationInProgress reservationInProgress)
   {
     throw new System.NotImplementedException();
   }

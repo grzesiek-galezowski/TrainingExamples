@@ -2,9 +2,9 @@
 
 namespace KataTrainReservationTddEbook;
 
-public class TodoReservationInProgressFactory : ReservationInProgressFactory
+public class TodoReservationInProgressFactory : IReservationInProgressFactory
 {
-  public ReservationInProgress FreshInstance()
+  public IReservationInProgress FreshInstance()
   {
     throw new NotImplementedException();
   }

@@ -1,6 +1,8 @@
+using KataTrainReservationTddEbook.Response;
+
 namespace KataTrainReservationTddEbook;
 
-public interface ReservationInProgress
+public interface IReservationInProgress
 {
   ReservationDto ToDto();
   void NoRoomInTrainFor(in uint seatCount);

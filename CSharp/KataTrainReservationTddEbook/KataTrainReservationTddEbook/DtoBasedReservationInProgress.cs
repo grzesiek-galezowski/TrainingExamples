@@ -1,8 +1,9 @@
 using System;
+using KataTrainReservationTddEbook.Response;
 
 namespace KataTrainReservationTddEbook;
 
-public class DtoBasedReservationInProgress : ReservationInProgress
+public class DtoBasedReservationInProgress : IReservationInProgress
 {
   public ReservationDto ToDto()
   {

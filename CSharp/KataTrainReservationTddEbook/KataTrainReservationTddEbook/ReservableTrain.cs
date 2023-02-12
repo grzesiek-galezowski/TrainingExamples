@@ -11,18 +11,18 @@ using static TddXt.AnyRoot.Root;
 
 namespace KataTrainReservationTddEbook;
 
-public class ReservableTrain : Train
+public class ReservableTrain : ITrain
 {
-  private readonly IEnumerable<Coach> _coaches;
+  private readonly IEnumerable<ICoach> _coaches;
 
-  public ReservableTrain(IEnumerable<Coach> coaches)
+  public ReservableTrain(IEnumerable<ICoach> coaches)
   {
     _coaches = coaches;
   }
 
   public const uint UpperBound = 10; //bug
 
-  public void Reserve(in uint seatCount, SearchEngine searchEngine, ReservationInProgress reservationInProgress)
+  public void Reserve(in uint seatCount, ISearchEngine searchEngine, IReservationInProgress reservationInProgress)
   {
     var chosenCoach = searchEngine.FindCoachForReservation(_coaches, seatCount);
     if (chosenCoach.HasValue)
@@ -49,15 +49,15 @@ public class ReservableTrain : Train
 public class ReservableTrainSpecification
 {
   [Fact]
-  public void ShouldDOWHAT()
+  public void ShouldDowhat()
   {
     //GIVEN
-    var coaches = Any.Enumerable<Coach>();
+    var coaches = Any.Enumerable<ICoach>();
     var train = new ReservableTrain(coaches);
     var seatCount = Any.UnsignedInt();
-    var searchEngine = Substitute.For<SearchEngine>();
-    var reservationInProgress = Any.Instance<ReservationInProgress>();
-    var matchingCoach = Substitute.For<Coach>();
+    var searchEngine = Substitute.For<ISearchEngine>();
+    var reservationInProgress = Any.Instance<IReservationInProgress>();
+    var matchingCoach = Substitute.For<ICoach>();
 
     searchEngine.FindCoachForReservation(coaches, seatCount).Returns(matchingCoach.Just());
 
@@ -69,16 +69,16 @@ public class ReservableTrainSpecification
   }
     
   [Fact]
-  public void ShouldDOWHAT2()
+  public void ShouldDowhat2()
   {
     //GIVEN
-    var coaches = Any.Enumerable<Coach>();
+    var coaches = Any.Enumerable<ICoach>();
     var train = new ReservableTrain(coaches);
     var seatCount = Any.UnsignedInt();
-    var searchEngine = Substitute.For<SearchEngine>();
-    var reservationInProgress = Substitute.For<ReservationInProgress>();
+    var searchEngine = Substitute.For<ISearchEngine>();
+    var reservationInProgress = Substitute.For<IReservationInProgress>();
 
-    searchEngine.FindCoachForReservation(coaches, seatCount).Returns(Maybe<Coach>.Nothing);
+    searchEngine.FindCoachForReservation(coaches, seatCount).Returns(Maybe<ICoach>.Nothing);
 
     //WHEN
     train.Reserve(seatCount, searchEngine, reservationInProgress);
@@ -98,10 +98,10 @@ public class ReservableTrainSpecification
     bool expectedResult)
   {
     //GIVEN
-    var coach1 = Substitute.For<Coach>();
-    var coach2 = Substitute.For<Coach>();
-    var coach3 = Substitute.For<Coach>();
-    var coaches = new List<Coach>
+    var coach1 = Substitute.For<ICoach>();
+    var coach2 = Substitute.For<ICoach>();
+    var coach3 = Substitute.For<ICoach>();
+    var coaches = new List<ICoach>
     {
       coach1,
       coach2,

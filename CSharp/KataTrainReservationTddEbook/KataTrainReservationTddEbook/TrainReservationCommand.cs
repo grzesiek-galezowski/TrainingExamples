@@ -6,16 +6,16 @@ using static TddXt.AnyRoot.Root;
 
 namespace KataTrainReservationTddEbook;
 
-public class TrainReservationCommand : ReservationCommand
+public class TrainReservationCommand : IReservationCommand
 {
   private readonly string _trainId;
   private readonly uint _seatCount;
-  private readonly Trains _trains;
-  private readonly SearchEngine _searchEngine;
-  private readonly ReservationInProgress _reservationInProgress;
+  private readonly ITrains _trains;
+  private readonly ISearchEngine _searchEngine;
+  private readonly IReservationInProgress _reservationInProgress;
 
-  public TrainReservationCommand(string trainId, uint seatCount, Trains trains, SearchEngine searchEngine,
-    ReservationInProgress reservationInProgress)
+  public TrainReservationCommand(string trainId, uint seatCount, ITrains trains, ISearchEngine searchEngine,
+    IReservationInProgress reservationInProgress)
   {
     _trainId = trainId;
     _seatCount = seatCount;
@@ -42,15 +42,15 @@ public class TrainReservationCommand : ReservationCommand
 public class TrainReservationCommandSpecification
 {
   [Fact]
-  public void ShouldDOWHAT1()
+  public void ShouldDowhat1()
   {
     //GIVEN
-    var reservationInProgress = Any.Instance<ReservationInProgress>();
+    var reservationInProgress = Any.Instance<IReservationInProgress>();
     var seatCount = Any.UnsignedInt();
-    var train = Substitute.For<Train>();
-    var trains = Substitute.For<Trains>();
+    var train = Substitute.For<ITrain>();
+    var trains = Substitute.For<ITrains>();
     var trainId = Any.String();
-    var searchEngine = Substitute.For<SearchEngine>();
+    var searchEngine = Substitute.For<ISearchEngine>();
     var command = new TrainReservationCommand(
       trainId, 
       seatCount, 
@@ -73,15 +73,15 @@ public class TrainReservationCommandSpecification
   }
     
   [Fact]
-  public void ShouldDOWHAT2()
+  public void ShouldDowhat2()
   {
     //GIVEN
-    var reservationInProgress = Substitute.For<ReservationInProgress>();
+    var reservationInProgress = Substitute.For<IReservationInProgress>();
     var seatCount = Any.UnsignedInt();
-    var train = Substitute.For<Train>();
-    var trains = Substitute.For<Trains>();
+    var train = Substitute.For<ITrain>();
+    var trains = Substitute.For<ITrains>();
     var trainId = Any.String();
-    var searchEngine = Substitute.For<SearchEngine>();
+    var searchEngine = Substitute.For<ISearchEngine>();
     var command = new TrainReservationCommand(
       trainId, 
       seatCount, 

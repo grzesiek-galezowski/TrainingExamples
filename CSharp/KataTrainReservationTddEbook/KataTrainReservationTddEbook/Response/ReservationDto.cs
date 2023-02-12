@@ -1,20 +1,20 @@
 using System.Collections.Generic;
 
-namespace KataTrainReservationTddEbook;
+namespace KataTrainReservationTddEbook.Response;
 
 public class ReservationDto
 {
-  public readonly string trainId;
-  public readonly string reservationId;
-  public readonly List<TicketDto> perSeatTickets;
+  public readonly string TrainId;
+  public readonly string ReservationId;
+  public readonly List<TicketDto> PerSeatTickets;
 
   public ReservationDto(
     string trainId,
     List<TicketDto> perSeatTickets,
     string reservationId)
   {
-    this.trainId = trainId;
-    this.perSeatTickets = perSeatTickets;
-    this.reservationId = reservationId;
+    TrainId = trainId;
+    PerSeatTickets = perSeatTickets;
+    ReservationId = reservationId;
   }
 }

@@ -1,13 +1,13 @@
-namespace KataTrainReservationTddEbook;
+namespace KataTrainReservationTddEbook.Response;
 
 public class TicketDto
 {
-  public readonly string coach;
-  public readonly int seatNumber;
+  public readonly string Coach;
+  public readonly int SeatNumber;
 
   public TicketDto(string coach, int seatNumber)
   {
-    this.coach = coach;
-    this.seatNumber = seatNumber;
+    Coach = coach;
+    SeatNumber = seatNumber;
   }
 }

@@ -1,11 +1,14 @@
+using KataTrainReservationTddEbook.Request;
+using KataTrainReservationTddEbook.Response;
+
 namespace KataTrainReservationTddEbook;
 
 public class TicketOffice
 {
-  private readonly ReservationInProgressFactory _reservationInProgressFactory;
-  private readonly CommandFactory _commandFactory;
+  private readonly IReservationInProgressFactory _reservationInProgressFactory;
+  private readonly ICommandFactory _commandFactory;
 
-  public TicketOffice(ReservationInProgressFactory reservationInProgressFactory, CommandFactory commandFactory)
+  public TicketOffice(IReservationInProgressFactory reservationInProgressFactory, ICommandFactory commandFactory)
   {
     _reservationInProgressFactory = reservationInProgressFactory;
     _commandFactory = commandFactory;

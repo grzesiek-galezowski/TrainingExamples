@@ -1,13 +1,13 @@
-namespace KataTrainReservationTddEbook;
+namespace KataTrainReservationTddEbook.Request;
 
 public class ReservationRequestDto
 {
-  public readonly string trainId;
-  public readonly uint seatCount;
+  public readonly string TrainId;
+  public readonly uint SeatCount;
 
   public ReservationRequestDto(string trainId, uint seatCount)
   {
-    this.trainId = trainId;
-    this.seatCount = seatCount;
+    TrainId = trainId;
+    SeatCount = seatCount;
   }
 }

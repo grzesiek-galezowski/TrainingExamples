@@ -3,14 +3,14 @@ using Xunit;
 
 namespace KataTrainReservationTddEbook;
 
-public interface ReservationInProgressFactory
+public interface IReservationInProgressFactory
 {
-  ReservationInProgress FreshInstance();
+  IReservationInProgress FreshInstance();
 }
 
-public class DtoBasedReservationInProgressFactory : ReservationInProgressFactory
+public class DtoBasedReservationInProgressFactory : IReservationInProgressFactory
 {
-  public ReservationInProgress FreshInstance()
+  public IReservationInProgress FreshInstance()
   {
     return new DtoBasedReservationInProgress();
   }
@@ -19,7 +19,7 @@ public class DtoBasedReservationInProgressFactory : ReservationInProgressFactory
 public class DtoBasedReservationInProgressFactorySpecification
 {
   [Fact]
-  public void ShouldDOWHAT()
+  public void ShouldDowhat()
   {
     //GIVEN
     var factory = new DtoBasedReservationInProgressFactory();

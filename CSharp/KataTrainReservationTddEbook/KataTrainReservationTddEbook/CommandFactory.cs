@@ -1,6 +1,8 @@
+using KataTrainReservationTddEbook.Request;
+
 namespace KataTrainReservationTddEbook;
 
-public interface CommandFactory
+public interface ICommandFactory
 {
-  ReservationCommand CreateReservationCommand(ReservationRequestDto requestDto, ReservationInProgress reservationInProgress);
+  IReservationCommand CreateReservationCommand(ReservationRequestDto requestDto, IReservationInProgress reservationInProgress);
 }
