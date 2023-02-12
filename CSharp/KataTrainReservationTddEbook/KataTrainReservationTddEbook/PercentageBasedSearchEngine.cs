@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using Functional.Maybe;
 
-namespace KataTrainReservationTddEbook
+namespace KataTrainReservationTddEbook;
+
+public class PercentageBasedSearchEngine : SearchEngine
 {
-  public class PercentageBasedSearchEngine : SearchEngine
+  public Maybe<Coach> FindCoachForReservation(IEnumerable<Coach> coaches, in uint seatCount)
   {
-    public Maybe<Coach> FindCoachForReservation(IEnumerable<Coach> coaches, in uint seatCount)
-    {
-      throw new System.NotImplementedException();
-    }
+    throw new System.NotImplementedException();
   }
 }

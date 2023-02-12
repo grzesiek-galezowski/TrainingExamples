@@ -1,7 +1,6 @@
-namespace KataTrainReservationTddEbook
+namespace KataTrainReservationTddEbook;
+
+public interface ReservationCommand
 {
-  public interface ReservationCommand
-  {
-    void Execute();
-  }
+  void Execute();
 }

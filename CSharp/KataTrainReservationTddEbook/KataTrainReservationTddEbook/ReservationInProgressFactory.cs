@@ -1,34 +1,33 @@
 using FluentAssertions;
 using Xunit;
 
-namespace KataTrainReservationTddEbook
+namespace KataTrainReservationTddEbook;
+
+public interface ReservationInProgressFactory
 {
-  public interface ReservationInProgressFactory
-  {
-    ReservationInProgress FreshInstance();
-  }
+  ReservationInProgress FreshInstance();
+}
 
-  public class DtoBasedReservationInProgressFactory : ReservationInProgressFactory
+public class DtoBasedReservationInProgressFactory : ReservationInProgressFactory
+{
+  public ReservationInProgress FreshInstance()
   {
-    public ReservationInProgress FreshInstance()
-    {
-      return new DtoBasedReservationInProgress();
-    }
+    return new DtoBasedReservationInProgress();
   }
+}
 
-  public class DtoBasedReservationInProgressFactorySpecification
+public class DtoBasedReservationInProgressFactorySpecification
+{
+  [Fact]
+  public void ShouldDOWHAT()
   {
-    [Fact]
-    public void ShouldDOWHAT()
-    {
-      //GIVEN
-      var factory = new DtoBasedReservationInProgressFactory();
+    //GIVEN
+    var factory = new DtoBasedReservationInProgressFactory();
       
-      //WHEN
-      var instance = factory.FreshInstance();
+    //WHEN
+    var instance = factory.FreshInstance();
 
-      //THEN
-      instance.Should().BeOfType<DtoBasedReservationInProgress>();
-    }
+    //THEN
+    instance.Should().BeOfType<DtoBasedReservationInProgress>();
   }
 }

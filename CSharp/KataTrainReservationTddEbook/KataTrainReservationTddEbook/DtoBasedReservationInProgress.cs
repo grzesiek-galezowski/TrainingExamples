@@ -1,22 +1,21 @@
 using System;
 
-namespace KataTrainReservationTddEbook
+namespace KataTrainReservationTddEbook;
+
+public class DtoBasedReservationInProgress : ReservationInProgress
 {
-  public class DtoBasedReservationInProgress : ReservationInProgress
+  public ReservationDto ToDto()
   {
-    public ReservationDto ToDto()
-    {
-      throw new NotImplementedException();
-    }
+    throw new NotImplementedException();
+  }
 
-    public void NoRoomInTrainFor(in uint seatCount)
-    {
-      throw new NotImplementedException();
-    }
+  public void NoRoomInTrainFor(in uint seatCount)
+  {
+    throw new NotImplementedException();
+  }
 
-    public void NoMatchingCoachFoundFor(in uint seatCount)
-    {
-      throw new NotImplementedException();
-    }
+  public void NoMatchingCoachFoundFor(in uint seatCount)
+  {
+    throw new NotImplementedException();
   }
 }

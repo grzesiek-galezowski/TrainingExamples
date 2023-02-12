@@ -1,8 +1,7 @@
-﻿namespace KataTrainReservationTddEbook
+﻿namespace KataTrainReservationTddEbook;
+
+public interface Train
 {
-  public interface Train
-  {
-    void Reserve(in uint seatCount, SearchEngine searchEngine, ReservationInProgress reservationInProgress);
-    bool HasCapacityForReservationsInAdvance();
-  }
+  void Reserve(in uint seatCount, SearchEngine searchEngine, ReservationInProgress reservationInProgress);
+  bool HasCapacityForReservationsInAdvance();
 }

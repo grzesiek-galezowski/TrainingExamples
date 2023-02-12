@@ -1,15 +1,14 @@
-﻿namespace KataTrainReservationTddEbook
-{
-  public class WebApp
-  {
-    public WebApp(TicketOffice ticketOffice)
-    {
-      
-    }
+﻿namespace KataTrainReservationTddEbook;
 
-    public void Host()
-    {
+public class WebApp
+{
+  public WebApp(TicketOffice ticketOffice)
+  {
       
-    }
+  }
+
+  public void Host()
+  {
+      
   }
 }

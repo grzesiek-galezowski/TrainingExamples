@@ -1,21 +1,20 @@
-﻿namespace KataTrainReservationTddEbook
+﻿namespace KataTrainReservationTddEbook;
+
+public interface Coach
 {
-  public interface Coach
+  void Reserve(in uint seatCount, ReservationInProgress reservationInProgress);
+  uint GetPercentageReserved();
+}
+
+public class ReservableCoach : Coach
+{
+  public void Reserve(in uint seatCount, ReservationInProgress reservationInProgress)
   {
-    void Reserve(in uint seatCount, ReservationInProgress reservationInProgress);
-    uint GetPercentageReserved();
+    throw new System.NotImplementedException();
   }
 
-  public class ReservableCoach : Coach
+  public uint GetPercentageReserved()
   {
-    public void Reserve(in uint seatCount, ReservationInProgress reservationInProgress)
-    {
-      throw new System.NotImplementedException();
-    }
-
-    public uint GetPercentageReserved()
-    {
-      throw new System.NotImplementedException();
-    }
+    throw new System.NotImplementedException();
   }
 }

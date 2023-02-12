@@ -1,39 +1,37 @@
 ﻿using FluentAssertions;
-using TddXt.AnyRoot;
 using Xunit;
 using static TddXt.AnyRoot.Root;
 
-namespace KataTrainReservationTddEbook
+namespace KataTrainReservationTddEbook;
+
+public class TicketOfficeCommandFactory : CommandFactory
 {
-  public class TicketOfficeCommandFactory : CommandFactory
+  public ReservationCommand CreateReservationCommand(ReservationRequestDto requestDto,
+    ReservationInProgress reservationInProgress)
   {
-    public ReservationCommand CreateReservationCommand(ReservationRequestDto requestDto,
-      ReservationInProgress reservationInProgress)
-    {
-      return new TrainReservationCommand(
-        requestDto.trainId,
-        requestDto.seatCount, 
-        new ReferenceService(), 
-        new PercentageBasedSearchEngine(), 
-        reservationInProgress);
-    }
+    return new TrainReservationCommand(
+      requestDto.trainId,
+      requestDto.seatCount, 
+      new ReferenceService(), 
+      new PercentageBasedSearchEngine(), 
+      reservationInProgress);
   }
+}
 
-  public class TicketOfficeCommandFactorySpecification
+public class TicketOfficeCommandFactorySpecification
+{
+  [Fact]
+  public void ShouldDOWHAT()
   {
-    [Fact]
-    public void ShouldDOWHAT()
-    {
-      //GIVEN
-      var factory = new TicketOfficeCommandFactory();
-      var dto = Any.Instance<ReservationRequestDto>();
-      var reservationInProgress = Any.Instance<ReservationInProgress>();
+    //GIVEN
+    var factory = new TicketOfficeCommandFactory();
+    var dto = Any.Instance<ReservationRequestDto>();
+    var reservationInProgress = Any.Instance<ReservationInProgress>();
 
-      //WHEN
-      var command = factory.CreateReservationCommand(dto, reservationInProgress);
+    //WHEN
+    var command = factory.CreateReservationCommand(dto, reservationInProgress);
 
-      //THEN
-      command.Should().BeOfType<TrainReservationCommand>();
-    }
+    //THEN
+    command.Should().BeOfType<TrainReservationCommand>();
   }
 }

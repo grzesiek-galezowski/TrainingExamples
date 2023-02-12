@@ -1,17 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Text;
+﻿namespace KataTrainReservationTddEbook;
 
-namespace KataTrainReservationTddEbook
+public class EntryPoint
 {
-  public class EntryPoint
+  public void Main()
   {
-    public void Main()
-    {
-      new WebApp(
-        new TicketOffice(
-          new TodoReservationInProgressFactory(), //TODO change the name
-          new TicketOfficeCommandFactory())
-      ).Host();
-    }
+    new WebApp(
+      new TicketOffice(
+        new TodoReservationInProgressFactory(), //TODO change the name
+        new TicketOfficeCommandFactory())
+    ).Host();
   }
 }

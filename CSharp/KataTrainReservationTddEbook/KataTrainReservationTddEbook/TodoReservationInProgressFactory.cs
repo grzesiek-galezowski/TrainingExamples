@@ -1,12 +1,11 @@
 ﻿using System;
 
-namespace KataTrainReservationTddEbook
+namespace KataTrainReservationTddEbook;
+
+public class TodoReservationInProgressFactory : ReservationInProgressFactory
 {
-  public class TodoReservationInProgressFactory : ReservationInProgressFactory
+  public ReservationInProgress FreshInstance()
   {
-    public ReservationInProgress FreshInstance()
-    {
-      throw new NotImplementedException();
-    }
+    throw new NotImplementedException();
   }
 }

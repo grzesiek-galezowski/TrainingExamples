@@ -1,18 +1,25 @@
 ﻿using System;
-using AutoFixture;
-using AutoFixture.Idioms;
-using FluentAssertions;
+using TddXt.AnyRoot.Strings;
 using TddXt.XFluentAssert.Api;
 using Xunit;
+using static TddXt.AnyRoot.Root;
 
-namespace KataTrainReservationTddEbook
+namespace KataTrainReservationTddEbook;
+
+public class TrainIdSpecification
 {
-  public class TrainIdSpecification
+  [Fact]
+  public void ShouldImplementEqualityCorrectly()
   {
-    [Fact]
-    public void ShouldImplementEqualityCorrectly()
-    {
-      typeof(TrainId).Should().HaveValueSemantics();
-    }
+    var str1 = Any.String();
+    ObjectsOfType<TrainId>.ShouldHaveValueSemantics(
+      new[]
+      {
+        () => new TrainId(str1),
+      },
+      new[]
+      {
+        () => new TrainId(str1 + " "),
+      });
   }
 }

@@ -1,8 +1,7 @@
-﻿namespace KataTrainReservationTddEbook
+﻿namespace KataTrainReservationTddEbook;
+
+public interface Trains
 {
-  public interface Trains
-  {
-    Train RetrieveBy(TrainId trainId);
-    void Update(Train train);
-  }
+  Train RetrieveBy(TrainId trainId);
+  void Update(Train train);
 }

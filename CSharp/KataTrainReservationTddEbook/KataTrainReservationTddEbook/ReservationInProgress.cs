@@ -1,9 +1,8 @@
-namespace KataTrainReservationTddEbook
+namespace KataTrainReservationTddEbook;
+
+public interface ReservationInProgress
 {
-  public interface ReservationInProgress
-  {
-    ReservationDto ToDto();
-    void NoRoomInTrainFor(in uint seatCount);
-    void NoMatchingCoachFoundFor(in uint seatCount);
-  }
+  ReservationDto ToDto();
+  void NoRoomInTrainFor(in uint seatCount);
+  void NoMatchingCoachFoundFor(in uint seatCount);
 }
