@@ -1,20 +1,7 @@
-using System.Collections.Generic;
+using LanguageExt;
 
 namespace KataTrainReservationTddEbook.Response;
 
-public class ReservationDto
-{
-  public readonly string TrainId;
-  public readonly string ReservationId;
-  public readonly List<TicketDto> PerSeatTickets;
-
-  public ReservationDto(
-    string trainId,
-    List<TicketDto> perSeatTickets,
-    string reservationId)
-  {
-    TrainId = trainId;
-    PerSeatTickets = perSeatTickets;
-    ReservationId = reservationId;
-  }
-}
+public record ReservationDto(string TrainId,
+  Seq<TicketDto> PerSeatTickets,
+  string ReservationId);

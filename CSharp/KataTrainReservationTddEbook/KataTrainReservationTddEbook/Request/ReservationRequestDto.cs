@@ -1,13 +1,7 @@
 namespace KataTrainReservationTddEbook.Request;
 
-public class ReservationRequestDto
+public sealed record ReservationRequestDto(string TrainId, uint SeatCount)
 {
-  public readonly string TrainId;
-  public readonly uint SeatCount;
-
-  public ReservationRequestDto(string trainId, uint seatCount)
-  {
-    TrainId = trainId;
-    SeatCount = seatCount;
-  }
+  public readonly string TrainId = TrainId;
+  public readonly uint SeatCount = SeatCount;
 }
