@@ -1,3 +1,3 @@
 namespace KataTrainReservationTddEbook.Response;
 
-public record TicketDto(string Coach, int SeatNumber);
+public sealed record TicketDto(string Coach, int SeatNumber);

@@ -1,3 +1,3 @@
 ﻿namespace KataTrainReservationTddEbook.PersistentData;
 
-public record SeatDto(string Coach, int SeatNumber);
+public sealed record SeatDto(string Coach, int SeatNumber);
