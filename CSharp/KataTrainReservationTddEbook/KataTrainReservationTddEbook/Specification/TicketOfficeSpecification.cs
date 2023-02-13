@@ -1,14 +1,12 @@
 using KataTrainReservationTddEbook.Request;
 using KataTrainReservationTddEbook.Response;
-using NSubstitute;
-using Xunit;
-using static TddXt.AnyRoot.Root;
 
-namespace KataTrainReservationTddEbook;
+namespace KataTrainReservationTddEbook.Specification;
 
 public class TicketOfficeSpecification
 {
-  [Fact] public void
+  [Fact]
+  public void
     ShouldExecuteReservationCommandAndReturnResponseWhenMakingReservation()
   {
     //GIVEN

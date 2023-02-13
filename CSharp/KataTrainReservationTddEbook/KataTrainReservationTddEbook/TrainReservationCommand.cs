@@ -1,8 +1,4 @@
-﻿using NSubstitute;
-using TddXt.AnyRoot.Numbers;
-using TddXt.AnyRoot.Strings;
-using Xunit;
-using static TddXt.AnyRoot.Root;
+﻿using TddXt.AnyRoot.Strings;
 
 namespace KataTrainReservationTddEbook;
 

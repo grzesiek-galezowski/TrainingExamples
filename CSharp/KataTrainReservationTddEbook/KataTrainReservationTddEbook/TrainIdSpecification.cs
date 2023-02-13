@@ -1,7 +1,5 @@
 ﻿using TddXt.AnyRoot.Strings;
 using TddXt.XFluentAssert.Api;
-using Xunit;
-using static TddXt.AnyRoot.Root;
 
 namespace KataTrainReservationTddEbook;
 

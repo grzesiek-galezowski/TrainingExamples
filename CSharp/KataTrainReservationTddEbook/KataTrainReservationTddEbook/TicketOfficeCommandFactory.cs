@@ -1,7 +1,4 @@
-﻿using FluentAssertions;
-using KataTrainReservationTddEbook.Request;
-using Xunit;
-using static TddXt.AnyRoot.Root;
+﻿using KataTrainReservationTddEbook.Request;
 
 namespace KataTrainReservationTddEbook;
 
