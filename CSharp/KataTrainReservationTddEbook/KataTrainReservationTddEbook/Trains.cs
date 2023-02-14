@@ -1,6 +1,6 @@
 ﻿namespace KataTrainReservationTddEbook;
 
-public interface ITrains
+public interface IFleet
 {
   ITrain RetrieveBy(TrainId trainId);
   void Update(ITrain train);

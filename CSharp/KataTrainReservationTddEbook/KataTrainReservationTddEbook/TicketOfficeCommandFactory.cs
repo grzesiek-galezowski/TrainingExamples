@@ -8,11 +8,10 @@ public class TicketOfficeCommandFactory : ICommandFactory
     IReservationInProgress reservationInProgress)
   {
     return new TrainReservationCommand(
-      requestDto.TrainId,
-      requestDto.SeatCount, 
+      new TrainId(requestDto.TrainId), 
       new ReferenceService(), 
-      new PercentageBasedSearchEngine(), 
-      reservationInProgress);
+      reservationInProgress,
+      new StandardBookingProcess(new CheckThereAreEnoughSeatsInTheTrain(requestDto.SeatCount)));
   }
 }
 
