@@ -11,7 +11,12 @@ public class TicketOfficeCommandFactory : ICommandFactory
       new TrainId(requestDto.TrainId), 
       new ReferenceService(), 
       reservationInProgress,
-      new StandardBookingProcess(new CheckThereAreEnoughSeatsInTheTrain(requestDto.SeatCount)));
+      new StandardBookingProcess(
+        new CheckWhetherThereAreEnoughSeatsInTheTrain(requestDto.SeatCount,
+          new CheckWhetherThereAreEnoughSeatsInAnyCoach(
+            requestDto.SeatCount,
+            new MakeReservation(requestDto.SeatCount)
+            ))));
   }
 }
 

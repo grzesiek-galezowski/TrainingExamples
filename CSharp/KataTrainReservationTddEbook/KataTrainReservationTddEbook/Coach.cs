@@ -2,18 +2,24 @@
 
 public interface ICoach
 {
-  void Reserve(in uint seatCount, IReservationInProgress reservationInProgress);
-  uint GetPercentageReserved();
+  bool HasPlaceFor(uint requestedSeatCount);
+  bool HasPlaceWithingTheSoftLimitFor(uint requestedSeatCount);
+  void Reserve(uint requestedSeatCount, IReservationInProgress reservationInProgress);
 }
 
 public class ReservableCoach : ICoach
 {
-  public void Reserve(in uint seatCount, IReservationInProgress reservationInProgress)
+  public bool HasPlaceFor(uint requestedSeatCount)
   {
     throw new System.NotImplementedException();
   }
 
-  public uint GetPercentageReserved()
+  public bool HasPlaceWithingTheSoftLimitFor(uint requestedSeatCount)
+  {
+    throw new System.NotImplementedException();
+  }
+
+  public void Reserve(uint requestedSeatCount, IReservationInProgress reservationInProgress)
   {
     throw new System.NotImplementedException();
   }

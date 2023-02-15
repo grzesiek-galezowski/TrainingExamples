@@ -15,7 +15,7 @@ public class DtoBasedReservationInProgress : IReservationInProgress
     throw new NotImplementedException();
   }
 
-  public void NoMatchingCoachFoundFor(in uint seatCount)
+  public void NotEnoughSeatsInAnyCoachToFit(in uint seatCount)
   {
     throw new NotImplementedException();
   }

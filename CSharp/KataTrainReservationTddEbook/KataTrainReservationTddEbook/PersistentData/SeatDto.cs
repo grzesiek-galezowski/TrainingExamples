@@ -1,3 +1,5 @@
-﻿namespace KataTrainReservationTddEbook.PersistentData;
+﻿using Core.Maybe;
 
-public sealed record SeatDto(string Coach, int SeatNumber);
+namespace KataTrainReservationTddEbook.PersistentData;
+
+public sealed record SeatDto(string Coach, int SeatNumber, Maybe<string> BookingReference);
