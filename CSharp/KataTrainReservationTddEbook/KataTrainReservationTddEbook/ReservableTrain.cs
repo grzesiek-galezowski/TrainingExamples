@@ -6,9 +6,9 @@ namespace KataTrainReservationTddEbook;
 
 public class ReservableTrain : ITrain
 {
-  private IReadOnlyList<ICoach> _coaches;
-  private uint _totalSeats;
-  private uint _reservedSeats;
+  private readonly IReadOnlyList<ICoach> _coaches;
+  private readonly uint _totalSeats;
+  private readonly uint _reservedSeats;
 
   public ReservableTrain(IReadOnlyList<ICoach> coaches, uint totalSeats, uint reservedSeats)
   {
