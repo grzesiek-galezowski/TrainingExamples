@@ -1,6 +1,6 @@
 ﻿namespace KataTrainReservationTddEbook;
 
-public class ReferenceService : IFleet
+public class TrainDataService : IFleet
 {
   public ITrain RetrieveBy(TrainId trainId)
   {

@@ -9,7 +9,7 @@ public class TicketOfficeCommandFactory : ICommandFactory
   {
     return new TrainReservationCommand(
       new TrainId(requestDto.TrainId), 
-      new ReferenceService(), 
+      new TrainDataService(), 
       reservationInProgress,
       new StandardBookingProcess(
         new CheckWhetherThereAreEnoughSeatsInTheTrain(requestDto.SeatCount,

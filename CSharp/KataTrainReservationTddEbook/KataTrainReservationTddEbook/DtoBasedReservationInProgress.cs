@@ -19,4 +19,9 @@ public class DtoBasedReservationInProgress : IReservationInProgress
   {
     throw new NotImplementedException();
   }
+
+  public void ReservedSeat(string bookingReference, string name)
+  {
+    throw new NotImplementedException();
+  }
 }
