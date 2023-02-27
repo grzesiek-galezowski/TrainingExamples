@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualBasic.FileIO;
-
-namespace KataTrainReservationTddEbook;
+﻿namespace KataTrainReservationTddEbook;
 
 //bug is this step needed?
 public class CheckWhetherThereAreEnoughSeatsInAnyCoach : IBookingStep

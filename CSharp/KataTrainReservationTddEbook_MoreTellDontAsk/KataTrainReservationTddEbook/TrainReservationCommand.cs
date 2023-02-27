@@ -5,24 +5,30 @@ public class TrainReservationCommand : IReservationCommand
   private readonly IFleet _fleet;
   private readonly IReservationInProgress _reservationInProgress;
   private readonly TrainId _trainId;
-  private readonly IBookingProcess _bookingProcess;
+  private readonly uint _requestedSeatCount;
+  private TrainHardLimitReservabilityVisitor _trainHardLimitReservabilityVisitor;
 
   public TrainReservationCommand(
     TrainId trainId,
     IFleet fleet,
     IReservationInProgress reservationInProgress, 
-    IBookingProcess bookingProcess)
+    uint requestedSeatCount, 
+    TrainHardLimitReservabilityVisitor trainHardLimitReservabilityVisitor)
   {
     _fleet = fleet;
     _reservationInProgress = reservationInProgress;
-    _bookingProcess = bookingProcess;
+    _requestedSeatCount = requestedSeatCount;
+    _trainHardLimitReservabilityVisitor = trainHardLimitReservabilityVisitor;
     _trainId = trainId;
   }
 
   public void Execute()
   {
     var train = _fleet.RetrieveBy(_trainId);
-    _bookingProcess.ApplyTo(train, _reservationInProgress);
+    train.EvaluateUpFrontTrainReservability(
+      _requestedSeatCount,
+      _reservationInProgress,
+      _trainHardLimitReservabilityVisitor);
     train.UpdateIn(_fleet);
   }
 }

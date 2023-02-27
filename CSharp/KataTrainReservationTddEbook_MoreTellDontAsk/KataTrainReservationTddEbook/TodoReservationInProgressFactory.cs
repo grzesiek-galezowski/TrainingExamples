@@ -1,4 +1,6 @@
-﻿namespace KataTrainReservationTddEbook;
+﻿using System;
+
+namespace KataTrainReservationTddEbook;
 
 public class TodoReservationInProgressFactory : IReservationInProgressFactory
 {
