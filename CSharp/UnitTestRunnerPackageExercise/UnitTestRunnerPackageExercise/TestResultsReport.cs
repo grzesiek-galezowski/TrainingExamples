@@ -1,23 +1,29 @@
 ﻿namespace UnitTestRunnerPackageExercise;
 
-internal class TestResultsReport
+public class TestResultsReport
 {
-  public void Passed(string @namespace, string suiteName, string testName)
+  public void Passed(FullyQualifiedTestName fullyQualifiedTestName)
   {
-    Console.WriteLine($"Passed: {@namespace}.{suiteName}.{testName}");
+    Console.WriteLine($"Passed: {fullyQualifiedTestName}");
   }
 
-  public void Report()
+  public void ReportEndOfSuite(string suiteName)
   {
+    Console.WriteLine("Ending suite " + suiteName);
   }
 
-  public void Failed(string @namespace, string suiteName, string testName, Exception failureRootCause)
+  public void Failed(FullyQualifiedTestName fullyQualifiedTestName, Exception failureRootCause)
   {
-    Console.WriteLine($"Failed: {@namespace}.{suiteName}.{testName}{Environment.NewLine}{failureRootCause}");
+    Console.WriteLine($"Failed: {fullyQualifiedTestName}{Environment.NewLine}{failureRootCause}");
   }
 
-  public void Starting(string @namespace, string suiteName, string testName)
+  public void Starting(FullyQualifiedTestName fullyQualifiedTestName)
   {
-    Console.WriteLine($"Starting: {@namespace}.{suiteName}.{testName}");
+    Console.WriteLine($"Starting: "+ $"{fullyQualifiedTestName}");
+  }
+
+  public void ReportStartOfSuite(string suiteName)
+  {
+    Console.WriteLine("Starting suite " + suiteName);
   }
 }
