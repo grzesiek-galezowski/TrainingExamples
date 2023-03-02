@@ -1,29 +1,35 @@
 ﻿namespace UnitTestRunnerPackageExercise;
 
-public class TestResultsReport
+//bug use it somewhere
+public class XmlResultsReport : ITestResultsReport
 {
   public void Passed(FullyQualifiedTestName fullyQualifiedTestName)
   {
-    Console.WriteLine($"Passed: {fullyQualifiedTestName}");
+    throw new NotImplementedException();
   }
 
   public void ReportEndOfSuite(string suiteName)
   {
-    Console.WriteLine("Ending suite " + suiteName);
+    throw new NotImplementedException();
   }
 
   public void Failed(FullyQualifiedTestName fullyQualifiedTestName, Exception failureRootCause)
   {
-    Console.WriteLine($"Failed: {fullyQualifiedTestName}{Environment.NewLine}{failureRootCause}");
+    throw new NotImplementedException();
   }
 
   public void Starting(FullyQualifiedTestName fullyQualifiedTestName)
   {
-    Console.WriteLine($"Starting: "+ $"{fullyQualifiedTestName}");
+    throw new NotImplementedException();
   }
 
   public void ReportStartOfSuite(string suiteName)
   {
-    Console.WriteLine("Starting suite " + suiteName);
+    throw new NotImplementedException();
+  }
+
+  public void ReportToUser()
+  {
+    throw new NotImplementedException();
   }
 }
