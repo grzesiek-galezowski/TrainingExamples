@@ -1,34 +1,64 @@
-﻿using System.Reflection;
+﻿namespace UnitTestRunnerPackageExercise;
 
-namespace UnitTestRunnerPackageExercise;
-
-internal class Program
+public class Program
 {
   public static void Main(string[] args)
   {
-    ExecuteLogic(new ConsoleResultsReport());
+    new TestRunner().Run();
   }
 
-  public static void Main2(string[] args)
+  public static void Main_1(string[] args)
   {
-    ExecuteLogic(new StructuredReport(
-      new NewtonsoftJsonResultsTextFormat(), 
-      new FlatFileDestination()));
+    new TestRunner
+    {
+      Results = new TextBasedResultsReport(
+        new EnglishConsoleMessages(),
+        new FlatFileDestination()),
+      TestAssemblySource = new TestAssemblyPath("C:\\Users\\HYPERBOOK\\Documents\\GitHub\\TrainingExamples\\CSharp\\UnitTestRunnerPackageExercise\\ExampleTests\\bin\\Debug\\net7.0\\ExampleTests.dll")
+    }.Run();
   }
 
-  private static void ExecuteLogic(ITestResultsReport results)
+  public static void Main_2(string[] args)
   {
-    var assembly =
-      Assembly.LoadFile(
-        "C:\\Users\\HYPERBOOK\\Documents\\GitHub\\TrainingExamples\\CSharp\\UnitTestRunnerPackageExercise\\ExampleTests\\bin\\Debug\\net7.0\\ExampleTests.dll");
-    var testSet = TestSetFactory.CreateTestSet(assembly);
-    testSet.Run(results);
-    results.ReportToUser();
+    new TestRunner
+    {
+      Results = new TextBasedResultsReport(
+        new PolishConsoleMessages(),
+        new FlatFileDestination())
+    }.Run();
   }
 
+  public static void Main_3(string[] args)
+  {
+    new TestRunner
+    {
+      Results = new TextBasedResultsReport(
+        new PolishConsoleMessages(),
+        new ConsoleDestination())
+    }.Run();
+  }
+
+  public static void Main_4(string[] args)
+  {
+    new TestRunner
+    {
+      Results = new StructuredReport(
+        new NewtonsoftJsonResultsTextFormat(),
+        new SqLiteResultsDestination("Data Source=.\\Results.db"))
+    }.Run();
+  }
+
+  public static void Main_5(string[] args)
+  {
+    new TestRunner
+    {
+      Results = new StructuredReport(
+        new SystemTextJsonResultsTextFormat(), 
+        new LiteDbDestination(Path.GetTempFileName()))
+    }.Run();
+  }
 }
 
 //TODO assertions library + some with external dependencies (e.g. JSON assertions)
-//TODO different report destinations (file vs console)
 //TODO different runners (GUI vs Console)
-//TODO different report formats (text vs JSON vs XML?)
+//TODO documentation generator - generate a document without

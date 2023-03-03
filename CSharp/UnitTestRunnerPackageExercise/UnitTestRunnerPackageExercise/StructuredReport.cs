@@ -1,8 +1,6 @@
 ﻿namespace UnitTestRunnerPackageExercise;
 
-//bug use it somewhere
-
-public class StructuredReport : ITestResultsReport
+public class StructuredReport : ITestResults
 {
   private readonly TestSetDtoBuilder _testSetDtoBuilder = new();
   private readonly IResultsTextFormat _textFormat;

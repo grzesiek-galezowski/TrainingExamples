@@ -17,7 +17,7 @@ public class TestCase
       methodInfo.Name);
   }
 
-  public void Run(ITestResultsReport results)
+  public void Run(ITestResults results)
   {
     try
     {

@@ -2,7 +2,7 @@
 
 namespace UnitTestRunnerPackageExercise;
 
-internal class NewtonsoftJsonResultsTextFormat : IResultsTextFormat
+public class NewtonsoftJsonResultsTextFormat : IResultsTextFormat
 {
   public string ApplyTo(TestSetDto dto)
   {

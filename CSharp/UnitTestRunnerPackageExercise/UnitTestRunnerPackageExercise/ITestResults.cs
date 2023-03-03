@@ -1,6 +1,6 @@
 ﻿namespace UnitTestRunnerPackageExercise;
 
-public interface ITestResultsReport
+public interface ITestResults
 {
   void TestPassed(FullyQualifiedTestName fullyQualifiedTestName);
   void EndOfSuite(string suiteName);

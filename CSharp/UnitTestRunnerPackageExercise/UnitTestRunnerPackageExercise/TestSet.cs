@@ -9,7 +9,7 @@ public class TestSet
     _suites = suites;
   }
 
-  public void Run(ITestResultsReport results)
+  public void Run(ITestResults results)
   {
     foreach (var suite in _suites)
     {

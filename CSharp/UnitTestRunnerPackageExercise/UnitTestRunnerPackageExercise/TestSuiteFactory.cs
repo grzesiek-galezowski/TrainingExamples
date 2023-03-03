@@ -3,7 +3,7 @@ using Core.NullableReferenceTypesExtensions;
 
 namespace UnitTestRunnerPackageExercise;
 
-internal static class TestSuiteFactory
+public static class TestSuiteFactory
 {
   public static IEnumerable<TestSuite> CreateSuitesFrom(Assembly assembly)
   {

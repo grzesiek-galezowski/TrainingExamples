@@ -11,7 +11,7 @@ public class TestSuite
     _testCases = testCases;
   }
 
-  public void Run(ITestResultsReport results)
+  public void Run(ITestResults results)
   {
     results.StartSuite(_suiteName);
     foreach (var testCase in _testCases)

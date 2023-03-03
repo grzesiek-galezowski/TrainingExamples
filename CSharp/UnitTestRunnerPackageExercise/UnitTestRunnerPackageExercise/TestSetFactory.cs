@@ -2,7 +2,7 @@ using System.Reflection;
 
 namespace UnitTestRunnerPackageExercise;
 
-static internal class TestSetFactory
+public static class TestSetFactory
 {
   public static TestSet CreateTestSet(Assembly assembly)
   {
