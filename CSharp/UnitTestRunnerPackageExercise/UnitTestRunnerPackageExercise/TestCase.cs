@@ -21,18 +21,18 @@ public class TestCase
   {
     try
     {
-      results.Starting(_fullyQualifiedTestName);
+      results.StartingTest(_fullyQualifiedTestName);
 
       _methodInfo.Invoke(Activator.CreateInstance(_methodInfo.DeclaringType.OrThrow()), null);
-      results.Passed(_fullyQualifiedTestName);
+      results.TestPassed(_fullyQualifiedTestName);
     }
     catch (TargetInvocationException e)
     {
-      results.Failed(_fullyQualifiedTestName, e.InnerException ?? new Exception("Unknown exception"));
+      results.TestFailed(_fullyQualifiedTestName, e.InnerException ?? new Exception("Unknown exception"));
     }
     catch (Exception e)
     {
-      results.Failed(_fullyQualifiedTestName, e);
+      results.TestFailed(_fullyQualifiedTestName, e);
     }
   }
 }

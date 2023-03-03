@@ -10,36 +10,36 @@ public class ConsoleResultsReport : ITestResultsReport
     _destination = new FlatFileDestination();
   }
 
-  public void Passed(FullyQualifiedTestName fullyQualifiedTestName)
+  public void TestPassed(FullyQualifiedTestName fullyQualifiedTestName)
   {
     _entries.Add($"Passed: {fullyQualifiedTestName}");
   }
 
-  public void ReportEndOfSuite(string suiteName)
+  public void EndOfSuite(string suiteName)
   {
     _entries.Add("Ending suite " + suiteName);
   }
 
-  public void Failed(FullyQualifiedTestName fullyQualifiedTestName, Exception failureRootCause)
+  public void TestFailed(FullyQualifiedTestName fullyQualifiedTestName, Exception failureRootCause)
   {
     _entries.Add($"Failed: {fullyQualifiedTestName}{Environment.NewLine}{failureRootCause}");
   }
 
-  public void Starting(FullyQualifiedTestName fullyQualifiedTestName)
+  public void StartingTest(FullyQualifiedTestName fullyQualifiedTestName)
   {
     _entries.Add($"Starting: "+ $"{fullyQualifiedTestName}");
   }
 
-  public void ReportStartOfSuite(string suiteName)
+  public void StartSuite(string suiteName)
   {
     _entries.Add("Starting suite " + suiteName);
   }
 
   public void ReportToUser()
   {
-    _destination.Send(_entries);
+    _destination.Send(string.Join(Environment.NewLine, _entries));
   }
 }
 
-//bug different languages
+//bug different languages (e.g. Polish, English)
 //bug different formats (e.g. JSON)

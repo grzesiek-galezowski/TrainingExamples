@@ -13,12 +13,12 @@ public class TestSuite
 
   public void Run(ITestResultsReport results)
   {
-    results.ReportStartOfSuite(_suiteName);
+    results.StartSuite(_suiteName);
     foreach (var testCase in _testCases)
     {
       testCase.Run(results);
     }
 
-    results.ReportEndOfSuite(_suiteName);
+    results.EndOfSuite(_suiteName);
   }
 }

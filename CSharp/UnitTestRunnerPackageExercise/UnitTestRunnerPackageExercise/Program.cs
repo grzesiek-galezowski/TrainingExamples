@@ -6,21 +6,26 @@ internal class Program
 {
   public static void Main(string[] args)
   {
-    var results = new ConsoleResultsReport();
-    var assembly = Assembly.LoadFile("C:\\Users\\HYPERBOOK\\Documents\\GitHub\\TrainingExamples\\CSharp\\UnitTestRunnerPackageExercise\\ExampleTests\\bin\\Debug\\net7.0\\ExampleTests.dll");
+    ExecuteLogic(new ConsoleResultsReport());
+  }
+
+  public static void Main2(string[] args)
+  {
+    ExecuteLogic(new StructuredReport(
+      new NewtonsoftJsonResultsTextFormat(), 
+      new FlatFileDestination()));
+  }
+
+  private static void ExecuteLogic(ITestResultsReport results)
+  {
+    var assembly =
+      Assembly.LoadFile(
+        "C:\\Users\\HYPERBOOK\\Documents\\GitHub\\TrainingExamples\\CSharp\\UnitTestRunnerPackageExercise\\ExampleTests\\bin\\Debug\\net7.0\\ExampleTests.dll");
     var testSet = TestSetFactory.CreateTestSet(assembly);
     testSet.Run(results);
     results.ReportToUser();
   }
 
-  public static void Main2(string[] args)
-  {
-    var results = new XmlResultsReport(); //bug or structured and then have a formatted and destination
-    var assembly = Assembly.LoadFile("C:\\Users\\HYPERBOOK\\Documents\\GitHub\\TrainingExamples\\CSharp\\UnitTestRunnerPackageExercise\\ExampleTests\\bin\\Debug\\net7.0\\ExampleTests.dll");
-    var testSet = TestSetFactory.CreateTestSet(assembly);
-    testSet.Run(results);
-    results.ReportToUser();
-  }
 }
 
 //TODO assertions library + some with external dependencies (e.g. JSON assertions)

@@ -1,9 +1,14 @@
 ﻿namespace UnitTestRunnerPackageExercise;
 
-public class FlatFileDestination
+public interface ITestResultsDestination
 {
-  public void Send(List<string> entries)
+  void Send(string entries);
+}
+
+public class FlatFileDestination : ITestResultsDestination
+{
+  public void Send(string entries)
   {
-    File.AppendAllLines(Path.GetTempFileName(), entries);
+    File.AppendAllText(Path.GetTempFileName(), entries);
   }
 }
