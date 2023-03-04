@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-
-namespace UnitTestRunnerPackageExercise;
+﻿namespace UnitTestRunnerPackageExercise;
 
 public class TestRunner
 {

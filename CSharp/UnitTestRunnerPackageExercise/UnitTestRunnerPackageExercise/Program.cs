@@ -7,7 +7,7 @@ public class Program
     new TestRunner().Run();
   }
 
-  public static void Main_1(string[] args)
+  public static void OtherExamples(string[] args)
   {
     new TestRunner
     {
@@ -16,20 +16,65 @@ public class Program
         new FlatFileDestination()),
       TestAssemblySource = new TestAssemblyPath("C:\\Users\\HYPERBOOK\\Documents\\GitHub\\TrainingExamples\\CSharp\\UnitTestRunnerPackageExercise\\ExampleTests\\bin\\Debug\\net7.0\\ExampleTests.dll")
     }.Run();
-  }
 
-  public static void Main_2(string[] args)
-  {
     new TestRunner
     {
       Results = new TextBasedResultsReport(
         new PolishConsoleMessages(),
-        new FlatFileDestination())
+        new FlatFileDestination()),
+      TestAssemblySource = new ThisAssemblySource()
     }.Run();
-  }
+  
+    new TestRunner
+    {
+      Results = new TextBasedResultsReport(
+        new PolishConsoleMessages(),
+        new ConsoleDestination())
+    }.Run();
 
-  public static void Main_3(string[] args)
-  {
+    new TestRunner
+    {
+      Results = new TextBasedResultsReport(
+        new KoreanConsoleMessages(),
+        new ConsoleDestination())
+    }.Run();
+
+    new TestRunner
+    {
+      Results = new TextBasedResultsReport(
+        new LatinConsoleMessages(),
+        new ConsoleDestination())
+    }.Run();
+
+    new TestRunner
+    {
+      Results = new TextBasedResultsReport(
+        new FrenchConsoleMessages(),
+        new ConsoleDestination())
+    }.Run();
+
+    new TestRunner
+    {
+      Results = new TextBasedResultsReport(
+        new ItalianConsoleMessages(),
+        new ConsoleDestination())
+    }.Run();
+
+
+    new TestRunner
+    {
+      Results = new StructuredReport(
+        new NewtonsoftJsonResultsTextFormat(),
+        new SqLiteResultsDestination("Data Source=.\\Results.db"))
+    }.Run();
+  
+    new TestRunner
+    {
+      Results = new StructuredReport(
+        new SystemTextJsonResultsTextFormat(), 
+        new LiteDbDestination(Path.GetTempFileName()))
+    }.Run();
+  
     new TestRunner
     {
       Results = new TextBasedResultsReport(
@@ -38,27 +83,7 @@ public class Program
     }.Run();
   }
 
-  public static void Main_4(string[] args)
-  {
-    new TestRunner
-    {
-      Results = new StructuredReport(
-        new NewtonsoftJsonResultsTextFormat(),
-        new SqLiteResultsDestination("Data Source=.\\Results.db"))
-    }.Run();
-  }
-
-  public static void Main_5(string[] args)
-  {
-    new TestRunner
-    {
-      Results = new StructuredReport(
-        new SystemTextJsonResultsTextFormat(), 
-        new LiteDbDestination(Path.GetTempFileName()))
-    }.Run();
-  }
 }
 
 //TODO assertions library + some with external dependencies (e.g. JSON assertions)
-//TODO different runners (GUI vs Console)
 //TODO documentation generator - generate a document without

@@ -1,31 +1,30 @@
 ﻿namespace UnitTestRunnerPackageExercise;
 
-public class PolishConsoleMessages : IConsoleReportMessages
+public class FrenchConsoleMessages : IConsoleReportMessages
 {
   public string TestPassed(FullyQualifiedTestName fullyQualifiedTestName)
   {
-    return $"Przeszedł: {fullyQualifiedTestName}";
+    return $"Réussi : {fullyQualifiedTestName}";
   }
 
   public string EndOfSuite(string suiteName)
   {
-    return "Koniec zestawu " + suiteName;
+    return "Fin du groupe de tests " + suiteName;
   }
 
   public string TestFailed(FullyQualifiedTestName fullyQualifiedTestName,
     Exception failureRootCause)
   {
-    return $"Padł: {fullyQualifiedTestName}{Environment.NewLine}{failureRootCause}";
+    return $"Échec : {fullyQualifiedTestName}{Environment.NewLine}{failureRootCause}";
   }
 
   public string StartingTest(FullyQualifiedTestName fullyQualifiedTestName)
   {
-    return $"Zaczynamy test: " + $"{fullyQualifiedTestName}";
+    return $"Démarrage du test : " + $"{fullyQualifiedTestName}";
   }
 
   public string StartingSuite(string suiteName)
   {
-    return "Zaczynamy zestaw " + suiteName;
+    return "Démarrage du groupe de tests " + suiteName;
   }
-
 }
