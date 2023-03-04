@@ -44,6 +44,3 @@ public class TextBasedResultsReport : ITestResults
     _destination.Send(string.Join(Environment.NewLine, _entries));
   }
 }
-
-//bug different languages (e.g. Polish, English)
-//bug different formats (e.g. JSON)

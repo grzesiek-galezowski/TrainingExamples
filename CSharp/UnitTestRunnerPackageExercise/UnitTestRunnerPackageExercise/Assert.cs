@@ -4,7 +4,7 @@ public static class Assert
 {
   public static void AreEqual<T>(T expected, T actual)
   {
-    Assert.NotNull(expected);
+    NotNull(expected);
     if (!expected.Equals(actual))
     {
       throw new AssertionException(nameof(AreEqual), $"{actual} is not equal to expected {expected}");
@@ -61,12 +61,8 @@ public static class Assert
 
     if (expectedList.Count != actualList.Count || !expectedList.Intersect(actualList).Count().Equals(expectedList.Count))
     {
-      Assert.Fail(message ?? "The collections are not equivalent.");
+      Fail(message ?? "The collections are not equivalent.");
     }
   }
 
 }
-
-//bug JsonAssert etc.
-//bug Lang Ext assert
-//bug random generator

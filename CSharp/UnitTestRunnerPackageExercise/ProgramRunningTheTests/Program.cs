@@ -1,10 +1,16 @@
-﻿namespace UnitTestRunnerPackageExercise;
+﻿using ExampleTests;
+using UnitTestRunnerPackageExercise;
+
+namespace ProgramRunningTheTests;
 
 public class Program
 {
   public static void Main(string[] args)
   {
-    new TestRunner().Run();
+    new TestRunner()
+    {
+      TestAssemblySource = new AssemblyForType(typeof(JsonTests))
+    }.Run();
   }
 
   public static void OtherExamples(string[] args)
@@ -84,6 +90,3 @@ public class Program
   }
 
 }
-
-//TODO assertions library + some with external dependencies (e.g. JSON assertions)
-//TODO documentation generator - generate a document without

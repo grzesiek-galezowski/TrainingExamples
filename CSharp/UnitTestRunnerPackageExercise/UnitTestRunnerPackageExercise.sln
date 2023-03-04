@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestRunnerPackageExercise", "UnitTestRunnerPackageExercise\UnitTestRunnerPackageExercise.csproj", "{7CC084E9-A6BB-4FEE-A6A5-108083FB0626}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestRunnerPackageExercise", "UnitTestRunnerPackageExercise\UnitTestRunnerPackageExercise.csproj", "{7CC084E9-A6BB-4FEE-A6A5-108083FB0626}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleTests", "ExampleTests\ExampleTests.csproj", "{120BD747-8DD1-41CA-8A8C-7065427E8A72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleTests", "ExampleTests\ExampleTests.csproj", "{120BD747-8DD1-41CA-8A8C-7065427E8A72}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgramRunningTheTests", "ProgramRunningTheTests\ProgramRunningTheTests.csproj", "{95FF15EB-44C4-4E14-A130-D00F3FD9D94C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{120BD747-8DD1-41CA-8A8C-7065427E8A72}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{120BD747-8DD1-41CA-8A8C-7065427E8A72}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{120BD747-8DD1-41CA-8A8C-7065427E8A72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95FF15EB-44C4-4E14-A130-D00F3FD9D94C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95FF15EB-44C4-4E14-A130-D00F3FD9D94C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95FF15EB-44C4-4E14-A130-D00F3FD9D94C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95FF15EB-44C4-4E14-A130-D00F3FD9D94C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

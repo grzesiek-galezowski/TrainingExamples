@@ -3,7 +3,7 @@ using Core.Maybe;
 
 namespace UnitTestRunnerPackageExercise;
 
-public class TestSuiteDtoBuilder //bug a Build method
+public class TestSuiteDtoBuilder
 {
   private readonly string _suiteName;
   private readonly List<TestReportDto> _tests = new();
