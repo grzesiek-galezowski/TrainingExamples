@@ -7,7 +7,10 @@ public static class TestCaseFactory
 {
   public static IEnumerable<TestCase> CreateTestCases(Type exportedType)
   {
-    return exportedType.GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly).OrThrow()
+    return exportedType.GetMethods(
+        BindingFlags.Instance | 
+        BindingFlags.Public | 
+        BindingFlags.DeclaredOnly).OrThrow()
       .Select(m => new TestCase(m));
   }
 }

@@ -9,7 +9,7 @@ public static class SimpleStubGenerator
   public static T Create<T>(object returnValue) where T : class
   {
     var interceptor = new FixedReturnValueInterceptor(returnValue);
-    return Generator.CreateClassProxy<T>(interceptor);
+    return Generator.CreateInterfaceProxyWithoutTarget<T>(interceptor);
   }
 
   private class FixedReturnValueInterceptor : IInterceptor
