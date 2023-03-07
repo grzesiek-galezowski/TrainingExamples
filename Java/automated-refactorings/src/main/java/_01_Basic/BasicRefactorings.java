@@ -10,6 +10,8 @@ package _01_Basic;
 //TODO 2. move
 //TODO 3. copy type
 //TODO 4. safe delete
+//TODO 5. extract System.out.println to a separate method, replace all
+//TODO 6. move fitsSomewhereElse to another type and make instance method
 public class BasicRefactorings {
   int i2 = 123;
   public void Start() {
