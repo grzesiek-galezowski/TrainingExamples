@@ -1,6 +1,7 @@
 package _02_MethodsAndParameters;
 
 //TODO encapsulate fields of message (encapsulate fields)
+//TODO mention https://plugins.jetbrains.com/plugin/17656-additional-java-refactorings
 //TODO assume the encapsulated type is third party. Wrap method return value, generate delegating members, move .getValue() to send() call only - everything compiles
 //TODO deal with unclear responsibility in CreateFriendlyMessageFrom() (inline method)
 //TODO remove duplication of title casing (extract both methods, make one delegate to other, inline method)
