@@ -37,14 +37,13 @@ public class BasicRefactorings {
   }
 }
 
-class DontWantToBeHere //TODO move it to another namespace and another file
-{
+class DontWantToBeHere {//TODO move it to another namespace and another file
+
   public void lol() {
     fitsSomewhereElse();
   }
 
-  private static void fitsSomewhereElse() //TODO move to another type and make instance method
-  {
+  private static void fitsSomewhereElse() { //TODO move to another type and make instance method
 
   }
 }
