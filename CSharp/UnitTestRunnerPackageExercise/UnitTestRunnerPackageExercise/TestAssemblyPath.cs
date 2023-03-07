@@ -13,7 +13,6 @@ public class TestAssemblyPath : ITestAssemblySource
 
   public Assembly GetDll()
   {
-    return Assembly.LoadFile(
-      _path);
+    return Assembly.LoadFile(_path);
   }
 }

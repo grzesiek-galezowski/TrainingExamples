@@ -7,7 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestRunnerPackageExerci
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleTests", "ExampleTests\ExampleTests.csproj", "{120BD747-8DD1-41CA-8A8C-7065427E8A72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgramRunningTheTests", "ProgramRunningTheTests\ProgramRunningTheTests.csproj", "{95FF15EB-44C4-4E14-A130-D00F3FD9D94C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgramRunningTheTests", "ProgramRunningTheTests\ProgramRunningTheTests.csproj", "{95FF15EB-44C4-4E14-A130-D00F3FD9D94C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F6727CF3-C349-4C80-B534-9517CC039368}"
+	ProjectSection(SolutionItems) = preProject
+		task.txt = task.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

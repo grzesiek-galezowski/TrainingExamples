@@ -1,0 +1,5 @@
+﻿1. Podział na projekty (ew. foldery)
+- kroki na drodze będą fajnym elementem dyskusji
+2. Raczej drobniejszy niż grubszy podział (jeśli jest sens coś podzielić, to dzielmy)
+3. Dla każdego projektu policz afferent coupling, efferent coupling, niestabilność i abstrakcyjność (http://staff.cs.utu.fi/~jounsmed/doos_06/material/DesignPrinciplesAndPatterns.pdf)
+4. Sprawdź czy zasady dotyczące powiązania (coupling) pakietów są spełnione. Jeśli nie, to dlaczego?
