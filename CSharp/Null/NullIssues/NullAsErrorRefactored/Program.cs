@@ -45,11 +45,11 @@ internal class DatabaseConnectionException : Exception
 {
 }
 
-internal class ResourceId
+internal record ResourceId
 {
 }
 
-public class UserDto
+public record UserDto
 {
 }
 
