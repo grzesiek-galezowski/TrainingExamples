@@ -7,8 +7,10 @@ namespace MaybeAsMonad;
 //NRT vs Nullable<T>
 //NRT vs Maybe<T>
 // - Maybe is part of type system
+// - cannot "disable" Maybe or accidentally "not enable it"
 // - Maybe has some monadic behaviors
-// - NRTs are just "annotations" on types, accessible to compiler and reflection
+// - NRTs are just "annotations" on types, accessible to compiler and reflection,
+//   need to be enabled for all projects or in a .props file
 // - cannot to overloads on NRTs
 // - slightly more confusing generic programming scenarios (?)
 class Program
