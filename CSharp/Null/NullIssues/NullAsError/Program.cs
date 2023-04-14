@@ -9,7 +9,7 @@ class Program
         var database = new Database();
         var userDto = new UserDto();
 
-        var id = database.Save(userDto);
+        ResourceId id = database.Save(userDto);
 
         if (id == null)
         {

@@ -10,13 +10,13 @@ class _02_PassingNull
     {
         var myNotificationsEngine = new MyNotificationsEngine();
 
-        var localDataCenter = new DataCenter();
-        var remoteDataCenter = new DataCenter();
+        var primaryDataCenter = new DataCenter();
+        var secondaryDataCenter = new DataCenter();
 
         var logic = new SomeKindOfLogic(
             myNotificationsEngine, 
-            localDataCenter, 
-            remoteDataCenter);
+            primaryDataCenter, 
+            secondaryDataCenter);
 
         //somewhere
         logic.HandleMessageFromUser("message");
@@ -29,31 +29,31 @@ class _02_PassingNull
 internal class SomeKindOfLogic
 {
     private readonly MyNotificationsEngine _myNotificationsEngine;
-    private readonly DataCenter _localDataCenter;
-    private readonly DataCenter _remoteDataCenter;
+    private readonly DataCenter _primaryDataCenter;
+    private readonly DataCenter _secondaryDataCenter;
 
     public SomeKindOfLogic(
         MyNotificationsEngine myNotificationsEngine, 
-        DataCenter localDataCenter, 
-        DataCenter remoteDataCenter)
+        DataCenter primaryDataCenter, 
+        DataCenter secondaryDataCenter)
     {
         _myNotificationsEngine = myNotificationsEngine;
-        _localDataCenter = localDataCenter;
-        _remoteDataCenter = remoteDataCenter;
+        _primaryDataCenter = primaryDataCenter;
+        _secondaryDataCenter = secondaryDataCenter;
     }
 
     public void HandleMessageFromUser(string message)
     {
         _myNotificationsEngine.NotifyNewData(
-            _localDataCenter, 
-            _remoteDataCenter, 
+            _primaryDataCenter, 
+            _secondaryDataCenter, 
             message);
     }
 
     public void HandleReplicatedMessage(string message)
     {
         _myNotificationsEngine.NotifyNewData(
-            _localDataCenter, 
+            _primaryDataCenter, 
             null, 
             message);
     }
@@ -70,14 +70,14 @@ public class DataCenter
 internal class MyNotificationsEngine
 {
     public void NotifyNewData(
-        DataCenter localDataCenter, 
-        DataCenter remoteDataCenter /* = null  */, 
+        DataCenter primaryDataCenter, 
+        DataCenter secondaryDataCenter /* = null  */, 
         string message)
     {
-        localDataCenter.Send(message);
-        if (remoteDataCenter != null) //null propagation doesn't help
+        primaryDataCenter.Send(message);
+        if (secondaryDataCenter != null) //null propagation doesn't help
         {
-            remoteDataCenter.Send(message);
+            secondaryDataCenter.Send(message);
         }
     }
 }
