@@ -21,9 +21,10 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <TieredPGO>true</TieredPGO>
     <Title>TddXt.$(AssemblyName)</Title>
+    <Version>1.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="LanguageExt.Core" Version="4.4.0" />
+    <PackageReference Include="LanguageExt.Core" Version="4.4.2" />
   </ItemGroup>
 </Project>
