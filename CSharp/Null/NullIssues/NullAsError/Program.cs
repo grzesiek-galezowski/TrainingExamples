@@ -13,8 +13,7 @@ class Program
 
         if (id == null)
         {
-            LogError(
-                $"Could not connect to db to save user {userDto}");
+            LogError($"Could not connect to db to save user {userDto}");
         }
     }
 
@@ -32,10 +31,10 @@ internal class Database
     }
 }
 
-internal class ResourceId
+internal record ResourceId
 {
 }
 
-public class UserDto
+public record UserDto
 {
 }
