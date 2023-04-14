@@ -1,10 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Core.Maybe;
 
 namespace MaybeAsMonad;
 
+//NRT vs Nullable<T>
+//NRT vs Maybe<T>
+// - Maybe is part of type system
+// - Maybe has some monadic behaviors
+// - NRTs are just "annotations" on types, accessible to compiler and reflection
+// - cannot to overloads on NRTs
+// - slightly more confusing generic programming scenarios (?)
 class Program
 {
     static void Main(string[] args)
