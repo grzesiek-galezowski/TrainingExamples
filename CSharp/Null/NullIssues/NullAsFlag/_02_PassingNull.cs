@@ -19,10 +19,14 @@ class _02_PassingNull
             secondaryDataCenter);
 
         //somewhere
-        logic.HandleMessageFromUser("message");
+        {
+          logic.HandleMessageFromUser("message");
+        }
 
         //somewhere else
-        logic.HandleReplicatedMessage("message");
+        {
+          logic.HandleReplicatedMessage("message");
+        }
     }
 }
 
