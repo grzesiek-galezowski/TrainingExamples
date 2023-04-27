@@ -48,9 +48,9 @@
       <Project>{21b28722-5791-4d8b-b8d9-b9797ea1e248}</Project>
       <Name>Database</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Domain\Domain.csproj">
+    <ProjectReference Include="..\Domain\ApplicationLogic.csproj">
       <Project>{271a1cfb-e19d-4255-a197-708a3422540a}</Project>
-      <Name>Domain</Name>
+      <Name>ApplicationLogic</Name>
     </ProjectReference>
     <ProjectReference Include="..\Gui\Gui.csproj">
       <Project>{e487dd44-4f65-4b75-9eac-334ed745eaec}</Project>
