@@ -1,5 +1,4 @@
-﻿using System;
-using Persistence.Ports;
+﻿using Persistence.Ports;
 
 namespace Database
 {

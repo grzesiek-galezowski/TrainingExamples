@@ -1,12 +1,12 @@
 ﻿using DataAccess.Ports;
 
-namespace Domain
+namespace ApplicationLogic
 {
-    public class DomainLogic : IDomainLogic
+    public class AppLogic : IAppLogic
     {
       readonly IPersistentStorage _storage;
 
-      public DomainLogic(IPersistentStorage persistentStorage)
+      public AppLogic(IPersistentStorage persistentStorage)
       {
         _storage = persistentStorage;
       }

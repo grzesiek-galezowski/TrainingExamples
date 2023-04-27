@@ -4,11 +4,11 @@ namespace Gui
 {
     public class Window
     {
-      readonly IDomainLogic _logic;
+      readonly IAppLogic _logic;
 
-      public Window(IDomainLogic domainLogic)
+      public Window(IAppLogic appLogic)
       {
-        _logic = domainLogic;
+        _logic = appLogic;
       }
 
       public void OnSubmitClicked()

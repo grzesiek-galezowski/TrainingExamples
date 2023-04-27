@@ -1,15 +1,14 @@
-﻿using DataAccess.Ports;
-using DataAccess.Ports.Primary;
+﻿using DataAccess.Ports.Primary;
 
 namespace Gui
 {
     public class Window
     {
-      private readonly IDomainLogic _logic;
+      private readonly IAppLogic _logic;
 
-      public Window(IDomainLogic domainLogic)
+      public Window(IAppLogic appLogic)
       {
-        _logic = domainLogic;
+        _logic = appLogic;
       }
 
       public void OnSubmitClicked()

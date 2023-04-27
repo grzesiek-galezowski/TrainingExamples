@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using Domain;
+﻿using ApplicationLogic;
 
 namespace Gui
 {
     public class Window
     {
-      private readonly DomainLogic _logic = new DomainLogic();
+      private readonly AppLogic _logic = new AppLogic();
 
       public void OnSubmitClicked()
       {

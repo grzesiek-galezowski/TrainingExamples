@@ -34,7 +34,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IDomainLogic.cs" />
+    <Compile Include="IAppLogic.cs" />
     <Compile Include="IPersistentStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

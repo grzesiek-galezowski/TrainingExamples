@@ -1,4 +1,4 @@
-﻿namespace Domain
+﻿namespace ApplicationLogic
 {
   public interface IDomainLogic
   {

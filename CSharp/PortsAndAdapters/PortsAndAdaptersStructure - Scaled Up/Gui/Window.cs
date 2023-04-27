@@ -1,15 +1,14 @@
-﻿using System;
-using View.Ports;
+﻿using View.Ports;
 
 namespace Gui
 {
     public class Window
     {
-      private readonly IDomainLogic _logic;
+      private readonly IAppLogic _logic;
 
-      public Window(IDomainLogic domainLogic)
+      public Window(IAppLogic appLogic)
       {
-        _logic = domainLogic;
+        _logic = appLogic;
       }
 
       public void OnSubmitClicked()

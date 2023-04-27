@@ -1,5 +1,5 @@
-﻿using DataAccess.Ports;
-using Domain;
+﻿using ApplicationLogic;
+using DataAccess.Ports;
 using NSubstitute;
 using NUnit.Framework;
 
@@ -15,7 +15,7 @@ namespace ComponentSpecification
         //GIVEN
         var persistentStorage 
            = Substitute.For<IPersistentStorage>();
-        var app = new DomainLogic(persistentStorage);
+        var app = new AppLogic(persistentStorage);
 
         //THEN
         app.HandleAddEmployeeRequest();

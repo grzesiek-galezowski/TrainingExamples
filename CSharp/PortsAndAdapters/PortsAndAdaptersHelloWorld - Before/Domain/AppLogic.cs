@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using Database;
+﻿using Database;
 
-namespace Domain
+namespace ApplicationLogic
 {
-    public class DomainLogic
+    public class AppLogic
     {
       private readonly DatabaseObject _database = new DatabaseObject();
 

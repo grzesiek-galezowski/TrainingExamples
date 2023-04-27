@@ -7,8 +7,8 @@
     <ProjectGuid>{271A1CFB-E19D-4255-A197-708A3422540A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Domain</RootNamespace>
-    <AssemblyName>Domain</AssemblyName>
+    <RootNamespace>ApplicationLogic</RootNamespace>
+    <AssemblyName>ApplicationLogic</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -34,10 +34,14 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DomainLogic.cs" />
-    <Compile Include="IDomainLogic.cs" />
-    <Compile Include="IPersistentStorage.cs" />
+    <Compile Include="AppLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccess.Ports\Ports.csproj">
+      <Project>{FF69BEE0-7BEF-445D-8776-0B0D2C18DBAD}</Project>
+      <Name>Ports</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

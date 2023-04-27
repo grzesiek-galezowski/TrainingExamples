@@ -53,9 +53,9 @@
       <Project>{FF69BEE0-7BEF-445D-8776-0B0D2C18DBAD}</Project>
       <Name>Ports</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Domain\Domain.csproj">
+    <ProjectReference Include="..\Domain\ApplicationLogic.csproj">
       <Project>{271A1CFB-E19D-4255-A197-708A3422540A}</Project>
-      <Name>Domain</Name>
+      <Name>ApplicationLogic</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

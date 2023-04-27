@@ -1,14 +1,14 @@
-﻿using Domain;
+﻿using ApplicationLogic;
 
 namespace PortsAndAdaptersHelloWorld
 {
     public class Window
     {
-      private readonly IDomainLogic _logic;
+      private readonly IAppLogic _logic;
 
-      public Window(IDomainLogic domainLogic)
+      public Window(IAppLogic appLogic)
       {
-        _logic = domainLogic;
+        _logic = appLogic;
       }
 
       public void OnSubmitClicked()

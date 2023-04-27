@@ -1,14 +1,13 @@
-﻿using System;
-using Persistence.Ports;
-using View.Ports;
+﻿using DataAccess.Ports.Primary;
+using DataAccess.Ports.Secondary;
 
-namespace Domain
+namespace ApplicationLogic
 {
-    public class DomainLogic : IDomainLogic
+    public class AppLogic : IAppLogic
     {
       private readonly IPersistentStorage _storage;
 
-      public DomainLogic(
+      public AppLogic(
         IPersistentStorage persistentStorage)
       {
         _storage = persistentStorage;

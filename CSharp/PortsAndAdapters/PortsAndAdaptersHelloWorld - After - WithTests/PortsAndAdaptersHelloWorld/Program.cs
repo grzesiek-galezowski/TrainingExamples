@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using ApplicationLogic;
 using Database;
-using Domain;
 using Gui;
 
 namespace PortsAndAdaptersHelloWorld
@@ -13,7 +13,7 @@ namespace PortsAndAdaptersHelloWorld
     static void Main(string[] args)
     {
       var window = new Window(
-        new DomainLogic(
+        new AppLogic(
           new DatabaseObject()));
 
       window.OnSubmitClicked();
