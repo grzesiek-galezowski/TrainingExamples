@@ -1,6 +1,6 @@
 ﻿namespace View.Ports
 {
-  public interface IDomainLogic
+  public interface IAppLogic
   {
     void HandleAddEmployeeRequest();
   }
