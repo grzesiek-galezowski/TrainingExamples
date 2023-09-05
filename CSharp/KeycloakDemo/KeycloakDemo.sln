@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34018.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeycloakDemo", "KeycloakDemo\KeycloakDemo.csproj", "{7D1F1E95-DBF4-478F-83A7-8E933089AAC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecureApp", "SecureApp\SecureApp.csproj", "{4416E7FD-9AD2-487F-863D-1E45B7FAEF40}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7D1F1E95-DBF4-478F-83A7-8E933089AAC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D1F1E95-DBF4-478F-83A7-8E933089AAC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D1F1E95-DBF4-478F-83A7-8E933089AAC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D1F1E95-DBF4-478F-83A7-8E933089AAC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4416E7FD-9AD2-487F-863D-1E45B7FAEF40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4416E7FD-9AD2-487F-863D-1E45B7FAEF40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4416E7FD-9AD2-487F-863D-1E45B7FAEF40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4416E7FD-9AD2-487F-863D-1E45B7FAEF40}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {34FDAD8A-B41B-4985-BF18-B6379202C83A}
+	EndGlobalSection
+EndGlobal
