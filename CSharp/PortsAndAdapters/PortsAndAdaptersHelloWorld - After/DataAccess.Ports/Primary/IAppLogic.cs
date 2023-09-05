@@ -1,6 +1,6 @@
 ﻿namespace DataAccess.Ports.Primary
 {
-  public interface IDomainLogic
+  public interface IAppLogic
   {
     void HandleAddEmployeeRequest();
   }

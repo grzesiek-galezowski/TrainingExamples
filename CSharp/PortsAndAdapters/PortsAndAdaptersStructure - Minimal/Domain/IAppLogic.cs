@@ -1,6 +1,6 @@
 ﻿namespace ApplicationLogic
 {
-  public interface IDomainLogic
+  public interface IAppLogic
   {
     void HandleAddEmployeeRequest();
   }
