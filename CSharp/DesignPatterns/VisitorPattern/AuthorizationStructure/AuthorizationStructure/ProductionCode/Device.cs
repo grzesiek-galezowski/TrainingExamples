@@ -25,3 +25,5 @@ public class Device(NodeId nodeId, NodeId parentId, INode node) : INode
     throw new NotImplementedException();
   }
 }
+
+//BUG: not only remove operation, but also rename - does not cut off the subtree.
