@@ -14,6 +14,7 @@
     <PackageReference Include="Core.Maybe" Version="6.0.0" />
     <PackageReference Include="coverlet.collector" Version="6.0.0" />
     <PackageReference Include="FluentAssertions" Version="6.12.0" />
+    <PackageReference Include="LanguageExt.Core" Version="4.4.8" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
     <PackageReference Include="NSubstitute" Version="5.1.0" />
     <PackageReference Include="NSubstitute.Analyzers.CSharp" Version="1.0.17">

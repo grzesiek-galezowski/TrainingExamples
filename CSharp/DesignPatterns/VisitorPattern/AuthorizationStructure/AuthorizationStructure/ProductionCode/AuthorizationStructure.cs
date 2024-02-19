@@ -1,3 +1,5 @@
+using LanguageExt;
+
 namespace AuthorizationStructure.ProductionCode;
 
 public class AuthorizationStructure
@@ -45,5 +47,10 @@ public class AuthorizationStructure
     {
         _nodesById[nodeId] = node;
         _nodesById[parentId].AddChild(node);
+    }
+
+    public Seq<NodeId> ResolveUserIdIntoDevices(string userName)
+    {
+      return _nodesById[NodeId.User(userName)].GetAllDeviceIds();
     }
 }
