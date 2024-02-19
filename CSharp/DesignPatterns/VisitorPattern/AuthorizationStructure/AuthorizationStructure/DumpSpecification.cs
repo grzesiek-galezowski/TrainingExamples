@@ -20,11 +20,11 @@ public class DumpSpecification
     s1.Dump(target);
 
     //THEN
-    XReceived.InOrder(() =>
+    XReceived.Exactly(() =>
     {
       target.Add(RootId, Maybe<NodeId>.Nothing);
       target.Add(NodeId.Device(deviceName), RootId.Just());
-    }, new FilterAllowingQueries());
+    });
   }
 
   [Test]
@@ -43,12 +43,12 @@ public class DumpSpecification
     s1.Dump(target);
 
     //THEN
-    XReceived.InOrder(() =>
+    XReceived.Exactly(() =>
     {
       target.Add(RootId, Maybe<NodeId>.Nothing);
       target.Add(NodeId.Device(device1Name), RootId.Just());
       target.Add(NodeId.Device(device2Name), RootId.Just());
-    }, new FilterAllowingQueries());
+    });
   }
 
   [Test]
@@ -65,7 +65,7 @@ public class DumpSpecification
     s1.Dump(target);
 
     //THEN
-    XReceived.InOrder(() =>
+    XReceived.Exactly(() =>
     {
       target.Add(RootId, Maybe<NodeId>.Nothing);
       target.Add(NodeId.User(user1), RootId.Just());
@@ -86,7 +86,7 @@ public class DumpSpecification
     s1.Dump(target);
 
     //THEN
-    XReceived.InOrder(() =>
+    XReceived.Exactly(() =>
     {
       target.Add(RootId, Maybe<NodeId>.Nothing);
       target.Add(NodeId.Group(nodeName), RootId.Just());
@@ -120,7 +120,7 @@ public class DumpSpecification
     s1.Dump(target);
 
     //THEN
-    XReceived.InOrder(() =>
+    XReceived.Exactly(() =>
     {
       target.Add(RootId, Maybe<NodeId>.Nothing);
       target.Add(group1Id, RootId.Just());
@@ -141,11 +141,9 @@ public class DumpSpecification
     var group1Name = Any.String();
     var group2Name = Any.String();
     var group3Name = Any.String();
-    var device1Name = Any.String();
-    var user1Name = Any.String();
-    var user2Name = Any.String();
     var group1Id = NodeId.Group(group1Name);
     var group2Id = NodeId.Group(group2Name);
+    var group3Id = NodeId.Group(group3Name);
 
     s1.AddGroup(RootId, group1Name);
     s1.AddGroup(group1Id, group2Name);
@@ -155,12 +153,13 @@ public class DumpSpecification
     s1.Dump(target);
 
     //THEN
-    XReceived.InOrder(() =>
+    XReceived.Exactly(() =>
     {
       target.Add(RootId, Maybe<NodeId>.Nothing);
       target.Add(group1Id, RootId.Just());
       target.Add(group2Id, group1Id.Just());
-    }, new FilterAllowingQueries());
+      target.Add(group3Id, group2Id.Just());
+    });
   }
 
   //BUG: groups with groups

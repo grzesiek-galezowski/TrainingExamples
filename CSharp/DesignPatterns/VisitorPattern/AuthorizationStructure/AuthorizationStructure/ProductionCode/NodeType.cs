@@ -2,5 +2,5 @@ namespace AuthorizationStructure.ProductionCode;
 
 public enum NodeType
 {
-    Device, Group, User
+  Device, Group, User
 }
