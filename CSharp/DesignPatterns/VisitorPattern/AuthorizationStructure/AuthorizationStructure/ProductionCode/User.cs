@@ -5,7 +5,7 @@ namespace AuthorizationStructure.ProductionCode;
 
 public class User(NodeId id, NodeId parentId, INode parent) : INode
 {
-  public void Dump(IChangeEventTarget target)
+  public void Dump(IChangeEventsTarget target)
   {
     target.Added(id, parentId.Just());
   }

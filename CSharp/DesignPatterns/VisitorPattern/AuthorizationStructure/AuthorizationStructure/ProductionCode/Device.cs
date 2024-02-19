@@ -5,7 +5,7 @@ namespace AuthorizationStructure.ProductionCode;
 
 public class Device(NodeId nodeId, NodeId parentId, INode node) : INode
 {
-  public void Dump(IChangeEventTarget target)
+  public void Dump(IChangeEventsTarget target)
   {
     target.Added(nodeId, parentId.Just());
   }

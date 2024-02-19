@@ -14,7 +14,7 @@ public class RetrievingIdsForGroupSpecification
     var dev1 = Any.String();
     var dev2 = Any.String();
     var user1 = Any.String();
-    var s = new ProductionCode.AuthorizationStructure(Any.Instance<IChangeEventTarget>());
+    var s = new ProductionCode.AuthorizationStructure(Any.Instance<IChangeEventsTarget>());
     s.AddDevice(RootNodeId, dev1);
     s.AddDevice(RootNodeId, dev2);
     s.AddUser(RootNodeId, user1);
@@ -34,7 +34,7 @@ public class RetrievingIdsForGroupSpecification
     var dev2 = Any.String();
     var user1 = Any.String();
     var group1 = Any.String();
-    var s = new ProductionCode.AuthorizationStructure(Any.Instance<IChangeEventTarget>());
+    var s = new ProductionCode.AuthorizationStructure(Any.Instance<IChangeEventsTarget>());
     s.AddGroup(RootNodeId, group1);
     s.AddDevice(NodeId.Group(group1), dev1);
     s.AddDevice(NodeId.Group(group1), dev2);
@@ -54,7 +54,7 @@ public class RetrievingIdsForGroupSpecification
     var notOwnedDevice = Any.String();
     var user1 = Any.String();
     var group1 = Any.String();
-    var s = new ProductionCode.AuthorizationStructure(Any.Instance<IChangeEventTarget>());
+    var s = new ProductionCode.AuthorizationStructure(Any.Instance<IChangeEventsTarget>());
     s.AddGroup(RootNodeId, group1);
     s.AddDevice(RootNodeId, notOwnedDevice);
     s.AddUser(NodeId.Group(group1), user1);

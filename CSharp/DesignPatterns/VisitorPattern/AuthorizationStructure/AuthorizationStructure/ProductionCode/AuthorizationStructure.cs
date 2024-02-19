@@ -8,11 +8,11 @@ public class AuthorizationStructure
   public static NodeId RootNodeId { get; } = new("Root", NodeType.Group);
   private readonly INode _rootNode;
   private readonly Dictionary<NodeId, INode> _nodesById;
-  private readonly IChangeEventTarget _eventTarget;
+  private readonly IChangeEventsTarget _eventsTarget;
 
-  public AuthorizationStructure(IChangeEventTarget authorizationStructureEventTarget)
+  public AuthorizationStructure(IChangeEventsTarget authorizationStructureEventsTarget)
   {
-    _eventTarget = authorizationStructureEventTarget;
+    _eventsTarget = authorizationStructureEventsTarget;
     _rootNode = new Group(RootNodeId, Maybe<NodeId>.Nothing, new NullNode());
     _nodesById = new Dictionary<NodeId, INode>
     {
@@ -43,18 +43,19 @@ public class AuthorizationStructure
 
   public void Dump()
   {
-    _rootNode.Dump(_eventTarget);
+    _rootNode.Dump(_eventsTarget);
   }
 
   public void DumpStartingFrom(NodeId subtreeRoot)
   {
-    _nodesById[subtreeRoot].Dump(_eventTarget);
+    _nodesById[subtreeRoot].Dump(_eventsTarget);
   }
 
   private void Register(NodeId parentId, NodeId nodeId, INode node)
   {
     _nodesById[nodeId] = node;
     _nodesById[parentId].AddChild(node);
+    _eventsTarget.Added(nodeId, parentId.Just());
   }
 
   public LanguageExt.HashSet<NodeId> RetrieveIdsOfDevicesOwnedByUser(string userName)

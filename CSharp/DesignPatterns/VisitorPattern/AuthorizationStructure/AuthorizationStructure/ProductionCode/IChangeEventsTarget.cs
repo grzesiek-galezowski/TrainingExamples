@@ -2,7 +2,7 @@ namespace AuthorizationStructure.ProductionCode;
 
 //BUG: special root group class?
 
-public interface IChangeEventTarget
+public interface IChangeEventsTarget
 {
   void Added(NodeId nodeId, Maybe<NodeId> parentId);
 }

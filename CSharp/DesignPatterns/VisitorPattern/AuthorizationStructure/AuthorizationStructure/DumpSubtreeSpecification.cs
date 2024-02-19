@@ -15,7 +15,7 @@ public class DumpSubtreeSpecification
     var userNotInSubtree = Any.String();
     var subtreeRoot = Any.String();
     var subtreeUser = Any.String();
-    var target = Substitute.For<IChangeEventTarget>();
+    var target = Substitute.For<IChangeEventsTarget>();
     var s = new ProductionCode.AuthorizationStructure(target);
 
     var subtreeDevice = Any.String();

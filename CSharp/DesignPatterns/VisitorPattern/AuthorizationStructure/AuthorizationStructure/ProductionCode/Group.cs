@@ -8,7 +8,7 @@ public class Group(NodeId id, Maybe<NodeId> parentId, INode node) : INode
 {
   private readonly List<INode> _children = new();
 
-  public void Dump(IChangeEventTarget target)
+  public void Dump(IChangeEventsTarget target)
   {
     target.Added(id, parentId);
     foreach (var child in _children)

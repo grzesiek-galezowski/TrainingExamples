@@ -4,7 +4,7 @@ namespace AuthorizationStructure.ProductionCode;
 
 public class NullNode : INode
 {
-  public void Dump(IChangeEventTarget target)
+  public void Dump(IChangeEventsTarget target)
   {
 
   }
