@@ -1,4 +1,5 @@
 using AuthorizationStructure.ProductionCode;
+using NSubstitute.ClearExtensions;
 
 namespace AuthorizationStructure;
 
@@ -10,20 +11,21 @@ public class DumpSpecification
   public void ShouldDumpSingleDeviceConnectedToRootGroup()
   {
     //GIVEN
-    var s1 = new ProductionCode.AuthorizationStructure();
-    var target = Substitute.For<IDumpTarget>();
+    var target = Substitute.For<IChangeEventTarget>();
+    var s = new ProductionCode.AuthorizationStructure(target);
     var deviceName = Any.String();
 
-    s1.AddDevice(RootId, deviceName);
+    s.AddDevice(RootId, deviceName);
+    target.ClearSubstitute();
 
     //WHEN
-    s1.Dump(target);
+    s.Dump();
 
     //THEN
     XReceived.Exactly(() =>
     {
-      target.Add(RootId, Maybe<NodeId>.Nothing);
-      target.Add(NodeId.Device(deviceName), RootId.Just());
+      target.Added(RootId, Maybe<NodeId>.Nothing);
+      target.Added(NodeId.Device(deviceName), RootId.Just());
     });
   }
 
@@ -31,23 +33,24 @@ public class DumpSpecification
   public void ShouldDumpMultipleDevicesConnectedToRootGroup()
   {
     //GIVEN
-    var s1 = new ProductionCode.AuthorizationStructure();
-    var target = Substitute.For<IDumpTarget>();
+    var target = Substitute.For<IChangeEventTarget>();
+    var s = new ProductionCode.AuthorizationStructure(target);
     var device1Name = Any.String();
     var device2Name = Any.String();
 
-    s1.AddDevice(RootId, device1Name);
-    s1.AddDevice(RootId, device2Name);
+    s.AddDevice(RootId, device1Name);
+    s.AddDevice(RootId, device2Name);
+    target.ClearSubstitute();
 
     //WHEN
-    s1.Dump(target);
+    s.Dump();
 
     //THEN
     XReceived.Exactly(() =>
     {
-      target.Add(RootId, Maybe<NodeId>.Nothing);
-      target.Add(NodeId.Device(device1Name), RootId.Just());
-      target.Add(NodeId.Device(device2Name), RootId.Just());
+      target.Added(RootId, Maybe<NodeId>.Nothing);
+      target.Added(NodeId.Device(device1Name), RootId.Just());
+      target.Added(NodeId.Device(device2Name), RootId.Just());
     });
   }
 
@@ -55,20 +58,21 @@ public class DumpSpecification
   public void ShouldDumpSingleUserConnectedToRootGroup()
   {
     //GIVEN
-    var s1 = new ProductionCode.AuthorizationStructure();
-    var target = Substitute.For<IDumpTarget>();
+    var target = Substitute.For<IChangeEventTarget>();
+    var s = new ProductionCode.AuthorizationStructure(target);
     var user1 = Any.String();
 
-    s1.AddUser(RootId, user1);
+    s.AddUser(RootId, user1);
+    target.ClearSubstitute();
 
     //WHEN
-    s1.Dump(target);
+    s.Dump();
 
     //THEN
     XReceived.Exactly(() =>
     {
-      target.Add(RootId, Maybe<NodeId>.Nothing);
-      target.Add(NodeId.User(user1), RootId.Just());
+      target.Added(RootId, Maybe<NodeId>.Nothing);
+      target.Added(NodeId.User(user1), RootId.Just());
     }, new FilterAllowingQueries());
   }
 
@@ -76,20 +80,21 @@ public class DumpSpecification
   public void ShouldDumpSingleGroupConnectedToRootGroup()
   {
     //GIVEN
-    var s1 = new ProductionCode.AuthorizationStructure();
-    var target = Substitute.For<IDumpTarget>();
+    var target = Substitute.For<IChangeEventTarget>();
+    var s = new ProductionCode.AuthorizationStructure(target);
     var nodeName = Any.String();
 
-    s1.AddGroup(RootId, nodeName);
+    s.AddGroup(RootId, nodeName);
+    target.ClearSubstitute();
 
     //WHEN
-    s1.Dump(target);
+    s.Dump();
 
     //THEN
     XReceived.Exactly(() =>
     {
-      target.Add(RootId, Maybe<NodeId>.Nothing);
-      target.Add(NodeId.Group(nodeName), RootId.Just());
+      target.Added(RootId, Maybe<NodeId>.Nothing);
+      target.Added(NodeId.Group(nodeName), RootId.Just());
     }, new FilterAllowingQueries());
   }
 
@@ -97,8 +102,8 @@ public class DumpSpecification
   public void ShouldDumpMultipleGroupsConnectedToRootGroupWithUsersAndDevices()
   {
     //GIVEN
-    var s1 = new ProductionCode.AuthorizationStructure();
-    var target = Substitute.For<IDumpTarget>();
+    var target = Substitute.For<IChangeEventTarget>();
+    var s = new ProductionCode.AuthorizationStructure(target);
     var group1Name = Any.String();
     var group2Name = Any.String();
     var group3Name = Any.String();
@@ -109,26 +114,27 @@ public class DumpSpecification
     var group2Id = NodeId.Group(group2Name);
     var group3Id = NodeId.Group(group3Name);
 
-    s1.AddGroup(RootId, group1Name);
-    s1.AddGroup(RootId, group2Name);
-    s1.AddGroup(RootId, group3Name);
-    s1.AddDevice(group1Id, device1Name);
-    s1.AddUser(group2Id, user1Name);
-    s1.AddUser(group3Id, user2Name);
+    s.AddGroup(RootId, group1Name);
+    s.AddGroup(RootId, group2Name);
+    s.AddGroup(RootId, group3Name);
+    s.AddDevice(group1Id, device1Name);
+    s.AddUser(group2Id, user1Name);
+    s.AddUser(group3Id, user2Name);
+    target.ClearSubstitute();
 
     //WHEN
-    s1.Dump(target);
+    s.Dump();
 
     //THEN
     XReceived.Exactly(() =>
     {
-      target.Add(RootId, Maybe<NodeId>.Nothing);
-      target.Add(group1Id, RootId.Just());
-      target.Add(NodeId.Device(device1Name), group1Id.Just());
-      target.Add(group2Id, RootId.Just());
-      target.Add(NodeId.User(user1Name), group2Id.Just());
-      target.Add(group3Id, RootId.Just());
-      target.Add(NodeId.User(user2Name), group3Id.Just());
+      target.Added(RootId, Maybe<NodeId>.Nothing);
+      target.Added(group1Id, RootId.Just());
+      target.Added(NodeId.Device(device1Name), group1Id.Just());
+      target.Added(group2Id, RootId.Just());
+      target.Added(NodeId.User(user1Name), group2Id.Just());
+      target.Added(group3Id, RootId.Just());
+      target.Added(NodeId.User(user2Name), group3Id.Just());
     }, new FilterAllowingQueries());
   }
 
@@ -136,8 +142,8 @@ public class DumpSpecification
   public void ShouldDumpMultipleGroupLevels()
   {
     //GIVEN
-    var s1 = new ProductionCode.AuthorizationStructure();
-    var target = Substitute.For<IDumpTarget>();
+    var target = Substitute.For<IChangeEventTarget>();
+    var s = new ProductionCode.AuthorizationStructure(target);
     var group1Name = Any.String();
     var group2Name = Any.String();
     var group3Name = Any.String();
@@ -145,20 +151,21 @@ public class DumpSpecification
     var group2Id = NodeId.Group(group2Name);
     var group3Id = NodeId.Group(group3Name);
 
-    s1.AddGroup(RootId, group1Name);
-    s1.AddGroup(group1Id, group2Name);
-    s1.AddGroup(group2Id, group3Name);
+    s.AddGroup(RootId, group1Name);
+    s.AddGroup(group1Id, group2Name);
+    s.AddGroup(group2Id, group3Name);
+    target.ClearSubstitute();
 
     //WHEN
-    s1.Dump(target);
+    s.Dump();
 
     //THEN
     XReceived.Exactly(() =>
     {
-      target.Add(RootId, Maybe<NodeId>.Nothing);
-      target.Add(group1Id, RootId.Just());
-      target.Add(group2Id, group1Id.Just());
-      target.Add(group3Id, group2Id.Just());
+      target.Added(RootId, Maybe<NodeId>.Nothing);
+      target.Added(group1Id, RootId.Just());
+      target.Added(group2Id, group1Id.Just());
+      target.Added(group3Id, group2Id.Just());
     });
   }
 

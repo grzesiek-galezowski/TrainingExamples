@@ -1,12 +1,10 @@
-using AuthorizationStructure.ProductionCode;
-
-namespace AuthorizationStructure;
+namespace AuthorizationStructure.ProductionCode;
 
 //BUG: special root group class?
 
-public interface IDumpTarget
+public interface IChangeEventTarget
 {
-  void Add(NodeId nodeId, Maybe<NodeId> parentId);
+  void Added(NodeId nodeId, Maybe<NodeId> parentId);
 }
 
 //BUG: dump, add user, add device, add group, send to all devices from ID, listen to notifications, filter??, check authorization

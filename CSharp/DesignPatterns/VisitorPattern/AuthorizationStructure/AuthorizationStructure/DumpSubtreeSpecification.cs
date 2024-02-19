@@ -1,4 +1,5 @@
 using AuthorizationStructure.ProductionCode;
+using NSubstitute.ClearExtensions;
 using static AuthorizationStructure.ProductionCode.AuthorizationStructure;
 
 namespace AuthorizationStructure;
@@ -14,8 +15,8 @@ public class DumpSubtreeSpecification
     var userNotInSubtree = Any.String();
     var subtreeRoot = Any.String();
     var subtreeUser = Any.String();
-    var target = Substitute.For<IDumpTarget>();
-    var s = new ProductionCode.AuthorizationStructure();
+    var target = Substitute.For<IChangeEventTarget>();
+    var s = new ProductionCode.AuthorizationStructure(target);
 
     var subtreeDevice = Any.String();
     s.AddGroup(RootNodeId, groupNotInSubtree);
@@ -24,16 +25,17 @@ public class DumpSubtreeSpecification
     s.AddGroup(NodeId.Group(groupNotInSubtree), subtreeRoot);
     s.AddUser(NodeId.Group(subtreeRoot), subtreeUser);
     s.AddDevice(NodeId.Group(subtreeRoot), subtreeDevice);
-    
+    target.ClearSubstitute();
+
     //WHEN
-    s.DumpStartingFrom(NodeId.Group(subtreeRoot), target);
+    s.DumpStartingFrom(NodeId.Group(subtreeRoot));
 
     //THEN
     XReceived.Exactly(() =>
     {
-      target.Add(NodeId.Group(subtreeRoot), NodeId.Group(groupNotInSubtree).Just());
-      target.Add(NodeId.User(subtreeUser), NodeId.Group(subtreeRoot).Just());
-      target.Add(NodeId.Device(subtreeDevice), NodeId.Group(subtreeRoot).Just());
+      target.Added(NodeId.Group(subtreeRoot), NodeId.Group(groupNotInSubtree).Just());
+      target.Added(NodeId.User(subtreeUser), NodeId.Group(subtreeRoot).Just());
+      target.Added(NodeId.Device(subtreeDevice), NodeId.Group(subtreeRoot).Just());
     });
   }
 

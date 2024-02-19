@@ -8,9 +8,11 @@ public class AuthorizationStructure
   public static NodeId RootNodeId { get; } = new("Root", NodeType.Group);
   private readonly INode _rootNode;
   private readonly Dictionary<NodeId, INode> _nodesById;
+  private readonly IChangeEventTarget _eventTarget;
 
-  public AuthorizationStructure()
+  public AuthorizationStructure(IChangeEventTarget authorizationStructureEventTarget)
   {
+    _eventTarget = authorizationStructureEventTarget;
     _rootNode = new Group(RootNodeId, Maybe<NodeId>.Nothing, new NullNode());
     _nodesById = new Dictionary<NodeId, INode>
     {
@@ -39,9 +41,14 @@ public class AuthorizationStructure
     Register(parentId, nodeId, node);
   }
 
-  public void Dump(IDumpTarget target) //BUG: also dumping a subtree (e.g. from a specific user)
+  public void Dump()
   {
-    _rootNode.Dump(target);
+    _rootNode.Dump(_eventTarget);
+  }
+
+  public void DumpStartingFrom(NodeId subtreeRoot)
+  {
+    _nodesById[subtreeRoot].Dump(_eventTarget);
   }
 
   private void Register(NodeId parentId, NodeId nodeId, INode node)
@@ -53,11 +60,6 @@ public class AuthorizationStructure
   public LanguageExt.HashSet<NodeId> RetrieveIdsOfDevicesOwnedByUser(string userName)
   {
     return _nodesById[NodeId.User(userName)].GetAuthorizedDeviceIds();
-  }
-
-  public void DumpStartingFrom(NodeId subtreeRoot, IDumpTarget target)
-  {
-    _nodesById[subtreeRoot].Dump(target);
   }
 
   public LanguageExt.HashSet<NodeId> RetrieveIdsOfDevicesBelongingToGroup(string name)
