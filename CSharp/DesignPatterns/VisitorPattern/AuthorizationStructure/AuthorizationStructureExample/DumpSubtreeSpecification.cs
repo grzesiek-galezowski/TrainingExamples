@@ -1,8 +1,8 @@
-using AuthorizationStructure.ProductionCode;
+using AuthorizationStructureExample.ProductionCode;
 using NSubstitute.ClearExtensions;
-using static AuthorizationStructure.ProductionCode.AuthorizationStructure;
+using static AuthorizationStructureExample.ProductionCode.AuthorizationStructure;
 
-namespace AuthorizationStructure;
+namespace AuthorizationStructureExample;
 
 public class DumpSubtreeSpecification
 {
@@ -16,7 +16,7 @@ public class DumpSubtreeSpecification
     var subtreeRoot = Any.String();
     var subtreeUser = Any.String();
     var target = Substitute.For<IChangeEventsTarget>();
-    var s = new ProductionCode.AuthorizationStructure(target);
+    var s = new AuthorizationStructure(target);
 
     var subtreeDevice = Any.String();
     s.AddGroup(RootNodeId, groupNotInSubtree);

@@ -1,12 +1,12 @@
-using AuthorizationStructure.ProductionCode;
+using AuthorizationStructureExample.ProductionCode;
 using FluentAssertions;
 using LanguageExt;
 
-namespace AuthorizationStructure;
+namespace AuthorizationStructureExample;
 
 public class RetrievingIdsForUserSpecification
 {
-  private NodeId RootId => ProductionCode.AuthorizationStructure.RootNodeId;
+  private NodeId RootId => AuthorizationStructure.RootNodeId;
 
   [Test]
   public void ShouldAllowGettingAllDevicesForUserFromTheSameLevel()
@@ -15,7 +15,7 @@ public class RetrievingIdsForUserSpecification
     var dev1 = Any.String();
     var dev2 = Any.String();
     var user1 = Any.String();
-    var s = new ProductionCode.AuthorizationStructure(Any.Instance<IChangeEventsTarget>());
+    var s = new AuthorizationStructure(Any.Instance<IChangeEventsTarget>());
     s.AddDevice(RootId, dev1);
     s.AddDevice(RootId, dev2);
     s.AddUser(RootId, user1);
@@ -35,7 +35,7 @@ public class RetrievingIdsForUserSpecification
     var dev2 = Any.String();
     var user1 = Any.String();
     var group1 = Any.String();
-    var s = new ProductionCode.AuthorizationStructure(Any.Instance<IChangeEventsTarget>());
+    var s = new AuthorizationStructure(Any.Instance<IChangeEventsTarget>());
     s.AddGroup(RootId, group1);
     s.AddDevice(NodeId.Group(group1), dev1);
     s.AddDevice(NodeId.Group(group1), dev2);
@@ -55,7 +55,7 @@ public class RetrievingIdsForUserSpecification
     var notOwnedDevice = Any.String();
     var user1 = Any.String();
     var group1 = Any.String();
-    var s = new ProductionCode.AuthorizationStructure(Any.Instance<IChangeEventsTarget>());
+    var s = new AuthorizationStructure(Any.Instance<IChangeEventsTarget>());
     s.AddGroup(RootId, group1);
     s.AddDevice(RootId, notOwnedDevice);
     s.AddUser(NodeId.Group(group1), user1);

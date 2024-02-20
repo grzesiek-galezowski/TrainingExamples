@@ -1,7 +1,7 @@
 using System;
 using LanguageExt;
 
-namespace AuthorizationStructure.ProductionCode;
+namespace AuthorizationStructureExample.ProductionCode;
 
 public class Device(NodeId nodeId, NodeId parentId, INode node) : INode
 {

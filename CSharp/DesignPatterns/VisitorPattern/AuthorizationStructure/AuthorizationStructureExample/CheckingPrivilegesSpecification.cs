@@ -1,6 +1,6 @@
-using AuthorizationStructure.ProductionCode;
+using AuthorizationStructureExample.ProductionCode;
 
-namespace AuthorizationStructure;
+namespace AuthorizationStructureExample;
 
 public class CheckingPrivilegesSpecification
 {
@@ -8,7 +8,7 @@ public class CheckingPrivilegesSpecification
   public void ShouldReturnTrueWhenGroupContainsADevice()
   {
     //GIVEN
-    var s = new ProductionCode.AuthorizationStructure(Any.Instance<IChangeEventsTarget>());
+    var s = new AuthorizationStructure(Any.Instance<IChangeEventsTarget>());
     //WHEN
 
     //THEN

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using LanguageExt;
 
-namespace AuthorizationStructure.ProductionCode;
+namespace AuthorizationStructureExample.ProductionCode;
 
 public class Group(NodeId id, Maybe<NodeId> parentId, INode node) : INode
 {

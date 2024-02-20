@@ -1,4 +1,4 @@
-namespace AuthorizationStructure.ProductionCode;
+namespace AuthorizationStructureExample.ProductionCode;
 
 public interface INode
 {

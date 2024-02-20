@@ -1,18 +1,17 @@
-using System;
 using LanguageExt;
 
-namespace AuthorizationStructure.ProductionCode;
+namespace AuthorizationStructureExample.ProductionCode;
 
-public class User(NodeId id, NodeId parentId, INode parent) : INode
+public class NullNode : INode
 {
   public void Dump(IChangeEventsTarget target)
   {
-    target.Added(id, parentId.Just());
+
   }
 
   public void AddChild(INode node)
   {
-    throw new NotImplementedException();
+
   }
 
   public HashSet<NodeId> GetOwnedDeviceIds()
@@ -22,6 +21,6 @@ public class User(NodeId id, NodeId parentId, INode parent) : INode
 
   public HashSet<NodeId> GetAuthorizedDeviceIds()
   {
-    return parent.GetOwnedDeviceIds();
+    throw new System.NotImplementedException();
   }
 }

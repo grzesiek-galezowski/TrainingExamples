@@ -1,18 +1,18 @@
-using AuthorizationStructure.ProductionCode;
+using AuthorizationStructureExample.ProductionCode;
 using NSubstitute.ClearExtensions;
 
-namespace AuthorizationStructure;
+namespace AuthorizationStructureExample;
 
 public class DumpSpecification
 {
-  private NodeId RootId => ProductionCode.AuthorizationStructure.RootNodeId;
+  private NodeId RootId => AuthorizationStructure.RootNodeId;
 
   [Test]
   public void ShouldDumpSingleDeviceConnectedToRootGroup()
   {
     //GIVEN
     var target = Substitute.For<IChangeEventsTarget>();
-    var s = new ProductionCode.AuthorizationStructure(target);
+    var s = new AuthorizationStructure(target);
     var deviceName = Any.String();
 
     s.AddDevice(RootId, deviceName);
@@ -34,7 +34,7 @@ public class DumpSpecification
   {
     //GIVEN
     var target = Substitute.For<IChangeEventsTarget>();
-    var s = new ProductionCode.AuthorizationStructure(target);
+    var s = new AuthorizationStructure(target);
     var device1Name = Any.String();
     var device2Name = Any.String();
 
@@ -59,7 +59,7 @@ public class DumpSpecification
   {
     //GIVEN
     var target = Substitute.For<IChangeEventsTarget>();
-    var s = new ProductionCode.AuthorizationStructure(target);
+    var s = new AuthorizationStructure(target);
     var user1 = Any.String();
 
     s.AddUser(RootId, user1);
@@ -81,7 +81,7 @@ public class DumpSpecification
   {
     //GIVEN
     var target = Substitute.For<IChangeEventsTarget>();
-    var s = new ProductionCode.AuthorizationStructure(target);
+    var s = new AuthorizationStructure(target);
     var nodeName = Any.String();
 
     s.AddGroup(RootId, nodeName);
@@ -103,7 +103,7 @@ public class DumpSpecification
   {
     //GIVEN
     var target = Substitute.For<IChangeEventsTarget>();
-    var s = new ProductionCode.AuthorizationStructure(target);
+    var s = new AuthorizationStructure(target);
     var group1Name = Any.String();
     var group2Name = Any.String();
     var group3Name = Any.String();
@@ -143,7 +143,7 @@ public class DumpSpecification
   {
     //GIVEN
     var target = Substitute.For<IChangeEventsTarget>();
-    var s = new ProductionCode.AuthorizationStructure(target);
+    var s = new AuthorizationStructure(target);
     var group1Name = Any.String();
     var group2Name = Any.String();
     var group3Name = Any.String();

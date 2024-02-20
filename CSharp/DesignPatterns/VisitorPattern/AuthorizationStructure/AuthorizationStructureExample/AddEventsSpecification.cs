@@ -1,7 +1,7 @@
-using AuthorizationStructure.ProductionCode;
-using static AuthorizationStructure.ProductionCode.AuthorizationStructure;
+using AuthorizationStructureExample.ProductionCode;
+using static AuthorizationStructureExample.ProductionCode.AuthorizationStructure;
 
-namespace AuthorizationStructure;
+namespace AuthorizationStructureExample;
 
 public class AddEventsSpecification
 {
@@ -10,7 +10,7 @@ public class AddEventsSpecification
   {
     //GIVEN
     var target = Substitute.For<IChangeEventsTarget>();
-    var s = new ProductionCode.AuthorizationStructure(target);
+    var s = new AuthorizationStructure(target);
     var deviceName = Any.String();
 
     //WHEN
@@ -25,7 +25,7 @@ public class AddEventsSpecification
   {
     //GIVEN
     var target = Substitute.For<IChangeEventsTarget>();
-    var s = new ProductionCode.AuthorizationStructure(target);
+    var s = new AuthorizationStructure(target);
     var device1Name = Any.String();
     var device2Name = Any.String();
 
@@ -46,7 +46,7 @@ public class AddEventsSpecification
   {
     //GIVEN
     var target = Substitute.For<IChangeEventsTarget>();
-    var s = new ProductionCode.AuthorizationStructure(target);
+    var s = new AuthorizationStructure(target);
     var user1 = Any.String();
 
     //WHEN
@@ -61,7 +61,7 @@ public class AddEventsSpecification
   {
     //GIVEN
     var target = Substitute.For<IChangeEventsTarget>();
-    var s = new ProductionCode.AuthorizationStructure(target);
+    var s = new AuthorizationStructure(target);
     var nodeName = Any.String();
 
     //WHEN
@@ -76,7 +76,7 @@ public class AddEventsSpecification
   {
     //GIVEN
     var target = Substitute.For<IChangeEventsTarget>();
-    var s = new ProductionCode.AuthorizationStructure(target);
+    var s = new AuthorizationStructure(target);
     var group1Name = Any.String();
     var group2Name = Any.String();
     var group3Name = Any.String();
@@ -112,7 +112,7 @@ public class AddEventsSpecification
   {
     //GIVEN
     var target = Substitute.For<IChangeEventsTarget>();
-    var s = new ProductionCode.AuthorizationStructure(target);
+    var s = new AuthorizationStructure(target);
     var group1Name = Any.String();
     var group2Name = Any.String();
     var group3Name = Any.String();

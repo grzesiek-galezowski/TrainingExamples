@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using LanguageExt;
 
-namespace AuthorizationStructure.ProductionCode;
+namespace AuthorizationStructureExample.ProductionCode;
 
 public class AuthorizationStructure
 {
