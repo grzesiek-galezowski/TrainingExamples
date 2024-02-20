@@ -5,7 +5,7 @@ namespace AuthorizationStructureExample.ProductionCode;
 public interface INode
 {
   void Dump(IChangeEventsTarget target);
-  void AddChild(INode node); //BUG: candidate for visitor
+  void AddChild(INode node);
   LanguageExt.HashSet<NodeId> GetOwnedDeviceIds();
   LanguageExt.HashSet<NodeId> GetAuthorizedDeviceIds();
   bool Contains(NodeId searchedNodeId);

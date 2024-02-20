@@ -134,6 +134,5 @@ public class AddEventsSpecification
     });
   }
 
-  //BUG: errors, e.g. nonexistent parent, nonexistent id, adding the same group again in the same or different place, adding a child to a device or to a user etc.
   //BUG: filter by network parameters (possible only for devices)
 }

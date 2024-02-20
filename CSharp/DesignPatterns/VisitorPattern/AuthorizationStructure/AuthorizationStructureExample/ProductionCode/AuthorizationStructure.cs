@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using AuthorizationStructureExample.ProductionCode.Nodes;
 
 namespace AuthorizationStructureExample.ProductionCode;
 
@@ -21,26 +23,47 @@ public class AuthorizationStructure
 
   public void AddDevice(string parentGroupName, string name)
   {
-    var nodeId = NodeId.Device(name);
-    var parentId = NodeId.Group(parentGroupName);
-    var node = new Device(nodeId, parentId, _nodesById[parentId]);
-    Register(parentId, nodeId, node);
+    try
+    {
+      var nodeId = NodeId.Device(name);
+      var parentId = NodeId.Group(parentGroupName);
+      var node = new Device(nodeId, parentId, _nodesById[parentId]);
+      Register(parentId, nodeId, node);
+    }
+    catch (KeyNotFoundException e)
+    {
+      throw new InvalidOperationException("parent id not found", e);
+    }
   }
 
-  public void AddUser(string parentGroupName, string name) //BUG: lower and uppercase allowed in name
+  public void AddUser(string parentGroupName, string name)
   {
-    var nodeId = NodeId.User(name);
-    var parentId = NodeId.Group(parentGroupName);
-    var node = new User(nodeId, parentId, _nodesById[parentId]);
-    Register(parentId, nodeId, node);
+    try
+    {
+      var nodeId = NodeId.User(name);
+      var parentId = NodeId.Group(parentGroupName);
+      var node = new User(nodeId, parentId, _nodesById[parentId]);
+      Register(parentId, nodeId, node);
+    }
+    catch (KeyNotFoundException e)
+    {
+      throw new InvalidOperationException("parent id not found", e);
+    }
   }
 
   public void AddGroup(string parentGroupName, string name)
   {
-    var nodeId = NodeId.Group(name);
-    var parentId = NodeId.Group(parentGroupName);
-    var node = new Group(nodeId, parentId.Just(), _nodesById[parentId]);
-    Register(parentId, nodeId, node);
+    try
+    {
+      var nodeId = NodeId.Group(name);
+      var parentId = NodeId.Group(parentGroupName);
+      var node = new Group(nodeId, parentId.Just(), _nodesById[parentId]);
+      Register(parentId, nodeId, node);
+    }
+    catch (KeyNotFoundException e)
+    {
+      throw new InvalidOperationException("parent id not found", e);
+    }
   }
 
   public void Dump()
@@ -55,7 +78,10 @@ public class AuthorizationStructure
 
   private void Register(NodeId parentId, NodeId nodeId, INode node)
   {
-    _nodesById[nodeId] = node;
+    if (!_nodesById.TryAdd(nodeId, node))
+    {
+      throw new InvalidOperationException($"{nodeId} already exists");
+    }
     _nodesById[parentId].AddChild(node);
     _eventsTarget.Added(nodeId, parentId.Just());
   }
@@ -82,6 +108,10 @@ public class AuthorizationStructure
 
   public void Remove(NodeId nodeId)
   {
+    if (nodeId == RootNodeId)
+    {
+      throw new InvalidOperationException("Root node cannot be removed");
+    }
     _nodesById[nodeId].UnplugFromParent();
     _nodesById[nodeId].RemoveFrom(_nodesById, _eventsTarget);
   }

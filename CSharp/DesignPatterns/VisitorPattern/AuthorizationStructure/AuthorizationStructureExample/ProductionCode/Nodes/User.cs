@@ -1,17 +1,18 @@
+using System;
 using System.Collections.Generic;
 
-namespace AuthorizationStructureExample.ProductionCode;
+namespace AuthorizationStructureExample.ProductionCode.Nodes;
 
-public class NullNode : INode
+public class User(NodeId id, NodeId parentId, INode parent) : INode
 {
   public void Dump(IChangeEventsTarget target)
   {
-
+    target.Added(id, parentId.Just());
   }
 
   public void AddChild(INode node)
   {
-
+    throw new NotSupportedException("Users do not have child nodes");
   }
 
   public LanguageExt.HashSet<NodeId> GetOwnedDeviceIds()
@@ -21,31 +22,32 @@ public class NullNode : INode
 
   public LanguageExt.HashSet<NodeId> GetAuthorizedDeviceIds()
   {
-    throw new System.NotImplementedException();
+    return parent.GetOwnedDeviceIds();
   }
 
   public bool Contains(NodeId searchedNodeId)
   {
-    throw new System.NotImplementedException();
+    return id == searchedNodeId; //bug
   }
 
   public bool Owns(NodeId ownedId)
   {
-    throw new System.NotImplementedException();
+    return parent.Contains(ownedId);
   }
 
   public void RemoveFrom(Dictionary<NodeId, INode> nodesById, IChangeEventsTarget eventsTarget)
   {
-    throw new System.NotImplementedException();
+    nodesById.Remove(id);
+    eventsTarget.Removed(id, parentId.Just());
   }
 
   public void RemoveChild(INode child)
   {
-    throw new System.NotImplementedException();
+    throw new NotSupportedException("Devices do not have child nodes");
   }
 
   public void UnplugFromParent()
   {
-    throw new System.NotImplementedException();
+    parent.RemoveChild(this);
   }
 }

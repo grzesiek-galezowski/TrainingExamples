@@ -1,8 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using LanguageExt;
 
-namespace AuthorizationStructureExample.ProductionCode;
+namespace AuthorizationStructureExample.ProductionCode.Nodes;
 
 public class Group(NodeId id, Maybe<NodeId> parentId, INode parent) : INode
 {
@@ -29,7 +30,7 @@ public class Group(NodeId id, Maybe<NodeId> parentId, INode parent) : INode
 
   public LanguageExt.HashSet<NodeId> GetAuthorizedDeviceIds()
   {
-    throw new System.NotImplementedException();
+    throw new NotSupportedException("Groups are not authorized to use devices");
   }
 
   public bool Contains(NodeId searchedNodeId)
@@ -39,7 +40,7 @@ public class Group(NodeId id, Maybe<NodeId> parentId, INode parent) : INode
 
   public bool Owns(NodeId ownedId)
   {
-    return false;
+    throw new NotSupportedException("Groups cannot own anything");
   }
 
   public void RemoveFrom(Dictionary<NodeId, INode> nodesById, IChangeEventsTarget eventsTarget)

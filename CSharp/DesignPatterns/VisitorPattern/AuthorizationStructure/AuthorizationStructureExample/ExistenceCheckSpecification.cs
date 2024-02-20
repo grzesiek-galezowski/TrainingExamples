@@ -1,6 +1,5 @@
 using AuthorizationStructureExample.ProductionCode;
 using FluentAssertions;
-using TddXt.AnyRoot;
 using static AuthorizationStructureExample.ProductionCode.AuthorizationStructure;
 
 namespace AuthorizationStructureExample;
@@ -71,6 +70,4 @@ public class ExistenceCheckSpecification
     resultForUser1.Should().BeFalse();
     resultForDevice1.Should().BeFalse();
   }
-
-  //BUG: deleting root node should not be possible
 }

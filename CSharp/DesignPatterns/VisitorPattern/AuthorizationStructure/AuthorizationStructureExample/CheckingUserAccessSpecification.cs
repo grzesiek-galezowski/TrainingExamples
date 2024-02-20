@@ -1,11 +1,9 @@
 using AuthorizationStructureExample.ProductionCode;
 using FluentAssertions;
-using TddXt.AnyRoot;
 using static AuthorizationStructureExample.ProductionCode.AuthorizationStructure;
 
 namespace AuthorizationStructureExample;
 
-//BUG: consider changing these methods so that the owner/container is passed as a string and NodeId is used inside
 public class CheckingUserAccessSpecification
 {
   [Test]

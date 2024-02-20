@@ -68,5 +68,4 @@ public class RetrievingIdsForUserSpecification
   }
 
   //BUG: what if id doesn't exist?
-  //BUG: what if it's an id of another resource?
 }

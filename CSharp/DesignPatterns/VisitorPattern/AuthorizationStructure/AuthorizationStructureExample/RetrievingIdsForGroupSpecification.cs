@@ -67,5 +67,4 @@ public class RetrievingIdsForGroupSpecification
   }
 
   //BUG: what if id doesn't exist?
-  //BUG: what if it's an id of another resource?
 }

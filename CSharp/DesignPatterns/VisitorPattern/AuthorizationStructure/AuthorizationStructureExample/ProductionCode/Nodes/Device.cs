@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using LanguageExt;
 
-namespace AuthorizationStructureExample.ProductionCode;
+namespace AuthorizationStructureExample.ProductionCode.Nodes;
 
 public class Device(NodeId id, NodeId parentId, INode parent) : INode
 {
@@ -13,7 +13,7 @@ public class Device(NodeId id, NodeId parentId, INode parent) : INode
 
   public void AddChild(INode node)
   {
-    throw new NotImplementedException(); //BUG:
+    throw new NotSupportedException("Devices do not have child nodes");
   }
 
   public LanguageExt.HashSet<NodeId> GetOwnedDeviceIds()
@@ -23,7 +23,7 @@ public class Device(NodeId id, NodeId parentId, INode parent) : INode
 
   public LanguageExt.HashSet<NodeId> GetAuthorizedDeviceIds()
   {
-    throw new NotImplementedException();
+    throw new NotSupportedException("Devices are not authorized to use devices");
   }
 
   public bool Contains(NodeId searchedNodeId)
@@ -33,7 +33,7 @@ public class Device(NodeId id, NodeId parentId, INode parent) : INode
 
   public bool Owns(NodeId ownedId)
   {
-    return false;
+    throw new NotSupportedException("Devices cannot own anything");
   }
 
   public void RemoveFrom(Dictionary<NodeId, INode> nodesById, IChangeEventsTarget eventsTarget)
@@ -44,7 +44,7 @@ public class Device(NodeId id, NodeId parentId, INode parent) : INode
 
   public void RemoveChild(INode child)
   {
-    throw new NotImplementedException();
+    throw new NotSupportedException("Devices do not have child nodes");
   }
 
   public void UnplugFromParent()
