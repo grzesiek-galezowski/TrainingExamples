@@ -1,4 +1,4 @@
-using LanguageExt;
+using System.Collections.Generic;
 
 namespace AuthorizationStructureExample.ProductionCode;
 
@@ -14,12 +14,37 @@ public class NullNode : INode
 
   }
 
-  public HashSet<NodeId> GetOwnedDeviceIds()
+  public LanguageExt.HashSet<NodeId> GetOwnedDeviceIds()
   {
-    return HashSet<NodeId>.Empty;
+    return LanguageExt.HashSet<NodeId>.Empty;
   }
 
-  public HashSet<NodeId> GetAuthorizedDeviceIds()
+  public LanguageExt.HashSet<NodeId> GetAuthorizedDeviceIds()
+  {
+    throw new System.NotImplementedException();
+  }
+
+  public bool Contains(NodeId searchedNodeId)
+  {
+    throw new System.NotImplementedException();
+  }
+
+  public bool Owns(NodeId ownedId)
+  {
+    throw new System.NotImplementedException();
+  }
+
+  public void RemoveFrom(Dictionary<NodeId, INode> nodesById, IChangeEventsTarget eventsTarget)
+  {
+    throw new System.NotImplementedException();
+  }
+
+  public void RemoveChild(INode child)
+  {
+    throw new System.NotImplementedException();
+  }
+
+  public void UnplugFromParent()
   {
     throw new System.NotImplementedException();
   }

@@ -1,36 +1,32 @@
 using AuthorizationStructureExample.ProductionCode;
 using NSubstitute.ClearExtensions;
+using static AuthorizationStructureExample.ProductionCode.AuthorizationStructure;
 
 namespace AuthorizationStructureExample;
 
-public class DumpSpecification
+//BUG: add final removals and multiple instances for devices later
+public class RemovalEventsSpecification
 {
-  private NodeId RootId => AuthorizationStructure.RootNodeId;
-
   [Test]
-  public void ShouldDumpSingleDeviceConnectedToRootGroup()
+  public void ShouldGenerateDeviceRemovedEvent()
   {
     //GIVEN
     var target = Substitute.For<IChangeEventsTarget>();
     var s = new AuthorizationStructure(target);
     var deviceName = Any.String();
 
-    s.AddDevice(RootId.Name, deviceName);
-    target.ClearSubstitute();
+    s.AddDevice(RootNodeId.Name, deviceName);
+    target.ClearReceivedCalls();
 
     //WHEN
-    s.Dump();
+    s.Remove(NodeId.Device(deviceName));
 
     //THEN
-    XReceived.Exactly(() =>
-    {
-      target.Added(RootId, Maybe<NodeId>.Nothing);
-      target.Added(NodeId.Device(deviceName), RootId.Just());
-    });
+    target.ReceivedOnly(1).Removed(NodeId.Device(deviceName), RootNodeId.Just());
   }
 
   [Test]
-  public void ShouldDumpMultipleDevicesConnectedToRootGroup()
+  public void ShouldGenerateMultipleDeviceRemovedEventsInOrder()
   {
     //GIVEN
     var target = Substitute.For<IChangeEventsTarget>();
@@ -38,68 +34,55 @@ public class DumpSpecification
     var device1Name = Any.String();
     var device2Name = Any.String();
 
-    s.AddDevice(RootId.Name, device1Name);
-    s.AddDevice(RootId.Name, device2Name);
-    target.ClearSubstitute();
-
     //WHEN
-    s.Dump();
+    s.AddDevice(RootNodeId.Name, device1Name);
+    s.AddDevice(RootNodeId.Name, device2Name);
+    target.ClearSubstitute();
+    s.Remove(NodeId.Device(device1Name));
+    s.Remove(NodeId.Device(device2Name));
 
     //THEN
     XReceived.Exactly(() =>
     {
-      target.Added(RootId, Maybe<NodeId>.Nothing);
-      target.Added(NodeId.Device(device1Name), RootId.Just());
-      target.Added(NodeId.Device(device2Name), RootId.Just());
+      target.Removed(NodeId.Device(device1Name), RootNodeId.Just());
+      target.Removed(NodeId.Device(device2Name), RootNodeId.Just());
     });
   }
 
   [Test]
-  public void ShouldDumpSingleUserConnectedToRootGroup()
+  public void ShouldGenerateUserRemovedEvent()
   {
     //GIVEN
     var target = Substitute.For<IChangeEventsTarget>();
     var s = new AuthorizationStructure(target);
     var user1 = Any.String();
 
-    s.AddUser(RootId.Name, user1);
-    target.ClearSubstitute();
-
     //WHEN
-    s.Dump();
+    s.AddUser(RootNodeId.Name, user1);
+    target.ClearSubstitute();
+    s.Remove(NodeId.User(user1));
 
     //THEN
-    XReceived.Exactly(() =>
-    {
-      target.Added(RootId, Maybe<NodeId>.Nothing);
-      target.Added(NodeId.User(user1), RootId.Just());
-    });
+    target.ReceivedOnly(1).Removed(NodeId.User(user1), RootNodeId.Just());
   }
 
   [Test]
-  public void ShouldDumpSingleGroupConnectedToRootGroup()
+  public void ShouldGenerateGroupAddedEvent()
   {
     //GIVEN
     var target = Substitute.For<IChangeEventsTarget>();
     var s = new AuthorizationStructure(target);
     var nodeName = Any.String();
 
-    s.AddGroup(RootId.Name, nodeName);
-    target.ClearSubstitute();
-
     //WHEN
-    s.Dump();
+    s.AddGroup(RootNodeId.Name, nodeName);
 
     //THEN
-    XReceived.Exactly(() =>
-    {
-      target.Added(RootId, Maybe<NodeId>.Nothing);
-      target.Added(NodeId.Group(nodeName), RootId.Just());
-    });
+    target.ReceivedOnly(1).Added(NodeId.Group(nodeName), RootNodeId.Just());
   }
 
   [Test]
-  public void ShouldDumpMultipleGroupsConnectedToRootGroupWithUsersAndDevices()
+  public void ShouldGenerateRemovedEventsForSubgroupsContainingDevicesAndUsers()
   {
     //GIVEN
     var target = Substitute.For<IChangeEventsTarget>();
@@ -114,32 +97,30 @@ public class DumpSpecification
     var group2Id = NodeId.Group(group2Name);
     var group3Id = NodeId.Group(group3Name);
 
-    s.AddGroup(RootId.Name, group1Name);
-    s.AddGroup(RootId.Name, group2Name);
-    s.AddGroup(RootId.Name, group3Name);
+    //WHEN
+    s.AddGroup(RootNodeId.Name, group1Name);
+    s.AddGroup(group1Name, group2Name);
+    s.AddGroup(group2Name, group3Name);
     s.AddDevice(group1Name, device1Name);
     s.AddUser(group2Name, user1Name);
     s.AddUser(group3Name, user2Name);
     target.ClearSubstitute();
-
-    //WHEN
-    s.Dump();
+    s.Remove(NodeId.Group(group1Name));
 
     //THEN
     XReceived.Exactly(() =>
     {
-      target.Added(RootId, Maybe<NodeId>.Nothing);
-      target.Added(group1Id, RootId.Just());
-      target.Added(NodeId.Device(device1Name), group1Id.Just());
-      target.Added(group2Id, RootId.Just());
-      target.Added(NodeId.User(user1Name), group2Id.Just());
-      target.Added(group3Id, RootId.Just());
-      target.Added(NodeId.User(user2Name), group3Id.Just());
+      target.Removed(group1Id, RootNodeId.Just());
+      target.Removed(group2Id, NodeId.Group(group1Name).Just());
+      target.Removed(group3Id, NodeId.Group(group2Name).Just());
+      target.Removed(NodeId.User(user2Name), group3Id.Just());
+      target.Removed(NodeId.User(user1Name), group2Id.Just());
+      target.Removed(NodeId.Device(device1Name), group1Id.Just());
     });
   }
 
   [Test]
-  public void ShouldDumpMultipleGroupLevels()
+  public void ShouldGenerateAddedEventsForNestedGroups()
   {
     //GIVEN
     var target = Substitute.For<IChangeEventsTarget>();
@@ -151,25 +132,19 @@ public class DumpSpecification
     var group2Id = NodeId.Group(group2Name);
     var group3Id = NodeId.Group(group3Name);
 
-    s.AddGroup(RootId.Name, group1Name);
+    //WHEN
+    s.AddGroup(RootNodeId.Name, group1Name);
     s.AddGroup(group1Name, group2Name);
     s.AddGroup(group2Name, group3Name);
-    target.ClearSubstitute();
-
-    //WHEN
-    s.Dump();
 
     //THEN
     XReceived.Exactly(() =>
     {
-      target.Added(RootId, Maybe<NodeId>.Nothing);
-      target.Added(group1Id, RootId.Just());
+      target.Added(group1Id, RootNodeId.Just());
       target.Added(group2Id, group1Id.Just());
       target.Added(group3Id, group2Id.Just());
     });
   }
-  //BUG: dump after removals
-  //BUG: groups with groups
 
   //BUG: errors, e.g. nonexistent parent, nonexistent id, adding the same group again in the same or different place, adding a child to a device or to a user etc.
   //BUG: filter by network parameters (possible only for devices)

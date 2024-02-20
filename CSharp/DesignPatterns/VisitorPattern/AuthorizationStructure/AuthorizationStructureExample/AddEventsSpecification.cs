@@ -14,7 +14,7 @@ public class AddEventsSpecification
     var deviceName = Any.String();
 
     //WHEN
-    s.AddDevice(RootNodeId, deviceName);
+    s.AddDevice(RootNodeId.Name, deviceName);
 
     //THEN
     target.ReceivedOnly(1).Added(NodeId.Device(deviceName), RootNodeId.Just());
@@ -30,8 +30,8 @@ public class AddEventsSpecification
     var device2Name = Any.String();
 
     //WHEN
-    s.AddDevice(RootNodeId, device1Name);
-    s.AddDevice(RootNodeId, device2Name);
+    s.AddDevice(RootNodeId.Name, device1Name);
+    s.AddDevice(RootNodeId.Name, device2Name);
 
     //THEN
     XReceived.Exactly(() =>
@@ -50,7 +50,7 @@ public class AddEventsSpecification
     var user1 = Any.String();
 
     //WHEN
-    s.AddUser(RootNodeId, user1);
+    s.AddUser(RootNodeId.Name, user1);
 
     //THEN
     target.ReceivedOnly(1).Added(NodeId.User(user1), RootNodeId.Just());
@@ -65,7 +65,7 @@ public class AddEventsSpecification
     var nodeName = Any.String();
 
     //WHEN
-    s.AddGroup(RootNodeId, nodeName);
+    s.AddGroup(RootNodeId.Name, nodeName);
 
     //THEN
     target.ReceivedOnly(1).Added(NodeId.Group(nodeName), RootNodeId.Just());
@@ -88,12 +88,12 @@ public class AddEventsSpecification
     var group3Id = NodeId.Group(group3Name);
 
     //WHEN
-    s.AddGroup(RootNodeId, group1Name);
-    s.AddGroup(RootNodeId, group2Name);
-    s.AddGroup(RootNodeId, group3Name);
-    s.AddDevice(group1Id, device1Name);
-    s.AddUser(group2Id, user1Name);
-    s.AddUser(group3Id, user2Name);
+    s.AddGroup(RootNodeId.Name, group1Name);
+    s.AddGroup(RootNodeId.Name, group2Name);
+    s.AddGroup(RootNodeId.Name, group3Name);
+    s.AddDevice(group1Name, device1Name);
+    s.AddUser(group2Name, user1Name);
+    s.AddUser(group3Name, user2Name);
 
     //THEN
     XReceived.Exactly(() =>
@@ -121,9 +121,9 @@ public class AddEventsSpecification
     var group3Id = NodeId.Group(group3Name);
 
     //WHEN
-    s.AddGroup(RootNodeId, group1Name);
-    s.AddGroup(group1Id, group2Name);
-    s.AddGroup(group2Id, group3Name);
+    s.AddGroup(RootNodeId.Name, group1Name);
+    s.AddGroup(group1Name, group2Name);
+    s.AddGroup(group2Name, group3Name);
 
     //THEN
     XReceived.Exactly(() =>

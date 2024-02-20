@@ -1,13 +1,14 @@
 using System;
+using System.Collections.Generic;
 using LanguageExt;
 
 namespace AuthorizationStructureExample.ProductionCode;
 
-public class Device(NodeId nodeId, NodeId parentId, INode node) : INode
+public class Device(NodeId id, NodeId parentId, INode parent) : INode
 {
   public void Dump(IChangeEventsTarget target)
   {
-    target.Added(nodeId, parentId.Just());
+    target.Added(id, parentId.Just());
   }
 
   public void AddChild(INode node)
@@ -15,14 +16,40 @@ public class Device(NodeId nodeId, NodeId parentId, INode node) : INode
     throw new NotImplementedException(); //BUG:
   }
 
-  public HashSet<NodeId> GetOwnedDeviceIds()
+  public LanguageExt.HashSet<NodeId> GetOwnedDeviceIds()
   {
-    return HashSet.createRange([nodeId]);
+    return HashSet.createRange([id]);
   }
 
-  public HashSet<NodeId> GetAuthorizedDeviceIds()
+  public LanguageExt.HashSet<NodeId> GetAuthorizedDeviceIds()
   {
     throw new NotImplementedException();
+  }
+
+  public bool Contains(NodeId searchedNodeId)
+  {
+    return id == searchedNodeId;
+  }
+
+  public bool Owns(NodeId ownedId)
+  {
+    return false;
+  }
+
+  public void RemoveFrom(Dictionary<NodeId, INode> nodesById, IChangeEventsTarget eventsTarget)
+  {
+    nodesById.Remove(id);
+    eventsTarget.Removed(id, parentId.Just());
+  }
+
+  public void RemoveChild(INode child)
+  {
+    throw new NotImplementedException();
+  }
+
+  public void UnplugFromParent()
+  {
+    parent.RemoveChild(this);
   }
 }
 

@@ -5,6 +5,7 @@ namespace AuthorizationStructureExample.ProductionCode;
 public interface IChangeEventsTarget
 {
   void Added(NodeId nodeId, Maybe<NodeId> parentId);
+  void Removed(NodeId nodeId, Maybe<NodeId> parent);
 }
 
 //BUG: dump, add user, add device, add group, send to all devices from ID, listen to notifications, filter??, check authorization

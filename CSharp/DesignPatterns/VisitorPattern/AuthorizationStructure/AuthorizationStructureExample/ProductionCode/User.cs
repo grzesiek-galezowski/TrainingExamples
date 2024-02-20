@@ -1,5 +1,5 @@
 using System;
-using LanguageExt;
+using System.Collections.Generic;
 
 namespace AuthorizationStructureExample.ProductionCode;
 
@@ -15,13 +15,39 @@ public class User(NodeId id, NodeId parentId, INode parent) : INode
     throw new NotImplementedException();
   }
 
-  public HashSet<NodeId> GetOwnedDeviceIds()
+  public LanguageExt.HashSet<NodeId> GetOwnedDeviceIds()
   {
-    return HashSet<NodeId>.Empty;
+    return LanguageExt.HashSet<NodeId>.Empty;
   }
 
-  public HashSet<NodeId> GetAuthorizedDeviceIds()
+  public LanguageExt.HashSet<NodeId> GetAuthorizedDeviceIds()
   {
     return parent.GetOwnedDeviceIds();
+  }
+
+  public bool Contains(NodeId searchedNodeId)
+  {
+    return id == searchedNodeId; //bug
+  }
+
+  public bool Owns(NodeId ownedId)
+  {
+    return parent.Contains(ownedId);
+  }
+
+  public void RemoveFrom(Dictionary<NodeId, INode> nodesById, IChangeEventsTarget eventsTarget)
+  {
+    nodesById.Remove(id);
+    eventsTarget.Removed(id, parentId.Just());
+  }
+
+  public void RemoveChild(INode child)
+  {
+    throw new NotImplementedException();
+  }
+
+  public void UnplugFromParent()
+  {
+    parent.RemoveChild(this);
   }
 }

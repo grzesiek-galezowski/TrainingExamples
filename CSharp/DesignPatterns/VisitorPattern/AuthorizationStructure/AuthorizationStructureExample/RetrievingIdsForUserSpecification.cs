@@ -16,9 +16,9 @@ public class RetrievingIdsForUserSpecification
     var dev2 = Any.String();
     var user1 = Any.String();
     var s = new AuthorizationStructure(Any.Instance<IChangeEventsTarget>());
-    s.AddDevice(RootId, dev1);
-    s.AddDevice(RootId, dev2);
-    s.AddUser(RootId, user1);
+    s.AddDevice(RootId.Name, dev1);
+    s.AddDevice(RootId.Name, dev2);
+    s.AddUser(RootId.Name, user1);
 
     //WHEN
     var deviceIds = s.RetrieveIdsOfDevicesOwnedByUser(user1);
@@ -36,10 +36,10 @@ public class RetrievingIdsForUserSpecification
     var user1 = Any.String();
     var group1 = Any.String();
     var s = new AuthorizationStructure(Any.Instance<IChangeEventsTarget>());
-    s.AddGroup(RootId, group1);
-    s.AddDevice(NodeId.Group(group1), dev1);
-    s.AddDevice(NodeId.Group(group1), dev2);
-    s.AddUser(RootId, user1);
+    s.AddGroup(RootId.Name, group1);
+    s.AddDevice(group1, dev1);
+    s.AddDevice(group1, dev2);
+    s.AddUser(RootId.Name, user1);
 
     //WHEN
     var deviceIds = s.RetrieveIdsOfDevicesOwnedByUser(user1);
@@ -56,9 +56,9 @@ public class RetrievingIdsForUserSpecification
     var user1 = Any.String();
     var group1 = Any.String();
     var s = new AuthorizationStructure(Any.Instance<IChangeEventsTarget>());
-    s.AddGroup(RootId, group1);
-    s.AddDevice(RootId, notOwnedDevice);
-    s.AddUser(NodeId.Group(group1), user1);
+    s.AddGroup(RootId.Name, group1);
+    s.AddDevice(RootId.Name, notOwnedDevice);
+    s.AddUser(group1, user1);
 
     //WHEN
     var deviceIds = s.RetrieveIdsOfDevicesOwnedByUser(user1);

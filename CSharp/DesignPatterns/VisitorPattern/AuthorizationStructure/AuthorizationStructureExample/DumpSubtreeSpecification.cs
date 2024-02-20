@@ -19,12 +19,12 @@ public class DumpSubtreeSpecification
     var s = new AuthorizationStructure(target);
 
     var subtreeDevice = Any.String();
-    s.AddGroup(RootNodeId, groupNotInSubtree);
-    s.AddDevice(RootNodeId, devNotInSubtree);
-    s.AddUser(RootNodeId, userNotInSubtree);
-    s.AddGroup(NodeId.Group(groupNotInSubtree), subtreeRoot);
-    s.AddUser(NodeId.Group(subtreeRoot), subtreeUser);
-    s.AddDevice(NodeId.Group(subtreeRoot), subtreeDevice);
+    s.AddGroup(RootNodeId.Name, groupNotInSubtree);
+    s.AddDevice(RootNodeId.Name, devNotInSubtree);
+    s.AddUser(RootNodeId.Name, userNotInSubtree);
+    s.AddGroup(groupNotInSubtree, subtreeRoot);
+    s.AddUser(subtreeRoot, subtreeUser);
+    s.AddDevice(subtreeRoot, subtreeDevice);
     target.ClearSubstitute();
 
     //WHEN
