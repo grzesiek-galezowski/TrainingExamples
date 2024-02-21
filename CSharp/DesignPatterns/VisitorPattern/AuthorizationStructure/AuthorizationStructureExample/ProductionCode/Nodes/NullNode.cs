@@ -49,4 +49,9 @@ public class NullNode : INode
   {
     throw new NotSupportedException();
   }
+
+  public void CollectIdsForProperty(string propertyName, string expectedPropertyValue, HashSet<NodeId> collectionToFill)
+  {
+    throw new NotImplementedException();
+  }
 }

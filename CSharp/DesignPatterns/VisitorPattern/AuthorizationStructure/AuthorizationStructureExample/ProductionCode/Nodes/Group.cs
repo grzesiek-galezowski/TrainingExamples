@@ -62,4 +62,12 @@ public class Group(NodeId id, Maybe<NodeId> parentId, INode parent) : INode
   {
     parent.RemoveChild(this);
   }
+
+  public void CollectIdsForProperty(string propertyName, string expectedPropertyValue, System.Collections.Generic.HashSet<NodeId> collectionToFill)
+  {
+    foreach (var child in _children)
+    {
+      child.CollectIdsForProperty(propertyName, expectedPropertyValue, collectionToFill);
+    }
+  }
 }

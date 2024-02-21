@@ -50,4 +50,8 @@ public class User(NodeId id, NodeId parentId, INode parent) : INode
   {
     parent.RemoveChild(this);
   }
+
+  public void CollectIdsForProperty(string propertyName, string expectedPropertyValue, HashSet<NodeId> collectionToFill)
+  {
+  }
 }

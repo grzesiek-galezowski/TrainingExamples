@@ -13,7 +13,7 @@ public class CheckingUserAccessSpecification
     var s = new AuthorizationStructure(Any.Instance<IChangeEventsTarget>());
     var device1 = Any.String();
     
-    s.AddDevice(RootNodeId.Name, device1);
+    s.AddDevice(RootNodeId.Name, device1, Any.String());
 
     //WHEN
     var result = s.Contains(NodeId.Device(device1), RootNodeId.Name);
@@ -57,7 +57,7 @@ public class CheckingUserAccessSpecification
     var device1 = Any.String();
     var s = new AuthorizationStructure(Any.Instance<IChangeEventsTarget>());
     s.AddUser(RootNodeId.Name, user1);
-    s.AddDevice(RootNodeId.Name, device1);
+    s.AddDevice(RootNodeId.Name, device1, Any.String());
 
     //WHEN
     var result = s.IsOwnershipBetween(user1, NodeId.Device(device1));
@@ -75,7 +75,7 @@ public class CheckingUserAccessSpecification
     var subgroup1 = Any.String();
     var s = new AuthorizationStructure(Any.Instance<IChangeEventsTarget>());
     s.AddGroup(RootNodeId.Name, subgroup1);
-    s.AddDevice(RootNodeId.Name, device1);
+    s.AddDevice(RootNodeId.Name, device1, Any.String());
     s.AddUser(subgroup1, user1);
 
     //WHEN
@@ -107,7 +107,7 @@ public class CheckingUserAccessSpecification
     //GIVEN
     var device1 = Any.String();
     var s = new AuthorizationStructure(Any.Instance<IChangeEventsTarget>());
-    s.AddDevice(RootNodeId.Name, device1);
+    s.AddDevice(RootNodeId.Name, device1, Any.String());
     s.Remove(NodeId.Device(device1));
     
     //WHEN

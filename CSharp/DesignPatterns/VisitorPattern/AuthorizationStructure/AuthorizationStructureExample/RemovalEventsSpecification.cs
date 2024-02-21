@@ -15,7 +15,7 @@ public class RemovalEventsSpecification
     var s = new AuthorizationStructure(target);
     var deviceName = Any.String();
 
-    s.AddDevice(RootNodeId.Name, deviceName);
+    s.AddDevice(RootNodeId.Name, deviceName, Any.String());
     target.ClearReceivedCalls();
 
     //WHEN
@@ -35,8 +35,8 @@ public class RemovalEventsSpecification
     var device2Name = Any.String();
 
     //WHEN
-    s.AddDevice(RootNodeId.Name, device1Name);
-    s.AddDevice(RootNodeId.Name, device2Name);
+    s.AddDevice(RootNodeId.Name, device1Name, Any.String());
+    s.AddDevice(RootNodeId.Name, device2Name, Any.String());
     target.ClearSubstitute();
     s.Remove(NodeId.Device(device1Name));
     s.Remove(NodeId.Device(device2Name));
@@ -101,7 +101,7 @@ public class RemovalEventsSpecification
     s.AddGroup(RootNodeId.Name, group1Name);
     s.AddGroup(group1Name, group2Name);
     s.AddGroup(group2Name, group3Name);
-    s.AddDevice(group1Name, device1Name);
+    s.AddDevice(group1Name, device1Name, Any.String());
     s.AddUser(group2Name, user1Name);
     s.AddUser(group3Name, user2Name);
     target.ClearSubstitute();

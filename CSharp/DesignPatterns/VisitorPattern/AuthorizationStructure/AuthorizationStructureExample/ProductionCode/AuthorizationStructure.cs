@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Net;
 using AuthorizationStructureExample.ProductionCode.Nodes;
 
 namespace AuthorizationStructureExample.ProductionCode;
@@ -21,13 +22,16 @@ public class AuthorizationStructure
     };
   }
 
-  public void AddDevice(string parentGroupName, string name)
+  public void AddDevice(string parentGroupName, string name, string networkName)
   {
     try
     {
       var nodeId = NodeId.Device(name);
       var parentId = NodeId.Group(parentGroupName);
-      var node = new Device(nodeId, parentId, _nodesById[parentId]);
+      var node = new Device(nodeId, parentId, _nodesById[parentId], new Dictionary<string, string>()
+      {
+        [PropertyNames.NetworkName] = networkName
+      });
       Register(parentId, nodeId, node);
     }
     catch (KeyNotFoundException e)
@@ -94,6 +98,20 @@ public class AuthorizationStructure
   public LanguageExt.HashSet<NodeId> RetrieveIdsOfDevicesBelongingToGroup(string name)
   {
     return _nodesById[NodeId.Group(name)].GetOwnedDeviceIds();
+  }
+
+  public LanguageExt.HashSet<NodeId> RetrieveIdsOfDevicesInNetwork(string networkName)
+  {
+    var collection = new HashSet<NodeId>();
+    _nodesById[RootNodeId].CollectIdsForProperty(PropertyNames.NetworkName, networkName, collection);
+    return LanguageExt.HashSet.createRange(collection);
+  }
+
+  public LanguageExt.HashSet<NodeId> RetrieveIdsOfDevicesInNetworkFromSubtree(string groupName, string networkName)
+  {
+    var collection = new HashSet<NodeId>();
+    _nodesById[NodeId.Group(groupName)].CollectIdsForProperty(PropertyNames.NetworkName, networkName, collection);
+    return LanguageExt.HashSet.createRange(collection);
   }
 
   public bool Contains(NodeId searchedNodeId, string groupName)

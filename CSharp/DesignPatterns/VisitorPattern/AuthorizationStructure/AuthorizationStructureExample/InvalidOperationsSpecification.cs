@@ -43,10 +43,10 @@ public class InvalidOperationsSpecification
     var s = new AuthorizationStructure(Any.Instance<IChangeEventsTarget>());
     var device1 = Any.String();
 
-    s.AddDevice(RootNodeId.Name, device1);
+    s.AddDevice(RootNodeId.Name, device1, Any.String());
 
     //WHEN - THEN
-    new Action(() => s.AddDevice(RootNodeId.Name, device1))
+    new Action(() => s.AddDevice(RootNodeId.Name, device1, Any.String()))
       .Should().Throw<InvalidOperationException>();
   }
 
@@ -58,7 +58,7 @@ public class InvalidOperationsSpecification
     var device1 = Any.String();
 
     //WHEN - THEN
-    new Action(() => s.AddDevice(Any.OtherThan(RootNodeId.Name), device1))
+    new Action(() => s.AddDevice(Any.OtherThan(RootNodeId.Name), device1, Any.String()))
       .Should().Throw<InvalidOperationException>();
   }
 

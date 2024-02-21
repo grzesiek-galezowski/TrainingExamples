@@ -4,7 +4,7 @@ using LanguageExt;
 
 namespace AuthorizationStructureExample.ProductionCode.Nodes;
 
-public class Device(NodeId id, NodeId parentId, INode parent) : INode
+public class Device(NodeId id, NodeId parentId, INode parent, Dictionary<string, string> properties) : INode
 {
   public void Dump(IChangeEventsTarget target)
   {
@@ -50,6 +50,17 @@ public class Device(NodeId id, NodeId parentId, INode parent) : INode
   public void UnplugFromParent()
   {
     parent.RemoveChild(this);
+  }
+
+  public void CollectIdsForProperty(string propertyName, string expectedPropertyValue, System.Collections.Generic.HashSet<NodeId> collectionToFill)
+  {
+    if (properties.TryGetValue(propertyName, out var retrievedValue))
+    {
+      if (retrievedValue == expectedPropertyValue)
+      {
+        collectionToFill.Add(id);
+      }
+    }
   }
 }
 

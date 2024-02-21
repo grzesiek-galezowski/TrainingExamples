@@ -15,8 +15,8 @@ public class RetrievingIdsForGroupSpecification
     var dev2 = Any.String();
     var user1 = Any.String();
     var s = new AuthorizationStructure(Any.Instance<IChangeEventsTarget>());
-    s.AddDevice(RootNodeId.Name, dev1);
-    s.AddDevice(RootNodeId.Name, dev2);
+    s.AddDevice(RootNodeId.Name, dev1, Any.String());
+    s.AddDevice(RootNodeId.Name, dev2, Any.String());
     s.AddUser(RootNodeId.Name, user1);
 
     //WHEN
@@ -36,8 +36,8 @@ public class RetrievingIdsForGroupSpecification
     var group1 = Any.String();
     var s = new AuthorizationStructure(Any.Instance<IChangeEventsTarget>());
     s.AddGroup(RootNodeId.Name, group1);
-    s.AddDevice(group1, dev1);
-    s.AddDevice(group1, dev2);
+    s.AddDevice(group1, dev1, Any.String());
+    s.AddDevice(group1, dev2, Any.String());
     s.AddUser(RootNodeId.Name, user1);
 
     //WHEN
@@ -56,7 +56,7 @@ public class RetrievingIdsForGroupSpecification
     var group1 = Any.String();
     var s = new AuthorizationStructure(Any.Instance<IChangeEventsTarget>());
     s.AddGroup(RootNodeId.Name, group1);
-    s.AddDevice(RootNodeId.Name, notOwnedDevice);
+    s.AddDevice(RootNodeId.Name, notOwnedDevice, Any.String());
     s.AddUser(group1, user1);
 
     //WHEN

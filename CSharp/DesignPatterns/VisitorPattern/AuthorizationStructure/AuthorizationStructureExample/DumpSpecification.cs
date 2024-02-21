@@ -15,7 +15,7 @@ public class DumpSpecification
     var s = new AuthorizationStructure(target);
     var deviceName = Any.String();
 
-    s.AddDevice(RootId.Name, deviceName);
+    s.AddDevice(RootId.Name, deviceName, Any.String());
     target.ClearSubstitute();
 
     //WHEN
@@ -38,8 +38,8 @@ public class DumpSpecification
     var device1Name = Any.String();
     var device2Name = Any.String();
 
-    s.AddDevice(RootId.Name, device1Name);
-    s.AddDevice(RootId.Name, device2Name);
+    s.AddDevice(RootId.Name, device1Name, Any.String());
+    s.AddDevice(RootId.Name, device2Name, Any.String());
     target.ClearSubstitute();
 
     //WHEN
@@ -117,7 +117,7 @@ public class DumpSpecification
     s.AddGroup(RootId.Name, group1Name);
     s.AddGroup(RootId.Name, group2Name);
     s.AddGroup(RootId.Name, group3Name);
-    s.AddDevice(group1Name, device1Name);
+    s.AddDevice(group1Name, device1Name, Any.String());
     s.AddUser(group2Name, user1Name);
     s.AddUser(group3Name, user2Name);
     target.ClearSubstitute();

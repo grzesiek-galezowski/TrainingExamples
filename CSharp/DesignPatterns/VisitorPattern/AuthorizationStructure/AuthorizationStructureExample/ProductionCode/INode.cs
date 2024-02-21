@@ -13,4 +13,5 @@ public interface INode
   void RemoveFrom(Dictionary<NodeId, INode> nodesById, IChangeEventsTarget eventsTarget);
   void RemoveChild(INode child);
   void UnplugFromParent();
+  void CollectIdsForProperty(string propertyName, string expectedPropertyValue, HashSet<NodeId> collectionToFill);
 }

@@ -20,11 +20,11 @@ public class DumpSubtreeSpecification
 
     var subtreeDevice = Any.String();
     s.AddGroup(RootNodeId.Name, groupNotInSubtree);
-    s.AddDevice(RootNodeId.Name, devNotInSubtree);
+    s.AddDevice(RootNodeId.Name, devNotInSubtree, Any.String());
     s.AddUser(RootNodeId.Name, userNotInSubtree);
     s.AddGroup(groupNotInSubtree, subtreeRoot);
     s.AddUser(subtreeRoot, subtreeUser);
-    s.AddDevice(subtreeRoot, subtreeDevice);
+    s.AddDevice(subtreeRoot, subtreeDevice, Any.String());
     target.ClearSubstitute();
 
     //WHEN

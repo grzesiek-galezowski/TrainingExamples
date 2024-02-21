@@ -21,7 +21,7 @@ public class ExistenceCheckSpecification
     s.AddGroup(group1, group2);
     s.AddGroup(group1, group3);
     s.AddUser(group1, user1);
-    s.AddDevice(group1, device1);
+    s.AddDevice(group1, device1, Any.String());
 
     //WHEN
     var resultForGroup1 = s.Exists(NodeId.Group(group1));
@@ -53,7 +53,7 @@ public class ExistenceCheckSpecification
     s.AddGroup(group1, group2);
     s.AddGroup(group1, group3);
     s.AddUser(group1, user1);
-    s.AddDevice(group1, device1);
+    s.AddDevice(group1, device1, Any.String());
     s.Remove(NodeId.Group(group1));
 
     //WHEN
