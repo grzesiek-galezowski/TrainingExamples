@@ -66,5 +66,5 @@ public class RetrievingIdsForGroupSpecification
     deviceIds.Should().BeEmpty();
   }
 
-  //BUG: what if id doesn't exist?
+  //oBUG: what if id doesn't exist?
 }

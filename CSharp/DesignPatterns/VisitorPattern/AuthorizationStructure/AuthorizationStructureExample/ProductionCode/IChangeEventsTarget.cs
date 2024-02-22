@@ -9,3 +9,4 @@ public interface IChangeEventsTarget
 //BUG: Send to all devices from ID
 //BUG: final removals for devices
 //BUG: renames
+//BUG: retrieve intersection of ids from passed collecti
