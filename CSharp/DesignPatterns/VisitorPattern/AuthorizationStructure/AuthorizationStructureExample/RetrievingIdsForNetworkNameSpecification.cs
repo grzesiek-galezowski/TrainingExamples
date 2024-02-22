@@ -4,7 +4,7 @@ using LanguageExt;
 
 namespace AuthorizationStructureExample;
 
-public class RetrievingIdsForNetworkName
+public class RetrievingIdsForNetworkNameSpecification
 {
   private NodeId RootId => AuthorizationStructure.RootNodeId;
 
