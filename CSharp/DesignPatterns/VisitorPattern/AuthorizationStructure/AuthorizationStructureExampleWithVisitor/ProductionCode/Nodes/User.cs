@@ -1,19 +1,18 @@
-using System;
-using System.Collections.Generic;
+using AuthorizationStructureExampleWithVisitor.ProductionCode.Visitors;
 using LanguageExt;
 
-namespace AuthorizationStructureExample.ProductionCode.Nodes;
+namespace AuthorizationStructureExampleWithVisitor.ProductionCode.Nodes;
 
 public class User(NodeId id, NodeId parentId, INode parent) : INode
 {
+  public void Accept(INodeVisitor visitor)
+  {
+    visitor.Visit(this);
+  }
+
   public void Dump(IChangeEventsTarget target)
   {
     target.Added(id, parentId.Just());
-  }
-
-  public void AddChild(INode node)
-  {
-    throw new NotSupportedException("Users do not have child nodes");
   }
 
   public LanguageExt.HashSet<NodeId> GetContainedDeviceIds()
@@ -42,26 +41,17 @@ public class User(NodeId id, NodeId parentId, INode parent) : INode
     eventsTarget.Removed(id, parentId.Just());
   }
 
-  public void RemoveChild(INode child)
-  {
-    throw new NotSupportedException("Devices do not have child nodes");
-  }
-
   public void UnplugFromParent()
   {
-    parent.RemoveChild(this);
-  }
-
-  public void CollectIdsForProperty(string propertyName, string expectedPropertyValue, System.Collections.Generic.HashSet<NodeId> collectionToFill)
-  {
+    parent.Accept(new RemoveChildVisitor(this));
   }
 
   public LanguageExt.HashSet<NodeId> GetOwnedDeviceIdsThatAreIn(Seq<NodeId> searchedIds)
   {
-    return parent.GetContainedDeviceIdsFromAmong(searchedIds);
+    return parent.GetOwnedDeviceIdsFromAmong(searchedIds);
   }
 
-  public LanguageExt.HashSet<NodeId> GetContainedDeviceIdsFromAmong(Seq<NodeId> searchedIds)
+  public LanguageExt.HashSet<NodeId> GetOwnedDeviceIdsFromAmong(Seq<NodeId> searchedIds)
   {
     return LanguageExt.HashSet<NodeId>.Empty;
   }

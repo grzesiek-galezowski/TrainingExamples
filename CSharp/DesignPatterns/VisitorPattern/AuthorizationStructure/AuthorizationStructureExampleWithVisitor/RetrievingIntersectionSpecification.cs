@@ -1,8 +1,8 @@
-﻿using AuthorizationStructureExample.ProductionCode;
+﻿using AuthorizationStructureExampleWithVisitor.ProductionCode;
 using FluentAssertions;
-using static AuthorizationStructureExample.ProductionCode.AuthorizationStructure;
+using static AuthorizationStructureExampleWithVisitor.ProductionCode.AuthorizationStructure;
 
-namespace AuthorizationStructureExample;
+namespace AuthorizationStructureExampleWithVisitor;
 
 internal class RetrievingIntersectionSpecification
 {
@@ -26,7 +26,7 @@ internal class RetrievingIntersectionSpecification
     s.AddDevice(userGroup, dev4, Any.String());
 
     //WHEN
-    var intersection = s.RetrieveIdsOfDevicesOwnedByUserFromAmong(
+    var intersection = s.RetrieveIdsOfDevicesOwnedUserFromAmong(
       LanguageExt.Seq.createRange([dev1, dev2, dev3]), 
       user1);
 

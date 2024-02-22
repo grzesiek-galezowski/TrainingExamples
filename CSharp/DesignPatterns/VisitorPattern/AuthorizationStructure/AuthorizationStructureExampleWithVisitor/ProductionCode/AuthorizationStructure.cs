@@ -1,9 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Net;
-using AuthorizationStructureExample.ProductionCode.Nodes;
+using AuthorizationStructureExampleWithVisitor.ProductionCode.Nodes;
+using AuthorizationStructureExampleWithVisitor.ProductionCode.Visitors;
+using Core.Either;
+using LanguageExt;
 
-namespace AuthorizationStructureExample.ProductionCode;
+namespace AuthorizationStructureExampleWithVisitor.ProductionCode;
 
 public class AuthorizationStructure
 {
@@ -86,13 +86,15 @@ public class AuthorizationStructure
     {
       throw new InvalidOperationException($"{nodeId} already exists");
     }
-    _nodesById[parentId].AddChild(node);
+    _nodesById[parentId].Accept(new AddChildVisitor(node));
     _eventsTarget.Added(nodeId, parentId.Just());
   }
 
   public LanguageExt.HashSet<NodeId> RetrieveIdsOfDevicesOwnedByUser(string userName)
   {
-    return _nodesById[NodeId.User(userName)].GetOwnedDeviceIds();
+    var collectOwnedDeviceIdsVisitor = new CollectOwnedDeviceIdsVisitor();
+    _nodesById[NodeId.User(userName)].Accept(collectOwnedDeviceIdsVisitor);
+    return collectOwnedDeviceIdsVisitor.Result;
   }
 
   public LanguageExt.HashSet<NodeId> RetrieveIdsOfDevicesBelongingToGroup(string name)
@@ -102,16 +104,21 @@ public class AuthorizationStructure
 
   public LanguageExt.HashSet<NodeId> RetrieveIdsOfDevicesInNetwork(string networkName)
   {
-    var collection = new HashSet<NodeId>();
-    _nodesById[RootNodeId].CollectIdsForProperty(PropertyNames.NetworkName, networkName, collection);
-    return LanguageExt.HashSet.createRange(collection);
+    return RetrieveIdsOfDevicesInNetworkFromSubtree(RootNodeId.Name, networkName);
   }
 
   public LanguageExt.HashSet<NodeId> RetrieveIdsOfDevicesInNetworkFromSubtree(string groupName, string networkName)
   {
-    var collection = new HashSet<NodeId>();
-    _nodesById[NodeId.Group(groupName)].CollectIdsForProperty(PropertyNames.NetworkName, networkName, collection);
-    return LanguageExt.HashSet.createRange(collection);
+    var visitor = new CollectDevicesByNetworkNameVisitor(networkName);
+    _nodesById[NodeId.Group(groupName)].Accept(visitor);
+    return HashSet.createRange(visitor.Result);
+  }
+
+  public LanguageExt.HashSet<NodeId> RetrieveIdsOfDevicesOwnedUserFromAmong(Seq<string> searchedIds, string user)
+  {
+    var findDevicesIntersectionVisitor = new FindDevicesIntersectionVisitor(searchedIds.Select(NodeId.Device));
+    _nodesById[NodeId.User(user)].Accept(findDevicesIntersectionVisitor);
+    return findDevicesIntersectionVisitor.Result;
   }
 
   public bool Contains(NodeId searchedNodeId, string groupName)
@@ -119,9 +126,11 @@ public class AuthorizationStructure
     return _nodesById[NodeId.Group(groupName)].Contains(searchedNodeId);
   }
 
-  public bool IsOwnershipBetween(string ownerId, NodeId ownedId)
+  public bool IsOwnershipBetween(string ownerId, string ownedDeviceId) //BUG: fix the ownership terminology
   {
-    return _nodesById[NodeId.User(ownerId)].Owns(ownedId);
+    var nodeVisitor = new UserOwnsDeviceVisitor(NodeId.Device(ownedDeviceId));
+    _nodesById[NodeId.User(ownerId)].Accept(nodeVisitor);
+    return nodeVisitor.Result;
   }
 
   public void Remove(NodeId nodeId)
@@ -137,10 +146,5 @@ public class AuthorizationStructure
   public bool Exists(NodeId nodeId)
   {
     return _nodesById.ContainsKey(nodeId);
-  }
-
-  public LanguageExt.HashSet<NodeId> RetrieveIdsOfDevicesOwnedByUserFromAmong(LanguageExt.Seq<string> searchedIds, string user)
-  {
-    return _nodesById[NodeId.User(user)].GetOwnedDeviceIdsThatAreIn(searchedIds.Select(NodeId.Device));
   }
 }

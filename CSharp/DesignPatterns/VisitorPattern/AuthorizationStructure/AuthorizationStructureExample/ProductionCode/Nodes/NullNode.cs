@@ -16,12 +16,12 @@ public class NullNode : INode
     throw new NotSupportedException();
   }
 
-  public LanguageExt.HashSet<NodeId> GetOwnedDeviceIds()
+  public LanguageExt.HashSet<NodeId> GetContainedDeviceIds()
   {
     throw new NotSupportedException();
   }
 
-  public LanguageExt.HashSet<NodeId> GetAuthorizedDeviceIds()
+  public LanguageExt.HashSet<NodeId> GetOwnedDeviceIds()
   {
     throw new NotSupportedException();
   }
@@ -56,12 +56,12 @@ public class NullNode : INode
     throw new NotSupportedException();
   }
 
-  public LanguageExt.HashSet<NodeId> GetAuthorizedDeviceIdsThatAreIn(Seq<NodeId> searchedIds)
+  public LanguageExt.HashSet<NodeId> GetOwnedDeviceIdsThatAreIn(Seq<NodeId> searchedIds)
   {
     throw new NotSupportedException();
   }
 
-  public LanguageExt.HashSet<NodeId> GetOwnedDeviceIdsFromAmong(Seq<NodeId> searchedIds)
+  public LanguageExt.HashSet<NodeId> GetContainedDeviceIdsFromAmong(Seq<NodeId> searchedIds)
   {
     throw new NotSupportedException();
   }

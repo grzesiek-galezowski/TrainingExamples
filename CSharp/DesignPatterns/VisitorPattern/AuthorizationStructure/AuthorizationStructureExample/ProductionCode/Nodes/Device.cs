@@ -17,12 +17,12 @@ public class Device(NodeId id, NodeId parentId, INode parent, Dictionary<string,
     throw new NotSupportedException("Devices do not have child nodes");
   }
 
-  public LanguageExt.HashSet<NodeId> GetOwnedDeviceIds()
+  public LanguageExt.HashSet<NodeId> GetContainedDeviceIds()
   {
     return HashSet.createRange([id]);
   }
 
-  public LanguageExt.HashSet<NodeId> GetAuthorizedDeviceIds()
+  public LanguageExt.HashSet<NodeId> GetOwnedDeviceIds()
   {
     throw new NotSupportedException("Devices are not authorized to use devices");
   }
@@ -64,12 +64,12 @@ public class Device(NodeId id, NodeId parentId, INode parent, Dictionary<string,
     }
   }
 
-  public LanguageExt.HashSet<NodeId> GetAuthorizedDeviceIdsThatAreIn(Seq<NodeId> searchedIds)
+  public LanguageExt.HashSet<NodeId> GetOwnedDeviceIdsThatAreIn(Seq<NodeId> searchedIds)
   {
     throw new NotSupportedException("Devices are not authorized for devices");
   }
 
-  public LanguageExt.HashSet<NodeId> GetOwnedDeviceIdsFromAmong(Seq<NodeId> searchedIds)
+  public LanguageExt.HashSet<NodeId> GetContainedDeviceIdsFromAmong(Seq<NodeId> searchedIds)
   {
     if(searchedIds.Contains(id))
     {

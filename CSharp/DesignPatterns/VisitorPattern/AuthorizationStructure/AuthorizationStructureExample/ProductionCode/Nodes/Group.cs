@@ -23,12 +23,12 @@ public class Group(NodeId id, Maybe<NodeId> parentId, INode parent) : INode
     _children.Add(node);
   }
 
-  public LanguageExt.HashSet<NodeId> GetOwnedDeviceIds()
+  public LanguageExt.HashSet<NodeId> GetContainedDeviceIds()
   {
-    return HashSet.createRange(_children.SelectMany(c => c.GetOwnedDeviceIds()));
+    return HashSet.createRange(_children.SelectMany(c => c.GetContainedDeviceIds()));
   }
 
-  public LanguageExt.HashSet<NodeId> GetAuthorizedDeviceIds()
+  public LanguageExt.HashSet<NodeId> GetOwnedDeviceIds()
   {
     throw new NotSupportedException("Groups are not authorized to use devices");
   }
@@ -71,13 +71,13 @@ public class Group(NodeId id, Maybe<NodeId> parentId, INode parent) : INode
     }
   }
 
-  public LanguageExt.HashSet<NodeId> GetAuthorizedDeviceIdsThatAreIn(Seq<NodeId> searchedIds)
+  public LanguageExt.HashSet<NodeId> GetOwnedDeviceIdsThatAreIn(Seq<NodeId> searchedIds)
   {
     throw new NotSupportedException("Groups are not authorized for devices");
   }
 
-  public LanguageExt.HashSet<NodeId> GetOwnedDeviceIdsFromAmong(Seq<NodeId> searchedIds)
+  public LanguageExt.HashSet<NodeId> GetContainedDeviceIdsFromAmong(Seq<NodeId> searchedIds)
   {
-    return HashSet.createRange(_children.SelectMany(c => c.GetOwnedDeviceIdsFromAmong(searchedIds)));
+    return HashSet.createRange(_children.SelectMany(c => c.GetContainedDeviceIdsFromAmong(searchedIds)));
   }
 }
