@@ -138,4 +138,9 @@ public class AuthorizationStructure
   {
     return _nodesById.ContainsKey(nodeId);
   }
+
+  public LanguageExt.HashSet<NodeId> RetrieveIdsOfDevicesAuthorizedForUserFromAmong(LanguageExt.Seq<string> searchedIds, string user)
+  {
+    return _nodesById[NodeId.User(user)].GetAuthorizedDeviceIdsThatAreIn(searchedIds.Select(NodeId.Device));
+  }
 }

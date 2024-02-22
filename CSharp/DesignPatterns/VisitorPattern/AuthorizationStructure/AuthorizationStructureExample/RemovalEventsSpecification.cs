@@ -4,7 +4,6 @@ using static AuthorizationStructureExample.ProductionCode.AuthorizationStructure
 
 namespace AuthorizationStructureExample;
 
-//BUG: add final removals and multiple instances for devices later
 public class RemovalEventsSpecification
 {
   [Test]

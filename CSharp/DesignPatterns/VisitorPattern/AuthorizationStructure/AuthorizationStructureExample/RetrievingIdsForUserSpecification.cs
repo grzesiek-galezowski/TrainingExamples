@@ -66,6 +66,4 @@ public class RetrievingIdsForUserSpecification
     //THEN
     deviceIds.Should().BeEmpty();
   }
-
-  //BUG: what if id doesn't exist?
 }

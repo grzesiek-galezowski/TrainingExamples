@@ -97,6 +97,4 @@ public class InvalidOperationsSpecification
     new Action(() => s.Remove(RootNodeId))
       .Should().Throw<InvalidOperationException>();
   }
-
-  //TODO: other situations where id or parent id does not exist
 }

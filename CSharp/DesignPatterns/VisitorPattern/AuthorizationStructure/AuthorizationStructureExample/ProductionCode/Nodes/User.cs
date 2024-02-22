@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using LanguageExt;
 
 namespace AuthorizationStructureExample.ProductionCode.Nodes;
 
@@ -51,7 +52,17 @@ public class User(NodeId id, NodeId parentId, INode parent) : INode
     parent.RemoveChild(this);
   }
 
-  public void CollectIdsForProperty(string propertyName, string expectedPropertyValue, HashSet<NodeId> collectionToFill)
+  public void CollectIdsForProperty(string propertyName, string expectedPropertyValue, System.Collections.Generic.HashSet<NodeId> collectionToFill)
   {
+  }
+
+  public LanguageExt.HashSet<NodeId> GetAuthorizedDeviceIdsThatAreIn(Seq<NodeId> searchedIds)
+  {
+    return parent.GetOwnedDeviceIdsFromAmong(searchedIds);
+  }
+
+  public LanguageExt.HashSet<NodeId> GetOwnedDeviceIdsFromAmong(Seq<NodeId> searchedIds)
+  {
+    return LanguageExt.HashSet<NodeId>.Empty;
   }
 }

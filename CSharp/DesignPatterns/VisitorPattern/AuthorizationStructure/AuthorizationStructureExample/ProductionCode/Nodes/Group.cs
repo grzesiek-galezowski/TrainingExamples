@@ -70,4 +70,14 @@ public class Group(NodeId id, Maybe<NodeId> parentId, INode parent) : INode
       child.CollectIdsForProperty(propertyName, expectedPropertyValue, collectionToFill);
     }
   }
+
+  public LanguageExt.HashSet<NodeId> GetAuthorizedDeviceIdsThatAreIn(Seq<NodeId> searchedIds)
+  {
+    throw new NotSupportedException("Groups are not authorized for devices");
+  }
+
+  public LanguageExt.HashSet<NodeId> GetOwnedDeviceIdsFromAmong(Seq<NodeId> searchedIds)
+  {
+    return HashSet.createRange(_children.SelectMany(c => c.GetOwnedDeviceIdsFromAmong(searchedIds)));
+  }
 }

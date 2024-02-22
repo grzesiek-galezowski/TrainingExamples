@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using LanguageExt;
 
 namespace AuthorizationStructureExample.ProductionCode.Nodes;
@@ -62,6 +63,21 @@ public class Device(NodeId id, NodeId parentId, INode parent, Dictionary<string,
       }
     }
   }
-}
 
-//BUG: not only remove operation, but also rename - does not cut off the subtree.
+  public LanguageExt.HashSet<NodeId> GetAuthorizedDeviceIdsThatAreIn(Seq<NodeId> searchedIds)
+  {
+    throw new NotSupportedException("Devices are not authorized for devices");
+  }
+
+  public LanguageExt.HashSet<NodeId> GetOwnedDeviceIdsFromAmong(Seq<NodeId> searchedIds)
+  {
+    if(searchedIds.Contains(id))
+    {
+      return LanguageExt.HashSet<NodeId>.Empty.Add(id);
+    }
+    else
+    {
+      return LanguageExt.HashSet<NodeId>.Empty; 
+    }
+  }
+}

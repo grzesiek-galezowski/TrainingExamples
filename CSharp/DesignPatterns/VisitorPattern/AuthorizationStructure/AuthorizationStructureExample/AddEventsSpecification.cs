@@ -133,6 +133,4 @@ public class AddEventsSpecification
       target.Added(group3Id, group2Id.Just());
     });
   }
-
-  //BUG: filter by network parameters (possible only for devices)
 }

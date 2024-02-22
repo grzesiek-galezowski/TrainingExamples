@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using LanguageExt;
 
 namespace AuthorizationStructureExample.ProductionCode.Nodes;
 
@@ -50,8 +51,18 @@ public class NullNode : INode
     throw new NotSupportedException();
   }
 
-  public void CollectIdsForProperty(string propertyName, string expectedPropertyValue, HashSet<NodeId> collectionToFill)
+  public void CollectIdsForProperty(string propertyName, string expectedPropertyValue, System.Collections.Generic.HashSet<NodeId> collectionToFill)
   {
-    throw new NotImplementedException();
+    throw new NotSupportedException();
+  }
+
+  public LanguageExt.HashSet<NodeId> GetAuthorizedDeviceIdsThatAreIn(Seq<NodeId> searchedIds)
+  {
+    throw new NotSupportedException();
+  }
+
+  public LanguageExt.HashSet<NodeId> GetOwnedDeviceIdsFromAmong(Seq<NodeId> searchedIds)
+  {
+    throw new NotSupportedException();
   }
 }

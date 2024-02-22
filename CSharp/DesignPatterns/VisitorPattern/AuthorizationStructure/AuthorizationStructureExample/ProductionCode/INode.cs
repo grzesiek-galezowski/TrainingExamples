@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using LanguageExt;
 
 namespace AuthorizationStructureExample.ProductionCode;
 
@@ -13,5 +14,7 @@ public interface INode
   void RemoveFrom(Dictionary<NodeId, INode> nodesById, IChangeEventsTarget eventsTarget);
   void RemoveChild(INode child);
   void UnplugFromParent();
-  void CollectIdsForProperty(string propertyName, string expectedPropertyValue, HashSet<NodeId> collectionToFill);
+  void CollectIdsForProperty(string propertyName, string expectedPropertyValue, System.Collections.Generic.HashSet<NodeId> collectionToFill);
+  LanguageExt.HashSet<NodeId> GetAuthorizedDeviceIdsThatAreIn(Seq<NodeId> searchedIds);
+  LanguageExt.HashSet<NodeId> GetOwnedDeviceIdsFromAmong(Seq<NodeId> searchedIds);
 }

@@ -76,6 +76,4 @@ public class RetrievingIdsForNetworkNameSpecification
     //THEN
     deviceIds.Should().BeEmpty();
   }
-
-  //BUG: what if id doesn't exist?
 }

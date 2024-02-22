@@ -38,6 +38,4 @@ public class DumpSubtreeSpecification
       target.Added(NodeId.Device(subtreeDevice), NodeId.Group(subtreeRoot).Just());
     });
   }
-
-  //BUG: error handling, e.g. id does not exist
 }
