@@ -36,18 +36,6 @@ public class Device(NodeId id, NodeId parentId, INode parent, Dictionary<string,
     parent.Accept(new RemoveChildVisitor(this));
   }
 
-  public LanguageExt.HashSet<NodeId> GetOwnedDeviceIdsFromAmong(Seq<NodeId> searchedIds)
-  {
-    if(searchedIds.Contains(id))
-    {
-      return LanguageExt.HashSet<NodeId>.Empty.Add(id);
-    }
-    else
-    {
-      return LanguageExt.HashSet<NodeId>.Empty; 
-    }
-  }
-
   public void CollectIdWhenNetworkNameIs(string networkName, System.Collections.Generic.HashSet<NodeId> collectionToFill)
   {
     if (properties[PropertyNames.NetworkName] == networkName)

@@ -1,5 +1,3 @@
-using LanguageExt;
-
 namespace AuthorizationStructureExampleWithVisitor.ProductionCode;
 
 public interface INode
@@ -11,5 +9,4 @@ public interface INode
   bool Contains(NodeId searchedNodeId);
   void RemoveFrom(Dictionary<NodeId, INode> nodesById, IChangeEventsTarget eventsTarget);
   void UnplugFromParent();
-  LanguageExt.HashSet<NodeId> GetOwnedDeviceIdsFromAmong(Seq<NodeId> searchedIds);
 }

@@ -33,9 +33,4 @@ public class NullNode : INode
   {
     throw new NotSupportedException();
   }
-
-  public LanguageExt.HashSet<NodeId> GetOwnedDeviceIdsFromAmong(Seq<NodeId> searchedIds)
-  {
-    throw new NotSupportedException();
-  }
 }

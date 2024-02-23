@@ -63,9 +63,4 @@ public class Group(NodeId id, Maybe<NodeId> parentId, INode parent) : INode
   {
     parent.Accept(new RemoveChildVisitor(this));
   }
-
-  public LanguageExt.HashSet<NodeId> GetOwnedDeviceIdsFromAmong(Seq<NodeId> searchedIds)
-  {
-    return HashSet.createRange(_children.SelectMany(c => c.GetOwnedDeviceIdsFromAmong(searchedIds)));
-  }
 }

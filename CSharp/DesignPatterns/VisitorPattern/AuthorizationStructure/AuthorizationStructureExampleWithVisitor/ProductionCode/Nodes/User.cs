@@ -53,9 +53,4 @@ public class User(NodeId id, NodeId parentId, INode parent) : INode
     return visitor.Result;
 
   }
-
-  public LanguageExt.HashSet<NodeId> GetOwnedDeviceIdsFromAmong(Seq<NodeId> searchedIds)
-  {
-    return LanguageExt.HashSet<NodeId>.Empty;
-  }
 }

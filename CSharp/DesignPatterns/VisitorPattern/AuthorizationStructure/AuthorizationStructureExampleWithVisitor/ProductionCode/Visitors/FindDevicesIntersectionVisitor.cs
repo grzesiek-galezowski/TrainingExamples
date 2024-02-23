@@ -20,5 +20,5 @@ public class FindDevicesIntersectionVisitor(Seq<NodeId> searchedIds) : INodeExte
     Result = user.GetOwnedDeviceIdsThatAreIn(searchedIds);
   }
 
-  public LanguageExt.HashSet<NodeId> Result { get; private set; } = new();
+  public LanguageExt.HashSet<NodeId> Result { get; private set; }
 }
