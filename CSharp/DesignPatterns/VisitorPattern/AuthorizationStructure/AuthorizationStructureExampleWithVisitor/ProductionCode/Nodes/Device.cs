@@ -51,4 +51,9 @@ public class Device(NodeId id, NodeId parentId, INode parent, Dictionary<string,
       result.Add(id);
     }
   }
+
+  public void CollectId(System.Collections.Generic.HashSet<NodeId> result)
+  {
+    result.Add(id);
+  }
 }

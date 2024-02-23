@@ -92,14 +92,16 @@ public class AuthorizationStructure
 
   public LanguageExt.HashSet<NodeId> RetrieveIdsOfDevicesOwnedByUser(string userName)
   {
-    var collectOwnedDeviceIdsVisitor = new CollectOwnedDeviceIdsVisitor();
+    var collectOwnedDeviceIdsVisitor = new CollectUserOwnedDeviceIdsVisitor();
     _nodesById[NodeId.User(userName)].Accept(collectOwnedDeviceIdsVisitor);
     return collectOwnedDeviceIdsVisitor.Result;
   }
 
   public LanguageExt.HashSet<NodeId> RetrieveIdsOfDevicesBelongingToGroup(string name)
   {
-    return _nodesById[NodeId.Group(name)].GetContainedDeviceIds();
+    var collectContainedDeviceIdsVisitor = new CollectDeviceIdsBelongingToGroupVisitor();
+    _nodesById[NodeId.Group(name)].Accept(collectContainedDeviceIdsVisitor);
+    return collectContainedDeviceIdsVisitor.Result;
   }
 
   public LanguageExt.HashSet<NodeId> RetrieveIdsOfDevicesInNetwork(string networkName)

@@ -15,14 +15,11 @@ public class User(NodeId id, NodeId parentId, INode parent) : INode
     target.Added(id, parentId.Just());
   }
 
-  public LanguageExt.HashSet<NodeId> GetContainedDeviceIds()
-  {
-    return LanguageExt.HashSet<NodeId>.Empty;
-  }
-
   public LanguageExt.HashSet<NodeId> GetOwnedDeviceIds()
   {
-    return parent.GetContainedDeviceIds();
+    var visitor = new CollectDeviceIdsBelongingToGroupVisitor();
+    parent.Accept(visitor);
+    return visitor.Result;
   }
 
   public bool Contains(NodeId searchedNodeId)

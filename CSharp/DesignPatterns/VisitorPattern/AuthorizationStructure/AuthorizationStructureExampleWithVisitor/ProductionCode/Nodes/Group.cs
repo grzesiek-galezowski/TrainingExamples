@@ -34,11 +34,6 @@ public class Group(NodeId id, Maybe<NodeId> parentId, INode parent) : INode
     _children.Add(node);
   }
 
-  public LanguageExt.HashSet<NodeId> GetContainedDeviceIds()
-  {
-    return HashSet.createRange(_children.SelectMany(c => c.GetContainedDeviceIds()));
-  }
-
   public bool Contains(NodeId searchedNodeId)
   {
     return id == searchedNodeId || _children.Any(c => c.Contains(searchedNodeId));
