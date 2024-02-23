@@ -2,6 +2,7 @@ using AuthorizationStructureExampleWithVisitor.ProductionCode.Nodes;
 using AuthorizationStructureExampleWithVisitor.ProductionCode.Visitors;
 using Core.Either;
 using LanguageExt;
+using LanguageExt.ClassInstances.Pred;
 
 namespace AuthorizationStructureExampleWithVisitor.ProductionCode;
 
@@ -125,7 +126,9 @@ public class AuthorizationStructure
 
   public bool Contains(NodeId searchedNodeId, string groupName)
   {
-    return _nodesById[NodeId.Group(groupName)].Contains(searchedNodeId);
+    var visitor = new ContainsNodeIdVisitor(searchedNodeId);
+    _nodesById[NodeId.Group(groupName)].Accept(visitor);
+    return visitor.Result;
   }
 
   public bool IsOwnershipBetween(string ownerId, string ownedDeviceId) //BUG: fix the ownership terminology

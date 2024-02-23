@@ -3,9 +3,17 @@ using LanguageExt;
 
 namespace AuthorizationStructureExampleWithVisitor.ProductionCode.Nodes;
 
-public class Device(NodeId id, NodeId parentId, INode parent, Dictionary<string, string> properties) : INode
+public interface IDevice : INode
 {
-  public void Accept(INodeExternalVisitor visitor)
+  void CollectIdWhenNetworkNameIs(string networkName, System.Collections.Generic.HashSet<NodeId> collectionToFill);
+  void CollectIdWhenItIsAmong(Seq<NodeId> searchedIds, System.Collections.Generic.HashSet<NodeId> result);
+  void CollectId(System.Collections.Generic.HashSet<NodeId> result);
+  bool HasId(NodeId searchedNodeId);
+}
+
+public class Device(NodeId id, NodeId parentId, INode parent, Dictionary<string, string> properties) : IDevice
+{
+  public void Accept(INodeVisitor visitor)
   {
     visitor.Visit(this);
   }
@@ -13,16 +21,6 @@ public class Device(NodeId id, NodeId parentId, INode parent, Dictionary<string,
   public void Dump(IChangeEventsTarget target)
   {
     target.Added(id, parentId.Just());
-  }
-
-  public LanguageExt.HashSet<NodeId> GetContainedDeviceIds()
-  {
-    return HashSet.createRange([id]);
-  }
-
-  public bool Contains(NodeId searchedNodeId)
-  {
-    return id == searchedNodeId;
   }
 
   public void RemoveFrom(Dictionary<NodeId, INode> nodesById, IChangeEventsTarget eventsTarget)
@@ -55,5 +53,10 @@ public class Device(NodeId id, NodeId parentId, INode parent, Dictionary<string,
   public void CollectId(System.Collections.Generic.HashSet<NodeId> result)
   {
     result.Add(id);
+  }
+
+  public bool HasId(NodeId searchedNodeId)
+  {
+    return id == searchedNodeId;
   }
 }

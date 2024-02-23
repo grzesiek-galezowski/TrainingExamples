@@ -2,18 +2,9 @@ using AuthorizationStructureExampleWithVisitor.ProductionCode.Nodes;
 
 namespace AuthorizationStructureExampleWithVisitor.ProductionCode;
 
-public interface INodeExternalVisitor
+public interface INodeVisitor
 {
-  void Visit(Group group);
-  void Visit(Device device);
-  void Visit(User user);
+  void Visit(IGroup group);
+  void Visit(IDevice device);
+  void Visit(IUser user);
 }
-
-public interface INodeInternalVisitor
-{
-  void Visit(Group group);
-  void Visit(Device device);
-  void Visit(User user);
-}
-
-public interface INodeHierarchyVisitor : INodeExternalVisitor, INodeInternalVisitor;

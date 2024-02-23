@@ -3,19 +3,19 @@ using LanguageExt;
 
 namespace AuthorizationStructureExampleWithVisitor.ProductionCode.Visitors;
 
-public class FindDevicesIntersectionVisitor(Seq<NodeId> searchedIds) : INodeExternalVisitor
+public class FindDevicesIntersectionVisitor(Seq<NodeId> searchedIds) : INodeVisitor
 {
-  public void Visit(Group group)
+  public void Visit(IGroup group)
   {
     throw new NotSupportedException("Groups cannot own devices");
   }
 
-  public void Visit(Device device)
+  public void Visit(IDevice device)
   {
     throw new NotSupportedException("Devices cannot own devices");
   }
 
-  public void Visit(User user)
+  public void Visit(IUser user)
   {
     Result = user.GetOwnedDeviceIdsThatAreIn(searchedIds);
   }

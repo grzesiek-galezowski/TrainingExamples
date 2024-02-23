@@ -2,21 +2,21 @@ using AuthorizationStructureExampleWithVisitor.ProductionCode.Nodes;
 
 namespace AuthorizationStructureExampleWithVisitor.ProductionCode.Visitors;
 
-public class CollectDevicesByNetworkNameVisitor(string networkName) : INodeExternalVisitor
+public class CollectDevicesByNetworkNameVisitor(string networkName) : INodeVisitor
 {
   public readonly HashSet<NodeId> Result = new();
 
-  public void Visit(Group group)
+  public void Visit(IGroup group)
   {
     group.VisitChildren(this);
   }
 
-  public void Visit(Device device)
+  public void Visit(IDevice device)
   {
     device.CollectIdWhenNetworkNameIs(networkName, Result);
   }
 
-  public void Visit(User user)
+  public void Visit(IUser user)
   {
 
   }

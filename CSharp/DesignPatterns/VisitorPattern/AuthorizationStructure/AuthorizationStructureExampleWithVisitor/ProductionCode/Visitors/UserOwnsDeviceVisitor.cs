@@ -2,19 +2,19 @@ using AuthorizationStructureExampleWithVisitor.ProductionCode.Nodes;
 
 namespace AuthorizationStructureExampleWithVisitor.ProductionCode.Visitors;
 
-public class UserOwnsDeviceVisitor(NodeId ownedNodeId) : INodeExternalVisitor
+public class UserOwnsDeviceVisitor(NodeId ownedNodeId) : INodeVisitor
 {
-  public void Visit(Group group)
+  public void Visit(IGroup group)
   {
     throw new NotSupportedException("Groups cannot own anything");
   }
 
-  public void Visit(Device device)
+  public void Visit(IDevice device)
   {
     throw new NotSupportedException("Devices cannot own anything");
   }
 
-  public void Visit(User user)
+  public void Visit(IUser user)
   {
     Result = user.Owns(ownedNodeId);
   }

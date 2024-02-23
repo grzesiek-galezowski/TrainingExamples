@@ -3,21 +3,21 @@ using LanguageExt;
 
 namespace AuthorizationStructureExampleWithVisitor.ProductionCode.Visitors;
 
-public class CollectDeviceIdsBelongingToGroupVisitor : INodeExternalVisitor
+public class CollectDeviceIdsBelongingToGroupVisitor : INodeVisitor
 {
   private readonly System.Collections.Generic.HashSet<NodeId> _result = new();
 
-  public void Visit(Group group)
+  public void Visit(IGroup group)
   {
     group.VisitChildren(this);
   }
 
-  public void Visit(Device device)
+  public void Visit(IDevice device)
   {
     device.CollectId(_result);
   }
 
-  public void Visit(User user)
+  public void Visit(IUser user)
   {
 
   }

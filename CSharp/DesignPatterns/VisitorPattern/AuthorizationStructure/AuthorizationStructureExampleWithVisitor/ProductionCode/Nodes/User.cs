@@ -3,9 +3,17 @@ using LanguageExt;
 
 namespace AuthorizationStructureExampleWithVisitor.ProductionCode.Nodes;
 
-public class User(NodeId id, NodeId parentId, INode parent) : INode
+public interface IUser : INode
 {
-  public void Accept(INodeExternalVisitor visitor)
+  LanguageExt.HashSet<NodeId> GetOwnedDeviceIds();
+  bool Owns(NodeId ownedId);
+  LanguageExt.HashSet<NodeId> GetOwnedDeviceIdsThatAreIn(Seq<NodeId> searchedIds);
+  bool HasId(NodeId searchedNodeId);
+}
+
+public class User(NodeId id, NodeId parentId, INode parent) : IUser
+{
+  public void Accept(INodeVisitor visitor)
   {
     visitor.Visit(this);
   }
@@ -22,14 +30,18 @@ public class User(NodeId id, NodeId parentId, INode parent) : INode
     return visitor.Result;
   }
 
-  public bool Contains(NodeId searchedNodeId)
-  {
-    return id == searchedNodeId; //bug
-  }
-
   public bool Owns(NodeId ownedId)
   {
-    return parent.Contains(ownedId);
+    var visitor = new ContainsNodeIdVisitor(ownedId);
+    parent.Accept(visitor);
+    return visitor.Result;
+  }
+
+  public LanguageExt.HashSet<NodeId> GetOwnedDeviceIdsThatAreIn(Seq<NodeId> searchedIds)
+  {
+    var visitor = new GetOwnedDeviceIdsFromAmongVisitor(searchedIds);
+    parent.Accept(visitor);
+    return visitor.Result;
   }
 
   public void RemoveFrom(Dictionary<NodeId, INode> nodesById, IChangeEventsTarget eventsTarget)
@@ -43,11 +55,8 @@ public class User(NodeId id, NodeId parentId, INode parent) : INode
     parent.Accept(new RemoveChildVisitor(this));
   }
 
-  public LanguageExt.HashSet<NodeId> GetOwnedDeviceIdsThatAreIn(Seq<NodeId> searchedIds)
+  public bool HasId(NodeId searchedNodeId)
   {
-    var visitor = new GetOwnedDeviceIdsFromAmongVisitor(searchedIds);
-    parent.Accept(visitor);
-    return visitor.Result;
-
+    return id == searchedNodeId;
   }
 }

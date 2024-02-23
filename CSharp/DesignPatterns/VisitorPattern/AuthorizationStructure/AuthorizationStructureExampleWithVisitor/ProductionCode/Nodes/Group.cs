@@ -1,18 +1,25 @@
 using AuthorizationStructureExampleWithVisitor.ProductionCode.Visitors;
-using LanguageExt;
 
 namespace AuthorizationStructureExampleWithVisitor.ProductionCode.Nodes;
 
-public class Group(NodeId id, Maybe<NodeId> parentId, INode parent) : INode
+public interface IGroup : INode
+{
+  void VisitChildren(INodeVisitor visitor);
+  void AddChild(INode node);
+  void RemoveChild(INode child);
+  bool HasId(NodeId searchedNodeId);
+}
+
+public class Group(NodeId id, Maybe<NodeId> parentId, INode parent) : IGroup
 {
   private readonly List<INode> _children = new();
 
-  public void Accept(INodeExternalVisitor visitor)
+  public void Accept(INodeVisitor visitor)
   {
     visitor.Visit(this);
   }
 
-  public void VisitChildren(INodeExternalVisitor visitor)
+  public void VisitChildren(INodeVisitor visitor)
   {
     foreach (var child in _children)
     {
@@ -34,11 +41,6 @@ public class Group(NodeId id, Maybe<NodeId> parentId, INode parent) : INode
     _children.Add(node);
   }
 
-  public bool Contains(NodeId searchedNodeId)
-  {
-    return id == searchedNodeId || _children.Any(c => c.Contains(searchedNodeId));
-  }
-
   public void RemoveFrom(Dictionary<NodeId, INode> nodesById, IChangeEventsTarget eventsTarget)
   {
     nodesById.Remove(id);
@@ -57,5 +59,10 @@ public class Group(NodeId id, Maybe<NodeId> parentId, INode parent) : INode
   public void UnplugFromParent()
   {
     parent.Accept(new RemoveChildVisitor(this));
+  }
+
+  public bool HasId(NodeId searchedNodeId)
+  {
+    return id == searchedNodeId;
   }
 }

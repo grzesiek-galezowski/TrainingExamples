@@ -1,25 +1,13 @@
-using LanguageExt;
-
 namespace AuthorizationStructureExampleWithVisitor.ProductionCode.Nodes;
 
 public class NullNode : INode
 {
-  public void Accept(INodeExternalVisitor visitor)
+  public void Accept(INodeVisitor visitor)
   {
     throw new NotSupportedException();
   }
 
   public void Dump(IChangeEventsTarget target)
-  {
-    throw new NotSupportedException();
-  }
-
-  public LanguageExt.HashSet<NodeId> GetContainedDeviceIds()
-  {
-    throw new NotSupportedException();
-  }
-
-  public bool Contains(NodeId searchedNodeId)
   {
     throw new NotSupportedException();
   }
