@@ -2,7 +2,7 @@ using AuthorizationStructureExampleWithVisitor.ProductionCode.Nodes;
 
 namespace AuthorizationStructureExampleWithVisitor.ProductionCode.Visitors;
 
-public class CollectDevicesByNetworkNameVisitor(string networkName) : INodeVisitor
+public class CollectDevicesByNetworkNameVisitor(string networkName) : INodeExternalVisitor
 {
   public readonly HashSet<NodeId> Result = new();
 

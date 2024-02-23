@@ -5,7 +5,7 @@ namespace AuthorizationStructureExampleWithVisitor.ProductionCode.Nodes;
 
 public class Device(NodeId id, NodeId parentId, INode parent, Dictionary<string, string> properties) : INode
 {
-  public void Accept(INodeVisitor visitor)
+  public void Accept(INodeExternalVisitor visitor)
   {
     visitor.Visit(this);
   }
@@ -53,6 +53,14 @@ public class Device(NodeId id, NodeId parentId, INode parent, Dictionary<string,
     if (properties[PropertyNames.NetworkName] == networkName)
     {
       collectionToFill.Add(id);
+    }
+  }
+
+  public void CollectIdWhenItIsAmong(Seq<NodeId> searchedIds, System.Collections.Generic.HashSet<NodeId> result)
+  {
+    if(searchedIds.Contains(id))
+    {
+      result.Add(id);
     }
   }
 }

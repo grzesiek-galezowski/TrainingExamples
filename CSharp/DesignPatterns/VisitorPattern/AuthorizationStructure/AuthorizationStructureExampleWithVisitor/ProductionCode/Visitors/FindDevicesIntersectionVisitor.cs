@@ -3,7 +3,7 @@ using LanguageExt;
 
 namespace AuthorizationStructureExampleWithVisitor.ProductionCode.Visitors;
 
-public class FindDevicesIntersectionVisitor(Seq<NodeId> searchedIds) : INodeVisitor
+public class FindDevicesIntersectionVisitor(Seq<NodeId> searchedIds) : INodeExternalVisitor
 {
   public void Visit(Group group)
   {

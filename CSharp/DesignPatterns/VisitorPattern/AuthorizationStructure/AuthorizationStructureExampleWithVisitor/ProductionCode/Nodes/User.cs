@@ -5,7 +5,7 @@ namespace AuthorizationStructureExampleWithVisitor.ProductionCode.Nodes;
 
 public class User(NodeId id, NodeId parentId, INode parent) : INode
 {
-  public void Accept(INodeVisitor visitor)
+  public void Accept(INodeExternalVisitor visitor)
   {
     visitor.Visit(this);
   }
@@ -48,7 +48,10 @@ public class User(NodeId id, NodeId parentId, INode parent) : INode
 
   public LanguageExt.HashSet<NodeId> GetOwnedDeviceIdsThatAreIn(Seq<NodeId> searchedIds)
   {
-    return parent.GetOwnedDeviceIdsFromAmong(searchedIds);
+    var visitor = new GetOwnedDeviceIdsFromAmongVisitor(searchedIds);
+    parent.Accept(visitor);
+    return visitor.Result;
+
   }
 
   public LanguageExt.HashSet<NodeId> GetOwnedDeviceIdsFromAmong(Seq<NodeId> searchedIds)

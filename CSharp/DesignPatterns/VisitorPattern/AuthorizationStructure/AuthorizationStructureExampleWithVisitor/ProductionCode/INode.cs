@@ -4,7 +4,8 @@ namespace AuthorizationStructureExampleWithVisitor.ProductionCode;
 
 public interface INode
 {
-  void Accept(INodeVisitor visitor);
+  void Accept(INodeExternalVisitor visitor);
+  //void Accept(INodeHierarchyVisitor visitor); //bug
   void Dump(IChangeEventsTarget target);
   LanguageExt.HashSet<NodeId> GetContainedDeviceIds();
   bool Contains(NodeId searchedNodeId);

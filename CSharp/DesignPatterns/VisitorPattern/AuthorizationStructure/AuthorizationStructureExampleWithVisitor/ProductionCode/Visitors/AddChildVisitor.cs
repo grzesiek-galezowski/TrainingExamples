@@ -2,7 +2,7 @@ using AuthorizationStructureExampleWithVisitor.ProductionCode.Nodes;
 
 namespace AuthorizationStructureExampleWithVisitor.ProductionCode.Visitors;
 
-internal class AddChildVisitor(INode childNode) : INodeVisitor
+internal class AddChildVisitor(INode childNode) : INodeExternalVisitor
 {
   public void Visit(Group group)
   {

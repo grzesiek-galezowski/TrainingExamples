@@ -2,7 +2,7 @@ using AuthorizationStructureExampleWithVisitor.ProductionCode.Nodes;
 
 namespace AuthorizationStructureExampleWithVisitor.ProductionCode.Visitors;
 
-public class RemoveChildVisitor(INode node) : INodeVisitor
+public class RemoveChildVisitor(INode node) : INodeExternalVisitor
 {
   public void Visit(Group group)
   {

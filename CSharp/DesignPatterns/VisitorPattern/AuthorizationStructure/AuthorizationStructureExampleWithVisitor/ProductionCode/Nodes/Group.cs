@@ -7,12 +7,12 @@ public class Group(NodeId id, Maybe<NodeId> parentId, INode parent) : INode
 {
   private readonly List<INode> _children = new();
 
-  public void Accept(INodeVisitor visitor)
+  public void Accept(INodeExternalVisitor visitor)
   {
     visitor.Visit(this);
   }
 
-  public void VisitChildren(INodeVisitor visitor)
+  public void VisitChildren(INodeExternalVisitor visitor)
   {
     foreach (var child in _children)
     {

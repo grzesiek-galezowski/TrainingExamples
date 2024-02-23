@@ -2,7 +2,7 @@ using AuthorizationStructureExampleWithVisitor.ProductionCode.Nodes;
 
 namespace AuthorizationStructureExampleWithVisitor.ProductionCode.Visitors;
 
-public class CollectOwnedDeviceIdsVisitor : INodeVisitor
+public class CollectOwnedDeviceIdsVisitor : INodeExternalVisitor
 {
   public LanguageExt.HashSet<NodeId> Result { get; private set; } = LanguageExt.HashSet<NodeId>.Empty;
 

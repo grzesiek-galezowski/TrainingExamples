@@ -4,7 +4,7 @@ namespace AuthorizationStructureExampleWithVisitor.ProductionCode.Nodes;
 
 public class NullNode : INode
 {
-  public void Accept(INodeVisitor visitor)
+  public void Accept(INodeExternalVisitor visitor)
   {
     throw new NotSupportedException();
   }
