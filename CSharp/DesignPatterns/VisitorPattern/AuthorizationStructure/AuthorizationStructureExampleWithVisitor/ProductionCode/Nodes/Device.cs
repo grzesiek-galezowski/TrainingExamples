@@ -3,7 +3,7 @@ using LanguageExt;
 
 namespace AuthorizationStructureExampleWithVisitor.ProductionCode.Nodes;
 
-public interface IDevice : INode
+public interface IDevice
 {
   void CollectIdWhenNetworkNameIs(string networkName, System.Collections.Generic.HashSet<NodeId> collectionToFill);
   void CollectIdWhenItIsAmong(Seq<NodeId> searchedIds, System.Collections.Generic.HashSet<NodeId> result);
@@ -11,7 +11,7 @@ public interface IDevice : INode
   bool HasId(NodeId searchedNodeId);
 }
 
-public class Device(NodeId id, NodeId parentId, INode parent, Dictionary<string, string> properties) : IDevice
+public class Device(NodeId id, NodeId parentId, INode parent, Dictionary<string, string> properties) : INode, IDevice
 {
   public void Accept(INodeVisitor visitor)
   {

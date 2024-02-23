@@ -3,7 +3,7 @@ using LanguageExt;
 
 namespace AuthorizationStructureExampleWithVisitor.ProductionCode.Nodes;
 
-public interface IUser : INode
+public interface IUser
 {
   LanguageExt.HashSet<NodeId> GetOwnedDeviceIds();
   bool Owns(NodeId ownedId);
@@ -11,7 +11,7 @@ public interface IUser : INode
   bool HasId(NodeId searchedNodeId);
 }
 
-public class User(NodeId id, NodeId parentId, INode parent) : IUser
+public class User(NodeId id, NodeId parentId, INode parent) : INode, IUser
 {
   public void Accept(INodeVisitor visitor)
   {

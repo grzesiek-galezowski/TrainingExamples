@@ -2,7 +2,7 @@ using AuthorizationStructureExampleWithVisitor.ProductionCode.Visitors;
 
 namespace AuthorizationStructureExampleWithVisitor.ProductionCode.Nodes;
 
-public interface IGroup : INode
+public interface IGroup
 {
   void VisitChildren(INodeVisitor visitor);
   void AddChild(INode node);
@@ -10,7 +10,7 @@ public interface IGroup : INode
   bool HasId(NodeId searchedNodeId);
 }
 
-public class Group(NodeId id, Maybe<NodeId> parentId, INode parent) : IGroup
+public class Group(NodeId id, Maybe<NodeId> parentId, INode parent) : INode, IGroup
 {
   private readonly List<INode> _children = new();
 
