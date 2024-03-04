@@ -1,0 +1,6 @@
+@CompositionMaintenanceExample_HostAddress = http://localhost:5016
+
+GET {{CompositionMaintenanceExample_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
