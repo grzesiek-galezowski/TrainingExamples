@@ -12,6 +12,7 @@
     <PackageReference Include="FluentAssertions" Version="6.12.0" />
     <PackageReference Include="IdentityModel" Version="6.2.0" />
     <PackageReference Include="Keycloak.Net.Core" Version="1.0.22" />
+    <PackageReference Include="LanguageExt.Core" Version="4.4.8" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="7.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="7.0.10" />
     <PackageReference Include="Testcontainers.Keycloak" Version="3.4.0" />
