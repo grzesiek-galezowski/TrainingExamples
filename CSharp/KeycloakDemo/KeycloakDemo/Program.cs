@@ -116,4 +116,22 @@ internal class Program
     await connection.StartAsync();
 
   }
+
+  public void Foo()
+  {
+    var source = Path.GetTempFileName();
+    var destination = Path.GetTempFileName();
+    File.WriteAllText(source, "test");
+
+    var lines = File.ReadAllLines(source);
+
+    foreach (var line in lines)
+    {
+      File.AppendAllText(destination, line);
+    }
+
+    File.Delete(source);
+    File.Delete(destination);
+
+  }
 }
