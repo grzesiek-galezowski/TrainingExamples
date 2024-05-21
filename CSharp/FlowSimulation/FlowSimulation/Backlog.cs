@@ -1,55 +1,71 @@
+using System.Collections.Immutable;
+
 namespace FlowSimulation;
 
 public class Backlog
 {
-    private readonly List<WorkItem> workItems = [];
+  private readonly WorkItemsList workItemsList;
 
-    public bool IsEmpty()
-    {
-        return workItems.Count == 0;
-    }
+  public Backlog()
+  {
+    workItemsList = new WorkItemsList([]);
+  }
 
-    public bool IsNotCompleted()
-    {
-        return workItems.Exists(i => !i.IsCompleted());
-    }
+  public bool IsEmpty()
+  {
+    return workItemsList.IsEmpty();
+  }
 
-    public void AssignItemsTo(Team team)
-    {
-        team.AssignWork(PrioritizedWorkItems());
-    }
+  public bool IsNotCompleted()
+  {
+    return workItemsList.FindNotCompleted().Any();
+  }
 
-    private List<WorkItem> PrioritizedWorkItems()
-    {
-        return workItems
-            .Where(w => w.HasNoPendingDependencies(workItems))
-            .OrderBy(w => w.Priority).ToList();
-    }
+  public void AssignItemsTo(Team team)
+  {
+    team.AssignWork(PrioritizedWorkItems());
+  }
 
-    private bool HasItemWith(string itemId)
-    {
-        return workItems.Exists(i => i.HasName(itemId));
-    }
+  private List<WorkItem> PrioritizedWorkItems()
+  {
+    return workItemsList.AllItems() //bug
+      .Where(w => w.HasNoPendingDependencies(workItemsList))
+      .OrderBy(w => w.Priority).ToList();
+  }
 
-    public void AssertDoesNotAlreadyContain(string itemId)
-    {
-        if(HasItemWith(itemId))
-        {
-            throw new Exception("Duplicate work item");
-        }
-    }
+  private bool HasItemWith(string itemId)
+  {
+    return workItemsList.FindByItemId(itemId).Any();
+  }
 
-    public void Add(WorkItem workItem)
+  public void AssertDoesNotAlreadyContain(string itemId)
+  {
+    if (HasItemWith(itemId))
     {
-        workItems.Add(workItem);
+      throw new Exception("Duplicate work item");
     }
+  }
 
-    public void AssertIsCoherent()
+  public void Add(WorkItem workItem)
+  {
+    workItemsList.Add(workItem);
+  }
+
+  public void AssertIsCoherent()
+  {
+    foreach (var workItem in workItemsList.AllItems())
     {
-        foreach (var workItem in workItems)
-        {
-            workItem.AssertDoesNotDependOnItself(workItems);
-            workItem.AssertDoesNotHaveHigherPriorityThanAnyOfItsDependencies(workItems);
-        }
+      workItem.AssertDoesNotDependOnItself(workItemsList);
+      workItem.AssertAllDependenciesExist(workItemsList);
+      workItem.AssertDoesNotHaveHigherPriorityThanAnyOfItsDependencies(workItemsList);
     }
+  }
+
+  public void AssertRequiresOnlyRolesAvailableInThe(Team team)
+  {
+    foreach (var workItem in workItemsList.AllItems())
+    {
+      workItem.AssertRequiresRoleAvailableInThe(team);
+    }
+  }
 }

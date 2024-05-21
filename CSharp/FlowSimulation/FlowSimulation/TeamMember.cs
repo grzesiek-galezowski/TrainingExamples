@@ -2,40 +2,50 @@ namespace FlowSimulation;
 
 public class TeamMember(string id, string role, Events events)
 {
-    private Assignment assignment = new Assignment(events);
+  private readonly Assignment assignment = new(events);
 
-    public override string ToString()
+  public override string ToString()
+  {
+    return id;
+  }
+
+  public bool HasWork => assignment.NeedsWork();
+
+  public void Assign(WorkItem item)
+  {
+    events.ReportAssignment(id, item, role);
+    assignment.BeginOn(item);
+  }
+
+  public void WorkOnAssignedItem()
+  {
+    if (assignment.NeedsWork())
     {
-        return id;
+      assignment.PursueExisting(id, role); //BUG: move the arguments to constructor of assignment
     }
-
-    public bool HasWork => assignment.NeedsWork();
-
-    public void Assign(WorkItem item)
+    else
     {
-        events.ReportAssignment(id, item, role);
-        assignment.BeginOn(item);
+      assignment.PursueSlack(id, role);
     }
+  }
 
-    public void WorkOnAssignedItem()
-    {
-        if (assignment.NeedsWork())
-        {
-            assignment.PursueExisting(id, role); //BUG: move the arguments to constructor of assignment
-        }
-        else
-        {
-            assignment.PursueSlack(id, role);
-        }
-    }
+  public bool Has(string developerId)
+  {
+    return id == developerId;
+  }
 
-    public bool Has(string developerId)
-    {
-        return id == developerId;
-    }
+  public void CompleteDoneItems()
+  {
+    assignment.CloseIfNoWorkLeft(id, role);
+  }
 
-    public void CompleteDoneItems()
-    {
-        assignment.CloseIfNoWorkLeft(id, role);
-    }
+  public bool HasRole(string roleName)
+  {
+    return role == roleName;
+  }
+
+  public bool CanWorkOn(WorkItem workItem)
+  {
+    return workItem.IsForRole(role);
+  }
 }

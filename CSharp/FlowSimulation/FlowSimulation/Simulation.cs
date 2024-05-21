@@ -2,66 +2,58 @@ namespace FlowSimulation;
 
 public class Simulation
 {
-    private readonly Team team;
-    private readonly Backlog backlog;
+  private readonly Team team = new();
+  private readonly Backlog backlog = new();
+  public Events Events { get; } = new();
 
-    public Simulation()
+  public void Run()
+  {
+    if (backlog.IsEmpty())
     {
-        Events = new Events();
-        team = new Team();
-        backlog = new Backlog();
+      Events.NoItemsOnTheBacklog();
     }
-
-    public Events Events { get; }
-
-    public void Run()
+    else if (team.HasNoMembers())
     {
-        if(backlog.IsEmpty())
-        {
-            Events.NoItemsOnTheBacklog();
-        }
-        else if (team.HasNoMembers())
-        {
-            Events.NoMembersOnTheTeam();
-        }
-        else
-        {
-            RunLoop();
-        }
+      Events.NoMembersOnTheTeam();
     }
-
-    private void RunLoop()
+    else
     {
-        backlog.AssertIsCoherent();
-        //bug e.g. qa task but no qa member: backlog.AssertCanBeAchievedBy(team);
-        while (backlog.IsNotCompleted())
-        {
-            backlog.AssignItemsTo(team);
-            team.WorkOnAssignedItems();
-            Events.MoveToNextDay();
-        }
+      RunLoop();
     }
+  }
 
-    public void AddWorkItem(string itemId) //BUG: get rid of it later?
+  private void RunLoop()
+  {
+    backlog.AssertIsCoherent();
+    backlog.AssertRequiresOnlyRolesAvailableInThe(team);
+    while (backlog.IsNotCompleted())
     {
-        AddWorkItem(itemId, new WorkItemProperties());
+      backlog.AssignItemsTo(team);
+      team.WorkOnAssignedItems();
+      Events.MoveToNextDay();
     }
+  }
 
-    //bug extract property object
-    public void AddWorkItem(string itemId, WorkItemProperties workItemProperties)
-    {
-        backlog.AssertDoesNotAlreadyContain(itemId);
-        backlog.Add(WorkItem.BasedOn(itemId, workItemProperties));
-    }
+  public void AddWorkItem(string itemId) //BUG: get rid of it later?
+  {
+    AddWorkItem(itemId, new WorkItemProperties());
+  }
 
-    public void AddTeamMember(string teamMemberId)
-    {
-        AddTeamMember(teamMemberId, new TeamMemberProperties());
-    }
+  //bug extract property object
+  public void AddWorkItem(string itemId, WorkItemProperties workItemProperties)
+  {
+    backlog.AssertDoesNotAlreadyContain(itemId);
+    backlog.Add(WorkItem.BasedOn(itemId, workItemProperties));
+  }
 
-    private void AddTeamMember(string teamMemberId, TeamMemberProperties teamMemberProperties)
-    {
-        team.AssertDoesNotAlreadyHaveMemberWith(teamMemberId);
-        team.Add(new TeamMember(teamMemberId, teamMemberProperties.Role, Events));
-    }
+  public void AddTeamMember(string teamMemberId)
+  {
+    AddTeamMember(teamMemberId, new TeamMemberProperties());
+  }
+
+  public void AddTeamMember(string teamMemberId, TeamMemberProperties properties)
+  {
+    team.AssertDoesNotAlreadyHaveMemberWith(teamMemberId);
+    team.Add(new TeamMember(teamMemberId, properties.Role, Events));
+  }
 }
