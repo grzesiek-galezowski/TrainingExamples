@@ -1,6 +1,6 @@
 namespace FlowSimulation;
 
-public class AssignedState : IAssignmentState
+public class AssignedState(WorkItem assignedItem) : IAssignmentState
 {
   public void BeginOn(IAssignmentContext assignment, WorkItem newItem)
   {
@@ -9,15 +9,25 @@ public class AssignedState : IAssignmentState
 
   public void CloseIfNoWorkLeft(IAssignmentContext assignment, string memberId, string role)
   {
-    if (assignment.IsWorkItemCompleted()) //bug change to state machine
+    if (assignedItem.IsCompleted()) //bug change to state machine
     {
-      assignment.CloseAssignment(memberId, role);
+      assignment.CloseAssignment(memberId, role, assignedItem);
       assignment.TransitionTo(new UnassignedState());
     }
   }
 
   public void Pursue(IAssignmentContext assignment, string role, string memberId)
   {
-    assignment.PursueExisting(memberId, role); //BUG: move the arguments to constructor of assignment
+    assignment.PursueExisting(memberId, role, assignedItem); //BUG: move the arguments to constructor of assignment
+  }
+
+  public bool CanBeWorkedOn()
+  {
+    return true;
+  }
+
+  public void OnEnter()
+  {
+    assignedItem.ChangeStatusToAssigned();
   }
 }

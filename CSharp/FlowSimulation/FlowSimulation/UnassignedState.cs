@@ -4,8 +4,7 @@ internal class UnassignedState : IAssignmentState //bug move
 {
   public void BeginOn(IAssignmentContext assignment, WorkItem newItem)
   {
-    assignment.Assign(newItem);
-    assignment.TransitionTo(new AssignedState());
+    assignment.TransitionTo(new AssignedState(newItem));
   }
 
   public void CloseIfNoWorkLeft(IAssignmentContext assignment, string memberId, string role)
@@ -15,5 +14,14 @@ internal class UnassignedState : IAssignmentState //bug move
   public void Pursue(IAssignmentContext assignment, string role, string memberId)
   {
     assignment.SlackOff(memberId, role);
+  }
+
+  public bool CanBeWorkedOn()
+  {
+    return false;
+  }
+
+  public void OnEnter()
+  {
   }
 }

@@ -1,20 +1,15 @@
-using Core.Maybe;
-
 namespace FlowSimulation;
 
 public interface IAssignmentContext
 {
-  void PursueExisting(string memberId, string role);
-  void Assign(WorkItem newItem);
+  void PursueExisting(string memberId, string role, WorkItem assignedItem);
   void TransitionTo(IAssignmentState newState);
   void SlackOff(string memberId, string role);
-  void CloseAssignment(string memberId, string role);
-  bool IsWorkItemCompleted();
+  void CloseAssignment(string memberId, string role, WorkItem assignedItem);
 }
 
 public class Assignment(Events events) : IAssignmentContext
 {
-  private Maybe<WorkItem> item; //bug nullable
   private IAssignmentState currentState = new UnassignedState();
 
   public void CloseIfNoWorkLeft(string memberId, string role)
@@ -24,7 +19,7 @@ public class Assignment(Events events) : IAssignmentContext
 
   public bool CanBeWorkedOn()
   {
-    return item.IsSomething();
+    return currentState.CanBeWorkedOn();
   }
 
   public void BeginOn(WorkItem newItem)
@@ -37,21 +32,16 @@ public class Assignment(Events events) : IAssignmentContext
     currentState.Pursue(this, role, memberId);
   }
 
-  void IAssignmentContext.PursueExisting(string memberId, string role)
+  void IAssignmentContext.PursueExisting(string memberId, string role, WorkItem assignedItem)
   {
-    events.ReportItemInProgress(item.Value(), memberId, role);
-    item.Value().Progress();
-  }
-
-  void IAssignmentContext.Assign(WorkItem newItem)
-  {
-    item = newItem.Just();
-    item.Value().ChangeStatusToAssigned();
+    events.ReportItemInProgress(assignedItem, memberId, role);
+    assignedItem.Progress();
   }
 
   void IAssignmentContext.TransitionTo(IAssignmentState newState)
   {
     currentState = newState;
+    currentState.OnEnter();
   }
 
   void IAssignmentContext.SlackOff(string memberId, string role)
@@ -59,14 +49,8 @@ public class Assignment(Events events) : IAssignmentContext
     events.ReportSlack(memberId, role);
   }
 
-  void IAssignmentContext.CloseAssignment(string memberId, string role)
+  void IAssignmentContext.CloseAssignment(string memberId, string role, WorkItem assignedItem)
   {
-    events.ReportItemCompleted(item.Value(), memberId, role);
-    item = Maybe<WorkItem>.Nothing;
-  }
-
-  bool IAssignmentContext.IsWorkItemCompleted()
-  {
-    return item.Value().IsCompleted();
+    events.ReportItemCompleted(assignedItem, memberId, role);
   }
 }
