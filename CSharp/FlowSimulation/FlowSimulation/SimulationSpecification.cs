@@ -340,6 +340,9 @@ public class SimulationSpecification
         "Day 7: QA Zenek completed the task Test Z",
       ]
     );
+
+    //BUG: add top level tasks - not sure how. Maybe using the mapping from work item to something like "story id"
+    //BUG: and stories as separate beings? We'll see...
   }
 
   private static void AssertLog(Simulation simulation, string[] entries)

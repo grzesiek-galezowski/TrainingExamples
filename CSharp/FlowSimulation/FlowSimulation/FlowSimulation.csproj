@@ -5,8 +5,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <WarningsAsErrors>nullable</WarningsAsErrors>
-	<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>	  
-	<IsPackable>false</IsPackable>
+	  <AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>	  
+	  <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
   </PropertyGroup>
 

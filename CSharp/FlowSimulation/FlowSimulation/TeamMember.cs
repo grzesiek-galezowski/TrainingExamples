@@ -9,7 +9,7 @@ public class TeamMember(string id, string role, Events events)
     return id;
   }
 
-  public bool HasWork => assignment.NeedsWork();
+  public bool HasWork => assignment.CanBeWorkedOn();
 
   public void Assign(WorkItem item)
   {
@@ -19,14 +19,7 @@ public class TeamMember(string id, string role, Events events)
 
   public void WorkOnAssignedItem()
   {
-    if (assignment.NeedsWork())
-    {
-      assignment.PursueExisting(id, role); //BUG: move the arguments to constructor of assignment
-    }
-    else
-    {
-      assignment.PursueSlack(id, role);
-    }
+    assignment.Pursue(role, id);
   }
 
   public bool Has(string developerId)

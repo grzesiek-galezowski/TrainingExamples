@@ -50,23 +50,10 @@ public class WorkItem(
   public static WorkItem BasedOn(string itemId, WorkItemProperties workItemProperties)
   {
     return new WorkItem(itemId,
-        workItemProperties.Points,
-        workItemProperties.Priority,
-        workItemProperties.Dependencies,
-        workItemProperties.RequiredRole);
-  }
-
-  private bool HasPriorityAtMost(int priority)
-  {
-    return Priority > priority; //lower is higher
-  }
-
-  private void AssertDoesNotHaveLowerPriorityThan(WorkItem dependency)
-  {
-    if (HasPriorityAtMost(dependency.Priority))
-    {
-      throw new Exception($"{this} has lower dependency than its dependencies");
-    }
+      workItemProperties.Points,
+      workItemProperties.Priority,
+      workItemProperties.Dependencies,
+      workItemProperties.RequiredRole);
   }
 
   public void AssertDoesNotHaveHigherPriorityThanAnyOfItsDependencies(WorkItemsList workItemsList)
@@ -84,6 +71,40 @@ public class WorkItem(
     foreach (var dependency in dependencies)
     {
       dependency.AssertDoesNotDependOn([id], workItemsList);
+    }
+  }
+  
+  public void AssertAllDependenciesExist(WorkItemsList workItemsList)
+  {
+    foreach (var dependencyName in dependencyNames)
+    {
+      if (!workItemsList.Contains(dependencyName))
+      {
+        throw new Exception($"work item {id} depends on {dependencyName} which does not exist");
+      }
+    }
+  }
+
+  public void AssertRequiresRoleAvailableInThe(Team team)
+  {
+    requiredRole.Do(team.AssertHasSomeoneWithRole);
+  }
+
+  public bool IsForRole(string role)
+  {
+    return requiredRole.Select(r => r == role).OrTrue();
+  }
+
+  private bool HasPriorityAtMost(int priority)
+  {
+    return Priority > priority; //lower is higher
+  }
+
+  private void AssertDoesNotHaveLowerPriorityThan(WorkItem dependency)
+  {
+    if (HasPriorityAtMost(dependency.Priority))
+    {
+      throw new Exception($"{this} has lower dependency than its dependencies");
     }
   }
 
@@ -106,26 +127,5 @@ public class WorkItem(
         throw new Exception("Circular dependency for " + id);
       }
     }
-  }
-
-  public void AssertAllDependenciesExist(WorkItemsList workItemsList)
-  {
-    foreach (var dependencyName in dependencyNames)
-    {
-      if (!workItemsList.Contains(dependencyName))
-      {
-        throw new Exception($"work item {id} depends on {dependencyName} which does not exist");
-      }
-    }
-  }
-
-  public void AssertRequiresRoleAvailableInThe(Team team)
-  {
-    requiredRole.Do(team.AssertHasSomeoneWithRole);
-  }
-
-  public bool IsForRole(string role)
-  {
-    return requiredRole.Select(r => r == role).OrTrue();
   }
 }
