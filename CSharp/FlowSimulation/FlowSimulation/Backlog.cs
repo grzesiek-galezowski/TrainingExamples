@@ -26,11 +26,11 @@ public class Backlog
     team.AssignWork(PrioritizedWorkItems());
   }
 
-  private WorkItemsList PrioritizedWorkItems()
+  private List<WorkItem> PrioritizedWorkItems()
   {
-    return new WorkItemsList(workItemsList.AllItems() //bug
+    return workItemsList.AllItems() //bug
       .Where(w => w.HasNoPendingDependencies(workItemsList))
-      .OrderBy(w => w, new WorkItemPriorityComparer()).ToList());
+      .OrderBy(w => w.Priority).ToList();
   }
 
   private bool HasItemWith(string itemId)
@@ -46,7 +46,7 @@ public class Backlog
     }
   }
 
-  public void Add(IBacklogPart workItem)
+  public void Add(WorkItem workItem)
   {
     workItemsList.Add(workItem);
   }
@@ -67,18 +67,5 @@ public class Backlog
     {
       workItem.AssertRequiresRoleAvailableInThe(team);
     }
-  }
-}
-
-internal class WorkItemPriorityComparer : IComparer<IBacklogPart>
-{
-  public int Compare(IBacklogPart? x, IBacklogPart? y)
-  {
-    if (ReferenceEquals(x, y)) return 0;
-    if (y is null) return 1;
-    if (x is null) return -1;
-    if(x.IsLessCriticalThan(y)) return 1;
-    if(x.IsMoreCriticalThan(y)) return -1;
-    return 0;
   }
 }

@@ -14,7 +14,7 @@ public class Events
     day++;
   }
 
-  public void ReportItemInProgress(IBacklogPart workItem, string id, string role)
+  public void ReportItemInProgress(WorkItem workItem, string id, string role)
   {
     AddMessage($"{role} {id} is working on task {workItem}");
   }
@@ -24,12 +24,12 @@ public class Events
     AddMessage($"{role} {s} has nothing to work on");
   }
 
-  public void ReportItemCompleted(IBacklogPart workItem, string memberId, string role)
+  public void ReportItemCompleted(WorkItem workItem, string memberId, string role)
   {
     AddMessage($"{role} {memberId} completed the task {workItem}");
   }
 
-  public void ReportAssignment(string s, IBacklogPart item, string role)
+  public void ReportAssignment(string s, WorkItem item, string role)
   {
     AddMessage($"{role} {s} was assigned to task {item}");
   }

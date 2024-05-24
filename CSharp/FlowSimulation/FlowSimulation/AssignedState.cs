@@ -1,8 +1,8 @@
 namespace FlowSimulation;
 
-public class AssignedState(IBacklogPart assignedItem) : IAssignmentState
+public class AssignedState(WorkItem assignedItem) : IAssignmentState
 {
-  public void BeginOn(IAssignmentContext assignment, IBacklogPart newItem)
+  public void BeginOn(IAssignmentContext assignment, WorkItem newItem)
   {
     //bug throw an exception?
   }

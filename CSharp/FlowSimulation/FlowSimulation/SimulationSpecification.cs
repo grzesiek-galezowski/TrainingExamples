@@ -126,7 +126,7 @@ public class SimulationSpecification
     simulation.AddWorkItem("X");
     simulation.AddWorkItem("Y", new WorkItemProperties
     {
-      Priority = ItemPriority.Highest, Dependencies = ["X"]
+      Priority = 4, Dependencies = ["X"]
     });
     FluentActions.Invoking(simulation.Run)
       .Should().Throw<Exception>();
@@ -173,9 +173,9 @@ public class SimulationSpecification
   {
     var simulation = new Simulation();
 
-    simulation.AddWorkItem("X", WithPriority(ItemPriority.Lowest));
-    simulation.AddWorkItem("Y", WithPriority(ItemPriority.Normal));
-    simulation.AddWorkItem("Z", WithPriority(ItemPriority.Highest));
+    simulation.AddWorkItem("X", WithPriority(3));
+    simulation.AddWorkItem("Y", WithPriority(2));
+    simulation.AddWorkItem("Z", WithPriority(1));
 
     simulation.AddTeamMember("Andy");
 
@@ -195,7 +195,7 @@ public class SimulationSpecification
     );
   }
 
-  private static WorkItemProperties WithPriority(ItemPriority priority)
+  private static WorkItemProperties WithPriority(int priority)
   {
     return new WorkItemProperties { Priority = priority };
   }
@@ -285,21 +285,6 @@ public class SimulationSpecification
       ]
     );
   }
-
-  //BUG: [Test]
-  //BUG: public void ShouldSupportNestedItems()
-  //BUG: {
-  //BUG:   var simulation = new Simulation();
-  //BUG: 
-  //BUG:   simulation.AddCompoundWorkItem("Deliver X", b =>
-  //BUG:   {
-  //BUG:     b.AddWorkItem("Code X");
-  //BUG:     b.AddWorkItem("Code Y");
-  //BUG:   });
-  //BUG:   
-  //BUG:   simulation.AddTeamMember("Andy");
-  //BUG:   //BUG: finish
-  //BUG: }
 
   [Test]
   public void ShouldSupportCombiningRolesWithDependenciesWithPoints()

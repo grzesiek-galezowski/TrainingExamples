@@ -2,10 +2,10 @@ namespace FlowSimulation;
 
 public interface IAssignmentContext
 {
-  void PursueExisting(string memberId, string role, IBacklogPart assignedItem);
+  void PursueExisting(string memberId, string role, WorkItem assignedItem);
   void TransitionTo(IAssignmentState newState);
   void SlackOff(string memberId, string role);
-  void CloseAssignment(string memberId, string role, IBacklogPart assignedItem);
+  void CloseAssignment(string memberId, string role, WorkItem assignedItem);
 }
 
 public class Assignment(Events events) : IAssignmentContext
@@ -22,7 +22,7 @@ public class Assignment(Events events) : IAssignmentContext
     return currentState.CanBeWorkedOn();
   }
 
-  public void BeginOn(IBacklogPart newItem)
+  public void BeginOn(WorkItem newItem)
   {
     currentState.BeginOn(this, newItem);
   }
@@ -32,7 +32,7 @@ public class Assignment(Events events) : IAssignmentContext
     currentState.Pursue(this, role, memberId);
   }
 
-  void IAssignmentContext.PursueExisting(string memberId, string role, IBacklogPart assignedItem)
+  void IAssignmentContext.PursueExisting(string memberId, string role, WorkItem assignedItem)
   {
     events.ReportItemInProgress(assignedItem, memberId, role);
     assignedItem.Progress();
@@ -49,7 +49,7 @@ public class Assignment(Events events) : IAssignmentContext
     events.ReportSlack(memberId, role);
   }
 
-  void IAssignmentContext.CloseAssignment(string memberId, string role, IBacklogPart assignedItem)
+  void IAssignmentContext.CloseAssignment(string memberId, string role, WorkItem assignedItem)
   {
     events.ReportItemCompleted(assignedItem, memberId, role);
   }
