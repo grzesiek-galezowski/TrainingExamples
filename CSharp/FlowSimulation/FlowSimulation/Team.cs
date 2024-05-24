@@ -1,3 +1,5 @@
+using System.Collections.Immutable;
+
 namespace FlowSimulation;
 
 public class Team
@@ -11,13 +13,9 @@ public class Team
 
   public void AssignWork(WorkItemsList workItems)
   {
-    foreach (var dev in developers.Where(d => !d.HasWork))
+    foreach (var backlogPart in workItems.AllItems())
     {
-      var unassignedWorkItem = workItems.AllItems().Find(dev.CanWorkOn);
-      if (unassignedWorkItem != null)
-      {
-        dev.Assign(unassignedWorkItem);
-      }
+      backlogPart.UpdateAssignmentTo(developers.Where(d => !d.HasWork).ToImmutableList());
     }
   }
 
