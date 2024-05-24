@@ -3,12 +3,32 @@ using Core.Maybe;
 
 namespace FlowSimulation;
 
+public interface IBacklogPart
+{
+  string ToString();
+  void Progress();
+  bool IsCompleted();
+  void ChangeStatusToAssigned();
+  bool HasName(string itemId);
+  bool HasNoPendingDependencies(WorkItemsList workItemsList);
+  void AssertDoesNotHaveHigherPriorityThanAnyOfItsDependencies(WorkItemsList workItemsList);
+  void AssertDoesNotDependOnItself(WorkItemsList workItemsList);
+  void AssertAllDependenciesExist(WorkItemsList workItemsList);
+  void AssertRequiresRoleAvailableInThe(Team team);
+  void AssertDoesNotDependOn(ImmutableList<string> alreadyEncounteredIds, WorkItemsList workItemsList);
+  bool CanBeWorkedOnBy(string role);
+  bool IsLessCriticalThan(IBacklogPart other);
+  bool IsMoreCriticalThan(IBacklogPart other);
+  bool HasPriorityHigherThan(ItemPriority priority);
+  bool HasPriorityLowerThan(ItemPriority priority);
+}
+
 public class WorkItem(
   string id,
   int points,
-  int priority,
   ImmutableList<string> dependencyNames,
-  Maybe<string> requiredRole)
+  Maybe<string> requiredRole,
+  ItemPriority itemPriority) : IBacklogPart
 {
   public override string ToString() => id;
   private bool assigned;
@@ -24,11 +44,6 @@ public class WorkItem(
     return points == 0;
   }
 
-  public bool IsAssigned()
-  {
-    return assigned;
-  }
-
   public void ChangeStatusToAssigned()
   {
     assigned = true;
@@ -39,7 +54,7 @@ public class WorkItem(
     return id == itemId;
   }
 
-  public int Priority => priority;
+  private ItemPriority Priority => itemPriority;
 
   public bool HasNoPendingDependencies(WorkItemsList workItemsList)
   {
@@ -47,13 +62,13 @@ public class WorkItem(
     return workItemsList.AreAllCompleted(dependencies);
   }
 
-  public static WorkItem BasedOn(string itemId, WorkItemProperties workItemProperties)
+  public static IBacklogPart BasedOn(string itemId, WorkItemProperties workItemProperties)
   {
     return new WorkItem(itemId,
       workItemProperties.Points,
-      workItemProperties.Priority,
       workItemProperties.Dependencies,
-      workItemProperties.RequiredRole);
+      workItemProperties.RequiredRole, 
+      workItemProperties.Priority);
   }
 
   public void AssertDoesNotHaveHigherPriorityThanAnyOfItsDependencies(WorkItemsList workItemsList)
@@ -90,31 +105,26 @@ public class WorkItem(
     requiredRole.Do(team.AssertHasSomeoneWithRole);
   }
 
-  public bool IsForRole(string role)
-  {
-    return requiredRole.Select(r => r == role).OrTrue();
-  }
-
-  private bool HasPriorityAtMost(int priority)
-  {
-    return Priority > priority; //lower is higher
-  }
-
-  private void AssertDoesNotHaveLowerPriorityThan(WorkItem dependency)
-  {
-    if (HasPriorityAtMost(dependency.Priority))
-    {
-      throw new Exception($"{this} has lower dependency than its dependencies");
-    }
-  }
-
-  private void AssertDoesNotDependOn(ImmutableList<string> alreadyEncounteredIds, WorkItemsList workItemsList)
+  public void AssertDoesNotDependOn(ImmutableList<string> alreadyEncounteredIds, WorkItemsList workItemsList)
   {
     AssertIdIsNoneOf(alreadyEncounteredIds);
     var dependencies = workItemsList.FindItemsBy(dependencyNames);
     foreach (var dependency in dependencies)
     {
       dependency.AssertDoesNotDependOn(alreadyEncounteredIds.Add(id), workItemsList);
+    }
+  }
+
+  public bool CanBeWorkedOnBy(string role)
+  {
+    return !IsAssigned() && IsForRole(role);
+  }
+
+  private void AssertDoesNotHaveLowerPriorityThan(IBacklogPart dependency)
+  {
+    if (dependency.HasPriorityLowerThan(Priority))
+    {
+      throw new Exception($"{this} has lower priority than its dependencies");
     }
   }
 
@@ -127,5 +137,35 @@ public class WorkItem(
         throw new Exception("Circular dependency for " + id);
       }
     }
+  }
+
+  private bool IsForRole(string role)
+  {
+    return requiredRole.Select(r => r == role).OrTrue();
+  }
+
+  public bool IsLessCriticalThan(IBacklogPart other)
+  {
+    return other.HasPriorityHigherThan(Priority);
+  }
+
+  public bool IsMoreCriticalThan(IBacklogPart other)
+  {
+    return other.HasPriorityHigherThan(Priority);
+  }
+
+  public bool HasPriorityLowerThan(ItemPriority priority)
+  {
+    return Priority < priority;
+  }
+
+  public bool HasPriorityHigherThan(ItemPriority priority)
+  {
+    return Priority > priority;
+  }
+
+  private bool IsAssigned()
+  {
+    return assigned;
   }
 }

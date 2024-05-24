@@ -46,6 +46,12 @@ public class Simulation
     backlog.Add(WorkItem.BasedOn(itemId, workItemProperties));
   }
 
+  public void AddCompoundWorkItem(string workItemId, Action<CompoundWorkItem> customize)
+  {
+    //BUG: test this: backlog.AssertDoesNotAlreadyContain(itemId);
+  }
+
+
   public void AddTeamMember(string teamMemberId)
   {
     AddTeamMember(teamMemberId, new TeamMemberProperties());

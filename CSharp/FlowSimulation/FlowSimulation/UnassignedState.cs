@@ -2,7 +2,7 @@ namespace FlowSimulation;
 
 internal class UnassignedState : IAssignmentState //bug move
 {
-  public void BeginOn(IAssignmentContext assignment, WorkItem newItem)
+  public void BeginOn(IAssignmentContext assignment, IBacklogPart newItem)
   {
     assignment.TransitionTo(new AssignedState(newItem));
   }

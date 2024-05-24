@@ -9,11 +9,11 @@ public class Team
     return developers.Count == 0;
   }
 
-  public void AssignWork(List<WorkItem> workItems)
+  public void AssignWork(WorkItemsList workItems)
   {
     foreach (var dev in developers.Where(d => !d.HasWork))
     {
-      var unassignedWorkItem = workItems.Find(i => !i.IsAssigned() && dev.CanWorkOn(i)); //bug use ItemsList instead of list<>
+      var unassignedWorkItem = workItems.AllItems().Find(dev.CanWorkOn);
       if (unassignedWorkItem != null)
       {
         dev.Assign(unassignedWorkItem);
