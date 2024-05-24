@@ -29,7 +29,7 @@ public class Events
     AddMessage($"{role} {memberId} completed the task {workItem}");
   }
 
-  public void ReportAssignment(string s, IBacklogPartCandidate item, string role)
+  public void ReportAssignment(string s, IVerifiableBacklogPart item, string role)
   {
     AddMessage($"{role} {s} was assigned to task {item}");
   }

@@ -22,7 +22,7 @@ public class Assignment(Events events) : IAssignmentContext
     return currentState.CanBeWorkedOn();
   }
 
-  public void BeginOn(IBacklogPartCandidate newItem)
+  public void BeginOn(IVerifiableBacklogPart newItem)
   {
     currentState.BeginOn(this, newItem);
   }

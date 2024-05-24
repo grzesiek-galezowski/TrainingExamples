@@ -2,9 +2,9 @@ using System.Collections.Immutable;
 
 namespace FlowSimulation;
 
-public class WorkItemsList(List<IBacklogPartCandidate> workItems)
+public class WorkItemsList(List<IVerifiableBacklogPart> workItems)
 {
-  public ImmutableList<IBacklogPartCandidate> FindItemsBy(ImmutableList<string> ids)
+  public ImmutableList<IVerifiableBacklogPart> FindItemsBy(ImmutableList<string> ids)
   {
     return workItems.Where(i => ids.Exists(i.HasName))
       .ToImmutableList();
@@ -20,27 +20,27 @@ public class WorkItemsList(List<IBacklogPartCandidate> workItems)
     return workItems.Count == 0;
   }
 
-  public List<IBacklogPartCandidate> AllItems()
+  public List<IVerifiableBacklogPart> AllItems()
   {
     return workItems;
   }
 
-  public ImmutableList<IBacklogPartCandidate> FindNotCompleted()
+  public ImmutableList<IVerifiableBacklogPart> FindNotCompleted()
   {
     return workItems.Where(i => !i.IsCompleted()).ToImmutableList();
   }
 
-  public ImmutableList<IBacklogPartCandidate> FindByItemId(string itemId)
+  public ImmutableList<IVerifiableBacklogPart> FindByItemId(string itemId)
   {
     return workItems.Where(i => i.HasName(itemId)).ToImmutableList();
   }
 
-  public void Add(IBacklogPartCandidate workItem)
+  public void Add(IVerifiableBacklogPart workItem)
   {
     workItems.Add(workItem);
   }
 
-  public bool AreAllCompleted(IEnumerable<IBacklogPartCandidate> dependencies)
+  public bool AreAllCompleted(IEnumerable<IVerifiableBacklogPart> dependencies)
   {
     return dependencies.All(item => item.IsCompleted());
   }
