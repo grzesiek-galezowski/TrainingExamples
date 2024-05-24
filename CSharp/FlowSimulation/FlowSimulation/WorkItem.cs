@@ -11,7 +11,9 @@ public interface IBacklogPart
   void ChangeStatusToAssigned();
 }
 
-public interface IVerifiableBacklogPart : IBacklogPart
+//BUG: that's not a good relaionship. Try to improve it later
+//BUG: also, it's not a good name
+public interface IBacklogPartCandidate : IBacklogPart 
 {
   bool HasName(string itemId);
   bool HasNoPendingDependencies(WorkItemsList workItemsList);
@@ -21,8 +23,8 @@ public interface IVerifiableBacklogPart : IBacklogPart
   void AssertRequiresRoleAvailableInThe(Team team);
   void AssertDoesNotDependOn(ImmutableList<string> alreadyEncounteredIds, WorkItemsList workItemsList);
   bool CanBeWorkedOnBy(string role);
-  bool IsLessCriticalThan(IVerifiableBacklogPart other);
-  bool IsMoreCriticalThan(IVerifiableBacklogPart other);
+  bool IsLessCriticalThan(IBacklogPartCandidate other);
+  bool IsMoreCriticalThan(IBacklogPartCandidate other);
   bool HasPriorityHigherThan(ItemPriority priority);
   bool HasPriorityLowerThan(ItemPriority priority);
   void UpdateAssignmentTo(ImmutableList<TeamMember> developers);
@@ -33,7 +35,7 @@ public class WorkItem(
   int points,
   ImmutableList<string> dependencyNames,
   Maybe<string> requiredRole,
-  ItemPriority itemPriority) : IVerifiableBacklogPart
+  ItemPriority itemPriority) : IBacklogPartCandidate
 {
   public override string ToString() => id;
   private bool assigned;
@@ -67,7 +69,7 @@ public class WorkItem(
     return workItemsList.AreAllCompleted(dependencies);
   }
 
-  public static IVerifiableBacklogPart BasedOn(string itemId, WorkItemProperties workItemProperties)
+  public static IBacklogPartCandidate BasedOn(string itemId, WorkItemProperties workItemProperties)
   {
     return new WorkItem(itemId,
       workItemProperties.Points,
@@ -125,7 +127,7 @@ public class WorkItem(
     return !IsAssigned() && IsForRole(role);
   }
 
-  private void AssertDoesNotHaveLowerPriorityThan(IVerifiableBacklogPart dependency)
+  private void AssertDoesNotHaveLowerPriorityThan(IBacklogPartCandidate dependency)
   {
     if (dependency.HasPriorityLowerThan(Priority))
     {
@@ -149,12 +151,12 @@ public class WorkItem(
     return requiredRole.Select(r => r == role).OrTrue();
   }
 
-  public bool IsLessCriticalThan(IVerifiableBacklogPart other)
+  public bool IsLessCriticalThan(IBacklogPartCandidate other)
   {
     return other.HasPriorityHigherThan(Priority);
   }
 
-  public bool IsMoreCriticalThan(IVerifiableBacklogPart other)
+  public bool IsMoreCriticalThan(IBacklogPartCandidate other)
   {
     return other.HasPriorityHigherThan(Priority);
   }
@@ -166,14 +168,7 @@ public class WorkItem(
 
   public void UpdateAssignmentTo(ImmutableList<TeamMember> developers)
   {
-    foreach (var dev in developers)
-    {
-      if (dev.CanWorkOn(this))
-      {
-        dev.Assign(this);
-        return;
-      }
-    }
+    developers.FirstMaybe(d => d.CanWorkOn(this)).Do(d => d.Assign(this));
   }
 
   public bool HasPriorityHigherThan(ItemPriority priority)
