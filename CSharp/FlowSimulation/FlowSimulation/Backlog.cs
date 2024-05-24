@@ -46,7 +46,7 @@ public class Backlog
     }
   }
 
-  public void Add(IVerifiableBacklogPart workItem)
+  public void Add(IBacklogPart workItem)
   {
     workItemsList.Add(workItem);
   }
@@ -70,9 +70,9 @@ public class Backlog
   }
 }
 
-internal class WorkItemPriorityComparer : IComparer<IVerifiableBacklogPart>
+internal class WorkItemPriorityComparer : IComparer<IBacklogPart>
 {
-  public int Compare(IVerifiableBacklogPart? x, IVerifiableBacklogPart? y)
+  public int Compare(IBacklogPart? x, IBacklogPart? y)
   {
     if (ReferenceEquals(x, y)) return 0;
     if (y is null) return 1;

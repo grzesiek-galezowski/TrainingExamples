@@ -2,9 +2,9 @@ using System.Collections.Immutable;
 
 namespace FlowSimulation;
 
-public class WorkItemsList(List<IVerifiableBacklogPart> workItems)
+public class WorkItemsList(List<IBacklogPart> workItems)
 {
-  public ImmutableList<IVerifiableBacklogPart> FindItemsBy(ImmutableList<string> ids)
+  public ImmutableList<IBacklogPart> FindItemsBy(ImmutableList<string> ids)
   {
     return workItems.Where(i => ids.Exists(i.HasName))
       .ToImmutableList();
@@ -20,27 +20,27 @@ public class WorkItemsList(List<IVerifiableBacklogPart> workItems)
     return workItems.Count == 0;
   }
 
-  public List<IVerifiableBacklogPart> AllItems()
+  public List<IBacklogPart> AllItems()
   {
     return workItems;
   }
 
-  public ImmutableList<IVerifiableBacklogPart> FindNotCompleted()
+  public ImmutableList<IBacklogPart> FindNotCompleted()
   {
     return workItems.Where(i => !i.IsCompleted()).ToImmutableList();
   }
 
-  public ImmutableList<IVerifiableBacklogPart> FindByItemId(string itemId)
+  public ImmutableList<IBacklogPart> FindByItemId(string itemId)
   {
     return workItems.Where(i => i.HasName(itemId)).ToImmutableList();
   }
 
-  public void Add(IVerifiableBacklogPart workItem)
+  public void Add(IBacklogPart workItem)
   {
     workItems.Add(workItem);
   }
 
-  public bool AreAllCompleted(IEnumerable<IVerifiableBacklogPart> dependencies)
+  public bool AreAllCompleted(IEnumerable<IBacklogPart> dependencies)
   {
     return dependencies.All(item => item.IsCompleted());
   }

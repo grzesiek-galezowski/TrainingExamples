@@ -286,30 +286,20 @@ public class SimulationSpecification
     );
   }
 
-  [Test]
-  public void ShouldSupportNestedItems()
-  {
-    //BUG: var simulation = new Simulation();
-    //BUG: 
-    //BUG: simulation.AddCompoundWorkItem("Deliver X", b =>
-    //BUG: {
-    //BUG:   b.AddWorkItem("Code X");
-    //BUG:   b.AddWorkItem("Code Y");
-    //BUG: });
-    //BUG: 
-    //BUG: simulation.AddTeamMember("Andy");
-    //BUG: 
-    //BUG: simulation.Run();
-    //BUG: 
-    //BUG: AssertLog(simulation, [
-    //BUG:   "Day 1: Developer Andy was assigned to task Deliver X: Code X",
-    //BUG:   "Day 1: Developer Andy is working on task Deliver X: Code X",
-    //BUG:   "Day 1: Developer Andy completed the task Deliver X: Code X",
-    //BUG:   "Day 2: Developer Andy was assigned to task Deliver X: Code Y",
-    //BUG:   "Day 2: Developer Andy is working on task Deliver X: Code Y",
-    //BUG:   "Day 2: Developer Andy completed the task Deliver X: Code Y",
-    //BUG: ]);
-  }
+  //BUG: [Test]
+  //BUG: public void ShouldSupportNestedItems()
+  //BUG: {
+  //BUG:   var simulation = new Simulation();
+  //BUG: 
+  //BUG:   simulation.AddCompoundWorkItem("Deliver X", b =>
+  //BUG:   {
+  //BUG:     b.AddWorkItem("Code X");
+  //BUG:     b.AddWorkItem("Code Y");
+  //BUG:   });
+  //BUG:   
+  //BUG:   simulation.AddTeamMember("Andy");
+  //BUG:   //BUG: finish
+  //BUG: }
 
   [Test]
   public void ShouldSupportCombiningRolesWithDependenciesWithPoints()

@@ -11,7 +11,7 @@ public class TeamMember(string id, string role, Events events)
 
   public bool HasWork => assignment.CanBeWorkedOn();
 
-  public void Assign(IVerifiableBacklogPart item)
+  public void Assign(IBacklogPart item)
   {
     events.ReportAssignment(id, item, role);
     assignment.BeginOn(item);
@@ -37,7 +37,7 @@ public class TeamMember(string id, string role, Events events)
     return role == roleName;
   }
 
-  public bool CanWorkOn(IVerifiableBacklogPart workItem)
+  public bool CanWorkOn(IBacklogPart workItem)
   {
     return workItem.CanBeWorkedOnBy(role);
   }
