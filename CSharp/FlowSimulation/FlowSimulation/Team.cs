@@ -34,7 +34,7 @@ public class Team
   }
 
 
-  public void AssertDoesNotAlreadyHaveMemberWith(string developerId)
+  public void AssertDoesNotAlreadyHaveMemberWith(TeamMemberId developerId)
   {
     if (HasDeveloperWith(developerId))
     {
@@ -47,12 +47,12 @@ public class Team
     developers.Add(teamMember);
   }
 
-  private bool HasDeveloperWith(string developerId)
+  private bool HasDeveloperWith(TeamMemberId developerId)
   {
     return developers.Exists(d => d.Has(developerId));
   }
 
-  public void AssertHasSomeoneWithRole(string role)
+  public void AssertHasSomeoneWithRole(RoleId role)
   {
     if (!developers.Exists(d => d.HasRole(role)))
     {

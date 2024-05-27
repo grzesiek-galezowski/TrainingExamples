@@ -1,4 +1,5 @@
 using System.Collections.Immutable;
+using Core.Maybe;
 
 namespace FlowSimulation;
 
@@ -30,9 +31,9 @@ public class WorkItemsList(List<WorkItem> workItems)
     return workItems.Where(i => !i.IsCompleted()).ToImmutableList();
   }
 
-  public ImmutableList<WorkItem> FindByItemId(ItemId itemId)
+  public Maybe<WorkItem> FindByItemId(ItemId itemId)
   {
-    return workItems.Where(i => i.Has(itemId)).ToImmutableList();
+    return workItems.Find(i => i.Has(itemId)).ToMaybe();
   }
 
   public void Add(WorkItem workItem)

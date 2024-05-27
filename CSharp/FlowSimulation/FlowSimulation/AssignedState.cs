@@ -7,7 +7,7 @@ public class AssignedState(WorkItem assignedItem) : IAssignmentState
     //bug throw an exception?
   }
 
-  public void CloseIfNoWorkLeft(IAssignmentContext assignment, string memberId, string role)
+  public void CloseIfNoWorkLeft(IAssignmentContext assignment, TeamMemberId memberId, RoleId role)
   {
     if (assignedItem.IsCompleted()) //bug change to state machine
     {
@@ -16,7 +16,7 @@ public class AssignedState(WorkItem assignedItem) : IAssignmentState
     }
   }
 
-  public void Pursue(IAssignmentContext assignment, string role, string memberId)
+  public void Pursue(IAssignmentContext assignment, RoleId role, TeamMemberId memberId)
   {
     assignment.PursueExisting(memberId, role, assignedItem); //BUG: move the arguments to constructor of assignment
   }

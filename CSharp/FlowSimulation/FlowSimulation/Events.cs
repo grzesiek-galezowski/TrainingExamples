@@ -14,22 +14,22 @@ public class Events
     day++;
   }
 
-  public void ReportItemInProgress(WorkItem workItem, string id, string role)
+  public void ReportItemInProgress(WorkItem workItem, TeamMemberId id, RoleId role)
   {
     AddMessage($"{role} {id} is working on task {workItem}");
   }
 
-  public void ReportSlack(string s, string role)
+  public void ReportSlack(TeamMemberId s, RoleId role)
   {
     AddMessage($"{role} {s} has nothing to work on");
   }
 
-  public void ReportItemCompleted(WorkItem workItem, string memberId, string role)
+  public void ReportItemCompleted(ItemId itemId, TeamMemberId memberId, RoleId role)
   {
-    AddMessage($"{role} {memberId} completed the task {workItem}");
+    AddMessage($"{role} {memberId} completed the task {itemId}");
   }
 
-  public void ReportAssignment(string s, WorkItem item, string role)
+  public void ReportAssignment(TeamMemberId s, WorkItem item, string role)
   {
     AddMessage($"{role} {s} was assigned to task {item}");
   }
@@ -47,5 +47,10 @@ public class Events
   private void AddMessage(string message)
   {
     Entries = Entries.Add($"Day {day}: " + message);
+  }
+
+  public void ReportItemGroupCompleted(ItemId id)
+  {
+    AddMessage($"Item group {id} is completed");
   }
 }

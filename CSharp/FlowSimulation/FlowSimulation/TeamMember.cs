@@ -1,12 +1,12 @@
 namespace FlowSimulation;
 
-public class TeamMember(string id, string role, Events events)
+public class TeamMember(TeamMemberId id, string role, Events events)
 {
   private readonly Assignment assignment = new(events);
 
   public override string ToString()
   {
-    return id;
+    return id.ToString();
   }
 
   public bool HasWork => assignment.CanBeWorkedOn();
@@ -22,7 +22,7 @@ public class TeamMember(string id, string role, Events events)
     assignment.Pursue(role, id);
   }
 
-  public bool Has(string developerId)
+  public bool Has(TeamMemberId developerId)
   {
     return id == developerId;
   }
@@ -32,7 +32,7 @@ public class TeamMember(string id, string role, Events events)
     assignment.CloseIfNoWorkLeft(id, role);
   }
 
-  public bool HasRole(string roleName)
+  public bool HasRole(RoleId roleName)
   {
     return role == roleName;
   }

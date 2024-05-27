@@ -1,10 +1,9 @@
-using System.Collections.Immutable;
-
 namespace FlowSimulation;
 
 public class Backlog
 {
   private readonly WorkItemsList workItemsList;
+  private List<ItemGroup> itemGroups = [];
 
   public Backlog()
   {
@@ -35,7 +34,7 @@ public class Backlog
 
   private bool HasItemWith(ItemId itemId)
   {
-    return workItemsList.FindByItemId(itemId).Any();
+    return workItemsList.FindByItemId(itemId).HasValue;
   }
 
   public void AssertDoesNotAlreadyContain(ItemId itemId)
@@ -68,4 +67,11 @@ public class Backlog
       workItem.AssertRequiresRoleAvailableInThe(team);
     }
   }
+
+  public void Add(ItemGroup workItem)
+  {
+    itemGroups.Add(workItem);
+    workItem.AddAsParentToItsChildrenIn(workItemsList);
+  }
+  //bug change many lists to hashsets
 }

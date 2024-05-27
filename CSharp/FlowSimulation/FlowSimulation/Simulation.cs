@@ -1,3 +1,5 @@
+using System.Collections.Immutable;
+
 namespace FlowSimulation;
 
 public class Simulation
@@ -46,14 +48,19 @@ public class Simulation
     backlog.Add(WorkItem.BasedOn(itemId, workItemProperties));
   }
 
-  public void AddTeamMember(string teamMemberId)
+  public void AddTeamMember(TeamMemberId teamMemberId)
   {
     AddTeamMember(teamMemberId, new TeamMemberProperties());
   }
 
-  public void AddTeamMember(string teamMemberId, TeamMemberProperties properties)
+  public void AddTeamMember(TeamMemberId teamMemberId, TeamMemberProperties properties)
   {
     team.AssertDoesNotAlreadyHaveMemberWith(teamMemberId);
     team.Add(new TeamMember(teamMemberId, properties.Role, Events));
+  }
+
+  public void AddWorkItemGroup(ItemId itemGroupId, ImmutableList<ItemId> groupedItemsIds)
+  {
+    backlog.Add(new ItemGroup(itemGroupId, groupedItemsIds, Events));
   }
 }

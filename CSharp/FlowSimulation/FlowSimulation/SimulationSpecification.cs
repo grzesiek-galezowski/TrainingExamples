@@ -1,5 +1,3 @@
-using System.Collections.Immutable;
-using Core.Maybe;
 using FluentAssertions;
 
 namespace FlowSimulation;
@@ -162,7 +160,7 @@ public class SimulationSpecification
     simulation.AddTeamMember("Johnny");
     simulation.AddWorkItem("X", new WorkItemProperties
     {
-      RequiredRole = "QA".Just()
+      RequiredRole = "QA"
     });
     FluentActions.Invoking(simulation.Run)
       .Should().Throw<Exception>();
@@ -235,7 +233,7 @@ public class SimulationSpecification
     simulation.AddWorkItem("Develop X", RequiresRole("Developer"));
     simulation.AddWorkItem("Test X", new WorkItemProperties
     {
-      RequiredRole = "QA".Just(),
+      RequiredRole = "QA",
       Dependencies = ["Develop X"]
     });
     simulation.AddTeamMember("Andy", new TeamMemberProperties { Role = "Developer" });
@@ -291,12 +289,12 @@ public class SimulationSpecification
   {
     var simulation = new Simulation();
 
-    simulation.AddWorkItem("Code X", new WorkItemProperties { RequiredRole = "Developer".Just(), Points = 3 });
-    simulation.AddWorkItem("Test X", new WorkItemProperties { RequiredRole = "QA".Just(), Dependencies = ["Code X"] });
-    simulation.AddWorkItem("Code Y", new WorkItemProperties { RequiredRole = "Developer".Just(), Points = 3 });
-    simulation.AddWorkItem("Test Y", new WorkItemProperties { RequiredRole = "QA".Just(), Dependencies = ["Code Y"] });
-    simulation.AddWorkItem("Code Z", new WorkItemProperties { RequiredRole = "Developer".Just(), Points = 3 });
-    simulation.AddWorkItem("Test Z", new WorkItemProperties { RequiredRole = "QA".Just(), Dependencies = ["Code Z"] });
+    simulation.AddWorkItem("Code X", new WorkItemProperties { RequiredRole = "Developer", Points = 3 });
+    simulation.AddWorkItem("Test X", new WorkItemProperties { RequiredRole = "QA", Dependencies = ["Code X"] });
+    simulation.AddWorkItem("Code Y", new WorkItemProperties { RequiredRole = "Developer", Points = 3 });
+    simulation.AddWorkItem("Test Y", new WorkItemProperties { RequiredRole = "QA", Dependencies = ["Code Y"] });
+    simulation.AddWorkItem("Code Z", new WorkItemProperties { RequiredRole = "Developer", Points = 3 });
+    simulation.AddWorkItem("Test Z", new WorkItemProperties { RequiredRole = "QA", Dependencies = ["Code Z"] });
 
     simulation.AddTeamMember("Andy", new TeamMemberProperties { Role = "Developer" });
     simulation.AddTeamMember("Johnny", new TeamMemberProperties { Role = "Developer" });
@@ -347,10 +345,50 @@ public class SimulationSpecification
   [Test]
   public void ShouldSupportAggregatingItemGroups()
   { 
+    //GIVEN
     var simulation = new Simulation();
 
-    //simulation.AddWorkItemGroup("Deliver X", ["Develop X", "Test X"]);
+    //bug 1) unique id
+    //bug 2) child items must exist
 
+    simulation.AddWorkItem("Code X", new WorkItemProperties()
+    {
+      RequiredRole = "Developer"
+    });
+
+    simulation.AddWorkItem("Test X", new WorkItemProperties()
+    {
+      RequiredRole = "QA",
+      Dependencies = ["Code X"]
+    });
+    
+    simulation.AddWorkItemGroup("Deliver X", ["Code X", "Test X"]); //BUG add assertions for group item:
+
+    simulation.AddTeamMember("Andy", new TeamMemberProperties()
+    {
+      Role = "Developer"
+    });
+    simulation.AddTeamMember("Zenek", new TeamMemberProperties()
+    {
+      Role = "QA"
+    });
+
+
+    //WHEN
+    simulation.Run();
+
+    //THEN
+    AssertLog(simulation, [
+      "Day 1: Developer Andy was assigned to task Code X",
+      "Day 1: Developer Andy is working on task Code X",
+      "Day 1: QA Zenek has nothing to work on",
+      "Day 1: Developer Andy completed the task Code X",
+      "Day 2: QA Zenek was assigned to task Test X",
+      "Day 2: Developer Andy has nothing to work on",
+      "Day 2: QA Zenek is working on task Test X",
+      "Day 2: QA Zenek completed the task Test X",
+      "Day 2: Item group Deliver X is completed"
+    ]);
   }
 
   private static void AssertLog(Simulation simulation, string[] entries)
@@ -373,7 +411,7 @@ public class SimulationSpecification
 
   private static WorkItemProperties RequiresRole(string developer)
   {
-    return new WorkItemProperties { RequiredRole = developer.Just() };
+    return new WorkItemProperties { RequiredRole = developer };
   }
 
   //bug add handovers (e.g. developer is QA or programmer)

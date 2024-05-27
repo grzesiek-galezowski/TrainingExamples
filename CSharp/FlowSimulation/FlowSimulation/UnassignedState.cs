@@ -7,11 +7,11 @@ internal class UnassignedState : IAssignmentState //bug move
     assignment.TransitionTo(new AssignedState(newItem));
   }
 
-  public void CloseIfNoWorkLeft(IAssignmentContext assignment, string memberId, string role)
+  public void CloseIfNoWorkLeft(IAssignmentContext assignment, TeamMemberId memberId, RoleId role)
   {
   }
 
-  public void Pursue(IAssignmentContext assignment, string role, string memberId)
+  public void Pursue(IAssignmentContext assignment, RoleId role, TeamMemberId memberId)
   {
     assignment.SlackOff(memberId, role);
   }

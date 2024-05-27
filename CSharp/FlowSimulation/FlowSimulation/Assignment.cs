@@ -2,17 +2,17 @@ namespace FlowSimulation;
 
 public interface IAssignmentContext
 {
-  void PursueExisting(string memberId, string role, WorkItem assignedItem);
+  void PursueExisting(TeamMemberId memberId, RoleId role, WorkItem assignedItem);
   void TransitionTo(IAssignmentState newState);
-  void SlackOff(string memberId, string role);
-  void CloseAssignment(string memberId, string role, WorkItem assignedItem);
+  void SlackOff(TeamMemberId memberId, RoleId role);
+  void CloseAssignment(TeamMemberId memberId, RoleId role, WorkItem assignedItem);
 }
 
 public class Assignment(Events events) : IAssignmentContext
 {
   private IAssignmentState currentState = new UnassignedState();
 
-  public void CloseIfNoWorkLeft(string memberId, string role)
+  public void CloseIfNoWorkLeft(TeamMemberId memberId, string role)
   {
     currentState.CloseIfNoWorkLeft(this, memberId, role);
   }
@@ -27,12 +27,12 @@ public class Assignment(Events events) : IAssignmentContext
     currentState.BeginOn(this, newItem);
   }
 
-  public void Pursue(string role, string memberId)
+  public void Pursue(string role, TeamMemberId memberId)
   {
     currentState.Pursue(this, role, memberId);
   }
 
-  void IAssignmentContext.PursueExisting(string memberId, string role, WorkItem assignedItem)
+  void IAssignmentContext.PursueExisting(TeamMemberId memberId, RoleId role, WorkItem assignedItem)
   {
     events.ReportItemInProgress(assignedItem, memberId, role);
     assignedItem.Progress();
@@ -44,13 +44,13 @@ public class Assignment(Events events) : IAssignmentContext
     currentState.OnEnter();
   }
 
-  void IAssignmentContext.SlackOff(string memberId, string role)
+  void IAssignmentContext.SlackOff(TeamMemberId memberId, RoleId role)
   {
     events.ReportSlack(memberId, role);
   }
 
-  void IAssignmentContext.CloseAssignment(string memberId, string role, WorkItem assignedItem)
+  void IAssignmentContext.CloseAssignment(TeamMemberId memberId, RoleId role, WorkItem assignedItem)
   {
-    events.ReportItemCompleted(assignedItem, memberId, role);
+    assignedItem.Close(events, memberId, role);
   }
 }

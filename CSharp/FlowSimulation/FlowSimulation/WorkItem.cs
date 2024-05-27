@@ -8,10 +8,11 @@ public class WorkItem(
   int points,
   int priority,
   ImmutableList<ItemId> dependencyNames,
-  Maybe<string> requiredRole)
+  Maybe<RoleId> requiredRole)
 {
   public override string ToString() => id.Text;
   private bool assigned;
+  private readonly List<ItemGroup> parents = [];
 
   public void Progress()
   {
@@ -53,7 +54,7 @@ public class WorkItem(
       workItemProperties.Points,
       workItemProperties.Priority,
       workItemProperties.Dependencies,
-      workItemProperties.RequiredRole);
+      workItemProperties.MaybeRequiredRole);
   }
 
   public void AssertDoesNotHaveHigherPriorityThanAnyOfItsDependencies(WorkItemsList workItemsList)
@@ -126,6 +127,20 @@ public class WorkItem(
       {
         throw new Exception("Circular dependency for " + id);
       }
+    }
+  }
+
+  public void AddParent(ItemGroup itemGroup)
+  {
+    parents.Add(itemGroup);
+  }
+
+  public void Close(Events events, TeamMemberId memberId, RoleId role)
+  {
+    events.ReportItemCompleted(id, memberId, role);
+    foreach (var itemGroup in parents)
+    {
+      itemGroup.NotifyChildCompleted(id);
     }
   }
 }
