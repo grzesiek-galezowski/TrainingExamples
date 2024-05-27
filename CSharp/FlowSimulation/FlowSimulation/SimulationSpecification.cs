@@ -305,44 +305,52 @@ public class SimulationSpecification
     simulation.Run();
 
     AssertLog(simulation, [
-        "Day 1: Developer Andy was assigned to task Code X",
-        "Day 1: Developer Johnny was assigned to task Code Y",
-        "Day 1: Developer Andy is working on task Code X",
-        "Day 1: Developer Johnny is working on task Code Y",
-        "Day 1: QA Zenek has nothing to work on",
-        "Day 2: Developer Andy is working on task Code X",
-        "Day 2: Developer Johnny is working on task Code Y",
-        "Day 2: QA Zenek has nothing to work on",
-        "Day 3: Developer Andy is working on task Code X",
-        "Day 3: Developer Johnny is working on task Code Y",
-        "Day 3: QA Zenek has nothing to work on",
-        "Day 3: Developer Andy completed the task Code X",
-        "Day 3: Developer Johnny completed the task Code Y",
-        "Day 4: Developer Andy was assigned to task Code Z",
-        "Day 4: QA Zenek was assigned to task Test X",
-        "Day 4: Developer Andy is working on task Code Z",
-        "Day 4: Developer Johnny has nothing to work on",
-        "Day 4: QA Zenek is working on task Test X",
-        "Day 4: QA Zenek completed the task Test X",
-        "Day 5: QA Zenek was assigned to task Test Y",
-        "Day 5: Developer Andy is working on task Code Z",
-        "Day 5: Developer Johnny has nothing to work on",
-        "Day 5: QA Zenek is working on task Test Y",
-        "Day 5: QA Zenek completed the task Test Y",
-        "Day 6: Developer Andy is working on task Code Z",
-        "Day 6: Developer Johnny has nothing to work on",
-        "Day 6: QA Zenek has nothing to work on",
-        "Day 6: Developer Andy completed the task Code Z",
-        "Day 7: QA Zenek was assigned to task Test Z",
-        "Day 7: Developer Andy has nothing to work on",
-        "Day 7: Developer Johnny has nothing to work on",
-        "Day 7: QA Zenek is working on task Test Z",
-        "Day 7: QA Zenek completed the task Test Z",
-      ]
-    );
+      "Day 1: Developer Andy was assigned to task Code X",
+      "Day 1: Developer Johnny was assigned to task Code Y",
+      "Day 1: Developer Andy is working on task Code X",
+      "Day 1: Developer Johnny is working on task Code Y",
+      "Day 1: QA Zenek has nothing to work on",
+      "Day 2: Developer Andy is working on task Code X",
+      "Day 2: Developer Johnny is working on task Code Y",
+      "Day 2: QA Zenek has nothing to work on",
+      "Day 3: Developer Andy is working on task Code X",
+      "Day 3: Developer Johnny is working on task Code Y",
+      "Day 3: QA Zenek has nothing to work on",
+      "Day 3: Developer Andy completed the task Code X",
+      "Day 3: Developer Johnny completed the task Code Y",
+      "Day 4: Developer Andy was assigned to task Code Z",
+      "Day 4: QA Zenek was assigned to task Test X",
+      "Day 4: Developer Andy is working on task Code Z",
+      "Day 4: Developer Johnny has nothing to work on",
+      "Day 4: QA Zenek is working on task Test X",
+      "Day 4: QA Zenek completed the task Test X",
+      "Day 5: QA Zenek was assigned to task Test Y",
+      "Day 5: Developer Andy is working on task Code Z",
+      "Day 5: Developer Johnny has nothing to work on",
+      "Day 5: QA Zenek is working on task Test Y",
+      "Day 5: QA Zenek completed the task Test Y",
+      "Day 6: Developer Andy is working on task Code Z",
+      "Day 6: Developer Johnny has nothing to work on",
+      "Day 6: QA Zenek has nothing to work on",
+      "Day 6: Developer Andy completed the task Code Z",
+      "Day 7: QA Zenek was assigned to task Test Z",
+      "Day 7: Developer Andy has nothing to work on",
+      "Day 7: Developer Johnny has nothing to work on",
+      "Day 7: QA Zenek is working on task Test Z",
+      "Day 7: QA Zenek completed the task Test Z",
+    ]);
 
     //BUG: add top level tasks - not sure how. Maybe using the mapping from work item to something like "story id"
     //BUG: and stories as separate beings? We'll see...
+  }
+
+  [Test]
+  public void ShouldSupportAggregatingItemGroups()
+  { 
+    var simulation = new Simulation();
+
+    //simulation.AddWorkItemGroup("Deliver X", ["Develop X", "Test X"]);
+
   }
 
   private static void AssertLog(Simulation simulation, string[] entries)
@@ -350,7 +358,7 @@ public class SimulationSpecification
     simulation.Events.Entries.Should().Equal(entries);
   }
 
-  private static WorkItemProperties DependingOn(params string[] taskNames)
+  private static WorkItemProperties DependingOn(params ItemId[] taskNames)
   {
     return new WorkItemProperties
     {

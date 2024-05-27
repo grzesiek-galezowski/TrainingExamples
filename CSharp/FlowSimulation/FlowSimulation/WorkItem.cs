@@ -4,13 +4,13 @@ using Core.Maybe;
 namespace FlowSimulation;
 
 public class WorkItem(
-  string id,
+  ItemId id,
   int points,
   int priority,
-  ImmutableList<string> dependencyNames,
+  ImmutableList<ItemId> dependencyNames,
   Maybe<string> requiredRole)
 {
-  public override string ToString() => id;
+  public override string ToString() => id.Text;
   private bool assigned;
 
   public void Progress()
@@ -34,7 +34,7 @@ public class WorkItem(
     assigned = true;
   }
 
-  public bool HasName(string itemId)
+  public bool Has(ItemId itemId)
   {
     return id == itemId;
   }
@@ -47,7 +47,7 @@ public class WorkItem(
     return workItemsList.AreAllCompleted(dependencies);
   }
 
-  public static WorkItem BasedOn(string itemId, WorkItemProperties workItemProperties)
+  public static WorkItem BasedOn(ItemId itemId, WorkItemProperties workItemProperties)
   {
     return new WorkItem(itemId,
       workItemProperties.Points,
@@ -108,7 +108,7 @@ public class WorkItem(
     }
   }
 
-  private void AssertDoesNotDependOn(ImmutableList<string> alreadyEncounteredIds, WorkItemsList workItemsList)
+  private void AssertDoesNotDependOn(ImmutableList<ItemId> alreadyEncounteredIds, WorkItemsList workItemsList)
   {
     AssertIdIsNoneOf(alreadyEncounteredIds);
     var dependencies = workItemsList.FindItemsBy(dependencyNames);
@@ -118,7 +118,7 @@ public class WorkItem(
     }
   }
 
-  private void AssertIdIsNoneOf(ImmutableList<string> alreadyEncounteredIds)
+  private void AssertIdIsNoneOf(ImmutableList<ItemId> alreadyEncounteredIds)
   {
     foreach (var alreadyEncounteredId in alreadyEncounteredIds)
     {

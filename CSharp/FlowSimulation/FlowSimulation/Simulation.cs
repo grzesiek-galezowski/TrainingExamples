@@ -34,13 +34,13 @@ public class Simulation
     }
   }
 
-  public void AddWorkItem(string itemId) //BUG: get rid of it later?
+  public void AddWorkItem(ItemId itemId) //BUG: get rid of it later?
   {
     AddWorkItem(itemId, new WorkItemProperties());
   }
 
   //bug extract property object
-  public void AddWorkItem(string itemId, WorkItemProperties workItemProperties)
+  public void AddWorkItem(ItemId itemId, WorkItemProperties workItemProperties)
   {
     backlog.AssertDoesNotAlreadyContain(itemId);
     backlog.Add(WorkItem.BasedOn(itemId, workItemProperties));

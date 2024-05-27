@@ -4,21 +4,15 @@ namespace FlowSimulation;
 
 public class WorkItemsList(List<WorkItem> workItems)
 {
-  public ImmutableList<WorkItem> FindItemsBy(ImmutableList<string> ids)
+  public ImmutableList<WorkItem> FindItemsBy(ImmutableList<ItemId> ids)
   {
-    return workItems.Where(i => ids.Exists(i.HasName))
+    return workItems.Where(i => ids.Exists(i.Has))
       .ToImmutableList();
   }
 
-  public bool AreAllCompleted(ImmutableList<string> immutableList)
+  public bool Contains(ItemId dependencyName)
   {
-    var dependencies = FindItemsBy(immutableList);
-    return AreAllCompleted(dependencies);
-  }
-
-  public bool Contains(string dependencyName)
-  {
-    return workItems.Exists(i => i.HasName(dependencyName));
+    return workItems.Exists(i => i.Has(dependencyName));
   }
 
   public bool IsEmpty()
@@ -36,9 +30,9 @@ public class WorkItemsList(List<WorkItem> workItems)
     return workItems.Where(i => !i.IsCompleted()).ToImmutableList();
   }
 
-  public ImmutableList<WorkItem> FindByItemId(string itemId)
+  public ImmutableList<WorkItem> FindByItemId(ItemId itemId)
   {
-    return workItems.Where(i => i.HasName(itemId)).ToImmutableList();
+    return workItems.Where(i => i.Has(itemId)).ToImmutableList();
   }
 
   public void Add(WorkItem workItem)

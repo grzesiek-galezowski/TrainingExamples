@@ -33,12 +33,12 @@ public class Backlog
       .OrderBy(w => w.Priority).ToList();
   }
 
-  private bool HasItemWith(string itemId)
+  private bool HasItemWith(ItemId itemId)
   {
     return workItemsList.FindByItemId(itemId).Any();
   }
 
-  public void AssertDoesNotAlreadyContain(string itemId)
+  public void AssertDoesNotAlreadyContain(ItemId itemId)
   {
     if (HasItemWith(itemId))
     {
