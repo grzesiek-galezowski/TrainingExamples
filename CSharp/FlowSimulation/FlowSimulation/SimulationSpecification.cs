@@ -14,6 +14,10 @@ public class SimulationSpecification
   private const string DeliverX = "Deliver X";
   private const string Johnny = "Johnny";
   private const string CodeY = "Code Y";
+  private const string CodeZ = "Code Z";
+  private const string TestY = "Test Y";
+  private const string TestZ = "Test Z";
+  private const string Sue = "Sue";
 
   [Test]
   public void ShouldSayNothingHappenedWhenNoWorkItemsConfigured()
@@ -46,9 +50,9 @@ public class SimulationSpecification
     simulation.Run();
 
     AssertLog(simulation, [
-      "Day 1: Developer Andy was assigned to task X",
-      "Day 1: Developer Andy is working on task X",
-      "Day 1: Developer Andy completed the task X"
+      Assigned(1, Andy, Developer, "X"),
+      InProgress(1, Andy, Developer, "X"),
+      Completed(1, Andy, Developer, "X"),
     ]);
   }
 
@@ -62,10 +66,10 @@ public class SimulationSpecification
     simulation.Run();
 
     AssertLog(simulation, [
-      "Day 1: Developer Andy was assigned to task X",
-      "Day 1: Developer Andy is working on task X",
-      "Day 2: Developer Andy is working on task X",
-      "Day 2: Developer Andy completed the task X",
+      Assigned(1, Andy, Developer, "X"),
+      InProgress(1, Andy, Developer, "X"),
+      InProgress(2, Andy, Developer, "X"),
+      Completed(2, Andy, Developer, "X"),
     ]);
   }
 
@@ -80,12 +84,12 @@ public class SimulationSpecification
     simulation.Run();
 
     AssertLog(simulation, [
-      "Day 1: Developer Andy was assigned to task X",
-      "Day 1: Developer Andy is working on task X",
-      "Day 1: Developer Andy completed the task X",
-      "Day 2: Developer Andy was assigned to task Y",
-      "Day 2: Developer Andy is working on task Y",
-      "Day 2: Developer Andy completed the task Y"
+      Assigned(1, Andy, Developer, "X"),
+      InProgress(1, Andy, Developer, "X"),
+      Completed(1, Andy, Developer, "X"),
+      Assigned(2, Andy, Developer, "Y"),
+      InProgress(2, Andy, Developer, "Y"),
+      Completed(2, Andy, Developer, "Y"),
     ]);
   }
 
@@ -101,10 +105,10 @@ public class SimulationSpecification
     simulation.Run();
 
     AssertLog(simulation, [
-      "Day 1: Developer Andy was assigned to task X",
-      "Day 1: Developer Andy is working on task X",
-      "Day 1: Developer Johnny has nothing to work on",
-      "Day 1: Developer Andy completed the task X",
+      Assigned(1, Andy, Developer, "X"),
+      InProgress(1, Andy, Developer, "X"),
+      Slack(1, Johnny, Developer),
+      Completed(1, Andy, Developer, "X"),
     ]);
   }
 
@@ -190,15 +194,15 @@ public class SimulationSpecification
     simulation.Run();
 
     AssertLog(simulation, [
-        "Day 1: Developer Andy was assigned to task Z",
-        "Day 1: Developer Andy is working on task Z",
-        "Day 1: Developer Andy completed the task Z",
-        "Day 2: Developer Andy was assigned to task Y",
-        "Day 2: Developer Andy is working on task Y",
-        "Day 2: Developer Andy completed the task Y",
-        "Day 3: Developer Andy was assigned to task X",
-        "Day 3: Developer Andy is working on task X",
-        "Day 3: Developer Andy completed the task X"
+        Assigned(1, Andy, Developer, "Z"),
+        InProgress(1, Andy, Developer, "Z"),
+        Completed(1, Andy, Developer, "Z"),
+        Assigned(2, Andy, Developer, "Y"),
+        InProgress(2, Andy, Developer, "Y"),
+        Completed(2, Andy, Developer, "Y"),
+        Assigned(3, Andy, Developer, "X"),
+        InProgress(3, Andy, Developer, "X"),
+        Completed(3, Andy, Developer, "X"),
       ]
     );
   }
@@ -222,15 +226,16 @@ public class SimulationSpecification
     simulation.Run();
 
     AssertLog(simulation, [
-        "Day 1: Developer Andy was assigned to task Z",
-        "Day 1: Developer Andy is working on task Z",
-        "Day 1: Developer Andy completed the task Z",
-        "Day 2: Developer Andy was assigned to task Y",
-        "Day 2: Developer Andy is working on task Y",
-        "Day 2: Developer Andy completed the task Y",
-        "Day 3: Developer Andy was assigned to task X",
-        "Day 3: Developer Andy is working on task X",
-        "Day 3: Developer Andy completed the task X"
+        Assigned(1, Andy, Developer, "Z"),
+        InProgress(1, Andy, Developer, "Z"),
+        Completed(1, Andy, Developer, "Z"),
+        Assigned(2, Andy, Developer, "Y"),
+        InProgress(2, Andy, Developer, "Y"),
+        Completed(2, Andy, Developer, "Y"),
+        Assigned(3, Andy, Developer, "X"),
+        InProgress(3, Andy, Developer, "X"),
+        Completed(3, Andy, Developer, "X"),
+
       ]
     );
   }
@@ -240,26 +245,26 @@ public class SimulationSpecification
   {
     var simulation = new Simulation();
 
-    simulation.AddWorkItem("Develop X", RequiresRole(Developer));
+    simulation.AddWorkItem(CodeX, RequiresRole(Developer));
     simulation.AddWorkItem(TestX, new WorkItemProperties
     {
       RequiredRole = QA,
-      Dependencies = ["Develop X"]
+      Dependencies = [CodeX]
     });
     simulation.AddTeamMember(Andy, new TeamMemberProperties { Role = Developer });
-    simulation.AddTeamMember("Sue", new TeamMemberProperties { Role = QA });
+    simulation.AddTeamMember(Sue, new TeamMemberProperties { Role = QA });
 
     simulation.Run();
 
     AssertLog(simulation, [
-        "Day 1: Developer Andy was assigned to task Develop X",
-        "Day 1: Developer Andy is working on task Develop X",
-        "Day 1: QA Sue has nothing to work on",
-        "Day 1: Developer Andy completed the task Develop X",
-        "Day 2: QA Sue was assigned to task Test X",
-        "Day 2: Developer Andy has nothing to work on",
-        "Day 2: QA Sue is working on task Test X",
-        "Day 2: QA Sue completed the task Test X"
+        Assigned(1, Andy, Developer, CodeX),
+        InProgress(1, Andy, Developer, CodeX),
+        Slack(1, Sue, QA),
+        Completed(1, Andy, Developer, CodeX),
+        Assigned(2, Sue, QA, TestX),
+        Slack(2, Andy, Developer),
+        InProgress(2, Sue, QA, TestX),
+        Completed(2, Sue, QA, TestX)
       ]
     );
 
@@ -280,16 +285,16 @@ public class SimulationSpecification
     simulation.Run();
 
     AssertLog(simulation, [
-        "Day 1: Developer Andy was assigned to task Z",
-        "Day 1: Developer Andy is working on task Z",
-        "Day 1: Developer Johnny has nothing to work on",
-        "Day 1: Developer Andy completed the task Z",
-        "Day 2: Developer Andy was assigned to task X",
-        "Day 2: Developer Johnny was assigned to task Y",
-        "Day 2: Developer Andy is working on task X",
-        "Day 2: Developer Johnny is working on task Y",
-        "Day 2: Developer Andy completed the task X",
-        "Day 2: Developer Johnny completed the task Y"
+        Assigned(1, Andy, Developer, "Z"),
+        InProgress(1, Andy, Developer, "Z"),
+        Slack(1, Johnny, Developer),
+        Completed(1, Andy, Developer, "Z"),
+        Assigned(2, Andy, Developer, "X"),
+        Assigned(2, Johnny, Developer, "Y"),
+        InProgress(2, Andy, Developer, "X"),
+        InProgress(2, Johnny, Developer, "Y"),
+        Completed(2, Andy, Developer, "X"),
+        Completed(2, Johnny, Developer, "Y")
       ]
     );
   }
@@ -302,9 +307,9 @@ public class SimulationSpecification
     simulation.AddWorkItem(CodeX, new WorkItemProperties { RequiredRole = Developer, Points = 3 });
     simulation.AddWorkItem(TestX, new WorkItemProperties { RequiredRole = QA, Dependencies = [CodeX] });
     simulation.AddWorkItem(CodeY, new WorkItemProperties { RequiredRole = Developer, Points = 3 });
-    simulation.AddWorkItem("Test Y", new WorkItemProperties { RequiredRole = QA, Dependencies = [CodeY] });
-    simulation.AddWorkItem("Code Z", new WorkItemProperties { RequiredRole = Developer, Points = 3 });
-    simulation.AddWorkItem("Test Z", new WorkItemProperties { RequiredRole = QA, Dependencies = ["Code Z"] });
+    simulation.AddWorkItem(TestY, new WorkItemProperties { RequiredRole = QA, Dependencies = [CodeY] });
+    simulation.AddWorkItem(CodeZ, new WorkItemProperties { RequiredRole = Developer, Points = 3 });
+    simulation.AddWorkItem(TestZ, new WorkItemProperties { RequiredRole = QA, Dependencies = [CodeZ] });
 
     simulation.AddTeamMember(Andy, new TeamMemberProperties { Role = Developer });
     simulation.AddTeamMember(Johnny, new TeamMemberProperties { Role = Developer });
@@ -315,37 +320,37 @@ public class SimulationSpecification
     AssertLog(simulation, [
       Assigned(1, Andy, Developer, CodeX),
       Assigned(1, Johnny, Developer, CodeY),
-      "Day 1: Developer Andy is working on task Code X",
-      "Day 1: Developer Johnny is working on task Code Y",
-      "Day 1: QA Zenek has nothing to work on",
-      "Day 2: Developer Andy is working on task Code X",
-      "Day 2: Developer Johnny is working on task Code Y",
-      "Day 2: QA Zenek has nothing to work on",
-      "Day 3: Developer Andy is working on task Code X",
-      "Day 3: Developer Johnny is working on task Code Y",
-      "Day 3: QA Zenek has nothing to work on",
-      "Day 3: Developer Andy completed the task Code X",
-      "Day 3: Developer Johnny completed the task Code Y",
-      "Day 4: Developer Andy was assigned to task Code Z",
-      "Day 4: QA Zenek was assigned to task Test X",
-      "Day 4: Developer Andy is working on task Code Z",
-      "Day 4: Developer Johnny has nothing to work on",
-      "Day 4: QA Zenek is working on task Test X",
-      "Day 4: QA Zenek completed the task Test X",
-      "Day 5: QA Zenek was assigned to task Test Y",
-      "Day 5: Developer Andy is working on task Code Z",
-      "Day 5: Developer Johnny has nothing to work on",
-      "Day 5: QA Zenek is working on task Test Y",
-      "Day 5: QA Zenek completed the task Test Y",
-      "Day 6: Developer Andy is working on task Code Z",
-      "Day 6: Developer Johnny has nothing to work on",
-      "Day 6: QA Zenek has nothing to work on",
-      "Day 6: Developer Andy completed the task Code Z",
-      "Day 7: QA Zenek was assigned to task Test Z",
-      "Day 7: Developer Andy has nothing to work on",
-      "Day 7: Developer Johnny has nothing to work on",
-      "Day 7: QA Zenek is working on task Test Z",
-      "Day 7: QA Zenek completed the task Test Z",
+      InProgress(1, Andy, Developer, CodeX),
+      InProgress(1, Johnny, Developer, CodeY),
+      Slack(1, Zenek, QA),
+      InProgress(2, Andy, Developer, CodeX),
+      InProgress(2, Johnny, Developer, CodeY),
+      Slack(2, Zenek, QA),
+      InProgress(3, Andy, Developer, CodeX),
+      InProgress(3, Johnny, Developer, CodeY),
+      Slack(3, Zenek, QA),
+      Completed(3, Andy, Developer, CodeX),
+      Completed(3, Johnny, Developer, CodeY),
+      Assigned(4, Andy, Developer, CodeZ),
+      Assigned(4, Zenek, QA, TestX),
+      InProgress(4, Andy, Developer, CodeZ),
+      Slack(4, Johnny, Developer),
+      InProgress(4, Zenek, QA, TestX),
+      Completed(4, Zenek, QA, TestX),
+      Assigned(5, Zenek, QA, TestY),
+      InProgress(5, Andy, Developer, CodeZ),
+      Slack(5, Johnny, Developer),
+      InProgress(5, Zenek, QA, TestY),
+      Completed(5, Zenek, QA, TestY),
+      InProgress(6, Andy, Developer, CodeZ),
+      Slack(6, Johnny, Developer),
+      Slack(6, Zenek, QA),
+      Completed(6, Andy, Developer, CodeZ),
+      Assigned(7, Zenek, QA, TestZ),
+      Slack(7, Andy, Developer),
+      Slack(7, Johnny, Developer),
+      InProgress(7, Zenek, QA, TestZ),
+      Completed(7, Zenek, QA, TestZ),
     ]);
 
     //BUG: add top level tasks - not sure how. Maybe using the mapping from work item to something like "story id"
@@ -373,15 +378,8 @@ public class SimulationSpecification
     });
     
     simulation.AddWorkItemGroup(DeliverX, [CodeX, TestX]); //BUG add assertions for group item:
-
-    simulation.AddTeamMember(Andy, new TeamMemberProperties
-    {
-      Role = Developer
-    });
-    simulation.AddTeamMember(Zenek, new TeamMemberProperties
-    {
-      Role = QA
-    });
+    simulation.AddTeamMember(Andy, new TeamMemberProperties { Role = Developer });
+    simulation.AddTeamMember(Zenek, new TeamMemberProperties { Role = QA });
 
 
     //WHEN
