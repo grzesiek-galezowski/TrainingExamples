@@ -5,6 +5,16 @@ namespace FlowSimulation;
 [TestFixture(TestOf = typeof(Simulation))]
 public class SimulationSpecification
 {
+  private const string Andy = "Andy";
+  private const string Zenek = "Zenek";
+  private const string Developer = "Developer";
+  private const string CodeX = "Code X";
+  private const string QA = "QA";
+  private const string TestX = "Test X";
+  private const string DeliverX = "Deliver X";
+  private const string Johnny = "Johnny";
+  private const string CodeY = "Code Y";
+
   [Test]
   public void ShouldSayNothingHappenedWhenNoWorkItemsConfigured()
   {
@@ -31,7 +41,7 @@ public class SimulationSpecification
   {
     var simulation = new Simulation();
     simulation.AddWorkItem("X");
-    simulation.AddTeamMember("Andy");
+    simulation.AddTeamMember(Andy);
 
     simulation.Run();
 
@@ -47,7 +57,7 @@ public class SimulationSpecification
   {
     var simulation = new Simulation();
     simulation.AddWorkItem("X", WithPoints(2));
-    simulation.AddTeamMember("Andy");
+    simulation.AddTeamMember(Andy);
 
     simulation.Run();
 
@@ -65,7 +75,7 @@ public class SimulationSpecification
     var simulation = new Simulation();
     simulation.AddWorkItem("X");
     simulation.AddWorkItem("Y");
-    simulation.AddTeamMember("Andy");
+    simulation.AddTeamMember(Andy);
 
     simulation.Run();
 
@@ -85,8 +95,8 @@ public class SimulationSpecification
   {
     var simulation = new Simulation();
     simulation.AddWorkItem("X");
-    simulation.AddTeamMember("Andy");
-    simulation.AddTeamMember("Johnny");
+    simulation.AddTeamMember(Andy);
+    simulation.AddTeamMember(Johnny);
 
     simulation.Run();
 
@@ -102,8 +112,8 @@ public class SimulationSpecification
   public void ShouldThrowExceptionWhenDeveloperIsAddedTwice()
   {
     var simulation = new Simulation();
-    simulation.AddTeamMember("Andy");
-    FluentActions.Invoking(() => simulation.AddTeamMember("Andy"))
+    simulation.AddTeamMember(Andy);
+    FluentActions.Invoking(() => simulation.AddTeamMember(Andy))
       .Should().Throw<Exception>();
   }
 
@@ -120,7 +130,7 @@ public class SimulationSpecification
   public void ShouldThrowExceptionWhenWorkItemDependsOnAnotherWithLowerPriority()
   {
     var simulation = new Simulation();
-    simulation.AddTeamMember("Johnny");
+    simulation.AddTeamMember(Johnny);
     simulation.AddWorkItem("X");
     simulation.AddWorkItem("Y", new WorkItemProperties
     {
@@ -134,7 +144,7 @@ public class SimulationSpecification
   public void ShouldThrowExceptionWhenWorkItemsHaveCircularDependency()
   {
     var simulation = new Simulation();
-    simulation.AddTeamMember("Johnny");
+    simulation.AddTeamMember(Johnny);
     simulation.AddWorkItem("X", DependingOn("Y"));
     simulation.AddWorkItem("Y", DependingOn("Z"));
     simulation.AddWorkItem("Z", DependingOn("X"));
@@ -146,7 +156,7 @@ public class SimulationSpecification
   public void ShouldThrowExceptionWhenWorkItemsDependOnNonExistentItems()
   {
     var simulation = new Simulation();
-    simulation.AddTeamMember("Johnny");
+    simulation.AddTeamMember(Johnny);
     simulation.AddWorkItem("X", DependingOn("Y"));
     simulation.AddWorkItem("Y", DependingOn("Z"));
     FluentActions.Invoking(simulation.Run)
@@ -157,10 +167,10 @@ public class SimulationSpecification
   public void ShouldThrowExceptionWhenTeamDoesNotHaveARoleRequiredForATask()
   {
     var simulation = new Simulation();
-    simulation.AddTeamMember("Johnny");
+    simulation.AddTeamMember(Johnny);
     simulation.AddWorkItem("X", new WorkItemProperties
     {
-      RequiredRole = "QA"
+      RequiredRole = QA
     });
     FluentActions.Invoking(simulation.Run)
       .Should().Throw<Exception>();
@@ -175,7 +185,7 @@ public class SimulationSpecification
     simulation.AddWorkItem("Y", WithPriority(2));
     simulation.AddWorkItem("Z", WithPriority(1));
 
-    simulation.AddTeamMember("Andy");
+    simulation.AddTeamMember(Andy);
 
     simulation.Run();
 
@@ -207,7 +217,7 @@ public class SimulationSpecification
     simulation.AddWorkItem("Y", DependingOn("Z"));
     simulation.AddWorkItem("Z");
 
-    simulation.AddTeamMember("Andy");
+    simulation.AddTeamMember(Andy);
 
     simulation.Run();
 
@@ -230,14 +240,14 @@ public class SimulationSpecification
   {
     var simulation = new Simulation();
 
-    simulation.AddWorkItem("Develop X", RequiresRole("Developer"));
-    simulation.AddWorkItem("Test X", new WorkItemProperties
+    simulation.AddWorkItem("Develop X", RequiresRole(Developer));
+    simulation.AddWorkItem(TestX, new WorkItemProperties
     {
-      RequiredRole = "QA",
+      RequiredRole = QA,
       Dependencies = ["Develop X"]
     });
-    simulation.AddTeamMember("Andy", new TeamMemberProperties { Role = "Developer" });
-    simulation.AddTeamMember("Sue", new TeamMemberProperties { Role = "QA" });
+    simulation.AddTeamMember(Andy, new TeamMemberProperties { Role = Developer });
+    simulation.AddTeamMember("Sue", new TeamMemberProperties { Role = QA });
 
     simulation.Run();
 
@@ -264,8 +274,8 @@ public class SimulationSpecification
     simulation.AddWorkItem("Y", DependingOn("Z"));
     simulation.AddWorkItem("Z");
 
-    simulation.AddTeamMember("Andy");
-    simulation.AddTeamMember("Johnny");
+    simulation.AddTeamMember(Andy);
+    simulation.AddTeamMember(Johnny);
 
     simulation.Run();
 
@@ -289,22 +299,22 @@ public class SimulationSpecification
   {
     var simulation = new Simulation();
 
-    simulation.AddWorkItem("Code X", new WorkItemProperties { RequiredRole = "Developer", Points = 3 });
-    simulation.AddWorkItem("Test X", new WorkItemProperties { RequiredRole = "QA", Dependencies = ["Code X"] });
-    simulation.AddWorkItem("Code Y", new WorkItemProperties { RequiredRole = "Developer", Points = 3 });
-    simulation.AddWorkItem("Test Y", new WorkItemProperties { RequiredRole = "QA", Dependencies = ["Code Y"] });
-    simulation.AddWorkItem("Code Z", new WorkItemProperties { RequiredRole = "Developer", Points = 3 });
-    simulation.AddWorkItem("Test Z", new WorkItemProperties { RequiredRole = "QA", Dependencies = ["Code Z"] });
+    simulation.AddWorkItem(CodeX, new WorkItemProperties { RequiredRole = Developer, Points = 3 });
+    simulation.AddWorkItem(TestX, new WorkItemProperties { RequiredRole = QA, Dependencies = [CodeX] });
+    simulation.AddWorkItem(CodeY, new WorkItemProperties { RequiredRole = Developer, Points = 3 });
+    simulation.AddWorkItem("Test Y", new WorkItemProperties { RequiredRole = QA, Dependencies = [CodeY] });
+    simulation.AddWorkItem("Code Z", new WorkItemProperties { RequiredRole = Developer, Points = 3 });
+    simulation.AddWorkItem("Test Z", new WorkItemProperties { RequiredRole = QA, Dependencies = ["Code Z"] });
 
-    simulation.AddTeamMember("Andy", new TeamMemberProperties { Role = "Developer" });
-    simulation.AddTeamMember("Johnny", new TeamMemberProperties { Role = "Developer" });
-    simulation.AddTeamMember("Zenek", new TeamMemberProperties { Role = "QA" });
+    simulation.AddTeamMember(Andy, new TeamMemberProperties { Role = Developer });
+    simulation.AddTeamMember(Johnny, new TeamMemberProperties { Role = Developer });
+    simulation.AddTeamMember(Zenek, new TeamMemberProperties { Role = QA });
 
     simulation.Run();
 
     AssertLog(simulation, [
-      "Day 1: Developer Andy was assigned to task Code X",
-      "Day 1: Developer Johnny was assigned to task Code Y",
+      Assigned(1, Andy, Developer, CodeX),
+      Assigned(1, Johnny, Developer, CodeY),
       "Day 1: Developer Andy is working on task Code X",
       "Day 1: Developer Johnny is working on task Code Y",
       "Day 1: QA Zenek has nothing to work on",
@@ -351,26 +361,26 @@ public class SimulationSpecification
     //bug 1) unique id
     //bug 2) child items must exist
 
-    simulation.AddWorkItem("Code X", new WorkItemProperties()
+    simulation.AddWorkItem(CodeX, new WorkItemProperties
     {
-      RequiredRole = "Developer"
+      RequiredRole = Developer
     });
 
-    simulation.AddWorkItem("Test X", new WorkItemProperties()
+    simulation.AddWorkItem(TestX, new WorkItemProperties
     {
-      RequiredRole = "QA",
-      Dependencies = ["Code X"]
+      RequiredRole = QA,
+      Dependencies = [CodeX]
     });
     
-    simulation.AddWorkItemGroup("Deliver X", ["Code X", "Test X"]); //BUG add assertions for group item:
+    simulation.AddWorkItemGroup(DeliverX, [CodeX, TestX]); //BUG add assertions for group item:
 
-    simulation.AddTeamMember("Andy", new TeamMemberProperties()
+    simulation.AddTeamMember(Andy, new TeamMemberProperties
     {
-      Role = "Developer"
+      Role = Developer
     });
-    simulation.AddTeamMember("Zenek", new TeamMemberProperties()
+    simulation.AddTeamMember(Zenek, new TeamMemberProperties
     {
-      Role = "QA"
+      Role = QA
     });
 
 
@@ -379,16 +389,41 @@ public class SimulationSpecification
 
     //THEN
     AssertLog(simulation, [
-      "Day 1: Developer Andy was assigned to task Code X",
-      "Day 1: Developer Andy is working on task Code X",
-      "Day 1: QA Zenek has nothing to work on",
-      "Day 1: Developer Andy completed the task Code X",
-      "Day 2: QA Zenek was assigned to task Test X",
-      "Day 2: Developer Andy has nothing to work on",
-      "Day 2: QA Zenek is working on task Test X",
-      "Day 2: QA Zenek completed the task Test X",
-      "Day 2: Item group Deliver X for 2 points is completed"
+      Assigned(1, Andy, Developer, CodeX),
+      InProgress(1, Andy, Developer, CodeX),
+      Slack(1, Zenek, QA),
+      Completed(1, Andy, Developer, CodeX),
+      Assigned(2, Zenek, QA, TestX),
+      Slack(2, Andy, Developer),
+      InProgress(2, Zenek, QA, TestX),
+      Completed(2, Zenek, QA, TestX),
+      GroupItemDelivered(2, DeliverX, 2)
     ]);
+  }
+
+  private static string GroupItemDelivered(int day, string itemGroupId, int points)
+  {
+    return $"Day {day}: Item group {itemGroupId} for {points} points is completed";
+  }
+
+  private static string Completed(int day, string name, string role, string itemName)
+  {
+    return $"Day {day}: {role} {name} completed the task {itemName}";
+  }
+
+  private static string Slack(int day, string name, string role)
+  {
+    return $"Day {day}: {role} {name} has nothing to work on";
+  }
+
+  private static string InProgress(int day, string name, string role, string itemName)
+  {
+    return $"Day {day}: {role} {name} is working on task {itemName}";
+  }
+
+  private static string Assigned(int day, string name, string role, string itemId)
+  {
+    return $"Day {day}: {role} {name} was assigned to task {itemId}";
   }
 
   private static void AssertLog(Simulation simulation, string[] entries)
