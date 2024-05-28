@@ -18,6 +18,9 @@ public class SimulationSpecification
   private const string TestY = "Test Y";
   private const string TestZ = "Test Z";
   private const string Sue = "Sue";
+  private const string X = "X";
+  private const string Y = "Y";
+  private const string Z = "Z";
 
   [Test]
   public void ShouldSayNothingHappenedWhenNoWorkItemsConfigured()
@@ -33,7 +36,7 @@ public class SimulationSpecification
   public void ShouldSayNoDevelopersWhenOnlyWorkItemsAdded()
   {
     var simulation = new Simulation();
-    simulation.AddWorkItem("X");
+    simulation.AddWorkItem(X);
 
     simulation.Run();
 
@@ -44,15 +47,15 @@ public class SimulationSpecification
   public void ShouldMakeSingleDeveloperDoOnePointItemInSingleDay()
   {
     var simulation = new Simulation();
-    simulation.AddWorkItem("X");
+    simulation.AddWorkItem(X);
     simulation.AddTeamMember(Andy);
 
     simulation.Run();
 
     AssertLog(simulation, [
-      Assigned(1, Andy, Developer, "X"),
-      InProgress(1, Andy, Developer, "X"),
-      Completed(1, Andy, Developer, "X"),
+      Assigned(1, Andy, Developer, X),
+      InProgress(1, Andy, Developer, X),
+      Completed(1, Andy, Developer, X),
     ]);
   }
 
@@ -60,16 +63,16 @@ public class SimulationSpecification
   public void ShouldMakeSingleDeveloperDoTwoPointItemInTwoDays()
   {
     var simulation = new Simulation();
-    simulation.AddWorkItem("X", WithPoints(2));
+    simulation.AddWorkItem(X, WithPoints(2));
     simulation.AddTeamMember(Andy);
 
     simulation.Run();
 
     AssertLog(simulation, [
-      Assigned(1, Andy, Developer, "X"),
-      InProgress(1, Andy, Developer, "X"),
-      InProgress(2, Andy, Developer, "X"),
-      Completed(2, Andy, Developer, "X"),
+      Assigned(1, Andy, Developer, X),
+      InProgress(1, Andy, Developer, X),
+      InProgress(2, Andy, Developer, X),
+      Completed(2, Andy, Developer, X),
     ]);
   }
 
@@ -77,19 +80,19 @@ public class SimulationSpecification
   public void ShouldMakeOneDeveloperCompleteTwoWorkItems()
   {
     var simulation = new Simulation();
-    simulation.AddWorkItem("X");
-    simulation.AddWorkItem("Y");
+    simulation.AddWorkItem(X);
+    simulation.AddWorkItem(Y);
     simulation.AddTeamMember(Andy);
 
     simulation.Run();
 
     AssertLog(simulation, [
-      Assigned(1, Andy, Developer, "X"),
-      InProgress(1, Andy, Developer, "X"),
-      Completed(1, Andy, Developer, "X"),
-      Assigned(2, Andy, Developer, "Y"),
-      InProgress(2, Andy, Developer, "Y"),
-      Completed(2, Andy, Developer, "Y"),
+      Assigned(1, Andy, Developer, X),
+      InProgress(1, Andy, Developer, X),
+      Completed(1, Andy, Developer, X),
+      Assigned(2, Andy, Developer, Y),
+      InProgress(2, Andy, Developer, Y),
+      Completed(2, Andy, Developer, Y),
     ]);
   }
 
@@ -98,17 +101,17 @@ public class SimulationSpecification
   public void ShouldMakeOneDeveloperSlackWhenThereAreTwoButOneWorkItem()
   {
     var simulation = new Simulation();
-    simulation.AddWorkItem("X");
+    simulation.AddWorkItem(X);
     simulation.AddTeamMember(Andy);
     simulation.AddTeamMember(Johnny);
 
     simulation.Run();
 
     AssertLog(simulation, [
-      Assigned(1, Andy, Developer, "X"),
-      InProgress(1, Andy, Developer, "X"),
+      Assigned(1, Andy, Developer, X),
+      InProgress(1, Andy, Developer, X),
       Slack(1, Johnny, Developer),
-      Completed(1, Andy, Developer, "X"),
+      Completed(1, Andy, Developer, X),
     ]);
   }
 
@@ -125,8 +128,8 @@ public class SimulationSpecification
   public void ShouldThrowExceptionWhenWorkItemIsAddedTwice()
   {
     var simulation = new Simulation();
-    simulation.AddWorkItem("X");
-    FluentActions.Invoking(() => simulation.AddWorkItem("X"))
+    simulation.AddWorkItem(X);
+    FluentActions.Invoking(() => simulation.AddWorkItem(X))
       .Should().Throw<Exception>();
   }
 
@@ -135,10 +138,10 @@ public class SimulationSpecification
   {
     var simulation = new Simulation();
     simulation.AddTeamMember(Johnny);
-    simulation.AddWorkItem("X");
-    simulation.AddWorkItem("Y", new WorkItemProperties
+    simulation.AddWorkItem(X);
+    simulation.AddWorkItem(Y, new WorkItemProperties
     {
-      Priority = 4, Dependencies = ["X"]
+      Priority = 4, Dependencies = [X]
     });
     FluentActions.Invoking(simulation.Run)
       .Should().Throw<Exception>();
@@ -149,9 +152,9 @@ public class SimulationSpecification
   {
     var simulation = new Simulation();
     simulation.AddTeamMember(Johnny);
-    simulation.AddWorkItem("X", DependingOn("Y"));
-    simulation.AddWorkItem("Y", DependingOn("Z"));
-    simulation.AddWorkItem("Z", DependingOn("X"));
+    simulation.AddWorkItem(X, DependingOn(Y));
+    simulation.AddWorkItem(Y, DependingOn(Z));
+    simulation.AddWorkItem(Z, DependingOn(X));
     FluentActions.Invoking(simulation.Run)
       .Should().Throw<Exception>();
   }
@@ -161,8 +164,8 @@ public class SimulationSpecification
   {
     var simulation = new Simulation();
     simulation.AddTeamMember(Johnny);
-    simulation.AddWorkItem("X", DependingOn("Y"));
-    simulation.AddWorkItem("Y", DependingOn("Z"));
+    simulation.AddWorkItem(X, DependingOn(Y));
+    simulation.AddWorkItem(Y, DependingOn(Z));
     FluentActions.Invoking(simulation.Run)
       .Should().Throw<Exception>();
   }
@@ -172,7 +175,7 @@ public class SimulationSpecification
   {
     var simulation = new Simulation();
     simulation.AddTeamMember(Johnny);
-    simulation.AddWorkItem("X", new WorkItemProperties
+    simulation.AddWorkItem(X, new WorkItemProperties
     {
       RequiredRole = QA
     });
@@ -185,24 +188,24 @@ public class SimulationSpecification
   {
     var simulation = new Simulation();
 
-    simulation.AddWorkItem("X", WithPriority(3));
-    simulation.AddWorkItem("Y", WithPriority(2));
-    simulation.AddWorkItem("Z", WithPriority(1));
+    simulation.AddWorkItem(X, WithPriority(3));
+    simulation.AddWorkItem(Y, WithPriority(2));
+    simulation.AddWorkItem(Z, WithPriority(1));
 
     simulation.AddTeamMember(Andy);
 
     simulation.Run();
 
     AssertLog(simulation, [
-        Assigned(1, Andy, Developer, "Z"),
-        InProgress(1, Andy, Developer, "Z"),
-        Completed(1, Andy, Developer, "Z"),
-        Assigned(2, Andy, Developer, "Y"),
-        InProgress(2, Andy, Developer, "Y"),
-        Completed(2, Andy, Developer, "Y"),
-        Assigned(3, Andy, Developer, "X"),
-        InProgress(3, Andy, Developer, "X"),
-        Completed(3, Andy, Developer, "X"),
+        Assigned(1, Andy, Developer, Z),
+        InProgress(1, Andy, Developer, Z),
+        Completed(1, Andy, Developer, Z),
+        Assigned(2, Andy, Developer, Y),
+        InProgress(2, Andy, Developer, Y),
+        Completed(2, Andy, Developer, Y),
+        Assigned(3, Andy, Developer, X),
+        InProgress(3, Andy, Developer, X),
+        Completed(3, Andy, Developer, X),
       ]
     );
   }
@@ -217,24 +220,24 @@ public class SimulationSpecification
   {
     var simulation = new Simulation();
 
-    simulation.AddWorkItem("X", DependingOn("Y"));
-    simulation.AddWorkItem("Y", DependingOn("Z"));
-    simulation.AddWorkItem("Z");
+    simulation.AddWorkItem(X, DependingOn(Y));
+    simulation.AddWorkItem(Y, DependingOn(Z));
+    simulation.AddWorkItem(Z);
 
     simulation.AddTeamMember(Andy);
 
     simulation.Run();
 
     AssertLog(simulation, [
-        Assigned(1, Andy, Developer, "Z"),
-        InProgress(1, Andy, Developer, "Z"),
-        Completed(1, Andy, Developer, "Z"),
-        Assigned(2, Andy, Developer, "Y"),
-        InProgress(2, Andy, Developer, "Y"),
-        Completed(2, Andy, Developer, "Y"),
-        Assigned(3, Andy, Developer, "X"),
-        InProgress(3, Andy, Developer, "X"),
-        Completed(3, Andy, Developer, "X"),
+        Assigned(1, Andy, Developer, Z),
+        InProgress(1, Andy, Developer, Z),
+        Completed(1, Andy, Developer, Z),
+        Assigned(2, Andy, Developer, Y),
+        InProgress(2, Andy, Developer, Y),
+        Completed(2, Andy, Developer, Y),
+        Assigned(3, Andy, Developer, X),
+        InProgress(3, Andy, Developer, X),
+        Completed(3, Andy, Developer, X),
 
       ]
     );
@@ -275,9 +278,9 @@ public class SimulationSpecification
   {
     var simulation = new Simulation();
 
-    simulation.AddWorkItem("X", DependingOn("Z"));
-    simulation.AddWorkItem("Y", DependingOn("Z"));
-    simulation.AddWorkItem("Z");
+    simulation.AddWorkItem(X, DependingOn(Z));
+    simulation.AddWorkItem(Y, DependingOn(Z));
+    simulation.AddWorkItem(Z);
 
     simulation.AddTeamMember(Andy);
     simulation.AddTeamMember(Johnny);
@@ -285,16 +288,16 @@ public class SimulationSpecification
     simulation.Run();
 
     AssertLog(simulation, [
-        Assigned(1, Andy, Developer, "Z"),
-        InProgress(1, Andy, Developer, "Z"),
+        Assigned(1, Andy, Developer, Z),
+        InProgress(1, Andy, Developer, Z),
         Slack(1, Johnny, Developer),
-        Completed(1, Andy, Developer, "Z"),
-        Assigned(2, Andy, Developer, "X"),
-        Assigned(2, Johnny, Developer, "Y"),
-        InProgress(2, Andy, Developer, "X"),
-        InProgress(2, Johnny, Developer, "Y"),
-        Completed(2, Andy, Developer, "X"),
-        Completed(2, Johnny, Developer, "Y")
+        Completed(1, Andy, Developer, Z),
+        Assigned(2, Andy, Developer, X),
+        Assigned(2, Johnny, Developer, Y),
+        InProgress(2, Andy, Developer, X),
+        InProgress(2, Johnny, Developer, Y),
+        Completed(2, Andy, Developer, X),
+        Completed(2, Johnny, Developer, Y)
       ]
     );
   }
