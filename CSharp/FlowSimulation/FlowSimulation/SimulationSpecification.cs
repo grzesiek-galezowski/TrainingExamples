@@ -387,7 +387,7 @@ public class SimulationSpecification
       "Day 2: Developer Andy has nothing to work on",
       "Day 2: QA Zenek is working on task Test X",
       "Day 2: QA Zenek completed the task Test X",
-      "Day 2: Item group Deliver X is completed"
+      "Day 2: Item group Deliver X for 2 points is completed"
     ]);
   }
 

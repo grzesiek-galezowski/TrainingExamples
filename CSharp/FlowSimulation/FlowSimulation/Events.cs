@@ -49,8 +49,8 @@ public class Events
     Entries = Entries.Add($"Day {day}: " + message);
   }
 
-  public void ReportItemGroupCompleted(ItemId id)
+  public void ReportItemGroupCompleted(ItemId id, int pointsFinished)
   {
-    AddMessage($"Item group {id} is completed");
+    AddMessage($"Item group {id} for {pointsFinished} points is completed");
   }
 }

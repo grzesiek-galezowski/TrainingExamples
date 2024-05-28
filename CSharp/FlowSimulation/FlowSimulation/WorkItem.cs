@@ -11,18 +11,20 @@ public class WorkItem(
   Maybe<RoleId> requiredRole)
 {
   public override string ToString() => id.Text;
+
+  private int currentPoints = points;
   private bool assigned;
   private readonly List<ItemGroup> parents = [];
 
   public void Progress()
   {
-    points--;
+    currentPoints--;
     //bug throw if pointsLeft < 0
   }
 
   public bool IsCompleted()
   {
-    return points == 0;
+    return currentPoints == 0;
   }
 
   public bool IsAssigned()
@@ -140,7 +142,7 @@ public class WorkItem(
     events.ReportItemCompleted(id, memberId, role);
     foreach (var itemGroup in parents)
     {
-      itemGroup.NotifyChildCompleted(id);
+      itemGroup.NotifyChildCompleted(id, points);
     }
   }
 }
