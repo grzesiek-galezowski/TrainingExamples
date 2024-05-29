@@ -65,10 +65,10 @@ public class Backlog
     }
   }
 
-  public void Add(ItemGroup workItem)
+  public void Add(ItemGroup itemGroup)
   {
-    itemGroups = itemGroups.Add(workItem);
-    workItem.AddAsParentToItsChildrenIn(workItemsRepository);
+    itemGroups = itemGroups.Add(itemGroup);
+    itemGroup.AddAsParentToItsChildrenIn(workItemsRepository);
   }
 
   public void Add(WorkItem workItem)
