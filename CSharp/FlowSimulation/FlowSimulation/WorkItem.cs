@@ -12,7 +12,9 @@ public class WorkItem(
 {
   public override string ToString() => id.Text;
 
+#pragma warning disable CS9124 // Parameter is captured into the state of the enclosing type and its value is also used to initialize a field, property, or event.
   private int currentPoints = points;
+#pragma warning restore CS9124 // Parameter is captured into the state of the enclosing type and its value is also used to initialize a field, property, or event.
   private bool assigned;
   private readonly List<ItemGroup> parents = [];
 
@@ -47,7 +49,7 @@ public class WorkItem(
   public bool HasNoPendingDependencies(WorkItemsList workItemsList)
   {
     var dependencies = workItemsList.FindItemsBy(dependencyNames);
-    return workItemsList.AreAllCompleted(dependencies);
+    return dependencies.TrueForAll(item => item.IsCompleted());
   }
 
   public static WorkItem BasedOn(ItemId itemId, WorkItemProperties workItemProperties)
@@ -98,9 +100,9 @@ public class WorkItem(
     return requiredRole.Select(r => r == role).OrTrue();
   }
 
-  private bool HasPriorityAtMost(int priority)
+  private bool HasPriorityAtMost(int testedPriority)
   {
-    return Priority > priority; //lower is higher
+    return Priority > testedPriority;
   }
 
   private void AssertDoesNotHaveLowerPriorityThan(WorkItem dependency)

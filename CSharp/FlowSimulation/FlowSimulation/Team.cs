@@ -1,3 +1,5 @@
+using System.Collections.Immutable;
+
 namespace FlowSimulation;
 
 public class Team
@@ -9,7 +11,7 @@ public class Team
     return developers.Count == 0;
   }
 
-  public void AssignWork(List<WorkItem> workItems)
+  public void AssignWork(ImmutableList<WorkItem> workItems)
   {
     foreach (var dev in developers.Where(d => !d.HasWork))
     {

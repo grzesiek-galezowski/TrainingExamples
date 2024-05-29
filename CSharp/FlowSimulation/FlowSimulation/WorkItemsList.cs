@@ -40,9 +40,4 @@ public class WorkItemsList(List<WorkItem> workItems)
   {
     workItems.Add(workItem);
   }
-
-  public bool AreAllCompleted(IEnumerable<WorkItem> dependencies)
-  {
-    return dependencies.All(item => item.IsCompleted());
-  }
 }

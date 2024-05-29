@@ -1,9 +1,11 @@
+using System.Collections.Immutable;
+
 namespace FlowSimulation;
 
 public class Backlog
 {
   private readonly WorkItemsList workItemsList;
-  private List<ItemGroup> itemGroups = [];
+  private readonly List<ItemGroup> itemGroups = [];
 
   public Backlog()
   {
@@ -17,7 +19,7 @@ public class Backlog
 
   public bool IsNotCompleted()
   {
-    return workItemsList.FindNotCompleted().Any();
+    return !workItemsList.FindNotCompleted().IsEmpty;
   }
 
   public void AssignItemsTo(Team team)
@@ -25,11 +27,11 @@ public class Backlog
     team.AssignWork(PrioritizedWorkItems());
   }
 
-  private List<WorkItem> PrioritizedWorkItems()
+  private ImmutableList<WorkItem> PrioritizedWorkItems()
   {
     return workItemsList.AllItems() //bug
       .Where(w => w.HasNoPendingDependencies(workItemsList))
-      .OrderBy(w => w.Priority).ToList();
+      .OrderBy(w => w.Priority).ToImmutableList();
   }
 
   private bool HasItemWith(ItemId itemId)
@@ -43,11 +45,6 @@ public class Backlog
     {
       throw new Exception("Duplicate work item");
     }
-  }
-
-  public void Add(WorkItem workItem)
-  {
-    workItemsList.Add(workItem);
   }
 
   public void AssertIsCoherent()
@@ -73,5 +70,11 @@ public class Backlog
     itemGroups.Add(workItem);
     workItem.AddAsParentToItsChildrenIn(workItemsList);
   }
+
+  public void Add(WorkItem workItem)
+  {
+    workItemsList.Add(workItem);
+  }
+
   //bug change many lists to hashsets
 }

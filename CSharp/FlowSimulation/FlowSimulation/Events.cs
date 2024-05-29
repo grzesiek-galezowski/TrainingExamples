@@ -46,7 +46,7 @@ public class Events
 
   private void AddMessage(string message)
   {
-    Entries = Entries.Add($"Day {day}: " + message);
+    Entries = Entries.Add($"Day {day}: {message}");
   }
 
   public void ReportItemGroupCompleted(ItemId id, int pointsFinished)
