@@ -16,7 +16,7 @@ public class WorkItem(
   private int currentPoints = points;
 #pragma warning restore CS9124 // Parameter is captured into the state of the enclosing type and its value is also used to initialize a field, property, or event.
   private bool assigned;
-  private readonly List<ItemGroup> parents = [];
+  private ImmutableList<ItemGroup> parents = [];
 
   public void Progress()
   {
@@ -46,9 +46,9 @@ public class WorkItem(
 
   public int Priority => priority;
 
-  public bool HasNoPendingDependencies(WorkItemsList workItemsList)
+  public bool HasNoPendingDependencies(WorkItemsRepository workItemsRepository)
   {
-    var dependencies = workItemsList.FindItemsBy(dependencyNames);
+    var dependencies = workItemsRepository.FindItemsBy(dependencyNames);
     return dependencies.TrueForAll(item => item.IsCompleted());
   }
 
@@ -61,29 +61,29 @@ public class WorkItem(
       workItemProperties.MaybeRequiredRole);
   }
 
-  public void AssertDoesNotHaveHigherPriorityThanAnyOfItsDependencies(WorkItemsList workItemsList)
+  public void AssertDoesNotHaveHigherPriorityThanAnyOfItsDependencies(WorkItemsRepository workItemsRepository)
   {
-    var dependencies = workItemsList.FindItemsBy(dependencyNames);
+    var dependencies = workItemsRepository.FindItemsBy(dependencyNames);
     foreach (var dependency in dependencies)
     {
       AssertDoesNotHaveLowerPriorityThan(dependency);
     }
   }
 
-  public void AssertDoesNotDependOnItself(WorkItemsList workItemsList)
+  public void AssertDoesNotDependOnItself(WorkItemsRepository workItemsRepository)
   {
-    var dependencies = workItemsList.FindItemsBy(dependencyNames);
+    var dependencies = workItemsRepository.FindItemsBy(dependencyNames);
     foreach (var dependency in dependencies)
     {
-      dependency.AssertDoesNotDependOn([id], workItemsList);
+      dependency.AssertDoesNotDependOn([id], workItemsRepository);
     }
   }
   
-  public void AssertAllDependenciesExist(WorkItemsList workItemsList)
+  public void AssertAllDependenciesExist(WorkItemsRepository workItemsRepository)
   {
     foreach (var dependencyName in dependencyNames)
     {
-      if (!workItemsList.Contains(dependencyName))
+      if (!workItemsRepository.Contains(dependencyName))
       {
         throw new Exception($"work item {id} depends on {dependencyName} which does not exist");
       }
@@ -113,13 +113,13 @@ public class WorkItem(
     }
   }
 
-  private void AssertDoesNotDependOn(ImmutableList<ItemId> alreadyEncounteredIds, WorkItemsList workItemsList)
+  private void AssertDoesNotDependOn(ImmutableList<ItemId> alreadyEncounteredIds, WorkItemsRepository workItemsRepository)
   {
     AssertIdIsNoneOf(alreadyEncounteredIds);
-    var dependencies = workItemsList.FindItemsBy(dependencyNames);
+    var dependencies = workItemsRepository.FindItemsBy(dependencyNames);
     foreach (var dependency in dependencies)
     {
-      dependency.AssertDoesNotDependOn(alreadyEncounteredIds.Add(id), workItemsList);
+      dependency.AssertDoesNotDependOn(alreadyEncounteredIds.Add(id), workItemsRepository);
     }
   }
 
@@ -136,7 +136,7 @@ public class WorkItem(
 
   public void AddParent(ItemGroup itemGroup)
   {
-    parents.Add(itemGroup);
+    parents = parents.Add(itemGroup);
   }
 
   public void Close(Events events, TeamMemberId memberId, RoleId role)

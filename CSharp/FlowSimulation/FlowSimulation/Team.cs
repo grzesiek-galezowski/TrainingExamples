@@ -4,7 +4,7 @@ namespace FlowSimulation;
 
 public class Team
 {
-  private readonly List<TeamMember> developers = [];
+  private ImmutableList<TeamMember> developers = [];
 
   public bool HasNoMembers()
   {
@@ -46,7 +46,7 @@ public class Team
 
   public void Add(TeamMember teamMember)
   {
-    developers.Add(teamMember);
+    developers = developers.Add(teamMember);
   }
 
   private bool HasDeveloperWith(TeamMemberId developerId)

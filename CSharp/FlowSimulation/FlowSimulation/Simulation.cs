@@ -28,6 +28,7 @@ public class Simulation
   {
     backlog.AssertIsCoherent();
     backlog.AssertRequiresOnlyRolesAvailableInThe(team);
+
     while (backlog.IsNotCompleted())
     {
       backlog.AssignItemsTo(team);

@@ -3,7 +3,7 @@ using Core.Maybe;
 
 namespace FlowSimulation;
 
-public class WorkItemsList(List<WorkItem> workItems)
+public class WorkItemsRepository(ImmutableList<WorkItem> workItems)
 {
   public ImmutableList<WorkItem> FindItemsBy(ImmutableList<ItemId> ids)
   {
@@ -21,9 +21,9 @@ public class WorkItemsList(List<WorkItem> workItems)
     return workItems.Count == 0;
   }
 
-  public List<WorkItem> AllItems()
+  public ImmutableList<WorkItem> AllItems()
   {
-    return workItems;
+    return workItems.ToImmutableList();
   }
 
   public ImmutableList<WorkItem> FindNotCompleted()
@@ -38,6 +38,6 @@ public class WorkItemsList(List<WorkItem> workItems)
 
   public void Add(WorkItem workItem)
   {
-    workItems.Add(workItem);
+    workItems = workItems.Add(workItem);
   }
 }

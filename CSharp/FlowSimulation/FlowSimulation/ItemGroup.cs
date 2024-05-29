@@ -4,21 +4,21 @@ namespace FlowSimulation;
 
 public class ItemGroup(ItemId itemGroupId, ImmutableList<ItemId> children, Events events)
 {
-  private readonly List<ItemId> completedChildren = [];
+  private ImmutableList<ItemId> completedChildren = [];
   private int pointsFinished = 0;
 
-  public void AddAsParentToItsChildrenIn(WorkItemsList workItemsList)
+  public void AddAsParentToItsChildrenIn(WorkItemsRepository workItemsRepository)
   {
     foreach (var childId in children)
     {
-      var child = workItemsList.FindByItemId(childId).Value();
+      var child = workItemsRepository.FindByItemId(childId).Value();
       child.AddParent(this);
     }
   }
 
   public void NotifyChildCompleted(ItemId childId, int points)
   {
-    completedChildren.Add(childId);
+    completedChildren = completedChildren.Add(childId);
     pointsFinished += points;
     if (AllChildrenCompleted())
     {

@@ -4,22 +4,22 @@ namespace FlowSimulation;
 
 public class Backlog
 {
-  private readonly WorkItemsList workItemsList;
-  private readonly List<ItemGroup> itemGroups = [];
+  private readonly WorkItemsRepository workItemsRepository;
+  private ImmutableList<ItemGroup> itemGroups = [];
 
   public Backlog()
   {
-    workItemsList = new WorkItemsList([]);
+    workItemsRepository = new WorkItemsRepository([]);
   }
 
   public bool IsEmpty()
   {
-    return workItemsList.IsEmpty();
+    return workItemsRepository.IsEmpty();
   }
 
   public bool IsNotCompleted()
   {
-    return !workItemsList.FindNotCompleted().IsEmpty;
+    return !workItemsRepository.FindNotCompleted().IsEmpty;
   }
 
   public void AssignItemsTo(Team team)
@@ -29,14 +29,14 @@ public class Backlog
 
   private ImmutableList<WorkItem> PrioritizedWorkItems()
   {
-    return workItemsList.AllItems() //bug
-      .Where(w => w.HasNoPendingDependencies(workItemsList))
+    return workItemsRepository.AllItems() //bug
+      .Where(w => w.HasNoPendingDependencies(workItemsRepository))
       .OrderBy(w => w.Priority).ToImmutableList();
   }
 
   private bool HasItemWith(ItemId itemId)
   {
-    return workItemsList.FindByItemId(itemId).HasValue;
+    return workItemsRepository.FindByItemId(itemId).HasValue;
   }
 
   public void AssertDoesNotAlreadyContain(ItemId itemId)
@@ -49,17 +49,17 @@ public class Backlog
 
   public void AssertIsCoherent()
   {
-    foreach (var workItem in workItemsList.AllItems())
+    foreach (var workItem in workItemsRepository.AllItems())
     {
-      workItem.AssertDoesNotDependOnItself(workItemsList);
-      workItem.AssertAllDependenciesExist(workItemsList);
-      workItem.AssertDoesNotHaveHigherPriorityThanAnyOfItsDependencies(workItemsList);
+      workItem.AssertDoesNotDependOnItself(workItemsRepository);
+      workItem.AssertAllDependenciesExist(workItemsRepository);
+      workItem.AssertDoesNotHaveHigherPriorityThanAnyOfItsDependencies(workItemsRepository);
     }
   }
 
   public void AssertRequiresOnlyRolesAvailableInThe(Team team)
   {
-    foreach (var workItem in workItemsList.AllItems())
+    foreach (var workItem in workItemsRepository.AllItems())
     {
       workItem.AssertRequiresRoleAvailableInThe(team);
     }
@@ -67,13 +67,13 @@ public class Backlog
 
   public void Add(ItemGroup workItem)
   {
-    itemGroups.Add(workItem);
-    workItem.AddAsParentToItsChildrenIn(workItemsList);
+    itemGroups = itemGroups.Add(workItem);
+    workItem.AddAsParentToItsChildrenIn(workItemsRepository);
   }
 
   public void Add(WorkItem workItem)
   {
-    workItemsList.Add(workItem);
+    workItemsRepository.Add(workItem);
   }
 
   //bug change many lists to hashsets
