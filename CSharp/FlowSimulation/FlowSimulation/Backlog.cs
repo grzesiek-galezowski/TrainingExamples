@@ -5,7 +5,6 @@ namespace FlowSimulation;
 public class Backlog
 {
   private readonly WorkItemsRepository workItemsRepository;
-  private ImmutableList<ItemGroup> itemGroups = [];
 
   public Backlog()
   {
@@ -67,7 +66,6 @@ public class Backlog
 
   public void Add(ItemGroup itemGroup)
   {
-    itemGroups = itemGroups.Add(itemGroup);
     itemGroup.AddAsParentToItsChildrenIn(workItemsRepository);
   }
 
