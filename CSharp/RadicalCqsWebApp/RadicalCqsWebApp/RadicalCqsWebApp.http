@@ -1,0 +1,6 @@
+@RadicalCqsWebApp_HostAddress = http://localhost:5240
+
+GET {{RadicalCqsWebApp_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
