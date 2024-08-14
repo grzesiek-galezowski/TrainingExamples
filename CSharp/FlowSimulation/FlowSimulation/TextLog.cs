@@ -1,15 +1,15 @@
 using System.Collections.Immutable;
+using FluentAssertions;
 
 namespace FlowSimulation;
 
-public class Events
+public class TextLog : IEventsDestination
 {
   private int day = 1;
 
-  public ImmutableList<string> Entries { get; private set; }
-      = ImmutableList<string>.Empty;
+  private ImmutableList<string> Entries { get; set; } = ImmutableList<string>.Empty;
 
-  public void MoveToNextDay()
+  public void NextDay()
   {
     day++;
   }
@@ -52,5 +52,10 @@ public class Events
   public void ReportItemGroupCompleted(ItemId id, int pointsFinished)
   {
     AddMessage($"Item group {id} for {pointsFinished} points is completed");
+  }
+
+  public void AssertConsistsOf(string[] entries)
+  {
+    Entries.Should().Equal(entries);
   }
 }

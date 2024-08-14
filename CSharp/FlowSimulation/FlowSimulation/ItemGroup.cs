@@ -2,7 +2,7 @@ using System.Collections.Immutable;
 
 namespace FlowSimulation;
 
-public class ItemGroup(ItemId itemGroupId, ImmutableList<ItemId> children, Events events)
+public class ItemGroup(ItemId itemGroupId, ImmutableList<ItemId> children, IEventsDestination events)
 {
   private ImmutableList<ItemId> completedChildren = [];
   private int pointsFinished = 0;

@@ -139,7 +139,7 @@ public class WorkItem(
     parents = parents.Add(itemGroup);
   }
 
-  public void Close(Events events, TeamMemberId memberId, RoleId role)
+  public void Close(IEventsDestination events, TeamMemberId memberId, RoleId role)
   {
     events.ReportItemCompleted(id, memberId, role);
     foreach (var itemGroup in parents)

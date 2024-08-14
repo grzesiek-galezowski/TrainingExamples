@@ -5,6 +5,43 @@ namespace FlowSimulation;
 
 public record WorkItemProperties
 {
+  public WorkItemProperties()
+  {
+  }
+
+  public WorkItemProperties(string requiredRole, ImmutableList<ItemId> dependencies)
+  {
+    RequiredRole = requiredRole;
+    Dependencies = dependencies;
+  }
+
+  public WorkItemProperties(int priority, ImmutableList<ItemId> dependencies) : this()
+  {
+    Priority = priority;
+    Dependencies = dependencies;
+  }
+
+  public WorkItemProperties(string requiredRole) : this()
+  {
+    RequiredRole = requiredRole;
+  }
+
+  public WorkItemProperties(int priority) : this()
+  {
+    Priority = priority;
+  }
+
+  public WorkItemProperties(string requiredRole, int points) : this()
+  {
+    RequiredRole = requiredRole;
+    Points = points;
+  }
+
+  public WorkItemProperties(ImmutableList<ItemId> dependencies) : this()
+  {
+    Dependencies = dependencies;
+  }
+
   public int Points { get; init; } = 1;
   public int Priority { get; init; } = 0;
   public ImmutableList<ItemId> Dependencies { get; init; } = [];

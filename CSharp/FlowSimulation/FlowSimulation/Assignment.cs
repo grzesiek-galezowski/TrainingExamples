@@ -8,7 +8,7 @@ public interface IAssignmentContext
   void CloseAssignment(TeamMemberId memberId, RoleId role, WorkItem assignedItem);
 }
 
-public class Assignment(Events events) : IAssignmentContext
+public class Assignment(IEventsDestination events) : IAssignmentContext
 {
   private IAssignmentState currentState = new UnassignedState();
 

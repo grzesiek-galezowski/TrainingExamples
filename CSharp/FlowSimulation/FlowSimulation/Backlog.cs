@@ -33,11 +33,6 @@ public class Backlog
       .OrderBy(w => w.Priority).ToImmutableList();
   }
 
-  private bool HasItemWith(ItemId itemId)
-  {
-    return workItemsRepository.FindByItemId(itemId).HasValue;
-  }
-
   public void AssertDoesNotAlreadyContain(ItemId itemId)
   {
     if (HasItemWith(itemId))
@@ -45,6 +40,7 @@ public class Backlog
       throw new Exception("Duplicate work item");
     }
   }
+
 
   public void AssertIsCoherent()
   {
@@ -74,5 +70,9 @@ public class Backlog
     workItemsRepository.Add(workItem);
   }
 
+  private bool HasItemWith(ItemId itemId)
+  {
+    return workItemsRepository.FindByItemId(itemId).HasValue;
+  }
   //bug change many lists to hashsets
 }

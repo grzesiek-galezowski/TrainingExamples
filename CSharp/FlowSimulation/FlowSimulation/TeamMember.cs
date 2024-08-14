@@ -1,6 +1,6 @@
 namespace FlowSimulation;
 
-public class TeamMember(TeamMemberId id, string role, Events events)
+public class TeamMember(TeamMemberId id, string role, IEventsDestination events)
 {
   private readonly Assignment assignment = new(events);
 

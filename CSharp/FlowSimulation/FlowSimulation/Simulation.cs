@@ -6,25 +6,31 @@ public class Simulation
 {
   private readonly Team team = new();
   private readonly Backlog backlog = new();
-  public Events Events { get; } = new();
+  public TextLog TextLog { get; } = new();
+  private readonly IEventsDestination eventDestination;
+
+  public Simulation(params IEventsDestination[] additionalEventDestinations)
+  {
+    eventDestination = new CompoundEvents(additionalEventDestinations.ToImmutableArray().Add(TextLog));
+  }
 
   public void Run()
   {
     if (backlog.IsEmpty())
     {
-      Events.NoItemsOnTheBacklog();
+      eventDestination.NoItemsOnTheBacklog();
     }
     else if (team.HasNoMembers())
     {
-      Events.NoMembersOnTheTeam();
+      eventDestination.NoMembersOnTheTeam();
     }
     else
     {
-      RunLoop();
+      RunLoop(eventDestination);
     }
   }
 
-  private void RunLoop()
+  private void RunLoop(IEventsDestination eventsDestination)
   {
     backlog.AssertIsCoherent();
     backlog.AssertRequiresOnlyRolesAvailableInThe(team);
@@ -33,7 +39,7 @@ public class Simulation
     {
       backlog.AssignItemsTo(team);
       team.WorkOnAssignedItems();
-      Events.MoveToNextDay();
+      eventsDestination.NextDay();
     }
   }
 
@@ -57,11 +63,16 @@ public class Simulation
   public void AddTeamMember(TeamMemberId teamMemberId, TeamMemberProperties properties)
   {
     team.AssertDoesNotAlreadyHaveMemberWith(teamMemberId);
-    team.Add(new TeamMember(teamMemberId, properties.Role, Events));
+    team.Add(new TeamMember(teamMemberId, properties.Role, eventDestination));
   }
 
+  /// <summary>
+  /// 
+  /// </summary>
+  /// <param name="itemGroupId"></param>
+  /// <param name="groupedItemsIds"></param>
   public void AddWorkItemGroup(ItemId itemGroupId, ImmutableList<ItemId> groupedItemsIds)
   {
-    backlog.Add(new ItemGroup(itemGroupId, groupedItemsIds, Events));
+    backlog.Add(new ItemGroup(itemGroupId, groupedItemsIds, eventDestination));
   }
 }
