@@ -1,3 +1,3 @@
 namespace RadicalCqsWebApp;
 
-public record AddTodoResponseDto(DateOnly Date, int Id, bool Translated);
+public record AddTodoResponseDto(DateOnly Date, int Id, bool Translated, string Translation);

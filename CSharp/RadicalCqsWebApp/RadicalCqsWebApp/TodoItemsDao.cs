@@ -8,7 +8,7 @@ public class TodoItemsDao
   {
     if (todoItemDto.DueDate != null)
     {
-      callback.Success(Guid.NewGuid());
+      callback.Success(Guid.NewGuid(), todoItemDto.Translation);
     }
     else
     {

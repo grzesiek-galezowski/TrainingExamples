@@ -22,14 +22,13 @@ public class AddTodoItemCommand(
         maybeTranslatedDto
           .Select(dto => dto.TranslatedContent)
           .OrElse(addTodoItemDto.Content)));
-
   }
 
-  void ITodoItemsDaoOperationCallback.Success(Guid assignedId)
+  void ITodoItemsDaoOperationCallback.Success(Guid assignedId, string translation)
   {
     if (addTodoItemDto.DueDate != null)
     {
-      reminderApi.RemindAbout(this, addTodoItemDto.Title, addTodoItemDto.DueDate.Value);
+      reminderApi.RemindAbout(this, addTodoItemDto.Title, addTodoItemDto.DueDate.Value, translation);
     }
   }
 
@@ -38,9 +37,9 @@ public class AddTodoItemCommand(
     logger.LogError("Error saving todo item: {ErrorCode}", errorCode);
   }
 
-  void ISetReminderCallback.Success(DateTime dueDate)
+  void ISetReminderCallback.Success(DateTime dueDate, string translation)
   {
-    responseInProgress.Success(new AddTodoResponseDto(new DateOnly(), 1, false));
+    responseInProgress.Success(new AddTodoResponseDto(new DateOnly(), 1, false, translation));
   }
 
   void ISetReminderCallback.Error(string message)
