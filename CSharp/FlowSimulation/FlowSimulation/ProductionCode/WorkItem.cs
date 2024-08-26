@@ -1,7 +1,7 @@
 using System.Collections.Immutable;
 using Core.Maybe;
 
-namespace FlowSimulation;
+namespace FlowSimulation.ProductionCode;
 
 public class WorkItem(
   ItemId id,
@@ -78,7 +78,7 @@ public class WorkItem(
       dependency.AssertDoesNotDependOn([id], workItemsRepository);
     }
   }
-  
+
   public void AssertAllDependenciesExist(WorkItemsRepository workItemsRepository)
   {
     foreach (var dependencyName in dependencyNames)

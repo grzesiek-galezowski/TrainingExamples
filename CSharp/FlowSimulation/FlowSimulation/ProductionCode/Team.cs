@@ -1,6 +1,7 @@
+using FlowSimulation.Specification.Automation;
 using System.Collections.Immutable;
 
-namespace FlowSimulation;
+namespace FlowSimulation.ProductionCode;
 
 public class Team
 {

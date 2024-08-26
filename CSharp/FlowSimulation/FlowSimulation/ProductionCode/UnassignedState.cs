@@ -1,4 +1,4 @@
-namespace FlowSimulation;
+namespace FlowSimulation.ProductionCode;
 
 internal class UnassignedState : IAssignmentState //bug move
 {

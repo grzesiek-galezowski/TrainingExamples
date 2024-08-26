@@ -1,6 +1,6 @@
 using System.Collections.Immutable;
 
-namespace FlowSimulation;
+namespace FlowSimulation.ProductionCode;
 
 public class ItemGroup(ItemId itemGroupId, ImmutableList<ItemId> children, IEventsDestination events)
 {

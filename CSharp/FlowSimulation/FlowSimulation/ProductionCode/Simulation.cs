@@ -1,6 +1,7 @@
 using System.Collections.Immutable;
+using FlowSimulation.Specification.Automation;
 
-namespace FlowSimulation;
+namespace FlowSimulation.ProductionCode;
 
 public class Simulation
 {

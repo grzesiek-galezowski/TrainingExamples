@@ -1,4 +1,6 @@
-namespace FlowSimulation;
+using FlowSimulation.ProductionCode;
+
+namespace FlowSimulation.Specification.Automation;
 
 public class TeamMember(TeamMemberId id, string role, IEventsDestination events)
 {

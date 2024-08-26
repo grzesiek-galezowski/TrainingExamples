@@ -1,4 +1,4 @@
-namespace FlowSimulation;
+namespace FlowSimulation.ProductionCode;
 
 public record RoleId(string Text)
 {

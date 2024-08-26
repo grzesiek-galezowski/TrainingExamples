@@ -1,7 +1,8 @@
 using System.Collections.Immutable;
+using FlowSimulation.Specification;
 using FluentAssertions;
 
-namespace FlowSimulation;
+namespace FlowSimulation.ProductionCode;
 
 public class TextLog : IEventsDestination
 {
@@ -54,8 +55,8 @@ public class TextLog : IEventsDestination
     AddMessage($"Item group {id} for {pointsFinished} points is completed");
   }
 
-  public void AssertConsistsOf(string[] entries)
+  public void AssertConsistsOf(ExpectedEvent[] entries)
   {
-    Entries.Should().Equal(entries);
+    Entries.Should().Equal(entries.Select(e => e.Text));
   }
 }

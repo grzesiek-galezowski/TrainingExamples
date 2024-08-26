@@ -1,7 +1,7 @@
 using System.Collections.Immutable;
 using Core.Maybe;
 
-namespace FlowSimulation;
+namespace FlowSimulation.ProductionCode;
 
 public class WorkItemsRepository(ImmutableList<WorkItem> workItems)
 {

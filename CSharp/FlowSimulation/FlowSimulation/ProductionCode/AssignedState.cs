@@ -1,4 +1,4 @@
-namespace FlowSimulation;
+namespace FlowSimulation.ProductionCode;
 
 public class AssignedState(WorkItem assignedItem) : IAssignmentState
 {
