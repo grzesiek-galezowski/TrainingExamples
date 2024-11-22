@@ -55,8 +55,8 @@ public class TextLog : IEventsDestination
     AddMessage($"Item group {id} for {pointsFinished} points is completed");
   }
 
-  public void AssertConsistsOf(ExpectedEvent[] entries)
+  public void AssertConsistsOf(ImmutableList<string> entries)
   {
-    Entries.Should().Equal(entries.Select(e => e.Text));
+    Entries.Should().Equal(entries);
   }
 }

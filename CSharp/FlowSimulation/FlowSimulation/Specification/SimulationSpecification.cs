@@ -26,7 +26,7 @@ public class SimulationSpecification
 
     simulationDriver.RunSimulation();
 
-    simulationDriver.AssertConsistsOf([ExpectedEvents.NoMembersOnTheTeam()]);
+    simulationDriver.AssertTextLogConsistsOf([ExpectedEvents.NoMembersOnTheTeam()]);
   }
 
   [Test]
@@ -38,11 +38,20 @@ public class SimulationSpecification
 
     simulationDriver.RunSimulation();
 
-    simulationDriver.AssertConsistsOf(
+    //BUG REFACTOR THIS!!!
+    simulationDriver.AssertTextLogConsistsOf(
     [
       ExpectedEvents.Assigned(1, Developers.Andy, Roles.Developer, Tasks.X), 
       ExpectedEvents.InProgress(1, Developers.Andy, Roles.Developer, Tasks.X),
       ExpectedEvents.Completed(1, Developers.Andy, Roles.Developer, Tasks.X)
+    ]);
+
+    simulationDriver.AssertEvents(
+    [
+      ExpectedEvents.Assigned(1, Developers.Andy, Roles.Developer, Tasks.X), 
+      ExpectedEvents.InProgress(1, Developers.Andy, Roles.Developer, Tasks.X),
+      ExpectedEvents.Completed(1, Developers.Andy, Roles.Developer, Tasks.X),
+      ExpectedEvents.NextDay()
     ]);
   }
 
@@ -55,7 +64,7 @@ public class SimulationSpecification
 
     simulationDriver.RunSimulation();
 
-    simulationDriver.AssertConsistsOf([
+    simulationDriver.AssertTextLogConsistsOf([
       ExpectedEvents.Assigned(1, Developers.Andy, Roles.Developer, Tasks.X),
       ExpectedEvents.InProgress(1, Developers.Andy, Roles.Developer, Tasks.X),
       ExpectedEvents.InProgress(2, Developers.Andy, Roles.Developer, Tasks.X),
@@ -74,7 +83,7 @@ public class SimulationSpecification
 
     simulation.RunSimulation();
 
-    simulation.AssertConsistsOf([
+    simulation.AssertTextLogConsistsOf([
       ExpectedEvents.Assigned(1,
         Developers.Andy,
         Roles.Developer,
@@ -113,7 +122,7 @@ public class SimulationSpecification
 
     simulation.RunSimulation();
 
-    simulation.AssertConsistsOf([
+    simulation.AssertTextLogConsistsOf([
       ExpectedEvents.Assigned(1,
         Developers.Andy,
         Roles.Developer,
@@ -207,7 +216,7 @@ public class SimulationSpecification
 
     simulation.RunSimulation();
 
-    simulation.AssertConsistsOf([
+    simulation.AssertTextLogConsistsOf([
       ExpectedEvents.Assigned(1,
         Developers.Andy,
         Roles.Developer,
@@ -260,7 +269,7 @@ public class SimulationSpecification
 
     simulation.RunSimulation();
 
-    simulation.AssertConsistsOf([
+    simulation.AssertTextLogConsistsOf([
       ExpectedEvents.Assigned(1,
         Developers.Andy,
         Roles.Developer,
@@ -313,7 +322,7 @@ public class SimulationSpecification
 
     simulation.RunSimulation();
 
-    simulation.AssertConsistsOf([
+    simulation.AssertTextLogConsistsOf([
       ExpectedEvents.Assigned(1,
         Developers.Andy,
         Roles.Developer,
@@ -361,7 +370,7 @@ public class SimulationSpecification
 
     simulation.RunSimulation();
 
-    simulation.AssertConsistsOf([
+    simulation.AssertTextLogConsistsOf([
       ExpectedEvents.Assigned(1,
         Developers.Andy,
         Roles.Developer,
@@ -428,7 +437,7 @@ public class SimulationSpecification
 
     simulation.RunSimulation();
 
-    simulation.AssertConsistsOf([
+    simulation.AssertTextLogConsistsOf([
       ExpectedEvents.Assigned(1,
         Developers.Andy,
         Roles.Developer,
@@ -584,7 +593,7 @@ public class SimulationSpecification
     simulation.RunSimulation();
 
     //THEN
-    simulation.AssertConsistsOf([
+    simulation.AssertTextLogConsistsOf([
       ExpectedEvents.Assigned(1,
         Developers.Andy,
         Roles.Developer,

@@ -1,6 +1,7 @@
 using System.Collections.Immutable;
 using FlowSimulation.ProductionCode;
 using NSubstitute;
+using TddXt.XNSubstitute;
 
 namespace FlowSimulation.Specification.Automation;
 
@@ -19,7 +20,7 @@ public class SimulationDriver
 
   public void ShouldReportNoItemsInTheBacklog()
   {
-    simulation.TextLog.AssertConsistsOf([ExpectedEvents.NoItemsOnTheBacklog()]);
+    simulation.TextLog.AssertConsistsOf([ExpectedEvents.NoItemsOnTheBacklog().Text]);
     additionalDestination.Received(1).NoItemsOnTheBacklog();
   }
 
@@ -38,9 +39,20 @@ public class SimulationDriver
     simulation.AddTeamMember(teamMemberId, teamMemberProperties);
   }
 
-  public void AssertConsistsOf(ExpectedEvent[] messages)
+  public void AssertTextLogConsistsOf(ExpectedEvent[] expectedEvents)
   {
-    simulation.TextLog.AssertConsistsOf(messages);
+    simulation.TextLog.AssertConsistsOf([.. expectedEvents.Select(m => m.Text)]);
+  }
+
+  public void AssertEvents(ExpectedEvent[] expectedEvents)
+  {
+    XReceived.Exactly(() =>
+    {
+      foreach (var expectedEvent in expectedEvents)
+      {
+        expectedEvent.CheckAgainst(additionalDestination);
+      }
+    });
   }
 
   public void AddWorkItem(string itemId, WorkItemProperties properties)
