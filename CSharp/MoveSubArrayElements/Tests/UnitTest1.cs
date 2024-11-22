@@ -34,6 +34,21 @@ public class Tests
   // Edge case - segment larger than array
   [TestCase(new[] { 1, 2 }, 0, 3, 1, new[] { 2, 1 })] //Right rotation with segment length > array length
 
+  // Edge Cases - Zero offset with various segment lengths
+  [TestCase(new[] { 1, 2, 3, 4 }, 0, 2, 0, new[] { 1, 2, 3, 4 })] //Zero offset shouldn't change anything
+  [TestCase(new[] { 1, 2, 3, 4 }, 1, 2, 0, new[] { 1, 2, 3, 4 })] //Zero offset with non-zero start index
+
+  // Multiple Segments with Different Lengths
+  [TestCase(new[] { 1, 2, 3, 4, 5 }, 0, 2, 1, new[] { 2, 1, 4, 3, 5 })] //Two complete segments and one incomplete
+  [TestCase(new[] { 1, 2, 3, 4, 5, 6 }, 1, 3, 1, new[] { 6, 4, 2, 3, 1, 5 })] //Non-zero start with multiple segments
+
+  // Overlapping Segments
+  [TestCase(new[] { 1, 2, 3, 4, 5 }, 2, 4, 1, new[] { 5, 2, 1, 3, 4 })] //Segment extends beyond array bounds
+  [TestCase(new[] { 1, 2, 3, 4, 5 }, -2, 4, 1, new[] { 5, 1, 3, 2, 4 })] //Negative start with segment larger than remaining array
+
+  // Prime-length Arrays
+  [TestCase(new[] { 1, 2, 3, 5, 7, 11, 13 }, 0, 3, 2, new[] { 2, 3, 1, 7, 11, 5, 13 })] //Prime length array with multiple segments
+
   public void Test1(int[] input, int firstSegmentStartIndex, int segmentLength, int offset, int[] expected)
   {
     MoveElements2(input, firstSegmentStartIndex, segmentLength, offset);
