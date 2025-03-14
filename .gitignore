@@ -246,3 +246,4 @@ CSharp/FlowSimulation/.vs/FlowSimulation/v17/DocumentLayout.json
 /CSharp/FlowSimulation/.vs/FlowSimulation/CopilotIndices
 /CSharp/FlowSimulation/.vs
 /CSharp/MoveSubArrayElements/.vs
+*.db
