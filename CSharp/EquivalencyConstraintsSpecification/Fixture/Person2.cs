@@ -1,4 +1,4 @@
-﻿namespace DependencyUpdatePriorityScanner.EquivalenceAssertions.Tests.Fixture;
+﻿namespace EquivalencyConstraintsSpecification.Fixture;
 
 public class Person2
 {

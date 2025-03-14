@@ -2,7 +2,7 @@
 using System.Reflection;
 using NUnit.Framework.Constraints;
 
-namespace DependencyUpdatePriorityScanner.EquivalenceAssertions.Constraints;
+namespace EquivalencyConstraints.EquivalenceAssertions.Constraints;
 
 public class EquivalentToConstraint<T>(T expected, EquivalenceOptions<T>? options = null) : Constraint
 {

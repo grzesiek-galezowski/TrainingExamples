@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace DependencyUpdatePriorityScanner.EquivalenceAssertions.Constraints;
+namespace EquivalencyConstraints.EquivalenceAssertions.Constraints;
 
 public class EquivalenceOptionsForCollection<T, U>
 {

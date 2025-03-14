@@ -1,4 +1,4 @@
-﻿namespace DependencyUpdatePriorityScanner.EquivalenceAssertions.Constraints;
+﻿namespace EquivalencyConstraints.EquivalenceAssertions.Constraints;
 
 public class ExclusionRule
 {

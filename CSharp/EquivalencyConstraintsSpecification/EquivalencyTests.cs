@@ -1,7 +1,7 @@
-﻿using DependencyUpdatePriorityScanner.EquivalenceAssertions.Tests.Fixture;
-using EquivalencyConstraints.EquivalenceAssertions;
+﻿using EquivalencyConstraints.EquivalenceAssertions;
+using EquivalencyConstraintsSpecification.Fixture;
 
-namespace DependencyUpdatePriorityScanner.EquivalenceAssertions.Tests;
+namespace EquivalencyConstraintsSpecification;
 
 public class SubsetEquivalencySpecification
 {
@@ -24,42 +24,72 @@ public class SubsetEquivalencySpecification
     }
 
     [Test]
-    public void ShouldPassForDifferentObjects()
+    public void ShouldFailForDifferentObjects()
     {
         {
             var equivalenceException =
                 Assert.Throws<AssertionException>(() => Assert.That(1, Should.BeEquivalentTo(2)));
             Assert.That(equivalenceException.Message,
                 Is.EqualTo(
-                    "  Assert.That(1, Should.BeEquivalentTo(2))\r\n  Expected: equivalent to 2\r\n  But was:  1\r\n"),
+                    "  Assert.That(1, Should.BeEquivalentTo(2))\r\n" +
+                    "  Expected: equivalent to 2\r\n" +
+                    "  But was:  1\r\n"),
                 equivalenceException.Message);
         }
         {
-            var equivalenceException =
-                Assert.Throws<AssertionException>(() => Assert.That(
-                new Person
-                {
-                    Age = 2,
-                    Name = "Zenek"
-                },
-                Should.BeEquivalentTo(new Person
-                {
-                    Age = 1,
-                    Name = "Zenek"
-                })));
-            Assert.That(equivalenceException.Message, Is.EqualTo("  Assert.That(new Person\r\n                {\r\n                    Age = 2,\r\n                    Name = \"Zenek\"\r\n                }, Should.BeEquivalentTo(new Person\r\n                {\r\n                    Age = 1,\r\n                    Name = \"Zenek\"\r\n                }))\r\n  Expected: equivalent to DependencyUpdatePriorityScanner.EquivalenceAssertions.Tests.Fixture.Person\r\n  But was:  <DependencyUpdatePriorityScanner.EquivalenceAssertions.Tests.Fixture.Person>\r\n"), equivalenceException.Message);
-        }
-        Assert.That(
-            new Person
-            {
+          var equivalenceException =
+            Assert.Throws<AssertionException>(() => Assert.That(
+              new Person
+              {
+                Age = 2,
+                Name = "Zenek"
+              },
+              Should.BeEquivalentTo(new Person
+              {
                 Age = 1,
                 Name = "Zenek"
-            },
-            Should.BeEquivalentTo(new Person
-            {
+              })));
+            Assert.That(equivalenceException.Message, Is.EqualTo(
+                "  Assert.That(new Person\r\n" +
+                "              {\r\n" +
+                "                Age = 2,\r\n" +
+                "                Name = \"Zenek\"\r\n" +
+                "              }, Should.BeEquivalentTo(new Person\r\n" +
+                "              {\r\n" +
+                "                Age = 1,\r\n" +
+                "                Name = \"Zenek\"\r\n" +
+                "              }))\r\n" +
+                "  Expected: equivalent to EquivalencyConstraintsSpecification.Fixture.Person\r\n" +
+                "  But was:  <EquivalencyConstraintsSpecification.Fixture.Person>\r\n"),
+              equivalenceException.Message);
+        }
+        {
+          var equivalenceException
+            = Assert.Throws<AssertionException>(() => Assert.That(
+              new Person
+              {
+                Age = 1,
+                Name = "Zenek"
+              },
+              Should.BeEquivalentTo(new Person
+              {
                 Age = 1,
                 Name = "Zenek2"
-            }));
+              })));
+          Assert.That(equivalenceException.Message, Is.EqualTo(
+            "  Assert.That(new Person\r\n" +
+            "              {\r\n" +
+            "                Age = 1,\r\n" +
+            "                Name = \"Zenek\"\r\n" +
+            "              }, Should.BeEquivalentTo(new Person\r\n" +
+            "              {\r\n" +
+            "                Age = 1,\r\n" +
+            "                Name = \"Zenek2\"\r\n" +
+            "              }))\r\n" +
+            "  Expected: equivalent to EquivalencyConstraintsSpecification.Fixture.Person\r\n" +
+            "  But was:  <EquivalencyConstraintsSpecification.Fixture.Person>\r\n"
+            ), equivalenceException.Message);
+        }
     }
 
     [Test]

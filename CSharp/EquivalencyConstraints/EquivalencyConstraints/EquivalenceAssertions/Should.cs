@@ -1,4 +1,4 @@
-﻿using DependencyUpdatePriorityScanner.EquivalenceAssertions.Constraints;
+﻿using EquivalencyConstraints.EquivalenceAssertions.Constraints;
 
 namespace EquivalencyConstraints.EquivalenceAssertions;
 
