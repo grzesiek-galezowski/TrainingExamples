@@ -2,40 +2,40 @@
 
 namespace EquivalencyConstraints.EquivalenceAssertions.Constraints;
 
-public class EquivalenceOptionsForCollection<T, U>
+public class EquivalenceOptionsForCollection<T, TU>
 {
-    private readonly EquivalenceOptions<T> options;
-    private readonly ExclusionRule rule;
+  private readonly EquivalenceOptions<T> _options;
+  private readonly ExclusionRule _rule;
 
-    public EquivalenceOptionsForCollection(EquivalenceOptions<T> options, ExclusionRule rule)
-    {
-        this.options = options;
-        this.rule = rule;
-    }
+  public EquivalenceOptionsForCollection(EquivalenceOptions<T> options, ExclusionRule rule)
+  {
+    this._options = options;
+    this._rule = rule;
+  }
 
-    public EquivalenceOptionsForCollection<T, U> IgnoreOrder()
-    {
-        rule.IgnoreOrder = true;
-        return this;
-    }
+  public EquivalenceOptionsForCollection<T, TU> IgnoreOrder()
+  {
+    _rule.IgnoreOrder = true;
+    return this;
+  }
 
-    public EquivalenceOptions<T> Exclude(Expression<Func<U, object>> excludeExpression)
-    {
-        var propertyName = GetPropertyName(excludeExpression);
-        rule.ExcludedProperties.Add(propertyName);
-        return options; // Returns to root options for further configuration
-    }
+  public EquivalenceOptions<T> Exclude(Expression<Func<TU, object>> excludeExpression)
+  {
+    var propertyName = GetPropertyName(excludeExpression);
+    _rule.ExcludedProperties.Add(propertyName);
+    return _options; // Returns to root options for further configuration
+  }
 
-    private string GetPropertyName(Expression<Func<U, object>> expression)
+  private string GetPropertyName(Expression<Func<TU, object>> expression)
+  {
+    if (expression.Body is MemberExpression memberExpression)
     {
-        if (expression.Body is MemberExpression memberExpression)
-        {
-            return memberExpression.Member.Name;
-        }
-        if (expression.Body is UnaryExpression unaryExpression && unaryExpression.Operand is MemberExpression operand)
-        {
-            return operand.Member.Name;
-        }
-        throw new ArgumentException("Expression must be a simple member access, e.g., x => x.Property.");
+      return memberExpression.Member.Name;
     }
+    if (expression.Body is UnaryExpression unaryExpression && unaryExpression.Operand is MemberExpression operand)
+    {
+      return operand.Member.Name;
+    }
+    throw new ArgumentException("Expression must be a simple member access, e.g., x => x.Property.");
+  }
 }

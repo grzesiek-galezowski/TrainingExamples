@@ -2,6 +2,6 @@
 
 public class Person2
 {
-    public string Name { get; set; }
-    public List<Child> Children { get; set; }
+  public string Name { get; set; }
+  public List<Child> Children { get; set; }
 }

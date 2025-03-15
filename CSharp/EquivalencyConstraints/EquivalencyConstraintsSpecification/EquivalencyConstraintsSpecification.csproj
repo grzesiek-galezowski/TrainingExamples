@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EquivalencyConstraints\EquivalencyConstraints\EquivalencyConstraints.csproj" />
+    <ProjectReference Include="..\EquivalencyConstraints\EquivalencyConstraints.csproj" />
   </ItemGroup>
 
   <ItemGroup>
