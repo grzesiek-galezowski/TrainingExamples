@@ -9,8 +9,8 @@ public class EquivalenceOptionsForCollection<T, TU>
 
   public EquivalenceOptionsForCollection(EquivalenceOptions<T> options, ExclusionRule rule)
   {
-    this._options = options;
-    this._rule = rule;
+    _options = options;
+    _rule = rule;
   }
 
   public EquivalenceOptionsForCollection<T, TU> IgnoreOrder()

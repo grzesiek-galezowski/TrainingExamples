@@ -247,3 +247,5 @@ CSharp/FlowSimulation/.vs/FlowSimulation/v17/DocumentLayout.json
 /CSharp/FlowSimulation/.vs
 /CSharp/MoveSubArrayElements/.vs
 *.db
+/CSharp/EquivalencyConstraints/.vs
+/CSharp/EquivalencyConstraints/.vs

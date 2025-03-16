@@ -9,11 +9,11 @@ public class EquivalenceOptionsForProperty<T, TProperty>
 
   public EquivalenceOptionsForProperty(EquivalenceOptions<T> options, ExclusionRule rule)
   {
-    this._options = options;
-    this._rule = rule;
+    _options = options;
+    _rule = rule;
   }
 
-  public EquivalenceOptions<T> Exclude(Expression<Func<TProperty, object>> excludeExpression)
+  public EquivalenceOptions<T> Exclude(Expression<Func<TProperty, object>> excludeExpression) //bug tests
   {
     var propertyName = GetPropertyName(excludeExpression);
     _rule.ExcludedProperties.Add(propertyName);

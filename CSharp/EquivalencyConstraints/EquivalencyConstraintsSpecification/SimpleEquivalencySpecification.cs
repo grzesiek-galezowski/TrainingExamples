@@ -27,8 +27,8 @@ public class SimpleEquivalencySpecification
   [Test]
   public void ShouldFailForDifferentObjects()
   {
-      AssertEquivalencyAssertionFailedWhenComparing(2, 1, "2", "1");
-      AssertEquivalencyAssertionFailedWhenComparing(
+    Assertions.AssertEquivalencyAssertionFailedWhenComparing(2, 1, "2", "1");
+    Assertions.AssertEquivalencyAssertionFailedWhenComparing(
         new Person
         {
           Age = 1,
@@ -41,7 +41,7 @@ public class SimpleEquivalencySpecification
         },
         "{ Name: Zenek, Age: 1 }",
         "{ Name: Zenek, Age: 2 }");
-      AssertEquivalencyAssertionFailedWhenComparing(new Person
+    Assertions.AssertEquivalencyAssertionFailedWhenComparing(new Person
       {
         Age = 1,
         Name = "Zenek2"
@@ -54,7 +54,7 @@ public class SimpleEquivalencySpecification
       "{ Name: Zenek2, Age: 1 }",
       "{ Name: Zenek, Age: 1 }");
 
-      AssertEquivalencyAssertionFailedWhenComparing(new Company()
+    Assertions.AssertEquivalencyAssertionFailedWhenComparing(new Company()
         {
           Director = new Person()
           {
@@ -72,19 +72,5 @@ public class SimpleEquivalencySpecification
         },
         "{ Director: { Name: Zenek, Age: 2 } }",
         "{ Director: { Name: Zenek, Age: 1 } }");
-  }
-
-  private static void AssertEquivalencyAssertionFailedWhenComparing(
-    object expected, object actual, string expectedInMessage, string actualInMessage)
-  {
-    var equivalenceException =
-      Assert.Throws<AssertionException>(() => Assert.That(
-        actual,
-        Should.BeEquivalentTo(expected)));
-    Assert.That(Regex.Replace(equivalenceException.Message, @"\s+", " ").Trim(), Is.EqualTo(
-        "Assert.That(actual, Should.BeEquivalentTo(expected)) " +
-        $"Expected: equivalent to {expectedInMessage} " +
-        $"But was: <{actualInMessage}>"),
-      equivalenceException.Message);
   }
 }

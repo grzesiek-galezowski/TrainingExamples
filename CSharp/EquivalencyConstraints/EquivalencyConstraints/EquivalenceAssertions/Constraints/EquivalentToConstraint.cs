@@ -27,7 +27,15 @@ public class EquivalentToConstraint<T>(T expected, EquivalenceOptions<T>? option
       return AreCollectionsEquivalentIgnoringOrder(expectedEnumerable, actualEnumerable, currentPath,
           exclusionRules);
     }
+    else
+    {
+      return AreCollectionsEquivalentInOrder(expectedEnumerable, actualEnumerable, currentPath, exclusionRules);
+    }
+  }
 
+  private bool AreCollectionsEquivalentInOrder(
+    IEnumerable expectedEnumerable, IEnumerable actualEnumerable, string currentPath, List<ExclusionRule> exclusionRules)
+  {
     var expectedList = expectedEnumerable.Cast<object>().ToList();
     var actualList = actualEnumerable.Cast<object>().ToList();
 

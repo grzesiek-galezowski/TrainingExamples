@@ -2,5 +2,5 @@
 
 public class ClassWithCollection
 {
-  public List<int> Numbers { get; set; }
+  public IEnumerable<int> Numbers { get; set; }
 }

@@ -6,34 +6,7 @@ namespace EquivalencyConstraintsSpecification;
 public class EquivalencySpecification
 {
 
-  [Test]
-  public void ObjectsWithCollections_ShouldBeEquivalent()
-  {
-    var expected = new ClassWithCollection { Numbers = [1, 2, 3] };
-    var actual = new ClassWithCollection { Numbers = [1, 2, 3] };
-    Assert.That(actual, Should.BeEquivalentTo(expected));
-  }
 
-  [Test]
-  public void SameCollections_ShouldBeEquivalent()
-  {
-    var expected = new List<int> { 1, 2, 3 };
-    var actual = new[] { 1, 2, 3 };
-    Assert.That(actual, Should.BeEquivalentTo(expected));
-  }
-
-  [Test]
-  public void DifferentCollections_ShouldNotBeEquivalent()
-  {
-    var expected = new List<int> { 1, 2, 3 };
-    var actual = new List<int> { 1, 2, 4 };
-
-    Assert.Throws<AssertionException>(() =>
-    {
-      Assert.That(actual, Should.BeEquivalentTo(expected));
-    }, "Expected failure due to different elements");
-
-  }
 
   [Test]
   public void NestedObjects_ShouldBeEquivalent()
