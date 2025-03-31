@@ -5,6 +5,19 @@ using ServiceStack.Text;
 
 namespace EquivalencyConstraints.EquivalenceAssertions.Constraints;
 
+public record TraversePath(string CurrentPath)
+{
+  public TraversePath Append(string propName)
+  {
+    return new TraversePath(CurrentPath: string.IsNullOrEmpty(CurrentPath) ? propName : $"{CurrentPath}.{propName}");
+  }
+
+  public bool Is(string testedPath)
+  {
+    return testedPath == CurrentPath;
+  }
+}
+
 public class EquivalentToConstraint<T>(T expected, EquivalenceOptions<T>? options = null) : Constraint
 {
   private readonly EquivalenceOptions<T> _options = options ?? new EquivalenceOptions<T>();
@@ -12,16 +25,16 @@ public class EquivalentToConstraint<T>(T expected, EquivalenceOptions<T>? option
   public override ConstraintResult ApplyTo<TActual>(TActual actual)
   {
     var exclusionRules = _options.GetExclusionRules();
-    var matches = AreEquivalent(expected, actual, "", exclusionRules);
+    var matches = AreEquivalent(expected, actual, new TraversePath(""), exclusionRules);
     return new ConstraintResult(this, ObjectWithToString.ObjectForOutput(actual), matches);
   }
 
   public override string Description => "equivalent to " + ObjectWithToString.ObjectForOutput(expected);
 
   private bool AreCollectionsEquivalent(IEnumerable expectedEnumerable, IEnumerable actualEnumerable,
-      string currentPath, List<ExclusionRule> exclusionRules)
+      TraversePath currentPath, List<ExclusionRule> exclusionRules)
   {
-    var rule = exclusionRules.FirstOrDefault(r => r.Path == currentPath);
+    var rule = exclusionRules.FirstOrDefault(r => currentPath.Is(r.Path));
     if (rule is { IgnoreOrder: true })
     {
       return AreCollectionsEquivalentIgnoringOrder(expectedEnumerable, actualEnumerable, currentPath,
@@ -34,7 +47,7 @@ public class EquivalentToConstraint<T>(T expected, EquivalenceOptions<T>? option
   }
 
   private bool AreCollectionsEquivalentInOrder(
-    IEnumerable expectedEnumerable, IEnumerable actualEnumerable, string currentPath, List<ExclusionRule> exclusionRules)
+    IEnumerable expectedEnumerable, IEnumerable actualEnumerable, TraversePath currentPath, List<ExclusionRule> exclusionRules)
   {
     var expectedList = expectedEnumerable.Cast<object>().ToList();
     var actualList = actualEnumerable.Cast<object>().ToList();
@@ -53,7 +66,7 @@ public class EquivalentToConstraint<T>(T expected, EquivalenceOptions<T>? option
     return true;
   }
 
-  private bool AreCollectionsEquivalentIgnoringOrder(IEnumerable expected, IEnumerable actual, string currentPath, List<ExclusionRule> exclusionRules)
+  private bool AreCollectionsEquivalentIgnoringOrder(IEnumerable expected, IEnumerable actual, TraversePath currentPath, List<ExclusionRule> exclusionRules)
   {
     var expectedList = expected.Cast<object>().ToList();
     var actualList = actual.Cast<object>().ToList();
@@ -84,7 +97,7 @@ public class EquivalentToConstraint<T>(T expected, EquivalenceOptions<T>? option
     return unmatchedActual.Count == 0;
   }
 
-  private bool AreEquivalent(object? expectedObject, object? actualObject, string currentPath, List<ExclusionRule> exclusionRules)
+  private bool AreEquivalent(object? expectedObject, object? actualObject, TraversePath currentPath, List<ExclusionRule> exclusionRules)
   {
     // Handle null cases
     if (expectedObject == null && actualObject == null)
@@ -118,10 +131,8 @@ public class EquivalentToConstraint<T>(T expected, EquivalenceOptions<T>? option
     }
 
     // Compare properties
-    var expectedProps = expectedType.GetProperties(BindingFlags.Public | BindingFlags.Instance) //bug only public and instance??
-        .ToDictionary(p => p.Name);
-    var actualProps = actualType.GetProperties(BindingFlags.Public | BindingFlags.Instance) //bug only public and instance??
-        .ToDictionary(p => p.Name);
+    var expectedProps = GetPropertiesByName(expectedType);
+    var actualProps = GetPropertiesByName(actualType);
 
     var expectedPropNames = expectedProps.Keys.ToHashSet();
     var actualPropNames = actualProps.Keys.ToHashSet();
@@ -132,7 +143,7 @@ public class EquivalentToConstraint<T>(T expected, EquivalenceOptions<T>? option
     }
 
     // Apply exclusions for the current path
-    var exclusionsForPath = exclusionRules.FirstOrDefault(r => r.Path == currentPath)?.ExcludedProperties ?? [];
+    var exclusionsForPath = exclusionRules.FirstOrDefault(r => currentPath.Is(r.Path))?.ExcludedProperties ?? [];
 
     foreach (var propName in expectedPropNames)
     {
@@ -148,7 +159,7 @@ public class EquivalentToConstraint<T>(T expected, EquivalenceOptions<T>? option
         var expectedValue = expectedProp.GetValue(expectedObject);
         var actualValue = actualProp.GetValue(actualObject);
 
-        var newPath = string.IsNullOrEmpty(currentPath) ? propName : $"{currentPath}.{propName}";
+        var newPath = currentPath.Append(propName);
 
         if (!AreEquivalent(expectedValue, actualValue, newPath, exclusionRules))
         {
@@ -159,6 +170,13 @@ public class EquivalentToConstraint<T>(T expected, EquivalenceOptions<T>? option
 
     return true;
   }
+
+  private static Dictionary<string, PropertyInfo> GetPropertiesByName(Type expectedType)
+  {
+    return expectedType.GetProperties(BindingFlags.Public | BindingFlags.Instance) //bug only public and instance??
+      .ToDictionary(p => p.Name);
+  }
+
 
   private bool TypeOverridesEquals(Type type)
   {

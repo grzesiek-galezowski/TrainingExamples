@@ -249,3 +249,5 @@ CSharp/FlowSimulation/.vs/FlowSimulation/v17/DocumentLayout.json
 *.db
 /CSharp/EquivalencyConstraints/.vs
 /CSharp/EquivalencyConstraints/.vs
+/CSharp/J6ChordSearcher/.vs/J6ChordSearcher/CopilotIndices
+/CSharp/J6ChordSearcher/.vs

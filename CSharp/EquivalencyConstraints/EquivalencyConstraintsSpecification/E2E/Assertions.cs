@@ -1,7 +1,7 @@
 using System.Text.RegularExpressions;
 using EquivalencyConstraints.EquivalenceAssertions;
 
-namespace EquivalencyConstraintsSpecification;
+namespace EquivalencyConstraintsSpecification.E2E;
 
 public static class Assertions
 {

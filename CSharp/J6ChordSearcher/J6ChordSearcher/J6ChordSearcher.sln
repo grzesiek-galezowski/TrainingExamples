@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "J6ChordSearcher", "J6ChordSearcher.csproj", "{A8F2E1A0-5CD8-1C05-A29A-45838F9DF738}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A8F2E1A0-5CD8-1C05-A29A-45838F9DF738}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8F2E1A0-5CD8-1C05-A29A-45838F9DF738}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8F2E1A0-5CD8-1C05-A29A-45838F9DF738}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8F2E1A0-5CD8-1C05-A29A-45838F9DF738}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2CECDED6-EC5E-44B2-AD07-8737E2E1BCB0}
+	EndGlobalSection
+EndGlobal

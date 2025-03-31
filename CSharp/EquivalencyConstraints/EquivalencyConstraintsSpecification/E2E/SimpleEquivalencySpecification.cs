@@ -1,8 +1,7 @@
 ﻿using EquivalencyConstraints.EquivalenceAssertions;
-using EquivalencyConstraintsSpecification.Fixture;
-using System.Text.RegularExpressions;
+using EquivalencyConstraintsSpecification.E2E.Fixture;
 
-namespace EquivalencyConstraintsSpecification;
+namespace EquivalencyConstraintsSpecification.E2E;
 
 public class SimpleEquivalencySpecification
 {

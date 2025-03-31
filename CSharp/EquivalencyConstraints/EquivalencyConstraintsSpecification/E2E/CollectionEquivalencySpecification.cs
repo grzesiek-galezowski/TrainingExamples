@@ -1,8 +1,8 @@
 ﻿using System.Collections.Immutable;
 using EquivalencyConstraints.EquivalenceAssertions;
-using EquivalencyConstraintsSpecification.Fixture;
+using EquivalencyConstraintsSpecification.E2E.Fixture;
 
-namespace EquivalencyConstraintsSpecification;
+namespace EquivalencyConstraintsSpecification.E2E;
 
 public class CollectionEquivalencySpecification
 {

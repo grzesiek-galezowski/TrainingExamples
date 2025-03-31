@@ -1,4 +1,4 @@
-﻿namespace EquivalencyConstraintsSpecification.Fixture;
+﻿namespace EquivalencyConstraintsSpecification.E2E.Fixture;
 
 public class Child
 {
