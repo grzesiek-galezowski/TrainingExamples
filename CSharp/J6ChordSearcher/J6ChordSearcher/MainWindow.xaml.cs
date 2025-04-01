@@ -14,7 +14,7 @@ namespace J6ChordSearcher
     private ObservableCollection<TransposedChordSet> searchResults;
 
     // Maps note names to chromatic indices (0–11)
-    private readonly Dictionary<string, int> noteToIndex = new Dictionary<string, int>
+    private readonly Dictionary<string, int> noteToIndex = new()
     {
       { "C", 0 }, { "C#", 1 }, { "Db", 1 }, { "D", 2 }, { "D#", 3 }, { "Eb", 3 }, { "E", 4 },
       { "F", 5 }, { "F#", 6 }, { "Gb", 6 }, { "G", 7 }, { "G#", 8 }, { "Ab", 8 }, { "A", 9 },
@@ -22,7 +22,7 @@ namespace J6ChordSearcher
     };
 
     // Preferred note names for transposition output (using sharps)
-    private readonly string[] noteNames = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
+    private readonly string[] noteNames = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
 
     public MainWindow()
     {
@@ -30,21 +30,21 @@ namespace J6ChordSearcher
 
       // Initialize chord sets with sample data
       chordSets = InitializeChordSets();
-      searchResults = new ObservableCollection<TransposedChordSet>();
+      searchResults = [];
       listBoxResults.ItemsSource = searchResults;
     }
 
     private List<ChordSet> InitializeChordSets()
     {
       // Sample chord sets (expand this list as needed)
-      return new List<ChordSet>
-      {
-        new ChordSet
+      return
+      [
+        new()
         {
           Number = 1,
           Name = "Pop",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "Cadd9",
             "C#M9/C",
             "Dm7",
@@ -57,14 +57,15 @@ namespace J6ChordSearcher
             "FM/A",
             "Gm/A#",
             "G/B"
-          }
+          ]
         },
-        new ChordSet
+
+        new()
         {
           Number = 2,
           Name = "Pop",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "CM9",
             "C#dim7",
             "Dm9",
@@ -77,14 +78,15 @@ namespace J6ChordSearcher
             "Am9",
             "C/A#",
             "Bm7b5"
-          }
+          ]
         },
-        new ChordSet
+
+        new()
         {
           Number = 3,
           Name = "Jazz",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "D7sus2/C",
             "C#7#9",
             "Dm9",
@@ -97,14 +99,15 @@ namespace J6ChordSearcher
             "Am7(11)",
             "A#9",
             "Bm7(11)"
-          }
+          ]
         },
-        new ChordSet
+
+        new()
         {
           Number = 4,
           Name = "Jazz",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "Dsus2/C",
             "C#7#9",
             "Dm9",
@@ -117,14 +120,15 @@ namespace J6ChordSearcher
             "Aaug7",
             "A#7(13)",
             "Bm7(11)"
-          }
+          ]
         },
-        new ChordSet
+
+        new()
         {
           Number = 5,
           Name = "Jazz",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "CM9",
             "C#M7",
             "DM9",
@@ -137,14 +141,15 @@ namespace J6ChordSearcher
             "AM9",
             "A#M9",
             "BM9"
-          }
+          ]
         },
-        new ChordSet
+
+        new()
         {
           Number = 6,
           Name = "Blues",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "C9",
             "C#9",
             "D9",
@@ -157,14 +162,15 @@ namespace J6ChordSearcher
             "Aaug7",
             "A#7(13)",
             "Bm7b5"
-          }
+          ]
         },
-        new ChordSet
+
+        new()
         {
           Number = 7,
           Name = "Trad Maj",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "C",
             "C#dim7",
             "Dm",
@@ -177,14 +183,15 @@ namespace J6ChordSearcher
             "Am",
             "A#",
             "Bdim"
-          }
+          ]
         },
-        new ChordSet
+
+        new()
         {
           Number = 7,
           Name = "Trad Maj",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "C",
             "C#dim7",
             "Dm",
@@ -197,14 +204,15 @@ namespace J6ChordSearcher
             "Am",
             "A#",
             "Bdim"
-          }
+          ]
         },
-        new ChordSet
+
+        new()
         {
           Number = 8,
           Name = "Trad Min",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "Cm",
             "C#",
             "Ddim",
@@ -217,14 +225,15 @@ namespace J6ChordSearcher
             "Am7b5",
             "A#",
             "Bdim7"
-          }
+          ]
         },
-        new ChordSet
+
+        new()
         {
           Number = 9,
           Name = "Trad Min 2",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "Cm",
             "C#",
             "Ddim",
@@ -237,14 +246,15 @@ namespace J6ChordSearcher
             "Am7b5",
             "A#",
             "Bdim"
-          }
+          ]
         },
-        new ChordSet
+
+        new()
         {
           Number = 10,
           Name = "Pop Min",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "Cmadd9",
             "C#M7",
             "Dm7b5",
@@ -257,14 +267,15 @@ namespace J6ChordSearcher
             "Am7b5",
             "G#/A#",
             "Bdim7"
-          }
+          ]
         },
-        new ChordSet
+
+        new()
         {
           Number = 11,
           Name = "Pop Min",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "Cmadd9",
             "Gdim/C#",
             "Dm7b5",
@@ -277,14 +288,15 @@ namespace J6ChordSearcher
             "Am7b5",
             "Cm7/A#",
             "Baug#9"
-          }
+          ]
         },
-        new ChordSet
+
+        new()
         {
           Number = 12,
           Name = "Jazz Min",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "Cm7(11)",
             "C#7#9",
             "Dm7b5",
@@ -297,14 +309,15 @@ namespace J6ChordSearcher
             "Am7b5",
             "A#m7",
             "Bdim7"
-          }
+          ]
         },
-        new ChordSet
+
+        new()
         {
           Number = 13,
           Name = "Jazz Min",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "Cm9",
             "C#9",
             "Dm9",
@@ -317,14 +330,15 @@ namespace J6ChordSearcher
             "Am7b5",
             "A#m7",
             "Bm7b5"
-          }
+          ]
         },
-        new ChordSet
+
+        new()
         {
           Number = 17,
           Name = "Utility",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "C",
             "C#",
             "D",
@@ -337,14 +351,15 @@ namespace J6ChordSearcher
             "A",
             "A#",
             "B"
-          }
+          ]
         },
-        new ChordSet
+
+        new()
         {
           Number = 18,
           Name = "Utility",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "Cm",
             "C#m",
             "Dm",
@@ -357,14 +372,15 @@ namespace J6ChordSearcher
             "Am",
             "A#m",
             "Bm"
-          }
+          ]
         },
-        new ChordSet
+
+        new()
         {
           Number = 19,
           Name = "Utility",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "CM7",
             "C#M7",
             "DM7",
@@ -377,14 +393,15 @@ namespace J6ChordSearcher
             "AM7",
             "A#M7",
             "BM7"
-          }
+          ]
         },
-        new ChordSet
+
+        new()
         {
           Number = 20,
           Name = "Utility",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "Cm7",
             "C#m7",
             "Dm7",
@@ -397,14 +414,15 @@ namespace J6ChordSearcher
             "Am7",
             "A#m7",
             "Bm7"
-          }
+          ]
         },
-        new ChordSet
+
+        new()
         {
           Number = 21,
           Name = "Utility",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "CM9",
             "C#M9",
             "DM9",
@@ -417,14 +435,15 @@ namespace J6ChordSearcher
             "AM9",
             "A#M9",
             "BM9"
-          }
+          ]
         },
-        new ChordSet
+
+        new()
         {
           Number = 22,
           Name = "Utility",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "Cm9",
             "C#m9",
             "Dm9",
@@ -437,14 +456,15 @@ namespace J6ChordSearcher
             "Am9",
             "A#m9",
             "Bm9"
-          }
+          ]
         },
-        new ChordSet
+
+        new()
         {
           Number = 23,
           Name = "Utility",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "CM9/#11",
             "C#M9/#11",
             "DM9/#11",
@@ -457,14 +477,15 @@ namespace J6ChordSearcher
             "AM9/#11",
             "A#M9/#11",
             "BM9/#11"
-          }
+          ]
         },
-        new ChordSet
+
+        new()
         {
           Number = 24,
           Name = "Utility",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "Cm9/11",
             "C#m9/11",
             "Dm9/11",
@@ -477,14 +498,15 @@ namespace J6ChordSearcher
             "Am9/11",
             "A#m9/11",
             "Bm9/11"
-          }
+          ]
         },
-        new ChordSet
+
+        new()
         {
           Number = 26,
           Name = "Utility",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "Cm7",
             "Cm7/D#",
             "Cm7/G",
@@ -497,14 +519,15 @@ namespace J6ChordSearcher
             "Cm7/D#",
             "Cm7/G",
             "Cm7/A#"
-          }
+          ]
         },
-        new ChordSet
+
+        new()
         {
           Number = 27,
           Name = "Pop/Synth",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "C",
             "Em",
             "G",
@@ -517,35 +540,15 @@ namespace J6ChordSearcher
             "Bm",
             "C",
             "Em"
-          }
-        },
-        new ChordSet
-        {
-          Number = 28,
-          Name = "Pop",
-          Chords = new List<string>
-          {
-            "C",
-            "C7",
-            "Dm7",
-            "D#M7",
-            "C/E",
-            "F",
-            "Fm",
-            "G",
-            "C/G",
-            "Am7",
-            "Eaug/A#",
-            "G7/B"
-          }
+          ]
         },
 
-        new ChordSet
+        new()
         {
           Number = 28,
           Name = "Pop",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "C",
             "C7",
             "Dm7",
@@ -558,14 +561,37 @@ namespace J6ChordSearcher
             "Am7",
             "Eaug/A#",
             "G7/B"
-          }
+          ]
         },
-        new ChordSet
+
+
+        new()
+        {
+          Number = 28,
+          Name = "Pop",
+          Chords =
+          [
+            "C",
+            "C7",
+            "Dm7",
+            "D#M7",
+            "C/E",
+            "F",
+            "Fm",
+            "G",
+            "C/G",
+            "Am7",
+            "Eaug/A#",
+            "G7/B"
+          ]
+        },
+
+        new()
         {
           Number = 29,
           Name = "Pop",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "C",
             "FM7",
             "G",
@@ -578,14 +604,15 @@ namespace J6ChordSearcher
             "Am",
             "Dm",
             "G7"
-          }
+          ]
         },
-        new ChordSet
+
+        new()
         {
           Number = 30,
           Name = "Pop",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "Cm",
             "D#",
             "G#",
@@ -598,14 +625,15 @@ namespace J6ChordSearcher
             "G/B",
             "G#",
             "F/A"
-          }
+          ]
         },
-        new ChordSet
+
+        new()
         {
           Number = 31,
           Name = "Pop",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "Cadd11",
             "Bb/C",
             "Dm7",
@@ -618,14 +646,15 @@ namespace J6ChordSearcher
             "FM7/A",
             "F/Bb",
             "G7/B"
-          }
+          ]
         },
-        new ChordSet
+
+        new()
         {
           Number = 32,
           Name = "Pop",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "Cmb13",
             "D#M7",
             "G7/D",
@@ -638,14 +667,15 @@ namespace J6ChordSearcher
             "G#m6",
             "F7/A",
             "A#add11"
-          }
+          ]
         },
-        new ChordSet
+
+        new()
         {
           Number = 33,
           Name = "Cinematic",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "CM7",
             "F/E",
             "A#M7",
@@ -658,14 +688,15 @@ namespace J6ChordSearcher
             "A/C#",
             "Dm",
             "G/F"
-          }
+          ]
         },
-        new ChordSet
+
+        new()
         {
           Number = 34,
           Name = "Cinematic/Synthwave",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "Csus2",
             "Dsus2",
             "D#sus2",
@@ -678,14 +709,15 @@ namespace J6ChordSearcher
             "Fsus2",
             "Gsus2",
             "A#sus2"
-          }
+          ]
         },
-        new ChordSet
+
+        new()
         {
           Number = 35,
           Name = "Cinematic/House",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "CM7",
             "Am7",
             "DM7",
@@ -698,14 +730,15 @@ namespace J6ChordSearcher
             "Fm7",
             "A#M7",
             "Gm7"
-          }
+          ]
         },
-        new ChordSet
+
+        new()
         {
           Number = 36,
           Name = "Cinematic",
-          Chords = new List<string>
-          {
+          Chords =
+          [
             "Ebsus2/C",
             "Fsus2/D",
             "Gsus2/E",
@@ -718,9 +751,10 @@ namespace J6ChordSearcher
             "Gsus2/E",
             "Absus2/F",
             "Bbsus2/G"
-          }
-        },
-      };
+          ]
+        }
+
+      ];
     }
 
     private void SearchButton_Click(object sender, RoutedEventArgs e)
@@ -728,7 +762,7 @@ namespace J6ChordSearcher
       searchResults.Clear();
 
       // Collect non-empty search terms from TextBoxes
-      List<string> searchTerms = new List<string>();
+      List<string> searchTerms = [];
       foreach (var textBox in FindVisualChildren<TextBox>(this))
       {
         string trimmedText = textBox.Text.Trim();
@@ -867,23 +901,18 @@ public class TransposerConfig
   // Standard Keys
   public List<string> SharpFlat()
   {
-    return new List<string> { Sharp, Flat };
+    return [Sharp, Flat];
   }
 
   public List<string> ReferenceAbcKeys()
   {
-    return new List<string>
-        {
-            "C", "C" + Sharp, "D", "E" + Flat, "E", "F", "F" + Sharp, "G", "G" + Sharp, "A", "B" + Flat, "B"
-        };
+    return ["C", "C" + Sharp, "D", "E" + Flat, "E", "F", "F" + Sharp, "G", "G" + Sharp, "A", "B" + Flat, "B"];
   }
 
   public List<string> ReferenceDoremiKeys()
   {
-    return new List<string>
-        {
-            "DO", "DO" + Sharp, "RE", "MI" + Flat, "MI", "FA", "FA" + Sharp, "SOL", "SOL" + Sharp, "LA", "SI" + Flat, "SI"
-        };
+    return
+      ["DO", "DO" + Sharp, "RE", "MI" + Flat, "MI", "FA", "FA" + Sharp, "SOL", "SOL" + Sharp, "LA", "SI" + Flat, "SI"];
   }
 
   // Standardizing Keys/Chords
@@ -951,9 +980,19 @@ public class TransposerConfig
   {
     var keys = new Dictionary<string, List<string>>
         {
-            {"C", new List<string> {"C", "C" + Sharp, "D", "E" + Flat, "E", "F", "F" + Sharp, "G", "A" + Flat, "A", "B" + Flat, "B"}},
-            {"C" + Sharp, new List<string> {"B" + Sharp, "C" + Sharp, "D", "D" + Sharp, "E", "E" + Sharp, "F" + Sharp, "G", "G" + Sharp, "A", "A" + Sharp, "B"}},
-            {"D" + Flat, new List<string> {"C", "D" + Flat, "D", "E" + Flat, "F" + Flat, "F", "G" + Flat, "G", "A" + Flat, "B" + Flat + Flat, "B" + Flat, "C" + Flat}},
+            {"C", ["C", "C" + Sharp, "D", "E" + Flat, "E", "F", "F" + Sharp, "G", "A" + Flat, "A", "B" + Flat, "B"] },
+            {"C" + Sharp,
+              [
+                "B" + Sharp, "C" + Sharp, "D", "D" + Sharp, "E", "E" + Sharp, "F" + Sharp, "G", "G" + Sharp, "A",
+                "A" + Sharp, "B"
+              ]
+            },
+            {"D" + Flat,
+              [
+                "C", "D" + Flat, "D", "E" + Flat, "F" + Flat, "F", "G" + Flat, "G", "A" + Flat, "B" + Flat + Flat,
+                "B" + Flat, "C" + Flat
+              ]
+            },
             // Add other keys as needed...
         };
     if (keys.TryGetValue(key, out List<string> chords))
@@ -986,15 +1025,15 @@ public class TransposerConfig
 
 public static class Common
 {
-  private static readonly TransposerConfig config = new TransposerConfig();
+  private static readonly TransposerConfig config = new();
 
-  public static readonly Dictionary<string, string> AbcToDoremiDictionary = new Dictionary<string, string>
-    {
+  public static readonly Dictionary<string, string> AbcToDoremiDictionary = new()
+  {
         {"A", "LA"}, {"B", "SI"}, {"C", "DO"}, {"D", "RE"}, {"E", "MI"}, {"F", "FA"}, {"G", "SOL"}
     };
 
-  public static readonly Dictionary<string, string> DoremiToAbcDictionary = new Dictionary<string, string>
-    {
+  public static readonly Dictionary<string, string> DoremiToAbcDictionary = new()
+  {
         {"LA", "A"}, {"SI", "B"}, {"DO", "C"}, {"RE", "D"}, {"MI", "E"}, {"FA", "F"}, {"SOL", "G"}
     };
 
@@ -1076,7 +1115,7 @@ public static class Common
 
 public class Transposer
 {
-  private static readonly TransposerConfig config = new TransposerConfig();
+  private static readonly TransposerConfig config = new();
 
   public static string SongKey(string song, int halfTones = 0, string preChord = @"\\\[", string postChord = @"\]", string chordStyleOut = "abc")
   {
@@ -1160,7 +1199,7 @@ public class Transposer
       return null;
     }
 
-    List<SongSegment> songSegments = new List<SongSegment>();
+    List<SongSegment> songSegments = [];
     Match firstMatch = keyChangeMatches[0];
     string preKeyStr = firstMatch.Groups[1].Value;
     string postKeyStr = firstMatch.Groups[3].Value;
@@ -1233,17 +1272,18 @@ public class Transposer
 public static class ChordConverter
 {
   // Mapping of notes to their chromatic scale indices (0-11)
-  private static readonly Dictionary<string, int> NoteToIndex = new Dictionary<string, int>
-    {
+  private static readonly Dictionary<string, int> NoteToIndex = new()
+  {
         {"C", 0}, {"C#", 1}, {"Db", 1}, {"D", 2}, {"D#", 3}, {"Eb", 3}, {"E", 4},
         {"F", 5}, {"F#", 6}, {"Gb", 6}, {"G", 7}, {"G#", 8}, {"Ab", 8}, {"A", 9},
-        {"A#", 10}, {"Bb", 10}, {"B", 11}, {"Cb", 11}, {"B#", 0}
+        {"A#", 10}, {"Bb", 10}, {"B", 11}, {"Cb", 11}
     };
 
   // List of sharp notes in A-B-C notation for reconstruction
-  private static readonly string[] SharpNotesAbc = {
-        "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"
-    };
+  private static readonly string[] SharpNotesAbc =
+  [
+    "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"
+  ];
 
   /// <summary>
   /// Converts a chord with flat notes to its sharp equivalent, preserving the input notation style.

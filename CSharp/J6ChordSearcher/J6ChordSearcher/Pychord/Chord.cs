@@ -123,11 +123,11 @@ namespace Pychord
         int[] components;
         if (string.IsNullOrEmpty(quality) || quality == "-" || quality == "maj" || quality == "m" || quality == "min")
         {
-          components = GetDiatonicChord(new[] { relativeKey, third, fifth });
+          components = GetDiatonicChord([relativeKey, third, fifth]);
         }
         else if (quality == "7" || quality == "M7" || quality == "maj7" || quality == "m7")
         {
-          components = GetDiatonicChord(new[] { relativeKey, third, fifth, seventh });
+          components = GetDiatonicChord([relativeKey, third, fifth, seventh]);
         }
         else
         {

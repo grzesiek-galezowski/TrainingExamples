@@ -8,7 +8,7 @@ namespace Pychord
   public partial class Chord
   {
     // Regex to match inversion numbers (e.g., "/2" in "C/2")
-    private static readonly Regex InversionRegex = new Regex(@"/([0-9]+)", RegexOptions.Compiled);
+    private static readonly Regex InversionRegex = new(@"/([0-9]+)", RegexOptions.Compiled);
 
     /// <summary>
     /// Parses a chord string into its components.

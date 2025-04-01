@@ -5,7 +5,7 @@ namespace Pychord
 {
   public static class Utils
   {
-    public static readonly string[] NoteNames = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
+    public static readonly string[] NoteNames = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
 
     /// <summary>
     /// Gets the chromatic index value of a note (0–11).

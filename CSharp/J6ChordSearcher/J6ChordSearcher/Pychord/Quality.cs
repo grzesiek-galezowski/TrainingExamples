@@ -110,7 +110,7 @@ namespace Pychord
   public class QualityManager
   {
     // Singleton instance
-    private static readonly Lazy<QualityManager> _instance = new Lazy<QualityManager>(() => new QualityManager(), true);
+    private static readonly Lazy<QualityManager> _instance = new(() => new QualityManager(), true);
     public static QualityManager Instance => _instance.Value;
 
     // Private dictionary of qualities
