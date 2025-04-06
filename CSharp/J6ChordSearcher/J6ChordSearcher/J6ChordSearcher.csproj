@@ -10,6 +10,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Glob" Version="1.2.0-alpha0037" />
+		<PackageReference Include="LanguageExt.Core" Version="4.4.9" />
 	</ItemGroup>
 
 </Project>

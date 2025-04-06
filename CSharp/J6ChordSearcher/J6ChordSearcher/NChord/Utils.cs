@@ -58,10 +58,10 @@ public static class Utils
   // Additional utility method for rotating lists, mimicking Python's list slicing
   public static T[] Rotate<T>(T[] array, int steps)
   {
-    T[] result = new T[array.Length];
-    for (int i = 0; i < array.Length; i++)
+    var result = new T[array.Length];
+    for (var i = 0; i < array.Length; i++)
     {
-      int newIndex = (i + steps) % array.Length;
+      var newIndex = (i + steps) % array.Length;
       if (newIndex < 0) newIndex += array.Length;
       result[newIndex] = array[i];
     }
@@ -86,7 +86,7 @@ public static class Utils
     if (string.IsNullOrEmpty(note))
       throw new ArgumentException("Note cannot be null or empty");
 
-    int val = NoteToVal(note);
+    var val = NoteToVal(note);
     val += transpose;
     return ValToNote(val, scale);
   }

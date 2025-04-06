@@ -1,4 +1,6 @@
-﻿namespace J6ChordSearcher.NChord;
+﻿using LanguageExt;
+
+namespace J6ChordSearcher.NChord;
 
 public class Quality
 {
@@ -44,7 +46,7 @@ public class Quality
   /// <returns>List of components (note names or integers).</returns>
   public List<int> GetComponents(string root = "C")
   {
-    int rootVal = Utils.NoteToVal(root);
+    var rootVal = Utils.NoteToVal(root);
     var components = _components.Select(v => v + rootVal).ToList();
     return components;
   }
@@ -57,7 +59,7 @@ public class Quality
   /// <returns>List of components (note names or integers).</returns>
   public List<object> GetComponentsVisible(string root = "C", bool visible = false)
   {
-    int rootVal = Utils.NoteToVal(root);
+    var rootVal = Utils.NoteToVal(root);
     var components = _components.Select(v => v + rootVal).ToList();
     if (visible)
     {
@@ -76,11 +78,11 @@ public class Quality
   /// <param name="root">The root note of the chord (e.g., "A" for Am7/G).</param>
   public void AppendOnChord(string onChord, string root)
   {
-    int rootVal = Utils.NoteToVal(root);
-    int onChordVal = Utils.NoteToVal(onChord) - rootVal;
+    var rootVal = Utils.NoteToVal(root);
+    var onChordVal = Utils.NoteToVal(onChord) - rootVal;
 
     var components = _components.ToList();
-    for (int i = 0; i < components.Count; i++)
+    for (var i = 0; i < components.Count; i++)
     {
       if (components[i] % 12 == onChordVal)
       {
@@ -110,7 +112,7 @@ public class QualityManager
   public static QualityManager Instance => _instance.Value;
 
   // Private dictionary of qualities
-  private Dictionary<string, Quality> _qualities;
+  private Dictionary<string, Seq<Quality>> _qualitiesForEachName;
 
   // Private constructor for singleton
   public QualityManager()
@@ -123,55 +125,55 @@ public class QualityManager
   /// </summary>
   private void LoadDefaultQualities()
   {
-    _qualities = Qualities.DefaultQualities
-      .ToDictionary(kvp => kvp.Key, kvp => new Quality(kvp.Key, kvp.Value));
+    _qualitiesForEachName = Qualities.DefaultQualities
+      .ToDictionary(kvp => kvp.Key, kvp => new Seq<Quality>(kvp.Value.Select(spread => new Quality(kvp.Key, spread))));
   }
 
-  /// <summary>
-  /// Gets a quality by name, optionally inverted.
-  /// </summary>
-  /// <param name="name">Name of the quality.</param>
-  /// <param name="inversion">Number of inversions to apply.</param>
-  /// <returns>A new Quality instance.</returns>
-  public Quality GetQuality(string name, int inversion = 0)
+  public Seq<Quality> GetQualities(string name, int inversion = 0)
   {
-    if (!_qualities.ContainsKey(name))
+    if (!_qualitiesForEachName.ContainsKey(name))
       throw new ArgumentException($"Unknown quality: {name}");
 
-    // Create a deep copy of the quality
-    var quality = new Quality(_qualities[name].QualityString, _qualities[name].GetComponents().Select(o => (int)o).ToArray());
-
-    // Apply inversions
-    for (int i = 0; i < inversion; i++)
+    // Create a deep copy of the qualities
+    var result = Seq.empty<Quality>();
+    foreach (var nextQuality in _qualitiesForEachName[name])
     {
-      int firstNote = quality.GetComponents().Cast<int>().First();
-      int lastNote = quality.GetComponents().Cast<int>().Last();
-      int n = firstNote;
-      while (n < lastNote)
-        n += 12;
-      var newComponents = quality.GetComponents().Skip(1).Select(o => (int)o).Append(n).ToArray();
-      quality = new Quality(quality.QualityString, newComponents);
+      var newQuality = new Quality(nextQuality.QualityString, nextQuality.GetComponents().Select(o => o).ToArray());
+
+      // Apply inversions
+      for (var i = 0; i < inversion; i++)
+      {
+        var firstNote = newQuality.GetComponents().First();
+        var lastNote = newQuality.GetComponents().Last();
+        var n = firstNote;
+        while (n < lastNote)
+          n += 12;
+        var newComponents = newQuality.GetComponents().Skip(1).Select(o => (int)o).Append(n).ToArray();
+        newQuality = new Quality(newQuality.QualityString, newComponents);
+      }
+      result = result.Add(newQuality);
     }
 
-    return quality;
+    return result;
   }
 
   /// <summary>
   /// Gets all qualities as a dictionary.
   /// </summary>
-  public Dictionary<string, Quality> GetQualities()
+  public Dictionary<string, Seq<Quality>> GetQualities()
   {
-    return new Dictionary<string, Quality>(_qualities);
+    return new Dictionary<string, Seq<Quality>>(_qualitiesForEachName);
   }
-
+  
   /// <summary>
   /// Sets a new quality or updates an existing one.
   /// </summary>
   /// <param name="name">Name of the quality.</param>
-  /// <param name="components">Components of the quality as semitone intervals.</param>
-  public void SetQuality(string name, int[] components)
+  /// <param name="componentsArrays">Components of the quality as semitone intervals.</param>
+  public void SetQuality(string name, int[][] componentsArrays)
   {
-    _qualities[name] = new Quality(name, components);
+    _qualitiesForEachName[name] =
+      new Seq<Quality>(componentsArrays.Select(componentArray => new Quality(name, componentArray)));
   }
 
   /// <summary>
@@ -181,10 +183,13 @@ public class QualityManager
   /// <returns>A new Quality instance if found; otherwise, null.</returns>
   public Quality FindQualityFromComponents(int[] components)
   {
-    foreach (var q in _qualities.Values)
+    foreach (var qualitiesForName in _qualitiesForEachName.Values)
     {
-      if (q.GetComponents().Cast<int>().SequenceEqual(components))
-        return new Quality(q.QualityString, q.GetComponents().Cast<int>().ToArray());
+      foreach (var quality in qualitiesForName)
+      {
+        if (quality.GetComponents().SequenceEqual(components))
+          return new Quality(quality.QualityString, quality.GetComponents().Cast<int>().ToArray());
+      }
     }
     return null;
   }

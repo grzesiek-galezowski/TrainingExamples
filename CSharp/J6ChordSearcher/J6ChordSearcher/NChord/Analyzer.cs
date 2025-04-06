@@ -13,11 +13,11 @@ public static class Analyzer
     if (notes == null || !notes.Any())
       throw new ArgumentException("Please specify notes which consist a chord.");
 
-    string root = notes[0];
+    var root = notes[0];
     var rootAndPositions = new List<(string Root, int[] Positions)>();
     foreach (var rotatedNotes in GetAllRotatedNotes(notes))
     {
-      string rotatedRoot = rotatedNotes[0];
+      var rotatedRoot = rotatedNotes[0];
       rootAndPositions.Add((rotatedRoot, NotesToPositions(rotatedNotes, rotatedRoot)));
     }
 
@@ -28,7 +28,7 @@ public static class Analyzer
       if (quality == null)
         continue;
 
-      string chordName = tempRoot == root
+      var chordName = tempRoot == root
         ? $"{root}{quality.QualityString}"
         : $"{tempRoot}{quality.QualityString}/{root}";
       chords.Add(new Chord(chordName));
@@ -54,13 +54,13 @@ public static class Analyzer
     if (notes == null || !notes.Any() || string.IsNullOrEmpty(root))
       throw new ArgumentException("Notes list and root cannot be null or empty.");
 
-    int rootPos = Utils.NoteToVal(root);
-    int currentPos = rootPos;
+    var rootPos = Utils.NoteToVal(root);
+    var currentPos = rootPos;
     var positions = new List<int>();
 
-    foreach (string note in notes)
+    foreach (var note in notes)
     {
-      int notePos = Utils.NoteToVal(note);
+      var notePos = Utils.NoteToVal(note);
       if (notePos < currentPos)
       {
         notePos += 12 * ((currentPos - notePos) / 12 + 1);
@@ -83,7 +83,7 @@ public static class Analyzer
       throw new ArgumentException("Notes list cannot be null or empty.");
 
     var notesList = new List<List<string>>();
-    for (int x = 0; x < notes.Count; x++)
+    for (var x = 0; x < notes.Count; x++)
     {
       var rotated = notes.Skip(x).Concat(notes.Take(x)).ToList();
       notesList.Add(rotated);

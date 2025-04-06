@@ -1,10 +1,12 @@
 ﻿using System.Collections.ObjectModel;
-using System.Text.RegularExpressions;
+using System.Runtime.Intrinsics.X86;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using GlobExpressions;
+using J6ChordSearcher.Logic;
 using J6ChordSearcher.NChord;
+using LanguageExt.ClassInstances.Const;
 
 namespace J6ChordSearcher;
 
@@ -465,18 +467,18 @@ public partial class MainWindow : Window
         Name = "Utility",
         Chords =
         [
-          "CM9/#11",
-          "C#M9/#11",
-          "DM9/#11",
-          "D#M9/#11",
-          "EM9/#11",
-          "FM9/#11",
-          "F#M9/#11",
-          "GM9/#11",
-          "G#M9/#11",
-          "AM9/#11",
-          "A#M9/#11",
-          "BM9/#11"
+          "CM9#11",
+          "C#M9#11",
+          "DM9#11",
+          "D#M9#11",
+          "EM9#11",
+          "FM9#11",
+          "F#M9#11",
+          "GM9#11",
+          "G#M9#11",
+          "AM9#11",
+          "A#M9#11",
+          "BM9#11"
         ]
       },
 
@@ -752,8 +754,1288 @@ public partial class MainWindow : Window
           "Absus2/F",
           "Bbsus2/G"
         ]
-      }
+      },
 
+      new()
+      {
+        Number = 37,
+        Name = "Cinematic",
+        Chords = new List<string>
+        {
+          "C6sus2",
+          "Dsus2",
+          "Emadd11",
+          "Dadd9/F#",
+          "Gadd9",
+          "Am7/11",
+          "Bm7",
+          "C6",
+          "D6",
+          "Emadd9",
+          "E7sus4",
+          "Em7b5/F"
+        }
+      },
+      new()
+      {
+        Number = 38,
+        Name = "New Age/Cinematic",
+        Chords = new List<string>
+        {
+          "C",
+          "Gsus4",
+          "G7sus4",
+          "A#/D#",
+          "C/E",
+          "Gsus4/F",
+          "D/F#",
+          "C/G",
+          "E/G#",
+          "Am",
+          "Fsus4",
+          "G"
+        }
+      },
+      new()
+      {
+        Number = 39,
+        Name = "Synthwave",
+        Chords = new List<string>
+        {
+          "C6sus4",
+          "Gmadd9/D",
+          "Edim11",
+          "Fsus2/D",
+          "BbM7",
+          "Gmadd9",
+          "Am/G",
+          "C7/G",
+          "A#M7",
+          "Gm/A",
+          "C7/A#",
+          "A#m6"
+        }
+      },
+      new()
+      {
+        Number = 40,
+        Name = "Synthwave",
+        Chords = new List<string>
+        {
+          "Cadd9",
+          "Dadd9",
+          "D#add9",
+          "Fadd9",
+          "Gadd9",
+          "G#add9",
+          "A#add9",
+          "Cadd9",
+          "Dadd9",
+          "D#add9",
+          "Fadd9",
+          "Gadd9"
+        }
+      },
+      new()
+      {
+        Number = 41,
+        Name = "Synthwave",
+        Chords = new List<string>
+        {
+          "C",
+          "C#dim7",
+          "Fsus2/D",
+          "D#add9",
+          "Csus2/E",
+          "FM7",
+          "F#dim",
+          "Gsus4",
+          "G#6",
+          "Csus2/A",
+          "Csus2/A#",
+          "G7/B"
+        }
+      },
+      new()
+      {
+        Number = 42,
+        Name = "Synthwave",
+        Chords = new List<string>
+        {
+          "C",
+          "A#sus2/D#",
+          "A#7/G#",
+          "G/B",
+          "C",
+          "Fm",
+          "F#dim7",
+          "C",
+          "G#add9",
+          "F/A",
+          "A#",
+          "G7/B"
+        }
+      },
+      new()
+      {
+        Number = 43,
+        Name = "Synthwave",
+        Chords = new List<string>
+        {
+          "Cm7",
+          "A#/C",
+          "D#/G#",
+          "A#/G#",
+          "D#/F",
+          "A#/F",
+          "G#add9",
+          "A#",
+          "G#M7",
+          "Fsus2/A",
+          "A#6",
+          "Fm7/B"
+        }
+      },
+      new()
+      {
+        Number = 44,
+        Name = "Synthwave",
+        Chords = new List<string>
+        {
+          "Cm7",
+          "C#sus2/F",
+          "Gm7",
+          "D#",
+          "Csus2/E",
+          "Fm",
+          "D#dim7",
+          "G#sus2/G",
+          "Cm7",
+          "F7",
+          "Fm7",
+          "G5"
+        }
+      },
+      new()
+      {
+        Number = 45,
+        Name = "Synthwave",
+        Chords = new List<string>
+        {
+          "Ab",
+          "Fm",
+          "Gm",
+          "Ab",
+          "Fm",
+          "Bb",
+          "Gm",
+          "Cm",
+          "Ab",
+          "Fm",
+          "Bb",
+          "Cm"
+        }
+      },
+      new()
+      {
+        Number = 46,
+        Name = "Synthwave",
+        Chords = new List<string>
+        {
+          "C",
+          "D",
+          "Em",
+          "D",
+          "G",
+          "Am",
+          "Bm",
+          "C",
+          "D",
+          "Em",
+          "D",
+          "G"
+        }
+      },
+      new()
+      {
+        Number = 47,
+        Name = "Synthwave/House",
+        Chords = new List<string>
+        {
+          "Cm7",
+          "D#M7",
+          "Dm7",
+          "Fm7",
+          "D#M7",
+          "Gm7",
+          "Fm7",
+          "G#M7",
+          "Gm7",
+          "A#7",
+          "G#M7",
+          "C#/C"
+        }
+      },
+      new()
+      {
+        Number = 48,
+        Name = "Trance",
+        Chords = new List<string>
+        {
+          "Cm",
+          "Ab/C",
+          "Bb/D",
+          "Eb",
+          "C/E",
+          "Fm",
+          "F",
+          "Gm",
+          "Ab",
+          "F7/A",
+          "Bb",
+          "G7/B"
+        }
+      },
+      new()
+      {
+        Number = 49,
+        Name = "House",
+        Chords = new List<string>
+        {
+          "Cm7",
+          "C#m7",
+          "Dm7",
+          "EbM7",
+          "Gm/E",
+          "Eb/F",
+          "D7/F#",
+          "Gm7",
+          "AbM7",
+          "Ab/Bb",
+          "BbM7",
+          "Bm7b5"
+        }
+      },
+      new()
+      {
+        Number = 50,
+        Name = "House",
+        Chords = new List<string>
+        {
+          "Cmaj7",
+          "Dmaj7",
+          "Em7",
+          "Fmaj9",
+          "Gmaj9",
+          "Eadd9/G#",
+          "Am7",
+          "Bm7",
+          "Cmaj9",
+          "Dm7/9",
+          "Em7",
+          "Fmaj7"
+        }
+      },
+      new()
+      {
+        Number = 51,
+        Name = "House",
+        Chords = new List<string>
+        {
+          "Cm7",
+          "G#/C#",
+          "Dm7",
+          "A#/D#",
+          "Em7",
+          "C/F",
+          "F#m7",
+          "D/G",
+          "G#m7",
+          "E/A",
+          "A#m7",
+          "F#/B"
+        }
+      },
+      new()
+      {
+        Number = 52,
+        Name = "House",
+        Chords = new List<string>
+        {
+          "Cm7",
+          "G#M7",
+          "Dm7",
+          "A#M7",
+          "Em7",
+          "CM7",
+          "F#m7",
+          "DM7",
+          "G#m7",
+          "EM7",
+          "A#m7",
+          "F#M7"
+        }
+      },
+      new()
+      {
+        Number = 53,
+        Name = "House",
+        Chords = new List<string>
+        {
+          "Cm7/11",
+          "Cdim7",
+          "C#M7b5",
+          "Ddim7",
+          "Cm",
+          "C#M7",
+          "CM7",
+          "Em7",
+          "FM7",
+          "Fm6",
+          "Csus2/E",
+          "Fm"
+        }
+      },
+      new()
+      {
+        Number = 54,
+        Name = "House",
+        Chords = new List<string>
+        {
+          "CM7",
+          "Em7",
+          "Dm7",
+          "FM7",
+          "D#M7",
+          "Gm7",
+          "FM7",
+          "Am7",
+          "Gm7",
+          "A#M7",
+          "Am7",
+          "Bm7"
+        }
+      },
+      new()
+      {
+        Number = 55,
+        Name = "Jazz House",
+        Chords = new List<string>
+        {
+          "CM13",
+          "CM7#5",
+          "Dm7b5",
+          "G7",
+          "Cadd9/E",
+          "Fadd9",
+          "FmAdd9",
+          "G9",
+          "E7/G#",
+          "Am9/11",
+          "Gm11/Bb",
+          "CM7#5/G#"
+        }
+      },
+      new()
+      {
+        Number = 56,
+        Name = "Jazz House",
+        Chords = new List<string>
+        {
+          "Cm7",
+          "Db6",
+          "Dm7",
+          "Dm7b5",
+          "EbM7",
+          "Fm7",
+          "Gb6",
+          "Gm7",
+          "Ab6",
+          "AbM7",
+          "Am7",
+          "BbM7"
+        }
+      },
+      new()
+      {
+        Number = 57,
+        Name = "House/Techno",
+        Chords = new List<string>
+        {
+          "C5b9",
+          "DbM7",
+          "Dm7",
+          "Ebsus11",
+          "EM7#11",
+          "Fm9",
+          "GbM7#11",
+          "Gm7",
+          "AbM7#11",
+          "A7alt",
+          "Bb5add9b13",
+          "C7sus4"
+        }
+      },
+      new()
+      {
+        Number = 58,
+        Name = "Techno",
+        Chords = new List<string>
+        {
+          "Cm7",
+          "A#m/C#",
+          "A#/D",
+          "D#",
+          "C/E",
+          "Cm/F",
+          "D/F#",
+          "G",
+          "G#M7",
+          "Csus4/A",
+          "D#/A#",
+          "G/B"
+        }
+      },
+      new()
+      {
+        Number = 59,
+        Name = "EDM",
+        Chords = new List<string>
+        {
+          "CM9",
+          "C6",
+          "Dm9",
+          "Dm6",
+          "EM9",
+          "FM9",
+          "F6",
+          "GM9",
+          "G6",
+          "Am9",
+          "Am6",
+          "Bm9"
+        }
+      },
+      new()
+      {
+        Number = 60,
+        Name = "EDM",
+        Chords = new List<string>
+        {
+          "CM13(no 3)",
+          "EM9(no 3)",
+          "DM13(no 3)",
+          "F#M9(no 3)",
+          "EM13(no 3)",
+          "FM13(no 3)",
+          "AM9(no 3)",
+          "GM13(no 3)",
+          "BM9(no 3)",
+          "AM13(no 3)",
+          "C#M9(no 3)",
+          "BM13(no 3)"
+        }
+      },
+      new()
+      {
+        Number = 61,
+        Name = "EDM",
+        Chords = new List<string>
+        {
+          "Csus9/13",
+          "C6",
+          "Dsus9/13",
+          "D6",
+          "Esus9/13",
+          "Fsus9/13",
+          "F6",
+          "Gsus9/13",
+          "G6",
+          "Asus9/13",
+          "A6",
+          "Bsus9/13"
+        }
+      },
+      new()
+      {
+        Number = 62,
+        Name = "EDM",
+        Chords = new List<string>
+        {
+          "CM13",
+          "C#sus9",
+          "DM13",
+          "D#sus9",
+          "EM13",
+          "FM13",
+          "F#sus9",
+          "Gmaj13",
+          "Absus9",
+          "AM13",
+          "Bbsus9",
+          "BM13"
+        }
+      },
+      new()
+      {
+        Number = 63,
+        Name = "EDM",
+        Chords = new List<string>
+        {
+          "CM7",
+          "Dbm7",
+          "Dm7",
+          "Eb6",
+          "Em7",
+          "FM7",
+          "Gbm7",
+          "GM7",
+          "Abm7",
+          "Am7",
+          "Bb6",
+          "Bm7"
+        }
+      },
+      new()
+      {
+        Number = 64,
+        Name = "EDM",
+        Chords = new List<string>
+        {
+          "C6",
+          "AM7",
+          "D6",
+          "BM7",
+          "E6",
+          "F6",
+          "DM7",
+          "G6",
+          "EM7",
+          "A6",
+          "GbM7",
+          "B6"
+        }
+      },
+      new()
+      {
+        Number = 65,
+        Name = "Gospel/R&B",
+        Chords = new List<string>
+        {
+          "G/C",
+          "C#dim7",
+          "Dm7b5",
+          "D#dim7",
+          "Em7",
+          "Fm11",
+          "F#dim7",
+          "Gm7b13",
+          "G#M9",
+          "Am7b13",
+          "A#m7add13",
+          "Bm7b13"
+        }
+      },
+      new()
+      {
+        Number = 66,
+        Name = "Gospel/R&B",
+        Chords = new List<string>
+        {
+          "Cm7b13",
+          "C#M13",
+          "Dm7b13",
+          "D#m11",
+          "D/E",
+          "G#m/F",
+          "F#6",
+          "A#m/G",
+          "G#m11",
+          "AM9",
+          "A#7b13",
+          "F#/B"
+        }
+      },
+      new()
+      {
+        Number = 67,
+        Name = "Gospel/R&B",
+        Chords = new List<string>
+        {
+          "D",
+          "C/D",
+          "D/E",
+          "Dm/F",
+          "Dsus2/F#",
+          "Gadd9",
+          "E/G#",
+          "A",
+          "A#dim7",
+          "Bm7",
+          "D/C",
+          "C#dim"
+        }
+      },
+      new()
+      {
+        Number = 68,
+        Name = "Lofi R&B",
+        Chords = new List<string>
+        {
+          "Cmadd9",
+          "Abadd9/C",
+          "Bb7/D",
+          "EbM9",
+          "Eb7b9",
+          "Fm9",
+          "GbM6/9",
+          "Gm7",
+          "Eb/Ab",
+          "Fsus4/A",
+          "Bbsus",
+          "Bbsus4b9"
+        }
+      },
+      new()
+      {
+        Number = 69,
+        Name = "Lofi R&B",
+        Chords = new List<string>
+        {
+          "Ab7/C",
+          "C#m11",
+          "DM9",
+          "Bsus4/Eb",
+          "EMadd2",
+          "DM7#11",
+          "F#m11",
+          "G6",
+          "Abm7",
+          "AM7add6",
+          "F#add9/A#",
+          "BMadd4"
+        }
+      },
+      new()
+      {
+        Number = 70,
+        Name = "Funk",
+        Chords = new List<string>
+        {
+          "C9",
+          "C/D",
+          "D7b9",
+          "EbM7",
+          "Em7b13",
+          "Eb/F",
+          "F#13",
+          "G7",
+          "Abm6addb13",
+          "Am7",
+          "Bm7",
+          "B7"
+        }
+      },
+      new()
+      {
+        Number = 71,
+        Name = "Funk",
+        Chords = new List<string>
+        {
+          "C7alt",
+          "DbM7",
+          "D7alt",
+          "Eb7",
+          "C7/E",
+          "F7alt",
+          "F11sus2",
+          "Gm7b5",
+          "Ab9",
+          "Bb9sus",
+          "Bb7add9",
+          "C11sus2"
+        }
+      },
+      new()
+      {
+        Number = 72,
+        Name = "Neo Soul",
+        Chords = new List<string>
+        {
+          "Cm9",
+          "AbM7",
+          "Dm7",
+          "EbDimM7",
+          "EbM7",
+          "Fm7",
+          "CM7#5",
+          "Gm7",
+          "G7#5",
+          "AbM7",
+          "Fm7b5/B",
+          "Bb13/D"
+        }
+      },
+      new()
+      {
+        Number = 73,
+        Name = "Neo Soul",
+        Chords = new List<string>
+        {
+          "Cm7",
+          "C#dim7",
+          "Fm7",
+          "Fm7b5",
+          "EbM7",
+          "Cm7/Eb",
+          "Edim",
+          "AbM7",
+          "Fm7",
+          "AbM13",
+          "Bb13",
+          "Bb6"
+        }
+      },
+      new()
+      {
+        Number = 74,
+        Name = "Neo Soul",
+        Chords = new List<string>
+        {
+          "Em7/D",
+          "Gm7b5/C#",
+          "FM7/E",
+          "DMb7/D#",
+          "GM7/F#",
+          "Edim7",
+          "Cadd13/E",
+          "E",
+          "Gaddb9/G#",
+          "Am9",
+          "Dm7",
+          "Emb9/F"
+        }
+      },
+      new()
+      {
+        Number = 75,
+        Name = "Neo Soul",
+        Chords = new List<string>
+        {
+          "CM7",
+          "C#m7",
+          "Dm7",
+          "EbM7",
+          "Em7",
+          "FM7",
+          "Gb7",
+          "GM7",
+          "AbM7",
+          "Am7",
+          "BbM7",
+          "Bm7"
+        }
+      },
+      new()
+      {
+        Number = 76,
+        Name = "Neo-Soul",
+        Chords = new List<string>
+        {
+          "CM7sus2",
+          "Gadd9/B",
+          "DM7sus2",
+          "E6sus4/C#",
+          "EM7sus2",
+          "F#6sus4/D#",
+          "F#M7sus2",
+          "G#6sus4/F",
+          "G#M7sus2",
+          "A#6sus4/G",
+          "A#M7sus2",
+          "Fadd9/A"
+        }
+      },
+      new()
+      {
+        Number = 77,
+        Name = "Neo-Soul",
+        Chords = new List<string>
+        {
+          "CM7",
+          "C#m7",
+          "DM7",
+          "D#m7",
+          "EM7",
+          "Fm7",
+          "F#M7",
+          "Gm7",
+          "AbM7",
+          "Am7",
+          "BbM7",
+          "Bm7"
+        }
+      },
+      new()
+      {
+        Number = 78,
+        Name = "Neo-Soul",
+        Chords = new List<string>
+        {
+          "C11sus",
+          "A7/C#",
+          "Dm7",
+          "EbM7",
+          "C7/E",
+          "F6",
+          "D7/F#",
+          "Gdim7",
+          "E7/G#",
+          "F6/A",
+          "Bb6",
+          "Bm7b5"
+        }
+      },
+      new()
+      {
+        Number = 79,
+        Name = "Neo-Soul",
+        Chords = new List<string>
+        {
+          "Ab/C",
+          "Db",
+          "Bb/D",
+          "Ebm",
+          "C/E",
+          "Db/F",
+          "Gb",
+          "Eb/G",
+          "Db/Ab",
+          "F7/A",
+          "Ebm/Bb",
+          "B"
+        }
+      },
+      new()
+      {
+        Number = 80,
+        Name = "Neo-Soul",
+        Chords = new List<string>
+        {
+          "Cm7b5",
+          "Db7sus",
+          "Bbadd2/D",
+          "Ebm7",
+          "EM7",
+          "Fmb6",
+          "GbM9",
+          "Ebadd9/G",
+          "Ab7sus",
+          "AdimM7",
+          "Bbm9",
+          "Gb/B"
+        }
+      },
+      new()
+      {
+        Number = 81,
+        Name = "Neo-Soul",
+        Chords = new List<string>
+        {
+          "C7alt",
+          "DbM7add6",
+          "Bb7/D",
+          "Db/Eb",
+          "Edim7",
+          "Fm9",
+          "Gb6/9",
+          "Gm7b5",
+          "Eb/Ab",
+          "F7/A",
+          "Bbm9",
+          "BM7#11"
+        }
+      },
+      new()
+      {
+        Number = 82,
+        Name = "Jazz/Bossa",
+        Chords = new List<string>
+        {
+          "Gm7",
+          "Bb/Ab",
+          "Am7",
+          "C/Bb",
+          "Bm7",
+          "D/C",
+          "C#m7",
+          "E/D",
+          "D#m7",
+          "F#/E",
+          "Fm7",
+          "Ab/Gb"
+        }
+      },
+      new()
+      {
+        Number = 83,
+        Name = "Bossa Nova",
+        Chords = new List<string>
+        {
+          "CM9",
+          "C#dim",
+          "Dm7",
+          "D#dim",
+          "CM9/E",
+          "FM9",
+          "F#dim",
+          "Gm9",
+          "C13b9",
+          "F6",
+          "BbM9",
+          "G13b9"
+        }
+      },
+      new()
+      {
+        Number = 84,
+        Name = "Bossa Nova",
+        Chords = new List<string>
+        {
+          "CM7",
+          "C#Dim",
+          "Dm11",
+          "D#Dim",
+          "Em11",
+          "G/F",
+          "F9#11",
+          "Gsus13",
+          "Abdim7",
+          "FM7/A",
+          "Bb13",
+          "Eb/B"
+        }
+      },
+      new()
+      {
+        Number = 85,
+        Name = "Jazz",
+        Chords = new List<string>
+        {
+          "CM7#11",
+          "DbM7#11",
+          "Dm9",
+          "EbM7#11",
+          "Em9",
+          "FM7#11",
+          "F#m11",
+          "G6/9",
+          "AbM7#11",
+          "Am9",
+          "BbM13",
+          "Bm11b5"
+        }
+      },
+      new()
+      {
+        Number = 86,
+        Name = "Jazz",
+        Chords = new List<string>
+        {
+          "CM9",
+          "Db9#11",
+          "Dm9",
+          "D13b9/Eb",
+          "Em11",
+          "FM13",
+          "E/F",
+          "FM7/G",
+          "Ab7#9#5",
+          "Am9/11",
+          "BbM9",
+          "Bdim7"
+        }
+      },
+      new()
+      {
+        Number = 87,
+        Name = "Jazz",
+        Chords = new List<string>
+        {
+          "Cmaj7",
+          "Aadd9/C#",
+          "Dm6",
+          "B7/D#",
+          "Em7",
+          "Fmaj9",
+          "Dadd9/F#",
+          "Gm7/9",
+          "Abmaj9",
+          "Cadd9/G",
+          "Eadd9/G#",
+          "Asus7"
+        }
+      },
+      new()
+      {
+        Number = 88,
+        Name = "Jazz",
+        Chords = new List<string>
+        {
+          "Fmaj7/9",
+          "Gm7b5",
+          "Abmaj7/9",
+          "Bbm7b5",
+          "Bmaj7/9",
+          "C#m7b5",
+          "DM7/9",
+          "Em7b5",
+          "CM7/9",
+          "Dm7b5/9",
+          "GbM7/9",
+          "Abm7b5"
+        }
+      },
+      new()
+      {
+        Number = 89,
+        Name = "Jazz",
+        Chords = new List<string>
+        {
+          "Cadd9",
+          "C#dim7",
+          "Gadd13/B",
+          "D#dim#5",
+          "FM7/E",
+          "G7sus2/F",
+          "D#dim7",
+          "C6",
+          "Ddim7",
+          "Am/C",
+          "Dm7b5",
+          "G7/D"
+        }
+      },
+      new()
+      {
+        Number = 90,
+        Name = "Jazz",
+        Chords = new List<string>
+        {
+          "Em7",
+          "Edim7",
+          "FM7",
+          "F#dim7",
+          "Em7",
+          "C6/E",
+          "F#dim7",
+          "FM7b5",
+          "Eb7/F",
+          "Gadd9",
+          "A#11/F",
+          "F#dim7"
+        }
+      },
+      new()
+      {
+        Number = 91,
+        Name = "Jazz",
+        Chords = new List<string>
+        {
+          "Gm7",
+          "G#M7",
+          "Am7",
+          "A#M7",
+          "G/B",
+          "D#M7",
+          "A#/D",
+          "D",
+          "CM7sus2",
+          "Em7",
+          "F6",
+          "C6sus2b5"
+        }
+      },
+      new()
+      {
+        Number = 92,
+        Name = "Jazz",
+        Chords = new List<string>
+        {
+          "A#M7",
+          "BM7",
+          "Cm7b5",
+          "C#dim7",
+          "Em7b5/D",
+          "Fm7/D#",
+          "Edim7",
+          "F7/D#",
+          "F#dim7",
+          "Gm7/F",
+          "G#M7/D#",
+          "F7/D#"
+        }
+      },
+      new()
+      {
+        Number = 93,
+        Name = "Jazz",
+        Chords = new List<string>
+        {
+          "A#M7/A",
+          "G#6",
+          "Am7",
+          "A#M7",
+          "Gadd11/B",
+          "FM7/C",
+          "A7/C",
+          "D7/C",
+          "D#M7b5/D",
+          "Cadd9/D",
+          "Fadd9",
+          "Cdim7"
+        }
+      },
+      new()
+      {
+        Number = 94,
+        Name = "Jazz",
+        Chords = new List<string>
+        {
+          "CM7",
+          "DbM7",
+          "Dm7",
+          "Ebm7add13",
+          "Em7b13",
+          "Fm7",
+          "F#m7b5",
+          "G9sus",
+          "G#dim7",
+          "Am6",
+          "F/Bb",
+          "Bdim7"
+        }
+      },
+      new()
+      {
+        Number = 95,
+        Name = "Classical",
+        Chords = new List<string>
+        {
+          "FM7/E",
+          "Bdim/D",
+          "Am",
+          "G#dim7",
+          "C/G",
+          "Amb9/C",
+          "Fadd9/C",
+          "Dm",
+          "C/G",
+          "C/G",
+          "Fadd9/G",
+          "Ddim/G"
+        }
+      },
+      new()
+      {
+        Number = 96,
+        Name = "Classical",
+        Chords = new List<string>
+        {
+          "Am",
+          "Bm7/A",
+          "Fdim/B",
+          "C/E",
+          "A7/G",
+          "Dm7",
+          "D#aug",
+          "E",
+          "F",
+          "D/F#",
+          "C/G",
+          "E/G#"
+        }
+      },
+      new()
+      {
+        Number = 97,
+        Name = "Classical",
+        Chords = new List<string>
+        {
+          "F#/C#",
+          "F#/A#",
+          "G#m7",
+          "A6",
+          "F#/C#",
+          "Bsus2",
+          "G#/C",
+          "C#7",
+          "A#7/D",
+          "F#6sus4/C#",
+          "C#m7",
+          "C#7"
+        }
+      },
+      new()
+      {
+        Number = 98,
+        Name = "Classical",
+        Chords = new List<string>
+        {
+          "Dm",
+          "D#M7/D",
+          "E7/D",
+          "Dm7",
+          "D7",
+          "Gm/D",
+          "G#/D",
+          "A/D",
+          "A#add9/D",
+          "DM7(13)",
+          "Csus2/D",
+          "G#dim/D"
+        }
+      },
+      new()
+      {
+        Number = 99,
+        Name = "Modern",
+        Chords = new List<string>
+        {
+          "CM13",
+          "AM9/C#",
+          "Dm13",
+          "EbM13",
+          "CM9/E",
+          "FM13",
+          "FmM13",
+          "CM9(no 3)/G",
+          "AbMb5#9",
+          "Am11",
+          "BbM9",
+          "G6/9"
+        }
+      },
+      new()
+      {
+        Number = 100,
+        Name = "Modern",
+        Chords = new List<string>
+        {
+          "CM9",
+          "Cm9",
+          "Dm9",
+          "Dm6/9",
+          "CM9/E",
+          "Dm9/F",
+          "D9/F#",
+          "Gsus13",
+          "G13b9",
+          "Abmaj13",
+          "AbDimM7",
+          "BbM13"
+        }
+      }
     ];
   }
 
@@ -767,7 +2049,7 @@ public partial class MainWindow : Window
       List<string> searchTerms = [];
       foreach (var textBox in FindVisualChildren<TextBox>(this))
       {
-        string trimmedText = textBox.Text.Trim();
+        var trimmedText = textBox.Text.Trim();
         if (!string.IsNullOrWhiteSpace(trimmedText))
         {
           searchTerms.Add(trimmedText);
@@ -778,7 +2060,7 @@ public partial class MainWindow : Window
       {
         foreach (var chordSet in chordSets)
         {
-          for (int k = 0; k < 12; k++) // Check all 12 transpositions
+          for (var k = 0; k < 12; k++) // Check all 12 transpositions
           {
             var transposedChords = chordSet.Chords.Select(chord => TransposeChord(chord, k)).ToList();
             // Check if all search terms match at least one chord
@@ -836,507 +2118,19 @@ public partial class MainWindow : Window
   {
     if (depObj != null)
     {
-      for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+      for (var i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
       {
-        DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+        var child = VisualTreeHelper.GetChild(depObj, i);
         if (child is T tChild)
         {
           yield return tChild;
         }
 
-        foreach (T childOfChild in FindVisualChildren<T>(child))
+        foreach (var childOfChild in FindVisualChildren<T>(child))
         {
           yield return childOfChild;
         }
       }
     }
-  }
-}
-
-public class ChordSet
-{
-  public int Number { get; set; }
-  public string Name { get; set; }
-  public List<string> Chords { get; set; }
-}
-
-public class TransposedChordSet
-{
-  public ChordSet OriginalSet { get; set; }
-  public int Transposition { get; set; }
-  public List<string> TransposedChords { get; set; }
-
-  public override string ToString()
-  {
-    string chords = string.Join(", ", TransposedChords);
-    return $"{OriginalSet.Name} +{Transposition}: {chords}";
-  }
-}
-
-public class TransposerConfig
-{
-  public string Sharp = "#";
-  public string Flat = "b";
-  public string Abc = "abc";
-  public string Doremi = "doremi";
-
-  // Regular Expression Patterns
-  public string GetKeyRegexAbc()
-  {
-    return "[ABCDEFG][" + Sharp + Flat + "]{0,2}";
-  }
-
-  public string GetKeyRegexDoremi()
-  {
-    return "(?:DO|RE|MI|FA|SOL|LA|SI|DO)[" + Sharp + Flat + "]{0,2}";
-  }
-
-  public Regex GetChordRegex()
-  {
-    return new Regex("((?:" + GetKeyRegexDoremi() + ")|(?:" + GetKeyRegexAbc() + "))");
-  }
-
-  public Regex GetChordGroupRegex(string preChord, string postChord)
-  {
-    return new Regex("(" + Regex.Escape(preChord) + ")((?:(?!" + Regex.Escape(postChord) + ").)*)(" + Regex.Escape(postChord) + ")");
-  }
-
-  // Standard Keys
-  public List<string> SharpFlat()
-  {
-    return [Sharp, Flat];
-  }
-
-  public List<string> ReferenceAbcKeys()
-  {
-    return ["C", "C" + Sharp, "D", "E" + Flat, "E", "F", "F" + Sharp, "G", "G" + Sharp, "A", "B" + Flat, "B"];
-  }
-
-  public List<string> ReferenceDoremiKeys()
-  {
-    return
-      ["DO", "DO" + Sharp, "RE", "MI" + Flat, "MI", "FA", "FA" + Sharp, "SOL", "SOL" + Sharp, "LA", "SI" + Flat, "SI"];
-  }
-
-  // Standardizing Keys/Chords
-  public string KeyToReferenceAbc(string key)
-  {
-    var keys = new Dictionary<string, string>
-    {
-      {"C", "C"}, {"D", "D"}, {"E", "E"}, {"F", "F"}, {"G", "G"}, {"A", "A"}, {"B", "B"},
-      {"C" + Sharp, "C" + Sharp}, {"D" + Sharp, "E" + Flat}, {"E" + Sharp, "F"}, {"F" + Sharp, "F" + Sharp},
-      {"G" + Sharp, "G" + Sharp}, {"A" + Sharp, "B" + Flat}, {"B" + Sharp, "C"},
-      {"C" + Flat, "B"}, {"D" + Flat, "C" + Sharp}, {"E" + Flat, "E" + Flat}, {"F" + Flat, "E"},
-      {"G" + Flat, "F" + Sharp}, {"A" + Flat, "G" + Sharp}, {"B" + Flat, "B" + Flat},
-      {"C" + Sharp + Sharp, "D"}, {"D" + Sharp + Sharp, "E"}, {"E" + Sharp + Sharp, "F" + Sharp},
-      {"F" + Sharp + Sharp, "G"}, {"G" + Sharp + Sharp, "A"}, {"A" + Sharp + Sharp, "B"},
-      {"B" + Sharp + Sharp, "C" + Sharp},
-      {"C" + Flat + Flat, "B" + Flat}, {"D" + Flat + Flat, "C"}, {"E" + Flat + Flat, "D"},
-      {"F" + Flat + Flat, "E" + Flat}, {"G" + Flat + Flat, "F"}, {"A" + Flat + Flat, "G"},
-      {"B" + Flat + Flat, "A"}
-    };
-    if (keys.TryGetValue(key, out string referenceKey))
-    {
-      return referenceKey;
-    }
-    throw new ArgumentException($"Invalid key: {key}");
-  }
-
-  public string KeyToReferenceDoremi(string key)
-  {
-    var keys = new Dictionary<string, string>
-    {
-      {"DO", "DO"}, {"RE", "RE"}, {"MI", "MI"}, {"FA", "FA"}, {"SOL", "SOL"}, {"LA", "LA"}, {"SI", "SI"},
-      {"DO" + Sharp, "DO" + Sharp}, {"RE" + Sharp, "MI" + Flat}, {"MI" + Sharp, "FA"}, {"FA" + Sharp, "FA" + Sharp},
-      {"SOL" + Sharp, "SOL" + Sharp}, {"LA" + Sharp, "SI" + Flat}, {"SI" + Sharp, "DO"},
-      {"DO" + Flat, "SI"}, {"RE" + Flat, "DO" + Sharp}, {"MI" + Flat, "MI" + Flat}, {"FA" + Flat, "MI"},
-      {"SOL" + Flat, "FA" + Sharp}, {"LA" + Flat, "SOL" + Sharp}, {"SI" + Flat, "SI" + Flat},
-      {"DO" + Sharp + Sharp, "RE"}, {"RE" + Sharp + Sharp, "MI"}, {"MI" + Sharp + Sharp, "FA" + Sharp},
-      {"FA" + Sharp + Sharp, "SOL"}, {"SOL" + Sharp + Sharp, "LA"}, {"LA" + Sharp + Sharp, "SI"},
-      {"SI" + Sharp + Sharp, "DO" + Sharp},
-      {"DO" + Flat + Flat, "SI" + Flat}, {"RE" + Flat + Flat, "DO"}, {"MI" + Flat + Flat, "RE"},
-      {"FA" + Flat + Flat, "MI" + Flat}, {"SOL" + Flat + Flat, "FA"}, {"LA" + Flat + Flat, "SOL"},
-      {"SI" + Flat + Flat, "LA"}
-    };
-    if (keys.TryGetValue(key, out string referenceKey))
-    {
-      return referenceKey;
-    }
-    throw new ArgumentException($"Invalid key: {key}");
-  }
-
-  public string KeyToReference(string key)
-  {
-    if (Common.IsAbc(key))
-    {
-      return KeyToReferenceAbc(key);
-    }
-    else if (Common.IsDoremi(key))
-    {
-      return KeyToReferenceDoremi(key);
-    }
-    throw new ArgumentException($"Invalid key: {key}");
-  }
-
-  // Scales
-  public List<string> KeyChordsAbc(string key)
-  {
-    var keys = new Dictionary<string, List<string>>
-    {
-      {"C", ["C", "C" + Sharp, "D", "E" + Flat, "E", "F", "F" + Sharp, "G", "A" + Flat, "A", "B" + Flat, "B"] },
-      {"C" + Sharp,
-        [
-          "B" + Sharp, "C" + Sharp, "D", "D" + Sharp, "E", "E" + Sharp, "F" + Sharp, "G", "G" + Sharp, "A",
-          "A" + Sharp, "B"
-        ]
-      },
-      {"D" + Flat,
-        [
-          "C", "D" + Flat, "D", "E" + Flat, "F" + Flat, "F", "G" + Flat, "G", "A" + Flat, "B" + Flat + Flat,
-          "B" + Flat, "C" + Flat
-        ]
-      },
-      // Add other keys as needed...
-    };
-    if (keys.TryGetValue(key, out List<string> chords))
-    {
-      return chords;
-    }
-    throw new ArgumentException($"Invalid key: {key}");
-  }
-
-  public List<string> KeyChordsDoremi(string key)
-  {
-    string abcKey = Common.ChordDoremiToAbc(key);
-    List<string> chords = KeyChordsAbc(abcKey);
-    return chords.ConvertAll(ch => Common.ChordAbcToDoremi(ch));
-  }
-
-  public List<string> KeyChords(string key)
-  {
-    if (Common.IsAbc(key))
-    {
-      return KeyChordsAbc(key);
-    }
-    else if (Common.IsDoremi(key))
-    {
-      return KeyChordsDoremi(key);
-    }
-    throw new ArgumentException($"Invalid key: {key}");
-  }
-}
-
-public static class Common
-{
-  private static readonly TransposerConfig config = new();
-
-  public static readonly Dictionary<string, string> AbcToDoremiDictionary = new()
-  {
-    {"A", "LA"}, {"B", "SI"}, {"C", "DO"}, {"D", "RE"}, {"E", "MI"}, {"F", "FA"}, {"G", "SOL"}
-  };
-
-  public static readonly Dictionary<string, string> DoremiToAbcDictionary = new()
-  {
-    {"LA", "A"}, {"SI", "B"}, {"DO", "C"}, {"RE", "D"}, {"MI", "E"}, {"FA", "F"}, {"SOL", "G"}
-  };
-
-  public static bool IsAbc(string chord)
-  {
-    string cleanChord = Regex.Replace(chord, "[" + config.Sharp + config.Flat + "]", "");
-    return AbcToDoremiDictionary.ContainsKey(cleanChord);
-  }
-
-  public static bool IsDoremi(string chord)
-  {
-    string cleanChord = Regex.Replace(chord, "[" + config.Sharp + config.Flat + "]", "");
-    return DoremiToAbcDictionary.ContainsKey(cleanChord);
-  }
-
-  public static string ChordStyle(string chord)
-  {
-    if (IsAbc(chord))
-    {
-      return config.Abc;
-    }
-    else if (IsDoremi(chord))
-    {
-      return config.Doremi;
-    }
-    throw new ArgumentException($"Invalid chord: {chord}");
-  }
-
-  public static string ChordDoremiToAbc(string chord)
-  {
-    if (IsDoremi(chord))
-    {
-      MatchCollection sharpFlat = Regex.Matches(chord, "[" + config.Sharp + config.Flat + "]");
-      string cleanChord = Regex.Replace(chord, "[" + config.Sharp + config.Flat + "]", "");
-      string translatedChord = DoremiToAbcDictionary[cleanChord];
-      foreach (Match sf in sharpFlat)
-      {
-        translatedChord += sf.Value;
-      }
-      return translatedChord;
-    }
-    throw new ArgumentException($"Invalid chord: {chord}");
-  }
-
-  public static string ChordAbcToDoremi(string chord)
-  {
-    if (IsAbc(chord))
-    {
-      MatchCollection sharpFlat = Regex.Matches(chord, "[" + config.Sharp + config.Flat + "]");
-      string cleanChord = Regex.Replace(chord, "[" + config.Sharp + config.Flat + "]", "");
-      string translatedChord = AbcToDoremiDictionary[cleanChord];
-      foreach (Match sf in sharpFlat)
-      {
-        translatedChord += sf.Value;
-      }
-      return translatedChord;
-    }
-    throw new ArgumentException($"Invalid chord: {chord}");
-  }
-
-  public static string ChordToChordStyle(string chord, string chordStyleOut = "abc")
-  {
-    string currentStyle = ChordStyle(chord);
-    if (chordStyleOut == currentStyle)
-    {
-      return chord;
-    }
-    else if (chordStyleOut == config.Abc)
-    {
-      return ChordDoremiToAbc(chord);
-    }
-    else if (chordStyleOut == config.Doremi)
-    {
-      return ChordAbcToDoremi(chord);
-    }
-    throw new ArgumentException($"Invalid output chord style: {chordStyleOut}");
-  }
-}
-
-public class Transposer
-{
-  private static readonly TransposerConfig config = new();
-
-  public static string SongKey(string song, int halfTones = 0, string preChord = @"\\\[", string postChord = @"\]", string chordStyleOut = "abc")
-  {
-    Regex chordGroupRegex = config.GetChordGroupRegex(preChord, postChord);
-    MatchCollection matches = chordGroupRegex.Matches(song);
-    if (matches.Count == 0)
-    {
-      return null;
-    }
-    string firstChordGroup = matches[0].Groups[2].Value;
-    string firstChord = config.GetChordRegex().Matches(firstChordGroup)[0].Value;
-    string referenceKey = config.KeyToReference(firstChord);
-    string transposedReferenceKey = TransposeChord(referenceKey, halfTones, null, chordStyleOut);
-    return Common.ChordToChordStyle(transposedReferenceKey, chordStyleOut);
-  }
-
-  public static string TransposeChord(string chord, int halfTones, string toKey = null, string chordStyleOut = "abc")
-  {
-    chord = config.KeyToReference(chord);
-    List<string> referenceKeys = Common.IsAbc(chord) ? config.ReferenceAbcKeys() : config.ReferenceDoremiKeys();
-    int currentChordIndex = referenceKeys.IndexOf(chord);
-    int transposedChordIndex = (currentChordIndex + halfTones) % referenceKeys.Count;
-    if (transposedChordIndex < 0) transposedChordIndex += referenceKeys.Count; // Handle negative indices
-    string transposedChord = referenceKeys[transposedChordIndex];
-    if (toKey != null)
-    {
-      return ExpressChordInKey(transposedChord, toKey, chordStyleOut);
-    }
-    return Common.ChordToChordStyle(transposedChord, chordStyleOut);
-  }
-
-  public static string ExpressChordInKey(string chord, string key, string chordStyleOut = "abc")
-  {
-    key = Common.ChordToChordStyle(key, chordStyleOut);
-    chord = Common.ChordToChordStyle(chord, chordStyleOut);
-    List<string> referenceKeys = chordStyleOut == config.Abc ? config.ReferenceAbcKeys() : config.ReferenceDoremiKeys();
-    int idx = referenceKeys.IndexOf(chord);
-    return config.KeyChords(key)[idx];
-  }
-
-  public static string TransposeChordGroup(string line, int halfTones, string toKey = null, string chordStyleOut = "abc")
-  {
-    int posDifference = 0;
-    foreach (Match match in config.GetChordRegex().Matches(line))
-    {
-      int initialPos = match.Index + posDifference;
-      int finalPos = match.Index + match.Length + posDifference;
-      string chord = line.Substring(initialPos, match.Length);
-      string transposedChord = TransposeChord(chord, halfTones, toKey, chordStyleOut);
-      posDifference += transposedChord.Length - chord.Length;
-      line = line.Substring(0, initialPos) + transposedChord + line.Substring(finalPos);
-    }
-    return line;
-  }
-
-  public static string ProcessKeyChange(string currentKey, string toKey, int halfTones = 0, string chordStyleOut = "abc")
-  {
-    Match numberFormatKeyChange = Regex.Match(toKey, @"(\+|-)([0-9]+)");
-    if (numberFormatKeyChange.Success)
-    {
-      int offset = int.Parse(numberFormatKeyChange.Value);
-      toKey = TransposeChord(currentKey, offset);
-    }
-    return TransposeChord(config.KeyToReference(toKey), halfTones, null, chordStyleOut);
-  }
-
-  public class SongSegment
-  {
-    public string Content { get; set; }
-    public string Prepend { get; set; }
-    public string ToKey { get; set; }
-  }
-
-  public static List<SongSegment> SongKeySegments(string song, string toKey, int halfTones = 0, bool clean = true,
-    string chordStyleOut = "abc", string preKey = @"\\key\{", string postKey = @"\}")
-  {
-    Regex keyChangeRegex = new Regex("(" + Regex.Escape(preKey) + ")((?:(?!" + Regex.Escape(postKey) + ").)*)(" + Regex.Escape(postKey) + ")");
-    MatchCollection keyChangeMatches = keyChangeRegex.Matches(song);
-    if (keyChangeMatches.Count == 0)
-    {
-      return null;
-    }
-
-    List<SongSegment> songSegments = [];
-    Match firstMatch = keyChangeMatches[0];
-    string preKeyStr = firstMatch.Groups[1].Value;
-    string postKeyStr = firstMatch.Groups[3].Value;
-
-    songSegments.Add(new SongSegment
-    {
-      Content = song.Substring(0, firstMatch.Index),
-      Prepend = "",
-      ToKey = ProcessKeyChange(toKey, toKey, halfTones, chordStyleOut)
-    });
-
-    int idx = firstMatch.Index + firstMatch.Length;
-    for (int i = 0; i < keyChangeMatches.Count - 1; i++)
-    {
-      string processedToKey = ProcessKeyChange(toKey, keyChangeMatches[i].Groups[2].Value, halfTones, chordStyleOut);
-      string keyChangeSignalStr = clean ? "" : preKeyStr + processedToKey + postKeyStr;
-      songSegments.Add(new SongSegment
-      {
-        Content = song.Substring(idx, keyChangeMatches[i + 1].Index - idx),
-        Prepend = keyChangeSignalStr,
-        ToKey = processedToKey
-      });
-      idx = keyChangeMatches[i + 1].Index + keyChangeMatches[i + 1].Length;
-    }
-
-    if (keyChangeMatches.Count > 0)
-    {
-      Match lastMatch = keyChangeMatches[keyChangeMatches.Count - 1];
-      string processedToKey = ProcessKeyChange(toKey, lastMatch.Groups[2].Value, halfTones, chordStyleOut);
-      string keyChangeSignalStr = clean ? "" : preKeyStr + processedToKey + postKeyStr;
-      songSegments.Add(new SongSegment
-      {
-        Content = song.Substring(idx),
-        Prepend = keyChangeSignalStr,
-        ToKey = processedToKey
-      });
-    }
-
-    return songSegments;
-  }
-
-  public static string TransposeSong(string song, int halfTones = 0, string toKey = null, string preChord = @"\\\[",
-    string postChord = @"\]", string chordStyleOut = "abc", string preKey = @"\\key\{", string postKey = @"\}",
-    bool cleanKeyChangeSignals = true)
-  {
-    string autoToKeyNoTranspose = SongKey(song, 0, preChord, postChord, chordStyleOut);
-    var songSegments = SongKeySegments(song, autoToKeyNoTranspose, halfTones, cleanKeyChangeSignals, chordStyleOut, preKey, postKey);
-
-    if (songSegments != null)
-    {
-      string result = "";
-      foreach (var segment in songSegments)
-      {
-        result += segment.Prepend + TransposeSong(segment.Content, halfTones, segment.ToKey, preChord, postChord, chordStyleOut);
-      }
-      return result;
-    }
-
-    if (toKey == "auto")
-    {
-      toKey = SongKey(song, halfTones, preChord, postChord, chordStyleOut);
-    }
-
-    Regex chordGroupRegex = config.GetChordGroupRegex(preChord, postChord);
-    return chordGroupRegex.Replace(song, match =>
-      match.Groups[1].Value + TransposeChordGroup(match.Groups[2].Value, halfTones, toKey, chordStyleOut) + match.Groups[3].Value);
-  }
-}
-
-public static class ChordConverter
-{
-  // Mapping of notes to their chromatic scale indices (0-11)
-  private static readonly Dictionary<string, int> NoteToIndex = new()
-  {
-    {"C", 0}, {"C#", 1}, {"Db", 1}, {"D", 2}, {"D#", 3}, {"Eb", 3}, {"E", 4},
-    {"F", 5}, {"F#", 6}, {"Gb", 6}, {"G", 7}, {"G#", 8}, {"Ab", 8}, {"A", 9},
-    {"A#", 10}, {"Bb", 10}, {"B", 11}, {"Cb", 11}
-  };
-
-  // List of sharp notes in A-B-C notation for reconstruction
-  private static readonly string[] SharpNotesAbc =
-  [
-    "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"
-  ];
-
-  /// <summary>
-  /// Converts a chord with flat notes to its sharp equivalent, preserving the input notation style.
-  /// </summary>
-  /// <param name="chord">The input chord (e.g., "Ebm7", "MIb/FA#").</param>
-  /// <returns>The chord with flats converted to sharps (e.g., "D#m7", "RE#/FA#").</returns>
-  /// <exception cref="ArgumentException">Thrown if the chord format or notes are invalid.</exception>
-  public static string ConvertFlatToSharp(string chord)
-  {
-    if (string.IsNullOrEmpty(chord))
-      throw new ArgumentException("Chord cannot be null or empty.");
-
-    // Determine the original notation style
-    string originalStyle = Common.ChordStyle(chord);
-    // Convert to A-B-C if in DO-RE-MI
-    string abcChord = originalStyle == "doremi" ? Common.ChordDoremiToAbc(chord) : chord;
-
-    // Regex to parse chord: root (e.g., "Eb"), quality (e.g., "m7"), optional bass (e.g., "/Gb")
-    Regex chordRegex = new Regex(@"^([A-G][#b]?)(.*)(/[A-G][#b]?)?$");
-    Match match = chordRegex.Match(abcChord);
-    if (!match.Success)
-      throw new ArgumentException($"Invalid chord format: {abcChord}");
-
-    // Extract components
-    string root = match.Groups[1].Value;
-    string quality = match.Groups[2].Value;
-    string bass = match.Groups[3].Value;
-
-    // Convert root note to sharp
-    if (!NoteToIndex.TryGetValue(root, out int rootIndex))
-      throw new ArgumentException($"Invalid root note: {root}");
-    string newRoot = SharpNotesAbc[rootIndex];
-
-    // Handle bass note if present
-    string newBass = "";
-    if (!string.IsNullOrEmpty(bass))
-    {
-      string bassNote = bass.Substring(1); // Remove "/"
-      if (!NoteToIndex.TryGetValue(bassNote, out int bassIndex))
-        throw new ArgumentException($"Invalid bass note: {bassNote}");
-      newBass = "/" + SharpNotesAbc[bassIndex];
-    }
-
-    // Reconstruct the chord
-    string newChord = newRoot + quality + newBass;
-
-    // Convert back to DO-RE-MI if original was DO-RE-MI
-    if (originalStyle == "doremi")
-      newChord = Common.ChordAbcToDoremi(newChord);
-
-    return newChord;
   }
 }

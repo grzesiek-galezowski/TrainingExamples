@@ -114,7 +114,7 @@ public class Progression
       index = _chords.Count + index; // Convert negative index to positive
     if (index < 0 || index >= _chords.Count)
       throw new ArgumentOutOfRangeException(nameof(index), "Index out of range");
-    Chord chord = _chords[index];
+    var chord = _chords[index];
     _chords.RemoveAt(index);
     return chord;
   }

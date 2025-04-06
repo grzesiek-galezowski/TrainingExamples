@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using LanguageExt;
 
 namespace J6ChordSearcher.NChord;
 
@@ -13,7 +14,7 @@ public partial class Chord
   /// <param name="chord">The chord string (e.g., "C", "Am7", "F#m7-5/G").</param>
   /// <returns>A tuple containing (root, quality, appended notes, bass note).</returns>
   /// <exception cref="ArgumentException">Thrown if the chord or notes are invalid.</exception>
-  public static (string root, Quality quality, List<string> appended, string on) Parse(string chord)
+  public static (string root, Seq<Quality> qualities, List<string> appended, string on) Parse(string chord)
   {
     try
     {
@@ -34,7 +35,7 @@ public partial class Chord
 
       CheckNote(root);
 
-      int inversion = 0;
+      var inversion = 0;
       var inversionMatch = InversionRegex.Match(rest);
       if (inversionMatch.Success)
       {
@@ -42,8 +43,8 @@ public partial class Chord
         rest = InversionRegex.Replace(rest, "");
       }
 
-      string on = "";
-      int onChordIdx = rest.IndexOf('/');
+      var on = "";
+      var onChordIdx = rest.IndexOf('/');
       if (onChordIdx >= 0)
       {
         on = rest.Substring(onChordIdx + 1);
@@ -51,11 +52,11 @@ public partial class Chord
         CheckNote(on);
       }
 
-      var quality = QualityManager.Instance.GetQuality(rest, inversion);
+      var qualities = QualityManager.Instance.GetQualities(rest, inversion);
       // TODO: Implement parser for appended notes
       var appended = new List<string>();
 
-      return (root, quality, appended, on);
+      return (root, qualities, appended, on);
     }
     catch (Exception e)
     {

@@ -1,11 +1,13 @@
-﻿namespace J6ChordSearcher.NChord;
+﻿using LanguageExt;
+
+namespace J6ChordSearcher.NChord;
 
 public partial class Chord
 {
   // Private fields mirroring Python attributes
   private string _chord;          // Full chord name (e.g., "C", "Am7", "F#m7-5/A")
   private string _root;           // Root note (e.g., "C", "A", "F#")
-  private Quality _quality;       // Chord quality (e.g., maj, m7, m7-5)
+  private Seq<Quality> _qualities;       // Chord quality (e.g., maj, m7, m7-5)
   private List<string> _appended; // Appended notes
   private string _on;             // Base note of slash chord
 
@@ -19,20 +21,20 @@ public partial class Chord
       throw new ArgumentException("Chord name cannot be empty");
 
     // Parse the chord string using the external parse method
-    var (root, quality, appended, on) = Parse(chord);
+    var (root, qualities, appended, on) = Parse(chord);
     _chord = chord;
     _root = root;
-    _quality = quality;
+    _qualities = qualities;
     _appended = appended;
     _on = on;
 
     _append_on_chord();
   }
 
-  public void Deconstruct(out string root, out Quality quality, out List<string> appended, out string on)
+  public void Deconstruct(out string root, out Seq<Quality> qualities, out List<string> appended, out string on)
   {
     root = _root;
-    quality = _quality;
+    qualities = _qualities;
     appended = _appended; //bug mutable collection
     on = _on;
   }
@@ -40,7 +42,7 @@ public partial class Chord
   // Properties (equivalent to Python @property)
   public string ChordName => _chord;
   public string Root => _root;
-  public Quality Quality => _quality;
+  public Seq<Quality> Qualities => _qualities;
   public List<string> Appended => _appended;
   public string On => _on;
 
@@ -64,7 +66,7 @@ public partial class Chord
 
     if (Utils.NoteToVal(_root) != Utils.NoteToVal(other._root))
       return false;
-    if (!_quality.Equals(other._quality))
+    if (!_qualities.Equals(other._qualities))
       return false;
     if (!_appended.SequenceEqual(other._appended))
       return false;
@@ -79,7 +81,7 @@ public partial class Chord
   // Override GetHashCode for consistency with Equals
   public override int GetHashCode()
   {
-    return HashCode.Combine(_root, _quality, _appended, _on);
+    return HashCode.Combine(_root, _qualities, _appended, _on);
   }
 
   // Inequality (equivalent to Python __ne__)
@@ -101,20 +103,20 @@ public partial class Chord
       throw new ArgumentException($"Invalid note {note}, must be between 1 and 8");
 
     // Extract scale root and type (e.g., "Cmaj" -> "C" and "maj")
-    string scaleRoot = scale[..^3];
-    string scaleType = scale.Substring(scale.Length - 3);
-    int[] scaleDegrees = Scales.RelativeKeyDict[scaleType];
-    int relativeKey = scaleDegrees[note - 1];
-    int rootNum = Utils.NoteToVal(scaleRoot) + chromatic;
-    string root = Utils.ValToNote((rootNum + relativeKey) % 12);
+    var scaleRoot = scale[..^3];
+    var scaleType = scale.Substring(scale.Length - 3);
+    var scaleDegrees = Scales.RelativeKeyDict[scaleType];
+    var relativeKey = scaleDegrees[note - 1];
+    var rootNum = Utils.NoteToVal(scaleRoot) + chromatic;
+    var root = Utils.ValToNote((rootNum + relativeKey) % 12);
 
-    string finalQuality = quality;
+    var finalQuality = quality;
     if (diatonic)
     {
       // Calculate diatonic chord components
-      int third = scaleDegrees[(note + 1) % 7];
-      int fifth = scaleDegrees[(note + 3) % 7];
-      int seventh = scaleDegrees[(note + 5) % 7];
+      var third = scaleDegrees[(note + 1) % 7];
+      var fifth = scaleDegrees[(note + 3) % 7];
+      var seventh = scaleDegrees[(note + 5) % 7];
 
       int[] components;
       if (string.IsNullOrEmpty(quality) || quality == "-" || quality == "maj" || quality == "m" || quality == "min")
@@ -143,7 +145,7 @@ public partial class Chord
   /// </summary>
   public string Info()
   {
-    return $"{_chord}\nroot={_root}\nquality={_quality}\nappended={string.Join(", ", _appended)}\non={_on ?? "None"}";
+    return $"{_chord}\nroot={_root}\nquality={_qualities}\nappended={string.Join(", ", _appended)}\non={_on ?? "None"}";
   }
 
   /// <summary>
@@ -162,43 +164,48 @@ public partial class Chord
     _reconfigure_chord();
   }
 
-  /// <summary>
-  /// Returns the component notes of the chord.
-  /// </summary>
-  /// <param name="visible">If true, returns note names; otherwise, returns semitone values.</param>
-  public List<object> Components(bool visible = true)
-  {
-    return _quality.GetComponentsVisible(_root, visible);
-  }
-
-  /// <summary>
-  /// Returns the component notes with pitch (e.g., ["C4", "E4", "G4"]).
-  /// </summary>
-  /// <param name="rootPitch">The pitch of the root note (e.g., 4 for C4).</param>
-  public List<string> ComponentsWithPitch(int rootPitch)
-  {
-    var components = _quality.GetComponents(_root);
-    if (components[0] < 0)
-      components = components.Select(c => c + 12).ToList();
-    return components.Select(c => $"{Utils.ValToNote(c, _root)}{rootPitch + c / 12}").ToList();
-  }
+  //bug /// <summary>
+  //bug /// Returns the component notes of the chord.
+  //bug /// </summary>
+  //bug /// <param name="visible">If true, returns note names; otherwise, returns semitone values.</param>
+  //bug public List<object> Components(bool visible = true)
+  //bug {
+  //bug   return _qualities.GetComponentsVisible(_root, visible);
+  //bug }
+  //bug 
+  //bug /// <summary>
+  //bug /// Returns the component notes with pitch (e.g., ["C4", "E4", "G4"]).
+  //bug /// </summary>
+  //bug /// <param name="rootPitch">The pitch of the root note (e.g., 4 for C4).</param>
+  //bug public List<string> ComponentsWithPitch(int rootPitch)
+  //bug {
+  //bug   var components = _qualities.GetComponents(_root);
+  //bug   if (components[0] < 0)
+  //bug     components = components.Select(c => c + 12).ToList();
+  //bug   return components.Select(c => $"{Utils.ValToNote(c, _root)}{rootPitch + c / 12}").ToList();
+  //bug }
 
   // Private helper methods
   private void _append_on_chord()
   {
     if (!string.IsNullOrEmpty(_on))
-      _quality.AppendOnChord(_on, _root);
+    {
+      foreach (var quality in _qualities)
+      {
+        quality.AppendOnChord(_on, _root);
+      }
+    }
   }
 
   private void _reconfigure_chord()
   {
-    _chord = $"{_root}{_quality.QualityString}{Utils.DisplayAppended(_appended)}{Utils.DisplayOn(_on)}";
+    _chord = $"{_root}{_qualities.First().QualityString}{Utils.DisplayAppended(_appended)}{Utils.DisplayOn(_on)}";
   }
 
   private static int[] GetDiatonicChord(int[] chord)
   {
     var uninverted = new List<int>();
-    foreach (int note in chord)
+    foreach (var note in chord)
     {
       if (!uninverted.Any())
         uninverted.Add(note);
