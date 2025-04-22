@@ -1,0 +1,10 @@
+﻿using ControllerImplementations.Controllers.CommandBasedApi.DoubleDispatchWithWritingToHttpContext.Add;
+using ControllerImplementations.Controllers.CommandBasedApi.DoubleDispatchWithWritingToHttpContext.Link;
+
+namespace ControllerImplementations.Controllers.CommandBasedApi.DoubleDispatchWithWritingToHttpContext;
+
+public interface ICommandFactory
+{
+  IPostCommand CreateAddPostCommand(PostDto postDto, IAddingInProgress addingInProgress);
+  IPostCommand CreateLinkPostsCommand(string id1, string id2, ILinkingInProgress linkingInProgress);
+}

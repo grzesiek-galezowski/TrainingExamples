@@ -1,6 +1,5 @@
-﻿namespace ControllerImplementations.Controllers
+﻿namespace ControllerImplementations.Controllers;
+
+public class PostCreatedDto
 {
-    public class PostCreatedDto
-    {
-    }
 }
