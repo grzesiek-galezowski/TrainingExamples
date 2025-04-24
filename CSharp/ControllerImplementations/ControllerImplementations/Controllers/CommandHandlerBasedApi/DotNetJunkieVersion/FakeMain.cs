@@ -1,4 +1,7 @@
-﻿namespace ControllerImplementations.Controllers.CommandHandlerBasedApi.DotNetJunkieVersion;
+﻿using ControllerImplementations.Controllers.CommandHandlerBasedApi.DotNetJunkieVersion.Add;
+using ControllerImplementations.Controllers.CommandHandlerBasedApi.DotNetJunkieVersion.Link;
+
+namespace ControllerImplementations.Controllers.CommandHandlerBasedApi.DotNetJunkieVersion;
 
 public class FakeMain
 {

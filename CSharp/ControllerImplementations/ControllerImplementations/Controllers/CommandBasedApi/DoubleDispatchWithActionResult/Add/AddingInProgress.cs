@@ -10,7 +10,7 @@ internal class AddingInProgress : IActionResultBasedAddingInProgress
 
   public void SavedSuccessfully(PostDto postDto, string id)
   {
-    _actionResult = new OkObjectResult(postDto).JustObject<IActionResult>();
+    _actionResult = new OkObjectResult(postDto).Just<IActionResult>();
   }
 
   public void FailedBecauseOf(Exception exception)
@@ -18,7 +18,7 @@ internal class AddingInProgress : IActionResultBasedAddingInProgress
     _actionResult = new JsonResult(exception)
     {
       StatusCode = 500
-    }.JustObject<IActionResult>();
+    }.Just<IActionResult>();
   }
 
   public IActionResult Result()

@@ -1,18 +1,16 @@
 ﻿using System.Threading.Tasks;
-using ControllerImplementations.Controllers.CommandHandlerBasedApi.DotNetJunkieVersion.Add;
-using ControllerImplementations.Controllers.CommandHandlerBasedApi.DotNetJunkieVersion.Link;
+using ControllerImplementations.Controllers.CommandHandlerBasedApi.ReturningResultVersion.Add;
+using ControllerImplementations.Controllers.CommandHandlerBasedApi.ReturningResultVersion.Link;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ControllerImplementations.Controllers.CommandHandlerBasedApi.DotNetJunkieVersion;
+namespace ControllerImplementations.Controllers.CommandHandlerBasedApi.ReturningResultVersion;
 //variations:
 //1. Returned result
 //2. Exception filters / middleware
 
 [Route("api/[controller]/posts")]
 [ApiController]
-public class PostController(
-  IHandler<AddPostCommand> addPostHandler,
-  IHandler<LinkPostsCommand> linkPostsHandler)
+public class PostController(AddPostHandler addPostHandler, LinkPostsHandler linkPostsHandler)
   : ControllerBase
 {
   [HttpPost]
@@ -23,10 +21,9 @@ public class PostController(
       Content = post.Content, //bug commands should not really contain DTOs
       Author = post.Author,
     };
-    await addPostHandler.HandleAsync(addPostCommand);
+    var result = await addPostHandler.HandleAsync(addPostCommand);
 
-    return addPostCommand.Result
-      .Match(Ok, IActionResult (error) => BadRequest(error.E));
+    return result.Match(Ok, IActionResult (error) => BadRequest(error.E));
 
   }
 
