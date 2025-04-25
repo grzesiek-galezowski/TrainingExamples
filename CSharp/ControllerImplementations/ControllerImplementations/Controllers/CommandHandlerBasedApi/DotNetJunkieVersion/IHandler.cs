@@ -4,5 +4,5 @@ namespace ControllerImplementations.Controllers.CommandHandlerBasedApi.DotNetJun
 
 public interface IHandler<in T>
 {
-  Task HandleAsync(T command);
+  Task Handle(T command);
 }

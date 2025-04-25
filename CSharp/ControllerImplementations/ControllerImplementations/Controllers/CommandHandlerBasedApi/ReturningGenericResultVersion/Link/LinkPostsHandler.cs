@@ -8,15 +8,15 @@ public class LinkPostsHandler<TResponse>(
   IFollowers followers,
   IResponseFactory<TResponse> responseFactory) : IHandler<LinkPostsCommand, TResponse>
 {
-  public async Task<TResponse> HandleAsync(LinkPostsCommand command)
+  public async Task<TResponse> Handle(LinkPostsCommand command)
   {
     try
     {
-      var rootPost = await existingPosts.RetrieveByAsync(command.Id1);
-      var linkedPost = await existingPosts.RetrieveByAsync(command.Id2);
+      var rootPost = await existingPosts.RetrieveBy(command.Id1);
+      var linkedPost = await existingPosts.RetrieveBy(command.Id2);
       rootPost.AssertIsNotTheSameAs(linkedPost);
       rootPost.Link(linkedPost, command, followers);
-      rootPost.UpdateInAsync(existingPosts);
+      rootPost.UpdateIn(existingPosts);
       return responseFactory.LinkedSuccessfully();
     }
     catch (Exception e)

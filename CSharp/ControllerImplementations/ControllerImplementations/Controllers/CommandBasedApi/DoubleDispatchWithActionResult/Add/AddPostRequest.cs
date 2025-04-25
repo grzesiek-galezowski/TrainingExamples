@@ -26,13 +26,13 @@ public class AddPostRequest(PostDto postDto) : IAddPostRequest
     }
   }
     
-  public async Task AddToAsync(IExistingPosts existingPosts, IAddingInProgress addingInProgress)
+  public async Task AddTo(IExistingPosts existingPosts, IAddingInProgress addingInProgress)
   {
-    var id = await existingPosts.AddAsync(postDto);
+    var id = await existingPosts.Add(postDto);
     addingInProgress.SavedSuccessfully(postDto, id);
   }
     
-  public async Task NotifyAsync(IFollowers followers, IAddingInProgress addingInProgress)
+  public async Task Notify(IFollowers followers, IAddingInProgress addingInProgress)
   {
 
   }

@@ -21,7 +21,7 @@ public class PostController(AddPostHandler<IActionResult> addPostHandler, LinkPo
       Content = post.Content, //bug commands should not really contain DTOs
       Author = post.Author,
     };
-    return await addPostHandler.HandleAsync(addPostCommand);
+    return await addPostHandler.Handle(addPostCommand);
   }
 
   [HttpPost]
@@ -33,6 +33,6 @@ public class PostController(AddPostHandler<IActionResult> addPostHandler, LinkPo
       Id1 = id1,
       Id2 = id2
     };
-    return await linkPostsHandler.HandleAsync(linkPostsCommand);
+    return await linkPostsHandler.Handle(linkPostsCommand);
   }
 }

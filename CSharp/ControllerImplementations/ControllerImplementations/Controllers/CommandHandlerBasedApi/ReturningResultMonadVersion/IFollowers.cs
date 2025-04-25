@@ -5,5 +5,5 @@ namespace ControllerImplementations.Controllers.CommandHandlerBasedApi.Returning
 
 public interface IFollowers
 {
-  Task NotifyAsync(AddPostCommand command);
+  Task Notify(AddPostCommand command);
 }

@@ -5,12 +5,12 @@ namespace ControllerImplementations.Controllers.CommandHandlerBasedApi.Returning
 
 public class ExistingPosts : IExistingPosts
 {
-  public async Task<PostCreatedDto> AddAsync(AddPostCommand command)
+  public async Task<PostCreatedDto> Add(AddPostCommand command)
   {
     throw new System.NotImplementedException();
   }
 
-  public async Task<IExistingPost> RetrieveByAsync(string id1)
+  public async Task<IExistingPost> RetrieveBy(string id1)
   {
     throw new System.NotImplementedException();
   }

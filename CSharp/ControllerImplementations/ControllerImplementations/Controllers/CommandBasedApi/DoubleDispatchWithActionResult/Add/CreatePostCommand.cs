@@ -11,14 +11,14 @@ internal class CreatePostCommand(
   IAddingInProgress addingInProgress)
   : IPostCommand
 {
-  public async Task ExecuteAsync()
+  public async Task Execute()
   {
     try
     {
       requestedPost.AssertContentIsOfRequiredLength();
       requestedPost.AssertContentContainsNoInappropriateWords();
-      await requestedPost.AddToAsync(existingPosts, addingInProgress);
-      await requestedPost.NotifyAsync(followers, addingInProgress);
+      await requestedPost.AddTo(existingPosts, addingInProgress);
+      await requestedPost.Notify(followers, addingInProgress);
     }
     catch (Exception e)
     {

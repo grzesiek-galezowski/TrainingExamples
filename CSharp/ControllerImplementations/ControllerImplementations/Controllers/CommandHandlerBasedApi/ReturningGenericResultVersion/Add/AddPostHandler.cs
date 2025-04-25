@@ -10,14 +10,14 @@ public class AddPostHandler<TResponse>(
   IResponseFactory<TResponse> responseFactory)
   : IHandler<AddPostCommand, TResponse>
 {
-  public async Task<TResponse> HandleAsync(AddPostCommand command)
+  public async Task<TResponse> Handle(AddPostCommand command)
   {
     try
     {
       postAssertions.AssertContentIsOfRequiredLength(command);
       postAssertions.AssertContentContainsNoInappropriateWords(command);
-      await followers.NotifyAsync(command);
-      var postCreatedDto = await existingPosts.AddAsync(command);
+      await followers.Notify(command);
+      var postCreatedDto = await existingPosts.Add(command);
       return responseFactory.SavedSuccessfully(postCreatedDto);
     }
     catch (Exception e)

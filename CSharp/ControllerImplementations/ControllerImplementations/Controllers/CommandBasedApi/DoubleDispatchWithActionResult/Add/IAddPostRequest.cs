@@ -7,6 +7,6 @@ public interface IAddPostRequest
 {
   void AssertContentIsOfRequiredLength();
   void AssertContentContainsNoInappropriateWords();
-  Task AddToAsync(IExistingPosts existingPosts, IAddingInProgress addingInProgress);
-  Task NotifyAsync(IFollowers followers, IAddingInProgress addingInProgress);
+  Task AddTo(IExistingPosts existingPosts, IAddingInProgress addingInProgress);
+  Task Notify(IFollowers followers, IAddingInProgress addingInProgress);
 }

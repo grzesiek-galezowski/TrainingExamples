@@ -6,7 +6,7 @@ namespace ControllerImplementations.Controllers.CommandBasedApi.DoubleDispatchWi
 
 internal class AddingInProgress(ControllerBase controller) : IAddingInProgress
 {
-  public async Task SavedSuccessfullyAsync(PostDto postDto, string id)
+  public async Task SavedSuccessfully(PostDto postDto, string id)
   {
     await controller.Ok(postDto).ExecuteResultAsync(controller.ControllerContext);
   }

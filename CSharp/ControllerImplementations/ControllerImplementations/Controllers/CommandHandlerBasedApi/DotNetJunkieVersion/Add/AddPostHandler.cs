@@ -10,14 +10,14 @@ public class AddPostHandler(
   IFollowers followers)
   : IHandler<AddPostCommand>
 {
-  public async Task HandleAsync(AddPostCommand command)
+  public async Task Handle(AddPostCommand command)
   {
     try
     {
       postAssertions.AssertContentIsOfRequiredLength(command);
       postAssertions.AssertContentContainsNoInappropriateWords(command);
-      command.Result = Either<PostCreatedDto, ErrorInfo>.Result(await existingPosts.AddAsync(command));
-      await followers.NotifyAsync(command);
+      command.Result = Either<PostCreatedDto, ErrorInfo>.Result(await existingPosts.Add(command));
+      await followers.Notify(command);
     }
     catch (Exception e)
     {

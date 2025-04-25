@@ -5,7 +5,7 @@ namespace ControllerImplementations.Controllers.CommandHandlerBasedApi.DotNetJun
 
 public class Followers : IFollowers
 {
-  public async Task NotifyAsync(AddPostCommand command)
+  public async Task Notify(AddPostCommand command)
   {
     throw new System.NotImplementedException();
   }

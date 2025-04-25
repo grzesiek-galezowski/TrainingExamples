@@ -6,15 +6,15 @@ namespace ControllerImplementations.Controllers.CommandHandlerBasedApi.Returning
 
 public class LinkPostsHandler(ExistingPosts existingPosts, IFollowers followers) : IHandler<LinkPostsCommand, string, ErrorInfo>
 {
-  public async Task<Either<string, ErrorInfo>> HandleAsync(LinkPostsCommand command)
+  public async Task<Either<string, ErrorInfo>> Handle(LinkPostsCommand command)
   {
     try
     {
-      var rootPost = await existingPosts.RetrieveByAsync(command.Id1);
-      var linkedPost = await existingPosts.RetrieveByAsync(command.Id2);
+      var rootPost = await existingPosts.RetrieveBy(command.Id1);
+      var linkedPost = await existingPosts.RetrieveBy(command.Id2);
       rootPost.AssertIsNotTheSameAs(linkedPost);
       rootPost.Link(linkedPost, command, followers);
-      rootPost.UpdateInAsync(existingPosts);
+      rootPost.UpdateIn(existingPosts);
       return "Success";
     }
     catch (Exception e)

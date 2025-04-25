@@ -4,5 +4,5 @@ namespace ControllerImplementations.Controllers.CommandHandlerBasedApi.Returning
 
 public interface IHandler<in T, TResponse>
 {
-  Task<TResponse> HandleAsync(T command);
+  Task<TResponse> Handle(T command);
 }

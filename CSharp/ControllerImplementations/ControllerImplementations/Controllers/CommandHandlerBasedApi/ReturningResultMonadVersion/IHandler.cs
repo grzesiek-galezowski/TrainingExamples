@@ -5,5 +5,5 @@ namespace ControllerImplementations.Controllers.CommandHandlerBasedApi.Returning
 
 public interface IHandler<in T, TResult, TError>
 {
-  Task<Either<TResult, TError>> HandleAsync(T command);
+  Task<Either<TResult, TError>> Handle(T command);
 }

@@ -16,11 +16,11 @@ internal class LinkPostsCommand(
   {
     try
     {
-      var rootPost = await existingPosts.RetrieveByAsync(id1);
-      var linkedPost = await existingPosts.RetrieveByAsync(id2);
+      var rootPost = await existingPosts.RetrieveBy(id1);
+      var linkedPost = await existingPosts.RetrieveBy(id2);
       rootPost.AssertIsNotTheSameAs(linkedPost);
       rootPost.Link(linkedPost, linkingInProgress, followers);
-      rootPost.UpdateInAsync(existingPosts);
+      rootPost.UpdateIn(existingPosts);
     }
     catch (Exception e)
     {

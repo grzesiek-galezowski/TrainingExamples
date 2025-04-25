@@ -4,6 +4,6 @@ namespace ControllerImplementations.Controllers.CommandBasedApi.DoubleDispatchWi
 
 public interface IExistingPosts
 {
-  Task<string> AddAsync(PostDto postDto);
-  Task<IExistingPost> RetrieveByAsync(string id);
+  Task<string> Add(PostDto postDto);
+  Task<IExistingPost> RetrieveBy(string id);
 }

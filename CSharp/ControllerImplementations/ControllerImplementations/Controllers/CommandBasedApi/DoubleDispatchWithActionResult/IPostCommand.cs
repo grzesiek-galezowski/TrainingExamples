@@ -4,5 +4,5 @@ namespace ControllerImplementations.Controllers.CommandBasedApi.DoubleDispatchWi
 
 public interface IPostCommand
 {
-  Task ExecuteAsync();
+  Task Execute();
 }

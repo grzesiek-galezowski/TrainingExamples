@@ -5,5 +5,5 @@ namespace ControllerImplementations.Controllers.CommandHandlerBasedApi.DotNetJun
 
 public interface IFollowers
 {
-  Task NotifyAsync(AddPostCommand command);
+  Task Notify(AddPostCommand command);
 }

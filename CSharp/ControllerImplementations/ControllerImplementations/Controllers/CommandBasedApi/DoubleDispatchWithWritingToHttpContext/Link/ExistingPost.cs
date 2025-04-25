@@ -12,7 +12,7 @@ public class ExistingPost : IExistingPost
     throw new System.NotImplementedException();
   }
 
-  public void UpdateInAsync(IExistingPosts existingPosts)
+  public void UpdateIn(IExistingPosts existingPosts)
   {
     throw new System.NotImplementedException();
   }

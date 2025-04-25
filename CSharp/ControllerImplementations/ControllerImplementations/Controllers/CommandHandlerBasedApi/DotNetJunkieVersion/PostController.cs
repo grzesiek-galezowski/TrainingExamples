@@ -23,7 +23,7 @@ public class PostController(
       Content = post.Content, //bug commands should not really contain DTOs
       Author = post.Author,
     };
-    await addPostHandler.HandleAsync(addPostCommand);
+    await addPostHandler.Handle(addPostCommand);
 
     return addPostCommand.Result
       .Match(Ok, IActionResult (error) => BadRequest(error.E));
@@ -39,7 +39,7 @@ public class PostController(
       Id1 = id1,
       Id2 = id2
     };
-    await linkPostsHandler.HandleAsync(linkPostsCommand);
+    await linkPostsHandler.Handle(linkPostsCommand);
 
     return linkPostsCommand.Result
       .Match(Ok, IActionResult (error) => BadRequest(error.E));

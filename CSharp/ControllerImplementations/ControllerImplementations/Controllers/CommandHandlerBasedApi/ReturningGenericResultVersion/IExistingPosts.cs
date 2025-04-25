@@ -5,5 +5,5 @@ namespace ControllerImplementations.Controllers.CommandHandlerBasedApi.Returning
 
 public interface IExistingPosts
 {
-  Task<PostCreatedDto> AddAsync(AddPostCommand command);
+  Task<PostCreatedDto> Add(AddPostCommand command);
 }

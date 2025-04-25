@@ -5,12 +5,12 @@ namespace ControllerImplementations.Controllers.CommandBasedApi.DoubleDispatchWi
 
 public class ExistingPosts : IExistingPosts
 {
-  public async Task<string> AddAsync(PostDto postDto)
+  public async Task<string> Add(PostDto postDto)
   {
     throw new System.NotImplementedException();
   }
 
-  public async Task<IExistingPost> RetrieveByAsync(string id)
+  public async Task<IExistingPost> RetrieveBy(string id)
   {
     throw new System.NotImplementedException();
   }

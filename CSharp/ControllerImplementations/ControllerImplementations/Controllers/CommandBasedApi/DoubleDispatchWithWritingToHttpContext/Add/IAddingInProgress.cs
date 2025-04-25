@@ -5,6 +5,6 @@ namespace ControllerImplementations.Controllers.CommandBasedApi.DoubleDispatchWi
 
 public interface IAddingInProgress
 {
-  Task SavedSuccessfullyAsync(PostDto postDto, string id);
+  Task SavedSuccessfully(PostDto postDto, string id);
   Task FailedBecauseOf(Exception exception);
 }

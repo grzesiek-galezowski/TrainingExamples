@@ -5,5 +5,5 @@ namespace ControllerImplementations.Controllers.CommandHandlerBasedApi.DotNetJun
 
 public interface IExistingPosts
 {
-  Task<PostCreatedDto> AddAsync(AddPostCommand command);
+  Task<PostCreatedDto> Add(AddPostCommand command);
 }

@@ -30,7 +30,7 @@ public class PostController(ICommandFactory commandFactory)
   public async Task<IActionResult> AddPost([FromBody] PostDto post)
   {
     var addingInProgress = new AddingInProgress();
-    await commandFactory.CreateAddPostCommand(post, addingInProgress).ExecuteAsync();
+    await commandFactory.CreateAddPostCommand(post, addingInProgress).Execute();
     return addingInProgress.Result();
   }
 
@@ -39,7 +39,7 @@ public class PostController(ICommandFactory commandFactory)
   public async Task<IActionResult> LinkPostsPost(string id1, string id2)
   {
     var addingInProgress = new LinkingInProgress();
-    await commandFactory.CreateLinkPostsCommand(id1, id2, addingInProgress).ExecuteAsync();
+    await commandFactory.CreateLinkPostsCommand(id1, id2, addingInProgress).Execute();
     return addingInProgress.Result();
   }
 
