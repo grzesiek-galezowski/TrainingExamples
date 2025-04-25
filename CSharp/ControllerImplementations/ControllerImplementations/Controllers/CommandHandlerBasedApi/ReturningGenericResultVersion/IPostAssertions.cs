@@ -1,0 +1,9 @@
+﻿using ControllerImplementations.Controllers.CommandHandlerBasedApi.ReturningGenericResultVersion.Add;
+
+namespace ControllerImplementations.Controllers.CommandHandlerBasedApi.ReturningGenericResultVersion;
+
+public interface IPostAssertions
+{
+  void AssertContentIsOfRequiredLength(AddPostCommand command);
+  void AssertContentContainsNoInappropriateWords(AddPostCommand command);
+}

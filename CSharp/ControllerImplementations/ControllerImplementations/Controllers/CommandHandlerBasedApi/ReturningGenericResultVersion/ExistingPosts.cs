@@ -1,7 +1,7 @@
-﻿using ControllerImplementations.Controllers.CommandHandlerBasedApi.ReturningResultVersion.Add;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using ControllerImplementations.Controllers.CommandHandlerBasedApi.ReturningGenericResultVersion.Add;
 
-namespace ControllerImplementations.Controllers.CommandHandlerBasedApi.ReturningResultVersion;
+namespace ControllerImplementations.Controllers.CommandHandlerBasedApi.ReturningGenericResultVersion;
 
 public class ExistingPosts : IExistingPosts
 {

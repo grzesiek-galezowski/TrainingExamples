@@ -1,6 +1,6 @@
-﻿using ControllerImplementations.Controllers.CommandHandlerBasedApi.ReturningResultVersion.Link;
+﻿using ControllerImplementations.Controllers.CommandHandlerBasedApi.ReturningGenericResultVersion.Link;
 
-namespace ControllerImplementations.Controllers.CommandHandlerBasedApi.ReturningResultVersion;
+namespace ControllerImplementations.Controllers.CommandHandlerBasedApi.ReturningGenericResultVersion;
 
 public interface IExistingPost
 {

@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Core.Either;
 
-namespace ControllerImplementations.Controllers.CommandHandlerBasedApi.ReturningResultVersion.Add;
+namespace ControllerImplementations.Controllers.CommandHandlerBasedApi.ReturningResultMonadVersion.Add;
 
 public class AddPostHandler(
   IPostAssertions postAssertions,

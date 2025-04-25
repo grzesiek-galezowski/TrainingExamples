@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Core.Either;
 
-namespace ControllerImplementations.Controllers.CommandHandlerBasedApi.ReturningResultVersion.Link;
+namespace ControllerImplementations.Controllers.CommandHandlerBasedApi.ReturningResultMonadVersion.Link;
 
 public class LinkPostsHandler(ExistingPosts existingPosts, IFollowers followers) : IHandler<LinkPostsCommand, string, ErrorInfo>
 {

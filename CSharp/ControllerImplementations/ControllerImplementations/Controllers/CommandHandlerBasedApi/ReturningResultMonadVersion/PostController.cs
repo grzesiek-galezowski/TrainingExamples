@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
-using ControllerImplementations.Controllers.CommandHandlerBasedApi.ReturningResultVersion.Add;
-using ControllerImplementations.Controllers.CommandHandlerBasedApi.ReturningResultVersion.Link;
+using ControllerImplementations.Controllers.CommandHandlerBasedApi.ReturningResultMonadVersion.Add;
+using ControllerImplementations.Controllers.CommandHandlerBasedApi.ReturningResultMonadVersion.Link;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ControllerImplementations.Controllers.CommandHandlerBasedApi.ReturningResultVersion;
+namespace ControllerImplementations.Controllers.CommandHandlerBasedApi.ReturningResultMonadVersion;
 //variations:
 //1. Returned result
 //2. Exception filters / middleware

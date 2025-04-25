@@ -1,6 +1,6 @@
 ﻿using Core.Either;
 
-namespace ControllerImplementations.Controllers.CommandHandlerBasedApi.ReturningResultVersion.Link;
+namespace ControllerImplementations.Controllers.CommandHandlerBasedApi.ReturningGenericResultVersion.Link;
 
 public class LinkPostsCommand
 {
