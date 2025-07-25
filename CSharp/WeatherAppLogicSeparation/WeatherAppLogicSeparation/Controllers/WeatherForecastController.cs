@@ -41,7 +41,7 @@ public class WeatherForecastController(ApplicationLogic applicationLogic, IMetri
 
   async Task ISubscribeCommandResponse.SubscriptionCreated(Guid subscriptionId)
   {
-    logger.Warning("Subscription created successfully");
+    logger.Information("Subscription created successfully");
     await Ok(new SubscriptionCreatedDto(subscriptionId)).ExecuteResultAsync(ControllerContext);
   }
 
