@@ -18,7 +18,8 @@ public class Tests
   public async Task Test1()
   {
     // Arrange
-
+    var deviceId = Guid.NewGuid().ToString();
+    var rsaKey = RSA.Create(4096);
     using var server = WireMockServer.Start(
       new WireMockServerSettings
       {
@@ -28,28 +29,59 @@ public class Tests
       });
 
     // Create a self-signed certificate for testing
-    var cert = CreateSelfSignedCertificate("WireMockTestCert");
+    var caCert = CreateSelfSignedCertificate("WireMockTestCert");
 
-    server.Given(Request.Create().UsingGet().WithPath("/cacert*"))
+    server.Given(Request.Create().UsingGet().WithPath("/cacert"))
       .RespondWith(Response.Create().WithCallback(message =>
       {
         var responseMessage = new ResponseMessage
         {
-          StatusCode = message.ClientCertificate?.Thumbprint != null
-            ? 200
-            : 403,
+          StatusCode = 200,
           BodyData = new BodyData
           {
-            BodyAsString = Convert.ToBase64String(cert.Export(X509ContentType.Pfx, "1234")),
+            BodyAsString = Convert.ToBase64String(caCert.Export(X509ContentType.Pfx)),
             DetectedBodyType = BodyType.String
+          },
+          Headers = new Dictionary<string, WireMockList<string>>
+          {
+            ["Content-Type"] = "application/pkcs12"
           }
         };
-        responseMessage.Headers["Content-Type"] = "application/pkcs12";
+        return responseMessage;
+      }));
+
+    server.Given(Request.Create().UsingPost().WithPath("/simpleenroll"))
+      .RespondWith(Response.Create().WithCallback(message =>
+      {
+        var csrString = message.Body;
+        var csr = CertificateRequest.LoadSigningRequestPem(csrString, HashAlgorithmName.SHA256);
+        var deviceCert = csr.Create(
+          caCert.IssuerName,
+          X509SignatureGenerator.CreateForRSA(rsaKey, RSASignaturePadding.Pkcs1),
+          DateTimeOffset.Now.AddDays(-1),
+          DateTimeOffset.Now.AddYears(1),
+          [1, 2, 3, 4]);
+        var responseMessage = new ResponseMessage
+        {
+          StatusCode = 200,
+          BodyData = new BodyData
+          {
+            BodyAsString = Convert.ToBase64String(deviceCert.Export(X509ContentType.Pkcs12)),
+            DetectedBodyType = BodyType.String
+          },
+          Headers = new Dictionary<string, WireMockList<string>>
+          {
+            ["Content-Type"] = "application/pkcs12"
+          }
+        };
         return responseMessage;
       }));
 
 
-    var certificates = X509CertificateLoader.LoadPkcs12Collection(cert.Export(X509ContentType.Pfx, "1234"), "1234", X509KeyStorageFlags.Exportable);
+    var certificates = X509CertificateLoader.LoadPkcs12Collection(
+      caCert.Export(X509ContentType.Pfx),
+      null,
+      X509KeyStorageFlags.Exportable);
 
     var httpMessageHandler = new HttpClientHandler
     {
@@ -67,6 +99,19 @@ public class Tests
     Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
     Assert.That(response.Content.Headers.GetValues("content-type").Single(), Is.EqualTo("application/pkcs12"));
     Assert.That(response.Content.ReadAsStringAsync().Result, Is.Not.EqualTo(""));
+
+    var csr = new CertificateRequest(
+      new X500DistinguishedName("CN=" + deviceId),
+      rsaKey,
+      HashAlgorithmName.SHA256,
+      RSASignaturePadding.Pkcs1);
+    var csrPem = csr.CreateSigningRequestPem(X509SignatureGenerator.CreateForRSA(rsaKey, RSASignaturePadding.Pkcs1));
+    var enrollResponse = await new HttpClient(httpMessageHandler)
+      .PostAsync("https://localhost:" + server.Ports[0] + "/simpleenroll", new StringContent(csrPem));
+    Assert.That(enrollResponse.StatusCode, Is.EqualTo(HttpStatusCode.OK));
+    Assert.That(response.Content.Headers.GetValues("content-type").Single(), Is.EqualTo("application/pkcs12"));
+    Assert.That(response.Content.ReadAsStringAsync().Result, Is.Not.EqualTo(""));
+
   }
 
   private X509Certificate2 CreateSelfSignedCertificate(string commonName)
