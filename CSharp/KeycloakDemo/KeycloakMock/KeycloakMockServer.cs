@@ -9,6 +9,7 @@ public class KeycloakMockServer : IDisposable
 {
     private readonly WireMockServer _server;
     private readonly JwtTokenGenerator _tokenGenerator;
+    private readonly string _realm;
 
     public string Authority => _tokenGenerator.Authority;
     public string Audience => _tokenGenerator.Audience;
@@ -29,6 +30,7 @@ public class KeycloakMockServer : IDisposable
 
         var authorityUrl = $"{_server.Urls[0]}/{realm}";
         _tokenGenerator = new JwtTokenGenerator(authorityUrl, audience);
+        _realm = _tokenGenerator.Authority;
 
         ConfigureOpenIdConfiguration();
         ConfigureJwksEndpoint();
@@ -46,9 +48,7 @@ public class KeycloakMockServer : IDisposable
 
     private void ConfigureOpenIdConfiguration()
     {
-        var realm = _tokenGenerator.Authority;
-        
-        _server
+      _server
             .Given(Request.Create()
                 .UsingGet()
                 .WithPath("/*/.well-known/openid-configuration"))
@@ -58,13 +58,13 @@ public class KeycloakMockServer : IDisposable
                 .WithHeader("Content-Type", "application/json; charset=utf-8")
                 .WithBodyAsJson(new
                 {
-                    issuer = $"{realm}/",
-                    authorization_endpoint = $"{realm}/protocol/openid-connect/auth",
-                    token_endpoint = $"{realm}/protocol/openid-connect/token",
-                    userinfo_endpoint = $"{realm}/protocol/openid-connect/userinfo",
-                    jwks_uri = $"{realm}/.well-known/jwks.json",
-                    end_session_endpoint = $"{realm}/protocol/openid-connect/logout",
-                    introspection_endpoint = $"{realm}/protocol/openid-connect/token/introspect",
+                    issuer = $"{_realm}/",
+                    authorization_endpoint = AuthorizationEndpoint,
+                    token_endpoint = TokenEndpoint,
+                    userinfo_endpoint = UserInfoEndpoint,
+                    jwks_uri = $"{_realm}/.well-known/jwks.json",
+                    end_session_endpoint = $"{_realm}/protocol/openid-connect/logout",
+                    introspection_endpoint = $"{_realm}/protocol/openid-connect/token/introspect",
                     grant_types_supported = new[] { "authorization_code", "implicit", "refresh_token", "password", "client_credentials" },
                     response_types_supported = new[] { "code", "none", "id_token", "token", "id_token token", "code id_token", "code token", "code id_token token" },
                     subject_types_supported = new[] { "public", "pairwise" },
@@ -74,7 +74,7 @@ public class KeycloakMockServer : IDisposable
                     userinfo_signing_alg_values_supported = new[] { "PS384", "ES384", "RS384", "HS256", "HS512", "ES256", "RS256", "HS384", "ES512", "PS256", "PS512", "RS512", "none" },
                     request_object_signing_alg_values_supported = new[] { "PS384", "ES384", "RS384", "HS256", "HS512", "ES256", "RS256", "HS384", "ES512", "PS256", "PS512", "RS512", "none" },
                     response_modes_supported = new[] { "query", "fragment", "form_post", "query.jwt", "fragment.jwt", "form_post.jwt", "jwt" },
-                    registration_endpoint = $"{realm}/clients-registrations/openid-connect",
+                    registration_endpoint = $"{_realm}/clients-registrations/openid-connect",
                     token_endpoint_auth_methods_supported = new[] { "private_key_jwt", "client_secret_basic", "client_secret_post", "tls_client_auth", "client_secret_jwt" },
                     token_endpoint_auth_signing_alg_values_supported = new[] { "PS384", "ES384", "RS384", "HS256", "HS512", "ES256", "RS256", "HS384", "ES512", "PS256", "PS512", "RS512" },
                     claims_supported = new[] { "aud", "sub", "iss", "auth_time", "name", "given_name", "family_name", "preferred_username", "email", "acr" },
@@ -86,7 +86,7 @@ public class KeycloakMockServer : IDisposable
                     require_request_uri_registration = true,
                     code_challenge_methods_supported = new[] { "plain", "S256" },
                     tls_client_certificate_bound_access_tokens = true,
-                    revocation_endpoint = $"{realm}/protocol/openid-connect/revoke",
+                    revocation_endpoint = $"{_realm}/protocol/openid-connect/revoke",
                     revocation_endpoint_auth_methods_supported = new[] { "private_key_jwt", "client_secret_basic", "client_secret_post", "tls_client_auth", "client_secret_jwt" },
                     revocation_endpoint_auth_signing_alg_values_supported = new[] { "PS384", "ES384", "RS384", "HS256", "HS512", "ES256", "RS256", "HS384", "ES512", "PS256", "PS512", "RS512" },
                     backchannel_logout_supported = true,
@@ -94,6 +94,12 @@ public class KeycloakMockServer : IDisposable
                 })
             );
     }
+
+    private string UserInfoEndpoint => $"{_realm}/protocol/openid-connect/userinfo";
+
+    public string TokenEndpoint => $"{_realm}/protocol/openid-connect/token";
+
+    private string AuthorizationEndpoint => $"{_realm}/protocol/openid-connect/auth";
 
     private void ConfigureJwksEndpoint()
     {
