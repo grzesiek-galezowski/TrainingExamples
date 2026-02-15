@@ -8,6 +8,12 @@ public class RoleRestrictedRequirement :
 {
   protected override async Task HandleRequirementAsync(AuthorizationHandlerContext context, RoleRestrictedRequirement requirement)
   {
-    context.Succeed(requirement);
+    // Check if the user is authenticated
+    if (context.User?.Identity?.IsAuthenticated == true)
+    {
+      // User is authenticated, allow access
+      context.Succeed(requirement);
+    }
+    // If not authenticated, do not call Succeed - the requirement will fail
   }
 }

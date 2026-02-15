@@ -71,21 +71,6 @@ internal class Program
     })).Should().BeTrue();
 
 
-    //await keycloakClient.CreateProtocolMapperAsync("master", "openid", new ProtocolMapper()
-    //{
-    //  ConsentRequired = false,
-    //  Name = "some protocol mapper",
-    //  Id = "Audience1",
-    //  Protocol = "Audience2",
-    //  Config = new Dictionary<string, string>()
-    //  {
-    //    ["a"] = "b"
-    //  },
-    //  _ProtocolMapper = "SomeMapper"
-    //});
-
-
-
     using var httpClient = new HttpClient();
 
     var response = await httpClient.GetDiscoveryDocumentAsync(
