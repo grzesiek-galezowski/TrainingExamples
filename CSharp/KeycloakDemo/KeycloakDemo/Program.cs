@@ -1,6 +1,6 @@
 ﻿using System.Net;
-using FluentAssertions;
-using IdentityModel.Client;
+using AwesomeAssertions;
+using Duende.IdentityModel.Client;
 using Keycloak.Net.Models.Clients;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.SignalR.Client;
@@ -42,7 +42,7 @@ internal class Program
     (await keycloakClient.CreateClientAsync("master", new Client()
     {
       ClientId = "zenek",
-      Access = new ClientAccess()
+      Access = new ClientAccess
       {
         Configure = true,
         Manage = true,
@@ -81,13 +81,13 @@ internal class Program
       throw new Exception(response.ErrorType + " " + response.Error);
 
     var tokenResponse = await httpClient.RequestClientCredentialsTokenAsync(
-      new ClientCredentialsTokenRequest()
+      new ClientCredentialsTokenRequest
       {
         Address = response.TokenEndpoint,
         ClientId = "zenek",
         ClientSecret = "zenon",
         Scope = "openid",
-        Parameters = new Parameters()
+        Parameters = []
       });
 
     Console.WriteLine(tokenResponse.HttpStatusCode);

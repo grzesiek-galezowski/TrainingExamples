@@ -5,9 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace KeycloakMock;
 
-public record SigningKeyInfo(string Modulus, string Exponent, string Kid, string Algorithm);
-
-public class JwtTokenGenerator : IDisposable
+public class JwtGenerator : IDisposable
 {
     public string Authority { get; }
     public string Audience { get; }
@@ -15,7 +13,7 @@ public class JwtTokenGenerator : IDisposable
     private readonly RSA _rsa;
     private readonly string _kid;
 
-    public JwtTokenGenerator(string authority, string audience)
+    public JwtGenerator(string authority, string audience)
     {
         Authority = authority;
         Audience = audience;

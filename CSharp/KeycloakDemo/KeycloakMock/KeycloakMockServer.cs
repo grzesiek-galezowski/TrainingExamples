@@ -8,11 +8,9 @@ namespace KeycloakMock;
 public class KeycloakMockServer : IDisposable
 {
     private readonly WireMockServer _server;
-    private readonly JwtTokenGenerator _tokenGenerator;
     private readonly string _realm;
 
-    public string Authority => _tokenGenerator.Authority;
-    public string Audience => _tokenGenerator.Audience;
+    public JwtGenerator TokenGenerator { get; }
 
     public KeycloakMockServer(int port, bool useSsl, string audience, string realm = "master")
     {
@@ -23,17 +21,16 @@ public class KeycloakMockServer : IDisposable
 
         if (useSsl)
         {
-            settings.Urls = new[] { $"https://localhost:{port}" };
+            settings.Urls = [$"https://localhost:{port}"];
         }
 
         _server = WireMockServer.Start(settings);
 
         var authorityUrl = $"{_server.Urls[0]}/{realm}";
-        _tokenGenerator = new JwtTokenGenerator(authorityUrl, audience);
-        _realm = _tokenGenerator.Authority;
+        TokenGenerator = new JwtGenerator(authorityUrl, audience);
+        _realm = TokenGenerator.Authority;
 
         ConfigureOpenIdConfiguration();
-        ConfigureJwksEndpoint();
     }
 
     public static KeycloakMockServer Start(int port, bool useSsl, string audience, string realm = "master")
@@ -43,7 +40,7 @@ public class KeycloakMockServer : IDisposable
 
     public string CreateToken(IReadOnlyList<System.Security.Claims.Claim>? customClaims = null, DateTime? expiresAt = null)
     {
-        return _tokenGenerator.CreateToken(customClaims, expiresAt);
+        return TokenGenerator.CreateToken(customClaims, expiresAt);
     }
 
     private void ConfigureOpenIdConfiguration()
@@ -62,7 +59,7 @@ public class KeycloakMockServer : IDisposable
                     authorization_endpoint = AuthorizationEndpoint,
                     token_endpoint = TokenEndpoint,
                     userinfo_endpoint = UserInfoEndpoint,
-                    jwks_uri = $"{_realm}/.well-known/jwks.json",
+                    jwks_uri = JwksUri,
                     end_session_endpoint = $"{_realm}/protocol/openid-connect/logout",
                     introspection_endpoint = $"{_realm}/protocol/openid-connect/token/introspect",
                     grant_types_supported = new[] { "authorization_code", "implicit", "refresh_token", "password", "client_credentials" },
@@ -95,16 +92,18 @@ public class KeycloakMockServer : IDisposable
             );
     }
 
+    private string JwksUri => $"{_realm}/.well-known/jwks.json";
+
     private string UserInfoEndpoint => $"{_realm}/protocol/openid-connect/userinfo";
 
     public string TokenEndpoint => $"{_realm}/protocol/openid-connect/token";
 
     private string AuthorizationEndpoint => $"{_realm}/protocol/openid-connect/auth";
 
-    private void ConfigureJwksEndpoint()
+    public void ConfigureJwksEndpoint()
     {
-        var signingKeyInfo = _tokenGenerator.GetSigningKeyInfo();
-        
+        var signingKeyInfo = TokenGenerator.GetSigningKeyInfo();
+
         _server
             .Given(Request.Create()
                 .UsingGet()
@@ -130,9 +129,32 @@ public class KeycloakMockServer : IDisposable
             );
     }
 
+    public void ConfigureTokenEndpoint()
+    {
+        // For now, return success for all token requests
+        // In a real scenario, you'd want to validate credentials properly
+        _server
+            .Given(Request.Create()
+                .UsingPost()
+                .WithPath("/master/protocol/openid-connect/token"))
+            .RespondWith(Response.Create()
+                .WithStatusCode(200)
+                .WithHeader("Content-Type", "application/json; charset=utf-8")
+                .WithBodyAsJson(new
+                {
+                    access_token = CreateToken(),
+                    expires_in = 300,
+                    refresh_expires_in = 0,
+                    token_type = "Bearer",
+                    not_before_policy = 0,
+                    scope = "openid"
+                })
+            );
+    }
+
     public void Dispose()
     {
-        _tokenGenerator?.Dispose();
+        TokenGenerator?.Dispose();
         _server?.Stop();
         _server?.Dispose();
         GC.SuppressFinalize(this);
