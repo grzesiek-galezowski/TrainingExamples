@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".copilot/copilot-instructions.md" />
+  </Folder>
+  <Project Path="MutaSynth/MutaSynth.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
+  <Project Path="MutaSynthEngine/MutaSynthEngine.csproj" />
+  <Project Path="MutaSynthSpecification/MutaSynthSpecification.csproj" />
+  <Project Path="Playground/Playground.csproj" Id="55642d7c-a204-420d-92fd-f457b266aaa1" />
+</Solution>

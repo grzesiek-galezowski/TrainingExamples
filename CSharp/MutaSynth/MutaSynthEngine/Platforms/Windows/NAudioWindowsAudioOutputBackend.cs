@@ -1,0 +1,122 @@
+using System.Collections.Immutable;
+using NAudio.CoreAudioApi;
+using NAudio.Wave;
+
+namespace MutaSynthEngine.Platforms.Windows;
+
+public sealed class NAudioWindowsAudioOutputBackend : IDisposable
+{
+    private const int ChannelCount = 2;
+
+    private int _sampleRate;
+    private int _bufferSize;
+    private WasapiOut? _output;
+    private LiveSawtoothSampleProvider? _sampleProvider;
+    private string? _selectedDeviceId;
+    private float _volume;
+
+    public NAudioWindowsAudioOutputBackend(int sampleRate, int bufferSize, float volume)
+    {
+        _sampleRate = sampleRate;
+        _bufferSize = bufferSize;
+        _volume = volume;
+    }
+
+    public string? SelectedDeviceId => _selectedDeviceId;
+
+    public float Volume
+    {
+        get => _volume;
+        set
+        {
+            _volume = value;
+
+            if (_sampleProvider is not null)
+            {
+                _sampleProvider.Volume = value;
+            }
+        }
+    }
+
+    public ImmutableArray<AudioDriverDeviceOption> GetDevices()
+    {
+        using var enumerator = new MMDeviceEnumerator();
+        var collection = enumerator.EnumerateAudioEndPoints(DataFlow.Render, DeviceState.Active);
+
+        return collection
+            .Select(device => new AudioDriverDeviceOption(device.ID, device.FriendlyName))
+            .ToImmutableArray();
+    }
+
+    public void SelectDevice(string? deviceId)
+    {
+        if (_selectedDeviceId == deviceId)
+        {
+            return;
+        }
+
+        _selectedDeviceId = deviceId;
+        RecreatePlayback();
+    }
+
+    public void UpdateAudioSettings(int sampleRate, int bufferSize)
+    {
+        if (_sampleRate == sampleRate && _bufferSize == bufferSize)
+        {
+            return;
+        }
+
+        _sampleRate = sampleRate;
+        _bufferSize = bufferSize;
+        RecreatePlayback();
+    }
+
+    public void EnsureReady()
+    {
+        if (_output is not null && _sampleProvider is not null)
+        {
+            return;
+        }
+
+        using var enumerator = new MMDeviceEnumerator();
+        using var defaultDevice = ResolveDevice(enumerator, _selectedDeviceId);
+
+        _sampleProvider = new LiveSawtoothSampleProvider(_sampleRate, ChannelCount, _volume);
+        _output = new WasapiOut(defaultDevice, AudioClientShareMode.Shared, false, _bufferSize);
+        _output.Init(_sampleProvider);
+        _output.Play();
+    }
+
+    public void NoteOn(float frequency)
+    {
+        EnsureReady();
+        _sampleProvider?.NoteOn(frequency);
+    }
+
+    public void NoteOff(float frequency)
+    {
+        _sampleProvider?.NoteOff(frequency);
+    }
+
+    public void NoteOff() => _sampleProvider?.NoteOff();
+
+    public void Dispose() => RecreatePlayback();
+
+    private void RecreatePlayback()
+    {
+        _output?.Stop();
+        _output?.Dispose();
+        _output = null;
+        _sampleProvider = null;
+    }
+
+    private static MMDevice ResolveDevice(MMDeviceEnumerator enumerator, string? deviceId)
+    {
+        if (!string.IsNullOrEmpty(deviceId))
+        {
+            return enumerator.GetDevice(deviceId);
+        }
+
+        return enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
+    }
+}

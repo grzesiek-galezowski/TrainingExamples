@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MutaSynth.MainPage"
+             Title="MutaSynth">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="20">
+
+            <Label Text="MutaSynth"
+                   FontSize="32"
+                   HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                   TextColor="{AppThemeBinding Light=#190649, Dark=White}" />
+
+            <Label Text="Signal flow"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <FlexLayout Direction="Row"
+                        Wrap="Wrap"
+                        JustifyContent="Center"
+                        AlignItems="Center">
+
+                <Border x:Name="KeyboardModuleBorder"
+                        Padding="18,14"
+                        Margin="0,0,12,0"
+                        BackgroundColor="{AppThemeBinding Light=#E1E1E1, Dark=#212121}"
+                        Stroke="{AppThemeBinding Light=#ACACAC, Dark=#6E6E6E}"
+                        StrokeThickness="2"
+                        StrokeShape="RoundRectangle 18">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnKeyboardModuleTapped" />
+                    </Border.GestureRecognizers>
+                    <VerticalStackLayout Spacing="4" WidthRequest="110">
+                        <Label Text="KBD"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="Center" />
+                        <Label Text="MIDI / keyboard"
+                               FontSize="12"
+                               HorizontalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <Label Text="→"
+                       FontSize="24"
+                       Margin="0,0,12,0"
+                       VerticalTextAlignment="Center" />
+
+                <Border x:Name="OscillatorModuleBorder"
+                        Padding="18,14"
+                        Margin="0,0,12,0"
+                        BackgroundColor="{AppThemeBinding Light=#E1E1E1, Dark=#212121}"
+                        Stroke="{AppThemeBinding Light=#ACACAC, Dark=#6E6E6E}"
+                        StrokeThickness="2"
+                        StrokeShape="RoundRectangle 18">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnOscillatorModuleTapped" />
+                    </Border.GestureRecognizers>
+                    <VerticalStackLayout Spacing="4" WidthRequest="110">
+                        <Label Text="OSC"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="Center" />
+                        <Label Text="Oscillator"
+                               FontSize="12"
+                               HorizontalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <Label Text="→"
+                       FontSize="24"
+                       Margin="0,0,12,0"
+                       VerticalTextAlignment="Center" />
+
+                <Border x:Name="AmplifierModuleBorder"
+                        Padding="18,14"
+                        Margin="0,0,12,0"
+                        BackgroundColor="{AppThemeBinding Light=#E1E1E1, Dark=#212121}"
+                        Stroke="{AppThemeBinding Light=#ACACAC, Dark=#6E6E6E}"
+                        StrokeThickness="2"
+                        StrokeShape="RoundRectangle 18">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnAmplifierModuleTapped" />
+                    </Border.GestureRecognizers>
+                    <VerticalStackLayout Spacing="4" WidthRequest="110">
+                        <Label Text="AMP"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="Center" />
+                        <Label Text="Amplifier"
+                               FontSize="12"
+                               HorizontalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <Label Text="→"
+                       FontSize="24"
+                       Margin="0,0,12,0"
+                       VerticalTextAlignment="Center" />
+
+                <Border x:Name="OutputModuleBorder"
+                        Padding="18,14"
+                        BackgroundColor="{AppThemeBinding Light=#E1E1E1, Dark=#212121}"
+                        Stroke="{AppThemeBinding Light=#ACACAC, Dark=#6E6E6E}"
+                        StrokeThickness="2"
+                        StrokeShape="RoundRectangle 18">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnOutputModuleTapped" />
+                    </Border.GestureRecognizers>
+                    <VerticalStackLayout Spacing="4" WidthRequest="110">
+                        <Label Text="OUT"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="Center" />
+                        <Label Text="Audio output"
+                               FontSize="12"
+                               HorizontalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                </Border>
+            </FlexLayout>
+
+            <Border Padding="20"
+                    BackgroundColor="{AppThemeBinding Light=White, Dark=#1f1f1f}"
+                    Stroke="{AppThemeBinding Light=#C8C8C8, Dark=#404040}"
+                    StrokeShape="RoundRectangle 20">
+                <VerticalStackLayout Spacing="16">
+                    <VerticalStackLayout Spacing="4">
+                        <Label x:Name="SelectedModuleTitleLabel"
+                               Text="Keyboard"
+                               FontSize="24"
+                               HorizontalOptions="Start"
+                               HorizontalTextAlignment="Start"
+                               TextColor="{AppThemeBinding Light=#190649, Dark=White}" />
+                        <Label x:Name="SelectedModuleDescriptionLabel"
+                               Text="Choose your MIDI source and channel."
+                               TextColor="{AppThemeBinding Light=#404040, Dark=#ACACAC}" />
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout x:Name="KeyboardSettingsPanel"
+                                         Spacing="12">
+                        <Label Text="MIDI input" />
+                        <Picker x:Name="MidiInputPicker"
+                                Title="Select MIDI input"
+                                ItemDisplayBinding="{Binding Name}"
+                                SelectedIndexChanged="OnMidiInputChanged" />
+
+                        <Label Text="MIDI channel" />
+                        <Picker x:Name="MidiChannelPicker"
+                                Title="Select MIDI channel"
+                                SelectedIndexChanged="OnMidiChannelChanged" />
+
+                        <Button Text="Test MIDI"
+                                HorizontalOptions="Start"
+                                Clicked="OnTestMidiClicked" />
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout x:Name="OscillatorSettingsPanel"
+                                         Spacing="12"
+                                         IsVisible="False">
+                        <Label Text="Playback mode" />
+                        <Picker x:Name="NotePlaybackModePicker"
+                                Title="Select playback mode"
+                                SelectedIndexChanged="OnNotePlaybackModeChanged" />
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout x:Name="AmplifierSettingsPanel"
+                                         Spacing="12"
+                                         IsVisible="False">
+                        <Label Text="Volume" />
+                        <Slider x:Name="VolumeSlider"
+                                Minimum="0"
+                                Maximum="1"
+                                Value="0.5"
+                                ValueChanged="OnVolumeChanged" />
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout x:Name="OutputSettingsPanel"
+                                         Spacing="12"
+                                         IsVisible="False">
+                        <Label Text="Audio output" />
+                        <Picker x:Name="AudioOutputPicker"
+                                Title="Select audio output"
+                                ItemDisplayBinding="{Binding Name}"
+                                SelectedIndexChanged="OnAudioOutputChanged" />
+
+                        <Label Text="Sample rate" />
+                        <Picker x:Name="SampleRatePicker"
+                                Title="Select sample rate"
+                                SelectedIndexChanged="OnSampleRateChanged" />
+
+                        <Label Text="Buffer size" />
+                        <Picker x:Name="BufferSizePicker"
+                                Title="Select buffer size"
+                                SelectedIndexChanged="OnBufferSizeChanged" />
+
+                        <Button Text="Test audio"
+                                HorizontalOptions="Start"
+                                Clicked="OnTestAudioClicked" />
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Padding="16"
+                    BackgroundColor="{AppThemeBinding Light=#E1E1E1, Dark=#141414}"
+                    Stroke="{AppThemeBinding Light=#C8C8C8, Dark=#404040}"
+                    StrokeShape="RoundRectangle 16">
+                <VerticalStackLayout Spacing="10">
+                    <Label x:Name="StatusLabel"
+                           Text="Initializing..." />
+
+                    <Label x:Name="NoteLabel"
+                           Text="—"
+                           FontSize="18" />
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
