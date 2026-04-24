@@ -94,6 +94,54 @@ public partial class MainPage : ContentPage
         }
     }
 
+    private void OnSemiChanged(object? sender, ValueChangedEventArgs e)
+    {
+        var semiOffset = (int)Math.Round(e.NewValue);
+        _driver.SelectSemiOffset(semiOffset);
+        SemiValueLabel.Text = $"{semiOffset:+#;-#;0} semitones";
+        StatusLabel.Text = $"Oscillator semi: {semiOffset:+#;-#;0}";
+    }
+
+    private void OnWaveformChanged(object? sender, EventArgs e)
+    {
+        if (WaveformPicker.SelectedItem is OscillatorWaveform waveform)
+        {
+            _driver.SelectWaveform(waveform);
+            StatusLabel.Text = $"Oscillator wave: {waveform}";
+        }
+    }
+
+    private void OnCentsChanged(object? sender, ValueChangedEventArgs e)
+    {
+        var centsOffset = (int)Math.Round(e.NewValue);
+        _driver.SelectCentsOffset(centsOffset);
+        CentsValueLabel.Text = $"{centsOffset:+#;-#;0} cents";
+        StatusLabel.Text = $"Oscillator cents: {centsOffset:+#;-#;0}";
+    }
+
+    private void OnBitReduxChanged(object? sender, EventArgs e)
+    {
+        if (BitReduxPicker.SelectedItem is int bitRedux)
+        {
+            _driver.SelectBitRedux(bitRedux);
+            StatusLabel.Text = $"Oscillator BitRedux: {(bitRedux == 0 ? "Off" : bitRedux.ToString())}";
+        }
+    }
+
+    private void OnKeytrackChanged(object? sender, ValueChangedEventArgs e)
+    {
+        var keytrackPercent = (int)Math.Round(e.NewValue);
+        _driver.SelectKeytrackPercent(keytrackPercent);
+        KeytrackValueLabel.Text = $"{keytrackPercent}%";
+        StatusLabel.Text = $"Oscillator keytrack: {keytrackPercent}%";
+    }
+
+    private void OnOscillatorLoggingToggled(object? sender, ToggledEventArgs e)
+    {
+        _driver.SelectOscillatorLogging(e.Value);
+        StatusLabel.Text = $"Oscillator logging: {(e.Value ? "On" : "Off")}";
+    }
+
     private void OnAudioOutputChanged(object? sender, EventArgs e)
     {
         if (AudioOutputPicker.SelectedItem is AudioDriverDeviceOption option)
@@ -140,17 +188,28 @@ public partial class MainPage : ContentPage
         MidiInputPicker.ItemsSource = _driver.MidiInputDevices;
         AudioOutputPicker.ItemsSource = _driver.AudioOutputDevices;
         NotePlaybackModePicker.ItemsSource = _driver.NotePlaybackModes;
+        WaveformPicker.ItemsSource = _driver.Waveforms;
         MidiChannelPicker.ItemsSource = _driver.MidiChannels;
         SampleRatePicker.ItemsSource = _driver.SampleRates;
         BufferSizePicker.ItemsSource = _driver.BufferSizes;
+        BitReduxPicker.ItemsSource = _driver.BitReduxLevels;
 
         MidiInputPicker.SelectedItem = _driver.MidiInputDevices.FirstOrDefault(device => device.Id == _driver.SelectedMidiInputDeviceId);
         AudioOutputPicker.SelectedItem = _driver.AudioOutputDevices.FirstOrDefault(device => device.Id == _driver.SelectedAudioOutputDeviceId);
         NotePlaybackModePicker.SelectedItem = _driver.SelectedNotePlaybackMode;
+        WaveformPicker.SelectedItem = _driver.SelectedWaveform;
         MidiChannelPicker.SelectedItem = _driver.SelectedMidiChannel;
         SampleRatePicker.SelectedItem = _driver.SelectedSampleRate;
         BufferSizePicker.SelectedItem = _driver.SelectedBufferSize;
+        BitReduxPicker.SelectedItem = _driver.SelectedBitRedux;
         VolumeSlider.Value = _driver.Volume;
+        SemiStepper.Value = _driver.SelectedSemiOffset;
+        CentsStepper.Value = _driver.SelectedCentsOffset;
+        KeytrackSlider.Value = _driver.SelectedKeytrackPercent;
+        OscillatorLoggingSwitch.IsToggled = _driver.IsOscillatorLoggingEnabled;
+        SemiValueLabel.Text = $"{_driver.SelectedSemiOffset:+#;-#;0} semitones";
+        CentsValueLabel.Text = $"{_driver.SelectedCentsOffset:+#;-#;0} cents";
+        KeytrackValueLabel.Text = $"{_driver.SelectedKeytrackPercent}%";
     }
 
     private void RefreshSelectedModule()
@@ -189,7 +248,7 @@ public partial class MainPage : ContentPage
         return _selectedModule switch
         {
             SynthModule.Keyboard => ("Keyboard / MIDI", "Choose the MIDI source, channel, and trigger a MIDI diagnostics test."),
-            SynthModule.Oscillator => ("Oscillator", "Set how incoming notes are handled by the synth voice engine."),
+            SynthModule.Oscillator => ("Oscillator", "Shape the oscillator with tuning, waveform, bit reduction, and keyboard pitch tracking."),
             SynthModule.Amplifier => ("Amplifier", "Adjust the master output level before the signal reaches the output stage."),
             SynthModule.Output => ("Output", "Configure the audio device, sample rate, buffer size, and run an audio diagnostics test."),
             _ => ("Keyboard / MIDI", "Choose the MIDI source, channel, and trigger a MIDI diagnostics test.")

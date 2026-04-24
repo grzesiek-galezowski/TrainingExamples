@@ -99,4 +99,48 @@ public sealed class NullAudioDriverSpecification
         sut.NotePlaybackModes.Should().Equal([NotePlaybackMode.Monophonic, NotePlaybackMode.Polyphonic]);
         sut.SelectedNotePlaybackMode.Should().Be(NotePlaybackMode.Polyphonic);
     }
+
+    [Test]
+    public void ShouldExposeOscillatorDefaults()
+    {
+        // GIVEN
+        var sut = new NullAudioDriver();
+
+        // WHEN
+        var availableWaveforms = sut.Waveforms;
+        var availableBitReduxLevels = sut.BitReduxLevels;
+
+        // THEN
+        availableWaveforms.Should().Equal([OscillatorWaveform.Sine, OscillatorWaveform.Triangle, OscillatorWaveform.TriSaw, OscillatorWaveform.Saw, OscillatorWaveform.Square]);
+        availableBitReduxLevels.Should().Equal([0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 16]);
+        sut.SelectedWaveform.Should().Be(OscillatorWaveform.Saw);
+        sut.SelectedSemiOffset.Should().Be(0);
+        sut.SelectedCentsOffset.Should().Be(0);
+        sut.SelectedBitRedux.Should().Be(0);
+        sut.SelectedKeytrackPercent.Should().Be(100);
+        sut.IsOscillatorLoggingEnabled.Should().BeFalse();
+    }
+
+    [Test]
+    public void ShouldExposeOscillatorParameterSelection()
+    {
+        // GIVEN
+        var sut = new NullAudioDriver();
+
+        // WHEN
+        sut.SelectSemiOffset(36);
+        sut.SelectWaveform(OscillatorWaveform.Square);
+        sut.SelectCentsOffset(-50);
+        sut.SelectBitRedux(8);
+        sut.SelectKeytrackPercent(200);
+        sut.SelectOscillatorLogging(true);
+
+        // THEN
+        sut.SelectedSemiOffset.Should().Be(36);
+        sut.SelectedWaveform.Should().Be(OscillatorWaveform.Square);
+        sut.SelectedCentsOffset.Should().Be(-50);
+        sut.SelectedBitRedux.Should().Be(8);
+        sut.SelectedKeytrackPercent.Should().Be(200);
+        sut.IsOscillatorLoggingEnabled.Should().BeTrue();
+    }
 }

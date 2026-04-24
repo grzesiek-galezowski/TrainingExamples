@@ -163,6 +163,50 @@
                         <Picker x:Name="NotePlaybackModePicker"
                                 Title="Select playback mode"
                                 SelectedIndexChanged="OnNotePlaybackModeChanged" />
+
+                        <Label Text="Semi" />
+                        <Stepper x:Name="SemiStepper"
+                                 Minimum="-36"
+                                 Maximum="36"
+                                 Increment="1"
+                                 ValueChanged="OnSemiChanged" />
+                        <Label x:Name="SemiValueLabel"
+                               Text="0 semitones" />
+
+                        <Label Text="Wave" />
+                        <Picker x:Name="WaveformPicker"
+                                Title="Select waveform"
+                                SelectedIndexChanged="OnWaveformChanged" />
+
+                        <Label Text="Cents" />
+                        <Stepper x:Name="CentsStepper"
+                                 Minimum="-50"
+                                 Maximum="50"
+                                 Increment="1"
+                                 ValueChanged="OnCentsChanged" />
+                        <Label x:Name="CentsValueLabel"
+                               Text="0 cents" />
+
+                        <Label Text="BitRedux" />
+                        <Picker x:Name="BitReduxPicker"
+                                Title="Select bit reduction"
+                                SelectedIndexChanged="OnBitReduxChanged" />
+
+                        <Label Text="Keytrack" />
+                        <Slider x:Name="KeytrackSlider"
+                                Minimum="0"
+                                Maximum="200"
+                                Value="100"
+                                ValueChanged="OnKeytrackChanged" />
+                        <Label x:Name="KeytrackValueLabel"
+                               Text="100%" />
+
+                        <HorizontalStackLayout Spacing="12">
+                            <Label Text="Oscillator logging"
+                                   VerticalOptions="Center" />
+                            <Switch x:Name="OscillatorLoggingSwitch"
+                                    Toggled="OnOscillatorLoggingToggled" />
+                        </HorizontalStackLayout>
                     </VerticalStackLayout>
 
                     <VerticalStackLayout x:Name="AmplifierSettingsPanel"

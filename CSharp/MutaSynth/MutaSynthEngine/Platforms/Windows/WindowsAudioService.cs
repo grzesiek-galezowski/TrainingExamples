@@ -1,4 +1,5 @@
 using System.Collections.Immutable;
+using System.Diagnostics;
 using Melanchall.DryWetMidi.Common;
 using Melanchall.DryWetMidi.Core;
 using Melanchall.DryWetMidi.Multimedia;
@@ -14,6 +15,8 @@ public sealed class WindowsAudioService : IAudioDriver
     private static readonly ImmutableArray<int> AvailableSampleRates = [22_050, 44_100, 48_000, 96_000];
     private static readonly ImmutableArray<int> AvailableBufferSizes = [64, 128, 256, 512, 1024];
     private static readonly ImmutableArray<NotePlaybackMode> AvailableNotePlaybackModes = [NotePlaybackMode.Monophonic, NotePlaybackMode.Polyphonic];
+    private static readonly ImmutableArray<OscillatorWaveform> AvailableWaveforms = [OscillatorWaveform.Sine, OscillatorWaveform.Triangle, OscillatorWaveform.TriSaw, OscillatorWaveform.Saw, OscillatorWaveform.Square];
+    private static readonly ImmutableArray<int> AvailableBitReduxLevels = [0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 16];
     private const int TestNoteDurationMilliseconds = 750;
     private const float TestMidiFrequency = 440.0f;
     private const float TestAudioFrequency = 220.0f;
@@ -25,6 +28,12 @@ public sealed class WindowsAudioService : IAudioDriver
     private int _selectedSampleRate = 44_100;
     private int _selectedBufferSize = 64;
     private NotePlaybackMode _selectedNotePlaybackMode = NotePlaybackMode.Monophonic;
+    private OscillatorWaveform _selectedWaveform = OscillatorWaveform.Saw;
+    private int _selectedSemiOffset;
+    private int _selectedCentsOffset;
+    private int _selectedBitRedux;
+    private int _selectedKeytrackPercent = 100;
+    private bool _isOscillatorLoggingEnabled;
     private float _volume = 0.5f;
     private CancellationTokenSource? _testPlaybackCancellation;
     private readonly List<float> _activeFrequencies = [];
@@ -37,15 +46,23 @@ public sealed class WindowsAudioService : IAudioDriver
     public ImmutableArray<AudioDriverDeviceOption> MidiInputDevices { get; private set; } = [];
     public ImmutableArray<AudioDriverDeviceOption> AudioOutputDevices { get; private set; } = [];
     public ImmutableArray<NotePlaybackMode> NotePlaybackModes => AvailableNotePlaybackModes;
+    public ImmutableArray<OscillatorWaveform> Waveforms => AvailableWaveforms;
     public ImmutableArray<int> MidiChannels => AvailableMidiChannels;
     public ImmutableArray<int> SampleRates => AvailableSampleRates;
     public ImmutableArray<int> BufferSizes => AvailableBufferSizes;
+    public ImmutableArray<int> BitReduxLevels => AvailableBitReduxLevels;
     public string? SelectedMidiInputDeviceId { get; private set; }
     public string? SelectedAudioOutputDeviceId { get; private set; }
     public NotePlaybackMode SelectedNotePlaybackMode => _selectedNotePlaybackMode;
+    public OscillatorWaveform SelectedWaveform => _selectedWaveform;
     public int SelectedMidiChannel { get; private set; } = 1;
     public int SelectedSampleRate => _selectedSampleRate;
     public int SelectedBufferSize => _selectedBufferSize;
+    public int SelectedSemiOffset => _selectedSemiOffset;
+    public int SelectedCentsOffset => _selectedCentsOffset;
+    public int SelectedBitRedux => _selectedBitRedux;
+    public int SelectedKeytrackPercent => _selectedKeytrackPercent;
+    public bool IsOscillatorLoggingEnabled => _isOscillatorLoggingEnabled;
 
     public float Volume
     {
@@ -54,6 +71,91 @@ public sealed class WindowsAudioService : IAudioDriver
         {
             _volume = value;
             _audioOutputBackend.Volume = value;
+        }
+    }
+
+    public void SelectOscillatorLogging(bool isEnabled)
+    {
+        ThrowIfDisposed();
+
+        if (_isOscillatorLoggingEnabled == isEnabled)
+        {
+            return;
+        }
+
+        _semaphore.Wait();
+        try
+        {
+            _isOscillatorLoggingEnabled = isEnabled;
+            ApplyOscillatorSettings();
+            Debug.WriteLine($"[Oscillator] Logging {(isEnabled ? "enabled" : "disabled")}");
+        }
+        finally
+        {
+            _semaphore.Release();
+        }
+    }
+
+    public void SelectBitRedux(int bitRedux)
+    {
+        ThrowIfDisposed();
+
+        if (!AvailableBitReduxLevels.Contains(bitRedux) || _selectedBitRedux == bitRedux)
+        {
+            return;
+        }
+
+        _semaphore.Wait();
+        try
+        {
+            _selectedBitRedux = bitRedux;
+            ApplyOscillatorSettings();
+        }
+        finally
+        {
+            _semaphore.Release();
+        }
+    }
+
+    public void SelectCentsOffset(int centsOffset)
+    {
+        ThrowIfDisposed();
+
+        if (centsOffset is < -50 or > 50 || _selectedCentsOffset == centsOffset)
+        {
+            return;
+        }
+
+        _semaphore.Wait();
+        try
+        {
+            _selectedCentsOffset = centsOffset;
+            ApplyOscillatorSettings();
+        }
+        finally
+        {
+            _semaphore.Release();
+        }
+    }
+
+    public void SelectKeytrackPercent(int keytrackPercent)
+    {
+        ThrowIfDisposed();
+
+        if (keytrackPercent is < 0 or > 200 || _selectedKeytrackPercent == keytrackPercent)
+        {
+            return;
+        }
+
+        _semaphore.Wait();
+        try
+        {
+            _selectedKeytrackPercent = keytrackPercent;
+            ApplyOscillatorSettings();
+        }
+        finally
+        {
+            _semaphore.Release();
         }
     }
 
@@ -71,6 +173,48 @@ public sealed class WindowsAudioService : IAudioDriver
         {
             _selectedNotePlaybackMode = notePlaybackMode;
             StopPlayback();
+        }
+        finally
+        {
+            _semaphore.Release();
+        }
+    }
+
+    public void SelectSemiOffset(int semiOffset)
+    {
+        ThrowIfDisposed();
+
+        if (semiOffset is < -36 or > 36 || _selectedSemiOffset == semiOffset)
+        {
+            return;
+        }
+
+        _semaphore.Wait();
+        try
+        {
+            _selectedSemiOffset = semiOffset;
+            ApplyOscillatorSettings();
+        }
+        finally
+        {
+            _semaphore.Release();
+        }
+    }
+
+    public void SelectWaveform(OscillatorWaveform waveform)
+    {
+        ThrowIfDisposed();
+
+        if (!AvailableWaveforms.Contains(waveform) || _selectedWaveform == waveform)
+        {
+            return;
+        }
+
+        _semaphore.Wait();
+        try
+        {
+            _selectedWaveform = waveform;
+            ApplyOscillatorSettings();
         }
         finally
         {
@@ -449,6 +593,12 @@ public sealed class WindowsAudioService : IAudioDriver
         _audioOutputBackend.UpdateAudioSettings(_selectedSampleRate, _selectedBufferSize);
         _audioOutputBackend.Volume = _volume;
         _audioOutputBackend.SelectDevice(SelectedAudioOutputDeviceId);
+        ApplyOscillatorSettings();
+    }
+
+    private void ApplyOscillatorSettings()
+    {
+        _audioOutputBackend.UpdateOscillatorSettings(_selectedWaveform, _selectedSemiOffset, _selectedCentsOffset, _selectedBitRedux, _selectedKeytrackPercent, _isOscillatorLoggingEnabled);
     }
 
     private static string? FindMatchingDeviceId(ImmutableArray<AudioDriverDeviceOption> devices, string? deviceId)

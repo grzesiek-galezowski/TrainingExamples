@@ -11,9 +11,15 @@ public sealed class NAudioWindowsAudioOutputBackend : IDisposable
     private int _sampleRate;
     private int _bufferSize;
     private WasapiOut? _output;
-    private LiveSawtoothSampleProvider? _sampleProvider;
+    private LiveOscillatorSampleProvider? _sampleProvider;
     private string? _selectedDeviceId;
     private float _volume;
+    private OscillatorWaveform _waveform = OscillatorWaveform.Saw;
+    private int _semiOffset;
+    private int _centsOffset;
+    private int _bitRedux;
+    private int _keytrackPercent = 100;
+    private bool _isOscillatorLoggingEnabled;
 
     public NAudioWindowsAudioOutputBackend(int sampleRate, int bufferSize, float volume)
     {
@@ -71,6 +77,18 @@ public sealed class NAudioWindowsAudioOutputBackend : IDisposable
         RecreatePlayback();
     }
 
+    public void UpdateOscillatorSettings(OscillatorWaveform waveform, int semiOffset, int centsOffset, int bitRedux, int keytrackPercent, bool isOscillatorLoggingEnabled)
+    {
+        _waveform = waveform;
+        _semiOffset = semiOffset;
+        _centsOffset = centsOffset;
+        _bitRedux = bitRedux;
+        _keytrackPercent = keytrackPercent;
+        _isOscillatorLoggingEnabled = isOscillatorLoggingEnabled;
+
+        _sampleProvider?.SetOscillatorParameters(waveform, semiOffset, centsOffset, bitRedux, keytrackPercent, isOscillatorLoggingEnabled);
+    }
+
     public void EnsureReady()
     {
         if (_output is not null && _sampleProvider is not null)
@@ -81,7 +99,8 @@ public sealed class NAudioWindowsAudioOutputBackend : IDisposable
         using var enumerator = new MMDeviceEnumerator();
         using var defaultDevice = ResolveDevice(enumerator, _selectedDeviceId);
 
-        _sampleProvider = new LiveSawtoothSampleProvider(_sampleRate, ChannelCount, _volume);
+        _sampleProvider = new LiveOscillatorSampleProvider(_sampleRate, ChannelCount, _volume);
+        _sampleProvider.SetOscillatorParameters(_waveform, _semiOffset, _centsOffset, _bitRedux, _keytrackPercent, _isOscillatorLoggingEnabled);
         _output = new WasapiOut(defaultDevice, AudioClientShareMode.Shared, false, _bufferSize);
         _output.Init(_sampleProvider);
         _output.Play();
