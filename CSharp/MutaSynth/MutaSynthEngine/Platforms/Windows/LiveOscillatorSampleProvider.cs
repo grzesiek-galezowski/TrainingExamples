@@ -6,6 +6,8 @@ namespace MutaSynthEngine.Platforms.Windows;
 public sealed class LiveOscillatorSampleProvider : ISampleProvider
 {
     private const float BaseKeytrackFrequency = 440.0f;
+    private const float MinimumFilterCutoffFrequency = 20.0f;
+    private const float MinimumFilterCutoffNormalized = 0.0001f;
     private const double TwoPi = Math.PI * 2.0;
     private const int AttackDurationMilliseconds = 2;
     private const int ReleaseDurationMilliseconds = 12;
@@ -24,7 +26,15 @@ public sealed class LiveOscillatorSampleProvider : ISampleProvider
     private int _centsOffset;
     private int _bitRedux;
     private int _keytrackPercent = 100;
+    private FilterType _filterType = FilterType.LpLdr12;
+    private float _filterCutoff = 128.0f;
+    private float _filterResonance;
+    private int _filterKeytrackPercent = 100;
+    private float _filterDrive;
+    private FilterDriveRoute _filterDriveRoute = FilterDriveRoute.Pre;
     private bool _isOscillatorLoggingEnabled;
+    private MoogLadderFilter? _ladderFilter;
+    private float _lastTrackedFilterFrequency = BaseKeytrackFrequency;
     private float _previousSample;
     private long _sampleFrameIndex;
 
@@ -32,6 +42,7 @@ public sealed class LiveOscillatorSampleProvider : ISampleProvider
     {
         _waveFormat = WaveFormat.CreateIeeeFloatWaveFormat(sampleRate, channelCount);
         _volume = volume;
+        _ladderFilter = new MoogLadderFilter(sampleRate);
     }
 
     public WaveFormat WaveFormat => _waveFormat;
@@ -67,11 +78,25 @@ public sealed class LiveOscillatorSampleProvider : ISampleProvider
         }
     }
 
+    public void SetFilterParameters(FilterType filterType, float cutoff, float resonance, int keytrackPercent, float drive, FilterDriveRoute driveRoute)
+    {
+        lock (_sync)
+        {
+            _filterType = filterType;
+            _filterCutoff = cutoff;
+            _filterResonance = resonance;
+            _filterKeytrackPercent = keytrackPercent;
+            _filterDrive = drive;
+            _filterDriveRoute = driveRoute;
+        }
+    }
+
     public void NoteOn(float frequency)
     {
         lock (_sync)
         {
             _voices[frequency] = new VoiceState(frequency, GetAttackSampleCount());
+            _lastTrackedFilterFrequency = frequency;
             Log($"NoteOn freq={frequency:F2} voices={_voices.Count}");
         }
     }
@@ -124,12 +149,6 @@ public sealed class LiveOscillatorSampleProvider : ISampleProvider
 
     private float MixVoices()
     {
-        if (_voices.Count == 0)
-        {
-            _previousSample = 0.0f;
-            return 0.0f;
-        }
-
         var mixedSample = 0.0f;
         var completedVoiceDiagnostics = _isOscillatorLoggingEnabled ? new List<CompletedVoiceDiagnostic>() : null;
         _completedVoices.Clear();
@@ -170,14 +189,14 @@ public sealed class LiveOscillatorSampleProvider : ISampleProvider
         }
 
         var remainingVoiceCount = _voices.Count;
-        if (remainingVoiceCount == 0)
+        var mixGainAfterRemoval = FixedMixHeadroomGain;
+        if (remainingVoiceCount > 0)
         {
-            _previousSample = 0.0f;
-            return 0.0f;
+            _lastTrackedFilterFrequency = GetTrackedFilterFrequency();
         }
 
-        var mixGainAfterRemoval = FixedMixHeadroomGain;
-        var outputSample = mixedSample * FixedMixHeadroomGain * _volume;
+        var preAmplifierSample = ApplyFilter(mixedSample * FixedMixHeadroomGain, remainingVoiceCount == 0);
+        var outputSample = preAmplifierSample * _volume;
         var sampleDelta = MathF.Abs(outputSample - _previousSample);
         var activeVoiceFrequencies = _isOscillatorLoggingEnabled ? FormatActiveVoiceFrequencies() : string.Empty;
         var currentSampleSnapshot = new SampleSnapshot(_sampleFrameIndex, outputSample, sampleDelta, remainingVoiceCount, FixedMixHeadroomGain);
@@ -244,6 +263,35 @@ public sealed class LiveOscillatorSampleProvider : ISampleProvider
         return (float)(trackedFrequency * Math.Pow(2.0, tuningOffset / 12.0));
     }
 
+    private float ApplyFilter(float sample, bool hasNoActiveVoices)
+    {
+        if (_filterCutoff >= 128.0f && _filterResonance <= 0.0f && _filterDrive <= 0.0f)
+        {
+            if (hasNoActiveVoices)
+            {
+                ResetFilterState();
+            }
+
+            return sample;
+        }
+
+        var drivenInput = _filterDriveRoute == FilterDriveRoute.Pre
+            ? ApplyDrive(sample)
+            : sample;
+
+        var cutoffHz = ResolveFilterCutoffFrequency();
+        var filteredOutput = _ladderFilter!.Process(drivenInput, cutoffHz, _filterResonance, _filterType);
+
+        if (hasNoActiveVoices && MathF.Abs((float)filteredOutput) < 0.000001f)
+        {
+            ResetFilterState();
+        }
+
+        return _filterDriveRoute == FilterDriveRoute.Post
+            ? ApplyDrive((float)filteredOutput)
+            : (float)filteredOutput;
+    }
+
     private static float CreateTriSawSample(float phase)
     {
         var triangle = 1.0f - (4.0f * MathF.Abs(phase - 0.5f));
@@ -254,6 +302,62 @@ public sealed class LiveOscillatorSampleProvider : ISampleProvider
     private int GetReleaseSampleCount() => Math.Max(1, (_waveFormat.SampleRate * ReleaseDurationMilliseconds) / 1000);
 
     private int GetAttackSampleCount() => Math.Max(1, (_waveFormat.SampleRate * AttackDurationMilliseconds) / 1000);
+
+    private float ApplyDrive(float sample)
+    {
+        if (_filterDrive <= 0.0f)
+        {
+            return sample;
+        }
+
+        var driveAmount = 1.0f + ((_filterDrive / 128.0f) * 7.0f);
+        return MathF.Tanh(sample * driveAmount) / MathF.Tanh(driveAmount);
+    }
+
+    private float GetTrackedFilterFrequency()
+    {
+        if (_voices.Count == 0)
+        {
+            return _lastTrackedFilterFrequency;
+        }
+
+        if (_voices.ContainsKey(_lastTrackedFilterFrequency))
+        {
+            return _lastTrackedFilterFrequency;
+        }
+
+        return _voices.Keys.Last();
+    }
+
+    private void ResetFilterState()
+    {
+        _ladderFilter?.Reset();
+        // Do not reset _lastTrackedFilterFrequency to BaseKeytrackFrequency here,
+        // so the filter envelope/cutoff doesn't instantly jump when voices finish.
+    }
+
+
+
+
+
+    // Using an exponential scale map creates a much smoother, perceptually linear sweep.
+    private float ResolveFilterCutoffFrequency()
+    {
+        // Smoothly map 0-128 UI values into 0.0-1.0 to handle standard synth semantics nicely
+        var normalizedCutoff = MathF.Max(0.0f, _filterCutoff / 128.0f);
+        var maximumCutoffHz = _waveFormat.SampleRate * 0.49f;
+
+        // Convert knob position to Hz using exponential mapping first to make linear UI
+        // feel physically continuous across frequency
+        var baseCutoffHz = MinimumFilterCutoffFrequency * MathF.Pow(maximumCutoffHz / MinimumFilterCutoffFrequency, normalizedCutoff);
+
+        // Apply keytracking as a semitone shift in the frequency domain.
+        // 100% means cutoff tracks pitch 1:1 in semitones relative to the reference pitch (A4).
+        var noteSemitoneOffset = 12.0 * Math.Log2(GetTrackedFilterFrequency() / BaseKeytrackFrequency);
+        var trackedCutoffHz = baseCutoffHz * Math.Pow(2.0, (noteSemitoneOffset * _filterKeytrackPercent) / 1200.0);
+
+        return Math.Clamp((float)trackedCutoffHz, MinimumFilterCutoffFrequency, maximumCutoffHz);
+    }
 
     private void CaptureRecentSample(SampleSnapshot sampleSnapshot)
     {

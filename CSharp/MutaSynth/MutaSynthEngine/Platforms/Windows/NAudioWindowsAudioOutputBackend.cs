@@ -19,6 +19,12 @@ public sealed class NAudioWindowsAudioOutputBackend : IDisposable
     private int _centsOffset;
     private int _bitRedux;
     private int _keytrackPercent = 100;
+    private FilterType _filterType = FilterType.LpLdr12;
+    private float _filterCutoff = 128.0f;
+    private float _filterResonance;
+    private int _filterKeytrackPercent = 100;
+    private float _filterDrive;
+    private FilterDriveRoute _filterDriveRoute = FilterDriveRoute.Pre;
     private bool _isOscillatorLoggingEnabled;
 
     public NAudioWindowsAudioOutputBackend(int sampleRate, int bufferSize, float volume)
@@ -89,6 +95,18 @@ public sealed class NAudioWindowsAudioOutputBackend : IDisposable
         _sampleProvider?.SetOscillatorParameters(waveform, semiOffset, centsOffset, bitRedux, keytrackPercent, isOscillatorLoggingEnabled);
     }
 
+    public void UpdateFilterSettings(FilterType filterType, float cutoff, float resonance, int keytrackPercent, float drive, FilterDriveRoute driveRoute)
+    {
+        _filterType = filterType;
+        _filterCutoff = cutoff;
+        _filterResonance = resonance;
+        _filterKeytrackPercent = keytrackPercent;
+        _filterDrive = drive;
+        _filterDriveRoute = driveRoute;
+
+        _sampleProvider?.SetFilterParameters(filterType, cutoff, resonance, keytrackPercent, drive, driveRoute);
+    }
+
     public void EnsureReady()
     {
         if (_output is not null && _sampleProvider is not null)
@@ -101,6 +119,7 @@ public sealed class NAudioWindowsAudioOutputBackend : IDisposable
 
         _sampleProvider = new LiveOscillatorSampleProvider(_sampleRate, ChannelCount, _volume);
         _sampleProvider.SetOscillatorParameters(_waveform, _semiOffset, _centsOffset, _bitRedux, _keytrackPercent, _isOscillatorLoggingEnabled);
+        _sampleProvider.SetFilterParameters(_filterType, _filterCutoff, _filterResonance, _filterKeytrackPercent, _filterDrive, _filterDriveRoute);
         _output = new WasapiOut(defaultDevice, AudioClientShareMode.Shared, false, _bufferSize);
         _output.Init(_sampleProvider);
         _output.Play();

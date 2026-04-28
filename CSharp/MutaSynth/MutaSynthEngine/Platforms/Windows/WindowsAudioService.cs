@@ -16,6 +16,8 @@ public sealed class WindowsAudioService : IAudioDriver
     private static readonly ImmutableArray<int> AvailableBufferSizes = [64, 128, 256, 512, 1024];
     private static readonly ImmutableArray<NotePlaybackMode> AvailableNotePlaybackModes = [NotePlaybackMode.Monophonic, NotePlaybackMode.Polyphonic];
     private static readonly ImmutableArray<OscillatorWaveform> AvailableWaveforms = [OscillatorWaveform.Sine, OscillatorWaveform.Triangle, OscillatorWaveform.TriSaw, OscillatorWaveform.Saw, OscillatorWaveform.Square];
+    private static readonly ImmutableArray<FilterType> AvailableFilterTypes = [FilterType.LpLdr12, FilterType.LpLdr14, FilterType.LpFat12, FilterType.LpFat14];
+    private static readonly ImmutableArray<FilterDriveRoute> AvailableFilterDriveRoutes = [FilterDriveRoute.Pre, FilterDriveRoute.Post];
     private static readonly ImmutableArray<int> AvailableBitReduxLevels = [0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 16];
     private const int TestNoteDurationMilliseconds = 750;
     private const float TestMidiFrequency = 440.0f;
@@ -33,6 +35,12 @@ public sealed class WindowsAudioService : IAudioDriver
     private int _selectedCentsOffset;
     private int _selectedBitRedux;
     private int _selectedKeytrackPercent = 100;
+    private FilterType _selectedFilterType = FilterType.LpLdr12;
+    private float _selectedFilterCutoff = 128.0f;
+    private float _selectedFilterResonance;
+    private int _selectedFilterKeytrackPercent = 100;
+    private float _selectedFilterDrive;
+    private FilterDriveRoute _selectedFilterDriveRoute = FilterDriveRoute.Pre;
     private bool _isOscillatorLoggingEnabled;
     private float _volume = 0.5f;
     private CancellationTokenSource? _testPlaybackCancellation;
@@ -47,6 +55,8 @@ public sealed class WindowsAudioService : IAudioDriver
     public ImmutableArray<AudioDriverDeviceOption> AudioOutputDevices { get; private set; } = [];
     public ImmutableArray<NotePlaybackMode> NotePlaybackModes => AvailableNotePlaybackModes;
     public ImmutableArray<OscillatorWaveform> Waveforms => AvailableWaveforms;
+    public ImmutableArray<FilterType> FilterTypes => AvailableFilterTypes;
+    public ImmutableArray<FilterDriveRoute> FilterDriveRoutes => AvailableFilterDriveRoutes;
     public ImmutableArray<int> MidiChannels => AvailableMidiChannels;
     public ImmutableArray<int> SampleRates => AvailableSampleRates;
     public ImmutableArray<int> BufferSizes => AvailableBufferSizes;
@@ -62,6 +72,12 @@ public sealed class WindowsAudioService : IAudioDriver
     public int SelectedCentsOffset => _selectedCentsOffset;
     public int SelectedBitRedux => _selectedBitRedux;
     public int SelectedKeytrackPercent => _selectedKeytrackPercent;
+    public FilterType SelectedFilterType => _selectedFilterType;
+    public float SelectedFilterCutoff => _selectedFilterCutoff;
+    public float SelectedFilterResonance => _selectedFilterResonance;
+    public int SelectedFilterKeytrackPercent => _selectedFilterKeytrackPercent;
+    public float SelectedFilterDrive => _selectedFilterDrive;
+    public FilterDriveRoute SelectedFilterDriveRoute => _selectedFilterDriveRoute;
     public bool IsOscillatorLoggingEnabled => _isOscillatorLoggingEnabled;
 
     public float Volume
@@ -131,6 +147,132 @@ public sealed class WindowsAudioService : IAudioDriver
         {
             _selectedCentsOffset = centsOffset;
             ApplyOscillatorSettings();
+        }
+        finally
+        {
+            _semaphore.Release();
+        }
+    }
+
+    public void SelectFilterCutoff(float cutoff)
+    {
+        ThrowIfDisposed();
+
+        if (cutoff is < 0.0f or > 128.0f || _selectedFilterCutoff == cutoff)
+        {
+            return;
+        }
+
+        _semaphore.Wait();
+        try
+        {
+            _selectedFilterCutoff = cutoff;
+            ApplyFilterSettings();
+        }
+        finally
+        {
+            _semaphore.Release();
+        }
+    }
+
+    public void SelectFilterDrive(float drive)
+    {
+        ThrowIfDisposed();
+
+        if (drive is < 0.0f or > 128.0f || _selectedFilterDrive == drive)
+        {
+            return;
+        }
+
+        _semaphore.Wait();
+        try
+        {
+            _selectedFilterDrive = drive;
+            ApplyFilterSettings();
+        }
+        finally
+        {
+            _semaphore.Release();
+        }
+    }
+
+    public void SelectFilterDriveRoute(FilterDriveRoute driveRoute)
+    {
+        ThrowIfDisposed();
+
+        if (!AvailableFilterDriveRoutes.Contains(driveRoute) || _selectedFilterDriveRoute == driveRoute)
+        {
+            return;
+        }
+
+        _semaphore.Wait();
+        try
+        {
+            _selectedFilterDriveRoute = driveRoute;
+            ApplyFilterSettings();
+        }
+        finally
+        {
+            _semaphore.Release();
+        }
+    }
+
+    public void SelectFilterKeytrackPercent(int keytrackPercent)
+    {
+        ThrowIfDisposed();
+
+        if (keytrackPercent is < -200 or > 200 || _selectedFilterKeytrackPercent == keytrackPercent)
+        {
+            return;
+        }
+
+        _semaphore.Wait();
+        try
+        {
+            _selectedFilterKeytrackPercent = keytrackPercent;
+            ApplyFilterSettings();
+        }
+        finally
+        {
+            _semaphore.Release();
+        }
+    }
+
+    public void SelectFilterResonance(float resonance)
+    {
+        ThrowIfDisposed();
+
+        if (resonance is < 0.0f or > 128.0f || _selectedFilterResonance == resonance)
+        {
+            return;
+        }
+
+        _semaphore.Wait();
+        try
+        {
+            _selectedFilterResonance = resonance;
+            ApplyFilterSettings();
+        }
+        finally
+        {
+            _semaphore.Release();
+        }
+    }
+
+    public void SelectFilterType(FilterType filterType)
+    {
+        ThrowIfDisposed();
+
+        if (!AvailableFilterTypes.Contains(filterType) || _selectedFilterType == filterType)
+        {
+            return;
+        }
+
+        _semaphore.Wait();
+        try
+        {
+            _selectedFilterType = filterType;
+            ApplyFilterSettings();
         }
         finally
         {
@@ -594,11 +736,17 @@ public sealed class WindowsAudioService : IAudioDriver
         _audioOutputBackend.Volume = _volume;
         _audioOutputBackend.SelectDevice(SelectedAudioOutputDeviceId);
         ApplyOscillatorSettings();
+        ApplyFilterSettings();
     }
 
     private void ApplyOscillatorSettings()
     {
         _audioOutputBackend.UpdateOscillatorSettings(_selectedWaveform, _selectedSemiOffset, _selectedCentsOffset, _selectedBitRedux, _selectedKeytrackPercent, _isOscillatorLoggingEnabled);
+    }
+
+    private void ApplyFilterSettings()
+    {
+        _audioOutputBackend.UpdateFilterSettings(_selectedFilterType, _selectedFilterCutoff, _selectedFilterResonance, _selectedFilterKeytrackPercent, _selectedFilterDrive, _selectedFilterDriveRoute);
     }
 
     private static string? FindMatchingDeviceId(ImmutableArray<AudioDriverDeviceOption> devices, string? deviceId)

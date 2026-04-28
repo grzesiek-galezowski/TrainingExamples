@@ -11,6 +11,7 @@ public sealed class NullAudioDriverSpecification
         //bug TODO: Verify NoteOn and NoteOff remain no-op for unsupported platforms.
         //bug TODO: Verify selecting an unknown MIDI device leaves the current selection unchanged.
         //bug TODO: Verify selecting an unknown audio output device leaves the current selection unchanged.
+        //bug TODO: Verify out-of-range filter values leave the current filter selection unchanged.
 
         // GIVEN
         var sut = new NullAudioDriver();
@@ -142,5 +143,49 @@ public sealed class NullAudioDriverSpecification
         sut.SelectedBitRedux.Should().Be(8);
         sut.SelectedKeytrackPercent.Should().Be(200);
         sut.IsOscillatorLoggingEnabled.Should().BeTrue();
+    }
+
+    [Test]
+    public void ShouldExposeFilterDefaults()
+    {
+        // GIVEN
+        var sut = new NullAudioDriver();
+
+        // WHEN
+        var availableFilterTypes = sut.FilterTypes;
+        var availableDriveRoutes = sut.FilterDriveRoutes;
+
+        // THEN
+        availableFilterTypes.Should().Equal([FilterType.LpLdr12, FilterType.LpLdr14, FilterType.LpFat12, FilterType.LpFat14]);
+        availableDriveRoutes.Should().Equal([FilterDriveRoute.Pre, FilterDriveRoute.Post]);
+        sut.SelectedFilterType.Should().Be(FilterType.LpLdr12);
+        sut.SelectedFilterCutoff.Should().Be(128.0f);
+        sut.SelectedFilterResonance.Should().Be(0.0f);
+        sut.SelectedFilterKeytrackPercent.Should().Be(100);
+        sut.SelectedFilterDrive.Should().Be(0.0f);
+        sut.SelectedFilterDriveRoute.Should().Be(FilterDriveRoute.Pre);
+    }
+
+    [Test]
+    public void ShouldExposeFilterParameterSelection()
+    {
+        // GIVEN
+        var sut = new NullAudioDriver();
+
+        // WHEN
+        sut.SelectFilterType(FilterType.LpFat14);
+        sut.SelectFilterCutoff(64.5f);
+        sut.SelectFilterResonance(72.0f);
+        sut.SelectFilterKeytrackPercent(-200);
+        sut.SelectFilterDrive(80.0f);
+        sut.SelectFilterDriveRoute(FilterDriveRoute.Post);
+
+        // THEN
+        sut.SelectedFilterType.Should().Be(FilterType.LpFat14);
+        sut.SelectedFilterCutoff.Should().Be(64.5f);
+        sut.SelectedFilterResonance.Should().Be(72.0f);
+        sut.SelectedFilterKeytrackPercent.Should().Be(-200);
+        sut.SelectedFilterDrive.Should().Be(80.0f);
+        sut.SelectedFilterDriveRoute.Should().Be(FilterDriveRoute.Post);
     }
 }
