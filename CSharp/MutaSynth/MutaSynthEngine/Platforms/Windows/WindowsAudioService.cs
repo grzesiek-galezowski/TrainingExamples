@@ -16,7 +16,7 @@ public sealed class WindowsAudioService : IAudioDriver
     private static readonly ImmutableArray<int> AvailableBufferSizes = [64, 128, 256, 512, 1024];
     private static readonly ImmutableArray<NotePlaybackMode> AvailableNotePlaybackModes = [NotePlaybackMode.Monophonic, NotePlaybackMode.Polyphonic];
     private static readonly ImmutableArray<OscillatorWaveform> AvailableWaveforms = [OscillatorWaveform.Sine, OscillatorWaveform.Triangle, OscillatorWaveform.TriSaw, OscillatorWaveform.Saw, OscillatorWaveform.Square];
-    private static readonly ImmutableArray<FilterType> AvailableFilterTypes = [FilterType.LpLdr12, FilterType.LpLdr14, FilterType.LpFat12, FilterType.LpFat14];
+    private static readonly ImmutableArray<FilterType> AvailableFilterTypes = [FilterType.LpLdr12, FilterType.LpLdr14, FilterType.LpFat12, FilterType.LpFat14, FilterType.HpSqu24, FilterType.Formant];
     private static readonly ImmutableArray<FilterDriveRoute> AvailableFilterDriveRoutes = [FilterDriveRoute.Pre, FilterDriveRoute.Post];
     private static readonly ImmutableArray<int> AvailableBitReduxLevels = [0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 16];
     private const int TestNoteDurationMilliseconds = 750;
@@ -78,6 +78,8 @@ public sealed class WindowsAudioService : IAudioDriver
     public int SelectedFilterKeytrackPercent => _selectedFilterKeytrackPercent;
     public float SelectedFilterDrive => _selectedFilterDrive;
     public FilterDriveRoute SelectedFilterDriveRoute => _selectedFilterDriveRoute;
+    public int SelectedFormantVowOrder => _audioOutputBackend.SelectedFormantVowOrder;
+    public float SelectedFormantControl => _audioOutputBackend.SelectedFormantControl;
     public bool IsOscillatorLoggingEnabled => _isOscillatorLoggingEnabled;
 
     public float Volume
@@ -294,6 +296,46 @@ public sealed class WindowsAudioService : IAudioDriver
         {
             _selectedKeytrackPercent = keytrackPercent;
             ApplyOscillatorSettings();
+        }
+        finally
+        {
+            _semaphore.Release();
+        }
+    }
+
+    public void SelectFormantVowOrder(int order)
+    {
+        ThrowIfDisposed();
+
+        if (order is < 0 or > 7 || _audioOutputBackend.SelectedFormantVowOrder == order)
+        {
+            return;
+        }
+
+        _semaphore.Wait();
+        try
+        {
+            _audioOutputBackend.SelectedFormantVowOrder = order;
+        }
+        finally
+        {
+            _semaphore.Release();
+        }
+    }
+
+    public void SelectFormantControl(float control)
+    {
+        ThrowIfDisposed();
+
+        if (control is < 0.0f or > 128.0f || _audioOutputBackend.SelectedFormantControl == control)
+        {
+            return;
+        }
+
+        _semaphore.Wait();
+        try
+        {
+            _audioOutputBackend.SelectedFormantControl = control;
         }
         finally
         {
@@ -580,6 +622,13 @@ public sealed class WindowsAudioService : IAudioDriver
 
         AudioOutputDevices = _audioOutputBackend.GetDevices();
         SelectedMidiInputDeviceId = FindMatchingDeviceId(MidiInputDevices, SelectedMidiInputDeviceId);
+
+        // If no device is selected yet, default to the system default audio device
+        if (SelectedAudioOutputDeviceId == null)
+        {
+            SelectedAudioOutputDeviceId = _audioOutputBackend.GetDefaultDeviceId();
+        }
+
         SelectedAudioOutputDeviceId = FindMatchingDeviceId(AudioOutputDevices, SelectedAudioOutputDeviceId);
         _audioOutputBackend.SelectDevice(SelectedAudioOutputDeviceId);
     }

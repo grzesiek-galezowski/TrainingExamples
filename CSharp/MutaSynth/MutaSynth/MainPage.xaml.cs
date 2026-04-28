@@ -155,6 +155,7 @@ public partial class MainPage : ContentPage
         {
             _driver.SelectFilterType(filterType);
             StatusLabel.Text = $"Filter type: {FormatFilterType(filterType)}";
+            UpdateFormantVisibility();
         }
     }
 
@@ -271,6 +272,8 @@ public partial class MainPage : ContentPage
         FilterResonanceSlider.Value = _driver.SelectedFilterResonance;
         FilterKeytrackSlider.Value = _driver.SelectedFilterKeytrackPercent;
         FilterDriveSlider.Value = _driver.SelectedFilterDrive;
+        FormantVowOrderStepper.Value = _driver.SelectedFormantVowOrder;
+        FormantControlSlider.Value = _driver.SelectedFormantControl;
         OscillatorLoggingSwitch.IsToggled = _driver.IsOscillatorLoggingEnabled;
         SemiValueLabel.Text = $"{_driver.SelectedSemiOffset:+#;-#;0} semitones";
         CentsValueLabel.Text = $"{_driver.SelectedCentsOffset:+#;-#;0} cents";
@@ -279,6 +282,9 @@ public partial class MainPage : ContentPage
         FilterResonanceValueLabel.Text = _driver.SelectedFilterResonance.ToString("0.0");
         FilterKeytrackValueLabel.Text = $"{_driver.SelectedFilterKeytrackPercent:+#;-#;0}%";
         FilterDriveValueLabel.Text = _driver.SelectedFilterDrive.ToString("0.0");
+        FormantVowOrderValueLabel.Text = _driver.SelectedFormantVowOrder.ToString("0");
+        FormantControlValueLabel.Text = _driver.SelectedFormantControl.ToString("0.0");
+        UpdateFormantVisibility();
     }
 
     private void RefreshSelectedModule()
@@ -335,8 +341,35 @@ public partial class MainPage : ContentPage
             FilterType.LpLdr14 => "LP Ldr14",
             FilterType.LpFat12 => "LP Fat12",
             FilterType.LpFat14 => "LP Fat14",
+            FilterType.HpSqu24 => "TB Squ24",
+            FilterType.Formant => "Vow Formant",
             _ => filterType.ToString()
         };
+    }
+
+    private void UpdateFormantVisibility()
+    {
+        var isFormant = _driver.SelectedFilterType == FilterType.Formant;
+        FilterCutoffLabel.Text = isFormant ? "Vowel" : "Cutoff";
+
+        FormantVowOrderLabel.IsVisible = isFormant;
+        FormantVowOrderStepper.IsVisible = isFormant;
+        FormantVowOrderValueLabel.IsVisible = isFormant;
+        FormantControlLabel.IsVisible = isFormant;
+        FormantControlSlider.IsVisible = isFormant;
+        FormantControlValueLabel.IsVisible = isFormant;
+    }
+
+    private void OnFormantVowOrderChanged(object? sender, ValueChangedEventArgs e)
+    {
+        _driver.SelectFormantVowOrder((int)e.NewValue);
+        FormantVowOrderValueLabel.Text = e.NewValue.ToString("0");
+    }
+
+    private void OnFormantControlChanged(object? sender, ValueChangedEventArgs e)
+    {
+        _driver.SelectFormantControl((float)e.NewValue);
+        FormantControlValueLabel.Text = e.NewValue.ToString("0.0");
     }
 }
 

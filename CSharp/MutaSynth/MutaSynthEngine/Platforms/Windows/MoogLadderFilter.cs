@@ -21,6 +21,30 @@ internal sealed class MoogLadderFilter(int sampleRate)
     private double _z3;
     private double _z4;
 
+    // Formant SVF parallel filter states
+    private double _bp1ic1, _bp1ic2;
+    private double _bp2ic1, _bp2ic2;
+    private double _bp3ic1, _bp3ic2;
+
+    private static readonly double[,] Formants = new double[,] {
+        {730.0, 1090.0, 2440.0}, // A
+        {530.0, 1840.0, 2480.0}, // E
+        {270.0, 2290.0, 3010.0}, // I
+        {400.0,  840.0, 2800.0}, // O
+        {300.0,  870.0, 2240.0}  // U
+    };
+
+    private static readonly int[,] VowOrders = new int[,] {
+        {0, 1, 2, 3, 4},
+        {4, 3, 2, 1, 0},
+        {0, 2, 1, 4, 3},
+        {3, 4, 1, 2, 0},
+        {1, 0, 3, 2, 4},
+        {2, 1, 0, 4, 3},
+        {4, 2, 3, 1, 0},
+        {0, 3, 4, 1, 2}
+    };
+
     private double _smoothedCutoffHz = -1.0;
     private double _smoothedResonance = -1.0;
     private const double SmoothFactor = 0.002;
@@ -35,6 +59,9 @@ internal sealed class MoogLadderFilter(int sampleRate)
         _z2 = 0.0;
         _z3 = 0.0;
         _z4 = 0.0;
+        _bp1ic1 = _bp1ic2 = 0.0;
+        _bp2ic1 = _bp2ic2 = 0.0;
+        _bp3ic1 = _bp3ic2 = 0.0;
         _smoothedCutoffHz = -1.0;
         _smoothedResonance = -1.0;
     }
@@ -119,9 +146,79 @@ internal sealed class MoogLadderFilter(int sampleRate)
         var lp4 = vn4 + _z4;
         _z4 = vn4 + lp4;
 
+        if (type == FilterType.HpSqu24)
+        {
+            // Squelchy TB-303-styled filter logic.
+            // A 303 isn't really a 4-pole highpass, but adding its diode-clipped behavior 
+            // over a heavily saturated 24dB Moog block with resonant phase shifting
+            // gives that classic acidic squelchy 18-24dB "TB-like" lowpass peaking sound.
+            return Math.Tanh(lp4 * 2.5) * 0.7; // Harder drive out mapping for acid squelch
+        }
+
         // --- output tap ---
         // LpLdr12 / LpFat12  → LP2 = 12 dB/oct roll-off
         // LpLdr14 / LpFat14  → LP4 = 24 dB/oct roll-off
         return (type is FilterType.LpLdr12 or FilterType.LpFat12 ? lp2 : lp4) * 0.8;
+    }
+
+    public double ProcessFormant(double input, double cutoffUi, double resonance, int vowOrder, float formantControl)
+    {
+        // Simple 3-pole parallel vowel filtering using SVF bandpasses
+        // Cutoff UI ranges [0, 128] determining position inside the chosen Vow Order sequence
+        double pos = Math.Clamp(cutoffUi / 128.0, 0.0, 0.9999) * 4.0;
+        int index = (int)pos;
+        double frac = pos - index;
+
+        int vow1 = VowOrders[vowOrder, index];
+        int vow2 = VowOrders[vowOrder, index + 1];
+
+        // Interpolate formants across the Vowel morph sequence
+        double f1 = Formants[vow1, 0] * (1.0 - frac) + Formants[vow2, 0] * frac;
+        double f2 = Formants[vow1, 1] * (1.0 - frac) + Formants[vow2, 1] * frac;
+        double f3 = Formants[vow1, 2] * (1.0 - frac) + Formants[vow2, 2] * frac;
+
+        // Control - how the lips are open horizontally (width of lips) -> spreads/shifts F2 and F3
+        double widthFactor = 0.5 + (formantControl / 128.0); // scales 0.5x to 1.5x
+        f2 *= widthFactor;
+        f3 *= widthFactor;
+
+        // Resonance - the size/scale of the lips. Bigger lips = lower base frequencies up to 0.8 scale. 
+        double scale = 1.2 - (resonance / 128.0) * 0.4;
+        f1 *= scale;
+        f2 *= scale;
+        f3 *= scale;
+
+        // Resonance adds to internal Q of each parallel formant
+        double q = 4.0 + (resonance / 128.0) * 16.0;
+        double maxF = sampleRate * 0.49;
+
+        f1 = Math.Clamp(f1, 20.0, maxF);
+        f2 = Math.Clamp(f2, 20.0, maxF);
+        f3 = Math.Clamp(f3, 20.0, maxF);
+
+        double bp1 = RunSvf(input, f1, q, ref _bp1ic1, ref _bp1ic2);
+        double bp2 = RunSvf(input, f2, q, ref _bp2ic1, ref _bp2ic2);
+        double bp3 = RunSvf(input, f3, q, ref _bp3ic1, ref _bp3ic2);
+
+        // Mix the bandpass filters in parallel to recreate vocal formants, adding slight soft saturation
+        return Math.Tanh((bp1 + bp2 * 0.7 + bp3 * 0.4) * 2.0) * 0.7;
+    }
+
+    private double RunSvf(double input, double fc, double q, ref double ic1, ref double ic2)
+    {
+        double g = Math.Tan(Math.PI * fc / sampleRate);
+        double k = 1.0 / q;
+        double a1 = 1.0 / (1.0 + g * (g + k));
+        double a2 = g * a1;
+        double a3 = g * a2;
+
+        double v3 = input - ic2;
+        double v1 = a1 * ic1 + a2 * v3;        // Bandpass tap
+        double v2 = ic2 + a2 * ic1 + a3 * v3;  // Lowpass tap
+
+        ic1 = 2.0 * v1 - ic1;
+        ic2 = 2.0 * v2 - ic2;
+
+        return v1; 
     }
 }

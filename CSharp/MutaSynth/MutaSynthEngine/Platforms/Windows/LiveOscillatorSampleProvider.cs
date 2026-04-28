@@ -45,6 +45,9 @@ public sealed class LiveOscillatorSampleProvider : ISampleProvider
         _ladderFilter = new MoogLadderFilter(sampleRate);
     }
 
+    public int FormantVowOrder { get; set; } = 0;
+    public float FormantControl { get; set; } = 64.0f;
+
     public WaveFormat WaveFormat => _waveFormat;
 
     public float Volume
@@ -265,6 +268,21 @@ public sealed class LiveOscillatorSampleProvider : ISampleProvider
 
     private float ApplyFilter(float sample, bool hasNoActiveVoices)
     {
+        var cutoffHz = ResolveFilterCutoffFrequency();
+
+        if (_filterType == FilterType.Formant)
+        {
+            // For the Formant filter, Cutoff serves directly as the Vowel morph interpolation (0-128)
+            var filteredOutput = _ladderFilter!.ProcessFormant(sample, _filterCutoff, _filterResonance, FormantVowOrder, FormantControl);
+
+            if (hasNoActiveVoices && MathF.Abs((float)filteredOutput) < 0.000001f)
+            {
+                ResetFilterState();
+            }
+
+            return (float)filteredOutput;
+        }
+
         if (_filterCutoff >= 128.0f && _filterResonance <= 0.0f && _filterDrive <= 0.0f)
         {
             if (hasNoActiveVoices)
@@ -279,17 +297,16 @@ public sealed class LiveOscillatorSampleProvider : ISampleProvider
             ? ApplyDrive(sample)
             : sample;
 
-        var cutoffHz = ResolveFilterCutoffFrequency();
-        var filteredOutput = _ladderFilter!.Process(drivenInput, cutoffHz, _filterResonance, _filterType);
+        var normalFilteredOutput = _ladderFilter!.Process(drivenInput, cutoffHz, _filterResonance, _filterType);
 
-        if (hasNoActiveVoices && MathF.Abs((float)filteredOutput) < 0.000001f)
+        if (hasNoActiveVoices && MathF.Abs((float)normalFilteredOutput) < 0.000001f)
         {
             ResetFilterState();
         }
 
         return _filterDriveRoute == FilterDriveRoute.Post
-            ? ApplyDrive((float)filteredOutput)
-            : (float)filteredOutput;
+            ? ApplyDrive((float)normalFilteredOutput)
+            : (float)normalFilteredOutput;
     }
 
     private static float CreateTriSawSample(float phase)

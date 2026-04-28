@@ -25,6 +25,8 @@ public sealed class NAudioWindowsAudioOutputBackend : IDisposable
     private int _filterKeytrackPercent = 100;
     private float _filterDrive;
     private FilterDriveRoute _filterDriveRoute = FilterDriveRoute.Pre;
+    private int _formantVowOrder = 0;
+    private float _formantControl = 64.0f;
     private bool _isOscillatorLoggingEnabled;
 
     public NAudioWindowsAudioOutputBackend(int sampleRate, int bufferSize, float volume)
@@ -50,6 +52,32 @@ public sealed class NAudioWindowsAudioOutputBackend : IDisposable
         }
     }
 
+    public int SelectedFormantVowOrder
+    {
+        get => _formantVowOrder;
+        set
+        {
+            _formantVowOrder = value;
+            if (_sampleProvider is not null)
+            {
+                _sampleProvider.FormantVowOrder = value;
+            }
+        }
+    }
+
+    public float SelectedFormantControl
+    {
+        get => _formantControl;
+        set
+        {
+            _formantControl = value;
+            if (_sampleProvider is not null)
+            {
+                _sampleProvider.FormantControl = value;
+            }
+        }
+    }
+
     public ImmutableArray<AudioDriverDeviceOption> GetDevices()
     {
         using var enumerator = new MMDeviceEnumerator();
@@ -58,6 +86,20 @@ public sealed class NAudioWindowsAudioOutputBackend : IDisposable
         return collection
             .Select(device => new AudioDriverDeviceOption(device.ID, device.FriendlyName))
             .ToImmutableArray();
+    }
+
+    public string? GetDefaultDeviceId()
+    {
+        try
+        {
+            using var enumerator = new MMDeviceEnumerator();
+            var defaultDevice = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
+            return defaultDevice.ID;
+        }
+        catch
+        {
+            return null;
+        }
     }
 
     public void SelectDevice(string? deviceId)
@@ -120,6 +162,8 @@ public sealed class NAudioWindowsAudioOutputBackend : IDisposable
         _sampleProvider = new LiveOscillatorSampleProvider(_sampleRate, ChannelCount, _volume);
         _sampleProvider.SetOscillatorParameters(_waveform, _semiOffset, _centsOffset, _bitRedux, _keytrackPercent, _isOscillatorLoggingEnabled);
         _sampleProvider.SetFilterParameters(_filterType, _filterCutoff, _filterResonance, _filterKeytrackPercent, _filterDrive, _filterDriveRoute);
+        _sampleProvider.FormantVowOrder = _formantVowOrder;
+        _sampleProvider.FormantControl = _formantControl;
         _output = new WasapiOut(defaultDevice, AudioClientShareMode.Shared, false, _bufferSize);
         _output.Init(_sampleProvider);
         _output.Play();

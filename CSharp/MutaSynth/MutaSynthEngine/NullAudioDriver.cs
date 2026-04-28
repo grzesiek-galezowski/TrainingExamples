@@ -11,7 +11,7 @@ public sealed class NullAudioDriver : IAudioDriver
     public ImmutableArray<AudioDriverDeviceOption> AudioOutputDevices { get; } = [];
     public ImmutableArray<NotePlaybackMode> NotePlaybackModes { get; } = [NotePlaybackMode.Monophonic, NotePlaybackMode.Polyphonic];
     public ImmutableArray<OscillatorWaveform> Waveforms { get; } = [OscillatorWaveform.Sine, OscillatorWaveform.Triangle, OscillatorWaveform.TriSaw, OscillatorWaveform.Saw, OscillatorWaveform.Square];
-    public ImmutableArray<FilterType> FilterTypes { get; } = [FilterType.LpLdr12, FilterType.LpLdr14, FilterType.LpFat12, FilterType.LpFat14];
+    public ImmutableArray<FilterType> FilterTypes { get; } = [FilterType.LpLdr12, FilterType.LpLdr14, FilterType.LpFat12, FilterType.LpFat14, FilterType.HpSqu24];
     public ImmutableArray<FilterDriveRoute> FilterDriveRoutes { get; } = [FilterDriveRoute.Pre, FilterDriveRoute.Post];
     public ImmutableArray<int> MidiChannels { get; } = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
     public ImmutableArray<int> SampleRates { get; } = [22_050, 44_100, 48_000, 96_000];
@@ -19,7 +19,7 @@ public sealed class NullAudioDriver : IAudioDriver
     public ImmutableArray<int> BitReduxLevels { get; } = [0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 16];
     public string? SelectedMidiInputDeviceId { get; private set; }
     public string? SelectedAudioOutputDeviceId { get; private set; }
-    public NotePlaybackMode SelectedNotePlaybackMode { get; private set; } = NotePlaybackMode.Monophonic;
+    public NotePlaybackMode SelectedNotePlaybackMode { get; private set; } = NotePlaybackMode.Polyphonic;
     public OscillatorWaveform SelectedWaveform { get; private set; } = OscillatorWaveform.Saw;
     public int SelectedMidiChannel { get; private set; } = 1;
     public int SelectedSampleRate { get; private set; } = 48_000;
@@ -34,6 +34,8 @@ public sealed class NullAudioDriver : IAudioDriver
     public int SelectedFilterKeytrackPercent { get; private set; } = 100;
     public float SelectedFilterDrive { get; private set; }
     public FilterDriveRoute SelectedFilterDriveRoute { get; private set; } = FilterDriveRoute.Pre;
+    public int SelectedFormantVowOrder { get; private set; } = 0;
+    public float SelectedFormantControl { get; private set; } = 64.0f;
     public bool IsOscillatorLoggingEnabled { get; private set; }
     public float Volume { get; set; } = 0.5f;
     public Task InitializeAsync() => Task.CompletedTask;
@@ -99,6 +101,22 @@ public sealed class NullAudioDriver : IAudioDriver
         if (FilterTypes.Contains(filterType))
         {
             SelectedFilterType = filterType;
+        }
+    }
+
+    public void SelectFormantVowOrder(int order)
+    {
+        if (order is >= 0 and <= 7)
+        {
+            SelectedFormantVowOrder = order;
+        }
+    }
+
+    public void SelectFormantControl(float control)
+    {
+        if (control is >= 0.0f and <= 128.0f)
+        {
+            SelectedFormantControl = control;
         }
     }
 

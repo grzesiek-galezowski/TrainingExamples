@@ -31,6 +31,8 @@ public interface IAudioDriver : IDisposable
     int SelectedFilterKeytrackPercent { get; }
     float SelectedFilterDrive { get; }
     FilterDriveRoute SelectedFilterDriveRoute { get; }
+    int SelectedFormantVowOrder { get; }
+    float SelectedFormantControl { get; }
     bool IsOscillatorLoggingEnabled { get; }
     float Volume { get; set; }
     Task InitializeAsync();
@@ -43,6 +45,8 @@ public interface IAudioDriver : IDisposable
     void SelectFilterKeytrackPercent(int keytrackPercent);
     void SelectFilterResonance(float resonance);
     void SelectFilterType(FilterType filterType);
+    void SelectFormantVowOrder(int order);
+    void SelectFormantControl(float control);
     void SelectKeytrackPercent(int keytrackPercent);
     void SelectNotePlaybackMode(NotePlaybackMode notePlaybackMode);
     void SelectBufferSize(int bufferSize);

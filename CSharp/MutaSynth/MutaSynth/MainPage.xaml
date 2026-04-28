@@ -164,161 +164,96 @@
                                TextColor="{AppThemeBinding Light=#404040, Dark=#ACACAC}" />
                     </VerticalStackLayout>
 
-                    <VerticalStackLayout x:Name="KeyboardSettingsPanel"
-                                         Spacing="12">
-                        <Label Text="MIDI input" />
-                        <Picker x:Name="MidiInputPicker"
-                                Title="Select MIDI input"
-                                ItemDisplayBinding="{Binding Name}"
-                                SelectedIndexChanged="OnMidiInputChanged" />
+                    <Grid x:Name="KeyboardSettingsPanel" ColumnDefinitions="Auto,*" RowDefinitions="Auto, Auto, Auto" RowSpacing="12" ColumnSpacing="12">
+                        <Label Text="MIDI input" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" />
+                        <Picker x:Name="MidiInputPicker" ItemDisplayBinding="{Binding Name}" SelectedIndexChanged="OnMidiInputChanged" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" />
 
-                        <Label Text="MIDI channel" />
-                        <Picker x:Name="MidiChannelPicker"
-                                Title="Select MIDI channel"
-                                SelectedIndexChanged="OnMidiChannelChanged" />
+                        <Label Text="MIDI channel" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" />
+                        <Picker x:Name="MidiChannelPicker" SelectedIndexChanged="OnMidiChannelChanged" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" />
 
-                        <Button Text="Test MIDI"
-                                HorizontalOptions="Start"
-                                Clicked="OnTestMidiClicked" />
-                    </VerticalStackLayout>
+                        <Button Text="Test MIDI" HorizontalOptions="Start" Clicked="OnTestMidiClicked" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" />
+                    </Grid>
 
-                    <VerticalStackLayout x:Name="OscillatorSettingsPanel"
-                                         Spacing="12"
-                                         IsVisible="False">
-                        <Label Text="Playback mode" />
-                        <Picker x:Name="NotePlaybackModePicker"
-                                Title="Select playback mode"
-                                SelectedIndexChanged="OnNotePlaybackModeChanged" />
+                    <Grid x:Name="OscillatorSettingsPanel" IsVisible="False" ColumnDefinitions="Auto, *, Auto, Auto, 45" RowDefinitions="Auto, Auto, Auto, Auto" RowSpacing="12" ColumnSpacing="16">
+                        <!-- Row 0 -->
+                        <Label Text="Playback" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" />
+                        <Picker x:Name="NotePlaybackModePicker" SelectedIndexChanged="OnNotePlaybackModeChanged" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" />
 
-                        <Label Text="Semi" />
-                        <Stepper x:Name="SemiStepper"
-                                 Minimum="-36"
-                                 Maximum="36"
-                                 Increment="1"
-                                 ValueChanged="OnSemiChanged" />
-                        <Label x:Name="SemiValueLabel"
-                               Text="0 semitones" />
+                        <Label Text="Semi" VerticalOptions="Center" Grid.Row="0" Grid.Column="2" />
+                        <Stepper x:Name="SemiStepper" Minimum="-36" Maximum="36" Increment="1" ValueChanged="OnSemiChanged" VerticalOptions="Center" Grid.Row="0" Grid.Column="3" />
+                        <Label x:Name="SemiValueLabel" Text="0 st" VerticalOptions="Center" Grid.Row="0" Grid.Column="4" />
 
-                        <Label Text="Wave" />
-                        <Picker x:Name="WaveformPicker"
-                                Title="Select waveform"
-                                SelectedIndexChanged="OnWaveformChanged" />
+                        <!-- Row 1 -->
+                        <Label Text="Wave" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" />
+                        <Picker x:Name="WaveformPicker" SelectedIndexChanged="OnWaveformChanged" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" />
 
-                        <Label Text="Cents" />
-                        <Stepper x:Name="CentsStepper"
-                                 Minimum="-50"
-                                 Maximum="50"
-                                 Increment="1"
-                                 ValueChanged="OnCentsChanged" />
-                        <Label x:Name="CentsValueLabel"
-                               Text="0 cents" />
+                        <Label Text="Cents" VerticalOptions="Center" Grid.Row="1" Grid.Column="2" />
+                        <Stepper x:Name="CentsStepper" Minimum="-50" Maximum="50" Increment="1" ValueChanged="OnCentsChanged" VerticalOptions="Center" Grid.Row="1" Grid.Column="3" />
+                        <Label x:Name="CentsValueLabel" Text="0 ct" VerticalOptions="Center" Grid.Row="1" Grid.Column="4" />
 
-                        <Label Text="BitRedux" />
-                        <Picker x:Name="BitReduxPicker"
-                                Title="Select bit reduction"
-                                SelectedIndexChanged="OnBitReduxChanged" />
+                        <!-- Row 2 -->
+                        <Label Text="BitRedux" VerticalOptions="Center" Grid.Row="2" Grid.Column="0" />
+                        <Picker x:Name="BitReduxPicker" SelectedIndexChanged="OnBitReduxChanged" VerticalOptions="Center" Grid.Row="2" Grid.Column="1" />
 
-                        <Label Text="Keytrack" />
-                        <Slider x:Name="KeytrackSlider"
-                                Minimum="0"
-                                Maximum="200"
-                                Value="100"
-                                ValueChanged="OnKeytrackChanged" />
-                        <Label x:Name="KeytrackValueLabel"
-                               Text="100%" />
+                        <Label Text="Keytrack" VerticalOptions="Center" Grid.Row="2" Grid.Column="2" />
+                        <Slider x:Name="KeytrackSlider" Minimum="0" Maximum="200" Value="100" ValueChanged="OnKeytrackChanged" VerticalOptions="Center" Grid.Row="2" Grid.Column="3" />
+                        <Label x:Name="KeytrackValueLabel" Text="100%" VerticalOptions="Center" Grid.Row="2" Grid.Column="4" />
 
-                        <HorizontalStackLayout Spacing="12">
-                            <Label Text="Oscillator logging"
-                                   VerticalOptions="Center" />
-                            <Switch x:Name="OscillatorLoggingSwitch"
-                                    Toggled="OnOscillatorLoggingToggled" />
-                        </HorizontalStackLayout>
-                    </VerticalStackLayout>
+                        <!-- Row 3 -->
+                        <Label Text="Logging" VerticalOptions="Center" Grid.Row="3" Grid.Column="0" />
+                        <Switch x:Name="OscillatorLoggingSwitch" Toggled="OnOscillatorLoggingToggled" VerticalOptions="Center" HorizontalOptions="Start" Grid.Row="3" Grid.Column="1" />
+                    </Grid>
 
-                    <VerticalStackLayout x:Name="AmplifierSettingsPanel"
-                                         Spacing="12"
-                                         IsVisible="False">
-                        <Label Text="Volume" />
-                        <Slider x:Name="VolumeSlider"
-                                Minimum="0"
-                                Maximum="1"
-                                Value="0.5"
-                                ValueChanged="OnVolumeChanged" />
-                    </VerticalStackLayout>
+                    <Grid x:Name="AmplifierSettingsPanel" IsVisible="False" ColumnDefinitions="Auto, *" RowDefinitions="Auto" RowSpacing="12" ColumnSpacing="12">
+                        <Label Text="Volume" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" />
+                        <Slider x:Name="VolumeSlider" Minimum="0" Maximum="1" Value="0.5" ValueChanged="OnVolumeChanged" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" />
+                    </Grid>
 
-                    <VerticalStackLayout x:Name="FilterSettingsPanel"
-                                         Spacing="12"
-                                         IsVisible="False">
-                        <Label Text="Type" />
-                        <Picker x:Name="FilterTypePicker"
-                                Title="Select filter type"
-                                SelectedIndexChanged="OnFilterTypeChanged" />
+                    <Grid x:Name="FilterSettingsPanel" IsVisible="False" ColumnDefinitions="Auto, *, 45" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" RowSpacing="12" ColumnSpacing="12">
+                        <Label Text="Type" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" />
+                        <Picker x:Name="FilterTypePicker" SelectedIndexChanged="OnFilterTypeChanged" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" />
 
-                        <Label Text="Cutoff" />
-                        <Slider x:Name="FilterCutoffSlider"
-                                Minimum="0"
-                                Maximum="128"
-                                Value="128"
-                                ValueChanged="OnFilterCutoffChanged" />
-                        <Label x:Name="FilterCutoffValueLabel"
-                               Text="128.0" />
+                        <Label x:Name="FilterCutoffLabel" Text="Cutoff" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" />
+                        <Slider x:Name="FilterCutoffSlider" Minimum="0" Maximum="128" Value="128" ValueChanged="OnFilterCutoffChanged" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" />
+                        <Label x:Name="FilterCutoffValueLabel" Text="128.0" VerticalOptions="Center" Grid.Row="1" Grid.Column="2" />
 
-                        <Label Text="Resonance" />
-                        <Slider x:Name="FilterResonanceSlider"
-                                Minimum="0"
-                                Maximum="128"
-                                Value="0"
-                                ValueChanged="OnFilterResonanceChanged" />
-                        <Label x:Name="FilterResonanceValueLabel"
-                               Text="0.0" />
+                        <Label Text="Resonance" VerticalOptions="Center" Grid.Row="2" Grid.Column="0" />
+                        <Slider x:Name="FilterResonanceSlider" Minimum="0" Maximum="128" Value="0" ValueChanged="OnFilterResonanceChanged" VerticalOptions="Center" Grid.Row="2" Grid.Column="1" />
+                        <Label x:Name="FilterResonanceValueLabel" Text="0.0" VerticalOptions="Center" Grid.Row="2" Grid.Column="2" />
 
-                        <Label Text="Keytrack" />
-                        <Slider x:Name="FilterKeytrackSlider"
-                                Minimum="-200"
-                                Maximum="200"
-                                Value="100"
-                                ValueChanged="OnFilterKeytrackChanged" />
-                        <Label x:Name="FilterKeytrackValueLabel"
-                               Text="100%" />
+                        <Label Text="Keytrack" VerticalOptions="Center" Grid.Row="3" Grid.Column="0" />
+                        <Slider x:Name="FilterKeytrackSlider" Minimum="-200" Maximum="200" Value="100" ValueChanged="OnFilterKeytrackChanged" VerticalOptions="Center" Grid.Row="3" Grid.Column="1" />
+                        <Label x:Name="FilterKeytrackValueLabel" Text="100%" VerticalOptions="Center" Grid.Row="3" Grid.Column="2" />
 
-                        <Label Text="Drive" />
-                        <Slider x:Name="FilterDriveSlider"
-                                Minimum="0"
-                                Maximum="128"
-                                Value="0"
-                                ValueChanged="OnFilterDriveChanged" />
-                        <Label x:Name="FilterDriveValueLabel"
-                               Text="0.0" />
+                        <Label Text="Drive" VerticalOptions="Center" Grid.Row="4" Grid.Column="0" />
+                        <Slider x:Name="FilterDriveSlider" Minimum="0" Maximum="128" Value="0" ValueChanged="OnFilterDriveChanged" VerticalOptions="Center" Grid.Row="4" Grid.Column="1" />
+                        <Label x:Name="FilterDriveValueLabel" Text="0.0" VerticalOptions="Center" Grid.Row="4" Grid.Column="2" />
 
-                        <Label Text="Drive route" />
-                        <Picker x:Name="FilterDriveRoutePicker"
-                                Title="Select drive route"
-                                SelectedIndexChanged="OnFilterDriveRouteChanged" />
-                    </VerticalStackLayout>
+                        <Label Text="Drive route" VerticalOptions="Center" Grid.Row="5" Grid.Column="0" />
+                        <Picker x:Name="FilterDriveRoutePicker" SelectedIndexChanged="OnFilterDriveRouteChanged" VerticalOptions="Center" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" />
 
-                    <VerticalStackLayout x:Name="OutputSettingsPanel"
-                                         Spacing="12"
-                                         IsVisible="False">
-                        <Label Text="Audio output" />
-                        <Picker x:Name="AudioOutputPicker"
-                                Title="Select audio output"
-                                ItemDisplayBinding="{Binding Name}"
-                                SelectedIndexChanged="OnAudioOutputChanged" />
+                        <!-- Formant additions: shown/hidden dynamically via code behind -->
+                        <Label x:Name="FormantVowOrderLabel" Text="Vow Order" VerticalOptions="Center" Grid.Row="6" Grid.Column="0" IsVisible="False" />
+                        <Stepper x:Name="FormantVowOrderStepper" Minimum="0" Maximum="7" Increment="1" ValueChanged="OnFormantVowOrderChanged" VerticalOptions="Center" Grid.Row="6" Grid.Column="1" IsVisible="False" />
+                        <Label x:Name="FormantVowOrderValueLabel" Text="0" VerticalOptions="Center" Grid.Row="6" Grid.Column="2" IsVisible="False" />
 
-                        <Label Text="Sample rate" />
-                        <Picker x:Name="SampleRatePicker"
-                                Title="Select sample rate"
-                                SelectedIndexChanged="OnSampleRateChanged" />
+                        <Label x:Name="FormantControlLabel" Text="Control" VerticalOptions="Center" Grid.Row="7" Grid.Column="0" IsVisible="False" />
+                        <Slider x:Name="FormantControlSlider" Minimum="0" Maximum="128" Value="64" ValueChanged="OnFormantControlChanged" VerticalOptions="Center" Grid.Row="7" Grid.Column="1" IsVisible="False" />
+                        <Label x:Name="FormantControlValueLabel" Text="64.0" VerticalOptions="Center" Grid.Row="7" Grid.Column="2" IsVisible="False" />
+                    </Grid>
 
-                        <Label Text="Buffer size" />
-                        <Picker x:Name="BufferSizePicker"
-                                Title="Select buffer size"
-                                SelectedIndexChanged="OnBufferSizeChanged" />
+                    <Grid x:Name="OutputSettingsPanel" IsVisible="False" ColumnDefinitions="Auto, *" RowDefinitions="Auto, Auto, Auto, Auto" RowSpacing="12" ColumnSpacing="12">
+                        <Label Text="Audio output" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" />
+                        <Picker x:Name="AudioOutputPicker" ItemDisplayBinding="{Binding Name}" SelectedIndexChanged="OnAudioOutputChanged" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" />
 
-                        <Button Text="Test audio"
-                                HorizontalOptions="Start"
-                                Clicked="OnTestAudioClicked" />
-                    </VerticalStackLayout>
+                        <Label Text="Sample rate" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" />
+                        <Picker x:Name="SampleRatePicker" SelectedIndexChanged="OnSampleRateChanged" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" />
+
+                        <Label Text="Buffer size" VerticalOptions="Center" Grid.Row="2" Grid.Column="0" />
+                        <Picker x:Name="BufferSizePicker" SelectedIndexChanged="OnBufferSizeChanged" VerticalOptions="Center" Grid.Row="2" Grid.Column="1" />
+
+                        <Button Text="Test audio" HorizontalOptions="Start" Clicked="OnTestAudioClicked" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" />
+                    </Grid>
                 </VerticalStackLayout>
             </Border>
 
