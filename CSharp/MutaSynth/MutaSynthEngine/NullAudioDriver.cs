@@ -28,6 +28,19 @@ public sealed class NullAudioDriver : IAudioDriver
     public int SelectedCentsOffset { get; private set; }
     public int SelectedBitRedux { get; private set; }
     public int SelectedKeytrackPercent { get; private set; } = 100;
+    public int SelectedOsc2SemiOffset { get; private set; } = 0;
+    public int SelectedOsc2CentsOffset { get; private set; } = 0;
+    public OscillatorWaveform SelectedOsc2Waveform { get; private set; } = OscillatorWaveform.Saw;
+    public int SelectedOsc2BitRedux { get; private set; } = 0;
+    public int SelectedOsc2KeytrackPercent { get; private set; } = 100;
+    public int SelectedOsc3SemiOffset { get; private set; } = -12;
+    public int SelectedOsc3CentsOffset { get; private set; } = 0;
+    public OscillatorWaveform SelectedOsc3Waveform { get; private set; } = OscillatorWaveform.Saw;
+    public int SelectedOsc3BitRedux { get; private set; } = 0;
+    public int SelectedOsc3KeytrackPercent { get; private set; } = 100;
+    public float SelectedOsc1Volume { get; private set; } = 128.0f;
+    public float SelectedOsc2Volume { get; private set; } = 0.0f;
+    public float SelectedOsc3Volume { get; private set; } = 0.0f;
     public FilterType SelectedFilterType { get; private set; } = FilterType.LpLdr12;
     public float SelectedFilterCutoff { get; private set; } = 128.0f;
     public float SelectedFilterResonance { get; private set; }
@@ -148,6 +161,110 @@ public sealed class NullAudioDriver : IAudioDriver
         if (Waveforms.Contains(waveform))
         {
             SelectedWaveform = waveform;
+        }
+    }
+
+    public void SelectOsc2SemiOffset(int semiOffset)
+    {
+        if (semiOffset is >= -36 and <= 36)
+        {
+            SelectedOsc2SemiOffset = semiOffset;
+        }
+    }
+
+    public void SelectOsc2CentsOffset(int centsOffset)
+    {
+        if (centsOffset is >= -50 and <= 50)
+        {
+            SelectedOsc2CentsOffset = centsOffset;
+        }
+    }
+
+    public void SelectOsc2Waveform(OscillatorWaveform waveform)
+    {
+        if (Waveforms.Contains(waveform))
+        {
+            SelectedOsc2Waveform = waveform;
+        }
+    }
+
+    public void SelectOsc2BitRedux(int bitRedux)
+    {
+        if (BitReduxLevels.Contains(bitRedux))
+        {
+            SelectedOsc2BitRedux = bitRedux;
+        }
+    }
+
+    public void SelectOsc2KeytrackPercent(int keytrackPercent)
+    {
+        if (keytrackPercent is >= 0 and <= 200)
+        {
+            SelectedOsc2KeytrackPercent = keytrackPercent;
+        }
+    }
+
+    public void SelectOsc3SemiOffset(int semiOffset)
+    {
+        if (semiOffset is >= -36 and <= 36)
+        {
+            SelectedOsc3SemiOffset = semiOffset;
+        }
+    }
+
+    public void SelectOsc3CentsOffset(int centsOffset)
+    {
+        if (centsOffset is >= -50 and <= 50)
+        {
+            SelectedOsc3CentsOffset = centsOffset;
+        }
+    }
+
+    public void SelectOsc3Waveform(OscillatorWaveform waveform)
+    {
+        if (Waveforms.Contains(waveform))
+        {
+            SelectedOsc3Waveform = waveform;
+        }
+    }
+
+    public void SelectOsc3BitRedux(int bitRedux)
+    {
+        if (BitReduxLevels.Contains(bitRedux))
+        {
+            SelectedOsc3BitRedux = bitRedux;
+        }
+    }
+
+    public void SelectOsc3KeytrackPercent(int keytrackPercent)
+    {
+        if (keytrackPercent is >= 0 and <= 200)
+        {
+            SelectedOsc3KeytrackPercent = keytrackPercent;
+        }
+    }
+
+    public void SelectOsc1Volume(float volume)
+    {
+        if (volume is >= 0.0f and <= 128.0f)
+        {
+            SelectedOsc1Volume = volume;
+        }
+    }
+
+    public void SelectOsc2Volume(float volume)
+    {
+        if (volume is >= 0.0f and <= 128.0f)
+        {
+            SelectedOsc2Volume = volume;
+        }
+    }
+
+    public void SelectOsc3Volume(float volume)
+    {
+        if (volume is >= 0.0f and <= 128.0f)
+        {
+            SelectedOsc3Volume = volume;
         }
     }
 

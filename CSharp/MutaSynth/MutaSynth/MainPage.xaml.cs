@@ -7,7 +7,11 @@ public partial class MainPage : ContentPage
     private enum SynthModule
     {
         Keyboard,
-        Oscillator,
+        Voice,
+        Osc1,
+        Osc2,
+        Osc3,
+        Mixer,
         Filter,
         Amplifier,
         Output
@@ -45,9 +49,33 @@ public partial class MainPage : ContentPage
         RefreshSelectedModule();
     }
 
-    private void OnOscillatorModuleTapped(object? sender, TappedEventArgs e)
+    private void OnVoiceModuleTapped(object? sender, TappedEventArgs e)
     {
-        _selectedModule = SynthModule.Oscillator;
+        _selectedModule = SynthModule.Voice;
+        RefreshSelectedModule();
+    }
+
+    private void OnOsc1ModuleTapped(object? sender, TappedEventArgs e)
+    {
+        _selectedModule = SynthModule.Osc1;
+        RefreshSelectedModule();
+    }
+
+    private void OnOsc2ModuleTapped(object? sender, TappedEventArgs e)
+    {
+        _selectedModule = SynthModule.Osc2;
+        RefreshSelectedModule();
+    }
+
+    private void OnOsc3ModuleTapped(object? sender, TappedEventArgs e)
+    {
+        _selectedModule = SynthModule.Osc3;
+        RefreshSelectedModule();
+    }
+
+    private void OnMixerModuleTapped(object? sender, TappedEventArgs e)
+    {
+        _selectedModule = SynthModule.Mixer;
         RefreshSelectedModule();
     }
 
@@ -124,6 +152,114 @@ public partial class MainPage : ContentPage
         _driver.SelectCentsOffset(centsOffset);
         CentsValueLabel.Text = $"{centsOffset:+#;-#;0} cents";
         StatusLabel.Text = $"Oscillator cents: {centsOffset:+#;-#;0}";
+    }
+
+    private void OnOsc2SemiChanged(object? sender, ValueChangedEventArgs e)
+    {
+        var semiOffset = (int)Math.Round(e.NewValue);
+        _driver.SelectOsc2SemiOffset(semiOffset);
+        Osc2SemiValueLabel.Text = $"{semiOffset:+#;-#;0} st";
+        StatusLabel.Text = $"OSC 2 semi: {semiOffset:+#;-#;0}";
+    }
+
+    private void OnOsc2WaveformChanged(object? sender, EventArgs e)
+    {
+        if (Osc2WaveformPicker.SelectedItem is OscillatorWaveform waveform)
+        {
+            _driver.SelectOsc2Waveform(waveform);
+            StatusLabel.Text = $"OSC 2 wave: {waveform}";
+        }
+    }
+
+    private void OnOsc2BitReduxChanged(object? sender, EventArgs e)
+    {
+        if (Osc2BitReduxPicker.SelectedItem is int bitRedux)
+        {
+            _driver.SelectOsc2BitRedux(bitRedux);
+            StatusLabel.Text = $"OSC 2 BitRedux: {(bitRedux == 0 ? "Off" : bitRedux.ToString())}";
+        }
+    }
+
+    private void OnOsc2KeytrackChanged(object? sender, ValueChangedEventArgs e)
+    {
+        var keytrackPercent = (int)Math.Round(e.NewValue);
+        _driver.SelectOsc2KeytrackPercent(keytrackPercent);
+        Osc2KeytrackValueLabel.Text = $"{keytrackPercent}%";
+        StatusLabel.Text = $"OSC 2 keytrack: {keytrackPercent}%";
+    }
+
+    private void OnOsc2CentsChanged(object? sender, ValueChangedEventArgs e)
+    {
+        var centsOffset = (int)Math.Round(e.NewValue);
+        _driver.SelectOsc2CentsOffset(centsOffset);
+        Osc2CentsValueLabel.Text = $"{centsOffset:+#;-#;0} ct";
+        StatusLabel.Text = $"OSC 2 cents: {centsOffset:+#;-#;0}";
+    }
+
+    private void OnOsc3SemiChanged(object? sender, ValueChangedEventArgs e)
+    {
+        var semiOffset = (int)Math.Round(e.NewValue);
+        _driver.SelectOsc3SemiOffset(semiOffset);
+        Osc3SemiValueLabel.Text = $"{semiOffset:+#;-#;0} st";
+        StatusLabel.Text = $"OSC 3 semi: {semiOffset:+#;-#;0}";
+    }
+
+    private void OnOsc3WaveformChanged(object? sender, EventArgs e)
+    {
+        if (Osc3WaveformPicker.SelectedItem is OscillatorWaveform waveform)
+        {
+            _driver.SelectOsc3Waveform(waveform);
+            StatusLabel.Text = $"OSC 3 wave: {waveform}";
+        }
+    }
+
+    private void OnOsc3BitReduxChanged(object? sender, EventArgs e)
+    {
+        if (Osc3BitReduxPicker.SelectedItem is int bitRedux)
+        {
+            _driver.SelectOsc3BitRedux(bitRedux);
+            StatusLabel.Text = $"OSC 3 BitRedux: {(bitRedux == 0 ? "Off" : bitRedux.ToString())}";
+        }
+    }
+
+    private void OnOsc3KeytrackChanged(object? sender, ValueChangedEventArgs e)
+    {
+        var keytrackPercent = (int)Math.Round(e.NewValue);
+        _driver.SelectOsc3KeytrackPercent(keytrackPercent);
+        Osc3KeytrackValueLabel.Text = $"{keytrackPercent}%";
+        StatusLabel.Text = $"OSC 3 keytrack: {keytrackPercent}%";
+    }
+
+    private void OnOsc3CentsChanged(object? sender, ValueChangedEventArgs e)
+    {
+        var centsOffset = (int)Math.Round(e.NewValue);
+        _driver.SelectOsc3CentsOffset(centsOffset);
+        Osc3CentsValueLabel.Text = $"{centsOffset:+#;-#;0} ct";
+        StatusLabel.Text = $"OSC 3 cents: {centsOffset:+#;-#;0}";
+    }
+
+    private void OnOsc1VolumeChanged(object? sender, ValueChangedEventArgs e)
+    {
+        var volume = (float)Math.Round(e.NewValue, 1);
+        _driver.SelectOsc1Volume(volume);
+        Osc1VolumeLabel.Text = volume.ToString("0.0");
+        StatusLabel.Text = $"OSC 1 volume: {volume:0.0}";
+    }
+
+    private void OnOsc2VolumeChanged(object? sender, ValueChangedEventArgs e)
+    {
+        var volume = (float)Math.Round(e.NewValue, 1);
+        _driver.SelectOsc2Volume(volume);
+        Osc2VolumeLabel.Text = volume.ToString("0.0");
+        StatusLabel.Text = $"OSC 2 volume: {volume:0.0}";
+    }
+
+    private void OnOsc3VolumeChanged(object? sender, ValueChangedEventArgs e)
+    {
+        var volume = (float)Math.Round(e.NewValue, 1);
+        _driver.SelectOsc3Volume(volume);
+        Osc3VolumeLabel.Text = volume.ToString("0.0");
+        StatusLabel.Text = $"OSC 3 volume: {volume:0.0}";
     }
 
     private void OnBitReduxChanged(object? sender, EventArgs e)
@@ -247,27 +383,44 @@ public partial class MainPage : ContentPage
         AudioOutputPicker.ItemsSource = _driver.AudioOutputDevices;
         NotePlaybackModePicker.ItemsSource = _driver.NotePlaybackModes;
         WaveformPicker.ItemsSource = _driver.Waveforms;
+        Osc2WaveformPicker.ItemsSource = _driver.Waveforms;
+        Osc3WaveformPicker.ItemsSource = _driver.Waveforms;
         FilterTypePicker.ItemsSource = _driver.FilterTypes;
         FilterDriveRoutePicker.ItemsSource = _driver.FilterDriveRoutes;
         MidiChannelPicker.ItemsSource = _driver.MidiChannels;
         SampleRatePicker.ItemsSource = _driver.SampleRates;
         BufferSizePicker.ItemsSource = _driver.BufferSizes;
         BitReduxPicker.ItemsSource = _driver.BitReduxLevels;
+        Osc2BitReduxPicker.ItemsSource = _driver.BitReduxLevels;
+        Osc3BitReduxPicker.ItemsSource = _driver.BitReduxLevels;
 
         MidiInputPicker.SelectedItem = _driver.MidiInputDevices.FirstOrDefault(device => device.Id == _driver.SelectedMidiInputDeviceId);
         AudioOutputPicker.SelectedItem = _driver.AudioOutputDevices.FirstOrDefault(device => device.Id == _driver.SelectedAudioOutputDeviceId);
         NotePlaybackModePicker.SelectedItem = _driver.SelectedNotePlaybackMode;
         WaveformPicker.SelectedItem = _driver.SelectedWaveform;
+        Osc2WaveformPicker.SelectedItem = _driver.SelectedOsc2Waveform;
+        Osc3WaveformPicker.SelectedItem = _driver.SelectedOsc3Waveform;
         FilterTypePicker.SelectedItem = _driver.SelectedFilterType;
         FilterDriveRoutePicker.SelectedItem = _driver.SelectedFilterDriveRoute;
         MidiChannelPicker.SelectedItem = _driver.SelectedMidiChannel;
         SampleRatePicker.SelectedItem = _driver.SelectedSampleRate;
         BufferSizePicker.SelectedItem = _driver.SelectedBufferSize;
         BitReduxPicker.SelectedItem = _driver.SelectedBitRedux;
+        Osc2BitReduxPicker.SelectedItem = _driver.SelectedOsc2BitRedux;
+        Osc3BitReduxPicker.SelectedItem = _driver.SelectedOsc3BitRedux;
         VolumeSlider.Value = _driver.Volume;
         SemiStepper.Value = _driver.SelectedSemiOffset;
         CentsStepper.Value = _driver.SelectedCentsOffset;
+        Osc2SemiStepper.Value = _driver.SelectedOsc2SemiOffset;
+        Osc2CentsStepper.Value = _driver.SelectedOsc2CentsOffset;
+        Osc3SemiStepper.Value = _driver.SelectedOsc3SemiOffset;
+        Osc3CentsStepper.Value = _driver.SelectedOsc3CentsOffset;
         KeytrackSlider.Value = _driver.SelectedKeytrackPercent;
+        Osc2KeytrackSlider.Value = _driver.SelectedOsc2KeytrackPercent;
+        Osc3KeytrackSlider.Value = _driver.SelectedOsc3KeytrackPercent;
+        Osc1VolumeSlider.Value = _driver.SelectedOsc1Volume;
+        Osc2VolumeSlider.Value = _driver.SelectedOsc2Volume;
+        Osc3VolumeSlider.Value = _driver.SelectedOsc3Volume;
         FilterCutoffSlider.Value = _driver.SelectedFilterCutoff;
         FilterResonanceSlider.Value = _driver.SelectedFilterResonance;
         FilterKeytrackSlider.Value = _driver.SelectedFilterKeytrackPercent;
@@ -275,9 +428,18 @@ public partial class MainPage : ContentPage
         FormantVowOrderStepper.Value = _driver.SelectedFormantVowOrder;
         FormantControlSlider.Value = _driver.SelectedFormantControl;
         OscillatorLoggingSwitch.IsToggled = _driver.IsOscillatorLoggingEnabled;
-        SemiValueLabel.Text = $"{_driver.SelectedSemiOffset:+#;-#;0} semitones";
-        CentsValueLabel.Text = $"{_driver.SelectedCentsOffset:+#;-#;0} cents";
+        SemiValueLabel.Text = $"{_driver.SelectedSemiOffset:+#;-#;0} st";
+        CentsValueLabel.Text = $"{_driver.SelectedCentsOffset:+#;-#;0} ct";
+        Osc2SemiValueLabel.Text = $"{_driver.SelectedOsc2SemiOffset:+#;-#;0} st";
+        Osc2CentsValueLabel.Text = $"{_driver.SelectedOsc2CentsOffset:+#;-#;0} ct";
+        Osc3SemiValueLabel.Text = $"{_driver.SelectedOsc3SemiOffset:+#;-#;0} st";
+        Osc3CentsValueLabel.Text = $"{_driver.SelectedOsc3CentsOffset:+#;-#;0} ct";
         KeytrackValueLabel.Text = $"{_driver.SelectedKeytrackPercent}%";
+        Osc2KeytrackValueLabel.Text = $"{_driver.SelectedOsc2KeytrackPercent}%";
+        Osc3KeytrackValueLabel.Text = $"{_driver.SelectedOsc3KeytrackPercent}%";
+        Osc1VolumeLabel.Text = _driver.SelectedOsc1Volume.ToString("0.0");
+        Osc2VolumeLabel.Text = _driver.SelectedOsc2Volume.ToString("0.0");
+        Osc3VolumeLabel.Text = _driver.SelectedOsc3Volume.ToString("0.0");
         FilterCutoffValueLabel.Text = _driver.SelectedFilterCutoff.ToString("0.0");
         FilterResonanceValueLabel.Text = _driver.SelectedFilterResonance.ToString("0.0");
         FilterKeytrackValueLabel.Text = $"{_driver.SelectedFilterKeytrackPercent:+#;-#;0}%";
@@ -290,13 +452,21 @@ public partial class MainPage : ContentPage
     private void RefreshSelectedModule()
     {
         KeyboardSettingsPanel.IsVisible = _selectedModule == SynthModule.Keyboard;
-        OscillatorSettingsPanel.IsVisible = _selectedModule == SynthModule.Oscillator;
+        VoiceSettingsPanel.IsVisible = _selectedModule == SynthModule.Voice;
+        Osc1SettingsPanel.IsVisible = _selectedModule == SynthModule.Osc1;
+        Osc2SettingsPanel.IsVisible = _selectedModule == SynthModule.Osc2;
+        Osc3SettingsPanel.IsVisible = _selectedModule == SynthModule.Osc3;
+        MixerSettingsPanel.IsVisible = _selectedModule == SynthModule.Mixer;
         FilterSettingsPanel.IsVisible = _selectedModule == SynthModule.Filter;
         AmplifierSettingsPanel.IsVisible = _selectedModule == SynthModule.Amplifier;
         OutputSettingsPanel.IsVisible = _selectedModule == SynthModule.Output;
 
         ApplyModuleStyle(KeyboardModuleBorder, _selectedModule == SynthModule.Keyboard);
-        ApplyModuleStyle(OscillatorModuleBorder, _selectedModule == SynthModule.Oscillator);
+        ApplyModuleStyle(VoiceModuleBorder, _selectedModule == SynthModule.Voice);
+        ApplyModuleStyle(Osc1ModuleBorder, _selectedModule == SynthModule.Osc1);
+        ApplyModuleStyle(Osc2ModuleBorder, _selectedModule == SynthModule.Osc2);
+        ApplyModuleStyle(Osc3ModuleBorder, _selectedModule == SynthModule.Osc3);
+        ApplyModuleStyle(MixerModuleBorder, _selectedModule == SynthModule.Mixer);
         ApplyModuleStyle(FilterModuleBorder, _selectedModule == SynthModule.Filter);
         ApplyModuleStyle(AmplifierModuleBorder, _selectedModule == SynthModule.Amplifier);
         ApplyModuleStyle(OutputModuleBorder, _selectedModule == SynthModule.Output);
@@ -325,7 +495,11 @@ public partial class MainPage : ContentPage
         return _selectedModule switch
         {
             SynthModule.Keyboard => ("Keyboard / MIDI", "Choose the MIDI source, channel, and trigger a MIDI diagnostics test."),
-            SynthModule.Oscillator => ("Oscillator", "Shape the oscillator with tuning, waveform, bit reduction, and keyboard pitch tracking."),
+            SynthModule.Voice => ("Voice / Control", "Manage polyphony and voice modes."),
+            SynthModule.Osc1 => ("Oscillator 1", "Shape oscillator 1 with tuning, waveform, bit reduction, and keyboard pitch tracking."),
+            SynthModule.Osc2 => ("Oscillator 2", "Shape oscillator 2 with tuning, waveform, bit reduction, and keytracking."),
+            SynthModule.Osc3 => ("Oscillator 3", "Shape oscillator 3 with tuning, waveform, bit reduction, and keytracking."),
+            SynthModule.Mixer => ("Mixer", "Mix the volume of the 3 oscillators before they enter the filter."),
             SynthModule.Filter => ("Filter", "Insert a ladder low-pass filter between oscillator and amplifier with cutoff, resonance, keytracking, and drive routing."),
             SynthModule.Amplifier => ("Amplifier", "Adjust the master output level before the signal reaches the output stage."),
             SynthModule.Output => ("Output", "Configure the audio device, sample rate, buffer size, and run an audio diagnostics test."),

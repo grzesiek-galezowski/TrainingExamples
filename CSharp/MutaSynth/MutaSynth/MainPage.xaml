@@ -17,6 +17,28 @@
                    FontAttributes="Bold"
                    HorizontalOptions="Center" />
 
+            <Border x:Name="VoiceModuleBorder"
+                    Padding="18,14"
+                    Margin="0,0,0,12"
+                    HorizontalOptions="Center"
+                    BackgroundColor="{AppThemeBinding Light=#E1E1E1, Dark=#212121}"
+                    Stroke="{AppThemeBinding Light=#ACACAC, Dark=#6E6E6E}"
+                    StrokeThickness="2"
+                    StrokeShape="RoundRectangle 18">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnVoiceModuleTapped" />
+                </Border.GestureRecognizers>
+                <VerticalStackLayout Spacing="4" WidthRequest="110">
+                    <Label Text="VOICE"
+                           FontSize="22"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center" />
+                    <Label Text="Polyphony"
+                           FontSize="12"
+                           HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+            </Border>
+
             <FlexLayout Direction="Row"
                         Wrap="Wrap"
                         JustifyContent="Center"
@@ -48,7 +70,74 @@
                        Margin="0,0,12,0"
                        VerticalTextAlignment="Center" />
 
-                <Border x:Name="OscillatorModuleBorder"
+                <VerticalStackLayout Spacing="8" Margin="0,0,12,0">
+                    <Border x:Name="Osc1ModuleBorder"
+                            Padding="18,8"
+                            BackgroundColor="{AppThemeBinding Light=#E1E1E1, Dark=#212121}"
+                            Stroke="{AppThemeBinding Light=#ACACAC, Dark=#6E6E6E}"
+                            StrokeThickness="2"
+                            StrokeShape="RoundRectangle 18">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnOsc1ModuleTapped" />
+                        </Border.GestureRecognizers>
+                        <VerticalStackLayout Spacing="2" WidthRequest="110">
+                            <Label Text="OSC 1"
+                                   FontSize="20"
+                                   FontAttributes="Bold"
+                                   HorizontalTextAlignment="Center" />
+                            <Label Text="Oscillator 1"
+                                   FontSize="10"
+                                   HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border x:Name="Osc2ModuleBorder"
+                            Padding="18,8"
+                            BackgroundColor="{AppThemeBinding Light=#E1E1E1, Dark=#212121}"
+                            Stroke="{AppThemeBinding Light=#ACACAC, Dark=#6E6E6E}"
+                            StrokeThickness="2"
+                            StrokeShape="RoundRectangle 18">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnOsc2ModuleTapped" />
+                        </Border.GestureRecognizers>
+                        <VerticalStackLayout Spacing="2" WidthRequest="110">
+                            <Label Text="OSC 2"
+                                   FontSize="20"
+                                   FontAttributes="Bold"
+                                   HorizontalTextAlignment="Center" />
+                            <Label Text="Oscillator 2"
+                                   FontSize="10"
+                                   HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Border x:Name="Osc3ModuleBorder"
+                            Padding="18,8"
+                            BackgroundColor="{AppThemeBinding Light=#E1E1E1, Dark=#212121}"
+                            Stroke="{AppThemeBinding Light=#ACACAC, Dark=#6E6E6E}"
+                            StrokeThickness="2"
+                            StrokeShape="RoundRectangle 18">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnOsc3ModuleTapped" />
+                        </Border.GestureRecognizers>
+                        <VerticalStackLayout Spacing="2" WidthRequest="110">
+                            <Label Text="OSC 3"
+                                   FontSize="20"
+                                   FontAttributes="Bold"
+                                   HorizontalTextAlignment="Center" />
+                            <Label Text="Oscillator 3"
+                                   FontSize="10"
+                                   HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+
+                <Label Text="→"
+                       FontSize="24"
+                       Margin="0,0,12,0"
+                       VerticalTextAlignment="Center" />
+
+                <Border x:Name="MixerModuleBorder"
                         Padding="18,14"
                         Margin="0,0,12,0"
                         BackgroundColor="{AppThemeBinding Light=#E1E1E1, Dark=#212121}"
@@ -56,14 +145,14 @@
                         StrokeThickness="2"
                         StrokeShape="RoundRectangle 18">
                     <Border.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnOscillatorModuleTapped" />
+                        <TapGestureRecognizer Tapped="OnMixerModuleTapped" />
                     </Border.GestureRecognizers>
                     <VerticalStackLayout Spacing="4" WidthRequest="110">
-                        <Label Text="OSC"
+                        <Label Text="MIX"
                                FontSize="22"
                                FontAttributes="Bold"
                                HorizontalTextAlignment="Center" />
-                        <Label Text="Oscillator"
+                        <Label Text="Mixer"
                                FontSize="12"
                                HorizontalTextAlignment="Center" />
                     </VerticalStackLayout>
@@ -174,34 +263,102 @@
                         <Button Text="Test MIDI" HorizontalOptions="Start" Clicked="OnTestMidiClicked" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" />
                     </Grid>
 
-                    <Grid x:Name="OscillatorSettingsPanel" IsVisible="False" ColumnDefinitions="Auto, *, Auto, Auto, 45" RowDefinitions="Auto, Auto, Auto, Auto" RowSpacing="12" ColumnSpacing="16">
-                        <!-- Row 0 -->
+                    <Grid x:Name="VoiceSettingsPanel" IsVisible="False" ColumnDefinitions="Auto,*" RowDefinitions="Auto" RowSpacing="12" ColumnSpacing="12">
                         <Label Text="Playback" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" />
                         <Picker x:Name="NotePlaybackModePicker" SelectedIndexChanged="OnNotePlaybackModeChanged" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" />
+                    </Grid>
 
-                        <Label Text="Semi" VerticalOptions="Center" Grid.Row="0" Grid.Column="2" />
+                    <Grid x:Name="Osc1SettingsPanel" IsVisible="False" ColumnDefinitions="Auto, *, Auto, Auto, 45" RowDefinitions="Auto, Auto, Auto, Auto, Auto" RowSpacing="12" ColumnSpacing="16">
+                        <!-- Row 0 -->
+                        <Label Text="OSC 1 Semi" VerticalOptions="Center" Grid.Row="0" Grid.Column="2" />
                         <Stepper x:Name="SemiStepper" Minimum="-36" Maximum="36" Increment="1" ValueChanged="OnSemiChanged" VerticalOptions="Center" Grid.Row="0" Grid.Column="3" />
                         <Label x:Name="SemiValueLabel" Text="0 st" VerticalOptions="Center" Grid.Row="0" Grid.Column="4" />
 
                         <!-- Row 1 -->
-                        <Label Text="Wave" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" />
+                        <Label Text="OSC 1 Wave" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" />
                         <Picker x:Name="WaveformPicker" SelectedIndexChanged="OnWaveformChanged" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" />
 
-                        <Label Text="Cents" VerticalOptions="Center" Grid.Row="1" Grid.Column="2" />
+                        <Label Text="OSC 1 Cents" VerticalOptions="Center" Grid.Row="1" Grid.Column="2" />
                         <Stepper x:Name="CentsStepper" Minimum="-50" Maximum="50" Increment="1" ValueChanged="OnCentsChanged" VerticalOptions="Center" Grid.Row="1" Grid.Column="3" />
                         <Label x:Name="CentsValueLabel" Text="0 ct" VerticalOptions="Center" Grid.Row="1" Grid.Column="4" />
 
-                        <!-- Row 2 -->
-                        <Label Text="BitRedux" VerticalOptions="Center" Grid.Row="2" Grid.Column="0" />
-                        <Picker x:Name="BitReduxPicker" SelectedIndexChanged="OnBitReduxChanged" VerticalOptions="Center" Grid.Row="2" Grid.Column="1" />
-
-                        <Label Text="Keytrack" VerticalOptions="Center" Grid.Row="2" Grid.Column="2" />
-                        <Slider x:Name="KeytrackSlider" Minimum="0" Maximum="200" Value="100" ValueChanged="OnKeytrackChanged" VerticalOptions="Center" Grid.Row="2" Grid.Column="3" />
-                        <Label x:Name="KeytrackValueLabel" Text="100%" VerticalOptions="Center" Grid.Row="2" Grid.Column="4" />
+                        <Label Text="" HeightRequest="1" Grid.Row="2" Grid.ColumnSpan="5" BackgroundColor="#E1E1E1" />
 
                         <!-- Row 3 -->
-                        <Label Text="Logging" VerticalOptions="Center" Grid.Row="3" Grid.Column="0" />
-                        <Switch x:Name="OscillatorLoggingSwitch" Toggled="OnOscillatorLoggingToggled" VerticalOptions="Center" HorizontalOptions="Start" Grid.Row="3" Grid.Column="1" />
+                        <Label Text="BitRedux" VerticalOptions="Center" Grid.Row="3" Grid.Column="0" />
+                        <Picker x:Name="BitReduxPicker" SelectedIndexChanged="OnBitReduxChanged" VerticalOptions="Center" Grid.Row="3" Grid.Column="1" />
+
+                        <Label Text="Keytrack" VerticalOptions="Center" Grid.Row="3" Grid.Column="2" />
+                        <Slider x:Name="KeytrackSlider" Minimum="0" Maximum="200" Value="100" ValueChanged="OnKeytrackChanged" VerticalOptions="Center" Grid.Row="3" Grid.Column="3" />
+                        <Label x:Name="KeytrackValueLabel" Text="100%" VerticalOptions="Center" Grid.Row="3" Grid.Column="4" />
+
+                        <!-- Row 4 -->
+                        <Label Text="Logging" VerticalOptions="Center" Grid.Row="4" Grid.Column="0" />
+                        <Switch x:Name="OscillatorLoggingSwitch" Toggled="OnOscillatorLoggingToggled" VerticalOptions="Center" HorizontalOptions="Start" Grid.Row="4" Grid.Column="1" />
+                    </Grid>
+
+                    <Grid x:Name="Osc2SettingsPanel" IsVisible="False" ColumnDefinitions="Auto, *, Auto, Auto, 45" RowDefinitions="Auto, Auto, Auto, Auto" RowSpacing="12" ColumnSpacing="16">
+                        <!-- Row 0 -->
+                        <Label Text="OSC 2 Semi" VerticalOptions="Center" Grid.Row="0" Grid.Column="2" />
+                        <Stepper x:Name="Osc2SemiStepper" Minimum="-36" Maximum="36" Increment="1" ValueChanged="OnOsc2SemiChanged" VerticalOptions="Center" Grid.Row="0" Grid.Column="3" />
+                        <Label x:Name="Osc2SemiValueLabel" Text="0 st" VerticalOptions="Center" Grid.Row="0" Grid.Column="4" />
+
+                        <!-- Row 1 -->
+                        <Label Text="OSC 2 Wave" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" />
+                        <Picker x:Name="Osc2WaveformPicker" SelectedIndexChanged="OnOsc2WaveformChanged" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" />
+
+                        <Label Text="OSC 2 Cents" VerticalOptions="Center" Grid.Row="1" Grid.Column="2" />
+                        <Stepper x:Name="Osc2CentsStepper" Minimum="-50" Maximum="50" Increment="1" ValueChanged="OnOsc2CentsChanged" VerticalOptions="Center" Grid.Row="1" Grid.Column="3" />
+                        <Label x:Name="Osc2CentsValueLabel" Text="0 ct" VerticalOptions="Center" Grid.Row="1" Grid.Column="4" />
+
+                        <Label Text="" HeightRequest="1" Grid.Row="2" Grid.ColumnSpan="5" BackgroundColor="#E1E1E1" />
+
+                        <!-- Row 3 -->
+                        <Label Text="BitRedux" VerticalOptions="Center" Grid.Row="3" Grid.Column="0" />
+                        <Picker x:Name="Osc2BitReduxPicker" SelectedIndexChanged="OnOsc2BitReduxChanged" VerticalOptions="Center" Grid.Row="3" Grid.Column="1" />
+
+                        <Label Text="Keytrack" VerticalOptions="Center" Grid.Row="3" Grid.Column="2" />
+                        <Slider x:Name="Osc2KeytrackSlider" Minimum="0" Maximum="200" Value="100" ValueChanged="OnOsc2KeytrackChanged" VerticalOptions="Center" Grid.Row="3" Grid.Column="3" />
+                        <Label x:Name="Osc2KeytrackValueLabel" Text="100%" VerticalOptions="Center" Grid.Row="3" Grid.Column="4" />
+                    </Grid>
+
+                    <Grid x:Name="Osc3SettingsPanel" IsVisible="False" ColumnDefinitions="Auto, *, Auto, Auto, 45" RowDefinitions="Auto, Auto, Auto, Auto" RowSpacing="12" ColumnSpacing="16">
+                        <!-- Row 0 -->
+                        <Label Text="OSC 3 Semi" VerticalOptions="Center" Grid.Row="0" Grid.Column="2" />
+                        <Stepper x:Name="Osc3SemiStepper" Minimum="-36" Maximum="36" Increment="1" ValueChanged="OnOsc3SemiChanged" VerticalOptions="Center" Grid.Row="0" Grid.Column="3" />
+                        <Label x:Name="Osc3SemiValueLabel" Text="-12 st" VerticalOptions="Center" Grid.Row="0" Grid.Column="4" />
+
+                        <!-- Row 1 -->
+                        <Label Text="OSC 3 Wave" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" />
+                        <Picker x:Name="Osc3WaveformPicker" SelectedIndexChanged="OnOsc3WaveformChanged" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" />
+
+                        <Label Text="OSC 3 Cents" VerticalOptions="Center" Grid.Row="1" Grid.Column="2" />
+                        <Stepper x:Name="Osc3CentsStepper" Minimum="-50" Maximum="50" Increment="1" ValueChanged="OnOsc3CentsChanged" VerticalOptions="Center" Grid.Row="1" Grid.Column="3" />
+                        <Label x:Name="Osc3CentsValueLabel" Text="0 ct" VerticalOptions="Center" Grid.Row="1" Grid.Column="4" />
+
+                        <Label Text="" HeightRequest="1" Grid.Row="2" Grid.ColumnSpan="5" BackgroundColor="#E1E1E1" />
+
+                        <!-- Row 3 -->
+                        <Label Text="BitRedux" VerticalOptions="Center" Grid.Row="3" Grid.Column="0" />
+                        <Picker x:Name="Osc3BitReduxPicker" SelectedIndexChanged="OnOsc3BitReduxChanged" VerticalOptions="Center" Grid.Row="3" Grid.Column="1" />
+
+                        <Label Text="Keytrack" VerticalOptions="Center" Grid.Row="3" Grid.Column="2" />
+                        <Slider x:Name="Osc3KeytrackSlider" Minimum="0" Maximum="200" Value="100" ValueChanged="OnOsc3KeytrackChanged" VerticalOptions="Center" Grid.Row="3" Grid.Column="3" />
+                        <Label x:Name="Osc3KeytrackValueLabel" Text="100%" VerticalOptions="Center" Grid.Row="3" Grid.Column="4" />
+                    </Grid>
+
+                    <Grid x:Name="MixerSettingsPanel" IsVisible="False" ColumnDefinitions="Auto, *, 45" RowDefinitions="Auto, Auto, Auto" RowSpacing="12" ColumnSpacing="16">
+                        <Label Text="OSC 1" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" />
+                        <Slider x:Name="Osc1VolumeSlider" Minimum="0" Maximum="128" Value="128" ValueChanged="OnOsc1VolumeChanged" VerticalOptions="Center" Grid.Row="0" Grid.Column="1" />
+                        <Label x:Name="Osc1VolumeLabel" Text="128.0" VerticalOptions="Center" Grid.Row="0" Grid.Column="2" />
+
+                        <Label Text="OSC 2" VerticalOptions="Center" Grid.Row="1" Grid.Column="0" />
+                        <Slider x:Name="Osc2VolumeSlider" Minimum="0" Maximum="128" Value="0" ValueChanged="OnOsc2VolumeChanged" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" />
+                        <Label x:Name="Osc2VolumeLabel" Text="0.0" VerticalOptions="Center" Grid.Row="1" Grid.Column="2" />
+
+                        <Label Text="OSC 3" VerticalOptions="Center" Grid.Row="2" Grid.Column="0" />
+                        <Slider x:Name="Osc3VolumeSlider" Minimum="0" Maximum="128" Value="0" ValueChanged="OnOsc3VolumeChanged" VerticalOptions="Center" Grid.Row="2" Grid.Column="1" />
+                        <Label x:Name="Osc3VolumeLabel" Text="0.0" VerticalOptions="Center" Grid.Row="2" Grid.Column="2" />
                     </Grid>
 
                     <Grid x:Name="AmplifierSettingsPanel" IsVisible="False" ColumnDefinitions="Auto, *" RowDefinitions="Auto" RowSpacing="12" ColumnSpacing="12">

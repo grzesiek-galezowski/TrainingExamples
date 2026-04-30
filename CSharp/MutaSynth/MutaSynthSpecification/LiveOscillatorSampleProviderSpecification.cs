@@ -14,7 +14,7 @@ public sealed class LiveOscillatorSampleProviderSpecification
 
         // GIVEN
         var sut = new LiveOscillatorSampleProvider(48_000, 1, 1.0f);
-        sut.SetOscillatorParameters(OscillatorWaveform.Sine, 0, 0, 0, 100, false);
+        sut.SetOscillatorParameters(OscillatorWaveform.Sine, 0, 0, 0, 100, OscillatorWaveform.Sine, 0, 0, 0, 100, OscillatorWaveform.Sine, -12, 0, 0, 100, false, 128.0f, 0.0f, 0.0f);
         sut.SetFilterParameters(FilterType.LpLdr12, 128.0f, 0.0f, 100, 0.0f, FilterDriveRoute.Pre);
         sut.NoteOn(440.0f);
         var attackBuffer = new float[128];
@@ -39,7 +39,7 @@ public sealed class LiveOscillatorSampleProviderSpecification
     {
         // GIVEN
         var sut = new LiveOscillatorSampleProvider(48_000, 1, 1.0f);
-        sut.SetOscillatorParameters(OscillatorWaveform.Sine, 0, 0, 0, 100, false);
+        sut.SetOscillatorParameters(OscillatorWaveform.Sine, 0, 0, 0, 100, OscillatorWaveform.Sine, 0, 0, 0, 100, OscillatorWaveform.Sine, -12, 0, 0, 100, false, 128.0f, 0.0f, 0.0f);
         sut.SetFilterParameters(FilterType.LpLdr12, 128.0f, 0.0f, 100, 0.0f, FilterDriveRoute.Pre);
         sut.NoteOn(440.0f);
         var firstVoiceBuffer = new float[256];
@@ -68,7 +68,7 @@ public sealed class LiveOscillatorSampleProviderSpecification
         const float frequency = 440.0f;
         const int warmupSampleCount = 2_048;
         var sut = new LiveOscillatorSampleProvider(sampleRate, 1, 1.0f);
-        sut.SetOscillatorParameters(OscillatorWaveform.Saw, 0, 0, 0, 100, false);
+        sut.SetOscillatorParameters(OscillatorWaveform.Saw, 0, 0, 0, 100, OscillatorWaveform.Saw, 0, 0, 0, 100, OscillatorWaveform.Saw, -12, 0, 0, 100, false, 128.0f, 0.0f, 0.0f);
         sut.SetFilterParameters(FilterType.LpLdr12, 128.0f, 0.0f, 100, 0.0f, FilterDriveRoute.Pre);
         sut.NoteOn(frequency);
         var warmupBuffer = new float[warmupSampleCount];
@@ -88,12 +88,12 @@ public sealed class LiveOscillatorSampleProviderSpecification
     {
         // GIVEN
         var openFilter = new LiveOscillatorSampleProvider(48_000, 1, 1.0f);
-        openFilter.SetOscillatorParameters(OscillatorWaveform.Saw, 0, 0, 0, 100, false);
+        openFilter.SetOscillatorParameters(OscillatorWaveform.Saw, 0, 0, 0, 100, OscillatorWaveform.Saw, 0, 0, 0, 100, OscillatorWaveform.Saw, -12, 0, 0, 100, false, 128.0f, 0.0f, 0.0f);
         openFilter.SetFilterParameters(FilterType.LpLdr12, 128.0f, 0.0f, 100, 0.0f, FilterDriveRoute.Pre);
         openFilter.NoteOn(880.0f);
 
         var closedFilter = new LiveOscillatorSampleProvider(48_000, 1, 1.0f);
-        closedFilter.SetOscillatorParameters(OscillatorWaveform.Saw, 0, 0, 0, 100, false);
+        closedFilter.SetOscillatorParameters(OscillatorWaveform.Saw, 0, 0, 0, 100, OscillatorWaveform.Saw, 0, 0, 0, 100, OscillatorWaveform.Saw, -12, 0, 0, 100, false, 128.0f, 0.0f, 0.0f);
         closedFilter.SetFilterParameters(FilterType.LpLdr12, 16.0f, 0.0f, 100, 0.0f, FilterDriveRoute.Pre);
         closedFilter.NoteOn(880.0f);
 
@@ -120,7 +120,7 @@ public sealed class LiveOscillatorSampleProviderSpecification
     {
         // GIVEN
         var sut = new LiveOscillatorSampleProvider(48_000, 1, 1.0f);
-        sut.SetOscillatorParameters(OscillatorWaveform.Saw, 0, 0, 0, 100, false);
+        sut.SetOscillatorParameters(OscillatorWaveform.Saw, 0, 0, 0, 100, OscillatorWaveform.Saw, 0, 0, 0, 100, OscillatorWaveform.Saw, -12, 0, 0, 100, false, 128.0f, 0.0f, 0.0f);
         sut.SetFilterParameters(FilterType.LpLdr14, 24.0f, 128.0f, 100, 0.0f, FilterDriveRoute.Pre);
         sut.NoteOn(220.0f);
         var warmupBuffer = new float[2_048];
@@ -141,12 +141,12 @@ public sealed class LiveOscillatorSampleProviderSpecification
     {
         // GIVEN
         var ladderFilter = new LiveOscillatorSampleProvider(48_000, 1, 1.0f);
-        ladderFilter.SetOscillatorParameters(OscillatorWaveform.Saw, 0, 0, 0, 100, false);
+        ladderFilter.SetOscillatorParameters(OscillatorWaveform.Saw, 0, 0, 0, 100, OscillatorWaveform.Saw, 0, 0, 0, 100, OscillatorWaveform.Saw, -12, 0, 0, 100, false, 128.0f, 0.0f, 0.0f);
         ladderFilter.SetFilterParameters(FilterType.LpLdr12, 36.0f, 48.0f, 100, 24.0f, FilterDriveRoute.Pre);
         ladderFilter.NoteOn(220.0f);
 
         var fatFilter = new LiveOscillatorSampleProvider(48_000, 1, 1.0f);
-        fatFilter.SetOscillatorParameters(OscillatorWaveform.Saw, 0, 0, 0, 100, false);
+        fatFilter.SetOscillatorParameters(OscillatorWaveform.Saw, 0, 0, 0, 100, OscillatorWaveform.Saw, 0, 0, 0, 100, OscillatorWaveform.Saw, -12, 0, 0, 100, false, 128.0f, 0.0f, 0.0f);
         fatFilter.SetFilterParameters(FilterType.LpFat12, 36.0f, 48.0f, 100, 24.0f, FilterDriveRoute.Pre);
         fatFilter.NoteOn(220.0f);
 

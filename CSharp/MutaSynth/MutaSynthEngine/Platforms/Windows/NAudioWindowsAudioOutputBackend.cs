@@ -17,6 +17,19 @@ public sealed class NAudioWindowsAudioOutputBackend : IDisposable
     private OscillatorWaveform _waveform = OscillatorWaveform.Saw;
     private int _semiOffset;
     private int _centsOffset;
+    private int _osc2BitRedux = 0;
+    private int _osc2KeytrackPercent = 100;
+    private OscillatorWaveform _osc2Waveform = OscillatorWaveform.Saw;
+    private int _osc2SemiOffset = 0;
+    private int _osc2CentsOffset = 0;
+    private int _osc3BitRedux = 0;
+    private int _osc3KeytrackPercent = 100;
+    private OscillatorWaveform _osc3Waveform = OscillatorWaveform.Saw;
+    private int _osc3SemiOffset = -12;
+    private int _osc3CentsOffset = 0;
+    private float _osc1Volume = 128.0f;
+    private float _osc2Volume = 0.0f;
+    private float _osc3Volume = 0.0f;
     private int _bitRedux;
     private int _keytrackPercent = 100;
     private FilterType _filterType = FilterType.LpLdr12;
@@ -125,16 +138,42 @@ public sealed class NAudioWindowsAudioOutputBackend : IDisposable
         RecreatePlayback();
     }
 
-    public void UpdateOscillatorSettings(OscillatorWaveform waveform, int semiOffset, int centsOffset, int bitRedux, int keytrackPercent, bool isOscillatorLoggingEnabled)
+    public void UpdateOscillatorSettings(
+        OscillatorWaveform waveform, int semiOffset, int centsOffset, int bitRedux, int keytrackPercent,
+        OscillatorWaveform osc2Waveform, int osc2SemiOffset, int osc2CentsOffset, int osc2BitRedux, int osc2KeytrackPercent,
+        OscillatorWaveform osc3Waveform, int osc3SemiOffset, int osc3CentsOffset, int osc3BitRedux, int osc3KeytrackPercent,
+        bool isOscillatorLoggingEnabled,
+        float osc1Volume, float osc2Volume, float osc3Volume)
     {
         _waveform = waveform;
         _semiOffset = semiOffset;
         _centsOffset = centsOffset;
         _bitRedux = bitRedux;
         _keytrackPercent = keytrackPercent;
-        _isOscillatorLoggingEnabled = isOscillatorLoggingEnabled;
 
-        _sampleProvider?.SetOscillatorParameters(waveform, semiOffset, centsOffset, bitRedux, keytrackPercent, isOscillatorLoggingEnabled);
+        _osc2Waveform = osc2Waveform;
+        _osc2SemiOffset = osc2SemiOffset;
+        _osc2CentsOffset = osc2CentsOffset;
+        _osc2BitRedux = osc2BitRedux;
+        _osc2KeytrackPercent = osc2KeytrackPercent;
+
+        _osc3Waveform = osc3Waveform;
+        _osc3SemiOffset = osc3SemiOffset;
+        _osc3CentsOffset = osc3CentsOffset;
+        _osc3BitRedux = osc3BitRedux;
+        _osc3KeytrackPercent = osc3KeytrackPercent;
+
+        _isOscillatorLoggingEnabled = isOscillatorLoggingEnabled;
+        _osc1Volume = osc1Volume;
+        _osc2Volume = osc2Volume;
+        _osc3Volume = osc3Volume;
+
+        _sampleProvider?.SetOscillatorParameters(
+            waveform, semiOffset, centsOffset, bitRedux, keytrackPercent,
+            osc2Waveform, osc2SemiOffset, osc2CentsOffset, osc2BitRedux, osc2KeytrackPercent,
+            osc3Waveform, osc3SemiOffset, osc3CentsOffset, osc3BitRedux, osc3KeytrackPercent,
+            isOscillatorLoggingEnabled,
+            osc1Volume, osc2Volume, osc3Volume);
     }
 
     public void UpdateFilterSettings(FilterType filterType, float cutoff, float resonance, int keytrackPercent, float drive, FilterDriveRoute driveRoute)
@@ -160,7 +199,12 @@ public sealed class NAudioWindowsAudioOutputBackend : IDisposable
         using var defaultDevice = ResolveDevice(enumerator, _selectedDeviceId);
 
         _sampleProvider = new LiveOscillatorSampleProvider(_sampleRate, ChannelCount, _volume);
-        _sampleProvider.SetOscillatorParameters(_waveform, _semiOffset, _centsOffset, _bitRedux, _keytrackPercent, _isOscillatorLoggingEnabled);
+        _sampleProvider.SetOscillatorParameters(
+            _waveform, _semiOffset, _centsOffset, _bitRedux, _keytrackPercent,
+            _osc2Waveform, _osc2SemiOffset, _osc2CentsOffset, _osc2BitRedux, _osc2KeytrackPercent,
+            _osc3Waveform, _osc3SemiOffset, _osc3CentsOffset, _osc3BitRedux, _osc3KeytrackPercent,
+            _isOscillatorLoggingEnabled,
+            _osc1Volume, _osc2Volume, _osc3Volume);
         _sampleProvider.SetFilterParameters(_filterType, _filterCutoff, _filterResonance, _filterKeytrackPercent, _filterDrive, _filterDriveRoute);
         _sampleProvider.FormantVowOrder = _formantVowOrder;
         _sampleProvider.FormantControl = _formantControl;

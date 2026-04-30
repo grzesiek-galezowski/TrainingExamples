@@ -25,6 +25,23 @@ public interface IAudioDriver : IDisposable
     int SelectedCentsOffset { get; }
     int SelectedBitRedux { get; }
     int SelectedKeytrackPercent { get; }
+
+    int SelectedOsc2SemiOffset { get; }
+    int SelectedOsc2CentsOffset { get; }
+    OscillatorWaveform SelectedOsc2Waveform { get; }
+    int SelectedOsc2BitRedux { get; }
+    int SelectedOsc2KeytrackPercent { get; }
+
+    int SelectedOsc3SemiOffset { get; }
+    int SelectedOsc3CentsOffset { get; }
+    OscillatorWaveform SelectedOsc3Waveform { get; }
+    int SelectedOsc3BitRedux { get; }
+    int SelectedOsc3KeytrackPercent { get; }
+
+    float SelectedOsc1Volume { get; }
+    float SelectedOsc2Volume { get; }
+    float SelectedOsc3Volume { get; }
+
     FilterType SelectedFilterType { get; }
     float SelectedFilterCutoff { get; }
     float SelectedFilterResonance { get; }
@@ -56,6 +73,23 @@ public interface IAudioDriver : IDisposable
     void SelectSemiOffset(int semiOffset);
     void SelectOscillatorLogging(bool isEnabled);
     void SelectWaveform(OscillatorWaveform waveform);
+
+    void SelectOsc2SemiOffset(int semiOffset);
+    void SelectOsc2CentsOffset(int centsOffset);
+    void SelectOsc2Waveform(OscillatorWaveform waveform);
+    void SelectOsc2BitRedux(int bitRedux);
+    void SelectOsc2KeytrackPercent(int keytrackPercent);
+
+    void SelectOsc3SemiOffset(int semiOffset);
+    void SelectOsc3CentsOffset(int centsOffset);
+    void SelectOsc3Waveform(OscillatorWaveform waveform);
+    void SelectOsc3BitRedux(int bitRedux);
+    void SelectOsc3KeytrackPercent(int keytrackPercent);
+
+    void SelectOsc1Volume(float volume);
+    void SelectOsc2Volume(float volume);
+    void SelectOsc3Volume(float volume);
+
     void NoteOn(float frequency);
     void NoteOff();
     string RunAudioTest();

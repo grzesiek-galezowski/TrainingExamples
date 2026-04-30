@@ -21,10 +21,12 @@ public sealed class LiveOscillatorSampleProvider : ISampleProvider
     private readonly Queue<SampleSnapshot> _recentSamples = [];
     private readonly List<PendingVoiceCompletionLog> _pendingVoiceCompletionLogs = [];
     private float _volume;
-    private OscillatorWaveform _waveform = OscillatorWaveform.Saw;
-    private int _semiOffset;
-    private int _centsOffset;
-    private int _bitRedux;
+
+    private readonly PolyphonicOscillator _osc1;
+    private readonly PolyphonicOscillator _osc2;
+    private readonly PolyphonicOscillator _osc3;
+    private readonly Mixer _mixer;
+
     private int _keytrackPercent = 100;
     private FilterType _filterType = FilterType.LpLdr12;
     private float _filterCutoff = 128.0f;
@@ -43,6 +45,10 @@ public sealed class LiveOscillatorSampleProvider : ISampleProvider
         _waveFormat = WaveFormat.CreateIeeeFloatWaveFormat(sampleRate, channelCount);
         _volume = volume;
         _ladderFilter = new MoogLadderFilter(sampleRate);
+        _osc1 = new PolyphonicOscillator(sampleRate);
+        _osc2 = new PolyphonicOscillator(sampleRate);
+        _osc3 = new PolyphonicOscillator(sampleRate) { SemiOffset = -12 };
+        _mixer = new Mixer();
     }
 
     public int FormantVowOrder { get; set; } = 0;
@@ -68,15 +74,37 @@ public sealed class LiveOscillatorSampleProvider : ISampleProvider
         }
     }
 
-    public void SetOscillatorParameters(OscillatorWaveform waveform, int semiOffset, int centsOffset, int bitRedux, int keytrackPercent, bool isOscillatorLoggingEnabled)
+    public void SetOscillatorParameters(
+        OscillatorWaveform waveform, int semiOffset, int centsOffset, int bitRedux, int keytrackPercent,
+        OscillatorWaveform osc2Waveform, int osc2SemiOffset, int osc2CentsOffset, int osc2BitRedux, int osc2KeytrackPercent,
+        OscillatorWaveform osc3Waveform, int osc3SemiOffset, int osc3CentsOffset, int osc3BitRedux, int osc3KeytrackPercent,
+        bool isOscillatorLoggingEnabled,
+        float osc1Volume, float osc2Volume, float osc3Volume)
     {
         lock (_sync)
         {
-            _waveform = waveform;
-            _semiOffset = semiOffset;
-            _centsOffset = centsOffset;
-            _bitRedux = bitRedux;
-            _keytrackPercent = keytrackPercent;
+            _osc1.Waveform = waveform;
+            _osc1.SemiOffset = semiOffset;
+            _osc1.CentsOffset = centsOffset;
+            _osc1.KeytrackPercent = keytrackPercent;
+            _osc1.BitRedux = bitRedux;
+
+            _osc2.Waveform = osc2Waveform;
+            _osc2.SemiOffset = osc2SemiOffset;
+            _osc2.CentsOffset = osc2CentsOffset;
+            _osc2.KeytrackPercent = osc2KeytrackPercent;
+            _osc2.BitRedux = osc2BitRedux;
+
+            _osc3.Waveform = osc3Waveform;
+            _osc3.SemiOffset = osc3SemiOffset;
+            _osc3.CentsOffset = osc3CentsOffset;
+            _osc3.KeytrackPercent = osc3KeytrackPercent;
+            _osc3.BitRedux = osc3BitRedux;
+
+            _mixer.Osc1Volume = osc1Volume;
+            _mixer.Osc2Volume = osc2Volume;
+            _mixer.Osc3Volume = osc3Volume;
+
             _isOscillatorLoggingEnabled = isOscillatorLoggingEnabled;
         }
     }
@@ -99,6 +127,9 @@ public sealed class LiveOscillatorSampleProvider : ISampleProvider
         lock (_sync)
         {
             _voices[frequency] = new VoiceState(frequency, GetAttackSampleCount());
+            _osc1.NoteOn(frequency);
+            _osc2.NoteOn(frequency);
+            _osc3.NoteOn(frequency);
             _lastTrackedFilterFrequency = frequency;
             Log($"NoteOn freq={frequency:F2} voices={_voices.Count}");
         }
@@ -124,6 +155,9 @@ public sealed class LiveOscillatorSampleProvider : ISampleProvider
             if (_voices.TryGetValue(frequency, out var voice))
             {
                 voice.BeginRelease(GetReleaseSampleCount());
+                _osc1.NoteOff(frequency);
+                _osc2.NoteOff(frequency);
+                _osc3.NoteOff(frequency);
                 Log($"NoteOff freq={frequency:F2} voices={_voices.Count}");
             }
         }
@@ -159,15 +193,16 @@ public sealed class LiveOscillatorSampleProvider : ISampleProvider
         foreach (var pair in _voices)
         {
             var voice = pair.Value;
-            var sample = CreateWaveSample(voice.Phase) * voice.Level;
-            var levelBeforeReleaseAdvance = voice.Level;
-            mixedSample += ApplyBitReduction(sample);
 
-            voice.Phase += CalculateEffectiveFrequency(voice.BaseFrequency) / _waveFormat.SampleRate;
-            if (voice.Phase >= 1.0)
-            {
-                voice.Phase -= Math.Floor(voice.Phase);
-            }
+            var s1 = _osc1.Process(voice.BaseFrequency);
+            var s2 = _osc2.Process(voice.BaseFrequency);
+            var s3 = _osc3.Process(voice.BaseFrequency);
+
+            var rawSample = _mixer.Process(s1, s2, s3);
+            var sample = rawSample * voice.Level;
+
+            var levelBeforeReleaseAdvance = voice.Level;
+            mixedSample += sample;
 
             if (voice.IsReleasing)
             {
@@ -189,6 +224,9 @@ public sealed class LiveOscillatorSampleProvider : ISampleProvider
         foreach (var completedVoice in _completedVoices)
         {
             _voices.Remove(completedVoice);
+            _osc1.RemoveVoice(completedVoice);
+            _osc2.RemoveVoice(completedVoice);
+            _osc3.RemoveVoice(completedVoice);
         }
 
         var remainingVoiceCount = _voices.Count;
@@ -235,9 +273,9 @@ public sealed class LiveOscillatorSampleProvider : ISampleProvider
         return outputSample;
     }
 
-    private float CreateWaveSample(double phase)
+    private float CreateWaveSample(double phase, OscillatorWaveform waveform)
     {
-        return _waveform switch
+        return waveform switch
         {
             OscillatorWaveform.Sine => (float)Math.Sin(phase * TwoPi),
             OscillatorWaveform.Triangle => 1.0f - (4.0f * MathF.Abs((float)phase - 0.5f)),
@@ -247,22 +285,11 @@ public sealed class LiveOscillatorSampleProvider : ISampleProvider
         };
     }
 
-    private float ApplyBitReduction(float sample)
-    {
-        if (_bitRedux == 0)
-        {
-            return sample;
-        }
-
-        var steps = 1 << (_bitRedux - 1);
-        return MathF.Round(sample * steps) / steps;
-    }
-
-    private float CalculateEffectiveFrequency(float baseFrequency)
+    private float CalculateEffectiveFrequency(float baseFrequency, int semiOffset, int centsOffset)
     {
         var noteSemitoneOffset = 12.0 * Math.Log2(baseFrequency / BaseKeytrackFrequency);
         var trackedFrequency = BaseKeytrackFrequency * Math.Pow(2.0, (noteSemitoneOffset * _keytrackPercent) / 1200.0);
-        var tuningOffset = _semiOffset + (_centsOffset / 100.0);
+        var tuningOffset = semiOffset + (centsOffset / 100.0);
         return (float)(trackedFrequency * Math.Pow(2.0, tuningOffset / 12.0));
     }
 
@@ -466,7 +493,6 @@ public sealed class LiveOscillatorSampleProvider : ISampleProvider
         private int _attackSamplesRemaining = Math.Max(1, attackSampleCount);
 
         public float BaseFrequency { get; } = baseFrequency;
-        public double Phase { get; set; }
         public bool IsReleasing { get; private set; }
         public float Level { get; private set; }
         public int ReleaseSamplesRemaining { get; private set; }

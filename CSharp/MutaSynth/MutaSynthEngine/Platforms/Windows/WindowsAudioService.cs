@@ -35,6 +35,23 @@ public sealed class WindowsAudioService : IAudioDriver
     private int _selectedCentsOffset;
     private int _selectedBitRedux;
     private int _selectedKeytrackPercent = 100;
+
+    private int _selectedOsc2SemiOffset = 0;
+    private int _selectedOsc2CentsOffset = 0;
+    private OscillatorWaveform _selectedOsc2Waveform = OscillatorWaveform.Saw;
+    private int _selectedOsc2BitRedux = 0;
+    private int _selectedOsc2KeytrackPercent = 100;
+
+    private int _selectedOsc3SemiOffset = -12;
+    private int _selectedOsc3CentsOffset = 0;
+    private OscillatorWaveform _selectedOsc3Waveform = OscillatorWaveform.Saw;
+    private int _selectedOsc3BitRedux = 0;
+    private int _selectedOsc3KeytrackPercent = 100;
+
+    private float _selectedOsc1Volume = 128.0f;
+    private float _selectedOsc2Volume = 0.0f;
+    private float _selectedOsc3Volume = 0.0f;
+
     private FilterType _selectedFilterType = FilterType.LpLdr12;
     private float _selectedFilterCutoff = 128.0f;
     private float _selectedFilterResonance;
@@ -72,6 +89,23 @@ public sealed class WindowsAudioService : IAudioDriver
     public int SelectedCentsOffset => _selectedCentsOffset;
     public int SelectedBitRedux => _selectedBitRedux;
     public int SelectedKeytrackPercent => _selectedKeytrackPercent;
+
+    public int SelectedOsc2SemiOffset => _selectedOsc2SemiOffset;
+    public int SelectedOsc2CentsOffset => _selectedOsc2CentsOffset;
+    public OscillatorWaveform SelectedOsc2Waveform => _selectedOsc2Waveform;
+    public int SelectedOsc2BitRedux => _selectedOsc2BitRedux;
+    public int SelectedOsc2KeytrackPercent => _selectedOsc2KeytrackPercent;
+
+    public int SelectedOsc3SemiOffset => _selectedOsc3SemiOffset;
+    public int SelectedOsc3CentsOffset => _selectedOsc3CentsOffset;
+    public OscillatorWaveform SelectedOsc3Waveform => _selectedOsc3Waveform;
+    public int SelectedOsc3BitRedux => _selectedOsc3BitRedux;
+    public int SelectedOsc3KeytrackPercent => _selectedOsc3KeytrackPercent;
+
+    public float SelectedOsc1Volume => _selectedOsc1Volume;
+    public float SelectedOsc2Volume => _selectedOsc2Volume;
+    public float SelectedOsc3Volume => _selectedOsc3Volume;
+
     public FilterType SelectedFilterType => _selectedFilterType;
     public float SelectedFilterCutoff => _selectedFilterCutoff;
     public float SelectedFilterResonance => _selectedFilterResonance;
@@ -377,6 +411,279 @@ public sealed class WindowsAudioService : IAudioDriver
         try
         {
             _selectedSemiOffset = semiOffset;
+            ApplyOscillatorSettings();
+        }
+        finally
+        {
+            _semaphore.Release();
+        }
+    }
+
+    public void SelectOsc2SemiOffset(int semiOffset)
+    {
+        ThrowIfDisposed();
+
+        if (semiOffset is < -24 or > 24 || _selectedOsc2SemiOffset == semiOffset)
+        {
+            return;
+        }
+
+        _semaphore.Wait();
+        try
+        {
+            _selectedOsc2SemiOffset = semiOffset;
+            ApplyOscillatorSettings();
+        }
+        finally
+        {
+            _semaphore.Release();
+        }
+    }
+
+    public void SelectOsc2CentsOffset(int centsOffset)
+    {
+        ThrowIfDisposed();
+
+        if (centsOffset is < -50 or > 50 || _selectedOsc2CentsOffset == centsOffset)
+        {
+            return;
+        }
+
+        _semaphore.Wait();
+        try
+        {
+            _selectedOsc2CentsOffset = centsOffset;
+            ApplyOscillatorSettings();
+        }
+        finally
+        {
+            _semaphore.Release();
+        }
+    }
+
+    public void SelectOsc2Waveform(OscillatorWaveform waveform)
+    {
+        ThrowIfDisposed();
+
+        if (!AvailableWaveforms.Contains(waveform) || _selectedOsc2Waveform == waveform)
+        {
+            return;
+        }
+
+        _semaphore.Wait();
+        try
+        {
+            _selectedOsc2Waveform = waveform;
+            ApplyOscillatorSettings();
+        }
+        finally
+        {
+            _semaphore.Release();
+        }
+    }
+
+    public void SelectOsc3SemiOffset(int semiOffset)
+    {
+        ThrowIfDisposed();
+
+        if (semiOffset is < -24 or > 24 || _selectedOsc3SemiOffset == semiOffset)
+        {
+            return;
+        }
+
+        _semaphore.Wait();
+        try
+        {
+            _selectedOsc3SemiOffset = semiOffset;
+            ApplyOscillatorSettings();
+        }
+        finally
+        {
+            _semaphore.Release();
+        }
+    }
+
+    public void SelectOsc3CentsOffset(int centsOffset)
+    {
+        ThrowIfDisposed();
+
+        if (centsOffset is < -50 or > 50 || _selectedOsc3CentsOffset == centsOffset)
+        {
+            return;
+        }
+
+        _semaphore.Wait();
+        try
+        {
+            _selectedOsc3CentsOffset = centsOffset;
+            ApplyOscillatorSettings();
+        }
+        finally
+        {
+            _semaphore.Release();
+        }
+    }
+
+    public void SelectOsc3Waveform(OscillatorWaveform waveform)
+    {
+        ThrowIfDisposed();
+
+        if (!AvailableWaveforms.Contains(waveform) || _selectedOsc3Waveform == waveform)
+        {
+            return;
+        }
+
+        _semaphore.Wait();
+        try
+        {
+            _selectedOsc3Waveform = waveform;
+            ApplyOscillatorSettings();
+        }
+        finally
+        {
+            _semaphore.Release();
+        }
+    }
+
+    public void SelectOsc2BitRedux(int bitRedux)
+    {
+        ThrowIfDisposed();
+
+        if (!AvailableBitReduxLevels.Contains(bitRedux) || _selectedOsc2BitRedux == bitRedux)
+        {
+            return;
+        }
+
+        _semaphore.Wait();
+        try
+        {
+            _selectedOsc2BitRedux = bitRedux;
+            ApplyOscillatorSettings();
+        }
+        finally
+        {
+            _semaphore.Release();
+        }
+    }
+
+    public void SelectOsc2KeytrackPercent(int keytrackPercent)
+    {
+        ThrowIfDisposed();
+
+        if (keytrackPercent is < 0 or > 200 || _selectedOsc2KeytrackPercent == keytrackPercent)
+        {
+            return;
+        }
+
+        _semaphore.Wait();
+        try
+        {
+            _selectedOsc2KeytrackPercent = keytrackPercent;
+            ApplyOscillatorSettings();
+        }
+        finally
+        {
+            _semaphore.Release();
+        }
+    }
+
+    public void SelectOsc3BitRedux(int bitRedux)
+    {
+        ThrowIfDisposed();
+
+        if (!AvailableBitReduxLevels.Contains(bitRedux) || _selectedOsc3BitRedux == bitRedux)
+        {
+            return;
+        }
+
+        _semaphore.Wait();
+        try
+        {
+            _selectedOsc3BitRedux = bitRedux;
+            ApplyOscillatorSettings();
+        }
+        finally
+        {
+            _semaphore.Release();
+        }
+    }
+
+    public void SelectOsc3KeytrackPercent(int keytrackPercent)
+    {
+        ThrowIfDisposed();
+
+        if (keytrackPercent is < 0 or > 200 || _selectedOsc3KeytrackPercent == keytrackPercent)
+        {
+            return;
+        }
+
+        _semaphore.Wait();
+        try
+        {
+            _selectedOsc3KeytrackPercent = keytrackPercent;
+            ApplyOscillatorSettings();
+        }
+        finally
+        {
+            _semaphore.Release();
+        }
+    }
+
+    public void SelectOsc1Volume(float volume)
+    {
+        ThrowIfDisposed();
+
+        if (volume is < 0.0f or > 128.0f || _selectedOsc1Volume == volume)
+        {
+            return;
+        }
+
+        _semaphore.Wait();
+        try
+        {
+            _selectedOsc1Volume = volume;
+            ApplyOscillatorSettings();
+        }
+        finally
+        {
+            _semaphore.Release();
+        }
+    }
+
+    public void SelectOsc2Volume(float volume)
+    {
+        ThrowIfDisposed();
+
+        if (volume is < 0.0f or > 128.0f || _selectedOsc2Volume == volume)
+        {
+            return;
+        }
+
+        _semaphore.Wait();
+        try
+        {
+            _selectedOsc2Volume = volume;
+            ApplyOscillatorSettings();
+        }
+        finally
+        {
+            _semaphore.Release();
+        }
+    }
+
+    public void SelectOsc3Volume(float volume)
+    {
+        ThrowIfDisposed();
+
+        if (volume is < 0.0f or > 128.0f || _selectedOsc3Volume == volume)
+        {
+            return;
+        }
+
+        _semaphore.Wait();
+        try
+        {
+            _selectedOsc3Volume = volume;
             ApplyOscillatorSettings();
         }
         finally
@@ -790,7 +1097,11 @@ public sealed class WindowsAudioService : IAudioDriver
 
     private void ApplyOscillatorSettings()
     {
-        _audioOutputBackend.UpdateOscillatorSettings(_selectedWaveform, _selectedSemiOffset, _selectedCentsOffset, _selectedBitRedux, _selectedKeytrackPercent, _isOscillatorLoggingEnabled);
+        _audioOutputBackend.UpdateOscillatorSettings(
+            _selectedWaveform, _selectedSemiOffset, _selectedCentsOffset, _selectedBitRedux, _selectedKeytrackPercent,
+            _selectedOsc2Waveform, _selectedOsc2SemiOffset, _selectedOsc2CentsOffset, _selectedOsc2BitRedux, _selectedOsc2KeytrackPercent,
+            _selectedOsc3Waveform, _selectedOsc3SemiOffset, _selectedOsc3CentsOffset, _selectedOsc3BitRedux, _selectedOsc3KeytrackPercent,
+            _isOscillatorLoggingEnabled, _selectedOsc1Volume, _selectedOsc2Volume, _selectedOsc3Volume);
     }
 
     private void ApplyFilterSettings()
