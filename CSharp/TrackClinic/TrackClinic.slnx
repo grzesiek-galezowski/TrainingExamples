@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="TrackClinic/TrackClinic.csproj" />
+  <Project Path="TrackClinicServiceSpecification/TrackClinicServiceSpecification.csproj" />
+</Solution>

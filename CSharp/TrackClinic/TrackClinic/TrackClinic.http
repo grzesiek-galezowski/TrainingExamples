@@ -1,0 +1,11 @@
+@TrackClinic_HostAddress = http://localhost:5168
+
+GET {{TrackClinic_HostAddress}}/openapi/v1.json
+Accept: application/json
+
+###
+
+GET {{TrackClinic_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

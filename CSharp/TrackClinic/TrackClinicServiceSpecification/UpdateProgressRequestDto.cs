@@ -1,0 +1,3 @@
+﻿namespace TrackClinicServiceSpecification;
+
+public record UpdateProgressRequestDto(int ProgressPercentage);
