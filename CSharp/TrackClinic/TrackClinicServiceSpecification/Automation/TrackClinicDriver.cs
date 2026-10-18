@@ -45,7 +45,7 @@ public class TrackClinicDriver : IAsyncDisposable
   {
     var response = await _client.Value.Request($"/api/v1/artists/{artistName}/songs")
       .PostJsonAsync(createSongRequestDto, cancellationToken: _cancellationToken);
-    response.StatusCode.Should().Be(200);
+    response.StatusCode.Should().Be(201);
   }
 
   public async Task<RetrieveProjectDetailsResponse> RetrieveProjectDetails(string artist, string songName)

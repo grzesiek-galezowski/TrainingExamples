@@ -19,6 +19,7 @@ public class OpenApiSpecification
     // THEN
     response.ShouldBeValidJson();
     response.ShouldContainTheApplicationPaths();
+    response.ShouldHaveCorrectMetadata();
   }
 
   [Test]
