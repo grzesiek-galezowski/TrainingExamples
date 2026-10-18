@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
@@ -9,8 +9,6 @@ namespace TrackClinicServiceSpecification.Automation;
 
 internal class WebApp(string databaseName) : WebApplicationFactory<Program>
 {
-  //bug async context preserve
-
   protected override void ConfigureWebApplicationBuilder(IHostApplicationBuilder builder)
   {
     builder.Configuration.AddInMemoryCollection(

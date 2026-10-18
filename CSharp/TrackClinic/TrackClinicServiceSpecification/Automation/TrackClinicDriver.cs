@@ -1,6 +1,8 @@
-﻿using AwesomeAssertions;
-using Flurl.Http;
-using TddXt.AnyRoot;
+﻿﻿using AwesomeAssertions;
+ using AwesomeAssertions.Extensions;
+ using Flurl.Http;
+ using Microsoft.Playwright;
+ using TddXt.AnyRoot;
 using TddXt.AnyRoot.Strings;
 using TrackClinic;
 
@@ -30,8 +32,8 @@ public class TrackClinicDriver : IAsyncDisposable
   public async Task Start()
   {
     _webApp.StartServer();
-    await WaitForHealthCheck(TimeSpan.FromSeconds(10), "/health");
-    await WaitForHealthCheck(TimeSpan.FromSeconds(10), "/ready");
+    await WaitForHealthCheck("/health", 10.Seconds());
+    await WaitForHealthCheck("/ready", 10.Seconds());
   }
 
   public async Task<HealthResponse> RequestHealthCheck(string urlSegment)
@@ -64,14 +66,22 @@ public class TrackClinicDriver : IAsyncDisposable
     return new OpenApiDocumentResponse(await response.GetStringAsync());
   }
 
-  public async Task<IFlurlResponse> GetScalarUi()
+  public async Task<WebPageResponse> GetScalarUi()
   {
-    var response = await _client.Value.Request("/scalar/v1")
-      .GetAsync(cancellationToken: _cancellationToken);
-    return response;
+    using var playwright = await Playwright.CreateAsync();
+    await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
+    {
+      Headless = true
+    });
+    var page = await browser.NewPageAsync();
+
+    await SetupProxyingRequestsToTestServer(page, "http://localhost/**/*", _cancellationToken);
+    await NavigateToPageAndWaitToLoad(page, "http://localhost/scalar/v1", "text=TrackClinic API");
+
+    return new WebPageResponse(page);
   }
 
-  private async Task WaitForHealthCheck(TimeSpan timeout, string urlSegment)
+  private async Task WaitForHealthCheck(string urlSegment, TimeSpan timeout)
   {
     using var cts = new CancellationTokenSource(timeout);
     using var timer = new PeriodicTimer(TimeSpan.FromMilliseconds(100));
@@ -82,5 +92,34 @@ public class TrackClinicDriver : IAsyncDisposable
         return;
       }
     }
+  }
+
+  private static async Task NavigateToPageAndWaitToLoad(IPage page, string url, string selectorToWaitFor)
+  {
+    await page.GotoAsync(url);
+    await page.WaitForSelectorAsync(selectorToWaitFor);
+  }
+
+  private async Task SetupProxyingRequestsToTestServer(IPage page, string url, CancellationToken cancellationToken)
+  {
+    await page.RouteAsync(url, async route =>
+    {
+      var response = await RerouteToTestServerClient(route.Request, cancellationToken);
+
+      await route.FulfillAsync(new RouteFulfillOptions
+      {
+        BodyBytes = await response.GetBytesAsync(),
+        Status = response.StatusCode,
+        Headers = response.Headers.ToDictionary()
+      });
+    });
+  }
+
+  private async Task<IFlurlResponse> RerouteToTestServerClient(IRequest routeRequest, CancellationToken ct)
+  {
+    return await _client.Value
+      .Request(new Uri(routeRequest.Url).PathAndQuery)
+      .AllowAnyHttpStatus()
+      .SendAsync(new HttpMethod(routeRequest.Method), cancellationToken: ct);
   }
 }

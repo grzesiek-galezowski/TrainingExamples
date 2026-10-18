@@ -1,9 +1,8 @@
-using TrackClinicServiceSpecification.Automation;
-using AwesomeAssertions;
+﻿using TrackClinicServiceSpecification.Automation;
 
 namespace TrackClinicServiceSpecification;
 
-[CancelAfter(30000)]
+[CancelAfter(60000)] //bug introduce a common timeout for all tests in the assembly
 public class OpenApiSpecification
 {
   [Test]
@@ -30,13 +29,9 @@ public class OpenApiSpecification
     await driver.Start();
 
     // WHEN
-    var response = await driver.GetScalarUi();
+    var webPageResponse = await driver.GetScalarUi();
 
     // THEN
-    response.StatusCode.Should().Be(200);
-    var content = await response.GetStringAsync();
-    content.Should().Contain("<script");
-    content.Should().Contain("scalar");
-    //bug more advanced test that at least checks some endpoints
+    await webPageResponse.ShouldHaveCorrectMetadata();
   }
 }
