@@ -64,6 +64,13 @@ public class TrackClinicDriver : IAsyncDisposable
     return new OpenApiDocumentResponse(await response.GetStringAsync());
   }
 
+  public async Task<IFlurlResponse> GetScalarUi()
+  {
+    var response = await _client.Value.Request("/scalar/v1")
+      .GetAsync(cancellationToken: _cancellationToken);
+    return response;
+  }
+
   private async Task WaitForHealthCheck(TimeSpan timeout, string urlSegment)
   {
     using var cts = new CancellationTokenSource(timeout);

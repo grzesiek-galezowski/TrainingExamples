@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Core.NullableReferenceTypesExtensions;
+using Scalar.AspNetCore;
 using Serilog;
 using ILogger = Serilog.ILogger;
 
@@ -57,6 +58,7 @@ public class Program
       {
         //bug test for swagger
         app.MapOpenApi();
+        app.MapScalarApiReference();
       }
 
       app.UseHttpsRedirection();
@@ -78,7 +80,7 @@ public class Program
           {
             await new CreateSongProjectEndpoint(serviceLogicRoot, artistName, request).Handle(cancellationToken);
           })
-        .WithName("CreateSongProject");
+        .WithName("CreateSongProject"); //bug better openapi documentation
       app.MapGet(
           "api/v1/artists/{artistName}/songs/{songName}",
           async (string artistName, string songName, CancellationToken cancellationToken) =>
