@@ -11,7 +11,7 @@ public class TrackClinicDriver : IAsyncDisposable
   private readonly string _databaseName;
   private readonly CancellationToken _cancellationToken;
   private readonly WebApp _webApp;
-  private Lazy<FlurlClient> _client; //bug
+  private readonly Lazy<FlurlClient> _client;
 
   public TrackClinicDriver(CancellationToken cancellationToken)
   {
@@ -30,6 +30,15 @@ public class TrackClinicDriver : IAsyncDisposable
   public async Task Start()
   {
     _webApp.StartServer();
+    await WaitForHealthCheck(TimeSpan.FromSeconds(10), "/health");
+    await WaitForHealthCheck(TimeSpan.FromSeconds(10), "/ready");
+  }
+
+  public async Task<HealthResponse> RequestHealthCheck(string urlSegment)
+  {
+    return new HealthResponse(await _client.Value.Request(urlSegment)
+      .AllowAnyHttpStatus()
+      .GetAsync(cancellationToken: _cancellationToken));
   }
 
   public async Task CreateSongProject(string artistName, CreateSongRequestDto createSongRequestDto)
@@ -53,5 +62,18 @@ public class TrackClinicDriver : IAsyncDisposable
       .GetAsync(cancellationToken: _cancellationToken);
     response.StatusCode.Should().Be(200);
     return new OpenApiDocumentResponse(await response.GetStringAsync());
+  }
+
+  private async Task WaitForHealthCheck(TimeSpan timeout, string urlSegment)
+  {
+    using var cts = new CancellationTokenSource(timeout);
+    using var timer = new PeriodicTimer(TimeSpan.FromMilliseconds(100));
+    while (await timer.WaitForNextTickAsync(cts.Token))
+    {
+      if (await (await RequestHealthCheck(urlSegment)).IsHealthy())
+      {
+        return;
+      }
+    }
   }
 }

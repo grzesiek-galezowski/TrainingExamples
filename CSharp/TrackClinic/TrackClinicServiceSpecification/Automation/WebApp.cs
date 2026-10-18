@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc.Testing;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using TrackClinic;
@@ -18,5 +20,11 @@ internal class WebApp(string databaseName) : WebApplicationFactory<Program>
       });
 
     base.ConfigureWebApplicationBuilder(builder);
+  }
+
+  protected override void ConfigureWebHost(IWebHostBuilder builder)
+  {
+    builder.UseTestServer(options => options.PreserveExecutionContext = true);
+    base.ConfigureWebHost(builder);
   }
 }

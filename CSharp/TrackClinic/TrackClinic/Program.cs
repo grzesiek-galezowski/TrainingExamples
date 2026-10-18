@@ -1,19 +1,24 @@
-using MongoDB.Driver;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Core.NullableReferenceTypesExtensions;
 using Serilog;
-using Serilog.Events;
-using Serilog.Formatting.Json;
+using ILogger = Serilog.ILogger;
 
 namespace TrackClinic;
+
+public class CreateSongProjectEndpoint(ServiceLogicRoot serviceLogicRoot, string artistName, CreateSongRequestDto request)
+{
+  public async Task Handle(CancellationToken cancellationToken)
+  {
+    await serviceLogicRoot.SongDao.SaveSong(artistName, request, cancellationToken);
+    Log.Information("Created song project for {ArtistName}: {SongTitle}", artistName, request.Title);
+  }
+}
 
 public class Program
 {
   public static async Task Main(string[] args)
   {
-    Log.Logger = new LoggerConfiguration()
-      .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-      .Enrich.FromLogContext()
-      .WriteTo.Console(new JsonFormatter())
-      .CreateBootstrapLogger();
+    Log.Logger = LoggingConfigurations.ConfigureBootstrapLogger(new LoggerConfiguration());
 
     try
     {
@@ -21,28 +26,30 @@ public class Program
       var builder = WebApplication.CreateBuilder(args);
       var appConfig = AppConfig.From(builder.Configuration);
 
-      builder.Host.UseSerilog((context, services, configuration) => configuration
-        .MinimumLevel.Is(appConfig.Logging.DefaultLevel)
-        .MinimumLevel.Override("Microsoft", appConfig.Logging.MicrosoftOverride)
-        .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Information)
-        .Enrich.FromLogContext()
-        .ReadFrom.Services(services)
-        .WriteTo.Console(new JsonFormatter()));
+      builder.Host.UseSerilog((_, services, configuration) => LoggingConfigurations.ConfigureServiceLogging(
+        configuration,
+        services,
+        appConfig.Logging.DefaultLevel,
+        appConfig.Logging.MicrosoftOverride));
       //bug validation
       //bug local startup
-      var connectionString = appConfig.DatabaseInfo.ConnectionString;
-      using var mongoClient = new MongoClient(connectionString);
-      var songs = new SongDao(mongoClient, new MongoUrl(connectionString).DatabaseName);
+      var connectionString = appConfig.DatabaseInfo.ConnectionString.OrThrow();
+
+      builder.Services.AddSingleton<ServiceLogicRoot>(ctx => new ServiceLogicRoot(
+        connectionString,
+        ctx.GetRequiredService<ILogger>()));
 
       // Add services to the container.
       builder.Services.AddAuthorization();
 
       // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
       builder.Services.AddOpenApi();
-      builder.Services.AddHealthChecks().AddMongoDb(_ => mongoClient);
+      builder.Services.AddHealthChecks().AddMongoDb(
+        ctx => ctx.GetRequiredService<ServiceLogicRoot>().MongoClient,
+        tags: ["ready"]);
 
       var app = builder.Build();
-
+      var serviceLogicRoot = app.Services.GetRequiredService<ServiceLogicRoot>();
       app.UseSerilogRequestLogging();
 
       // Configure the HTTP request pipeline.
@@ -55,21 +62,29 @@ public class Program
       app.UseHttpsRedirection();
 
       app.UseAuthorization();
+      app.MapHealthChecks("/health", new HealthCheckOptions
+      {
+        Predicate = _ => false //bug what is this?
+      });
+      app.MapHealthChecks("/ready", new HealthCheckOptions
+      {
+        Predicate = check => check.Tags.Contains("ready")
+      });
       //bug authorization (RBAC?)
 
       app.MapPost(
           "api/v1/artists/{artistName}/songs",
-          async (string artistName, CreateSongRequestDto request) =>
+          async (string artistName, CreateSongRequestDto request, CancellationToken cancellationToken) =>
           {
-            await songs.SaveSong(artistName, request);
-            Log.Information("Created song project for {ArtistName}: {SongTitle}", artistName, request.Title);
+            await new CreateSongProjectEndpoint(serviceLogicRoot, artistName, request).Handle(cancellationToken);
           })
         .WithName("CreateSongProject");
       app.MapGet(
           "api/v1/artists/{artistName}/songs/{songName}",
-          async (string artistName, string songName) =>
+          async (string artistName, string songName, CancellationToken cancellationToken) =>
           {
-            return await songs.ReadSong(artistName, songName); //bug
+            var songs = serviceLogicRoot.SongDao;
+            return await songs.ReadSong(artistName, songName, cancellationToken); //bug
           })
         .WithName("GetSongDetails");
 
@@ -84,4 +99,7 @@ public class Program
       await Log.CloseAndFlushAsync();
     }
   }
+
+  //bug move?
+  //bug metrics
 }
