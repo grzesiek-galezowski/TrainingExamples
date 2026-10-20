@@ -32,6 +32,6 @@ public class OpenApiSpecification
     var webPageResponse = await driver.GetScalarUi();
 
     // THEN
-    await webPageResponse.ShouldHaveCorrectMetadata();
+    webPageResponse.ShouldHaveCorrectMetadata();
   }
 }

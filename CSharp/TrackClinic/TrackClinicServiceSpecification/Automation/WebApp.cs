@@ -14,7 +14,10 @@ internal class WebApp(string databaseName) : WebApplicationFactory<Program>
     builder.Configuration.AddInMemoryCollection(
       new Dictionary<string, string?>
       {
-        ["DatabaseInfo:ConnectionString"] = SharedMongoInstance.GetConnectionString(databaseName)
+        ["DatabaseInfo:ConnectionString"] = SharedMongoInstance.GetConnectionString(databaseName),
+        ["Keycloak:Authority"] = SharedKeycloakInstance.GetAuthority(),
+        ["Keycloak:MetadataAddress"] = SharedKeycloakInstance.GetMetadataAddress(),
+        ["Keycloak:RequireHttpsMetadata"] = "false"
       });
 
     base.ConfigureWebApplicationBuilder(builder);

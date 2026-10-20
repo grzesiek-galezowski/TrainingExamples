@@ -1,17 +1,23 @@
 ﻿namespace TrackClinicServiceSpecification;
 
-[SetUpFixture, CancelAfter(60000)]
+[SetUpFixture, CancelAfter(120000)]
 public class AssemblySetUp
 {
   [OneTimeSetUp]
   public async Task SetUp()
   {
-    await SharedMongoInstance.Start();
+    await Task.WhenAll(
+      SharedMongoInstance.Start(),
+      SharedKeycloakInstance.Start()
+    );
   }
 
   [OneTimeTearDown]
   public async Task TearDown()
   {
-    await SharedMongoInstance.Stop();
+    await Task.WhenAll(
+      SharedMongoInstance.Stop(),
+      SharedKeycloakInstance.Stop()
+    );
   }
 }

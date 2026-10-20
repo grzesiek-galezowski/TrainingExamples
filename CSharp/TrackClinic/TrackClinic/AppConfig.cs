@@ -2,19 +2,25 @@ namespace TrackClinic;
 
 public record AppConfig
 {
-  public DatabaseInfoConfig DatabaseInfo { get; init; } = new();
-  public LoggingConfig Logging { get; init; } = new();
+  public required DatabaseInfoConfig DatabaseInfo { get; init; }
+  public required LoggingConfig Logging { get; init; }
+  public required KeycloakConfig Keycloak { get; init; }
 
   public static AppConfig From(ConfigurationManager builderConfiguration)
   {
-    AppConfig appConfig = new();
-    builderConfiguration.Bind(appConfig);
+    var appConfig = builderConfiguration.Get<AppConfig>();
+    ArgumentNullException.ThrowIfNull(appConfig); //bug
     appConfig.Assert();
     return appConfig;
   }
 
   private void Assert()
   {
+    ArgumentNullException.ThrowIfNull(Logging);
+    ArgumentNullException.ThrowIfNull(DatabaseInfo);
+    ArgumentNullException.ThrowIfNull(Keycloak);
     ArgumentNullException.ThrowIfNull(DatabaseInfo.ConnectionString);
+    ArgumentNullException.ThrowIfNull(Keycloak.Authority);
+    ArgumentNullException.ThrowIfNull(Keycloak.MetadataAddress);
   }
 }

@@ -1,8 +1,8 @@
 ﻿﻿using AwesomeAssertions;
- using AwesomeAssertions.Extensions;
- using Flurl.Http;
- using Microsoft.Playwright;
- using TddXt.AnyRoot;
+using AwesomeAssertions.Extensions;
+using Flurl.Http;
+using Microsoft.Playwright;
+using TddXt.AnyRoot;
 using TddXt.AnyRoot.Strings;
 using TrackClinic;
 
@@ -45,22 +45,34 @@ public class TrackClinicDriver : IAsyncDisposable
 
   public async Task CreateSongProject(string artistName, CreateSongRequestDto createSongRequestDto)
   {
-    var response = await _client.Value.Request($"/api/v1/artists/{artistName}/songs")
-      .PostJsonAsync(createSongRequestDto, cancellationToken: _cancellationToken);
-    response.StatusCode.Should().Be(201);
+    var response = await RequestCreatingSongProject(artistName, createSongRequestDto, r => r);
+    response.ShouldBeSuccess();
+  }
+
+  public async Task<CreateSongProjectResponse> RequestCreatingSongProject(string artistName,
+    CreateSongRequestDto createSongRequestDto, Func<TrackClinicRequestBuilder, TrackClinicRequestBuilder> customize)
+  {
+    var requestBuilder = new TrackClinicRequestBuilder(_client.Value.Request($"/api/v1/artists/{artistName}/songs"));
+    var flurlResponse = await (await customize(requestBuilder).Build()).PostJsonAsync(
+      createSongRequestDto,
+      cancellationToken: _cancellationToken);
+    return new CreateSongProjectResponse(flurlResponse);
   }
 
   public async Task<RetrieveProjectDetailsResponse> RetrieveProjectDetails(string artist, string songName)
   {
-    var response = await _client.Value.Request($"/api/v1/artists/{artist}/songs/{songName}")
-      .GetAsync(cancellationToken: _cancellationToken);
+    var response =
+      await (await new TrackClinicRequestBuilder(_client.Value.Request($"/api/v1/artists/{artist}/songs/{songName}"))
+          .Build())
+        .GetAsync(cancellationToken: _cancellationToken);
     response.StatusCode.Should().Be(200);
     return new RetrieveProjectDetailsResponse(await response.GetJsonAsync<SongDetailsDto>());
   }
 
   public async Task<OpenApiDocumentResponse> GetOpenApiDocument()
   {
-    var response = await _client.Value.Request("/openapi/v1.json")
+    var response = await (await new TrackClinicRequestBuilder(_client.Value.Request("/openapi/v1.json"))
+        .Build())
       .GetAsync(cancellationToken: _cancellationToken);
     response.StatusCode.Should().Be(200);
     return new OpenApiDocumentResponse(await response.GetStringAsync());
@@ -78,7 +90,9 @@ public class TrackClinicDriver : IAsyncDisposable
     await SetupProxyingRequestsToTestServer(page, "http://localhost/**/*", _cancellationToken);
     await NavigateToPageAndWaitToLoad(page, "http://localhost/scalar/v1", "text=TrackClinic API");
 
-    return new WebPageResponse(page);
+    var title = await page.TitleAsync();
+    var bodyText = await page.InnerTextAsync("body");
+    return new WebPageResponse(title, bodyText);
   }
 
   private async Task WaitForHealthCheck(string urlSegment, TimeSpan timeout)

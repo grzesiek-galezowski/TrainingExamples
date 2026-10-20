@@ -4,6 +4,13 @@ using Core.NullableReferenceTypesExtensions;
 using Scalar.AspNetCore;
 using Serilog;
 using ILogger = Serilog.ILogger;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Security.Claims;
+using System.Security.Principal;
+using System.Text.Json;
+using Core.Maybe;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.OpenApi;
 
 namespace TrackClinic;
 
@@ -33,33 +40,20 @@ public class Program
         services,
         appConfig.Logging.DefaultLevel,
         appConfig.Logging.MicrosoftOverride));
-      //bug validation
-      //bug local startup
+      //bug logging tests
+      //bug config reading tests
       var connectionString = appConfig.DatabaseInfo.ConnectionString.OrThrow();
 
       builder.Services.AddSingleton<ServiceLogicRoot>(ctx => new ServiceLogicRoot(
         connectionString,
         ctx.GetRequiredService<ILogger>()));
 
-      // Add services to the container.
-      builder.Services.AddAuthorization();
+      builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options => { AuthorizationConfiguration.ConfigureBearerTokenHandling(options, appConfig); });
+      builder.Services.AddAuthorization(AuthorizationConfiguration.ConfigureRoles);
 
       // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-      builder.Services.AddOpenApi(options =>
-      {
-        options.AddDocumentTransformer((document, _, _) =>
-        {
-          document.Info.Title = "TrackClinic API";
-          document.Info.Version = "v1";
-          document.Info.Description = "API for managing song projects and artist collaborations.";
-          document.Info.Contact = new OpenApiContact
-          {
-            Name = "TrackClinic Support",
-            Email = "support@trackclinic.example.com"
-          };
-          return Task.CompletedTask;
-        });
-      });
+      builder.Services.AddOpenApi(OpenApiConfiguration.ConfigureOpenApiDocument);
       builder.Services.AddHealthChecks().AddMongoDb(
         ctx => ctx.GetRequiredService<ServiceLogicRoot>().MongoClient,
         tags: ["ready"]);
@@ -71,23 +65,26 @@ public class Program
       // Configure the HTTP request pipeline.
       if (app.Environment.IsDevelopment())
       {
-        //bug test for swagger
         app.MapOpenApi();
         app.MapScalarApiReference();
       }
 
       app.UseHttpsRedirection();
 
+      app.UseAuthentication();
       app.UseAuthorization();
-      app.MapHealthChecks("/health", new HealthCheckOptions
-      {
-        Predicate = _ => false //bug what is this?
-      });
-      app.MapHealthChecks("/ready", new HealthCheckOptions
-      {
-        Predicate = check => check.Tags.Contains("ready")
-      });
-      //bug authorization (RBAC?)
+      app.MapHealthChecks(
+        "/health",
+        new HealthCheckOptions
+        {
+          Predicate = _ => false //bug what is this?
+        });
+      app.MapHealthChecks(
+        "/ready",
+        new HealthCheckOptions
+        {
+          Predicate = check => check.Tags.Contains("ready")
+        });
 
       app.MapPost(
           "api/v1/artists/{artistName}/songs",
@@ -100,13 +97,15 @@ public class Program
         .WithTags("Songs")
         .WithSummary("Creates a new song project")
         .WithDescription("Initializes a new song project for the specified artist with the given title.")
+        .RequireAuthorization(AuthorizationConfiguration.DefaultPolicyName)
         .Produces(StatusCodes.Status201Created)
         .Produces(StatusCodes.Status400BadRequest);
-      
+
       app.MapGet(
           "api/v1/artists/{artistName}/songs/{songName}",
           async (string artistName, string songName, CancellationToken cancellationToken) =>
           {
+            //bug continue the refactoring to move the logic into a separate endpoint class
             var songs = serviceLogicRoot.SongDao;
             var song = await songs.ReadSong(artistName, songName, cancellationToken);
             return song is not null ? Results.Ok(song) : Results.NotFound();
@@ -115,6 +114,7 @@ public class Program
         .WithTags("Songs")
         .WithSummary("Gets details of a song project")
         .WithDescription("Retrieves the full details of a specific song project, including milestones and timeline.")
+        .RequireAuthorization(AuthorizationConfiguration.DefaultPolicyName)
         .Produces<SongDetailsDto>(StatusCodes.Status200OK)
         .Produces(StatusCodes.Status404NotFound);
 
