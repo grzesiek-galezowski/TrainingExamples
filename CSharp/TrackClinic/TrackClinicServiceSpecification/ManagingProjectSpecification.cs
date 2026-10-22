@@ -9,6 +9,42 @@ namespace TrackClinicServiceSpecification;
 public class ManagingProjectSpecification
 {
   [Test]
+  public async Task ShouldRespondWithSuccessAndSongLinkToCreatingNewSong(CancellationToken cancellationToken)
+  {
+    // GIVEN
+    var artistName = Any.String();
+    var songName = Any.String();
+    await using var driver = new TrackClinicDriver(cancellationToken);
+
+    await driver.Start();
+    
+    // WHEN
+    var response = await driver.RequestCreatingSongProject(artistName, new CreateSongRequestDto(songName));
+
+    // THEN
+    response.ShouldBeSuccess();
+    response.ShouldContainLinkTo(artistName, songName);
+  }
+
+  [Test]
+  public async Task ShouldRespondWithNotFoundWhenRequestingNonExistentSong(CancellationToken cancellationToken)
+  {
+    // GIVEN
+    var artistName = Any.String();
+    var songName = Any.String();
+    await using var driver = new TrackClinicDriver(cancellationToken);
+
+    await driver.Start();
+
+    // WHEN
+    var response = await driver.RequestRetrievalOfProjectDetails(artistName, songName);
+
+    // THEN
+    response.ShouldBeNotFound();
+  }
+
+
+  [Test]
   public async Task ShouldCreateInitialSongWithNoProgress(CancellationToken cancellationToken) //bug
   {
     // GIVEN
@@ -26,9 +62,9 @@ public class ManagingProjectSpecification
     var response2 = await driver.RetrieveProjectDetails(artistName, songName2);
 
     // THEN
-    response1.ShouldBeEquivalentTo(SongDetailsDto.Initial(artistName, songName1));
-    response2.ShouldBeEquivalentTo(SongDetailsDto.Initial(artistName, songName2));
+    await response1.ShouldHaveContentEquivalentTo(SongDetailsDto.Initial(artistName, songName1));
+    await response2.ShouldHaveContentEquivalentTo(SongDetailsDto.Initial(artistName, songName2));
   }
 }
 
-// Response DTOs (Read Side)
+//bug validation tests + functionality

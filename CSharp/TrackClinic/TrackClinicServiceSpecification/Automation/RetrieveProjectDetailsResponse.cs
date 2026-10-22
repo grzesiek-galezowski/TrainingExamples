@@ -1,13 +1,24 @@
 ﻿using AwesomeAssertions;
+using Flurl.Http;
 using TrackClinic;
 
 namespace TrackClinicServiceSpecification.Automation;
 
-public class RetrieveProjectDetailsResponse(SongDetailsDto dto)
+public class RetrieveProjectDetailsResponse(IFlurlResponse response)
 {
   
-  public void ShouldBeEquivalentTo(SongDetailsDto songDetailsDto)
+  public async Task ShouldHaveContentEquivalentTo(SongDetailsDto songDetailsDto)
   {
-    dto.Should().BeEquivalentTo(songDetailsDto);
+    (await response.GetJsonAsync<SongDetailsDto>()).Should().BeEquivalentTo(songDetailsDto);
+  }
+
+  public void ShouldBeNotFound()
+  {
+    response.StatusCode.Should().Be(404);
+  }
+
+  public void ShouldBeSuccess()
+  {
+    response.StatusCode.Should().Be(200);
   }
 }

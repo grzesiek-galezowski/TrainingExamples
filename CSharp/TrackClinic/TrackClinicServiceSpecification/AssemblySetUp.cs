@@ -1,4 +1,11 @@
-﻿namespace TrackClinicServiceSpecification;
+﻿using Serilog;
+
+#if !NCRUNCH
+[assembly: Parallelizable(ParallelScope.Children)]
+[assembly: LevelOfParallelism(32)]
+#endif
+
+namespace TrackClinicServiceSpecification;
 
 [SetUpFixture, CancelAfter(120000)]
 public class AssemblySetUp

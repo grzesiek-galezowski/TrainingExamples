@@ -1,4 +1,4 @@
-namespace TrackClinic;
+namespace TrackClinic.Adapters.Configuration;
 
 public record AppConfig
 {

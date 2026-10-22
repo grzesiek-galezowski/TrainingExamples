@@ -1,3 +1,4 @@
+using Core.Maybe;
 using MongoDB.Driver;
 
 namespace TrackClinic;
@@ -9,9 +10,9 @@ public class SongDao(MongoClient mongoClient, string databaseName)
       .GetDatabase(databaseName)
       .GetCollection<SongDetailsDto>("Songs");
 
-  public async Task<SongDetailsDto> ReadSong(string artistName, string songName, CancellationToken cancellationToken)
+  public async Task<Maybe<SongDetailsDto>> ReadSong(string artistName, string songName, CancellationToken cancellationToken)
   {
-    return await _collection.Find(s => s.Artist == artistName && s.Title == songName).FirstOrDefaultAsync(cancellationToken); //bug maybe
+    return (await _collection.Find(s => s.Artist == artistName && s.Title == songName).FirstOrDefaultAsync(cancellationToken)).ToMaybe(); //bug maybe
   }
 
   public async Task SaveSong(string artistName, CreateSongRequestDto request, CancellationToken cancellationToken)

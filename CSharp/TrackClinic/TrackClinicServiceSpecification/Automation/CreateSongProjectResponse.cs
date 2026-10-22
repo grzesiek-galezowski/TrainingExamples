@@ -14,4 +14,10 @@ public class CreateSongProjectResponse(IFlurlResponse flurlResponse)
   {
     flurlResponse.StatusCode.Should().Be(403);
   }
+
+  public void ShouldContainLinkTo(string artistName, string songName)
+  {
+    flurlResponse.Headers.Should().ContainSingle(tuple =>
+      tuple.Name == "Location" && tuple.Value.Contains($"/api/v1/artists/{artistName}/songs/{songName}"));
+  }
 }

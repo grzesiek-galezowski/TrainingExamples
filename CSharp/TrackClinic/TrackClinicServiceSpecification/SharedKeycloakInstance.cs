@@ -87,6 +87,64 @@ public static class SharedKeycloakInstance
 
   private static async Task CreateUser(HttpClient httpClient, string baseAddress, string username, string[] roles)
   {
+    var userResponse = await CreateUserEntry(httpClient, baseAddress, username);
+
+    var location = userResponse.Headers.Location;
+    var userId = location!.Segments.Last();
+
+    await ResetPassword(httpClient, baseAddress, userId);
+    await RemoveRequiredActions(httpClient, baseAddress, userId); //bug needed?
+
+    foreach (var roleName in roles)
+    {
+      var role = await GetRole(httpClient, baseAddress, roleName);
+      await AssignRoleToUser(httpClient, baseAddress, userId, role);
+    }
+  }
+
+  private static async Task AssignRoleToUser(HttpClient httpClient, string baseAddress, string userId, JsonElement role)
+  {
+    var mappingResponse = await httpClient.PostAsJsonAsync(
+      $"{baseAddress}/admin/realms/track-clinic/users/{userId}/role-mappings/realm",
+      new[] { role });
+    mappingResponse.EnsureSuccessStatusCode();
+  }
+
+  private static async Task<JsonElement> GetRole(HttpClient httpClient, string baseAddress, string roleName)
+  {
+    var roleResponse = await httpClient.GetAsync($"{baseAddress}/admin/realms/track-clinic/roles/{roleName}");
+    roleResponse.EnsureSuccessStatusCode();
+    var role = await roleResponse.Content.ReadFromJsonAsync<JsonElement>();
+    return role;
+  }
+
+  private static async Task RemoveRequiredActions(HttpClient httpClient, string baseAddress, string userId)
+  {
+    // Remove any default required actions that might have been added
+    await httpClient.PutAsJsonAsync(
+      $"{baseAddress}/admin/realms/track-clinic/users/{userId}",
+      new
+      {
+        requiredActions = Array.Empty<string>()
+      });
+  }
+
+  private static async Task ResetPassword(HttpClient httpClient, string baseAddress, string userId)
+  {
+    // Set Password
+    var passwordResponse = await httpClient.PutAsJsonAsync(
+      $"{baseAddress}/admin/realms/track-clinic/users/{userId}/reset-password",
+      new
+      {
+        type = "password",
+        value = "password", //bug duplication
+        temporary = false
+      });
+    passwordResponse.EnsureSuccessStatusCode();
+  }
+
+  private static async Task<HttpResponseMessage> CreateUserEntry(HttpClient httpClient, string baseAddress, string username)
+  {
     var userResponse = await httpClient.PostAsJsonAsync(
       $"{baseAddress}/admin/realms/track-clinic/users",
       new
@@ -100,40 +158,7 @@ public static class SharedKeycloakInstance
         requiredActions = Array.Empty<string>()
       });
     userResponse.EnsureSuccessStatusCode();
-
-    var location = userResponse.Headers.Location;
-    var userId = location!.Segments.Last();
-
-    // Set Password
-    var passwordResponse = await httpClient.PutAsJsonAsync(
-      $"{baseAddress}/admin/realms/track-clinic/users/{userId}/reset-password",
-      new
-      {
-        type = "password",
-        value = "password", //bug duplication
-        temporary = false
-      });
-    passwordResponse.EnsureSuccessStatusCode();
-
-    // Remove any default required actions that might have been added
-    await httpClient.PutAsJsonAsync(
-      $"{baseAddress}/admin/realms/track-clinic/users/{userId}",
-      new
-      {
-        requiredActions = Array.Empty<string>()
-      });
-
-    foreach (var roleName in roles)
-    {
-      var roleResponse = await httpClient.GetAsync($"{baseAddress}/admin/realms/track-clinic/roles/{roleName}");
-      roleResponse.EnsureSuccessStatusCode();
-      var role = await roleResponse.Content.ReadFromJsonAsync<JsonElement>();
-
-      var mappingResponse = await httpClient.PostAsJsonAsync(
-        $"{baseAddress}/admin/realms/track-clinic/users/{userId}/role-mappings/realm",
-        new[] { role });
-      mappingResponse.EnsureSuccessStatusCode();
-    }
+    return userResponse;
   }
 
   private static async Task<string> GetAdminToken(HttpClient httpClient)

@@ -1,6 +1,6 @@
 using Serilog.Events;
 
-namespace TrackClinic;
+namespace TrackClinic.Adapters.Configuration;
 
 public record LoggingConfig
 {

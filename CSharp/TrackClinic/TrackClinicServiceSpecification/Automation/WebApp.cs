@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using Serilog;
+using Serilog.Events;
 using TrackClinic;
 
 namespace TrackClinicServiceSpecification.Automation;
@@ -19,7 +21,6 @@ internal class WebApp(string databaseName) : WebApplicationFactory<Program>
         ["Keycloak:MetadataAddress"] = SharedKeycloakInstance.GetMetadataAddress(),
         ["Keycloak:RequireHttpsMetadata"] = "false"
       });
-
     base.ConfigureWebApplicationBuilder(builder);
   }
 
@@ -27,5 +28,14 @@ internal class WebApp(string databaseName) : WebApplicationFactory<Program>
   {
     builder.UseTestServer(options => options.PreserveExecutionContext = true);
     base.ConfigureWebHost(builder);
+  }
+
+  protected override IHost CreateHost(IHostBuilder builder)
+  {
+    builder.UseSerilog(LoggingConfigurations.ConfigureServiceLogging(
+      new LoggerConfiguration(), LogEventLevel.Information, LogEventLevel.Information)
+      .CreateLogger(), dispose: true);
+    var host = base.CreateHost(builder);
+    return host;
   }
 }

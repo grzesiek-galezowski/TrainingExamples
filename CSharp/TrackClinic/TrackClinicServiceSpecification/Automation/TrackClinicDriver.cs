@@ -38,15 +38,26 @@ public class TrackClinicDriver : IAsyncDisposable
 
   public async Task<HealthResponse> RequestHealthCheck(string urlSegment)
   {
-    return new HealthResponse(await _client.Value.Request(urlSegment)
-      .AllowAnyHttpStatus()
-      .GetAsync(cancellationToken: _cancellationToken));
+    return new HealthResponse(
+      await _client.Value.Request(urlSegment)
+        .AllowAnyHttpStatus()
+        .GetAsync(cancellationToken: _cancellationToken));
   }
 
-  public async Task CreateSongProject(string artistName, CreateSongRequestDto createSongRequestDto)
+  public async Task<CreateSongProjectResponse> CreateSongProject(string artistName,
+    CreateSongRequestDto createSongRequestDto)
   {
     var response = await RequestCreatingSongProject(artistName, createSongRequestDto, r => r);
     response.ShouldBeSuccess();
+    return response;
+  }
+
+  public async Task<CreateSongProjectResponse> RequestCreatingSongProject(string artistName,
+    CreateSongRequestDto createSongRequestDto)
+  {
+    var response = await RequestCreatingSongProject(artistName, createSongRequestDto, r => r);
+    response.ShouldBeSuccess();
+    return response;
   }
 
   public async Task<CreateSongProjectResponse> RequestCreatingSongProject(string artistName,
@@ -61,12 +72,18 @@ public class TrackClinicDriver : IAsyncDisposable
 
   public async Task<RetrieveProjectDetailsResponse> RetrieveProjectDetails(string artist, string songName)
   {
-    var response =
+    var response = await RequestRetrievalOfProjectDetails(artist, songName);
+    response.ShouldBeSuccess();
+    return response;
+  }
+
+  public async Task<RetrieveProjectDetailsResponse> RequestRetrievalOfProjectDetails(string artist, string songName)
+  {
+    var flurlResponse =
       await (await new TrackClinicRequestBuilder(_client.Value.Request($"/api/v1/artists/{artist}/songs/{songName}"))
           .Build())
         .GetAsync(cancellationToken: _cancellationToken);
-    response.StatusCode.Should().Be(200);
-    return new RetrieveProjectDetailsResponse(await response.GetJsonAsync<SongDetailsDto>());
+    return new RetrieveProjectDetailsResponse(flurlResponse);
   }
 
   public async Task<OpenApiDocumentResponse> GetOpenApiDocument()
@@ -81,10 +98,11 @@ public class TrackClinicDriver : IAsyncDisposable
   public async Task<WebPageResponse> GetScalarUi()
   {
     using var playwright = await Playwright.CreateAsync();
-    await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
-    {
-      Headless = true
-    });
+    await using var browser = await playwright.Chromium.LaunchAsync(
+      new BrowserTypeLaunchOptions
+      {
+        Headless = true
+      });
     var page = await browser.NewPageAsync();
 
     await SetupProxyingRequestsToTestServer(page, "http://localhost/**/*", _cancellationToken);
@@ -116,17 +134,20 @@ public class TrackClinicDriver : IAsyncDisposable
 
   private async Task SetupProxyingRequestsToTestServer(IPage page, string url, CancellationToken cancellationToken)
   {
-    await page.RouteAsync(url, async route =>
-    {
-      var response = await RerouteToTestServerClient(route.Request, cancellationToken);
-
-      await route.FulfillAsync(new RouteFulfillOptions
+    await page.RouteAsync(
+      url,
+      async route =>
       {
-        BodyBytes = await response.GetBytesAsync(),
-        Status = response.StatusCode,
-        Headers = response.Headers.ToDictionary()
+        var response = await RerouteToTestServerClient(route.Request, cancellationToken);
+
+        await route.FulfillAsync(
+          new RouteFulfillOptions
+          {
+            BodyBytes = await response.GetBytesAsync(),
+            Status = response.StatusCode,
+            Headers = response.Headers.ToDictionary()
+          });
       });
-    });
   }
 
   private async Task<IFlurlResponse> RerouteToTestServerClient(IRequest routeRequest, CancellationToken ct)

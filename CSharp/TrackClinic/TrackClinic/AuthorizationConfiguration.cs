@@ -5,6 +5,7 @@ using Core.Maybe;
 using Core.NullableReferenceTypesExtensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
+using TrackClinic.Adapters.Configuration;
 
 namespace TrackClinic;
 

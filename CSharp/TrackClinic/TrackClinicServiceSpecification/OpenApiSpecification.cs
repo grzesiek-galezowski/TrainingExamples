@@ -2,7 +2,9 @@
 
 namespace TrackClinicServiceSpecification;
 
-[CancelAfter(60000)] //bug introduce a common timeout for all tests in the assembly
+//bug introduce a common timeout for all tests in the assembly
+//bug the timeout does not seem to work
+[CancelAfter(60000)] 
 public class OpenApiSpecification
 {
   [Test]

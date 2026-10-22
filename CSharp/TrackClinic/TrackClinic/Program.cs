@@ -1,27 +1,13 @@
-﻿using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.OpenApi;
+﻿using Core.Maybe;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Core.NullableReferenceTypesExtensions;
 using Scalar.AspNetCore;
 using Serilog;
 using ILogger = Serilog.ILogger;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using System.Security.Claims;
-using System.Security.Principal;
-using System.Text.Json;
-using Core.Maybe;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.OpenApi;
+using TrackClinic.Adapters.Configuration;
 
 namespace TrackClinic;
-
-public class CreateSongProjectEndpoint(ServiceLogicRoot serviceLogicRoot, string artistName, CreateSongRequestDto request)
-{
-  public async Task Handle(CancellationToken cancellationToken)
-  {
-    await serviceLogicRoot.SongDao.SaveSong(artistName, request, cancellationToken);
-    Log.Information("Created song project for {ArtistName}: {SongTitle}", artistName, request.Title);
-  }
-}
 
 public class Program
 {
@@ -37,7 +23,6 @@ public class Program
 
       builder.Host.UseSerilog((_, services, configuration) => LoggingConfigurations.ConfigureServiceLogging(
         configuration,
-        services,
         appConfig.Logging.DefaultLevel,
         appConfig.Logging.MicrosoftOverride));
       //bug logging tests
@@ -90,8 +75,9 @@ public class Program
           "api/v1/artists/{artistName}/songs",
           async (string artistName, CreateSongRequestDto request, CancellationToken cancellationToken) =>
           {
-            await new CreateSongProjectEndpoint(serviceLogicRoot, artistName, request).Handle(cancellationToken);
-            return Results.Created($"/api/v1/artists/{artistName}/songs/{request.Title}", null);
+            await new CreateSongProjectEndpoint(artistName, request, serviceLogicRoot.SongDao)
+              .Handle(cancellationToken);
+            return Results.Created($"/api/v1/artists/{artistName}/songs/{request.Title}", null); //bug this link is not asserted!
           })
         .WithName("CreateSongProject")
         .WithTags("Songs")
@@ -108,7 +94,7 @@ public class Program
             //bug continue the refactoring to move the logic into a separate endpoint class
             var songs = serviceLogicRoot.SongDao;
             var song = await songs.ReadSong(artistName, songName, cancellationToken);
-            return song is not null ? Results.Ok(song) : Results.NotFound();
+            return song.SelectOrElse(dto => Results.Ok(dto), () => Results.NotFound());
           })
         .WithName("GetSongDetails")
         .WithTags("Songs")

@@ -16,15 +16,16 @@ public static class LoggingConfigurations
       .CreateBootstrapLogger();
   }
 
-  public static void ConfigureServiceLogging(LoggerConfiguration configuration, IServiceProvider services,
-    LogEventLevel loggingDefaultLevel, LogEventLevel loggingMicrosoftOverride)
+  public static LoggerConfiguration ConfigureServiceLogging(
+    LoggerConfiguration configuration,
+    LogEventLevel loggingDefaultLevel, 
+    LogEventLevel loggingMicrosoftOverride)
   {
-    configuration
+    return configuration
       .MinimumLevel.Is(loggingDefaultLevel)
       .MinimumLevel.Override("Microsoft", loggingMicrosoftOverride)
       .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Information)
       .Enrich.FromLogContext()
-      .ReadFrom.Services(services)
       .WriteTo.Console(new JsonFormatter());
   }
 }
