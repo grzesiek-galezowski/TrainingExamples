@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using AwesomeAssertions;
+using TrackClinic;
 
 namespace TrackClinicServiceSpecification.Automation;
 
@@ -22,11 +23,11 @@ public class OpenApiDocumentResponse(string document)
   {
     using var json = JsonDocument.Parse(document);
     var info = json.RootElement.GetProperty("info");
-    info.GetProperty("title").GetString().Should().Be("TrackClinic API");
-    info.GetProperty("version").GetString().Should().Be("v1");
-    info.GetProperty("description").GetString().Should().Be("API for managing song projects and artist collaborations.");
+    info.GetProperty("title").GetString().Should().Be(OpenApiConstants.Title);
+    info.GetProperty("version").GetString().Should().Be(OpenApiConstants.Version);
+    info.GetProperty("description").GetString().Should().Be(OpenApiConstants.Description);
     var contact = info.GetProperty("contact");
-    contact.GetProperty("name").GetString().Should().Be("TrackClinic Support");
-    contact.GetProperty("email").GetString().Should().Be("support@trackclinic.example.com");
+    contact.GetProperty("name").GetString().Should().Be(OpenApiConstants.ContactName);
+    contact.GetProperty("email").GetString().Should().Be(OpenApiConstants.ContactEmail);
   }
 }

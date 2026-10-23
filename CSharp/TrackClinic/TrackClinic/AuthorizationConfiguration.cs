@@ -58,7 +58,7 @@ public static class AuthorizationConfiguration
   public static void ConfigureRoles(AuthorizationOptions options)
   {
     options.AddPolicy(
-      AuthorizationConfiguration.DefaultPolicyName,
+      DefaultPolicyName,
       policy => policy.RequireRole("artist", "admin")); //bug really? More tests needed
   }
 }

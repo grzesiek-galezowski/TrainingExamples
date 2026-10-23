@@ -1,3 +1,5 @@
+using Core.NullableReferenceTypesExtensions;
+
 namespace TrackClinic.Adapters.Configuration;
 
 public record AppConfig
@@ -8,8 +10,7 @@ public record AppConfig
 
   public static AppConfig From(ConfigurationManager builderConfiguration)
   {
-    var appConfig = builderConfiguration.Get<AppConfig>();
-    ArgumentNullException.ThrowIfNull(appConfig); //bug
+    var appConfig = builderConfiguration.Get<AppConfig>().OrThrow();
     appConfig.Assert();
     return appConfig;
   }

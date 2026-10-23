@@ -32,8 +32,8 @@ public class TrackClinicDriver : IAsyncDisposable
   public async Task Start()
   {
     _webApp.StartServer();
-    await WaitForHealthCheck("/health", 10.Seconds());
-    await WaitForHealthCheck("/ready", 10.Seconds());
+    await WaitForHealthCheck("/health/live", 10.Seconds());
+    await WaitForHealthCheck("/health/ready", 10.Seconds());
   }
 
   public async Task<HealthResponse> RequestHealthCheck(string urlSegment)

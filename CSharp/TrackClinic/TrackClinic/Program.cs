@@ -39,9 +39,7 @@ public class Program
 
       // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
       builder.Services.AddOpenApi(OpenApiConfiguration.ConfigureOpenApiDocument);
-      builder.Services.AddHealthChecks().AddMongoDb(
-        ctx => ctx.GetRequiredService<ServiceLogicRoot>().MongoClient,
-        tags: ["ready"]);
+      HealthChecksConfiguration.AddTo(builder);
 
       var app = builder.Build();
       var serviceLogicRoot = app.Services.GetRequiredService<ServiceLogicRoot>();
@@ -56,20 +54,9 @@ public class Program
 
       app.UseHttpsRedirection();
 
+      HealthChecksConfiguration.Map(app);
       app.UseAuthentication();
       app.UseAuthorization();
-      app.MapHealthChecks(
-        "/health",
-        new HealthCheckOptions
-        {
-          Predicate = _ => false //bug what is this?
-        });
-      app.MapHealthChecks(
-        "/ready",
-        new HealthCheckOptions
-        {
-          Predicate = check => check.Tags.Contains("ready")
-        });
 
       app.MapPost(
           "api/v1/artists/{artistName}/songs",
@@ -77,7 +64,7 @@ public class Program
           {
             await new CreateSongProjectEndpoint(artistName, request, serviceLogicRoot.SongDao)
               .Handle(cancellationToken);
-            return Results.Created($"/api/v1/artists/{artistName}/songs/{request.Title}", null); //bug this link is not asserted!
+            return Results.Created($"/api/v1/artists/{artistName}/songs/{request.Title}", null);
           })
         .WithName("CreateSongProject")
         .WithTags("Songs")
@@ -116,6 +103,5 @@ public class Program
     }
   }
 
-  //bug move?
   //bug metrics
 }

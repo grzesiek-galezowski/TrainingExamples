@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.OpenApi;
 using Microsoft.OpenApi;
+using OpenApiConstants = TrackClinic.OpenApiConstants;
 
 public static class OpenApiConfiguration
 {
@@ -7,13 +8,13 @@ public static class OpenApiConfiguration
   {
     options.AddDocumentTransformer((document, _, _) =>
     {
-      document.Info.Title = "TrackClinic API"; //bug duplication
-      document.Info.Version = "v1";
-      document.Info.Description = "API for managing song projects and artist collaborations.";
+      document.Info.Title = OpenApiConstants.Title;
+      document.Info.Version = OpenApiConstants.Version;
+      document.Info.Description = OpenApiConstants.Description;
       document.Info.Contact = new OpenApiContact
       {
-        Name = "TrackClinic Support",
-        Email = "support@trackclinic.example.com"
+        Name = OpenApiConstants.ContactName,
+        Email = OpenApiConstants.ContactEmail
       };
       return Task.CompletedTask;
     });

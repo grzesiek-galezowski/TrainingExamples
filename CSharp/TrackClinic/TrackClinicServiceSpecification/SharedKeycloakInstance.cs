@@ -8,6 +8,8 @@ public static class SharedKeycloakInstance
 {
   private const string ArtistRole = "artist";
   private const string AdminRole = "admin";
+  private const string RealmName = "track-clinic";
+  private const string ClientId = "track-clinic-api";
 
   private static readonly KeycloakContainer KeycloakContainer = new KeycloakBuilder("quay.io/keycloak/keycloak:26.0")
     .Build();
@@ -23,10 +25,10 @@ public static class SharedKeycloakInstance
     await KeycloakContainer.StopAsync();
   }
 
-  public static string GetAuthority() => $"{KeycloakContainer.GetBaseAddress()}realms/track-clinic";
+  public static string GetAuthority() => $"{KeycloakContainer.GetBaseAddress()}realms/{RealmName}";
 
   public static string GetMetadataAddress() =>
-    $"{KeycloakContainer.GetBaseAddress()}realms/track-clinic/.well-known/openid-configuration";
+    $"{KeycloakContainer.GetBaseAddress()}realms/{RealmName}/.well-known/openid-configuration";
 
   private static async Task ConfigureKeycloak()
   {
@@ -34,33 +36,31 @@ public static class SharedKeycloakInstance
     var adminToken = await GetAdminToken(httpClient);
     httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", adminToken);
 
-    var baseAddress = KeycloakContainer.GetBaseAddress().TrimEnd('/');
+    await CreateRealm(httpClient);
+    await CreateClient(httpClient);
 
-    await CreateRealm(httpClient, baseAddress);
-    await CreateClient(httpClient, baseAddress);
-
-    await CreateRole(httpClient, baseAddress, ArtistRole);
-    await CreateRole(httpClient, baseAddress, AdminRole);
+    await CreateRole(httpClient, ArtistRole);
+    await CreateRole(httpClient, AdminRole);
 
     // Create Users
-    await CreateUser(httpClient, baseAddress, "artist-user", [ArtistRole]);
-    await CreateUser(httpClient, baseAddress, "admin-user", [AdminRole, ArtistRole]);
-    await CreateUser(httpClient, baseAddress, "unprivileged-user", []);
+    await CreateUser(httpClient, "artist-user", [ArtistRole]);
+    await CreateUser(httpClient, "admin-user", [AdminRole, ArtistRole]);
+    await CreateUser(httpClient, "unprivileged-user", []);
   }
 
-  private static async Task CreateRole(HttpClient httpClient, string baseAddress, string role)
+  private static async Task CreateRole(HttpClient httpClient, string role)
   {
-    (await httpClient.PostAsJsonAsync($"{baseAddress}/admin/realms/track-clinic/roles", new { name = role }))
+    (await httpClient.PostAsJsonAsync(RealmUrl("roles"), new { name = role }))
       .EnsureSuccessStatusCode();
   }
 
-  private static async Task CreateClient(HttpClient httpClient, string baseAddress)
+  private static async Task CreateClient(HttpClient httpClient)
   {
     var clientResponse = await httpClient.PostAsJsonAsync(
-      $"{baseAddress}/admin/realms/track-clinic/clients",
+      RealmUrl("clients"),
       new
       {
-        clientId = "track-clinic-api",
+        clientId = ClientId,
         enabled = true,
         publicClient = true,
         directAccessGrantsEnabled = true,
@@ -71,13 +71,13 @@ public static class SharedKeycloakInstance
     clientResponse.EnsureSuccessStatusCode();
   }
 
-  private static async Task CreateRealm(HttpClient httpClient, string baseAddress)
+  private static async Task CreateRealm(HttpClient httpClient)
   {
     var realmResponse = await httpClient.PostAsJsonAsync(
-      $"{baseAddress}/admin/realms",
+      RealmsUrl(),
       new
       {
-        realm = "track-clinic", //bug duplication
+        realm = RealmName, //bug duplication
         enabled = true,
         verifyEmail = false,
         requiredCredentials = new[] { "password" }
@@ -85,55 +85,42 @@ public static class SharedKeycloakInstance
     realmResponse.EnsureSuccessStatusCode();
   }
 
-  private static async Task CreateUser(HttpClient httpClient, string baseAddress, string username, string[] roles)
+  private static async Task CreateUser(HttpClient httpClient, string username, string[] roles)
   {
-    var userResponse = await CreateUserEntry(httpClient, baseAddress, username);
+    var userResponse = await CreateUserEntry(httpClient, username);
 
-    var location = userResponse.Headers.Location;
-    var userId = location!.Segments.Last();
+    var userId = userResponse.Headers.Location!.Segments.Last();
 
-    await ResetPassword(httpClient, baseAddress, userId);
-    await RemoveRequiredActions(httpClient, baseAddress, userId); //bug needed?
+    await ResetPassword(httpClient, userId);
 
     foreach (var roleName in roles)
     {
-      var role = await GetRole(httpClient, baseAddress, roleName);
-      await AssignRoleToUser(httpClient, baseAddress, userId, role);
+      var role = await GetRole(httpClient, roleName);
+      await AssignRoleToUser(httpClient, userId, role);
     }
   }
 
-  private static async Task AssignRoleToUser(HttpClient httpClient, string baseAddress, string userId, JsonElement role)
+  private static async Task AssignRoleToUser(HttpClient httpClient, string userId, JsonElement role)
   {
     var mappingResponse = await httpClient.PostAsJsonAsync(
-      $"{baseAddress}/admin/realms/track-clinic/users/{userId}/role-mappings/realm",
+      RealmUrl($"users/{userId}/role-mappings/realm"),
       new[] { role });
     mappingResponse.EnsureSuccessStatusCode();
   }
 
-  private static async Task<JsonElement> GetRole(HttpClient httpClient, string baseAddress, string roleName)
+  private static async Task<JsonElement> GetRole(HttpClient httpClient, string roleName)
   {
-    var roleResponse = await httpClient.GetAsync($"{baseAddress}/admin/realms/track-clinic/roles/{roleName}");
+    var roleResponse = await httpClient.GetAsync(RealmUrl($"/roles/{roleName}"));
     roleResponse.EnsureSuccessStatusCode();
     var role = await roleResponse.Content.ReadFromJsonAsync<JsonElement>();
     return role;
   }
 
-  private static async Task RemoveRequiredActions(HttpClient httpClient, string baseAddress, string userId)
-  {
-    // Remove any default required actions that might have been added
-    await httpClient.PutAsJsonAsync(
-      $"{baseAddress}/admin/realms/track-clinic/users/{userId}",
-      new
-      {
-        requiredActions = Array.Empty<string>()
-      });
-  }
-
-  private static async Task ResetPassword(HttpClient httpClient, string baseAddress, string userId)
+  private static async Task ResetPassword(HttpClient httpClient, string userId)
   {
     // Set Password
     var passwordResponse = await httpClient.PutAsJsonAsync(
-      $"{baseAddress}/admin/realms/track-clinic/users/{userId}/reset-password",
+      RealmUrl($"users/{userId}/reset-password"),
       new
       {
         type = "password",
@@ -143,10 +130,10 @@ public static class SharedKeycloakInstance
     passwordResponse.EnsureSuccessStatusCode();
   }
 
-  private static async Task<HttpResponseMessage> CreateUserEntry(HttpClient httpClient, string baseAddress, string username)
+  private static async Task<HttpResponseMessage> CreateUserEntry(HttpClient httpClient, string username)
   {
     var userResponse = await httpClient.PostAsJsonAsync(
-      $"{baseAddress}/admin/realms/track-clinic/users",
+      RealmUrl("users"),
       new
       {
         username = username,
@@ -188,12 +175,12 @@ public static class SharedKeycloakInstance
   {
     using var httpClient = new HttpClient(); //bug
     var response = await httpClient.PostAsync(
-      $"{KeycloakContainer.GetBaseAddress()}realms/track-clinic/protocol/openid-connect/token",
+      $"{KeycloakContainer.GetBaseAddress()}realms/{RealmName}/protocol/openid-connect/token",
       new FormUrlEncodedContent(
         new Dictionary<string, string>
         {
           ["grant_type"] = "password",
-          ["client_id"] = "track-clinic-api",
+          ["client_id"] = ClientId,
           ["username"] = username,
           ["password"] = password
         }));
@@ -207,4 +194,20 @@ public static class SharedKeycloakInstance
     var content = await response.Content.ReadFromJsonAsync<JsonElement>();
     return content.GetProperty("access_token").GetString()!;
   }
+
+  private static string RealmUrl(string endpointName)
+  {
+    return $"{BaseAddress()}/admin/realms/{RealmName}/{endpointName}";
+  }
+  
+  private static string RealmsUrl()
+  {
+    return $"{BaseAddress()}/admin/realms";
+  }
+
+  private static string BaseAddress()
+  {
+    return KeycloakContainer.GetBaseAddress().TrimEnd('/');
+  }
+
 }

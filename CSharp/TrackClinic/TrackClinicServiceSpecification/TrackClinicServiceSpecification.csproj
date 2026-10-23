@@ -16,7 +16,7 @@
     <PackageReference Include="AwesomeAssertions" Version="9.6.0" />
     <PackageReference Include="Flurl.Http" Version="4.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="11.0.0-rc.1.26425.128" />
-    <PackageReference Include="Microsoft.Playwright" Version="1.64.0" />
+    <PackageReference Include="Microsoft.Playwright" Version="1.64.1" />
     <PackageReference Include="NUnit" Version="5.0.0" />
     <PackageReference Include="NUnit.Analyzers" Version="4.15.0">
       <PrivateAssets>all</PrivateAssets>
@@ -26,7 +26,10 @@
     <PackageReference Include="Testcontainers.Keycloak" Version="4.16.0" />
     <PackageReference Include="Testcontainers.MongoDb" Version="4.16.0" />
   </ItemGroup>
-
+  <ItemGroup>
+    <!-- workaround for R# bug to be fixed in the future -->
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.11.0" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TrackClinic\TrackClinic.csproj" />
   </ItemGroup>

@@ -14,7 +14,7 @@ public class HealthCheckSpecification
     await driver.Start();
 
     // WHEN
-    var health = await driver.RequestHealthCheck("/health");
+    var health = await driver.RequestHealthCheck("/health/live");
 
     // THEN
     await health.ShouldBeHealthy();
@@ -28,7 +28,7 @@ public class HealthCheckSpecification
     await driver.Start();
 
     // WHEN
-    var readiness = await driver.RequestHealthCheck("/ready");
+    var readiness = await driver.RequestHealthCheck("/health/ready");
 
     // THEN
     await readiness.ShouldBeHealthy();
