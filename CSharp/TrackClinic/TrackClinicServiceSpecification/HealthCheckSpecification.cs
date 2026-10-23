@@ -5,12 +5,11 @@ namespace TrackClinicServiceSpecification;
 [CancelAfter(30000)]
 public class HealthCheckSpecification
 {
-  //bug better tests here. Without the containers healthy should pass but ready should fail.
   [Test]
   public async Task ShouldBeHealthy(CancellationToken cancellationToken)
   {
     // GIVEN
-    await using var driver = new TrackClinicDriver(cancellationToken);
+    await using var driver = await TrackClinicDriver.CreateInstance(cancellationToken);
     await driver.Start();
 
     // WHEN
@@ -24,7 +23,7 @@ public class HealthCheckSpecification
   public async Task ShouldBeReady(CancellationToken cancellationToken)
   {
     // GIVEN
-    await using var driver = new TrackClinicDriver(cancellationToken);
+    await using var driver = await TrackClinicDriver.CreateInstance(cancellationToken);
     await driver.Start();
 
     // WHEN
@@ -32,5 +31,23 @@ public class HealthCheckSpecification
 
     // THEN
     await readiness.ShouldBeHealthy();
+  }
+
+  [Test]
+  public async Task ShouldReportNotReadyWhenMongoIsUnavailable(CancellationToken cancellationToken)
+  {
+    // GIVEN
+    await using var driver = await TrackClinicDriver.CreateInstance(cancellationToken);
+    await driver.Start();
+
+    driver.SimulateMongoFailure();
+
+    // WHEN
+    var live = await driver.RequestHealthCheck("/health/live");
+    var ready = await driver.RequestHealthCheck("/health/ready");
+
+    // THEN
+    await live.ShouldBeHealthy();
+    await ready.ShouldBeUnhealthy();
   }
 }

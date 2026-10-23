@@ -1,26 +1,41 @@
 ﻿using AwesomeAssertions;
 using AwesomeAssertions.Extensions;
 using Flurl.Http;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Playwright;
 using TddXt.AnyRoot;
 using TddXt.AnyRoot.Strings;
 using TrackClinic;
+using TrackClinicServiceSpecification.Automation.Keycloak;
 
 namespace TrackClinicServiceSpecification.Automation;
 
 public class TrackClinicDriver : IAsyncDisposable
 {
+  private const string AdminUser = "admin-user";
+  private const string UnprivilegedUser = "unprivileged-user";
+  private const string ArtistUser = "artist-user";
   private readonly string _databaseName;
   private readonly CancellationToken _cancellationToken;
+  private readonly TestAuthTokens _testAuthTokens;
   private readonly WebApp _webApp;
   private readonly Lazy<FlurlClient> _client;
 
-  public TrackClinicDriver(CancellationToken cancellationToken)
+  private TrackClinicDriver(CancellationToken cancellationToken, TestAuthTokens testAuthTokens)
   {
     _databaseName = Any.String("testDb");
     _cancellationToken = cancellationToken;
+    _testAuthTokens = testAuthTokens;
     _webApp = new WebApp(_databaseName);
     _client = new Lazy<FlurlClient>(() => new FlurlClient(_webApp.CreateClient()));
+  }
+
+  public static async Task<TrackClinicDriver> CreateInstance(CancellationToken cancellationToken)
+  {
+    var adminToken = await SharedKeycloakInstance.GetToken(AdminUser, "password");
+    var unprivilegedToken = await SharedKeycloakInstance.GetToken(UnprivilegedUser, "password");
+    var artistToken = await SharedKeycloakInstance.GetToken(ArtistUser, "password");
+    return new TrackClinicDriver(cancellationToken, new TestAuthTokens(adminToken, unprivilegedToken, artistToken));
   }
 
   public async ValueTask DisposeAsync()
@@ -34,6 +49,12 @@ public class TrackClinicDriver : IAsyncDisposable
     _webApp.StartServer();
     await WaitForHealthCheck("/health/live", 10.Seconds());
     await WaitForHealthCheck("/health/ready", 10.Seconds());
+  }
+
+  public void SimulateMongoFailure()
+  {
+    var serviceLogicRoot = _webApp.Services.GetRequiredService<ServiceLogicRoot>();
+    serviceLogicRoot.MongoClient.Dispose();
   }
 
   public async Task<HealthResponse> RequestHealthCheck(string urlSegment)
@@ -63,8 +84,10 @@ public class TrackClinicDriver : IAsyncDisposable
   public async Task<CreateSongProjectResponse> RequestCreatingSongProject(string artistName,
     CreateSongRequestDto createSongRequestDto, Func<TrackClinicRequestBuilder, TrackClinicRequestBuilder> customize)
   {
-    var requestBuilder = new TrackClinicRequestBuilder(_client.Value.Request($"/api/v1/artists/{artistName}/songs"));
-    var flurlResponse = await (await customize(requestBuilder).Build()).PostJsonAsync(
+    var requestBuilder = new TrackClinicRequestBuilder(
+      _client.Value.Request($"/api/v1/artists/{artistName}/songs"),
+      _testAuthTokens);
+    var flurlResponse = await customize(requestBuilder).Build().PostJsonAsync(
       createSongRequestDto,
       cancellationToken: _cancellationToken);
     return new CreateSongProjectResponse(flurlResponse);
@@ -80,16 +103,20 @@ public class TrackClinicDriver : IAsyncDisposable
   public async Task<RetrieveProjectDetailsResponse> RequestRetrievalOfProjectDetails(string artist, string songName)
   {
     var flurlResponse =
-      await (await new TrackClinicRequestBuilder(_client.Value.Request($"/api/v1/artists/{artist}/songs/{songName}"))
-          .Build())
+      await new TrackClinicRequestBuilder(
+          _client.Value.Request($"/api/v1/artists/{artist}/songs/{songName}"),
+          _testAuthTokens)
+        .Build()
         .GetAsync(cancellationToken: _cancellationToken);
     return new RetrieveProjectDetailsResponse(flurlResponse);
   }
 
   public async Task<OpenApiDocumentResponse> GetOpenApiDocument()
   {
-    var response = await (await new TrackClinicRequestBuilder(_client.Value.Request("/openapi/v1.json"))
-        .Build())
+    var response = await new TrackClinicRequestBuilder(
+        _client.Value.Request("/openapi/v1.json"),
+        _testAuthTokens)
+      .Build()
       .GetAsync(cancellationToken: _cancellationToken);
     response.StatusCode.Should().Be(200);
     return new OpenApiDocumentResponse(await response.GetStringAsync());

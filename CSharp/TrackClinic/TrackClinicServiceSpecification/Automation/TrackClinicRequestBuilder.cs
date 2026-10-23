@@ -1,21 +1,28 @@
 ﻿using Flurl.Http;
-using TrackClinicServiceSpecification.Automation.Keycloak;
 
 namespace TrackClinicServiceSpecification.Automation;
 
-public record TrackClinicRequestBuilder(IFlurlRequest Request)
+public record TrackClinicRequestBuilder
 {
-  private string _username = "admin-user";
+  private string _token;
+  private readonly TestAuthTokens _testAuthTokens;
+  private readonly IFlurlRequest _request;
 
-  public async Task<IFlurlRequest> Build()
+  public TrackClinicRequestBuilder(IFlurlRequest request, TestAuthTokens testAuthTokens)
   {
-    //bug get all the possible tokens earlier and pass them in the request builder to avoid the async call here
-    var token = await SharedKeycloakInstance.GetToken(_username, "password");
-    return Request.AllowAnyHttpStatus().WithOAuthBearerToken(token);
+    _token = testAuthTokens.AdminToken;
+    _request = request;
+    _testAuthTokens = testAuthTokens;
+  }
+
+
+  public IFlurlRequest Build()
+  {
+    return _request.AllowAnyHttpStatus().WithOAuthBearerToken(_token);
   }
 
   public TrackClinicRequestBuilder WithUnprivilegedUser()
   {
-    return this with { _username = "unprivileged-user" };
+    return this with { _token = _testAuthTokens.UnprivilegedToken };
   }
 }

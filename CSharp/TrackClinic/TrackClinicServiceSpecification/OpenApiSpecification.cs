@@ -11,7 +11,7 @@ public class OpenApiSpecification
   public async Task ShouldBeValidAndAccessible(CancellationToken cancellationToken)
   {
     // GIVEN
-    await using var driver = new TrackClinicDriver(cancellationToken);
+    await using var driver = await TrackClinicDriver.CreateInstance(cancellationToken);
     await driver.Start();
 
     // WHEN
@@ -27,7 +27,7 @@ public class OpenApiSpecification
   public async Task ShouldProvideScalarUi(CancellationToken cancellationToken)
   {
     // GIVEN
-    await using var driver = new TrackClinicDriver(cancellationToken);
+    await using var driver = await TrackClinicDriver.CreateInstance(cancellationToken);
     await driver.Start();
 
     // WHEN

@@ -15,7 +15,7 @@ public class AuthorizationSpecification
     var artistName = Any.String();
     var songName = Any.String();
     
-    await using var driver = new TrackClinicDriver(cancellationToken);
+    await using var driver = await TrackClinicDriver.CreateInstance(cancellationToken);
 
     await driver.Start();
 

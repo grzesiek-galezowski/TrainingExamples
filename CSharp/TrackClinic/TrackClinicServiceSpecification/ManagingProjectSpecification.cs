@@ -14,7 +14,7 @@ public class ManagingProjectSpecification
     // GIVEN
     var artistName = Any.String();
     var songName = Any.String();
-    await using var driver = new TrackClinicDriver(cancellationToken);
+    await using var driver = await TrackClinicDriver.CreateInstance(cancellationToken);
 
     await driver.Start();
     
@@ -32,7 +32,7 @@ public class ManagingProjectSpecification
     // GIVEN
     var artistName = Any.String();
     var songName = Any.String();
-    await using var driver = new TrackClinicDriver(cancellationToken);
+    await using var driver = await TrackClinicDriver.CreateInstance(cancellationToken);
 
     await driver.Start();
 
@@ -51,7 +51,7 @@ public class ManagingProjectSpecification
     var artistName = Any.String();
     var songName1 = Any.String();
     var songName2 = Any.String();
-    await using var driver = new TrackClinicDriver(cancellationToken);
+    await using var driver = await TrackClinicDriver.CreateInstance(cancellationToken);
 
     await driver.Start();
     await driver.CreateSongProject(artistName, new CreateSongRequestDto(songName1));
