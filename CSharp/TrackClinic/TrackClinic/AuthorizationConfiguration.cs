@@ -45,7 +45,7 @@ public static class AuthorizationConfiguration
     {
       foreach (var role in roles.EnumerateArray())
       {
-        claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, role.GetString()!));
+        claimsIdentity.AddClaim(new Claim(ClaimTypes.Role, role.GetString().OrThrow()));
       }
     }
   }
@@ -59,6 +59,6 @@ public static class AuthorizationConfiguration
   {
     options.AddPolicy(
       DefaultPolicyName,
-      policy => policy.RequireRole("artist", "admin")); //bug really? More tests needed
+      policy => policy.RequireRole(KeycloakConstants.ArtistRole, KeycloakConstants.AdminRole)); //bug more tests needed
   }
 }

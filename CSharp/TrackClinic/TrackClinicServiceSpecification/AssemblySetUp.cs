@@ -1,4 +1,6 @@
 ﻿using Serilog;
+using TrackClinicServiceSpecification.Automation;
+using TrackClinicServiceSpecification.Automation.Keycloak;
 
 #if !NCRUNCH
 [assembly: Parallelizable(ParallelScope.Children)]

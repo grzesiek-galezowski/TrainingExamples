@@ -1,4 +1,5 @@
 ﻿using Flurl.Http;
+using TrackClinicServiceSpecification.Automation.Keycloak;
 
 namespace TrackClinicServiceSpecification.Automation;
 

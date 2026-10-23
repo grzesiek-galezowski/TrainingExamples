@@ -1,4 +1,4 @@
-﻿﻿using AwesomeAssertions;
+﻿using AwesomeAssertions;
 using AwesomeAssertions.Extensions;
 using Flurl.Http;
 using Microsoft.Playwright;

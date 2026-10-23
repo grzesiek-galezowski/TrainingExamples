@@ -21,7 +21,7 @@ public class Program
       var builder = WebApplication.CreateBuilder(args);
       var appConfig = AppConfig.From(builder.Configuration);
 
-      builder.Host.UseSerilog((_, services, configuration) => LoggingConfigurations.ConfigureServiceLogging(
+      builder.Host.UseSerilog((_, _, configuration) => LoggingConfigurations.ConfigureServiceLogging(
         configuration,
         appConfig.Logging.DefaultLevel,
         appConfig.Logging.MicrosoftOverride));

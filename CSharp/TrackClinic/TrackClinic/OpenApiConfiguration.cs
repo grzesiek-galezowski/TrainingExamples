@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.OpenApi;
 using Microsoft.OpenApi;
-using OpenApiConstants = TrackClinic.OpenApiConstants;
+
+namespace TrackClinic;
 
 public static class OpenApiConfiguration
 {

@@ -1,7 +1,7 @@
 using MongoDB.Driver;
 using Testcontainers.MongoDb;
 
-namespace TrackClinicServiceSpecification;
+namespace TrackClinicServiceSpecification.Automation;
 
 public static class SharedMongoInstance
 {

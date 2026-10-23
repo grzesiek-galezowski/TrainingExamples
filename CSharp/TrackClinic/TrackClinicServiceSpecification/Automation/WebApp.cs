@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Events;
 using TrackClinic;
+using TrackClinicServiceSpecification.Automation.Keycloak;
 
 namespace TrackClinicServiceSpecification.Automation;
 

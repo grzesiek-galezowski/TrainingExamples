@@ -13,6 +13,7 @@
     <PackageReference Include="AspNetCore.HealthChecks.MongoDb" Version="9.0.0" />
     <PackageReference Include="Core.Maybe" Version="8.0.0" />
     <PackageReference Include="Dapper" Version="2.1.89" />
+    <PackageReference Include="Flurl.Http" Version="4.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.13" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="11.0.0-rc.1.26425.128" />
     <PackageReference Include="Microsoft.OpenApi" Version="3.11.0" />
