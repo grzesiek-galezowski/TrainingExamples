@@ -25,10 +25,10 @@ public static class SharedKeycloakInstance
     await KeycloakContainer.StopAsync();
   }
 
-  public static string GetAuthority() => $"{KeycloakContainer.GetBaseAddress()}realms/{RealmName}";
+  public static string GetAuthority() => DirectRealmUrl();
 
   public static string GetMetadataAddress() =>
-    $"{KeycloakContainer.GetBaseAddress()}realms/{RealmName}/.well-known/openid-configuration";
+    $"{DirectRealmUrl()}/.well-known/openid-configuration";
 
   private static async Task ConfigureKeycloak()
   {
@@ -50,14 +50,14 @@ public static class SharedKeycloakInstance
 
   private static async Task CreateRole(HttpClient httpClient, string role)
   {
-    (await httpClient.PostAsJsonAsync(RealmUrl("roles"), new { name = role }))
+    (await httpClient.PostAsJsonAsync(AdminRealmUrl("roles"), new { name = role }))
       .EnsureSuccessStatusCode();
   }
 
   private static async Task CreateClient(HttpClient httpClient)
   {
     var clientResponse = await httpClient.PostAsJsonAsync(
-      RealmUrl("clients"),
+      AdminRealmUrl("clients"),
       new
       {
         clientId = ClientId,
@@ -74,7 +74,7 @@ public static class SharedKeycloakInstance
   private static async Task CreateRealm(HttpClient httpClient)
   {
     var realmResponse = await httpClient.PostAsJsonAsync(
-      RealmsUrl(),
+      AdminRealmsUrl(),
       new
       {
         realm = RealmName, //bug duplication
@@ -103,14 +103,14 @@ public static class SharedKeycloakInstance
   private static async Task AssignRoleToUser(HttpClient httpClient, string userId, JsonElement role)
   {
     var mappingResponse = await httpClient.PostAsJsonAsync(
-      RealmUrl($"users/{userId}/role-mappings/realm"),
+      AdminRealmUrl($"users/{userId}/role-mappings/realm"),
       new[] { role });
     mappingResponse.EnsureSuccessStatusCode();
   }
 
   private static async Task<JsonElement> GetRole(HttpClient httpClient, string roleName)
   {
-    var roleResponse = await httpClient.GetAsync(RealmUrl($"/roles/{roleName}"));
+    var roleResponse = await httpClient.GetAsync(AdminRealmUrl($"/roles/{roleName}"));
     roleResponse.EnsureSuccessStatusCode();
     var role = await roleResponse.Content.ReadFromJsonAsync<JsonElement>();
     return role;
@@ -120,7 +120,7 @@ public static class SharedKeycloakInstance
   {
     // Set Password
     var passwordResponse = await httpClient.PutAsJsonAsync(
-      RealmUrl($"users/{userId}/reset-password"),
+      AdminRealmUrl($"users/{userId}/reset-password"),
       new
       {
         type = "password",
@@ -133,7 +133,7 @@ public static class SharedKeycloakInstance
   private static async Task<HttpResponseMessage> CreateUserEntry(HttpClient httpClient, string username)
   {
     var userResponse = await httpClient.PostAsJsonAsync(
-      RealmUrl("users"),
+      AdminRealmUrl("users"),
       new
       {
         username = username,
@@ -175,7 +175,7 @@ public static class SharedKeycloakInstance
   {
     using var httpClient = new HttpClient(); //bug
     var response = await httpClient.PostAsync(
-      $"{KeycloakContainer.GetBaseAddress()}realms/{RealmName}/protocol/openid-connect/token",
+      $"{DirectRealmUrl()}/protocol/openid-connect/token", //bug finish refactoring
       new FormUrlEncodedContent(
         new Dictionary<string, string>
         {
@@ -195,19 +195,30 @@ public static class SharedKeycloakInstance
     return content.GetProperty("access_token").GetString()!;
   }
 
-  private static string RealmUrl(string endpointName)
+  private static string AdminRealmUrl(string resourceName)
   {
-    return $"{BaseAddress()}/admin/realms/{RealmName}/{endpointName}";
+    return AdminRealmUrl(RealmName, resourceName);
   }
-  
-  private static string RealmsUrl()
+
+  private static string AdminRealmUrl(string realmName, string resourceName)
+  {
+    return $"{AdminRealmsUrl()}/{realmName}/{resourceName}";
+  }
+
+  private static string AdminRealmsUrl()
   {
     return $"{BaseAddress()}/admin/realms";
   }
 
+  private static string DirectRealmUrl()
+  {
+    return $"{BaseAddress()}/realms/{RealmName}";
+  }
+  
   private static string BaseAddress()
   {
     return KeycloakContainer.GetBaseAddress().TrimEnd('/');
   }
+
 
 }
