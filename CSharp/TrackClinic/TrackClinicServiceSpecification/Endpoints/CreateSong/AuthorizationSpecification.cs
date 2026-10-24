@@ -29,5 +29,66 @@ public class AuthorizationSpecification
     response.ShouldBeForbidden();
   }
 
-  //bug what about 401?? What about no token test? What about expired token test? What about invalid token test? What about token with no roles test?
+  [Test]
+  public async Task ShouldDenyAccessIfNoTokenIsProvided(CancellationToken cancellationToken)
+  {
+    // GIVEN
+    var artistName = Any.String();
+    var songName = Any.String();
+    
+    await using var driver = await TrackClinicDriver.CreateInstance(cancellationToken);
+
+    await driver.Start();
+
+    // WHEN
+    var response = await driver.RequestCreatingSongProject(
+      artistName,
+      new CreateSongRequestDto(songName),
+      r => r.WithoutToken());
+
+    // THEN
+    response.ShouldBeUnauthorized();
+  }
+
+  [Test]
+  public async Task ShouldDenyAccessIfInvalidTokenIsProvided(CancellationToken cancellationToken)
+  {
+    // GIVEN
+    var artistName = Any.String();
+    var songName = Any.String();
+    
+    await using var driver = await TrackClinicDriver.CreateInstance(cancellationToken);
+
+    await driver.Start();
+
+    // WHEN
+    var response = await driver.RequestCreatingSongProject(
+      artistName,
+      new CreateSongRequestDto(songName),
+      r => r.WithInvalidToken());
+
+    // THEN
+    response.ShouldBeUnauthorized();
+  }
+
+  [Test]
+  public async Task ShouldAllowAccessIfUserHasArtistRole(CancellationToken cancellationToken)
+  {
+    // GIVEN
+    var artistName = Any.String();
+    var songName = Any.String();
+    
+    await using var driver = await TrackClinicDriver.CreateInstance(cancellationToken);
+
+    await driver.Start();
+
+    // WHEN
+    var response = await driver.RequestCreatingSongProject(
+      artistName,
+      new CreateSongRequestDto(songName),
+      r => r.WithArtistUser());
+
+    // THEN
+    response.ShouldBeSuccess();
+  }
 }

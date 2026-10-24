@@ -15,7 +15,6 @@ public static class HealthChecksConfiguration
 
   public static void Map(WebApplication app)
   {
-    //bug better healthcheck tests here. Without the containers healthy should pass but ready should fail.
     app.MapHealthChecks(
       "/health/live",
       new HealthCheckOptions

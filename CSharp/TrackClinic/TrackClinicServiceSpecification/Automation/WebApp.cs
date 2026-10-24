@@ -10,7 +10,7 @@ using TrackClinicServiceSpecification.Automation.Keycloak;
 
 namespace TrackClinicServiceSpecification.Automation;
 
-internal class WebApp(string databaseName) : WebApplicationFactory<Program>
+internal class WebApp(string databaseName, string keycloakRealmName) : WebApplicationFactory<Program>
 {
   protected override void ConfigureWebApplicationBuilder(IHostApplicationBuilder builder)
   {
@@ -18,8 +18,8 @@ internal class WebApp(string databaseName) : WebApplicationFactory<Program>
       new Dictionary<string, string?>
       {
         ["DatabaseInfo:ConnectionString"] = SharedMongoInstance.GetConnectionString(databaseName),
-        ["Keycloak:Authority"] = SharedKeycloakInstance.GetAuthority(),
-        ["Keycloak:MetadataAddress"] = SharedKeycloakInstance.GetMetadataAddress(),
+        ["Keycloak:Authority"] = SharedKeycloakInstance.GetAuthority(keycloakRealmName),
+        ["Keycloak:MetadataAddress"] = SharedKeycloakInstance.GetMetadataAddress(keycloakRealmName),
         ["Keycloak:RequireHttpsMetadata"] = "false"
       });
     base.ConfigureWebApplicationBuilder(builder);

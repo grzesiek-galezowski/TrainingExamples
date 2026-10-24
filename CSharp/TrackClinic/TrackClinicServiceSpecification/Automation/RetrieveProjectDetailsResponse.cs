@@ -21,4 +21,14 @@ public class RetrieveProjectDetailsResponse(IFlurlResponse response)
   {
     response.StatusCode.Should().Be(200);
   }
+
+  public void ShouldBeForbidden()
+  {
+    response.StatusCode.Should().Be(403);
+  }
+
+  public void ShouldBeUnauthorized()
+  {
+    response.StatusCode.Should().Be(401);
+  }
 }

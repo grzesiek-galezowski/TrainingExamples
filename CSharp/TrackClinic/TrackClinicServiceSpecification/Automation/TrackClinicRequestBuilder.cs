@@ -4,7 +4,7 @@ namespace TrackClinicServiceSpecification.Automation;
 
 public record TrackClinicRequestBuilder
 {
-  private string _token;
+  private string? _token;
   private readonly TestAuthTokens _testAuthTokens;
   private readonly IFlurlRequest _request;
 
@@ -18,11 +18,32 @@ public record TrackClinicRequestBuilder
 
   public IFlurlRequest Build()
   {
-    return _request.AllowAnyHttpStatus().WithOAuthBearerToken(_token);
+    var request = _request.AllowAnyHttpStatus();
+    if (_token != null)
+    {
+      request = request.WithOAuthBearerToken(_token);
+    }
+
+    return request;
   }
 
   public TrackClinicRequestBuilder WithUnprivilegedUser()
   {
     return this with { _token = _testAuthTokens.UnprivilegedToken };
+  }
+
+  public TrackClinicRequestBuilder WithArtistUser()
+  {
+    return this with { _token = _testAuthTokens.ArtistToken };
+  }
+
+  public TrackClinicRequestBuilder WithoutToken()
+  {
+    return this with { _token = null };
+  }
+
+  public TrackClinicRequestBuilder WithInvalidToken()
+  {
+    return this with { _token = "invalid-token" };
   }
 }

@@ -5,14 +5,16 @@ namespace TrackClinic;
 
 public class SongDao(MongoClient mongoClient, string databaseName)
 {
-  private readonly IMongoCollection<SongDetailsDto> _collection = 
+  private readonly IMongoCollection<SongDetailsDto> _collection =
     mongoClient
       .GetDatabase(databaseName)
       .GetCollection<SongDetailsDto>("Songs");
 
-  public async Task<Maybe<SongDetailsDto>> ReadSong(string artistName, string songName, CancellationToken cancellationToken)
+  public async Task<Maybe<SongDetailsDto>> ReadSong(string artistName, string songName,
+    CancellationToken cancellationToken)
   {
-    return (await _collection.Find(s => s.Artist == artistName && s.Title == songName).FirstOrDefaultAsync(cancellationToken)).ToMaybe(); //bug maybe
+    return (await _collection.Find(s => s.Artist == artistName && s.Title == songName)
+      .FirstOrDefaultAsync(cancellationToken)).ToMaybe();
   }
 
   public async Task SaveSong(string artistName, CreateSongRequestDto request, CancellationToken cancellationToken)

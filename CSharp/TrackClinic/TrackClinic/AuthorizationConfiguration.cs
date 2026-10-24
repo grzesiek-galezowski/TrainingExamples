@@ -59,6 +59,6 @@ public static class AuthorizationConfiguration
   {
     options.AddPolicy(
       DefaultPolicyName,
-      policy => policy.RequireRole(KeycloakConstants.ArtistRole, KeycloakConstants.AdminRole)); //bug more tests needed
+      policy => policy.RequireRole(KeycloakConstants.ArtistRole, KeycloakConstants.AdminRole));
   }
 }

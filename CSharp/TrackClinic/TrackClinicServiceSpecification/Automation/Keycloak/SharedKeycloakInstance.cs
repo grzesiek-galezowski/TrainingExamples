@@ -15,10 +15,14 @@ public static class SharedKeycloakInstance
   {
     await KeycloakContainer.StartAsync();
     _client = new KeycloakClient(KeycloakContainer.GetBaseAddress());
-    await new TrackClinicKeycloakBootstrap(_client).Execute(
-      KeycloakConstants.RealmName, 
-      KeycloakConstants.ClientId, 
-      KeycloakConstants.ArtistRole, 
+  }
+
+  public static async Task ConfigureNewRealm(TrackClinicKeycloakBootstrap bootstrap)
+  {
+    await bootstrap.Execute(
+      _client.OrThrow(),
+      KeycloakConstants.ClientId,
+      KeycloakConstants.ArtistRole,
       KeycloakConstants.AdminRole);
   }
 
@@ -27,14 +31,32 @@ public static class SharedKeycloakInstance
     await KeycloakContainer.StopAsync();
   }
 
-  public static string GetAuthority() =>
-    $"{KeycloakContainer.GetBaseAddress()}realms/{KeycloakConstants.RealmName}";
+  public static string GetAuthority(string realmName) =>
+    $"{KeycloakContainer.GetBaseAddress()}realms/{realmName}";
 
-  public static string GetMetadataAddress() =>
-    $"{GetAuthority()}/.well-known/openid-configuration";
+  public static string GetMetadataAddress(string realmName) =>
+    $"{GetAuthority(realmName)}/.well-known/openid-configuration";
 
-  public static async Task<string> GetToken(string username, string password)
+  public static async Task<string> GetToken(string realmName, string username, string password)
   {
-    return await _client.OrThrow().GetToken(KeycloakConstants.RealmName, KeycloakConstants.ClientId, username, password);
+    return await _client.OrThrow().GetToken(realmName, KeycloakConstants.ClientId, username, password);
+  }
+
+  public static async Task<TestAuthTokens> GetTestAuthTokens(string realmName)
+  {
+    var adminToken = await SharedKeycloakInstance.GetToken(
+      realmName,
+      KeycloakConstants.AdminUser,
+      "password");
+    var unprivilegedToken = await SharedKeycloakInstance.GetToken(
+      realmName,
+      KeycloakConstants.UnprivilegedUser,
+      "password");
+    var artistToken = await SharedKeycloakInstance.GetToken(
+      realmName,
+      KeycloakConstants.ArtistUser,
+      "password");
+    var testAuthTokens = new TestAuthTokens(adminToken, unprivilegedToken, artistToken);
+    return testAuthTokens;
   }
 }

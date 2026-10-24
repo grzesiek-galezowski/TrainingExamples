@@ -12,30 +12,24 @@ namespace TrackClinicServiceSpecification.Automation;
 
 public class TrackClinicDriver : IAsyncDisposable
 {
-  private const string AdminUser = "admin-user";
-  private const string UnprivilegedUser = "unprivileged-user";
-  private const string ArtistUser = "artist-user";
   private readonly string _databaseName;
+  private readonly string _keycloakRealmName;
   private readonly CancellationToken _cancellationToken;
-  private readonly TestAuthTokens _testAuthTokens;
   private readonly WebApp _webApp;
   private readonly Lazy<FlurlClient> _client;
 
-  private TrackClinicDriver(CancellationToken cancellationToken, TestAuthTokens testAuthTokens)
-  {
-    _databaseName = Any.String("testDb");
-    _cancellationToken = cancellationToken;
-    _testAuthTokens = testAuthTokens;
-    _webApp = new WebApp(_databaseName);
-    _client = new Lazy<FlurlClient>(() => new FlurlClient(_webApp.CreateClient()));
-  }
-
   public static async Task<TrackClinicDriver> CreateInstance(CancellationToken cancellationToken)
   {
-    var adminToken = await SharedKeycloakInstance.GetToken(AdminUser, "password");
-    var unprivilegedToken = await SharedKeycloakInstance.GetToken(UnprivilegedUser, "password");
-    var artistToken = await SharedKeycloakInstance.GetToken(ArtistUser, "password");
-    return new TrackClinicDriver(cancellationToken, new TestAuthTokens(adminToken, unprivilegedToken, artistToken));
+    return new TrackClinicDriver(cancellationToken);
+  }
+
+  private TrackClinicDriver(CancellationToken cancellationToken)
+  {
+    _databaseName = Any.String("testDb");
+    _keycloakRealmName = Any.String(KeycloakConstants.RealmName);
+    _cancellationToken = cancellationToken;
+    _webApp = new WebApp(_databaseName, _keycloakRealmName);
+    _client = new Lazy<FlurlClient>(() => new FlurlClient(_webApp.CreateClient()));
   }
 
   public async ValueTask DisposeAsync()
@@ -46,6 +40,7 @@ public class TrackClinicDriver : IAsyncDisposable
 
   public async Task Start()
   {
+    await SharedKeycloakInstance.ConfigureNewRealm(new TrackClinicKeycloakBootstrap(_keycloakRealmName));
     _webApp.StartServer();
     await WaitForHealthCheck("/health/live", 10.Seconds());
     await WaitForHealthCheck("/health/ready", 10.Seconds());
@@ -86,7 +81,7 @@ public class TrackClinicDriver : IAsyncDisposable
   {
     var requestBuilder = new TrackClinicRequestBuilder(
       _client.Value.Request($"/api/v1/artists/{artistName}/songs"),
-      _testAuthTokens);
+      await SharedKeycloakInstance.GetTestAuthTokens(_keycloakRealmName));
     var flurlResponse = await customize(requestBuilder).Build().PostJsonAsync(
       createSongRequestDto,
       cancellationToken: _cancellationToken);
@@ -95,19 +90,23 @@ public class TrackClinicDriver : IAsyncDisposable
 
   public async Task<RetrieveProjectDetailsResponse> RetrieveProjectDetails(string artist, string songName)
   {
-    var response = await RequestRetrievalOfProjectDetails(artist, songName);
+    var response = await RequestRetrievalOfProjectDetails(artist, songName, r => r);
     response.ShouldBeSuccess();
     return response;
   }
 
   public async Task<RetrieveProjectDetailsResponse> RequestRetrievalOfProjectDetails(string artist, string songName)
   {
-    var flurlResponse =
-      await new TrackClinicRequestBuilder(
-          _client.Value.Request($"/api/v1/artists/{artist}/songs/{songName}"),
-          _testAuthTokens)
-        .Build()
-        .GetAsync(cancellationToken: _cancellationToken);
+    return await RequestRetrievalOfProjectDetails(artist, songName, r => r);
+  }
+
+  public async Task<RetrieveProjectDetailsResponse> RequestRetrievalOfProjectDetails(string artist, string songName,
+    Func<TrackClinicRequestBuilder, TrackClinicRequestBuilder> customize)
+  {
+    var requestBuilder = new TrackClinicRequestBuilder(
+      _client.Value.Request($"/api/v1/artists/{artist}/songs/{songName}"),
+      await SharedKeycloakInstance.GetTestAuthTokens(_keycloakRealmName));
+    var flurlResponse = await customize(requestBuilder).Build().GetAsync(cancellationToken: _cancellationToken);
     return new RetrieveProjectDetailsResponse(flurlResponse);
   }
 
@@ -115,7 +114,7 @@ public class TrackClinicDriver : IAsyncDisposable
   {
     var response = await new TrackClinicRequestBuilder(
         _client.Value.Request("/openapi/v1.json"),
-        _testAuthTokens)
+        await SharedKeycloakInstance.GetTestAuthTokens(_keycloakRealmName))
       .Build()
       .GetAsync(cancellationToken: _cancellationToken);
     response.StatusCode.Should().Be(200);

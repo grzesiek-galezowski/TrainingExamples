@@ -45,7 +45,7 @@ public class ManagingProjectSpecification
 
 
   [Test]
-  public async Task ShouldCreateInitialSongWithNoProgress(CancellationToken cancellationToken) //bug
+  public async Task ShouldCreateInitialSongWithNoProgress(CancellationToken cancellationToken)
   {
     // GIVEN
     var artistName = Any.String();
