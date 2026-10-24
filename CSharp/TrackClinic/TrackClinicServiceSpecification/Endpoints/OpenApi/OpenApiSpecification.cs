@@ -1,6 +1,6 @@
 ﻿using TrackClinicServiceSpecification.Automation;
 
-namespace TrackClinicServiceSpecification;
+namespace TrackClinicServiceSpecification.Endpoints.OpenApi;
 
 //bug introduce a common timeout for all tests in the assembly
 //bug the timeout does not seem to work

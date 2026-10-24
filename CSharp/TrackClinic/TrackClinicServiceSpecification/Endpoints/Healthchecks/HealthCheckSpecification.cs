@@ -1,6 +1,6 @@
 using TrackClinicServiceSpecification.Automation;
 
-namespace TrackClinicServiceSpecification;
+namespace TrackClinicServiceSpecification.Endpoints.Healthchecks;
 
 [CancelAfter(30000)]
 public class HealthCheckSpecification

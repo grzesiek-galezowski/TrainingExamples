@@ -3,7 +3,7 @@ using TddXt.AnyRoot.Strings;
 using TrackClinic;
 using TrackClinicServiceSpecification.Automation;
 
-namespace TrackClinicServiceSpecification;
+namespace TrackClinicServiceSpecification.Endpoints.CreateSong;
 
 [CancelAfter(30000)]
 public class AuthorizationSpecification
