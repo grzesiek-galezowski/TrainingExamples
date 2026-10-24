@@ -88,7 +88,7 @@ public class Program
         .WithSummary("Gets details of a song project")
         .WithDescription("Retrieves the full details of a specific song project, including milestones and timeline.")
         .RequireAuthorization(AuthorizationConfiguration.DefaultPolicyName)
-        .Produces<SongDetailsDto>(StatusCodes.Status200OK)
+        .Produces<SongDetailsDto>()
         .Produces(StatusCodes.Status404NotFound);
 
       await app.RunAsync();
