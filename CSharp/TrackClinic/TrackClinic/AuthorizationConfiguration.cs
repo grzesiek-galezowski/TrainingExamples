@@ -19,6 +19,10 @@ public static class AuthorizationConfiguration
     options.MetadataAddress = appConfig.Keycloak.MetadataAddress.OrThrow();
     options.RequireHttpsMetadata = appConfig.Keycloak.RequireHttpsMetadata;
     options.TokenValidationParameters.ValidateAudience = false;
+    if(appConfig.Keycloak.GracePeriod.HasValue)
+    {
+      options.TokenValidationParameters.ClockSkew = appConfig.Keycloak.GracePeriod.Value;
+    }
     options.Events = new JwtBearerEvents
     {
       OnTokenValidated = async context =>

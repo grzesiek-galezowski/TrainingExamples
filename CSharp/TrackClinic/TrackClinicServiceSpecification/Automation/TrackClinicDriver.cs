@@ -17,6 +17,7 @@ public class TrackClinicDriver : IAsyncDisposable
   private readonly CancellationToken _cancellationToken;
   private readonly WebApp _webApp;
   private readonly Lazy<FlurlClient> _client;
+  private TimeSpan _tokenLifespan = 15.Minutes();
 
   public static async Task<TrackClinicDriver> CreateInstance(CancellationToken cancellationToken)
   {
@@ -40,10 +41,20 @@ public class TrackClinicDriver : IAsyncDisposable
 
   public async Task Start()
   {
-    await SharedKeycloakInstance.ConfigureNewRealm(new TrackClinicKeycloakBootstrap(_keycloakRealmName));
+    await SharedKeycloakInstance.ConfigureNewRealm(new TrackClinicKeycloakBootstrap(_keycloakRealmName, _tokenLifespan));
     _webApp.StartServer();
     await WaitForHealthCheck("/health/live", 10.Seconds());
     await WaitForHealthCheck("/health/ready", 10.Seconds());
+  }
+
+  public void SetupKeycloakTokenLifespan(TimeSpan lifespan)
+  {
+    _tokenLifespan = lifespan;
+  }
+
+  public void SetupGracePeriod(TimeSpan gracePeriod)
+  {
+    _webApp.OverrideConfig("Keycloak:GracePeriod", gracePeriod.ToString());
   }
 
   public void SimulateMongoFailure()
@@ -79,10 +90,8 @@ public class TrackClinicDriver : IAsyncDisposable
   public async Task<CreateSongProjectResponse> RequestCreatingSongProject(string artistName,
     CreateSongRequestDto createSongRequestDto, Func<TrackClinicRequestBuilder, TrackClinicRequestBuilder> customize)
   {
-    var requestBuilder = new TrackClinicRequestBuilder(
-      _client.Value.Request($"/api/v1/artists/{artistName}/songs"),
-      await SharedKeycloakInstance.GetTestAuthTokens(_keycloakRealmName));
-    var flurlResponse = await customize(requestBuilder).Build().PostJsonAsync(
+    var builder = await CreateDefaultRequestBuilder($"/api/v1/artists/{artistName}/songs", customize);
+    var flurlResponse = await builder.Build().PostJsonAsync(
       createSongRequestDto,
       cancellationToken: _cancellationToken);
     return new CreateSongProjectResponse(flurlResponse);
@@ -103,10 +112,8 @@ public class TrackClinicDriver : IAsyncDisposable
   public async Task<RetrieveProjectDetailsResponse> RequestRetrievalOfProjectDetails(string artist, string songName,
     Func<TrackClinicRequestBuilder, TrackClinicRequestBuilder> customize)
   {
-    var requestBuilder = new TrackClinicRequestBuilder(
-      _client.Value.Request($"/api/v1/artists/{artist}/songs/{songName}"),
-      await SharedKeycloakInstance.GetTestAuthTokens(_keycloakRealmName));
-    var flurlResponse = await customize(requestBuilder).Build().GetAsync(cancellationToken: _cancellationToken);
+    var customizedBuilder = await CreateDefaultRequestBuilder($"/api/v1/artists/{artist}/songs/{songName}", customize);
+    var flurlResponse = await customizedBuilder.Build().GetAsync(cancellationToken: _cancellationToken);
     return new RetrieveProjectDetailsResponse(flurlResponse);
   }
 
@@ -182,5 +189,16 @@ public class TrackClinicDriver : IAsyncDisposable
       .Request(new Uri(routeRequest.Url).PathAndQuery)
       .AllowAnyHttpStatus()
       .SendAsync(new HttpMethod(routeRequest.Method), cancellationToken: ct);
+  }
+
+  private async Task<TrackClinicRequestBuilder> CreateDefaultRequestBuilder(string urlSegments,
+    Func<TrackClinicRequestBuilder, TrackClinicRequestBuilder> customize)
+  {
+    var requestBuilder = new TrackClinicRequestBuilder(
+      _client.Value.Request(urlSegments),
+      await SharedKeycloakInstance.GetTestAuthTokens(_keycloakRealmName));
+    var customizedBuilder = customize(requestBuilder);
+    await customizedBuilder.WaitIfNeeded(_cancellationToken);
+    return customizedBuilder;
   }
 }

@@ -1,5 +1,6 @@
 using TddXt.AnyRoot;
 using TddXt.AnyRoot.Strings;
+using AwesomeAssertions.Extensions;
 using TrackClinicServiceSpecification.Automation;
 
 namespace TrackClinicServiceSpecification.Endpoints.RetrieveSong;
@@ -68,6 +69,50 @@ public class AuthorizationSpecification
 
     // THEN
     response.ShouldBeUnauthorized();
+  }
+
+  [Test]
+  public async Task ShouldDenyAccessIfTokenIsExpired(CancellationToken cancellationToken)
+  {
+    // GIVEN
+    var artistName = Any.String();
+    var songName = Any.String();
+    
+    await using var driver = await TrackClinicDriver.CreateInstance(cancellationToken);
+    driver.SetupKeycloakTokenLifespan(1.Seconds());
+    driver.SetupGracePeriod(TimeSpan.Zero);
+    await driver.Start();
+
+    // WHEN
+    var response = await driver.RequestRetrievalOfProjectDetails(
+      artistName,
+      songName,
+      r => r.WithArtistUser().WithDelayBeforeSending(2.Seconds()));
+
+    // THEN
+    response.ShouldBeUnauthorized();
+  }
+
+  [Test]
+  public async Task ShouldAllowAccessIfTokenIsExpiredButWithinGracePeriod(CancellationToken cancellationToken)
+  {
+    // GIVEN
+    var artistName = Any.String();
+    var songName = Any.String();
+    
+    await using var driver = await TrackClinicDriver.CreateInstance(cancellationToken);
+    driver.SetupKeycloakTokenLifespan(1.Seconds());
+    await driver.Start();
+
+    // WHEN
+    var response = await driver.RequestRetrievalOfProjectDetails(
+      artistName,
+      songName,
+      r => r.WithArtistUser().WithDelayBeforeSending(2.Seconds()));
+
+    // THEN
+    // Note: since the song does not exist, it might be 404, but it shouldn't be 401/403
+    response.ShouldBeNotFound();
   }
 
   [Test]

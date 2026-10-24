@@ -12,16 +12,17 @@ namespace TrackClinicServiceSpecification.Automation;
 
 internal class WebApp(string databaseName, string keycloakRealmName) : WebApplicationFactory<Program>
 {
+  private readonly Dictionary<string, string?> _configOverrides = new()
+  {
+    ["DatabaseInfo:ConnectionString"] = SharedMongoInstance.GetConnectionString(databaseName),
+    ["Keycloak:Authority"] = SharedKeycloakInstance.GetAuthority(keycloakRealmName),
+    ["Keycloak:MetadataAddress"] = SharedKeycloakInstance.GetMetadataAddress(keycloakRealmName),
+    ["Keycloak:RequireHttpsMetadata"] = "false"
+  };
+
   protected override void ConfigureWebApplicationBuilder(IHostApplicationBuilder builder)
   {
-    builder.Configuration.AddInMemoryCollection(
-      new Dictionary<string, string?>
-      {
-        ["DatabaseInfo:ConnectionString"] = SharedMongoInstance.GetConnectionString(databaseName),
-        ["Keycloak:Authority"] = SharedKeycloakInstance.GetAuthority(keycloakRealmName),
-        ["Keycloak:MetadataAddress"] = SharedKeycloakInstance.GetMetadataAddress(keycloakRealmName),
-        ["Keycloak:RequireHttpsMetadata"] = "false"
-      });
+    builder.Configuration.AddInMemoryCollection(_configOverrides);
     base.ConfigureWebApplicationBuilder(builder);
   }
 
@@ -38,5 +39,10 @@ internal class WebApp(string databaseName, string keycloakRealmName) : WebApplic
       .CreateLogger(), dispose: true);
     var host = base.CreateHost(builder);
     return host;
+  }
+
+  public void OverrideConfig(string key, string value)
+  {
+    _configOverrides[key] = value;
   }
 }

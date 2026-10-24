@@ -7,6 +7,7 @@ public record TrackClinicRequestBuilder
   private string? _token;
   private readonly TestAuthTokens _testAuthTokens;
   private readonly IFlurlRequest _request;
+  private TimeSpan _delay = TimeSpan.Zero;
 
   public TrackClinicRequestBuilder(IFlurlRequest request, TestAuthTokens testAuthTokens)
   {
@@ -25,6 +26,19 @@ public record TrackClinicRequestBuilder
     }
 
     return request;
+  }
+
+  public async Task WaitIfNeeded(CancellationToken cancellationToken)
+  {
+    if (_delay != TimeSpan.Zero)
+    {
+      await Task.Delay(_delay, cancellationToken);
+    }
+  }
+
+  public TrackClinicRequestBuilder WithDelayBeforeSending(TimeSpan delay)
+  {
+    return this with { _delay = delay };
   }
 
   public TrackClinicRequestBuilder WithUnprivilegedUser()

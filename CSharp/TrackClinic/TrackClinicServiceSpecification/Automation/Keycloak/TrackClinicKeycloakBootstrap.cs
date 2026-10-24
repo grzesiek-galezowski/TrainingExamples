@@ -3,7 +3,7 @@ using TrackClinic;
 
 namespace TrackClinicServiceSpecification.Automation.Keycloak;
 
-public class TrackClinicKeycloakBootstrap(string realmName)
+public class TrackClinicKeycloakBootstrap(string realmName, TimeSpan accessTokenLifespan)
 {
   public async Task Execute(
     IKeycloakClient client,
@@ -20,7 +20,7 @@ public class TrackClinicKeycloakBootstrap(string realmName)
         realm = realmName,
         enabled = true,
         verifyEmail = false,
-        accessTokenLifespan = 15.Minutes().TotalSeconds,
+        accessTokenLifespan = accessTokenLifespan.TotalSeconds,
         requiredCredentials = new[] { "password" }
       });
 

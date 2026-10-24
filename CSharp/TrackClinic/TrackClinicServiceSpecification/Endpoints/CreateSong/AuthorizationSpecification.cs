@@ -1,5 +1,6 @@
 using TddXt.AnyRoot;
 using TddXt.AnyRoot.Strings;
+using AwesomeAssertions.Extensions;
 using TrackClinic;
 using TrackClinicServiceSpecification.Automation;
 
@@ -69,6 +70,49 @@ public class AuthorizationSpecification
 
     // THEN
     response.ShouldBeUnauthorized();
+  }
+
+  [Test]
+  public async Task ShouldDenyAccessIfTokenIsExpired(CancellationToken cancellationToken)
+  {
+    // GIVEN
+    var artistName = Any.String();
+    var songName = Any.String();
+    
+    await using var driver = await TrackClinicDriver.CreateInstance(cancellationToken);
+    driver.SetupKeycloakTokenLifespan(1.Seconds());
+    driver.SetupGracePeriod(TimeSpan.Zero);
+    await driver.Start();
+
+    // WHEN
+    var response = await driver.RequestCreatingSongProject(
+      artistName,
+      new CreateSongRequestDto(songName),
+      r => r.WithArtistUser().WithDelayBeforeSending(2.Seconds()));
+
+    // THEN
+    response.ShouldBeUnauthorized();
+  }
+
+  [Test]
+  public async Task ShouldAllowAccessIfTokenIsExpiredButWithinGracePeriod(CancellationToken cancellationToken)
+  {
+    // GIVEN
+    var artistName = Any.String();
+    var songName = Any.String();
+    
+    await using var driver = await TrackClinicDriver.CreateInstance(cancellationToken);
+    driver.SetupKeycloakTokenLifespan(1.Seconds());
+    await driver.Start();
+
+    // WHEN
+    var response = await driver.RequestCreatingSongProject(
+      artistName,
+      new CreateSongRequestDto(songName),
+      r => r.WithArtistUser().WithDelayBeforeSending(2.Seconds()));
+
+    // THEN
+    response.ShouldBeSuccess();
   }
 
   [Test]
