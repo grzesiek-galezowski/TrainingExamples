@@ -130,6 +130,13 @@ public class TrackClinicDriver : IAsyncDisposable
     return new OpenApiDocumentResponse(await response.GetStringAsync());
   }
 
+  public async Task<MetricsResponse> GetMetrics()
+  {
+    var response = await _client.Value.Request("/metrics")
+      .GetAsync(cancellationToken: _cancellationToken);
+    return new MetricsResponse(response);
+  }
+
   public async Task<WebPageResponse> GetScalarUi()
   {
     using var playwright = await Playwright.CreateAsync();
