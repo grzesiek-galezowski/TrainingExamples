@@ -14,21 +14,22 @@ public class TrackClinicDriver : IAsyncDisposable
 {
   private readonly string _databaseName;
   private readonly string _keycloakRealmName;
+  private readonly CancellationTokenSource _cts = new(TimeSpan.FromSeconds(30));
   private readonly CancellationToken _cancellationToken;
   private readonly WebApp _webApp;
   private readonly Lazy<FlurlClient> _client;
-  private TimeSpan _tokenLifespan = 15.Minutes();
+  private TimeSpan _accessTokenLifespan = 15.Minutes();
 
-  public static async Task<TrackClinicDriver> CreateInstance(CancellationToken cancellationToken)
+  public static async Task<TrackClinicDriver> CreateInstance()
   {
-    return new TrackClinicDriver(cancellationToken);
+    return new TrackClinicDriver();
   }
 
-  private TrackClinicDriver(CancellationToken cancellationToken)
+  private TrackClinicDriver()
   {
     _databaseName = Any.String("testDb");
     _keycloakRealmName = Any.String(KeycloakConstants.RealmName);
-    _cancellationToken = cancellationToken;
+    _cancellationToken = _cts.Token;
     _webApp = new WebApp(_databaseName, _keycloakRealmName);
     _client = new Lazy<FlurlClient>(() => new FlurlClient(_webApp.CreateClient()));
   }
@@ -37,11 +38,12 @@ public class TrackClinicDriver : IAsyncDisposable
   {
     await _webApp.DisposeAsync();
     await SharedMongoInstance.DropDatabase(_databaseName, _cancellationToken);
+    _cts.Dispose();
   }
 
   public async Task Start()
   {
-    await SharedKeycloakInstance.ConfigureNewRealm(new TrackClinicKeycloakBootstrap(_keycloakRealmName, _tokenLifespan));
+    await SharedKeycloakInstance.ConfigureNewRealm(new TrackClinicKeycloakBootstrap(_keycloakRealmName, _accessTokenLifespan));
     _webApp.StartServer();
     await WaitForHealthCheck("/health/live", 10.Seconds());
     await WaitForHealthCheck("/health/ready", 10.Seconds());
@@ -49,7 +51,7 @@ public class TrackClinicDriver : IAsyncDisposable
 
   public void SetupKeycloakTokenLifespan(TimeSpan lifespan)
   {
-    _tokenLifespan = lifespan;
+    _accessTokenLifespan = lifespan;
   }
 
   public void SetupGracePeriod(TimeSpan gracePeriod)
@@ -148,7 +150,8 @@ public class TrackClinicDriver : IAsyncDisposable
 
   private async Task WaitForHealthCheck(string urlSegment, TimeSpan timeout)
   {
-    using var cts = new CancellationTokenSource(timeout);
+    using var cts = CancellationTokenSource.CreateLinkedTokenSource(_cancellationToken);
+    cts.CancelAfter(timeout);
     using var timer = new PeriodicTimer(TimeSpan.FromMilliseconds(100));
     while (await timer.WaitForNextTickAsync(cts.Token))
     {

@@ -2,14 +2,13 @@ using TrackClinicServiceSpecification.Automation;
 
 namespace TrackClinicServiceSpecification.Endpoints.Healthchecks;
 
-[CancelAfter(30000)]
 public class HealthCheckSpecification
 {
   [Test]
-  public async Task ShouldBeHealthy(CancellationToken cancellationToken)
+  public async Task ShouldBeHealthy()
   {
     // GIVEN
-    await using var driver = await TrackClinicDriver.CreateInstance(cancellationToken);
+    await using var driver = await TrackClinicDriver.CreateInstance();
     await driver.Start();
 
     // WHEN
@@ -20,10 +19,10 @@ public class HealthCheckSpecification
   }
 
   [Test]
-  public async Task ShouldBeReady(CancellationToken cancellationToken)
+  public async Task ShouldBeReady()
   {
     // GIVEN
-    await using var driver = await TrackClinicDriver.CreateInstance(cancellationToken);
+    await using var driver = await TrackClinicDriver.CreateInstance();
     await driver.Start();
 
     // WHEN
@@ -34,10 +33,10 @@ public class HealthCheckSpecification
   }
 
   [Test]
-  public async Task ShouldReportNotReadyWhenMongoIsUnavailable(CancellationToken cancellationToken)
+  public async Task ShouldReportNotReadyWhenMongoIsUnavailable()
   {
     // GIVEN
-    await using var driver = await TrackClinicDriver.CreateInstance(cancellationToken);
+    await using var driver = await TrackClinicDriver.CreateInstance();
     await driver.Start();
 
     driver.SimulateMongoFailure();

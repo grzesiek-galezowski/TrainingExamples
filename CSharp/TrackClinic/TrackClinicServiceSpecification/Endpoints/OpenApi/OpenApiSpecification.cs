@@ -2,16 +2,13 @@
 
 namespace TrackClinicServiceSpecification.Endpoints.OpenApi;
 
-//bug introduce a common timeout for all tests in the assembly
-//bug the timeout does not seem to work
-[CancelAfter(60000)] 
 public class OpenApiSpecification
 {
   [Test]
-  public async Task ShouldBeValidAndAccessible(CancellationToken cancellationToken)
+  public async Task ShouldBeValidAndAccessible()
   {
     // GIVEN
-    await using var driver = await TrackClinicDriver.CreateInstance(cancellationToken);
+    await using var driver = await TrackClinicDriver.CreateInstance();
     await driver.Start();
 
     // WHEN
@@ -24,10 +21,10 @@ public class OpenApiSpecification
   }
 
   [Test]
-  public async Task ShouldProvideScalarUi(CancellationToken cancellationToken)
+  public async Task ShouldProvideScalarUi()
   {
     // GIVEN
-    await using var driver = await TrackClinicDriver.CreateInstance(cancellationToken);
+    await using var driver = await TrackClinicDriver.CreateInstance();
     await driver.Start();
 
     // WHEN

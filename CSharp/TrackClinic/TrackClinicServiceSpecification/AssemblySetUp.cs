@@ -9,7 +9,7 @@ using TrackClinicServiceSpecification.Automation.Keycloak;
 
 namespace TrackClinicServiceSpecification;
 
-[SetUpFixture, CancelAfter(120000)]
+[SetUpFixture]
 public class AssemblySetUp
 {
   [OneTimeSetUp]

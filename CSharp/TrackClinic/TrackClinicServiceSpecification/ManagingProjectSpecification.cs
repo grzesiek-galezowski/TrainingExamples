@@ -5,16 +5,15 @@ using TrackClinicServiceSpecification.Automation;
 
 namespace TrackClinicServiceSpecification;
 
-[CancelAfter(30000)]
 public class ManagingProjectSpecification
 {
   [Test]
-  public async Task ShouldRespondWithSuccessAndSongLinkToCreatingNewSong(CancellationToken cancellationToken)
+  public async Task ShouldRespondWithSuccessAndSongLinkToCreatingNewSong()
   {
     // GIVEN
     var artistName = Any.String();
     var songName = Any.String();
-    await using var driver = await TrackClinicDriver.CreateInstance(cancellationToken);
+    await using var driver = await TrackClinicDriver.CreateInstance();
 
     await driver.Start();
     
@@ -27,12 +26,12 @@ public class ManagingProjectSpecification
   }
 
   [Test]
-  public async Task ShouldRespondWithNotFoundWhenRequestingNonExistentSong(CancellationToken cancellationToken)
+  public async Task ShouldRespondWithNotFoundWhenRequestingNonExistentSong()
   {
     // GIVEN
     var artistName = Any.String();
     var songName = Any.String();
-    await using var driver = await TrackClinicDriver.CreateInstance(cancellationToken);
+    await using var driver = await TrackClinicDriver.CreateInstance();
 
     await driver.Start();
 
@@ -45,13 +44,13 @@ public class ManagingProjectSpecification
 
 
   [Test]
-  public async Task ShouldCreateInitialSongWithNoProgress(CancellationToken cancellationToken)
+  public async Task ShouldCreateInitialSongWithNoProgress()
   {
     // GIVEN
     var artistName = Any.String();
     var songName1 = Any.String();
     var songName2 = Any.String();
-    await using var driver = await TrackClinicDriver.CreateInstance(cancellationToken);
+    await using var driver = await TrackClinicDriver.CreateInstance();
 
     await driver.Start();
     await driver.CreateSongProject(artistName, new CreateSongRequestDto(songName1));

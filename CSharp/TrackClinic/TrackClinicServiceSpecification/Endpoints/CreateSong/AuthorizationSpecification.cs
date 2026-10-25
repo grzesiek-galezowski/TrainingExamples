@@ -6,17 +6,16 @@ using TrackClinicServiceSpecification.Automation;
 
 namespace TrackClinicServiceSpecification.Endpoints.CreateSong;
 
-[CancelAfter(30000)]
 public class AuthorizationSpecification
 {
   [Test]
-  public async Task ShouldDenyAccessIfUserDoesNotHaveArtistRole(CancellationToken cancellationToken)
+  public async Task ShouldDenyAccessIfUserDoesNotHaveArtistRole()
   {
     // GIVEN
     var artistName = Any.String();
     var songName = Any.String();
     
-    await using var driver = await TrackClinicDriver.CreateInstance(cancellationToken);
+    await using var driver = await TrackClinicDriver.CreateInstance();
 
     await driver.Start();
 
@@ -31,13 +30,13 @@ public class AuthorizationSpecification
   }
 
   [Test]
-  public async Task ShouldDenyAccessIfNoTokenIsProvided(CancellationToken cancellationToken)
+  public async Task ShouldDenyAccessIfNoTokenIsProvided()
   {
     // GIVEN
     var artistName = Any.String();
     var songName = Any.String();
     
-    await using var driver = await TrackClinicDriver.CreateInstance(cancellationToken);
+    await using var driver = await TrackClinicDriver.CreateInstance();
 
     await driver.Start();
 
@@ -52,13 +51,13 @@ public class AuthorizationSpecification
   }
 
   [Test]
-  public async Task ShouldDenyAccessIfInvalidTokenIsProvided(CancellationToken cancellationToken)
+  public async Task ShouldDenyAccessIfInvalidTokenIsProvided()
   {
     // GIVEN
     var artistName = Any.String();
     var songName = Any.String();
     
-    await using var driver = await TrackClinicDriver.CreateInstance(cancellationToken);
+    await using var driver = await TrackClinicDriver.CreateInstance();
 
     await driver.Start();
 
@@ -73,13 +72,13 @@ public class AuthorizationSpecification
   }
 
   [Test]
-  public async Task ShouldDenyAccessIfTokenIsExpired(CancellationToken cancellationToken)
+  public async Task ShouldDenyAccessIfTokenIsExpired()
   {
     // GIVEN
     var artistName = Any.String();
     var songName = Any.String();
     
-    await using var driver = await TrackClinicDriver.CreateInstance(cancellationToken);
+    await using var driver = await TrackClinicDriver.CreateInstance();
     driver.SetupKeycloakTokenLifespan(1.Seconds());
     driver.SetupGracePeriod(TimeSpan.Zero);
     await driver.Start();
@@ -95,13 +94,13 @@ public class AuthorizationSpecification
   }
 
   [Test]
-  public async Task ShouldAllowAccessIfTokenIsExpiredButWithinGracePeriod(CancellationToken cancellationToken)
+  public async Task ShouldAllowAccessIfTokenIsExpiredButWithinGracePeriod()
   {
     // GIVEN
     var artistName = Any.String();
     var songName = Any.String();
     
-    await using var driver = await TrackClinicDriver.CreateInstance(cancellationToken);
+    await using var driver = await TrackClinicDriver.CreateInstance();
     driver.SetupKeycloakTokenLifespan(1.Seconds());
     await driver.Start();
 
@@ -116,13 +115,13 @@ public class AuthorizationSpecification
   }
 
   [Test]
-  public async Task ShouldAllowAccessIfUserHasArtistRole(CancellationToken cancellationToken)
+  public async Task ShouldAllowAccessIfUserHasArtistRole()
   {
     // GIVEN
     var artistName = Any.String();
     var songName = Any.String();
     
-    await using var driver = await TrackClinicDriver.CreateInstance(cancellationToken);
+    await using var driver = await TrackClinicDriver.CreateInstance();
 
     await driver.Start();
 
