@@ -1,4 +1,5 @@
-﻿using AwesomeAssertions;
+﻿using System.Diagnostics;
+using AwesomeAssertions;
 using AwesomeAssertions.Extensions;
 using Flurl.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,7 +15,8 @@ public class TrackClinicDriver : IAsyncDisposable
 {
   private readonly string _databaseName;
   private readonly string _keycloakRealmName;
-  private readonly CancellationTokenSource _cts = new(TimeSpan.FromSeconds(30));
+  private readonly CancellationTokenSource _testCaseCancellationTokenSource =
+    new(Debugger.IsAttached ? 10.Minutes() : 30.Seconds());
   private readonly CancellationToken _cancellationToken;
   private readonly WebApp _webApp;
   private readonly Lazy<FlurlClient> _client;
@@ -29,7 +31,7 @@ public class TrackClinicDriver : IAsyncDisposable
   {
     _databaseName = Any.String("testDb");
     _keycloakRealmName = Any.String(KeycloakConstants.RealmName);
-    _cancellationToken = _cts.Token;
+    _cancellationToken = _testCaseCancellationTokenSource.Token;
     _webApp = new WebApp(_databaseName, _keycloakRealmName);
     _client = new Lazy<FlurlClient>(() => new FlurlClient(_webApp.CreateClient()));
   }
@@ -38,7 +40,7 @@ public class TrackClinicDriver : IAsyncDisposable
   {
     await _webApp.DisposeAsync();
     await SharedMongoInstance.DropDatabase(_databaseName, _cancellationToken);
-    _cts.Dispose();
+    _testCaseCancellationTokenSource.Dispose();
   }
 
   public async Task Start()
@@ -67,10 +69,14 @@ public class TrackClinicDriver : IAsyncDisposable
 
   public async Task<HealthResponse> RequestHealthCheck(string urlSegment)
   {
+    return await RequestHealthCheck(urlSegment, b => b);
+  }
+
+  public async Task<HealthResponse> RequestHealthCheck(string urlSegment, Func<TrackClinicRequestBuilder, TrackClinicRequestBuilder> customize)
+  {
+    var builder = await CreateDefaultRequestBuilder(urlSegment, customize);
     return new HealthResponse(
-      await _client.Value.Request(urlSegment)
-        .AllowAnyHttpStatus()
-        .GetAsync(cancellationToken: _cancellationToken));
+      await builder.Build().GetAsync(cancellationToken: _cancellationToken));
   }
 
   public async Task<CreateSongProjectResponse> CreateSongProject(string artistName,
@@ -135,6 +141,11 @@ public class TrackClinicDriver : IAsyncDisposable
     var response = await _client.Value.Request("/metrics")
       .GetAsync(cancellationToken: _cancellationToken);
     return new MetricsResponse(response);
+  }
+
+  public CapturedActivities StartActivityTracking()
+  {
+    return new CapturedActivities();
   }
 
   public async Task<WebPageResponse> GetScalarUi()
