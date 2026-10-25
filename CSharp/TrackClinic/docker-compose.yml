@@ -7,5 +7,21 @@ services:
     volumes:
       - mongodb_data:/data/db
 
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: track-clinic-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: track-clinic-jaeger
+    ports:
+      - "16686:16686" # UI
+      - "4317:4317" # OTLP gRPC
+      - "4318:4318" # OTLP HTTP
+
 volumes:
   mongodb_data:

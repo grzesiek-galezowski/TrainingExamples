@@ -40,6 +40,7 @@ public class Program
       // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
       builder.Services.AddOpenApi(OpenApiConfiguration.ConfigureOpenApiDocument);
       HealthChecksConfiguration.AddTo(builder);
+      OpenTelemetryConfiguration.AddTo(builder);
 
       var app = builder.Build();
       var serviceLogicRoot = app.Services.GetRequiredService<ServiceLogicRoot>();
@@ -55,6 +56,7 @@ public class Program
       app.UseHttpsRedirection();
 
       HealthChecksConfiguration.Map(app);
+      OpenTelemetryConfiguration.Map(app);
       app.UseAuthentication();
       app.UseAuthorization();
 
@@ -102,6 +104,4 @@ public class Program
       await Log.CloseAndFlushAsync();
     }
   }
-
-  //bug metrics
 }
