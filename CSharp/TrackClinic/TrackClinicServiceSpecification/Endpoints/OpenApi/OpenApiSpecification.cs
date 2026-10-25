@@ -12,7 +12,7 @@ public class OpenApiSpecification
     await driver.Start();
 
     // WHEN
-    var response = await driver.GetOpenApiDocument();
+    var response = await driver.Operations.GetOpenApiDocument();
 
     // THEN
     response.ShouldBeValidJson();
@@ -28,7 +28,7 @@ public class OpenApiSpecification
     await driver.Start();
 
     // WHEN
-    var webPageResponse = await driver.GetScalarUi();
+    var webPageResponse = await driver.Operations.GetScalarUi();
 
     // THEN
     webPageResponse.ShouldHaveCorrectMetadata();

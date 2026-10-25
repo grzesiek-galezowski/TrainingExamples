@@ -44,15 +44,15 @@ public static class SharedKeycloakInstance
 
   public static async Task<TestAuthTokens> GetTestAuthTokens(string realmName)
   {
-    var adminToken = await SharedKeycloakInstance.GetToken(
+    var adminToken = await GetToken(
       realmName,
       KeycloakConstants.AdminUser,
       "password");
-    var unprivilegedToken = await SharedKeycloakInstance.GetToken(
+    var unprivilegedToken = await GetToken(
       realmName,
       KeycloakConstants.UnprivilegedUser,
       "password");
-    var artistToken = await SharedKeycloakInstance.GetToken(
+    var artistToken = await GetToken(
       realmName,
       KeycloakConstants.ArtistUser,
       "password");

@@ -15,7 +15,7 @@ public class TracingSpecification
     await using var driver = await TrackClinicDriver.CreateInstance();
     await driver.Start();
     
-    using var activities = driver.StartActivityTracking();
+    using var activities = driver.Operations.StartActivityTracking();
 
     // WHEN
     await driver.RequestCreatingSongProject(
@@ -35,7 +35,7 @@ public class TracingSpecification
     await using var driver = await TrackClinicDriver.CreateInstance();
     await driver.Start();
 
-    using var activities = driver.StartActivityTracking();
+    using var activities = driver.Operations.StartActivityTracking();
 
     // WHEN
     await driver.RequestHealthCheck("/health/live", b => b.WithTraceId(traceId));

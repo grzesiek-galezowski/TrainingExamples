@@ -12,7 +12,7 @@ public class MetricsSpecification
     await driver.Start();
 
     // WHEN
-    var response = await driver.GetMetrics();
+    var response = await driver.Operations.GetMetrics();
 
     // THEN
     await response.ShouldBeSuccessful();
