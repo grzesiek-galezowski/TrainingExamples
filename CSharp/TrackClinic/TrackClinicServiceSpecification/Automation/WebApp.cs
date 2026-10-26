@@ -7,6 +7,7 @@ using Serilog;
 using Serilog.Events;
 using TrackClinic;
 using TrackClinicServiceSpecification.Automation.Keycloak;
+using TrackClinicServiceSpecification.Automation.Zipkin;
 
 namespace TrackClinicServiceSpecification.Automation;
 
@@ -17,7 +18,9 @@ internal class WebApp(string databaseName, string keycloakRealmName) : WebApplic
     ["DatabaseInfo:ConnectionString"] = SharedMongoInstance.GetConnectionString(databaseName),
     ["Keycloak:Authority"] = SharedKeycloakInstance.GetAuthority(keycloakRealmName),
     ["Keycloak:MetadataAddress"] = SharedKeycloakInstance.GetMetadataAddress(keycloakRealmName),
-    ["Keycloak:RequireHttpsMetadata"] = "false"
+    ["Keycloak:RequireHttpsMetadata"] = "false",
+    ["OTEL_EXPORTER_ZIPKIN_ENDPOINT"] = SharedZipkinInstance.GetEndpoint(),
+    ["OTEL_BSP_SCHEDULE_DELAY"] = "100"
   };
 
   protected override void ConfigureWebApplicationBuilder(IHostApplicationBuilder builder)

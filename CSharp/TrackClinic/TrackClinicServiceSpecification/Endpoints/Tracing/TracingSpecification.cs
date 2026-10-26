@@ -14,8 +14,6 @@ public class TracingSpecification
     var traceId = Any.TraceId();
     await using var driver = await TrackClinicDriver.CreateInstance();
     await driver.Start();
-    
-    using var activities = driver.Operations.StartActivityTracking();
 
     // WHEN
     await driver.RequestCreatingSongProject(
@@ -24,7 +22,7 @@ public class TracingSpecification
       b => b.WithTraceId(traceId));
 
     // THEN
-    await activities.ShouldHaveCapturedTrace(traceId, "POST", 201);
+    await driver.Operations.ShouldHaveCapturedTrace(traceId, "POST", 201);
   }
 
   [Test]
@@ -35,12 +33,10 @@ public class TracingSpecification
     await using var driver = await TrackClinicDriver.CreateInstance();
     await driver.Start();
 
-    using var activities = driver.Operations.StartActivityTracking();
-
     // WHEN
     await driver.RequestHealthCheck("/health/live", b => b.WithTraceId(traceId));
 
     // THEN
-    await activities.ShouldHaveCapturedTrace(traceId, "GET", 200);
+    await driver.Operations.ShouldHaveCapturedTrace(traceId, "GET", 200);
   }
 }

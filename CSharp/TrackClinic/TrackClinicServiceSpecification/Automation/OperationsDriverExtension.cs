@@ -1,11 +1,14 @@
-﻿using AwesomeAssertions;
+﻿using System.Collections.Immutable;
+using System.Diagnostics;
+using AwesomeAssertions;
 using Flurl.Http;
 using Microsoft.Playwright;
 using TrackClinicServiceSpecification.Automation.Keycloak;
+using TrackClinicServiceSpecification.Automation.Zipkin;
 
 namespace TrackClinicServiceSpecification.Automation;
 
-public class OperationsDriverExtension(Lazy<FlurlClient> client, string keycloakRealmName, CancellationToken cancellationToken)
+public class OperationsDriverExtension(Lazy<FlurlClient> client, string keycloakRealmName, CancellationToken cancellationToken, IZipkinClient zipkinClient)
 {
   public async Task<OpenApiDocumentResponse> GetOpenApiDocument()
   {
@@ -25,9 +28,42 @@ public class OperationsDriverExtension(Lazy<FlurlClient> client, string keycloak
     return new MetricsResponse(response);
   }
 
-  public CapturedActivities StartActivityTracking()
+  public async Task ShouldHaveCapturedTrace(ActivityTraceId traceId, string expectedMethod, int expectedStatusCode)
   {
-    return new CapturedActivities();
+    var timeout = TimeSpan.FromSeconds(5);
+    var spans = await WaitForTrace(traceId, timeout);
+
+    spans.Should().NotBeEmpty(
+      $"Trace with ID {traceId} should have been captured in Zipkin within {timeout}.");
+
+    spans.Should().Contain(span =>
+      span.Tags != null &&
+      span.Tags.ContainsKey("http.request.method") && span.Tags["http.request.method"] == expectedMethod &&
+      span.Tags.ContainsKey("http.response.status_code") && span.Tags["http.response.status_code"] == expectedStatusCode.ToString());
+  }
+
+  private async Task<ImmutableList<ZipkinSpan>> WaitForTrace(ActivityTraceId traceId, TimeSpan timeout)
+  {
+    using var cts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+    cts.CancelAfter(timeout);
+    using var timer = new PeriodicTimer(TimeSpan.FromMilliseconds(100));
+
+    try
+    {
+      do
+      {
+        var spans = await zipkinClient.GetTrace(traceId.ToHexString(), cts.Token);
+        if (spans.Count > 0)
+        {
+          return spans;
+        }
+      } while (await timer.WaitForNextTickAsync(cts.Token));
+    }
+    catch (OperationCanceledException)
+    {
+    }
+
+    return [];
   }
 
   public async Task<WebPageResponse> GetScalarUi()

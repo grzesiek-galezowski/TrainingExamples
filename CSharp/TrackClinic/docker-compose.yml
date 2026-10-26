@@ -15,13 +15,11 @@ services:
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
 
-  jaeger:
-    image: jaegertracing/all-in-one:latest
-    container_name: track-clinic-jaeger
+  zipkin:
+    image: openzipkin/zipkin:latest
+    container_name: track-clinic-zipkin
     ports:
-      - "16686:16686" # UI
-      - "4317:4317" # OTLP gRPC
-      - "4318:4318" # OTLP HTTP
+      - "9411:9411"
 
 volumes:
   mongodb_data:

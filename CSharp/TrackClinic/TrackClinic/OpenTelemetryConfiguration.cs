@@ -16,7 +16,7 @@ public static class OpenTelemetryConfiguration
         .SetResourceBuilder(resourceBuilder)
         .AddAspNetCoreInstrumentation()
         .AddHttpClientInstrumentation()
-        .AddOtlpExporter())
+        .AddZipkinExporter())
       .WithMetrics(metrics => metrics
         .SetResourceBuilder(resourceBuilder)
         .AddAspNetCoreInstrumentation()

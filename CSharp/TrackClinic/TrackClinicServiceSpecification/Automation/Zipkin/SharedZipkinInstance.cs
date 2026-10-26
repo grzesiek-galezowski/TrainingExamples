@@ -1,0 +1,31 @@
+using DotNet.Testcontainers.Builders;
+using DotNet.Testcontainers.Containers;
+
+namespace TrackClinicServiceSpecification.Automation.Zipkin;
+
+public static class SharedZipkinInstance
+{
+  private const int ZipkinPort = 9411;
+
+  private static readonly IContainer ZipkinContainer = new ContainerBuilder("openzipkin/zipkin:3.6")
+    .WithPortBinding(ZipkinPort, true)
+    .WithWaitStrategy(
+      Wait.ForUnixContainer().UntilHttpRequestIsSucceeded(r => r.ForPort(ZipkinPort).ForPath("/health")))
+    .Build();
+
+  public static async Task Start()
+  {
+    await ZipkinContainer.StartAsync();
+  }
+
+  public static async Task Stop()
+  {
+    await ZipkinContainer.StopAsync();
+  }
+
+  public static string GetBaseAddress() =>
+    $"http://{ZipkinContainer.Hostname}:{ZipkinContainer.GetMappedPublicPort(ZipkinPort)}/";
+
+  public static string GetEndpoint() =>
+    $"{GetBaseAddress().TrimEnd('/')}/api/v2/spans";
+}

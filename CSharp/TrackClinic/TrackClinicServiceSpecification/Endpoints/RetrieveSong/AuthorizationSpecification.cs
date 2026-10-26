@@ -1,6 +1,6 @@
+using AwesomeAssertions.Extensions;
 using TddXt.AnyRoot;
 using TddXt.AnyRoot.Strings;
-using AwesomeAssertions.Extensions;
 using TrackClinicServiceSpecification.Automation;
 
 namespace TrackClinicServiceSpecification.Endpoints.RetrieveSong;

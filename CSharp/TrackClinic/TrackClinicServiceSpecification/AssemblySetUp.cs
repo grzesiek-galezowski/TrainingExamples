@@ -1,5 +1,6 @@
 ﻿using TrackClinicServiceSpecification.Automation;
 using TrackClinicServiceSpecification.Automation.Keycloak;
+using TrackClinicServiceSpecification.Automation.Zipkin;
 
 #if !NCRUNCH
 [assembly: Parallelizable(ParallelScope.Children)]
@@ -16,7 +17,8 @@ public class AssemblySetUp
   {
     await Task.WhenAll(
       SharedMongoInstance.Start(),
-      SharedKeycloakInstance.Start()
+      SharedKeycloakInstance.Start(),
+      SharedZipkinInstance.Start()
     );
   }
 
@@ -25,7 +27,8 @@ public class AssemblySetUp
   {
     await Task.WhenAll(
       SharedMongoInstance.Stop(),
-      SharedKeycloakInstance.Stop()
+      SharedKeycloakInstance.Stop(),
+      SharedZipkinInstance.Stop()
     );
   }
 }

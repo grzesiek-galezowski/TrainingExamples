@@ -6,6 +6,7 @@ using TddXt.AnyRoot;
 using TddXt.AnyRoot.Strings;
 using TrackClinic;
 using TrackClinicServiceSpecification.Automation.Keycloak;
+using TrackClinicServiceSpecification.Automation.Zipkin;
 
 namespace TrackClinicServiceSpecification.Automation;
 
@@ -20,7 +21,11 @@ public class TrackClinicDriver : IAsyncDisposable
   private readonly Lazy<FlurlClient> _client;
   private TimeSpan _accessTokenLifespan = 15.Minutes();
 
-  public OperationsDriverExtension Operations => new(_client, _keycloakRealmName, _cancellationToken);
+  public OperationsDriverExtension Operations => new(
+    _client,
+    _keycloakRealmName,
+    _cancellationToken,
+    new ZipkinClient(SharedZipkinInstance.GetBaseAddress()));
 
   public static async Task<TrackClinicDriver> CreateInstance()
   {

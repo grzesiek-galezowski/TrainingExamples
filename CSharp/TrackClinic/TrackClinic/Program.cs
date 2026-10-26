@@ -1,10 +1,10 @@
 ﻿using Core.Maybe;
 using Core.NullableReferenceTypesExtensions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Scalar.AspNetCore;
 using Serilog;
-using ILogger = Serilog.ILogger;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using TrackClinic.Adapters.Configuration;
+using ILogger = Serilog.ILogger;
 
 namespace TrackClinic;
 
