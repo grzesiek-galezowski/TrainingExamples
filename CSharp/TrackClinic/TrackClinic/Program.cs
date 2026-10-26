@@ -1,5 +1,4 @@
 ﻿using Core.Maybe;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Core.NullableReferenceTypesExtensions;
 using Scalar.AspNetCore;
 using Serilog;

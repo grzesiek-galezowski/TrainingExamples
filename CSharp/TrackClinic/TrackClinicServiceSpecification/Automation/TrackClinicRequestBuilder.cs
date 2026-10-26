@@ -1,4 +1,6 @@
-﻿using Flurl.Http;
+﻿using System.Diagnostics;
+using Core.NullableReferenceTypesExtensions;
+using Flurl.Http;
 
 namespace TrackClinicServiceSpecification.Automation;
 
@@ -60,8 +62,17 @@ public record TrackClinicRequestBuilder
     return this with { _token = "invalid-token" };
   }
 
-  public TrackClinicRequestBuilder WithTraceId(string traceId)
+  public TrackClinicRequestBuilder WithTraceId(ActivityTraceId traceId)
   {
-    return this with { _request = _request.WithHeader("traceparent", $"00-{traceId}-00f067aa0ba902b7-01") };
+    var traceparent = Traceparent(traceId);
+    return this with { _request = _request.WithHeader("traceparent", traceparent) };
+  }
+
+  public static string Traceparent(ActivityTraceId traceId)
+  {
+    using var activity = new Activity(string.Empty);
+    activity.SetParentId(traceId, ActivitySpanId.CreateRandom(), ActivityTraceFlags.Recorded);
+    activity.Start();
+    return activity.Id.OrThrow();
   }
 }

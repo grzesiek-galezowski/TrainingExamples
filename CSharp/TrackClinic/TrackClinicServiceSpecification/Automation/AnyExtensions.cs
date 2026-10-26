@@ -5,14 +5,11 @@ namespace TrackClinicServiceSpecification.Automation;
 
 public static class AnyExtensions
 {
-    extension(Any)
+  extension(Any)
+  {
+    public static ActivityTraceId TraceId()
     {
-        public static string TraceId()
-        {
-            using var activity = new Activity("Test");
-            activity.Start();
-
-            return activity.TraceId.ToString();
-        }
+      return ActivityTraceId.CreateRandom();
     }
+  }
 }

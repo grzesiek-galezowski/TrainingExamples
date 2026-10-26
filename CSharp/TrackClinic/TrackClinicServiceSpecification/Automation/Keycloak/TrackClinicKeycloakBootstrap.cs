@@ -1,4 +1,3 @@
-using AwesomeAssertions.Extensions;
 using TrackClinic;
 
 namespace TrackClinicServiceSpecification.Automation.Keycloak;

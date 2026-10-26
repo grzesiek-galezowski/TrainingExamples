@@ -21,7 +21,7 @@ public class CapturedActivities : IDisposable
     ActivitySource.AddActivityListener(_listener);
   }
 
-  public async Task ShouldHaveCapturedTrace(string traceId, string expectedMethod, int expectedStatusCode)
+  public async Task ShouldHaveCapturedTrace(ActivityTraceId traceId, string expectedMethod, int expectedStatusCode)
   {
     var timeout = TimeSpan.FromSeconds(5);
     var activity = await PollForTrace(traceId, timeout); //bug use fluent assertions for that
@@ -51,7 +51,7 @@ public class CapturedActivities : IDisposable
         $"{a.TraceId.ToHexString()} - {a.OperationName} - {a.TagObjects.FirstOrDefault(t => t.Key == "http.request.method").Value} {a.TagObjects.FirstOrDefault(t => t.Key == "url.path").Value}"));
   }
 
-  private async Task<Maybe<Activity>> PollForTrace(string traceId, TimeSpan timeout)
+  private async Task<Maybe<Activity>> PollForTrace(ActivityTraceId traceId, TimeSpan timeout)
   {
     using var cts = new CancellationTokenSource(timeout);
     using var timer = new PeriodicTimer(TimeSpan.FromMilliseconds(100));
@@ -60,7 +60,7 @@ public class CapturedActivities : IDisposable
     {
       do
       {
-        var activity = _activities.FirstMaybe(a => a.TraceId.ToHexString() == traceId);
+        var activity = _activities.FirstMaybe(a => a.TraceId == traceId);
         if (activity.HasValue)
         {
           return activity;
