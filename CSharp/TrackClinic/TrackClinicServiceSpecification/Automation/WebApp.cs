@@ -19,8 +19,9 @@ internal class WebApp(string databaseName, string keycloakRealmName) : WebApplic
     ["Keycloak:Authority"] = SharedKeycloakInstance.GetAuthority(keycloakRealmName),
     ["Keycloak:MetadataAddress"] = SharedKeycloakInstance.GetMetadataAddress(keycloakRealmName),
     ["Keycloak:RequireHttpsMetadata"] = "false",
-    ["OTEL_EXPORTER_ZIPKIN_ENDPOINT"] = SharedZipkinInstance.GetEndpoint(),
-    ["OTEL_BSP_SCHEDULE_DELAY"] = "100"
+    ["OpenTelemetry:Protocol"] = "HttpProtobuf",
+    ["OpenTelemetry:Endpoint"] = SharedZipkinInstance.GetOtlpHttpEndpoint(),
+    ["OpenTelemetry:ScheduledDelayMilliseconds"] = "100"
   };
 
   protected override void ConfigureWebApplicationBuilder(IHostApplicationBuilder builder)

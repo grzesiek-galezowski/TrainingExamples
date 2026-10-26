@@ -59,7 +59,7 @@ public class OperationsDriverExtension(Lazy<FlurlClient> client, string keycloak
         }
       } while (await timer.WaitForNextTickAsync(cts.Token));
     }
-    catch (OperationCanceledException)
+    catch (Exception) when (cts.IsCancellationRequested)
     {
     }
 

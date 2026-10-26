@@ -21,5 +21,17 @@ services:
     ports:
       - "9411:9411"
 
+  otel-collector:
+    image: otel/opentelemetry-collector:latest
+    container_name: track-clinic-otel-collector
+    command: ["--config=/etc/otel-collector-config.yaml"]
+    volumes:
+      - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
+    ports:
+      - "4317:4317" # OTLP gRPC
+      - "4318:4318" # OTLP HTTP
+    depends_on:
+      - zipkin
+
 volumes:
   mongodb_data:
