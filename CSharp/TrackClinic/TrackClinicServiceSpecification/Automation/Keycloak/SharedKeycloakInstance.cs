@@ -11,9 +11,9 @@ public static class SharedKeycloakInstance
 
   private static IKeycloakClient? _client;
 
-  public static async Task Start()
+  public static async Task Start(CancellationToken cancellationToken)
   {
-    await KeycloakContainer.StartAsync();
+    await KeycloakContainer.StartAsync(cancellationToken);
     _client = new KeycloakClient(KeycloakContainer.GetBaseAddress());
   }
 
@@ -26,9 +26,10 @@ public static class SharedKeycloakInstance
       KeycloakConstants.AdminRole);
   }
 
-  public static async Task Stop()
+  public static async Task Stop(CancellationToken cancellationToken)
   {
-    await KeycloakContainer.StopAsync();
+    await KeycloakContainer.StopAsync(cancellationToken);
+    await KeycloakContainer.DisposeAsync();
   }
 
   public static string GetAuthority(string realmName) =>

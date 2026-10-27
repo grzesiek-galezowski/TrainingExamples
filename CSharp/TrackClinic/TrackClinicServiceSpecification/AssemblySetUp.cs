@@ -16,9 +16,9 @@ public class AssemblySetUp
   public async Task SetUp()
   {
     await Task.WhenAll(
-      SharedMongoInstance.Start(),
-      SharedKeycloakInstance.Start(),
-      SharedZipkinInstance.Start()
+      SharedMongoInstance.Start(TestContext.CurrentContext.CancellationToken),
+      SharedKeycloakInstance.Start(TestContext.CurrentContext.CancellationToken),
+      SharedZipkinInstance.Start(TestContext.CurrentContext.CancellationToken)
     );
   }
 
@@ -26,9 +26,9 @@ public class AssemblySetUp
   public async Task TearDown()
   {
     await Task.WhenAll(
-      SharedMongoInstance.Stop(),
-      SharedKeycloakInstance.Stop(),
-      SharedZipkinInstance.Stop()
+      SharedMongoInstance.Stop(TestContext.CurrentContext.CancellationToken),
+      SharedKeycloakInstance.Stop(TestContext.CurrentContext.CancellationToken),
+      SharedZipkinInstance.Stop(TestContext.CurrentContext.CancellationToken)
     );
   }
 }

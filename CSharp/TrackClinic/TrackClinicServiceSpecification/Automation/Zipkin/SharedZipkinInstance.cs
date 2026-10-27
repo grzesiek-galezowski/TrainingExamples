@@ -13,14 +13,15 @@ public static class SharedZipkinInstance
       Wait.ForUnixContainer().UntilHttpRequestIsSucceeded(r => r.ForPort(ZipkinPort).ForPath("/health")))
     .Build();
 
-  public static async Task Start()
+  public static async Task Start(CancellationToken cancellationToken)
   {
-    await ZipkinContainer.StartAsync();
+    await ZipkinContainer.StartAsync(cancellationToken);
   }
 
-  public static async Task Stop()
+  public static async Task Stop(CancellationToken cancellationToken)
   {
-    await ZipkinContainer.StopAsync();
+    await ZipkinContainer.StopAsync(cancellationToken);
+    await ZipkinContainer.DisposeAsync();
   }
 
   public static string GetBaseAddress() =>

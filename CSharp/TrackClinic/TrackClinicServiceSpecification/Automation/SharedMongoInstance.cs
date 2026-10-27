@@ -8,9 +8,9 @@ public static class SharedMongoInstance
   private static readonly MongoDbContainer MongoContainer = new MongoDbBuilder("mongo:9.0")
     .Build();
 
-  public static async Task Start()
+  public static async Task Start(CancellationToken cancellationToken)
   {
-    await MongoContainer.StartAsync();
+    await MongoContainer.StartAsync(cancellationToken);
   }
 
   public static async Task DropDatabase(string databaseName, CancellationToken cancellationToken)
@@ -19,8 +19,9 @@ public static class SharedMongoInstance
     await client.DropDatabaseAsync(databaseName, cancellationToken);
   }
 
-  public static async Task Stop()
+  public static async Task Stop(CancellationToken cancellationToken)
   {
+    await MongoContainer.StopAsync(cancellationToken);
     await MongoContainer.DisposeAsync();
   }
 
