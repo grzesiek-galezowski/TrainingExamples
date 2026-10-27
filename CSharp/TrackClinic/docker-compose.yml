@@ -16,22 +16,10 @@ services:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
 
   zipkin:
-    image: openzipkin/zipkin:latest
+    image: ghcr.io/openzipkin-contrib/zipkin-otel:0.3.0
     container_name: track-clinic-zipkin
     ports:
       - "9411:9411"
-
-  otel-collector:
-    image: otel/opentelemetry-collector:latest
-    container_name: track-clinic-otel-collector
-    command: ["--config=/etc/otel-collector-config.yaml"]
-    volumes:
-      - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
-    ports:
-      - "4317:4317" # OTLP gRPC
-      - "4318:4318" # OTLP HTTP
-    depends_on:
-      - zipkin
 
 volumes:
   mongodb_data:
