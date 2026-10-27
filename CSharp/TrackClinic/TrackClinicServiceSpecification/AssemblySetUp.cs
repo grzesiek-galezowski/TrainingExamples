@@ -1,5 +1,6 @@
 ﻿using TrackClinicServiceSpecification.Automation;
 using TrackClinicServiceSpecification.Automation.Keycloak;
+using TrackClinicServiceSpecification.Automation.Browser;
 using TrackClinicServiceSpecification.Automation.Zipkin;
 
 #if !NCRUNCH
@@ -18,7 +19,8 @@ public class AssemblySetUp
     await Task.WhenAll(
       SharedMongoInstance.Start(TestContext.CurrentContext.CancellationToken),
       SharedKeycloakInstance.Start(TestContext.CurrentContext.CancellationToken),
-      SharedZipkinInstance.Start(TestContext.CurrentContext.CancellationToken)
+      SharedZipkinInstance.Start(TestContext.CurrentContext.CancellationToken),
+      SharedPlaywrightInstance.Start(TestContext.CurrentContext.CancellationToken)
     );
   }
 
@@ -28,7 +30,8 @@ public class AssemblySetUp
     await Task.WhenAll(
       SharedMongoInstance.Stop(TestContext.CurrentContext.CancellationToken),
       SharedKeycloakInstance.Stop(TestContext.CurrentContext.CancellationToken),
-      SharedZipkinInstance.Stop(TestContext.CurrentContext.CancellationToken)
+      SharedZipkinInstance.Stop(TestContext.CurrentContext.CancellationToken),
+      SharedPlaywrightInstance.Stop(TestContext.CurrentContext.CancellationToken)
     );
   }
 }

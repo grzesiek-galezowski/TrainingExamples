@@ -4,6 +4,7 @@ using AwesomeAssertions;
 using Flurl.Http;
 using Microsoft.Playwright;
 using TrackClinicServiceSpecification.Automation.Keycloak;
+using TrackClinicServiceSpecification.Automation.Browser;
 using TrackClinicServiceSpecification.Automation.Zipkin;
 
 namespace TrackClinicServiceSpecification.Automation;
@@ -69,11 +70,7 @@ public class OperationsDriverExtension(Lazy<FlurlClient> client, string keycloak
   public async Task<WebPageResponse> GetScalarUi()
   {
     using var playwright = await Playwright.CreateAsync();
-    await using var browser = await playwright.Chromium.LaunchAsync(
-      new BrowserTypeLaunchOptions
-      {
-        Headless = true
-      });
+    await using var browser = await playwright.Chromium.ConnectAsync(SharedPlaywrightInstance.GetConnectionString());
     var page = await browser.NewPageAsync();
 
     await SetupProxyingRequestsToTestServer(page, "http://localhost/**/*", cancellationToken);
