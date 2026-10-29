@@ -1,4 +1,11 @@
 <Solution>
   <Project Path="TrackClinic/TrackClinic.csproj" />
+  <Folder Name="/SolutionFiles/">
+    <File Path="docker-compose.yml" />
+    <File Path="global.json" />
+    <File Path="prometheus.yml" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="TrackClinic.AppHost/TrackClinic.AppHost.csproj" />
   <Project Path="TrackClinicServiceSpecification/TrackClinicServiceSpecification.csproj" />
 </Solution>

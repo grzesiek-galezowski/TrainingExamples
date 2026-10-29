@@ -4,7 +4,19 @@ TrackClinic is a service for managing song projects.
 
 ## Local Development
 
-To run the service locally, you need a MongoDB instance. You can start one using Docker Compose:
+### Using .NET Aspire
+
+You can run the entire stack (TrackClinic service, MongoDB, Prometheus, Zipkin) using .NET Aspire:
+
+```bash
+dotnet run --project TrackClinic.AppHost
+```
+
+The Aspire dashboard will launch and provide links to the service endpoints, distributed traces, and logs.
+
+### Using Docker Compose
+
+Alternatively, you can start the infrastructure dependencies using Docker Compose:
 
 ```bash
 docker compose up -d
