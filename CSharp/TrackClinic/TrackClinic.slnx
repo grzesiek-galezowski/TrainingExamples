@@ -3,6 +3,9 @@
   <Folder Name="/SolutionFiles/">
     <File Path="docker-compose.yml" />
     <File Path="global.json" />
+    <File Path="grafana/provisioning/dashboards/dashboards.yml" />
+    <File Path="grafana/provisioning/dashboards/track-clinic-overview.json" />
+    <File Path="grafana/provisioning/datasources/datasources.yml" />
     <File Path="prometheus.yml" />
     <File Path="README.md" />
   </Folder>
