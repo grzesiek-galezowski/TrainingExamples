@@ -1,0 +1,78 @@
+{
+  "realm": "track-clinic",
+  "enabled": true,
+  "accessTokenLifespan": 300,
+  "roles": {
+    "realm": [
+      { "name": "artist" },
+      { "name": "admin" }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "track-clinic-api",
+      "enabled": true,
+      "protocol": "openid-connect",
+      "publicClient": true,
+      "directAccessGrantsEnabled": true,
+      "standardFlowEnabled": true,
+      "fullScopeAllowed": true
+    }
+  ],
+  "users": [
+    {
+      "username": "artist-user",
+      "firstName": "Artist",
+      "lastName": "User",
+      "email": "artist@trackclinic.com",
+      "createdTimestamp": 1794062234123,
+      "enabled": true,
+      "emailVerified": true,
+      "requiredActions": [],
+      "realmRoles": [ "artist" ],
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password",
+          "temporary": false
+        }
+      ]
+    },
+    {
+      "username": "admin-user",
+      "firstName": "Admin",
+      "lastName": "User",
+      "email": "admin@trackclinic.com",
+      "createdTimestamp": 1794062234123,
+      "enabled": true,
+      "emailVerified": true,
+      "requiredActions": [],
+      "realmRoles": [ "admin", "artist" ],
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password",
+          "temporary": false
+        }
+      ]
+    },
+    {
+      "username": "unprivileged-user",
+      "firstName": "Unprivileged",
+      "lastName": "User",
+      "email": "unprivileged@trackclinic.com",
+      "createdTimestamp": 1794062234123,
+      "enabled": true,
+      "emailVerified": true,
+      "requiredActions": [],
+      "realmRoles": [],
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password",
+          "temporary": false
+        }
+      ]
+    }
+  ]
+}

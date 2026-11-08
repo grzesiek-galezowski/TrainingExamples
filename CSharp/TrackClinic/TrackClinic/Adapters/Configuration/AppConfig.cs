@@ -1,13 +1,25 @@
 using Core.NullableReferenceTypesExtensions;
+using OpenTelemetry.Exporter;
+using ServiceBuildingBlocks;
 
 namespace TrackClinic.Adapters.Configuration;
 
 public record AppConfig
 {
   public required DatabaseInfoConfig DatabaseInfo { get; init; }
-  public required LoggingConfig Logging { get; init; }
-  public required KeycloakConfig Keycloak { get; init; }
-  public required OpenTelemetryConfig OpenTelemetry { get; init; }
+  public LoggingConfig Logging { get; init; } = new();
+  public KeycloakConfig Keycloak { get; init; } = new()
+  {
+    Authority = "http://localhost:8080/realms/track-clinic",
+    MetadataAddress = "http://localhost:8080/realms/track-clinic/.well-known/openid-configuration",
+    RequireHttpsMetadata = false
+  };
+
+  public OpenTelemetryConfig OpenTelemetry { get; init; } = new()
+  {
+    Endpoint = new Uri("http://localhost:9411/v1/traces"),
+    Protocol = OtlpExportProtocol.HttpProtobuf
+  };
 
   public static AppConfig From(ConfigurationManager builderConfiguration)
   {
@@ -20,11 +32,10 @@ public record AppConfig
   {
     ArgumentNullException.ThrowIfNull(Logging);
     ArgumentNullException.ThrowIfNull(DatabaseInfo);
+    ArgumentException.ThrowIfNullOrWhiteSpace(DatabaseInfo.ConnectionString);
     ArgumentNullException.ThrowIfNull(Keycloak);
+    Keycloak.Validate();
     ArgumentNullException.ThrowIfNull(OpenTelemetry);
-    ArgumentNullException.ThrowIfNull(DatabaseInfo.ConnectionString);
-    ArgumentNullException.ThrowIfNull(Keycloak.Authority);
-    ArgumentNullException.ThrowIfNull(Keycloak.MetadataAddress);
     ArgumentNullException.ThrowIfNull(OpenTelemetry.Endpoint);
     if (!OpenTelemetry.Endpoint.IsAbsoluteUri)
     {

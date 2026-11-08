@@ -18,7 +18,7 @@ public static class LoggingConfigurations
 
   public static LoggerConfiguration ConfigureServiceLogging(
     LoggerConfiguration configuration,
-    LogEventLevel loggingDefaultLevel, 
+    LogEventLevel loggingDefaultLevel,
     LogEventLevel loggingMicrosoftOverride)
   {
     return configuration

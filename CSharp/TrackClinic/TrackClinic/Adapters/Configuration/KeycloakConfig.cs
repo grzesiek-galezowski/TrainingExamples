@@ -6,4 +6,11 @@ public record KeycloakConfig
   public required string MetadataAddress { get; init; }
   public bool RequireHttpsMetadata { get; init; } = true;
   public TimeSpan? GracePeriod { get; init; }
+
+  public void Validate()
+  {
+    ArgumentException.ThrowIfNullOrWhiteSpace(Authority);
+    ArgumentException.ThrowIfNullOrWhiteSpace(MetadataAddress);
+  }
+
 }

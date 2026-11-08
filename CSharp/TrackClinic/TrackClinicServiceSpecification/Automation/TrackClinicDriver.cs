@@ -2,11 +2,13 @@
 using AwesomeAssertions.Extensions;
 using Flurl.Http;
 using Microsoft.Extensions.DependencyInjection;
+using ServiceBuildingBlocks;
+using ServiceSpecificationBuildingBlocks.Keycloak;
+using ServiceSpecificationBuildingBlocks.Operations;
+using ServiceSpecificationBuildingBlocks.Zipkin;
 using TddXt.AnyRoot;
 using TddXt.AnyRoot.Strings;
 using TrackClinic;
-using TrackClinicServiceSpecification.Automation.Keycloak;
-using TrackClinicServiceSpecification.Automation.Zipkin;
 
 namespace TrackClinicServiceSpecification.Automation;
 
@@ -87,7 +89,12 @@ public class TrackClinicDriver : IAsyncDisposable
   public async Task<CreateSongProjectResponse> CreateSongProject(string artistName,
     CreateSongRequestDto createSongRequestDto)
   {
-    var response = await RequestCreatingSongProject(artistName, createSongRequestDto, r => r);
+    return await CreateSongProject(artistName, createSongRequestDto, r => r);
+  }
+
+  public async Task<CreateSongProjectResponse> CreateSongProject(string artistName, CreateSongRequestDto createSongRequestDto, Func<TrackClinicRequestBuilder, TrackClinicRequestBuilder> customize)
+  {
+    var response = await RequestCreatingSongProject(artistName, createSongRequestDto, customize);
     response.ShouldBeSuccess();
     return response;
   }
@@ -130,7 +137,7 @@ public class TrackClinicDriver : IAsyncDisposable
     return new RetrieveProjectDetailsResponse(flurlResponse);
   }
 
-  private async Task WaitForHealthCheck(string urlSegment, TimeSpan timeout)
+  private async Task WaitForHealthCheck(string urlSegment, TimeSpan timeout) //bug extract common code to a helper method
   {
     using var cts = CancellationTokenSource.CreateLinkedTokenSource(_cancellationToken);
     cts.CancelAfter(timeout);

@@ -1,0 +1,359 @@
+@page "/"
+@rendermode InteractiveServer
+@implements IDisposable
+@inject TrafficGeneratorService TrafficService
+@inject TrackClinicApiClient ApiClient
+
+<PageTitle>TrackClinic Demo & Traffic Generator</PageTitle>
+
+<div class="container">
+    <div class="header">
+        <div class="header-title">
+            <h1>🎵 TrackClinic Demo & Traffic Generator</h1>
+            <p>Target Service: <span class="code-badge">@ApiClient.BaseUrl</span></p>
+        </div>
+        <div>
+            @if (Stats.IsContinuousRunning)
+            {
+                <span class="badge badge-green">● Streaming Traffic (@Stats.ActiveConcurrency workers)</span>
+            }
+            else if (_isBatchRunning || _isSingleRunning)
+            {
+                <span class="badge badge-blue">● Running Scenario</span>
+            }
+            else
+            {
+                <span class="badge badge-purple">Idle</span>
+            }
+        </div>
+    </div>
+
+    <!-- Live Metrics Grid -->
+    <div class="grid-stats">
+        <div class="stat-card">
+            <div class="stat-title">Total Requests</div>
+            <div class="stat-value">@Stats.TotalRequests</div>
+            <div class="stat-sub">@Stats.TotalScenarios total scenarios</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-title">Current RPS</div>
+            <div class="stat-value">@Stats.CurrentRps.ToString("F0") <span style="font-size: 1rem; color: var(--text-muted);">req/s</span></div>
+            <div class="stat-sub">Real-time throughput</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-title">Success Rate</div>
+            <div class="stat-value" style="color: @(Stats.FailedRequests > 0 ? "#f87171" : "#34d399");">
+                @GetSuccessRate()%
+            </div>
+            <div class="stat-sub">@Stats.SuccessfulRequests ok / @Stats.FailedRequests failed</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-title">Avg Latency</div>
+            <div class="stat-value">@Stats.AverageLatencyMs <span style="font-size: 1rem; color: var(--text-muted);">ms</span></div>
+            <div class="stat-sub">Response time</div>
+        </div>
+    </div>
+
+    <!-- Action Cards Grid -->
+    <div class="grid-main">
+        <!-- Single Scenario Card -->
+        <div class="card">
+            <div class="card-title">
+                <span>1. Single Scenario</span>
+                <button class="btn btn-secondary" style="padding: 0.3rem 0.6rem; font-size: 0.75rem;" @onclick="PickRandomPreset" disabled="@(_isSingleRunning || Stats.IsContinuousRunning)">
+                    🎲 New Seed
+                </button>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">
+                Executes: <strong>POST</strong> song 1 &rarr; <strong>POST</strong> song 2 &rarr; <strong>GET</strong> song 1 &rarr; <strong>GET</strong> song 2
+            </p>
+
+            <div class="form-group">
+                <label class="form-label">Artist Name</label>
+                <input class="form-input" @bind="_selectedArtist" disabled="@(_isSingleRunning || Stats.IsContinuousRunning)" />
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Song 1 Title</label>
+                <input class="form-input" @bind="_selectedSong1" disabled="@(_isSingleRunning || Stats.IsContinuousRunning)" />
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Song 2 Title</label>
+                <input class="form-input" @bind="_selectedSong2" disabled="@(_isSingleRunning || Stats.IsContinuousRunning)" />
+            </div>
+
+            <div class="btn-row">
+                <button class="btn btn-primary" style="flex: 1;" @onclick="RunSingleAsync" disabled="@(_isSingleRunning || _isBatchRunning || Stats.IsContinuousRunning)">
+                    @if (_isSingleRunning)
+                    {
+                        <span>⏳ Running Scenario...</span>
+                    }
+                    else
+                    {
+                        <span>▶ Run Single Scenario</span>
+                    }
+                </button>
+            </div>
+
+            @if (_lastSingleResult != null)
+            {
+                <div class="scenario-result-box">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <span style="font-weight: 600; font-size: 0.9rem;">
+                            Result:
+                            @if (_lastSingleResult.Success)
+                            {
+                                <span style="color: #34d399;">✔ Succeeded</span>
+                            }
+                            else
+                            {
+                                <span style="color: #f87171;">✖ Failed</span>
+                            }
+                        </span>
+                        <span style="font-size: 0.8rem; color: var(--text-muted);">
+                            Duration: @(_lastSingleResult.TotalElapsedMilliseconds)ms
+                        </span>
+                    </div>
+
+                    @foreach (var step in _lastSingleResult.Steps)
+                    {
+                        <div class="step-item">
+                            <div>
+                                <span class="badge @(step.HttpMethod == "POST" ? "badge-blue" : "badge-purple")" style="font-size: 0.7rem; padding: 0.15rem 0.4rem;">
+                                    @step.HttpMethod
+                                </span>
+                                <span style="margin-left: 0.4rem;">@step.ActionName</span>
+                            </div>
+                            <div>
+                                <span class="badge @(step.IsSuccess ? "badge-green" : "badge-red")" style="font-size: 0.7rem; padding: 0.15rem 0.4rem;">
+                                    @(step.StatusCode.HasValue ? step.StatusCode.Value.ToString() : "ERR")
+                                </span>
+                                <span style="margin-left: 0.4rem; color: var(--text-muted); font-size: 0.75rem;">
+                                    @(step.ElapsedMilliseconds)ms
+                                </span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+
+        <!-- Concurrent Traffic Generator Card -->
+        <div class="card">
+            <div class="card-title">
+                <span>2. Concurrent Traffic Generator</span>
+                <span class="badge badge-amber">For Grafana & Monitoring</span>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">
+                Simulates multiple concurrent users creating and fetching songs continuously to observe Grafana dashboards and Prometheus metrics.
+            </p>
+
+            <div class="form-group">
+                <label class="form-label">Concurrent Workers: <strong>@_concurrency</strong></label>
+                <input type="range" class="form-input" min="1" max="25" step="1" @bind="_concurrency" @bind:event="oninput" disabled="@Stats.IsContinuousRunning" />
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Delay Between Scenarios: <strong>@(_delayMs)ms</strong></label>
+                <input type="range" class="form-input" min="0" max="1000" step="50" @bind="_delayMs" @bind:event="oninput" disabled="@Stats.IsContinuousRunning" />
+            </div>
+
+            <div style="border-top: 1px solid var(--border-color); padding-top: 1rem; margin-top: 1.5rem;">
+                <label class="form-label">Mode A: Batch Traffic Run</label>
+                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                    <select class="form-select" style="max-width: 160px;" @bind="_batchCount" disabled="@(_isBatchRunning || Stats.IsContinuousRunning)">
+                        <option value="10">10 Scenarios</option>
+                        <option value="25">25 Scenarios</option>
+                        <option value="50">50 Scenarios</option>
+                        <option value="100">100 Scenarios</option>
+                    </select>
+                    <button class="btn btn-primary" style="flex: 1;" @onclick="RunBatchAsync" disabled="@(_isBatchRunning || _isSingleRunning || Stats.IsContinuousRunning)">
+                        @if (_isBatchRunning)
+                        {
+                            <span>⏳ Running Batch...</span>
+                        }
+                        else
+                        {
+                            <span>⚡ Run Batch</span>
+                        }
+                    </button>
+                </div>
+            </div>
+
+            <div style="border-top: 1px solid var(--border-color); padding-top: 1rem; margin-top: 1.5rem;">
+                <label class="form-label">Mode B: Continuous Traffic Stream</label>
+                <div class="btn-row" style="margin-top: 0.5rem;">
+                    @if (!Stats.IsContinuousRunning)
+                    {
+                        <button class="btn btn-success" style="flex: 1;" @onclick="StartContinuous" disabled="@(_isBatchRunning || _isSingleRunning)">
+                            🚀 Start Continuous Traffic
+                        </button>
+                    }
+                    else
+                    {
+                        <button class="btn btn-danger" style="flex: 1;" @onclick="StopContinuous">
+                            ⏹ Stop Traffic Stream
+                        </button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Live Activity Log Table -->
+    <div class="table-container">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <div style="font-size: 1.15rem; font-weight: 600;">
+                Live Request Activity Log <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 400;">(Last @TrafficService.RecentLogs.Count requests)</span>
+            </div>
+            <button class="btn btn-secondary" style="padding: 0.35rem 0.75rem; font-size: 0.8rem;" @onclick="ResetStats" disabled="@(Stats.IsContinuousRunning || _isBatchRunning)">
+                🔄 Reset Stats & Logs
+            </button>
+        </div>
+
+        @if (TrafficService.RecentLogs.Count == 0)
+        {
+            <div style="text-align: center; color: var(--text-muted); padding: 2rem;">
+                No requests recorded yet. Click <strong>"Run Single Scenario"</strong>, <strong>"Run Batch"</strong>, or <strong>"Start Continuous Traffic"</strong> to generate traffic.
+            </div>
+        }
+        else
+        {
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 100px;">Time</th>
+                        <th style="width: 80px;">Scenario</th>
+                        <th style="width: 80px;">Method</th>
+                        <th>Endpoint / Action</th>
+                        <th style="width: 90px;">Status</th>
+                        <th style="width: 90px; text-align: right;">Latency</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var log in TrafficService.RecentLogs.Reverse().Take(30))
+                    {
+                        <tr>
+                            <td style="color: var(--text-muted); font-size: 0.8rem;">
+                                @log.Timestamp.ToString("HH:mm:ss.fff")
+                            </td>
+                            <td>
+                                <span class="code-badge">@log.ScenarioId</span>
+                            </td>
+                            <td>
+                                <span class="badge @(log.HttpMethod == "POST" ? "badge-blue" : "badge-purple")">
+                                    @log.HttpMethod
+                                </span>
+                            </td>
+                            <td>
+                                <div style="font-weight: 500;">@log.Details</div>
+                                <div style="font-size: 0.75rem; color: var(--text-muted); font-family: monospace;">@log.Endpoint</div>
+                            </td>
+                            <td>
+                                <span class="badge @(log.Success ? "badge-green" : "badge-red")">
+                                    @(log.StatusCode.HasValue ? log.StatusCode.Value.ToString() : "ERR")
+                                </span>
+                            </td>
+                            <td style="text-align: right; font-family: monospace;">
+                                @(log.ElapsedMilliseconds)ms
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
+
+@code {
+    private string _selectedArtist = "Pink Floyd";
+    private string _selectedSong1 = "Comfortably Numb";
+    private string _selectedSong2 = "Echoes";
+
+    private int _concurrency = 5;
+    private int _delayMs = 100;
+    private int _batchCount = 25;
+
+    private bool _isSingleRunning = false;
+    private bool _isBatchRunning = false;
+    private ScenarioExecutionResultDto? _lastSingleResult;
+
+    private TrafficStats Stats => TrafficService.GetStats();
+
+    protected override void OnInitialized()
+    {
+        TrafficService.OnStateChanged += HandleStateChanged;
+        PickRandomPreset();
+    }
+
+    private void PickRandomPreset()
+    {
+        var preset = SeededData.GetRandomPreset();
+        var id = Random.Shared.Next(100, 999);
+        _selectedArtist = $"{preset.Artist} ({id})";
+        _selectedSong1 = $"{preset.Song1} #{id}";
+        _selectedSong2 = $"{preset.Song2} #{id}";
+    }
+
+    private async Task RunSingleAsync()
+    {
+        if (_isSingleRunning) return;
+        _isSingleRunning = true;
+        try
+        {
+            _lastSingleResult = await TrafficService.RunSingleScenarioAsync(_selectedArtist, _selectedSong1, _selectedSong2);
+        }
+        finally
+        {
+            _isSingleRunning = false;
+        }
+    }
+
+    private async Task RunBatchAsync()
+    {
+        if (_isBatchRunning) return;
+        _isBatchRunning = true;
+        try
+        {
+            await TrafficService.RunBatchAsync(_batchCount, _concurrency, _delayMs);
+        }
+        finally
+        {
+            _isBatchRunning = false;
+        }
+    }
+
+    private void StartContinuous()
+    {
+        TrafficService.StartContinuous(_concurrency, _delayMs);
+    }
+
+    private void StopContinuous()
+    {
+        TrafficService.StopContinuous();
+    }
+
+    private void ResetStats()
+    {
+        _lastSingleResult = null;
+        TrafficService.ResetStats();
+    }
+
+    private string GetSuccessRate()
+    {
+        if (Stats.TotalRequests == 0) return "100";
+        var rate = (double)Stats.SuccessfulRequests / Stats.TotalRequests * 100.0;
+        return rate.ToString("F1");
+    }
+
+    private void HandleStateChanged()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        TrafficService.OnStateChanged -= HandleStateChanged;
+    }
+}

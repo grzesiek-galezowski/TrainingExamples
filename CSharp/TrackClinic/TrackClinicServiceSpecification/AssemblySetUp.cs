@@ -1,7 +1,7 @@
-﻿using TrackClinicServiceSpecification.Automation;
-using TrackClinicServiceSpecification.Automation.Keycloak;
-using TrackClinicServiceSpecification.Automation.Browser;
-using TrackClinicServiceSpecification.Automation.Zipkin;
+﻿using ServiceSpecificationBuildingBlocks.Browser;
+using ServiceSpecificationBuildingBlocks.Keycloak;
+using ServiceSpecificationBuildingBlocks.Zipkin;
+using TrackClinicServiceSpecification.Automation;
 
 #if !NCRUNCH
 [assembly: Parallelizable(ParallelScope.Children)]

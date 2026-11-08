@@ -13,7 +13,7 @@ public class AuthorizationSpecification
     // GIVEN
     var artistName = Any.String();
     var songName = Any.String();
-    
+
     await using var driver = await TrackClinicDriver.CreateInstance();
 
     await driver.Start();
@@ -34,7 +34,7 @@ public class AuthorizationSpecification
     // GIVEN
     var artistName = Any.String();
     var songName = Any.String();
-    
+
     await using var driver = await TrackClinicDriver.CreateInstance();
 
     await driver.Start();
@@ -55,7 +55,7 @@ public class AuthorizationSpecification
     // GIVEN
     var artistName = Any.String();
     var songName = Any.String();
-    
+
     await using var driver = await TrackClinicDriver.CreateInstance();
 
     await driver.Start();
@@ -76,7 +76,7 @@ public class AuthorizationSpecification
     // GIVEN
     var artistName = Any.String();
     var songName = Any.String();
-    
+
     await using var driver = await TrackClinicDriver.CreateInstance();
     driver.SetupKeycloakTokenLifespan(1.Seconds());
     driver.SetupGracePeriod(TimeSpan.Zero);
@@ -98,7 +98,7 @@ public class AuthorizationSpecification
     // GIVEN
     var artistName = Any.String();
     var songName = Any.String();
-    
+
     await using var driver = await TrackClinicDriver.CreateInstance();
     driver.SetupKeycloakTokenLifespan(1.Seconds());
     await driver.Start();
@@ -120,7 +120,7 @@ public class AuthorizationSpecification
     // GIVEN
     var artistName = Any.String();
     var songName = Any.String();
-    
+
     await using var driver = await TrackClinicDriver.CreateInstance();
 
     await driver.Start();

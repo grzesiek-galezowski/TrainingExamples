@@ -20,6 +20,6 @@ public class ServiceLogicRoot : IAsyncDisposable
 
   public async ValueTask DisposeAsync()
   {
-      _mongoClient.Dispose();
+    _mongoClient.Dispose();
   }
 }

@@ -26,17 +26,22 @@ public class TracingSpecification
   }
 
   [Test]
-  public async Task ShouldCaptureTraceForHealthCheckRequest()
+  public async Task ShouldNotCaptureTraceForHealthCheckRequest()
   {
     // GIVEN
-    var traceId = Any.TraceId();
+    var healthCheckTraceId = Any.TraceId();
+    var createSongTraceId = Any.TraceId();
     await using var driver = await TrackClinicDriver.CreateInstance();
     await driver.Start();
 
+    // bug metrics as well
     // WHEN
-    await driver.RequestHealthCheck("/health/live", b => b.WithTraceId(traceId));
+    await (await driver.RequestHealthCheck("/health/live", b => b.WithTraceId(healthCheckTraceId))).ShouldBeHealthy();
+    // marker call to ensure that the health check trace can be queried
+    await driver.CreateSongProject(Any.String(), Any.Instance<CreateSongRequestDto>(), b => b.WithTraceId(createSongTraceId));
 
     // THEN
-    await driver.Operations.ShouldHaveCapturedTrace(traceId, "GET", 200);
+    await driver.Operations.ShouldHaveCapturedTrace(createSongTraceId, "POST", 201);
+    await driver.Operations.ShouldHaveNotCapturedTraceSoFar(healthCheckTraceId, "GET", 200);
   }
 }

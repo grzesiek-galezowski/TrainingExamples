@@ -1,0 +1,63 @@
+using Core.NullableReferenceTypesExtensions;
+using ServiceBuildingBlocks;
+using Testcontainers.Keycloak;
+
+namespace ServiceSpecificationBuildingBlocks.Keycloak;
+
+public static class SharedKeycloakInstance
+{
+  private static readonly KeycloakContainer KeycloakContainer = new KeycloakBuilder("quay.io/keycloak/keycloak:26.0")
+    .Build();
+
+  private static IKeycloakAdminClient? _client;
+
+  public static async Task Start(CancellationToken cancellationToken)
+  {
+    await KeycloakContainer.StartAsync(cancellationToken);
+    _client = new KeycloakAdminClient(KeycloakContainer.GetBaseAddress());
+  }
+
+  public static async Task ConfigureNewRealm(TrackClinicKeycloakBootstrap bootstrap)
+  {
+    await bootstrap.Execute(
+      _client.OrThrow(),
+      KeycloakConstants.ClientId,
+      KeycloakConstants.ArtistRole,
+      KeycloakConstants.AdminRole);
+  }
+
+  public static async Task Stop(CancellationToken cancellationToken)
+  {
+    await KeycloakContainer.StopAsync(cancellationToken);
+    await KeycloakContainer.DisposeAsync();
+  }
+
+  public static string GetAuthority(string realmName) =>
+    $"{KeycloakContainer.GetBaseAddress()}realms/{realmName}";
+
+  public static string GetMetadataAddress(string realmName) =>
+    $"{GetAuthority(realmName)}/.well-known/openid-configuration";
+
+  public static async Task<string> GetToken(string realmName, string username, string password)
+  {
+    return await _client.OrThrow().GetToken(realmName, KeycloakConstants.ClientId, username, password);
+  }
+
+  public static async Task<TestAuthTokens> GetTestAuthTokens(string realmName)
+  {
+    var adminToken = await GetToken(
+      realmName,
+      KeycloakConstants.AdminUser,
+      "password");
+    var unprivilegedToken = await GetToken(
+      realmName,
+      KeycloakConstants.UnprivilegedUser,
+      "password");
+    var artistToken = await GetToken(
+      realmName,
+      KeycloakConstants.ArtistUser,
+      "password");
+    var testAuthTokens = new TestAuthTokens(adminToken, unprivilegedToken, artistToken);
+    return testAuthTokens;
+  }
+}

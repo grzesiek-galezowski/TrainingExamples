@@ -3,7 +3,9 @@ using Core.NullableReferenceTypesExtensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Scalar.AspNetCore;
 using Serilog;
+using ServiceBuildingBlocks;
 using TrackClinic.Adapters.Configuration;
+using TrackClinic.ContainerConfiguration;
 using ILogger = Serilog.ILogger;
 
 namespace TrackClinic;
@@ -39,7 +41,7 @@ public class Program
       // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
       builder.Services.AddOpenApi(OpenApiConfiguration.ConfigureOpenApiDocument);
       HealthChecksConfiguration.AddTo(builder);
-      OpenTelemetryConfiguration.AddTo(builder, appConfig.OpenTelemetry);
+      OpenTelemetryConfiguration.AddTo(builder, appConfig.OpenTelemetry, []);
 
       var app = builder.Build();
       var serviceLogicRoot = app.Services.GetRequiredService<ServiceLogicRoot>();
@@ -51,8 +53,6 @@ public class Program
         app.MapOpenApi();
         app.MapScalarApiReference();
       }
-
-      app.UseHttpsRedirection();
 
       HealthChecksConfiguration.Map(app);
       OpenTelemetryConfiguration.Map(app);
@@ -71,10 +71,9 @@ public class Program
         .WithTags("Songs")
         .WithSummary("Creates a new song project")
         .WithDescription("Initializes a new song project for the specified artist with the given title.")
-        .RequireAuthorization(AuthorizationConfiguration.DefaultPolicyName)
         .Produces(StatusCodes.Status201Created)
-        .Produces(StatusCodes.Status400BadRequest);
-
+        .Produces(StatusCodes.Status400BadRequest).RequireAuthorization(AuthorizationConfiguration.DefaultPolicyName);
+      
       app.MapGet(
           "api/v1/artists/{artistName}/songs/{songName}",
           async (string artistName, string songName, CancellationToken cancellationToken) =>
@@ -88,9 +87,8 @@ public class Program
         .WithTags("Songs")
         .WithSummary("Gets details of a song project")
         .WithDescription("Retrieves the full details of a specific song project, including milestones and timeline.")
-        .RequireAuthorization(AuthorizationConfiguration.DefaultPolicyName)
         .Produces<SongDetailsDto>()
-        .Produces(StatusCodes.Status404NotFound);
+        .Produces(StatusCodes.Status404NotFound).RequireAuthorization(AuthorizationConfiguration.DefaultPolicyName);
 
       await app.RunAsync();
     }

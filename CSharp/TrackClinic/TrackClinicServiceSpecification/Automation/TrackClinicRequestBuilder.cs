@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Core.NullableReferenceTypesExtensions;
 using Flurl.Http;
+using ServiceSpecificationBuildingBlocks.Keycloak;
 
 namespace TrackClinicServiceSpecification.Automation;
 

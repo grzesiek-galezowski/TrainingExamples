@@ -6,7 +6,7 @@ namespace TrackClinicServiceSpecification.Automation;
 
 public class RetrieveProjectDetailsResponse(IFlurlResponse response)
 {
-  
+
   public async Task ShouldHaveContentEquivalentTo(SongDetailsDto songDetailsDto)
   {
     (await response.GetJsonAsync<SongDetailsDto>()).Should().BeEquivalentTo(songDetailsDto);

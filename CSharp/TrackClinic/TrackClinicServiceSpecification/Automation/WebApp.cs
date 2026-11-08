@@ -5,9 +5,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Events;
+using ServiceSpecificationBuildingBlocks.Keycloak;
+using ServiceSpecificationBuildingBlocks.Zipkin;
 using TrackClinic;
-using TrackClinicServiceSpecification.Automation.Keycloak;
-using TrackClinicServiceSpecification.Automation.Zipkin;
 
 namespace TrackClinicServiceSpecification.Automation;
 

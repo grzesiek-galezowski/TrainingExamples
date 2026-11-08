@@ -16,7 +16,7 @@ public class ManagingProjectSpecification
     await using var driver = await TrackClinicDriver.CreateInstance();
 
     await driver.Start();
-    
+
     // WHEN
     var response = await driver.RequestCreatingSongProject(artistName, new CreateSongRequestDto(songName));
 

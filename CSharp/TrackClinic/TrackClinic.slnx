@@ -1,5 +1,4 @@
 <Solution>
-  <Project Path="TrackClinic/TrackClinic.csproj" />
   <Folder Name="/SolutionFiles/">
     <File Path="docker-compose.yml" />
     <File Path="global.json" />
@@ -9,6 +8,11 @@
     <File Path="prometheus.yml" />
     <File Path="README.md" />
   </Folder>
+  <Project Path="DemoUi/DemoUi.csproj" />
+  <Project Path="DemoUiServiceSpecification/DemoUiServiceSpecification.csproj" />
+  <Project Path="ServiceBuildingBlocks/ServiceBuildingBlocks.csproj" Id="030cec17-ff23-4f76-9b51-1240d3f66859" />
+  <Project Path="ServiceSpecificationBuildingBlocks/ServiceSpecificationBuildingBlocks.csproj" Id="ae8dd7f6-76d1-4b1a-9738-7b8547bf5b6b" />
   <Project Path="TrackClinic.AppHost/TrackClinic.AppHost.csproj" />
+  <Project Path="TrackClinic/TrackClinic.csproj" />
   <Project Path="TrackClinicServiceSpecification/TrackClinicServiceSpecification.csproj" />
 </Solution>

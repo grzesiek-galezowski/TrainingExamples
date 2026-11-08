@@ -12,9 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Any" Version="11.0.0" />
-    <PackageReference Include="AwesomeAssertions" Version="9.6.0" />
-    <PackageReference Include="Flurl.Http" Version="4.0.2" />
+
     <PackageReference Include="LoadSurge" Version="3.2.0.105" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="11.0.0-rc.3.26522.148" />
     <PackageReference Include="Microsoft.Playwright" Version="1.55.0" />
@@ -33,6 +31,7 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.11.0" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ServiceSpecificationBuildingBlocks\ServiceSpecificationBuildingBlocks.csproj" />
     <ProjectReference Include="..\TrackClinic\TrackClinic.csproj" />
   </ItemGroup>
 

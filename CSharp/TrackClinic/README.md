@@ -6,13 +6,22 @@ TrackClinic is a service for managing song projects.
 
 ### Using .NET Aspire
 
-You can run the entire stack (TrackClinic service, MongoDB, Prometheus, Zipkin) using .NET Aspire:
+You can run the entire stack (TrackClinic service, Demo UI, MongoDB, Prometheus, Grafana, Zipkin) using .NET Aspire:
 
 ```bash
 dotnet run --project TrackClinic.AppHost
 ```
 
 The Aspire dashboard will launch and provide links to the service endpoints, distributed traces, and logs.
+The **Demo UI** service provides an interactive Blazor interface to trigger scenarios (e.g., creating 2 songs and retrieving both) and generate single, batch, or continuous concurrent traffic to practice monitoring in Grafana.
+
+Grafana provisioning includes two dashboards:
+- **Track Clinic - Service Overview** (Prometheus metrics)
+- **Track Clinic - Zipkin Traces** (Zipkin trace details by trace ID)
+
+For the Zipkin traces dashboard, copy a trace ID from Zipkin and paste it into the **Trace ID** textbox variable at the top of the dashboard.
+
+> In the Aspire stack, TrackClinic authentication is disabled (`Keycloak:Enabled=false`) so Demo UI scenarios work out-of-the-box without a local Keycloak instance.
 
 ### Using Docker Compose
 

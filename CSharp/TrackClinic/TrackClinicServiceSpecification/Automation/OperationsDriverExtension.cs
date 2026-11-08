@@ -3,9 +3,10 @@ using System.Diagnostics;
 using AwesomeAssertions;
 using Flurl.Http;
 using Microsoft.Playwright;
-using TrackClinicServiceSpecification.Automation.Keycloak;
-using TrackClinicServiceSpecification.Automation.Browser;
-using TrackClinicServiceSpecification.Automation.Zipkin;
+using ServiceSpecificationBuildingBlocks.Browser;
+using ServiceSpecificationBuildingBlocks.Keycloak;
+using ServiceSpecificationBuildingBlocks.Operations;
+using ServiceSpecificationBuildingBlocks.Zipkin;
 
 namespace TrackClinicServiceSpecification.Automation;
 
@@ -43,6 +44,12 @@ public class OperationsDriverExtension(Lazy<FlurlClient> client, string keycloak
       span.Tags.ContainsKey("http.response.status_code") && span.Tags["http.response.status_code"] == expectedStatusCode.ToString());
   }
 
+  public async Task ShouldHaveNotCapturedTraceSoFar(ActivityTraceId traceId, string expectedMethod, int expectedStatusCode)
+  {
+    var spans = await GetTracesImmediately(traceId, cancellationToken);
+    spans.Should().BeEmpty();
+  }
+
   private async Task<ImmutableList<ZipkinSpan>> WaitForTrace(ActivityTraceId traceId, TimeSpan timeout)
   {
     using var cts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
@@ -53,7 +60,7 @@ public class OperationsDriverExtension(Lazy<FlurlClient> client, string keycloak
     {
       do
       {
-        var spans = await zipkinClient.GetTrace(traceId.ToHexString(), cts.Token);
+        var spans = await GetTracesImmediately(traceId, cts.Token);
         if (spans.Count > 0)
         {
           return spans;
@@ -65,6 +72,11 @@ public class OperationsDriverExtension(Lazy<FlurlClient> client, string keycloak
     }
 
     return [];
+  }
+
+  private async Task<ImmutableList<ZipkinSpan>> GetTracesImmediately(ActivityTraceId traceId, CancellationToken cancellationToken)
+  {
+    return await zipkinClient.GetTrace(traceId.ToHexString(), cancellationToken);
   }
 
   public async Task<WebPageResponse> GetScalarUi()
