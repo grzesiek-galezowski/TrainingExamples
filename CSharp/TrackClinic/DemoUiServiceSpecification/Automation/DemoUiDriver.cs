@@ -1,15 +1,14 @@
 using AwesomeAssertions.Extensions;
 using Core.NullableReferenceTypesExtensions;
-using DemoUi;
 using Flurl.Http;
 using ServiceBuildingBlocks;
 using ServiceSpecificationBuildingBlocks.Keycloak;
 using ServiceSpecificationBuildingBlocks.Operations;
-using System.Collections.Concurrent;
 using System.Diagnostics;
 using TddXt.AnyRoot;
 using TddXt.AnyRoot.Strings;
 using WireMock.Server;
+using Serilog.Sinks.InMemory;
 
 namespace DemoUiServiceSpecification.Automation;
 
@@ -22,10 +21,11 @@ public class DemoUiDriver : IAsyncDisposable
   private readonly WireMockServer _trackClinicMock;
   private readonly WebApp _webApp;
   private readonly Lazy<FlurlClient> _client;
+  private readonly InMemorySink _inMemorySink;
   private readonly TimeSpan _accessTokenLifespan = 15.Minutes();
   private readonly string _keycloakRealmName = Any.String(KeycloakConstants.RealmName);
   private int _trackClinicMockPriority = int.MaxValue;
-  private TestActivityListener _activityListener = new TestActivityListener(Telemetry.ScenarioActivityName);
+  private readonly TestActivityListener _activityListener = new();
 
   public GuiDriverExtension Gui => new(GetAppBaseAddress, _cancellationToken);
 
@@ -42,13 +42,18 @@ public class DemoUiDriver : IAsyncDisposable
   {
     _cancellationToken = _testCaseCancellationTokenSource.Token;
     _trackClinicMock = WireMockServer.Start();
-    _webApp = new WebApp(_trackClinicMock.Url.OrThrow(), _keycloakRealmName);
+    _inMemorySink = new InMemorySink();
+    _webApp = new WebApp(_trackClinicMock.Url.OrThrow(), _keycloakRealmName, _inMemorySink);
     _webApp.UseKestrel(0); //bug what??
     _client = new Lazy<FlurlClient>(() => new FlurlClient(_webApp.CreateClient()));
   }
 
   public async ValueTask DisposeAsync()
   {
+    foreach (var @event in _inMemorySink.Snapshot().LogEvents)
+    {
+      await TestContext.Out.WriteLineAsync(@event.RenderMessage(), _cancellationToken);
+    }
     await _webApp.DisposeAsync();
     _trackClinicMock.Stop();
     _trackClinicMock.Dispose();
@@ -73,33 +78,5 @@ public class DemoUiDriver : IAsyncDisposable
   private Uri GetAppBaseAddress()
   {
     return new Uri(_client.Value.BaseUrl);
-  }
-}
-
-// bug
-public sealed class TestActivityListener : IDisposable
-{
-  private readonly ActivityListener _listener;
-
-  public ConcurrentBag<Activity> Activities { get; } = new();
-
-  public TestActivityListener(string sourceName)
-  {
-    _listener = new ActivityListener
-    {
-      ShouldListenTo = source => true,
-      Sample = (ref ActivityCreationOptions<ActivityContext> _) =>
-          ActivitySamplingResult.AllDataAndRecorded,
-      ActivityStarted = activity => Activities.Add(activity),
-
-      ActivityStopped = _ => { }
-    };
-
-    ActivitySource.AddActivityListener(_listener);
-  }
-
-  public void Dispose()
-  {
-    _listener.Dispose();
   }
 }

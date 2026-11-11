@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Events;
+using ServiceBuildingBlocks;
 using ServiceSpecificationBuildingBlocks.Keycloak;
 using ServiceSpecificationBuildingBlocks.Zipkin;
 using TrackClinic;

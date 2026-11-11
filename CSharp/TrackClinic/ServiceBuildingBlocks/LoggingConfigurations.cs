@@ -3,7 +3,7 @@ using Serilog.Events;
 using Serilog.Extensions.Hosting;
 using Serilog.Formatting.Json;
 
-namespace TrackClinic;
+namespace ServiceBuildingBlocks;
 
 public static class LoggingConfigurations
 {

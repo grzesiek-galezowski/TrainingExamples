@@ -4,12 +4,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Events;
+using Serilog.Sinks.InMemory;
+using ServiceBuildingBlocks;
 using ServiceSpecificationBuildingBlocks.Keycloak;
 using ServiceSpecificationBuildingBlocks.Zipkin;
 
 namespace DemoUiServiceSpecification.Automation;
 
-internal class WebApp(string trackClinicBaseUrl, string keycloakRealmName) : WebApplicationFactory<Program>
+internal class WebApp(string trackClinicBaseUrl, string keycloakRealmName, InMemorySink inMemorySink) : WebApplicationFactory<Program>
 {
   private readonly Dictionary<string, string?> _configOverrides = new()
   {
@@ -36,6 +38,7 @@ internal class WebApp(string trackClinicBaseUrl, string keycloakRealmName) : Web
   {
     builder.UseSerilog(LoggingConfigurations.ConfigureServiceLogging(
         new LoggerConfiguration(), LogEventLevel.Information, LogEventLevel.Information)
+      .WriteTo.Sink(inMemorySink)
       .CreateLogger(), dispose: true);
     var host = base.CreateHost(builder);
     return host;

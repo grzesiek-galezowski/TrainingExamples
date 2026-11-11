@@ -24,6 +24,7 @@
     <PackageReference Include="NUnit3TestAdapter" Version="6.3.1" />
     <PackageReference Include="Testcontainers.Playwright" Version="4.16.0" />
     <PackageReference Include="WireMock.Net" Version="2.21.0" />
+    <PackageReference Include="Serilog.Sinks.InMemory" Version="2.0.0" />
   </ItemGroup>
   <ItemGroup>
     <!-- workaround for R# bug to be fixed in the future -->
