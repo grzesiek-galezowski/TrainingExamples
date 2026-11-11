@@ -1,7 +1,7 @@
 using System.Collections.Concurrent;
 using System.Diagnostics;
 
-namespace DemoUiServiceSpecification.Automation;
+namespace ServiceSpecificationBuildingBlocks;
 
 public sealed class TestActivityListener : IDisposable
 {

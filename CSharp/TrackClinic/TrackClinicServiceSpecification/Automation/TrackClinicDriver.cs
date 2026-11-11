@@ -1,8 +1,8 @@
-﻿using System.Diagnostics;
-using AwesomeAssertions.Extensions;
+﻿using AwesomeAssertions.Extensions;
 using Flurl.Http;
 using Microsoft.Extensions.DependencyInjection;
 using ServiceBuildingBlocks;
+using ServiceSpecificationBuildingBlocks;
 using ServiceSpecificationBuildingBlocks.Keycloak;
 using ServiceSpecificationBuildingBlocks.Operations;
 using ServiceSpecificationBuildingBlocks.Zipkin;
@@ -16,8 +16,9 @@ public class TrackClinicDriver : IAsyncDisposable
 {
   private readonly string _databaseName;
   private readonly string _keycloakRealmName;
+
   private readonly CancellationTokenSource _testCaseCancellationTokenSource =
-    new(Debugger.IsAttached ? 10.Minutes() : 30.Seconds());
+    TestCancellationTokens.CreateCancellationTokenSource();
   private readonly CancellationToken _cancellationToken;
   private readonly WebApp _webApp;
   private readonly Lazy<FlurlClient> _client;
@@ -137,6 +138,7 @@ public class TrackClinicDriver : IAsyncDisposable
     return new RetrieveProjectDetailsResponse(flurlResponse);
   }
 
+  // bug healthchecks are not that easy to commonalize. Try later
   private async Task WaitForHealthCheck(string urlSegment, TimeSpan timeout) //bug extract common code to a helper method
   {
     using var cts = CancellationTokenSource.CreateLinkedTokenSource(_cancellationToken);

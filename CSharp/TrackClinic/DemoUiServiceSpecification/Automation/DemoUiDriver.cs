@@ -4,18 +4,18 @@ using Flurl.Http;
 using ServiceBuildingBlocks;
 using ServiceSpecificationBuildingBlocks.Keycloak;
 using ServiceSpecificationBuildingBlocks.Operations;
-using System.Diagnostics;
 using TddXt.AnyRoot;
 using TddXt.AnyRoot.Strings;
 using WireMock.Server;
 using Serilog.Sinks.InMemory;
+using ServiceSpecificationBuildingBlocks;
 
 namespace DemoUiServiceSpecification.Automation;
 
 public class DemoUiDriver : IAsyncDisposable
 {
   private readonly CancellationTokenSource _testCaseCancellationTokenSource =
-    new(Debugger.IsAttached ? 2.Minutes() : 30.Seconds());
+    TestCancellationTokens.CreateCancellationTokenSource();
 
   private readonly CancellationToken _cancellationToken;
   private readonly WireMockServer _trackClinicMock;
