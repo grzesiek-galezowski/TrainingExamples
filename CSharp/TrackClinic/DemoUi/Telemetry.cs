@@ -8,7 +8,7 @@ public static class Telemetry
   public const string ScenariosRootName = "DemoUi.Scenarios";
   public const string ScenarioActivityName = "scenario.execute";
   public const string ScenarioStepActivityName = "step.execute";
-  public static readonly ActivitySource Source = new(ScenariosRootName); //bug not disposed
+  public static readonly ActivitySource Source = new(ScenariosRootName); //bug static??
 
   public static Activity StartScenarioStepActivity(int stepNumber, string actionName, HttpMethod method, string fullUrl)
   {

@@ -1,4 +1,4 @@
-namespace DemoUiServiceSpecification;
+﻿namespace DemoUiServiceSpecification;
 
 public static class ExpectedRequests
 {

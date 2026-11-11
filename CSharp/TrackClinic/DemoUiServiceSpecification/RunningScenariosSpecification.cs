@@ -14,9 +14,9 @@ public class RunningScenariosSpecification
     var song1Name = Any.String();
     var song2Name = Any.String();
     await using var driver = await DemoUiDriver.CreateInstance();
-    driver.SetupCreateSongToReturnSuccess(artistName);
-    driver.SetupGetSongDetailsToReturnSuccess(artistName, song1Name);
-    driver.SetupGetSongDetailsToReturnSuccess(artistName, song2Name);
+    driver.TrackClinic.SetupCreateSongToReturnSuccess(artistName);
+    driver.TrackClinic.SetupGetSongDetailsToReturnSuccess(artistName, song1Name);
+    driver.TrackClinic.SetupGetSongDetailsToReturnSuccess(artistName, song2Name);
 
     await driver.Start();
 
@@ -25,7 +25,7 @@ public class RunningScenariosSpecification
 
     // THEN
     result.ShouldBeSuccess();
-    driver.TrackClinicShouldReceiveRequestsInOrder(
+    driver.TrackClinic.ShouldReceiveRequestsInOrder(
     [
       ExpectedRequests.CreateSongRequest(artistName),
       ExpectedRequests.CreateSongRequest(artistName),
@@ -43,9 +43,9 @@ public class RunningScenariosSpecification
     var song2Name = Any.String();
     await using var driver = await DemoUiDriver.CreateInstance();
 
-    driver.SetupCreateSongToReturnSuccess(artistName);
-    driver.SetupGetSongDetailsToReturnBadRequest(artistName, song1Name);
-    driver.SetupGetSongDetailsToReturnBadRequest(artistName, song2Name);
+    driver.TrackClinic.SetupCreateSongToReturnSuccess(artistName);
+    driver.TrackClinic.SetupGetSongDetailsToReturnBadRequest(artistName, song1Name);
+    driver.TrackClinic.SetupGetSongDetailsToReturnBadRequest(artistName, song2Name);
 
     await driver.Start();
 

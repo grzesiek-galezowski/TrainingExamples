@@ -304,6 +304,31 @@
         {
             _lastSingleResult = await TrafficService.RunSingleScenarioAsync(_selectedArtist, _selectedSong1, _selectedSong2);
         }
+        catch (Exception ex)
+        {
+            _lastSingleResult = new ScenarioExecutionResultDto(
+                ScenarioId: "error",
+                ArtistName: _selectedArtist,
+                Song1Title: _selectedSong1,
+                Song2Title: _selectedSong2,
+                Success: false,
+                TotalElapsedMilliseconds: 0,
+                Timestamp: DateTime.UtcNow,
+                Steps: new[]
+                {
+                    new ScenarioStepResult(
+                        StepNumber: 0,
+                        ActionName: "Scenario Execution Error",
+                        HttpMethod: "N/A",
+                        Url: "",
+                        StatusCode: null,
+                        IsSuccess: false,
+                        ElapsedMilliseconds: 0,
+                        ResponsePreview: null,
+                        ErrorMessage: ex.Message,
+                        Timestamp: DateTime.UtcNow)
+                });
+        }
         finally
         {
             _isSingleRunning = false;

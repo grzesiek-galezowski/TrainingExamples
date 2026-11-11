@@ -2,23 +2,20 @@ using DemoUi.Adapters.Configuration;
 using DemoUi.Dto;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.IdentityModel.Tokens.Jwt;
 using Core.Maybe;
 using Core.NullableReferenceTypesExtensions;
 using DemoUi.Adapters.Keycloak;
 using Flurl.Http;
-using ServiceBuildingBlocks;
 
 namespace DemoUi.Logic;
 
 //bug split into scenario logic and API client
+
 public class TrackClinicApiClient(IFlurlClient flurlClient, KeycloakTokenClient tokenClient, AppConfig appConfig, ILogger<TrackClinicApiClient> logger)
 {
   private readonly string _baseUrl = BuildBaseUrl(appConfig.TrackClinic.BaseUrl);
   private readonly TimeSpan _timeout = TimeSpan.FromSeconds(appConfig.TrackClinic.TimeoutSeconds);
-  private string? _cachedBearerToken;
-  private DateTime _tokenExpiration = DateTime.MinValue;
-  private readonly SemaphoreSlim _tokenLock = new(1, 1);
+  private readonly BearerTokenClient _bearerTokenClient = new(tokenClient, appConfig.Keycloak); //bug DI
   public string BaseUrl => _baseUrl;
 
   public async Task<ScenarioExecutionResultDto> ExecuteScenarioAsync(
@@ -40,7 +37,7 @@ public class TrackClinicApiClient(IFlurlClient flurlClient, KeycloakTokenClient 
       var steps = new List<ScenarioStepResult>();
       var totalStopwatch = Stopwatch.StartNew();
 
-      var token = (await TryGetBearerTokenAsync(cancellationToken)).OrThrow();
+      var token = (await _bearerTokenClient.TryGetBearerTokenAsync(cancellationToken)).OrThrow();
 
       // Step 1: Create Song 1
       var step1 = await SendStepAsync(
@@ -142,6 +139,12 @@ public class TrackClinicApiClient(IFlurlClient flurlClient, KeycloakTokenClient 
       var errorMessage = CreateErrorMessage(isSuccess, statusCode, responsePreview);
 
       sw.Stop();
+
+      if(!isSuccess)
+      {
+        logger.LogError("Step {StepNumber} {ActionName} failed with status code {StatusCode} for {Url}. Response preview: {ResponsePreview}", stepNumber, actionName, statusCode, fullUrl, responsePreview);
+      }
+
       return new ScenarioStepResult(
         StepNumber: stepNumber,
         ActionName: actionName,
@@ -158,7 +161,7 @@ public class TrackClinicApiClient(IFlurlClient flurlClient, KeycloakTokenClient 
     catch (Exception ex)
     {
       sw.Stop();
-      logger.LogWarning(ex, "Failed step {StepNumber} {ActionName} for {Url}", stepNumber, actionName, fullUrl);
+      logger.LogError(ex, "Failed step {StepNumber} {ActionName} for {Url}", stepNumber, actionName, fullUrl);
 
       // bug boilerplate
       activity.SetStatus(ActivityStatusCode.Error, ex.Message);
@@ -180,41 +183,6 @@ public class TrackClinicApiClient(IFlurlClient flurlClient, KeycloakTokenClient 
   }
 
   //bug add loki
-
-  private async Task<string?> TryGetBearerTokenAsync(CancellationToken cancellationToken)
-  {
-    if (DateTime.UtcNow < _tokenExpiration && !string.IsNullOrEmpty(_cachedBearerToken))
-    {
-      return _cachedBearerToken;
-    }
-
-    await _tokenLock.WaitAsync(cancellationToken);
-    try
-    {
-      if (DateTime.UtcNow < _tokenExpiration && !string.IsNullOrEmpty(_cachedBearerToken))
-      {
-        return _cachedBearerToken;
-      }
-
-      var keycloak = appConfig.Keycloak.OrThrow();
-      var token = await tokenClient.GetPasswordToken(
-        keycloak.MetadataAddress,
-        KeycloakConstants.ClientId,
-        KeycloakConstants.ArtistUser,
-        KeycloakConstants.Password,
-        cancellationToken);
-
-      _cachedBearerToken = token;
-      _tokenExpiration = new JwtSecurityTokenHandler()
-        .ReadJwtToken(token)
-        .ValidTo - TimeSpan.FromSeconds(30);
-      return _cachedBearerToken;
-    }
-    finally
-    {
-      _tokenLock.Release();
-    }
-  }
 
   private IFlurlRequest CreateRequest(string relativeUrl)
   {
