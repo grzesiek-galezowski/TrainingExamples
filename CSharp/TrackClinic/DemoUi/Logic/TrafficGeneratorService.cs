@@ -7,12 +7,10 @@ namespace DemoUi.Logic;
 //bug refactor this
 public class TrafficGeneratorService : IDisposable
 {
-  private readonly IServiceProvider _serviceProvider;
+  private readonly TrackClinicApiClient _client;
   private readonly ILogger<TrafficGeneratorService> _logger;
-
   private readonly ConcurrentQueue<TrafficLogItem> _logs = new();
   private readonly int _maxLogCount = 150;
-
   private long _totalScenarios;
   private long _successfulScenarios;
   private long _failedScenarios;
@@ -22,7 +20,7 @@ public class TrafficGeneratorService : IDisposable
   private long _totalLatencyMs;
 
   private CancellationTokenSource? _continuousCts;
-  private Task? _continuousTask;
+  private Task? _continuousTask; //bug unused
   private int _activeConcurrency;
   private bool _disposed;
 
@@ -32,9 +30,9 @@ public class TrafficGeneratorService : IDisposable
 
   public event Action? OnStateChanged;
 
-  public TrafficGeneratorService(IServiceProvider serviceProvider, ILogger<TrafficGeneratorService> logger)
+  public TrafficGeneratorService(TrackClinicApiClient client, ILogger<TrafficGeneratorService> logger)
   {
-    _serviceProvider = serviceProvider;
+    _client = client;
     _logger = logger;
 
     // Periodic timer to clean old timestamps and refresh UI
@@ -64,39 +62,31 @@ public class TrafficGeneratorService : IDisposable
       FailedRequests = Interlocked.Read(ref _failedRequests),
       CurrentRps = _requestTimestamps.Count,
       AverageLatencyMs = Math.Round(avgLatency, 1),
-      IsContinuousRunning = _continuousCts != null && !_continuousCts.IsCancellationRequested,
+      IsContinuousRunning = IsContinuousRunInProgress(),
       ActiveConcurrency = _activeConcurrency
     };
   }
 
-  public async Task<ScenarioExecutionResultDto> RunSingleScenarioAsync(string? artist = null, string? song1 = null, string? song2 = null)
+  public async Task<ScenarioExecutionResultDto> RunSingleScenario(
+    string artist,
+    string song1,
+    string song2,
+    CancellationToken cancellationToken)
   {
-    if (string.IsNullOrWhiteSpace(artist) || string.IsNullOrWhiteSpace(song1) || string.IsNullOrWhiteSpace(song2))
-    {
-      var preset = SeededData.GetRandomPreset();
-      var id = Random.Shared.Next(100, 999);
-      artist = $"{preset.Artist} ({id})";
-      song1 = $"{preset.Song1} #{id}";
-      song2 = $"{preset.Song2} #{id}";
-    }
-
-    using var scope = _serviceProvider.CreateScope();
-    var client = scope.ServiceProvider.GetRequiredService<TrackClinicApiClient>();
-
-    var result = await client.ExecuteScenarioAsync(artist, song1, song2);
+    var result = await _client.ExecuteScenarioAsync(artist, song1, song2, cancellationToken);
     RecordScenarioResult(result);
     OnStateChanged?.Invoke();
     return result;
   }
 
-  public async Task RunBatchAsync(int scenarioCount, int concurrency, int delayMs = 50)
+  public async Task RunBatch(int scenarioCount, int concurrency, int delayMs, CancellationToken cancellationToken)
   {
     var semaphore = new SemaphoreSlim(concurrency, concurrency);
     var tasks = new List<Task>();
 
     for (var i = 0; i < scenarioCount; i++)
     {
-      await semaphore.WaitAsync();
+      await semaphore.WaitAsync(cancellationToken);
       tasks.Add(Task.Run(async () =>
       {
         try
@@ -107,15 +97,10 @@ public class TrafficGeneratorService : IDisposable
           var song1 = $"{preset.Song1}_{id}";
           var song2 = $"{preset.Song2}_{id}";
 
-          using var scope = _serviceProvider.CreateScope();
-          var client = scope.ServiceProvider.GetRequiredService<TrackClinicApiClient>();
-          var result = await client.ExecuteScenarioAsync(artist, song1, song2);
+          var result = await _client.ExecuteScenarioAsync(artist, song1, song2, cancellationToken);
           RecordScenarioResult(result);
 
-          if (delayMs > 0)
-          {
-            await Task.Delay(delayMs);
-          }
+          await Task.Delay(delayMs, cancellationToken);
         }
         catch (Exception ex)
         {
@@ -125,85 +110,89 @@ public class TrafficGeneratorService : IDisposable
         {
           semaphore.Release();
         }
-      }));
+      },
+      cancellationToken));
     }
 
     await Task.WhenAll(tasks);
     OnStateChanged?.Invoke();
   }
 
-  public void StartContinuous(int concurrency, int delayBetweenScenariosMs = 100)
+  public void StartContinuous(int concurrency, int delayBetweenScenariosMs)
   {
-    if (_continuousCts != null && !_continuousCts.IsCancellationRequested)
+    if (!IsContinuousRunInProgress())
     {
-      return;
-    }
+      _continuousCts = new CancellationTokenSource();
+      _activeConcurrency = concurrency;
+      var token = _continuousCts.Token;
 
-    _continuousCts = new CancellationTokenSource();
-    _activeConcurrency = concurrency;
-    var token = _continuousCts.Token;
-
-    _continuousTask = Task.Run(async () =>
-    {
-      var workers = new List<Task>();
-      for (var workerId = 0; workerId < concurrency; workerId++)
-      {
-        var wId = workerId;
-        workers.Add(Task.Run(async () =>
+      _continuousTask = Task.Run(
+        async () =>
         {
-          while (!token.IsCancellationRequested)
+          var workers = new List<Task>();
+          for (var workerId = 0; workerId < concurrency; workerId++)
           {
-            try
-            {
-              var preset = SeededData.GetRandomPreset();
-              var runId = Random.Shared.Next(1000, 99999);
-              var artist = $"{preset.Artist}_{runId}";
-              var song1 = $"{preset.Song1}_{runId}";
-              var song2 = $"{preset.Song2}_{runId}";
+            var wId = workerId;
+            workers.Add(
+              Task.Run(
+                async () =>
+                {
+                  while (!token.IsCancellationRequested)
+                  {
+                    try
+                    {
+                      var preset = SeededData.GetRandomPreset();
+                      var runId = Random.Shared.Next(1000, 99999);
+                      var result = await _client.ExecuteScenarioAsync(
+                        $"{preset.Artist}_{runId}",
+                        $"{preset.Song1}_{runId}",
+                        $"{preset.Song2}_{runId}",
+                        token);
+                      RecordScenarioResult(result);
 
-              using var scope = _serviceProvider.CreateScope();
-              var client = scope.ServiceProvider.GetRequiredService<TrackClinicApiClient>();
-              var result = await client.ExecuteScenarioAsync(artist, song1, song2, token);
-              RecordScenarioResult(result);
-
-              if (delayBetweenScenariosMs > 0)
-              {
-                await Task.Delay(delayBetweenScenariosMs, token);
-              }
-            }
-            catch (OperationCanceledException)
-            {
-              break;
-            }
-            catch (Exception ex)
-            {
-              _logger.LogError(ex, "Continuous worker {WorkerId} encountered an error", wId);
-              try
-              {
-                await Task.Delay(500, token);
-              }
-              catch
-              {
-                break;
-              }
-            }
+                      if (delayBetweenScenariosMs > 0)
+                      {
+                        await Task.Delay(delayBetweenScenariosMs, token);
+                      }
+                    }
+                    catch (OperationCanceledException)
+                    {
+                      break;
+                    }
+                    catch (Exception ex)
+                    {
+                      _logger.LogError(ex, "Continuous worker {WorkerId} encountered an error", wId);
+                      try
+                      {
+                        await Task.Delay(500, token);
+                      }
+                      catch
+                      {
+                        break;
+                      }
+                    }
+                  }
+                },
+                token));
           }
-        }, token));
-      }
 
-      try
-      {
-        await Task.WhenAll(workers);
-      }
-      catch (OperationCanceledException) { }
-      finally
-      {
-        _activeConcurrency = 0;
-        OnStateChanged?.Invoke();
-      }
-    }, token);
+          try
+          {
+            await Task.WhenAll(workers);
+          }
+          catch (OperationCanceledException)
+          {
+          }
+          finally
+          {
+            _activeConcurrency = 0;
+            OnStateChanged?.Invoke();
+          }
+        },
+        token);
 
-    OnStateChanged?.Invoke();
+      OnStateChanged?.Invoke();
+    }
   }
 
   public void StopContinuous()
@@ -274,7 +263,7 @@ public class TrafficGeneratorService : IDisposable
   private void AddLog(TrafficLogItem log)
   {
     _logs.Enqueue(log);
-    while (_logs.Count > _maxLogCount && _logs.TryDequeue(out _)) { }
+    while (_logs.Count > _maxLogCount && _logs.TryDequeue(out _)) { } //bug what is this?
   }
 
   private void CleanOldTimestamps()
@@ -286,12 +275,18 @@ public class TrafficGeneratorService : IDisposable
     }
   }
 
+  private bool IsContinuousRunInProgress()
+  {
+    return _continuousCts != null && !_continuousCts.IsCancellationRequested;
+  }
+
   public void Dispose()
   {
     if (_disposed) return;
     _disposed = true;
     _statsTimer.Dispose();
     _continuousCts?.Cancel();
+    _continuousTask?.Wait();
     _continuousCts?.Dispose();
   }
 }

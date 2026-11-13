@@ -13,26 +13,20 @@ namespace DemoUi.Logic;
 
 public class TrackClinicApiClient(IFlurlClient flurlClient, KeycloakTokenClient tokenClient, AppConfig appConfig, ILogger<TrackClinicApiClient> logger)
 {
-  private readonly string _baseUrl = BuildBaseUrl(appConfig.TrackClinic.BaseUrl);
+  private readonly string _baseUrl = appConfig.TrackClinic.BaseUrl.ToString();
   private readonly TimeSpan _timeout = TimeSpan.FromSeconds(appConfig.TrackClinic.TimeoutSeconds);
   private readonly BearerTokenClient _bearerTokenClient = new(tokenClient, appConfig.Keycloak); //bug DI
-  public string BaseUrl => _baseUrl;
 
   public async Task<ScenarioExecutionResultDto> ExecuteScenarioAsync(
     string artist,
     string song1,
     string song2,
-    CancellationToken cancellationToken = default)
+    CancellationToken cancellationToken)
   {
-    //bug helper method to start activity and set tags
-    using var activity = Telemetry.Source.StartActivity(Telemetry.ScenarioActivityName, ActivityKind.Client).OrThrow();
-    activity.SetTag("scenario.artist", artist);
-    activity.SetTag("scenario.song1", song1);
-    activity.SetTag("scenario.song2", song2);
+    using var activity = Telemetry.StartScenarioActivity(artist, song1, song2);
 
     try
     {
-
       var scenarioId = Guid.NewGuid().ToString("N")[..8];
       var steps = new List<ScenarioStepResult>();
       var totalStopwatch = Stopwatch.StartNew();
@@ -195,12 +189,6 @@ public class TrackClinicApiClient(IFlurlClient flurlClient, KeycloakTokenClient 
   private string BuildAbsoluteUrl(string relativeUrl)
   {
     return new Uri(new Uri(_baseUrl), relativeUrl).ToString();
-  }
-
-  private static string BuildBaseUrl(Uri baseUrl)
-  {
-    var baseUrlString = baseUrl.ToString();
-    return baseUrlString.EndsWith('/') ? baseUrlString : baseUrlString + "/";
   }
 
   private static string GetResponseTextPreview(string responseBody)

@@ -1,8 +1,9 @@
 @page "/"
 @rendermode InteractiveServer
+@using DemoUi.Adapters.Configuration
 @implements IDisposable
 @inject TrafficGeneratorService TrafficService
-@inject TrackClinicApiClient ApiClient
+@inject AppConfig AppConfig
 
 <PageTitle>TrackClinic Demo & Traffic Generator</PageTitle>
 
@@ -10,7 +11,7 @@
     <div class="header">
         <div class="header-title">
             <h1>🎵 TrackClinic Demo & Traffic Generator</h1>
-            <p>Target Service: <span class="code-badge">@ApiClient.BaseUrl</span></p>
+            <p>Target Service: <span class="code-badge">@AppConfig.TrackClinic.BaseUrl</span></p>
         </div>
         <div>
             @if (Stats.IsContinuousRunning)
@@ -84,7 +85,7 @@
             </div>
 
             <div class="btn-row">
-                <button class="btn btn-primary" style="flex: 1;" @onclick="RunSingleAsync" disabled="@(_isSingleRunning || _isBatchRunning || Stats.IsContinuousRunning)">
+                <button class="btn btn-primary" style="flex: 1;" @onclick="RunSingle" disabled="@(_isSingleRunning || _isBatchRunning || Stats.IsContinuousRunning)">
                     @if (_isSingleRunning)
                     {
                         <span>⏳ Running Scenario...</span>
@@ -168,7 +169,7 @@
                         <option value="50">50 Scenarios</option>
                         <option value="100">100 Scenarios</option>
                     </select>
-                    <button class="btn btn-primary" style="flex: 1;" @onclick="RunBatchAsync" disabled="@(_isBatchRunning || _isSingleRunning || Stats.IsContinuousRunning)">
+                    <button class="btn btn-primary" style="flex: 1;" @onclick="RunBatch" disabled="@(_isBatchRunning || _isSingleRunning || Stats.IsContinuousRunning)">
                         @if (_isBatchRunning)
                         {
                             <span>⏳ Running Batch...</span>
@@ -275,8 +276,8 @@
     private int _delayMs = 100;
     private int _batchCount = 25;
 
-    private bool _isSingleRunning = false;
-    private bool _isBatchRunning = false;
+    private bool _isSingleRunning;
+    private bool _isBatchRunning;
     private ScenarioExecutionResultDto? _lastSingleResult;
 
     private TrafficStats Stats => TrafficService.GetStats();
@@ -296,38 +297,17 @@
         _selectedSong2 = $"{preset.Song2} #{id}";
     }
 
-    private async Task RunSingleAsync()
+    private async Task RunSingle()
     {
         if (_isSingleRunning) return;
         _isSingleRunning = true;
         try
         {
-            _lastSingleResult = await TrafficService.RunSingleScenarioAsync(_selectedArtist, _selectedSong1, _selectedSong2);
+          _lastSingleResult = await TrafficService.RunSingleScenario(_selectedArtist, _selectedSong1, _selectedSong2, CancellationToken.None /* bug */);
         }
         catch (Exception ex)
         {
-            _lastSingleResult = new ScenarioExecutionResultDto(
-                ScenarioId: "error",
-                ArtistName: _selectedArtist,
-                Song1Title: _selectedSong1,
-                Song2Title: _selectedSong2,
-                Success: false,
-                TotalElapsedMilliseconds: 0,
-                Timestamp: DateTime.UtcNow,
-                Steps: new[]
-                {
-                    new ScenarioStepResult(
-                        StepNumber: 0,
-                        ActionName: "Scenario Execution Error",
-                        HttpMethod: "N/A",
-                        Url: "",
-                        StatusCode: null,
-                        IsSuccess: false,
-                        ElapsedMilliseconds: 0,
-                        ResponsePreview: null,
-                        ErrorMessage: ex.Message,
-                        Timestamp: DateTime.UtcNow)
-                });
+            _lastSingleResult = ScenarioExecutionResultDto.Error(_selectedSong1, _selectedSong2, _selectedArtist, ex);
         }
         finally
         {
@@ -335,13 +315,13 @@
         }
     }
 
-    private async Task RunBatchAsync()
+    private async Task RunBatch()
     {
         if (_isBatchRunning) return;
         _isBatchRunning = true;
         try
         {
-            await TrafficService.RunBatchAsync(_batchCount, _concurrency, _delayMs);
+            await TrafficService.RunBatch(_batchCount, _concurrency, _delayMs, CancellationToken.None /* bug */);
         }
         finally
         {

@@ -14,7 +14,7 @@
   <ItemGroup>
 
     <PackageReference Include="LoadSurge" Version="3.2.0.105" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="11.0.0-rc.3.26522.148" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="11.0.0" />
     <PackageReference Include="Microsoft.Playwright" Version="1.55.0" />
     <PackageReference Include="NUnit" Version="5.0.0" />
     <PackageReference Include="NUnit.Analyzers" Version="4.15.0">
@@ -28,7 +28,7 @@
   </ItemGroup>
   <ItemGroup>
     <!-- workaround for R# bug to be fixed in the future -->
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.11.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.12.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ServiceSpecificationBuildingBlocks\ServiceSpecificationBuildingBlocks.csproj" />

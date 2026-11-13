@@ -15,7 +15,6 @@ public class AssemblySetUp
   [OneTimeSetUp]
   public async Task SetUp()
   {
-    //bug the same in multiple projects, smells like trouble
     await Task.WhenAll(
       SharedPlaywrightInstance.Start(TestContext.CurrentContext.CancellationToken),
       SharedKeycloakInstance.Start(TestContext.CurrentContext.CancellationToken),

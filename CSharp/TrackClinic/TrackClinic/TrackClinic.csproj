@@ -14,11 +14,11 @@
     <PackageReference Include="Core.Maybe" Version="8.0.0" />
     <PackageReference Include="Dapper" Version="2.1.89" />
     <PackageReference Include="Flurl.Http" Version="4.0.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="11.0.0-rc.3.26522.148" />
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="11.0.0-rc.3.26522.148" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="11.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="11.0.0" />
     <PackageReference Include="Microsoft.OpenApi" Version="3.11.0" />
     <PackageReference Include="MongoDB.Driver" Version="3.13.0" />
-    <PackageReference Include="Scalar.AspNetCore" Version="2.18.7" />
+    <PackageReference Include="Scalar.AspNetCore" Version="2.20.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="10.0.0" />
   </ItemGroup>
 
