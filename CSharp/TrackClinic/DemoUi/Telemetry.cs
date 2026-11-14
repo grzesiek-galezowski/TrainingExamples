@@ -35,7 +35,7 @@ public class Telemetry
     Activity? activity = null;
     try
     {
-      activity = Telemetry.Source.StartActivity(Telemetry.ScenarioActivityName, ActivityKind.Client).OrThrow();
+      activity = Source.StartActivity(ScenarioActivityName, ActivityKind.Client).OrThrow();
       activity.SetTag("scenario.artist", artist);
       activity.SetTag("scenario.song1", song1);
       activity.SetTag("scenario.song2", song2);

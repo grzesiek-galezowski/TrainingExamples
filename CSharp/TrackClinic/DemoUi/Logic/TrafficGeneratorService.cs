@@ -28,7 +28,7 @@ public class TrafficGeneratorService : IDisposable
   private readonly ConcurrentQueue<long> _requestTimestamps = new();
   private readonly Timer _statsTimer;
 
-  public event Action? OnStateChanged;
+  public event Action? OnStateChanged; //bug what is this??
 
   public TrafficGeneratorService(TrackClinicApiClient client, ILogger<TrafficGeneratorService> logger)
   {
@@ -67,18 +67,18 @@ public class TrafficGeneratorService : IDisposable
     };
   }
 
-  public async Task<ScenarioExecutionResultDto> RunSingleScenario(
-    string artist,
-    string song1,
-    string song2,
-    CancellationToken cancellationToken)
+  public async Task<ScenarioExecutionResultDto> RunSingleScenario(SeededScenarioPreset seededScenarioPreset, CancellationToken cancellationToken)
   {
-    var result = await _client.ExecuteScenarioAsync(artist, song1, song2, cancellationToken);
+    var result = await _client.ExecuteScenarioAsync(
+      seededScenarioPreset.Artist,
+      seededScenarioPreset.Song1,
+      seededScenarioPreset.Song2,
+      cancellationToken);
     RecordScenarioResult(result);
     OnStateChanged?.Invoke();
     return result;
   }
-
+  
   public async Task RunBatch(int scenarioCount, int concurrency, int delayMs, CancellationToken cancellationToken)
   {
     var semaphore = new SemaphoreSlim(concurrency, concurrency);
@@ -91,13 +91,8 @@ public class TrafficGeneratorService : IDisposable
       {
         try
         {
-          var preset = SeededData.GetRandomPreset();
-          var id = Random.Shared.Next(1000, 9999);
-          var artist = $"{preset.Artist}_{id}";
-          var song1 = $"{preset.Song1}_{id}";
-          var song2 = $"{preset.Song2}_{id}";
-
-          var result = await _client.ExecuteScenarioAsync(artist, song1, song2, cancellationToken);
+          var preset = SeededScenarioPreset.CreateRandomInstanceWithConsistentId();
+          var result = await _client.ExecuteScenarioAsync(preset.Artist, preset.Song1, preset.Song2, cancellationToken);
           RecordScenarioResult(result);
 
           await Task.Delay(delayMs, cancellationToken);
@@ -141,12 +136,11 @@ public class TrafficGeneratorService : IDisposable
                   {
                     try
                     {
-                      var preset = SeededData.GetRandomPreset();
-                      var runId = Random.Shared.Next(1000, 99999);
+                      var preset = SeededScenarioPreset.CreateRandomInstanceWithConsistentId();
                       var result = await _client.ExecuteScenarioAsync(
-                        $"{preset.Artist}_{runId}",
-                        $"{preset.Song1}_{runId}",
-                        $"{preset.Song2}_{runId}",
+                        preset.Artist,
+                        preset.Song1,
+                        preset.Song2,
                         token);
                       RecordScenarioResult(result);
 

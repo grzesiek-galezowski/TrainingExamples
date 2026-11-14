@@ -1,22 +1,23 @@
 using System.IdentityModel.Tokens.Jwt;
+using Core.NullableReferenceTypesExtensions;
 using DemoUi.Adapters.Configuration;
 using DemoUi.Adapters.Keycloak;
 using ServiceBuildingBlocks;
 
 namespace DemoUi.Logic;
 
-public class BearerTokenClient(KeycloakTokenClient tokenClient, KeycloakConfig keycloakConfig)
+public class CachingTokenClient(KeycloakTokenClient tokenClient, KeycloakConfig keycloakConfig)
 {
   //bug what does this class do? why not just use KeycloakTokenClient directly?
   private string? _cachedBearerToken;
   private DateTime _tokenExpiration = DateTime.MinValue;
   private readonly SemaphoreSlim _tokenLock = new(1, 1);
 
-  public async Task<string?> TryGetBearerTokenAsync(CancellationToken cancellationToken)
+  public async Task<string> GetBearerTokenAsync(CancellationToken cancellationToken)
   {
     if (DateTime.UtcNow < _tokenExpiration && !string.IsNullOrEmpty(_cachedBearerToken))
     {
-      return _cachedBearerToken;
+      return _cachedBearerToken.OrThrow();
     }
 
     await _tokenLock.WaitAsync(cancellationToken);
@@ -24,7 +25,7 @@ public class BearerTokenClient(KeycloakTokenClient tokenClient, KeycloakConfig k
     {
       if (DateTime.UtcNow < _tokenExpiration && !string.IsNullOrEmpty(_cachedBearerToken))
       {
-        return _cachedBearerToken;
+        return _cachedBearerToken.OrThrow();
       }
 
       var token = await tokenClient.GetPasswordToken(
@@ -38,7 +39,7 @@ public class BearerTokenClient(KeycloakTokenClient tokenClient, KeycloakConfig k
       _tokenExpiration = new JwtSecurityTokenHandler()
         .ReadJwtToken(token)
         .ValidTo - TimeSpan.FromSeconds(30);
-      return _cachedBearerToken;
+      return _cachedBearerToken.OrThrow();
     }
     finally
     {

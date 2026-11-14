@@ -11,11 +11,17 @@ namespace DemoUi.Logic;
 
 //bug split into scenario logic and API client
 
-public class TrackClinicApiClient(IFlurlClient flurlClient, KeycloakTokenClient tokenClient, AppConfig appConfig, ILogger<TrackClinicApiClient> logger)
+public class TrackClinicApiClient(
+  IFlurlClient flurlClient,
+  KeycloakTokenClient tokenClient,
+  AppConfig appConfig,
+  ILogger<TrackClinicApiClient> logger,
+  CachingTokenClient cachingTokenClient)
 {
   private readonly string _baseUrl = appConfig.TrackClinic.BaseUrl.ToString();
   private readonly TimeSpan _timeout = TimeSpan.FromSeconds(appConfig.TrackClinic.TimeoutSeconds);
-  private readonly BearerTokenClient _bearerTokenClient = new(tokenClient, appConfig.Keycloak); //bug DI
+
+  //bug DI
 
   public async Task<ScenarioExecutionResultDto> ExecuteScenarioAsync(
     string artist,
@@ -31,7 +37,7 @@ public class TrackClinicApiClient(IFlurlClient flurlClient, KeycloakTokenClient 
       var steps = new List<ScenarioStepResult>();
       var totalStopwatch = Stopwatch.StartNew();
 
-      var token = (await _bearerTokenClient.TryGetBearerTokenAsync(cancellationToken)).OrThrow();
+      var token = (await cachingTokenClient.GetBearerTokenAsync(cancellationToken)).OrThrow();
 
       // Step 1: Create Song 1
       var step1 = await SendStepAsync(

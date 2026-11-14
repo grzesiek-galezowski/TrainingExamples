@@ -7,7 +7,6 @@ namespace DemoUi.Adapters.Keycloak;
 
 public class KeycloakTokenClient
 {
-  // bug cache the token?
   public async Task<string> GetPasswordToken(
     Uri metadataAddress,
     string clientId,
@@ -37,17 +36,18 @@ public class KeycloakTokenClient
     return await ExtractAccessTokenFrom(response);
   }
 
-  private async Task<string> ResolveTokenEndpoint(Uri metadataAddress, CancellationToken ct)
+  private static async Task<string> ResolveTokenEndpoint(Uri metadataAddress, CancellationToken cancellationToken)
   {
     return ExtractTokenEndpointFrom(
       await metadataAddress
         .WithTimeout(5.Seconds())
-        .GetJsonAsync<JsonElement>(cancellationToken: ct));
+        .GetJsonAsync<JsonElement>(cancellationToken: cancellationToken));
   }
 
   private static string ExtractTokenEndpointFrom(JsonElement json)
   {
-    return json.GetProperty("token_endpoint").GetString() ?? throw new InvalidOperationException("No token_endpoint in discovery document.");
+    return json.GetProperty("token_endpoint").GetString() ??
+           throw new InvalidOperationException("No token_endpoint in discovery document.");
   }
 
   private static async Task<string> ExtractAccessTokenFrom(IFlurlResponse response)
@@ -60,8 +60,7 @@ public class KeycloakTokenClient
   {
     if (!response.ResponseMessage.IsSuccessStatusCode)
     {
-      throw new InvalidOperationException(
-        message);
+      throw new InvalidOperationException(message);
     }
   }
 }

@@ -1,5 +1,6 @@
 @page "/"
 @rendermode InteractiveServer
+@using System.Globalization
 @using DemoUi.Adapters.Configuration
 @implements IDisposable
 @inject TrafficGeneratorService TrafficService
@@ -71,17 +72,17 @@
 
             <div class="form-group">
                 <label class="form-label">Artist Name</label>
-                <input class="form-input" @bind="_selectedArtist" disabled="@(_isSingleRunning || Stats.IsContinuousRunning)" />
+                <input class="form-input" @bind="_preset.Artist" disabled="@(_isSingleRunning || Stats.IsContinuousRunning)" />
             </div>
 
             <div class="form-group">
                 <label class="form-label">Song 1 Title</label>
-                <input class="form-input" @bind="_selectedSong1" disabled="@(_isSingleRunning || Stats.IsContinuousRunning)" />
+                <input class="form-input" @bind="_preset.Song1" disabled="@(_isSingleRunning || Stats.IsContinuousRunning)" />
             </div>
 
             <div class="form-group">
                 <label class="form-label">Song 2 Title</label>
-                <input class="form-input" @bind="_selectedSong2" disabled="@(_isSingleRunning || Stats.IsContinuousRunning)" />
+                <input class="form-input" @bind="_preset.Song2" disabled="@(_isSingleRunning || Stats.IsContinuousRunning)" />
             </div>
 
             <div class="btn-row">
@@ -268,10 +269,6 @@
 </div>
 
 @code {
-    private string _selectedArtist = "Pink Floyd";
-    private string _selectedSong1 = "Comfortably Numb";
-    private string _selectedSong2 = "Echoes";
-
     private int _concurrency = 5;
     private int _delayMs = 100;
     private int _batchCount = 25;
@@ -279,6 +276,7 @@
     private bool _isSingleRunning;
     private bool _isBatchRunning;
     private ScenarioExecutionResultDto? _lastSingleResult;
+    private SeededScenarioPresetDto _preset = new("Pink Floyd", "Comfortably Numb", "Echoes");
 
     private TrafficStats Stats => TrafficService.GetStats();
 
@@ -290,11 +288,7 @@
 
     private void PickRandomPreset()
     {
-        var preset = SeededData.GetRandomPreset();
-        var id = Random.Shared.Next(100, 999);
-        _selectedArtist = $"{preset.Artist} ({id})";
-        _selectedSong1 = $"{preset.Song1} #{id}";
-        _selectedSong2 = $"{preset.Song2} #{id}";
+        _preset = new SeededScenarioPresetDto(SeededScenarioPreset.CreateRandomInstanceWithConsistentId());
     }
 
     private async Task RunSingle()
@@ -303,11 +297,11 @@
         _isSingleRunning = true;
         try
         {
-          _lastSingleResult = await TrafficService.RunSingleScenario(_selectedArtist, _selectedSong1, _selectedSong2, CancellationToken.None /* bug */);
+            _lastSingleResult = await TrafficService.RunSingleScenario(_preset.ToSeededScenarioPreset(), CancellationToken.None /* bug */);
         }
         catch (Exception ex)
         {
-            _lastSingleResult = ScenarioExecutionResultDto.Error(_selectedSong1, _selectedSong2, _selectedArtist, ex);
+            _lastSingleResult = ScenarioExecutionResultDto.Error(_preset.ToSeededScenarioPreset(), ex);
         }
         finally
         {
@@ -349,7 +343,7 @@
     {
         if (Stats.TotalRequests == 0) return "100";
         var rate = (double)Stats.SuccessfulRequests / Stats.TotalRequests * 100.0;
-        return rate.ToString("F1");
+        return rate.ToString("F1", CultureInfo.InvariantCulture);
     }
 
     private void HandleStateChanged()
