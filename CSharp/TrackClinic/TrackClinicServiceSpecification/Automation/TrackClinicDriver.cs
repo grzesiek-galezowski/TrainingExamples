@@ -84,7 +84,7 @@ public class TrackClinicDriver : IAsyncDisposable
   {
     var builder = await CreateDefaultRequestBuilder(urlSegment, customize);
     return new HealthResponse(
-      await builder.Build().GetAsync(cancellationToken: _cancellationToken));
+      await builder.Build().GetAsync(cancellationToken: _cancellationToken), "Healthy");
   }
 
   public async Task<CreateSongProjectResponse> CreateSongProject(string artistName,

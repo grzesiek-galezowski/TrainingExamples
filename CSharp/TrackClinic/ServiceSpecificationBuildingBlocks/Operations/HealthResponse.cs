@@ -3,12 +3,12 @@ using Flurl.Http;
 
 namespace ServiceSpecificationBuildingBlocks.Operations;
 
-public class HealthResponse(IFlurlResponse response)
+public class HealthResponse(IFlurlResponse response, string healthyString)
 {
   public async Task ShouldBeHealthy()
   {
     response.StatusCode.Should().Be(200);
-    (await response.GetStringAsync()).Should().Be("Healthy");
+    (await response.GetStringAsync()).Should().Be(healthyString);
   }
 
   public async Task ShouldBeUnhealthy()
@@ -17,5 +17,13 @@ public class HealthResponse(IFlurlResponse response)
     (await response.GetStringAsync()).Should().Be("Unhealthy");
   }
 
-  public async Task<bool> IsHealthy() => response.StatusCode == 200 && await response.GetStringAsync() == "Healthy";
+  public async Task<bool> IsHealthy()
+  {
+    return response.StatusCode == 200 && await response.GetStringAsync() == healthyString;
+  }
+  
+  public async Task<string> GetStatusMessage()
+  {
+    return $"HealthResponse: {response.StatusCode} + {await response.GetStringAsync()}";
+  }
 }

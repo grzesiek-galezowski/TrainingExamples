@@ -10,6 +10,7 @@
     <PackageReference Include="AwesomeAssertions" Version="9.6.0" />
     <PackageReference Include="Core.Maybe" Version="8.0.0" />
     <PackageReference Include="Flurl.Http" Version="4.0.2" />
+    <PackageReference Include="NUnit" Version="5.0.0" />
     <PackageReference Include="Testcontainers.Keycloak" Version="4.16.0" />
     <PackageReference Include="Testcontainers.Playwright" Version="4.16.0" />
   </ItemGroup>

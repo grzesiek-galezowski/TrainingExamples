@@ -29,7 +29,7 @@ public class DemoUiDriver : IAsyncDisposable
 
   public GuiDriverExtension Gui => new(GetAppBaseAddress, _cancellationToken);
 
-  public HealthDriverExtension Health => new(_client.Value, _cancellationToken);
+  public HealthDriverExtension Health => new(_client.Value, "Healthy", _cancellationToken);
 
   public TrackClinicDriverExtension TrackClinic => new(_trackClinicMock, _trackClinicMockPriority--);
 

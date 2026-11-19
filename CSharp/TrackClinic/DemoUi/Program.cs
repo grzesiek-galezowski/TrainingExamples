@@ -6,7 +6,7 @@ using Microsoft.Extensions.ServiceDiscovery.Http;
 using Serilog;
 using ServiceBuildingBlocks;
 
-public partial class Program
+public class Program
 {
   public static void Main(string[] args)
   {

@@ -14,6 +14,7 @@
   </Folder>
   <Project Path="DemoUi/DemoUi.csproj" />
   <Project Path="DemoUiServiceSpecification/DemoUiServiceSpecification.csproj" />
+  <Project Path="TrackClinic.AppHostSpecification/TrackClinic.AppHostSpecification.csproj" />
   <Project Path="TrackClinic.AppHost/TrackClinic.AppHost.csproj" />
   <Project Path="TrackClinic/TrackClinic.csproj" />
   <Project Path="TrackClinicServiceSpecification/TrackClinicServiceSpecification.csproj" />
