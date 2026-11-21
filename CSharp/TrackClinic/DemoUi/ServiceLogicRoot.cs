@@ -9,6 +9,7 @@ namespace DemoUi;
 public class ServiceLogicRoot : IAsyncDisposable
 {
   private readonly IFlurlClient _httpClient;
+  private readonly TrafficGeneratorService _trafficGeneratorService;
 
   public ServiceLogicRoot(AppConfig appConfig,
     IServiceDiscoveryHttpMessageHandlerFactory serviceDiscoveryHttpMessageHandlerFactory,
@@ -18,7 +19,7 @@ public class ServiceLogicRoot : IAsyncDisposable
       appConfig.TrackClinic.BaseUrl,
       TimeSpan.FromSeconds(appConfig.TrackClinic.TimeoutSeconds),
       serviceDiscoveryHttpMessageHandlerFactory);
-    TrafficGeneratorService = new TrafficGeneratorService(
+    var trafficGeneratorService = new TrafficGeneratorService(
         new TrackClinicApiClient(
           _httpClient,
           appConfig,
@@ -27,9 +28,10 @@ public class ServiceLogicRoot : IAsyncDisposable
           new DemoUiTelemetry()),
       loggerFactory.CreateLogger<TrafficGeneratorService>()
     );
+    _trafficGeneratorService = trafficGeneratorService;
   }
 
-  public TrafficGeneratorService TrafficGeneratorService { get; }
+  public HomePagePresenter CreateHomePagePresenter() => new(_trafficGeneratorService);
 
   private static IFlurlClient ClientWithServiceDiscovery(Uri baseUrl, TimeSpan timeout,
     IServiceDiscoveryHttpMessageHandlerFactory serviceDiscoveryHandlerFactory)
@@ -46,6 +48,6 @@ public class ServiceLogicRoot : IAsyncDisposable
   public async ValueTask DisposeAsync()
   {
     _httpClient.Dispose();
-    TrafficGeneratorService.Dispose();
+    _trafficGeneratorService.Dispose();
   }
 }

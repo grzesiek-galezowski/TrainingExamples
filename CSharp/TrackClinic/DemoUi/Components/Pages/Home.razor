@@ -1,9 +1,8 @@
 @page "/"
 @rendermode InteractiveServer
-@using System.Globalization
 @using DemoUi.Adapters.Configuration
 @implements IDisposable
-@inject TrafficGeneratorService TrafficService
+@inject HomePagePresenter Presenter
 @inject AppConfig AppConfig
 
 <PageTitle>TrackClinic Demo & Traffic Generator</PageTitle>
@@ -15,11 +14,11 @@
             <p>Target Service: <span class="code-badge">@AppConfig.TrackClinic.BaseUrl</span></p>
         </div>
         <div>
-            @if (Stats.IsContinuousRunning)
+            @if (Presenter.Stats.IsContinuousRunning)
             {
-                <span class="badge badge-green">● Streaming Traffic (@Stats.ActiveConcurrency workers)</span>
+                <span class="badge badge-green">● Streaming Traffic (@Presenter.Stats.ActiveConcurrency workers)</span>
             }
-            else if (_isBatchRunning || _isSingleRunning)
+            else if (Presenter.IsBatchRunning || Presenter.IsSingleRunning)
             {
                 <span class="badge badge-blue">● Running Scenario</span>
             }
@@ -34,24 +33,24 @@
     <div class="grid-stats">
         <div class="stat-card">
             <div class="stat-title">Total Requests</div>
-            <div class="stat-value">@Stats.TotalRequests</div>
-            <div class="stat-sub">@Stats.TotalScenarios total scenarios</div>
+            <div class="stat-value">@Presenter.Stats.TotalRequests</div>
+            <div class="stat-sub">@Presenter.Stats.TotalScenarios total scenarios</div>
         </div>
         <div class="stat-card">
             <div class="stat-title">Current RPS</div>
-            <div class="stat-value">@Stats.CurrentRps.ToString("F0") <span style="font-size: 1rem; color: var(--text-muted);">req/s</span></div>
+            <div class="stat-value">@Presenter.Stats.CurrentRps.ToString("F0") <span style="font-size: 1rem; color: var(--text-muted);">req/s</span></div>
             <div class="stat-sub">Real-time throughput</div>
         </div>
         <div class="stat-card">
             <div class="stat-title">Success Rate</div>
-            <div class="stat-value" style="color: @(Stats.FailedRequests > 0 ? "#f87171" : "#34d399");">
-                @GetSuccessRate()%
+            <div class="stat-value" style="color: @(Presenter.Stats.FailedRequests > 0 ? "#f87171" : "#34d399");">
+                @Presenter.GetSuccessRate()%
             </div>
-            <div class="stat-sub">@Stats.SuccessfulRequests ok / @Stats.FailedRequests failed</div>
+            <div class="stat-sub">@Presenter.Stats.SuccessfulRequests ok / @Presenter.Stats.FailedRequests failed</div>
         </div>
         <div class="stat-card">
             <div class="stat-title">Avg Latency</div>
-            <div class="stat-value">@Stats.AverageLatencyMs <span style="font-size: 1rem; color: var(--text-muted);">ms</span></div>
+            <div class="stat-value">@Presenter.Stats.AverageLatencyMs <span style="font-size: 1rem; color: var(--text-muted);">ms</span></div>
             <div class="stat-sub">Response time</div>
         </div>
     </div>
@@ -62,7 +61,7 @@
         <div class="card">
             <div class="card-title">
                 <span>1. Single Scenario</span>
-                <button class="btn btn-secondary" style="padding: 0.3rem 0.6rem; font-size: 0.75rem;" @onclick="PickRandomPreset" disabled="@(_isSingleRunning || Stats.IsContinuousRunning)">
+                <button class="btn btn-secondary" style="padding: 0.3rem 0.6rem; font-size: 0.75rem;" @onclick="Presenter.PickRandomPreset" disabled="@(Presenter.IsSingleRunning || Presenter.Stats.IsContinuousRunning)">
                     🎲 New Seed
                 </button>
             </div>
@@ -72,22 +71,22 @@
 
             <div class="form-group">
                 <label class="form-label">Artist Name</label>
-                <input class="form-input" @bind="_preset.Artist" disabled="@(_isSingleRunning || Stats.IsContinuousRunning)" />
+                <input class="form-input" @bind="Presenter.Preset.Artist" disabled="@(Presenter.IsSingleRunning || Presenter.Stats.IsContinuousRunning)" />
             </div>
 
             <div class="form-group">
                 <label class="form-label">Song 1 Title</label>
-                <input class="form-input" @bind="_preset.Song1" disabled="@(_isSingleRunning || Stats.IsContinuousRunning)" />
+                <input class="form-input" @bind="Presenter.Preset.Song1" disabled="@(Presenter.IsSingleRunning || Presenter.Stats.IsContinuousRunning)" />
             </div>
 
             <div class="form-group">
                 <label class="form-label">Song 2 Title</label>
-                <input class="form-input" @bind="_preset.Song2" disabled="@(_isSingleRunning || Stats.IsContinuousRunning)" />
+                <input class="form-input" @bind="Presenter.Preset.Song2" disabled="@(Presenter.IsSingleRunning || Presenter.Stats.IsContinuousRunning)" />
             </div>
 
             <div class="btn-row">
-                <button class="btn btn-primary" style="flex: 1;" @onclick="RunSingle" disabled="@(_isSingleRunning || _isBatchRunning || Stats.IsContinuousRunning)">
-                    @if (_isSingleRunning)
+                <button class="btn btn-primary" style="flex: 1;" @onclick="Presenter.RunSingle" disabled="@(Presenter.IsSingleRunning || Presenter.IsBatchRunning || Presenter.Stats.IsContinuousRunning)">
+                    @if (Presenter.IsSingleRunning)
                     {
                         <span>⏳ Running Scenario...</span>
                     }
@@ -98,13 +97,13 @@
                 </button>
             </div>
 
-            @if (_lastSingleResult != null)
+            @if (Presenter.LastSingleResult != null)
             {
                 <div class="scenario-result-box">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
                         <span style="font-weight: 600; font-size: 0.9rem;">
                             Result:
-                            @if (_lastSingleResult.Success)
+                            @if (Presenter.LastSingleResult.Success)
                             {
                                 <span style="color: #34d399;">✔ Succeeded</span>
                             }
@@ -114,11 +113,11 @@
                             }
                         </span>
                         <span style="font-size: 0.8rem; color: var(--text-muted);">
-                            Duration: @(_lastSingleResult.TotalElapsedMilliseconds)ms
+                            Duration: @(Presenter.LastSingleResult.TotalElapsedMilliseconds)ms
                         </span>
                     </div>
 
-                    @foreach (var step in _lastSingleResult.Steps)
+                    @foreach (var step in Presenter.LastSingleResult.Steps)
                     {
                         <div class="step-item">
                             <div>
@@ -152,26 +151,26 @@
             </p>
 
             <div class="form-group">
-                <label class="form-label">Concurrent Workers: <strong>@_concurrency</strong></label>
-                <input type="range" class="form-input" min="1" max="25" step="1" @bind="_concurrency" @bind:event="oninput" disabled="@Stats.IsContinuousRunning" />
+                <label class="form-label">Concurrent Workers: <strong>@Presenter.Concurrency</strong></label>
+                <input type="range" class="form-input" min="1" max="25" step="1" @bind="Presenter.Concurrency" @bind:event="oninput" disabled="@Presenter.Stats.IsContinuousRunning" />
             </div>
 
             <div class="form-group">
-                <label class="form-label">Delay Between Scenarios: <strong>@(_delayMs)ms</strong></label>
-                <input type="range" class="form-input" min="0" max="1000" step="50" @bind="_delayMs" @bind:event="oninput" disabled="@Stats.IsContinuousRunning" />
+                <label class="form-label">Delay Between Scenarios: <strong>@(Presenter.DelayMs)ms</strong></label>
+                <input type="range" class="form-input" min="0" max="1000" step="50" @bind="Presenter.DelayMs" @bind:event="oninput" disabled="@Presenter.Stats.IsContinuousRunning" />
             </div>
 
             <div style="border-top: 1px solid var(--border-color); padding-top: 1rem; margin-top: 1.5rem;">
                 <label class="form-label">Mode A: Batch Traffic Run</label>
                 <div style="display: flex; gap: 0.5rem; align-items: center;">
-                    <select class="form-select" style="max-width: 160px;" @bind="_batchCount" disabled="@(_isBatchRunning || Stats.IsContinuousRunning)">
+                    <select class="form-select" style="max-width: 160px;" @bind="Presenter.BatchCount" disabled="@(Presenter.IsBatchRunning || Presenter.Stats.IsContinuousRunning)">
                         <option value="10">10 Scenarios</option>
                         <option value="25">25 Scenarios</option>
                         <option value="50">50 Scenarios</option>
                         <option value="100">100 Scenarios</option>
                     </select>
-                    <button class="btn btn-primary" style="flex: 1;" @onclick="RunBatch" disabled="@(_isBatchRunning || _isSingleRunning || Stats.IsContinuousRunning)">
-                        @if (_isBatchRunning)
+                    <button class="btn btn-primary" style="flex: 1;" @onclick="Presenter.RunBatch" disabled="@(Presenter.IsBatchRunning || Presenter.IsSingleRunning || Presenter.Stats.IsContinuousRunning)">
+                        @if (Presenter.IsBatchRunning)
                         {
                             <span>⏳ Running Batch...</span>
                         }
@@ -186,15 +185,15 @@
             <div style="border-top: 1px solid var(--border-color); padding-top: 1rem; margin-top: 1.5rem;">
                 <label class="form-label">Mode B: Continuous Traffic Stream</label>
                 <div class="btn-row" style="margin-top: 0.5rem;">
-                    @if (!Stats.IsContinuousRunning)
+                    @if (!Presenter.Stats.IsContinuousRunning)
                     {
-                        <button class="btn btn-success" style="flex: 1;" @onclick="StartContinuous" disabled="@(_isBatchRunning || _isSingleRunning)">
+                        <button class="btn btn-success" style="flex: 1;" @onclick="Presenter.StartContinuous" disabled="@(Presenter.IsBatchRunning || Presenter.IsSingleRunning)">
                             🚀 Start Continuous Traffic
                         </button>
                     }
                     else
                     {
-                        <button class="btn btn-danger" style="flex: 1;" @onclick="StopContinuous">
+                        <button class="btn btn-danger" style="flex: 1;" @onclick="Presenter.StopContinuous">
                             ⏹ Stop Traffic Stream
                         </button>
                     }
@@ -207,14 +206,14 @@
     <div class="table-container">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
             <div style="font-size: 1.15rem; font-weight: 600;">
-                Live Request Activity Log <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 400;">(Last @TrafficService.RecentLogs.Count requests)</span>
+                Live Request Activity Log <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 400;">(Last @Presenter.RecentLogs.Count requests)</span>
             </div>
-            <button class="btn btn-secondary" style="padding: 0.35rem 0.75rem; font-size: 0.8rem;" @onclick="ResetStats" disabled="@(Stats.IsContinuousRunning || _isBatchRunning)">
+            <button class="btn btn-secondary" style="padding: 0.35rem 0.75rem; font-size: 0.8rem;" @onclick="Presenter.ResetStats" disabled="@(Presenter.Stats.IsContinuousRunning || Presenter.IsBatchRunning)">
                 🔄 Reset Stats & Logs
             </button>
         </div>
 
-        @if (TrafficService.RecentLogs.Count == 0)
+        @if (Presenter.RecentLogs.Count == 0)
         {
             <div style="text-align: center; color: var(--text-muted); padding: 2rem;">
                 No requests recorded yet. Click <strong>"Run Single Scenario"</strong>, <strong>"Run Batch"</strong>, or <strong>"Start Continuous Traffic"</strong> to generate traffic.
@@ -234,7 +233,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var log in TrafficService.RecentLogs.Reverse().Take(30))
+                    @foreach (var log in Presenter.RecentLogs.Reverse().Take(30))
                     {
                         <tr>
                             <td style="color: var(--text-muted); font-size: 0.8rem;">
@@ -269,83 +268,10 @@
 </div>
 
 @code {
-  private CancellationTokenSource _cts = new();
-
-  private int _concurrency = 5;
-  private int _delayMs = 100;
-  private int _batchCount = 25;
-
-  private bool _isSingleRunning;
-  private bool _isBatchRunning;
-  private ScenarioExecutionResultDto? _lastSingleResult;
-  private SeededScenarioPresetDto _preset = new("Pink Floyd", "Comfortably Numb", "Echoes");
-
-  private TrafficStats Stats => TrafficService.GetStats();
-
   protected override void OnInitialized()
   {
-    TrafficService.OnStateChanged += HandleStateChanged;
-    PickRandomPreset();
-  }
-
-  private void PickRandomPreset()
-  {
-    _preset = new SeededScenarioPresetDto(SeededScenarioPreset.CreateRandomInstanceWithConsistentId());
-  }
-
-  private async Task RunSingle()
-  {
-    if (_isSingleRunning) return;
-    _isSingleRunning = true;
-    try
-    {
-      _lastSingleResult = await TrafficService.RunSingleScenario(_preset.ToSeededScenarioPreset(), _cts.Token);
-    }
-    catch (Exception ex)
-    {
-      _lastSingleResult = ScenarioExecutionResultDto.Error(_preset.ToSeededScenarioPreset(), ex);
-    }
-    finally
-    {
-      _isSingleRunning = false;
-    }
-  }
-
-  private async Task RunBatch()
-  {
-    if (_isBatchRunning) return;
-    _isBatchRunning = true;
-    try
-    {
-      await TrafficService.RunBatch(_batchCount, _concurrency, _delayMs, _cts.Token);
-    }
-    finally
-    {
-      _isBatchRunning = false;
-    }
-  }
-
-  private void StartContinuous()
-  {
-    TrafficService.StartContinuous(_concurrency, _delayMs);
-  }
-
-  private void StopContinuous()
-  {
-    TrafficService.StopContinuous();
-  }
-
-  private void ResetStats()
-  {
-    _lastSingleResult = null;
-    TrafficService.ResetStats();
-  }
-
-  private string GetSuccessRate()
-  {
-    if (Stats.TotalRequests == 0) return "100";
-    var rate = (double)Stats.SuccessfulRequests / Stats.TotalRequests * 100.0;
-    return rate.ToString("F1", CultureInfo.InvariantCulture);
+    Presenter.OnStateChanged += HandleStateChanged;
+    Presenter.Initialize();
   }
 
   private void HandleStateChanged()
@@ -355,8 +281,7 @@
 
   public void Dispose()
   {
-    TrafficService.OnStateChanged -= HandleStateChanged;
-    _cts.Cancel();
-    _cts.Dispose();
+    Presenter.OnStateChanged -= HandleStateChanged;
+    Presenter.Dispose();
   }
 }

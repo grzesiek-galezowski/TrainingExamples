@@ -32,15 +32,13 @@ public class Program
         [DemoUiTelemetry.ScenariosRootName, DemoUiTelemetry.ScenarioActivityName, DemoUiTelemetry.ScenarioStepActivityName]); //bug needed?
       HealthChecksConfiguration.AddTo(builder);
 
-
-      //bug remove these registrations
       builder.Services.AddSingleton(appConfig);
       builder.Services.AddSingleton<ServiceLogicRoot>(ctx => new ServiceLogicRoot(
         appConfig,
         ctx.GetRequiredService<IServiceDiscoveryHttpMessageHandlerFactory>(),
         ctx.GetRequiredService<ILoggerFactory>()));
-      builder.Services.AddSingleton<TrafficGeneratorService>(ctx =>
-        ctx.GetRequiredService<ServiceLogicRoot>().TrafficGeneratorService);
+      builder.Services.AddTransient<HomePagePresenter>(ctx =>
+        ctx.GetRequiredService<ServiceLogicRoot>().CreateHomePagePresenter());
 
       builder.Services.AddRazorComponents()
         .AddInteractiveServerComponents();
