@@ -14,12 +14,11 @@ public class TrackClinicApiClient(
   IFlurlClient flurlClient,
   AppConfig appConfig,
   ILogger<TrackClinicApiClient> logger,
-  CachingTokenClient cachingTokenClient)
+  CachingTokenClient cachingTokenClient,
+  DemoUiTelemetry telemetry)
 {
   private readonly string _baseUrl = appConfig.TrackClinic.BaseUrl.ToString();
   private readonly TimeSpan _timeout = TimeSpan.FromSeconds(appConfig.TrackClinic.TimeoutSeconds);
-
-  //bug DI
 
   public async Task<ScenarioExecutionResultDto> ExecuteScenarioAsync(
     string artist,
@@ -27,7 +26,7 @@ public class TrackClinicApiClient(
     string song2,
     CancellationToken cancellationToken)
   {
-    using var activity = Telemetry.StartScenarioActivity(artist, song1, song2);
+    using var activity = telemetry.StartScenarioActivity(artist, song1, song2);
 
     try
     {
@@ -38,58 +37,53 @@ public class TrackClinicApiClient(
       var token = (await cachingTokenClient.GetBearerTokenAsync(cancellationToken)).OrThrow();
 
       // Step 1: Create Song 1
-      var step1 = await SendStepAsync(
+      steps.Add(await SendStepAsync(
         stepNumber: 1,
         actionName: $"Create Song 1 ({song1})",
         method: HttpMethod.Post,
         relativeUrl: $"/api/v1/artists/{Uri.EscapeDataString(artist)}/songs",
         content: new CreateSongRequestDto(song1),
         token: token,
-        cancellationToken: cancellationToken);
-      steps.Add(step1);
+        cancellationToken: cancellationToken));
 
       // Step 2: Create Song 2
-      var step2 = await SendStepAsync(
+      steps.Add(await SendStepAsync(
         stepNumber: 2,
         actionName: $"Create Song 2 ({song2})",
         method: HttpMethod.Post,
         relativeUrl: $"/api/v1/artists/{Uri.EscapeDataString(artist)}/songs",
         content: new CreateSongRequestDto(song2),
         token: token,
-        cancellationToken: cancellationToken);
-      steps.Add(step2);
+        cancellationToken: cancellationToken));
 
       // Step 3: Get Song 1
-      var step3 = await SendStepAsync(
+      steps.Add(await SendStepAsync(
         stepNumber: 3,
         actionName: $"Get Song 1 ({song1})",
         method: HttpMethod.Get,
         relativeUrl: $"/api/v1/artists/{Uri.EscapeDataString(artist)}/songs/{Uri.EscapeDataString(song1)}",
-        content: null,
+        content: null, //bug convoluted
         token: token,
-        cancellationToken: cancellationToken);
-      steps.Add(step3);
+        cancellationToken: cancellationToken));
 
       // Step 4: Get Song 2
-      var step4 = await SendStepAsync(
+      steps.Add(await SendStepAsync(
         stepNumber: 4,
         actionName: $"Get Song 2 ({song2})",
         method: HttpMethod.Get,
         relativeUrl: $"/api/v1/artists/{Uri.EscapeDataString(artist)}/songs/{Uri.EscapeDataString(song2)}",
-        content: null,
+        content: null, //bug convoluted
         token: token,
-        cancellationToken: cancellationToken);
-      steps.Add(step4);
+        cancellationToken: cancellationToken));
 
       totalStopwatch.Stop();
-      var allSuccessful = steps.All(s => s.IsSuccess);
 
       return new ScenarioExecutionResultDto(
         ScenarioId: scenarioId,
         ArtistName: artist,
         Song1Title: song1,
         Song2Title: song2,
-        Success: allSuccessful,
+        Success: steps.All(s => s.IsSuccess),
         TotalElapsedMilliseconds: totalStopwatch.ElapsedMilliseconds,
         Timestamp: DateTime.UtcNow,
         Steps: steps
@@ -97,9 +91,7 @@ public class TrackClinicApiClient(
     }
     catch (Exception ex)
     {
-      // bug decorator/proxy
-      activity.SetStatus(ActivityStatusCode.Error, ex.Message);
-      activity.AddException(ex);
+      activity.RecordError(ex);
       throw;
     }
   }
@@ -118,8 +110,7 @@ public class TrackClinicApiClient(
     var fullUrl = BuildAbsoluteUrl(relativeUrl);
     int? statusCode = null;
 
-    //bug boilerplate
-    using var activity = Telemetry.StartScenarioStepActivity(stepNumber, actionName, method, fullUrl);
+    using var activity = telemetry.StartScenarioStepActivity(stepNumber, actionName, method, fullUrl);
 
     try
     {
@@ -162,8 +153,7 @@ public class TrackClinicApiClient(
       logger.LogError(ex, "Failed step {StepNumber} {ActionName} for {Url}", stepNumber, actionName, fullUrl);
 
       // bug boilerplate
-      activity.SetStatus(ActivityStatusCode.Error, ex.Message);
-      activity.AddException(ex);
+      activity.RecordError(ex);
 
       return new ScenarioStepResult(
         StepNumber: stepNumber,

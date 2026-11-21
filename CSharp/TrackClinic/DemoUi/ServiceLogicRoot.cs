@@ -23,7 +23,8 @@ public class ServiceLogicRoot : IAsyncDisposable
           _httpClient,
           appConfig,
           loggerFactory.CreateLogger<TrackClinicApiClient>(),
-          new CachingTokenClient(new KeycloakTokenClient(), appConfig.Keycloak)),
+          new CachingTokenClient(new KeycloakTokenClient(), appConfig.Keycloak),
+          new DemoUiTelemetry()),
       loggerFactory.CreateLogger<TrafficGeneratorService>()
     );
   }

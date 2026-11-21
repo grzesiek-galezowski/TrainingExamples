@@ -3,25 +3,25 @@ using Core.NullableReferenceTypesExtensions;
 
 namespace DemoUi;
 
-public class Telemetry
+public class DemoUiTelemetry
 {
   public const string ScenariosRootName = "DemoUi.Scenarios";
   public const string ScenarioActivityName = "scenario.execute";
   public const string ScenarioStepActivityName = "step.execute";
   
-  private static readonly ActivitySource Source = new(ScenariosRootName); //bug static??
+  private readonly ActivitySource _source = new(ScenariosRootName);
 
-  public static Activity StartScenarioStepActivity(int stepNumber, string actionName, HttpMethod method, string fullUrl)
+  public DemoUiActivity StartScenarioStepActivity(int stepNumber, string actionName, HttpMethod method, string fullUrl)
   {
     Activity? activity = null;
     try
     {
-      activity = Source.StartActivity(ScenarioStepActivityName, ActivityKind.Client).OrThrow();
+      activity = _source.StartActivity(ScenarioStepActivityName, ActivityKind.Client).OrThrow();
       activity.SetTag("step.number", stepNumber);
       activity.SetTag("step.actionName", actionName);
       activity.SetTag("step.httpMethod", method.Method);
       activity.SetTag("step.url", fullUrl);
-      return activity;
+      return new DemoUiActivity(activity);
     }
     catch
     {
@@ -30,16 +30,16 @@ public class Telemetry
     }
   }
 
-  public static Activity StartScenarioActivity(string artist, string song1, string song2)
+  public DemoUiActivity StartScenarioActivity(string artist, string song1, string song2)
   {
     Activity? activity = null;
     try
     {
-      activity = Source.StartActivity(ScenarioActivityName, ActivityKind.Client).OrThrow();
+      activity = _source.StartActivity(ScenarioActivityName, ActivityKind.Client).OrThrow();
       activity.SetTag("scenario.artist", artist);
       activity.SetTag("scenario.song1", song1);
       activity.SetTag("scenario.song2", song2);
-      return activity;
+      return new DemoUiActivity(activity);
     }
     catch
     {

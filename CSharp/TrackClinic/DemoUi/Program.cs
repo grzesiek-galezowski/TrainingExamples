@@ -29,7 +29,7 @@ public class Program
       OpenTelemetryConfiguration.AddTo(
         builder,
         appConfig.OpenTelemetry,
-        [Telemetry.ScenariosRootName, Telemetry.ScenarioActivityName, Telemetry.ScenarioStepActivityName]); //bug needed?
+        [DemoUiTelemetry.ScenariosRootName, DemoUiTelemetry.ScenarioActivityName, DemoUiTelemetry.ScenarioStepActivityName]); //bug needed?
       HealthChecksConfiguration.AddTo(builder);
 
 
