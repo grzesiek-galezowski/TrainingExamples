@@ -6,7 +6,7 @@ public partial class Program
   {
     var builder = DistributedApplication.CreateBuilder(args);
 
-    var realm = "track-clinic";
+    const string realm = "track-clinic";
 
     var keycloak = CreateKeycloak(builder);
     var authority = ReferenceExpression.Create($"{keycloak.GetEndpoint("http")}/realms/{realm}");

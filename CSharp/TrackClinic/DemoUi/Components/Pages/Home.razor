@@ -269,90 +269,94 @@
 </div>
 
 @code {
-    private int _concurrency = 5;
-    private int _delayMs = 100;
-    private int _batchCount = 25;
+  private CancellationTokenSource _cts = new();
 
-    private bool _isSingleRunning;
-    private bool _isBatchRunning;
-    private ScenarioExecutionResultDto? _lastSingleResult;
-    private SeededScenarioPresetDto _preset = new("Pink Floyd", "Comfortably Numb", "Echoes");
+  private int _concurrency = 5;
+  private int _delayMs = 100;
+  private int _batchCount = 25;
 
-    private TrafficStats Stats => TrafficService.GetStats();
+  private bool _isSingleRunning;
+  private bool _isBatchRunning;
+  private ScenarioExecutionResultDto? _lastSingleResult;
+  private SeededScenarioPresetDto _preset = new("Pink Floyd", "Comfortably Numb", "Echoes");
 
-    protected override void OnInitialized()
+  private TrafficStats Stats => TrafficService.GetStats();
+
+  protected override void OnInitialized()
+  {
+    TrafficService.OnStateChanged += HandleStateChanged;
+    PickRandomPreset();
+  }
+
+  private void PickRandomPreset()
+  {
+    _preset = new SeededScenarioPresetDto(SeededScenarioPreset.CreateRandomInstanceWithConsistentId());
+  }
+
+  private async Task RunSingle()
+  {
+    if (_isSingleRunning) return;
+    _isSingleRunning = true;
+    try
     {
-        TrafficService.OnStateChanged += HandleStateChanged;
-        PickRandomPreset();
+      _lastSingleResult = await TrafficService.RunSingleScenario(_preset.ToSeededScenarioPreset(), _cts.Token);
     }
-
-    private void PickRandomPreset()
+    catch (Exception ex)
     {
-        _preset = new SeededScenarioPresetDto(SeededScenarioPreset.CreateRandomInstanceWithConsistentId());
+      _lastSingleResult = ScenarioExecutionResultDto.Error(_preset.ToSeededScenarioPreset(), ex);
     }
-
-    private async Task RunSingle()
+    finally
     {
-        if (_isSingleRunning) return;
-        _isSingleRunning = true;
-        try
-        {
-            _lastSingleResult = await TrafficService.RunSingleScenario(_preset.ToSeededScenarioPreset(), CancellationToken.None /* bug */);
-        }
-        catch (Exception ex)
-        {
-            _lastSingleResult = ScenarioExecutionResultDto.Error(_preset.ToSeededScenarioPreset(), ex);
-        }
-        finally
-        {
-            _isSingleRunning = false;
-        }
+      _isSingleRunning = false;
     }
+  }
 
-    private async Task RunBatch()
+  private async Task RunBatch()
+  {
+    if (_isBatchRunning) return;
+    _isBatchRunning = true;
+    try
     {
-        if (_isBatchRunning) return;
-        _isBatchRunning = true;
-        try
-        {
-            await TrafficService.RunBatch(_batchCount, _concurrency, _delayMs, CancellationToken.None /* bug */);
-        }
-        finally
-        {
-            _isBatchRunning = false;
-        }
+      await TrafficService.RunBatch(_batchCount, _concurrency, _delayMs, _cts.Token);
     }
+    finally
+    {
+      _isBatchRunning = false;
+    }
+  }
 
-    private void StartContinuous()
-    {
-        TrafficService.StartContinuous(_concurrency, _delayMs);
-    }
+  private void StartContinuous()
+  {
+    TrafficService.StartContinuous(_concurrency, _delayMs);
+  }
 
-    private void StopContinuous()
-    {
-        TrafficService.StopContinuous();
-    }
+  private void StopContinuous()
+  {
+    TrafficService.StopContinuous();
+  }
 
-    private void ResetStats()
-    {
-        _lastSingleResult = null;
-        TrafficService.ResetStats();
-    }
+  private void ResetStats()
+  {
+    _lastSingleResult = null;
+    TrafficService.ResetStats();
+  }
 
-    private string GetSuccessRate()
-    {
-        if (Stats.TotalRequests == 0) return "100";
-        var rate = (double)Stats.SuccessfulRequests / Stats.TotalRequests * 100.0;
-        return rate.ToString("F1", CultureInfo.InvariantCulture);
-    }
+  private string GetSuccessRate()
+  {
+    if (Stats.TotalRequests == 0) return "100";
+    var rate = (double)Stats.SuccessfulRequests / Stats.TotalRequests * 100.0;
+    return rate.ToString("F1", CultureInfo.InvariantCulture);
+  }
 
-    private void HandleStateChanged()
-    {
-        InvokeAsync(StateHasChanged);
-    }
+  private void HandleStateChanged()
+  {
+    InvokeAsync(StateHasChanged);
+  }
 
-    public void Dispose()
-    {
-        TrafficService.OnStateChanged -= HandleStateChanged;
-    }
+  public void Dispose()
+  {
+    TrafficService.OnStateChanged -= HandleStateChanged;
+    _cts.Cancel();
+    _cts.Dispose();
+  }
 }

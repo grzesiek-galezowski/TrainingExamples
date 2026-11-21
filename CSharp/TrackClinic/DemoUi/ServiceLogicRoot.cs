@@ -18,14 +18,12 @@ public class ServiceLogicRoot : IAsyncDisposable
       appConfig.TrackClinic.BaseUrl,
       TimeSpan.FromSeconds(appConfig.TrackClinic.TimeoutSeconds),
       serviceDiscoveryHttpMessageHandlerFactory);
-    var tokenClient = new KeycloakTokenClient();
     TrafficGeneratorService = new TrafficGeneratorService(
         new TrackClinicApiClient(
           _httpClient,
-          tokenClient,
           appConfig,
           loggerFactory.CreateLogger<TrackClinicApiClient>(),
-          new CachingTokenClient(tokenClient, appConfig.Keycloak)),
+          new CachingTokenClient(new KeycloakTokenClient(), appConfig.Keycloak)),
       loggerFactory.CreateLogger<TrafficGeneratorService>()
     );
   }

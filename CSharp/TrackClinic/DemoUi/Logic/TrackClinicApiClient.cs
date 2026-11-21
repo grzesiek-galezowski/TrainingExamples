@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using Core.Maybe;
 using Core.NullableReferenceTypesExtensions;
-using DemoUi.Adapters.Keycloak;
 using Flurl.Http;
 
 namespace DemoUi.Logic;
@@ -13,7 +12,6 @@ namespace DemoUi.Logic;
 
 public class TrackClinicApiClient(
   IFlurlClient flurlClient,
-  KeycloakTokenClient tokenClient,
   AppConfig appConfig,
   ILogger<TrackClinicApiClient> logger,
   CachingTokenClient cachingTokenClient)

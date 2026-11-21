@@ -2,48 +2,37 @@ using System.IdentityModel.Tokens.Jwt;
 using Core.NullableReferenceTypesExtensions;
 using DemoUi.Adapters.Configuration;
 using DemoUi.Adapters.Keycloak;
+using Microsoft.Extensions.Caching.Memory;
 using ServiceBuildingBlocks;
 
 namespace DemoUi.Logic;
 
-public class CachingTokenClient(KeycloakTokenClient tokenClient, KeycloakConfig keycloakConfig)
+public class CachingTokenClient(
+  KeycloakTokenClient tokenClient,
+  KeycloakConfig keycloakConfig)
 {
-  //bug what does this class do? why not just use KeycloakTokenClient directly?
-  private string? _cachedBearerToken;
-  private DateTime _tokenExpiration = DateTime.MinValue;
-  private readonly SemaphoreSlim _tokenLock = new(1, 1);
+  private const string TokenKey = "bearer_token";
+  private readonly IMemoryCache _cache = new MemoryCache(new MemoryCacheOptions());
 
   public async Task<string> GetBearerTokenAsync(CancellationToken cancellationToken)
   {
-    if (DateTime.UtcNow < _tokenExpiration && !string.IsNullOrEmpty(_cachedBearerToken))
-    {
-      return _cachedBearerToken.OrThrow();
-    }
-
-    await _tokenLock.WaitAsync(cancellationToken);
-    try
-    {
-      if (DateTime.UtcNow < _tokenExpiration && !string.IsNullOrEmpty(_cachedBearerToken))
+    var entry = await _cache.GetOrCreateAsync(
+      TokenKey,
+      async entry =>
       {
-        return _cachedBearerToken.OrThrow();
-      }
+        var token = await tokenClient.GetPasswordToken(
+          keycloakConfig.MetadataAddress,
+          KeycloakConstants.ClientId,
+          KeycloakConstants.ArtistUser,
+          KeycloakConstants.Password,
+          cancellationToken);
 
-      var token = await tokenClient.GetPasswordToken(
-        keycloakConfig.MetadataAddress,
-        KeycloakConstants.ClientId,
-        KeycloakConstants.ArtistUser,
-        KeycloakConstants.Password,
-        cancellationToken);
+        var validTo = new JwtSecurityTokenHandler()
+          .ReadJwtToken(token).ValidTo;
+        entry.AbsoluteExpiration = validTo - TimeSpan.FromSeconds(30);
+        return token;
+      });
 
-      _cachedBearerToken = token;
-      _tokenExpiration = new JwtSecurityTokenHandler()
-        .ReadJwtToken(token)
-        .ValidTo - TimeSpan.FromSeconds(30);
-      return _cachedBearerToken.OrThrow();
-    }
-    finally
-    {
-      _tokenLock.Release();
-    }
+    return entry.OrThrow();
   }
 }
