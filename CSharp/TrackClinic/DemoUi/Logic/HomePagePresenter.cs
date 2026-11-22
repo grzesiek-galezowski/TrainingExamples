@@ -19,11 +19,9 @@ public class HomePagePresenter(TrafficGeneratorService trafficService) : IDispos
   public TrafficStats Stats => trafficService.GetStats();
   public IReadOnlyList<TrafficLogItem> RecentLogs => trafficService.RecentLogs;
 
-  public event Action? OnStateChanged;
-
-  public void Initialize()
+  public void Initialize(IStateChangeObserver stateChangeObserver)
   {
-    trafficService.OnStateChanged += HandleStateChanged;
+    trafficService.RegisterObserver(stateChangeObserver);
     PickRandomPreset();
   }
 
@@ -64,14 +62,14 @@ public class HomePagePresenter(TrafficGeneratorService trafficService) : IDispos
     }
   }
 
-  public void StartContinuous()
+  public async Task StartContinuous()
   {
-    trafficService.StartContinuous(Concurrency, DelayMs);
+    await trafficService.StartContinuous(Concurrency, DelayMs);
   }
 
-  public void StopContinuous()
+  public async Task StopContinuous()
   {
-    trafficService.StopContinuous();
+    await trafficService.StopContinuous();
   }
 
   public void ResetStats()
@@ -87,14 +85,8 @@ public class HomePagePresenter(TrafficGeneratorService trafficService) : IDispos
     return rate.ToString("F1", CultureInfo.InvariantCulture);
   }
 
-  private void HandleStateChanged()
-  {
-    OnStateChanged?.Invoke();
-  }
-
   public void Dispose()
   {
-    trafficService.OnStateChanged -= HandleStateChanged;
     _cts.Cancel();
     _cts.Dispose();
   }

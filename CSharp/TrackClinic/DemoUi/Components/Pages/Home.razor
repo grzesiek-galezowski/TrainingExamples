@@ -1,7 +1,9 @@
 @page "/"
 @rendermode InteractiveServer
 @using DemoUi.Adapters.Configuration
+@using DemoUi.Logic
 @implements IDisposable
+@implements IStateChangeObserver
 @inject HomePagePresenter Presenter
 @inject AppConfig AppConfig
 
@@ -270,18 +272,17 @@
 @code {
   protected override void OnInitialized()
   {
-    Presenter.OnStateChanged += HandleStateChanged;
-    Presenter.Initialize();
-  }
-
-  private void HandleStateChanged()
-  {
-    InvokeAsync(StateHasChanged);
+    Presenter.Initialize(this);
   }
 
   public void Dispose()
   {
-    Presenter.OnStateChanged -= HandleStateChanged;
     Presenter.Dispose();
   }
+
+  public async Task Refresh()
+  {
+    await InvokeAsync(StateHasChanged);
+  }
+
 }

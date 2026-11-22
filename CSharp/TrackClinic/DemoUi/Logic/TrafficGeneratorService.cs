@@ -10,7 +10,7 @@ public class TrafficGeneratorService : IDisposable
   private readonly TrackClinicApiClient _client;
   private readonly ILogger<TrafficGeneratorService> _logger;
   private readonly ConcurrentQueue<TrafficLogItem> _logs = new();
-  private readonly int _maxLogCount = 150;
+  private const int MaxLogCount = 150;
   private long _totalScenarios;
   private long _successfulScenarios;
   private long _failedScenarios;
@@ -27,8 +27,7 @@ public class TrafficGeneratorService : IDisposable
   // RPS calculation
   private readonly ConcurrentQueue<long> _requestTimestamps = new();
   private readonly Timer _statsTimer;
-
-  public event Action? OnStateChanged; //bug what is this??
+  private IStateChangeObserver _stateChangeObserver = new NullStateChangeObserver();
 
   public TrafficGeneratorService(TrackClinicApiClient client, ILogger<TrafficGeneratorService> logger)
   {
@@ -36,10 +35,10 @@ public class TrafficGeneratorService : IDisposable
     _logger = logger;
 
     // Periodic timer to clean old timestamps and refresh UI
-    _statsTimer = new Timer(_ =>
+    _statsTimer = new Timer(async _ => //bug async
     {
       CleanOldTimestamps();
-      OnStateChanged?.Invoke();
+      await _stateChangeObserver.Refresh();
     }, null, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1));
   }
 
@@ -75,7 +74,7 @@ public class TrafficGeneratorService : IDisposable
       seededScenarioPreset.Song2,
       cancellationToken);
     RecordScenarioResult(result);
-    OnStateChanged?.Invoke();
+    await _stateChangeObserver.Refresh();
     return result;
   }
   
@@ -110,10 +109,10 @@ public class TrafficGeneratorService : IDisposable
     }
 
     await Task.WhenAll(tasks);
-    OnStateChanged?.Invoke();
+    await _stateChangeObserver.Refresh();
   }
 
-  public void StartContinuous(int concurrency, int delayBetweenScenariosMs)
+  public async Task StartContinuous(int concurrency, int delayBetweenScenariosMs)
   {
     if (!IsContinuousRunInProgress())
     {
@@ -127,47 +126,7 @@ public class TrafficGeneratorService : IDisposable
           var workers = new List<Task>();
           for (var workerId = 0; workerId < concurrency; workerId++)
           {
-            var wId = workerId;
-            workers.Add(
-              Task.Run(
-                async () =>
-                {
-                  while (!token.IsCancellationRequested)
-                  {
-                    try
-                    {
-                      var preset = SeededScenarioPreset.CreateRandomInstanceWithConsistentId();
-                      var result = await _client.ExecuteScenarioAsync(
-                        preset.Artist,
-                        preset.Song1,
-                        preset.Song2,
-                        token);
-                      RecordScenarioResult(result);
-
-                      if (delayBetweenScenariosMs > 0)
-                      {
-                        await Task.Delay(delayBetweenScenariosMs, token);
-                      }
-                    }
-                    catch (OperationCanceledException)
-                    {
-                      break;
-                    }
-                    catch (Exception ex)
-                    {
-                      _logger.LogError(ex, "Continuous worker {WorkerId} encountered an error", wId);
-                      try
-                      {
-                        await Task.Delay(500, token);
-                      }
-                      catch
-                      {
-                        break;
-                      }
-                    }
-                  }
-                },
-                token));
+            workers.Add(CreateWorker(workerId, delayBetweenScenariosMs, token));
           }
 
           try
@@ -180,20 +139,63 @@ public class TrafficGeneratorService : IDisposable
           finally
           {
             _activeConcurrency = 0;
-            OnStateChanged?.Invoke();
+            await _stateChangeObserver.Refresh();
           }
         },
         token);
 
-      OnStateChanged?.Invoke();
+      await _stateChangeObserver.Refresh();
     }
   }
 
-  public void StopContinuous()
+  private Task CreateWorker(int workerId, int delayBetweenScenariosMs, CancellationToken token)
   {
-    _continuousCts?.Cancel();
+    return Task.Run(
+      async () =>
+      {
+        while (!token.IsCancellationRequested)
+        {
+          try
+          {
+            var preset = SeededScenarioPreset.CreateRandomInstanceWithConsistentId();
+            var result = await _client.ExecuteScenarioAsync(
+              preset.Artist,
+              preset.Song1,
+              preset.Song2,
+              token);
+            RecordScenarioResult(result);
+
+            if (delayBetweenScenariosMs > 0)
+            {
+              await Task.Delay(delayBetweenScenariosMs, token);
+            }
+          }
+          catch (OperationCanceledException)
+          {
+            break;
+          }
+          catch (Exception ex)
+          {
+            _logger.LogError(ex, "Continuous worker {WorkerId} encountered an error", workerId);
+            try
+            {
+              await Task.Delay(500, token);
+            }
+            catch
+            {
+              break;
+            }
+          }
+        }
+      },
+      token);
+  }
+
+  public async Task StopContinuous()
+  {
+    await (_continuousCts?.CancelAsync() ?? Task.CompletedTask);
     _activeConcurrency = 0;
-    OnStateChanged?.Invoke();
+    await _stateChangeObserver.Refresh();
   }
 
   public void ResetStats()
@@ -209,7 +211,7 @@ public class TrafficGeneratorService : IDisposable
     while (_requestTimestamps.TryDequeue(out _)) { }
     while (_logs.TryDequeue(out _)) { }
 
-    OnStateChanged?.Invoke();
+    _stateChangeObserver.Refresh();
   }
 
   private void RecordScenarioResult(ScenarioExecutionResultDto result)
@@ -257,7 +259,7 @@ public class TrafficGeneratorService : IDisposable
   private void AddLog(TrafficLogItem log)
   {
     _logs.Enqueue(log);
-    while (_logs.Count > _maxLogCount && _logs.TryDequeue(out _)) { } //bug what is this?
+    while (_logs.Count > MaxLogCount && _logs.TryDequeue(out _)) { } //bug what is this?
   }
 
   private void CleanOldTimestamps()
@@ -282,5 +284,10 @@ public class TrafficGeneratorService : IDisposable
     _continuousCts?.Cancel();
     _continuousTask?.Wait();
     _continuousCts?.Dispose();
+  }
+
+  public void RegisterObserver(IStateChangeObserver stateChangeObserver)
+  {
+    _stateChangeObserver = stateChangeObserver;
   }
 }
