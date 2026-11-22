@@ -11,13 +11,7 @@ public class TrafficGeneratorService : IDisposable
   private readonly ILogger<TrafficGeneratorService> _logger;
   private readonly ConcurrentQueue<TrafficLogItem> _logs = new();
   private const int MaxLogCount = 150;
-  private long _totalScenarios;
-  private long _successfulScenarios;
-  private long _failedScenarios;
-  private long _totalRequests;
-  private long _successfulRequests;
-  private long _failedRequests;
-  private long _totalLatencyMs;
+  private readonly ScenarioStats _scenarioStats = new();
 
   private CancellationTokenSource? _continuousCts;
   private Task? _continuousTask; //bug unused
@@ -47,18 +41,17 @@ public class TrafficGeneratorService : IDisposable
   public TrafficStats GetStats()
   {
     CleanOldTimestamps();
-    var totalReq = Interlocked.Read(ref _totalRequests);
-    var totalLat = Interlocked.Read(ref _totalLatencyMs);
+    var (totalReq, totalLat) = _scenarioStats.ReadRequestsAndLatency();
     var avgLatency = totalReq > 0 ? (double)totalLat / totalReq : 0.0;
 
     return new TrafficStats
     {
-      TotalScenarios = Interlocked.Read(ref _totalScenarios),
-      SuccessfulScenarios = Interlocked.Read(ref _successfulScenarios),
-      FailedScenarios = Interlocked.Read(ref _failedScenarios),
+      TotalScenarios = _scenarioStats.ReadTotalScenarios(),
+      SuccessfulScenarios = _scenarioStats.ReadSuccessfulScenarios(),
+      FailedScenarios = _scenarioStats.ReadFailedScenarios(),
       TotalRequests = totalReq,
-      SuccessfulRequests = Interlocked.Read(ref _successfulRequests),
-      FailedRequests = Interlocked.Read(ref _failedRequests),
+      SuccessfulRequests = _scenarioStats.ReadSuccessfulRequests(),
+      FailedRequests = _scenarioStats.ReadFailedRequests(),
       CurrentRps = _requestTimestamps.Count,
       AverageLatencyMs = Math.Round(avgLatency, 1),
       IsContinuousRunning = IsContinuousRunInProgress(),
@@ -200,13 +193,7 @@ public class TrafficGeneratorService : IDisposable
 
   public void ResetStats()
   {
-    Interlocked.Exchange(ref _totalScenarios, 0);
-    Interlocked.Exchange(ref _successfulScenarios, 0);
-    Interlocked.Exchange(ref _failedScenarios, 0);
-    Interlocked.Exchange(ref _totalRequests, 0);
-    Interlocked.Exchange(ref _successfulRequests, 0);
-    Interlocked.Exchange(ref _failedRequests, 0);
-    Interlocked.Exchange(ref _totalLatencyMs, 0);
+    _scenarioStats.Reset();
 
     while (_requestTimestamps.TryDequeue(out _)) { }
     while (_logs.TryDequeue(out _)) { }
@@ -216,31 +203,13 @@ public class TrafficGeneratorService : IDisposable
 
   private void RecordScenarioResult(ScenarioExecutionResultDto result)
   {
-    Interlocked.Increment(ref _totalScenarios);
-    if (result.Success)
-    {
-      Interlocked.Increment(ref _successfulScenarios);
-    }
-    else
-    {
-      Interlocked.Increment(ref _failedScenarios);
-    }
+    _scenarioStats.RecordScenario(result.Success);
 
     var now = Stopwatch.GetTimestamp();
 
     foreach (var step in result.Steps)
     {
-      Interlocked.Increment(ref _totalRequests);
-      if (step.IsSuccess)
-      {
-        Interlocked.Increment(ref _successfulRequests);
-      }
-      else
-      {
-        Interlocked.Increment(ref _failedRequests);
-      }
-
-      Interlocked.Add(ref _totalLatencyMs, step.ElapsedMilliseconds);
+      _scenarioStats.RecordRequest(step.IsSuccess, step.ElapsedMilliseconds);
       _requestTimestamps.Enqueue(now);
 
       AddLog(new TrafficLogItem(
