@@ -48,6 +48,6 @@ public class ServiceLogicRoot : IAsyncDisposable
   public async ValueTask DisposeAsync()
   {
     _httpClient.Dispose();
-    _trafficGeneratorService.Dispose();
+    await _trafficGeneratorService.DisposeAsync();
   }
 }

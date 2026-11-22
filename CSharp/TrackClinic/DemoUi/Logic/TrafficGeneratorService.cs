@@ -5,7 +5,7 @@ using DemoUi.Dto;
 namespace DemoUi.Logic;
 
 //bug refactor this
-public class TrafficGeneratorService : IDisposable
+public class TrafficGeneratorService : IAsyncDisposable
 {
   private readonly TrackClinicApiClient _client;
   private readonly ILogger<TrafficGeneratorService> _logger;
@@ -16,11 +16,11 @@ public class TrafficGeneratorService : IDisposable
   private CancellationTokenSource? _continuousCts;
   private Task? _continuousTask; //bug unused
   private int _activeConcurrency;
-  private bool _disposed;
 
   // RPS calculation
   private readonly ConcurrentQueue<long> _requestTimestamps = new();
-  private readonly Timer _statsTimer;
+  private readonly CancellationTokenSource _statsCts = new();
+  private readonly Task? _statsTask;
   private IStateChangeObserver _stateChangeObserver = new NullStateChangeObserver();
 
   public TrafficGeneratorService(TrackClinicApiClient client, ILogger<TrafficGeneratorService> logger)
@@ -29,11 +29,33 @@ public class TrafficGeneratorService : IDisposable
     _logger = logger;
 
     // Periodic timer to clean old timestamps and refresh UI
-    _statsTimer = new Timer(async _ => //bug async
+    _statsTask = Task.Run(async () =>
     {
-      CleanOldTimestamps();
-      await _stateChangeObserver.Refresh();
-    }, null, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1));
+      using var periodicTimer = new PeriodicTimer(TimeSpan.FromSeconds(1));
+      try
+      {
+        while (await periodicTimer.WaitForNextTickAsync(_statsCts.Token))
+        {
+          try
+          {
+            CleanOldTimestamps();
+            await _stateChangeObserver.Refresh();
+          }
+          catch (OperationCanceledException)
+          {
+            // Normal shutdown
+          }
+          catch (Exception ex)
+          {
+            _logger.LogError(ex, "Error in stats refresh timer");
+          }
+        }
+      }
+      catch(OperationCanceledException)
+      {
+        // Normal shutdown
+      }
+    });
   }
 
   public IReadOnlyList<TrafficLogItem> RecentLogs => [.. _logs];
@@ -245,13 +267,13 @@ public class TrafficGeneratorService : IDisposable
     return _continuousCts != null && !_continuousCts.IsCancellationRequested;
   }
 
-  public void Dispose()
+  public async ValueTask DisposeAsync()
   {
-    if (_disposed) return;
-    _disposed = true;
-    _statsTimer.Dispose();
-    _continuousCts?.Cancel();
-    _continuousTask?.Wait();
+    await _statsCts.CancelAsync();
+    await (_statsTask ?? Task.CompletedTask);
+    _statsCts.Dispose();
+    await (_continuousCts?.CancelAsync() ?? Task.CompletedTask);
+    await (_continuousTask ?? Task.CompletedTask);
     _continuousCts?.Dispose();
   }
 
