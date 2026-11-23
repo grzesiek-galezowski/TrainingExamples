@@ -4,7 +4,6 @@ using DemoUi.Dto;
 
 namespace DemoUi.Logic;
 
-//bug refactor this
 public class TrafficGeneratorService : IAsyncDisposable
 {
   private readonly TrackClinicApiClient _client;
@@ -13,49 +12,24 @@ public class TrafficGeneratorService : IAsyncDisposable
   private const int MaxLogCount = 150;
   private readonly ScenarioStats _scenarioStats = new();
 
-  private CancellationTokenSource? _continuousCts;
-  private Task? _continuousTask; //bug unused
-  private int _activeConcurrency;
-
   // RPS calculation
   private readonly ConcurrentQueue<long> _requestTimestamps = new();
-  private readonly CancellationTokenSource _statsCts = new();
-  private readonly Task? _statsTask;
+  private readonly IContinuousTrafficTask _continuousTask;
+  private readonly ITrafficStatsTask _statsTask;
   private IStateChangeObserver _stateChangeObserver = new NullStateChangeObserver();
 
   public TrafficGeneratorService(TrackClinicApiClient client, ILogger<TrafficGeneratorService> logger)
   {
     _client = client;
     _logger = logger;
-
-    // Periodic timer to clean old timestamps and refresh UI
-    _statsTask = Task.Run(async () =>
-    {
-      using var periodicTimer = new PeriodicTimer(TimeSpan.FromSeconds(1));
-      try
-      {
-        while (await periodicTimer.WaitForNextTickAsync(_statsCts.Token))
-        {
-          try
-          {
-            CleanOldTimestamps();
-            await _stateChangeObserver.Refresh();
-          }
-          catch (OperationCanceledException)
-          {
-            // Normal shutdown
-          }
-          catch (Exception ex)
-          {
-            _logger.LogError(ex, "Error in stats refresh timer");
-          }
-        }
-      }
-      catch(OperationCanceledException)
-      {
-        // Normal shutdown
-      }
-    });
+    _continuousTask = new ContinuousTrafficTask(
+      _client,
+      _logger,
+      RecordScenarioResult);
+    _statsTask = new TrafficStatsTask(
+      _logger,
+      () => _stateChangeObserver,
+      CleanOldTimestamps);
   }
 
   public IReadOnlyList<TrafficLogItem> RecentLogs => [.. _logs];
@@ -76,8 +50,8 @@ public class TrafficGeneratorService : IAsyncDisposable
       FailedRequests = _scenarioStats.ReadFailedRequests(),
       CurrentRps = _requestTimestamps.Count,
       AverageLatencyMs = Math.Round(avgLatency, 1),
-      IsContinuousRunning = IsContinuousRunInProgress(),
-      ActiveConcurrency = _activeConcurrency
+      IsContinuousRunning = _continuousTask.IsRunning,
+      ActiveConcurrency = _continuousTask.GetActiveConcurrency()
     };
   }
 
@@ -129,88 +103,12 @@ public class TrafficGeneratorService : IAsyncDisposable
 
   public async Task StartContinuous(int concurrency, int delayBetweenScenariosMs)
   {
-    if (!IsContinuousRunInProgress())
-    {
-      _continuousCts = new CancellationTokenSource();
-      _activeConcurrency = concurrency;
-      var token = _continuousCts.Token;
-
-      _continuousTask = Task.Run(
-        async () =>
-        {
-          var workers = new List<Task>();
-          for (var workerId = 0; workerId < concurrency; workerId++)
-          {
-            workers.Add(CreateWorker(workerId, delayBetweenScenariosMs, token));
-          }
-
-          try
-          {
-            await Task.WhenAll(workers);
-          }
-          catch (OperationCanceledException)
-          {
-          }
-          finally
-          {
-            _activeConcurrency = 0;
-            await _stateChangeObserver.Refresh();
-          }
-        },
-        token);
-
-      await _stateChangeObserver.Refresh();
-    }
-  }
-
-  private Task CreateWorker(int workerId, int delayBetweenScenariosMs, CancellationToken token)
-  {
-    return Task.Run(
-      async () =>
-      {
-        while (!token.IsCancellationRequested)
-        {
-          try
-          {
-            var preset = SeededScenarioPreset.CreateRandomInstanceWithConsistentId();
-            var result = await _client.ExecuteScenarioAsync(
-              preset.Artist,
-              preset.Song1,
-              preset.Song2,
-              token);
-            RecordScenarioResult(result);
-
-            if (delayBetweenScenariosMs > 0)
-            {
-              await Task.Delay(delayBetweenScenariosMs, token);
-            }
-          }
-          catch (OperationCanceledException)
-          {
-            break;
-          }
-          catch (Exception ex)
-          {
-            _logger.LogError(ex, "Continuous worker {WorkerId} encountered an error", workerId);
-            try
-            {
-              await Task.Delay(500, token);
-            }
-            catch
-            {
-              break;
-            }
-          }
-        }
-      },
-      token);
+    await _continuousTask.StartAsync(concurrency, delayBetweenScenariosMs, _stateChangeObserver);
   }
 
   public async Task StopContinuous()
   {
-    await (_continuousCts?.CancelAsync() ?? Task.CompletedTask);
-    _activeConcurrency = 0;
-    await _stateChangeObserver.Refresh();
+    await _continuousTask.StopAsync(_stateChangeObserver);
   }
 
   public void ResetStats()
@@ -262,19 +160,20 @@ public class TrafficGeneratorService : IAsyncDisposable
     }
   }
 
-  private bool IsContinuousRunInProgress()
-  {
-    return _continuousCts != null && !_continuousCts.IsCancellationRequested;
-  }
-
   public async ValueTask DisposeAsync()
   {
-    await _statsCts.CancelAsync();
-    await (_statsTask ?? Task.CompletedTask);
-    _statsCts.Dispose();
-    await (_continuousCts?.CancelAsync() ?? Task.CompletedTask);
-    await (_continuousTask ?? Task.CompletedTask);
-    _continuousCts?.Dispose();
+    await FinishStatsTask();
+    await FinishContinuousTask();
+  }
+
+  private async ValueTask FinishContinuousTask()
+  {
+    await _continuousTask.FinishAsync();
+  }
+
+  private async ValueTask FinishStatsTask()
+  {
+    await _statsTask.FinishAsync();
   }
 
   public void RegisterObserver(IStateChangeObserver stateChangeObserver)
