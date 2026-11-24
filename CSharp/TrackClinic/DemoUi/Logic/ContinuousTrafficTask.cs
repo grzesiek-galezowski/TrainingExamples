@@ -1,5 +1,3 @@
-using DemoUi.Dto;
-
 namespace DemoUi.Logic;
 
 internal interface IContinuousTrafficTask
@@ -11,24 +9,16 @@ internal interface IContinuousTrafficTask
   int GetActiveConcurrency();
 }
 
-internal sealed class ContinuousTrafficTask : IContinuousTrafficTask
+internal sealed class ContinuousTrafficTask(
+  TrackClinicApiClient client,
+  TrafficMetrics trafficMetrics,
+  TrafficLogs trafficLogs,
+  ILogger<TrafficGeneratorService> logger)
+  : IContinuousTrafficTask
 {
-  private readonly TrackClinicApiClient _client;
-  private readonly ILogger<TrafficGeneratorService> _logger;
-  private readonly Action<ScenarioExecutionResultDto> _recordScenarioResult;
   private CancellationTokenSource? _cancellationTokenSource;
   private int _activeConcurrency; //bug take it from constructor
   private Task? _task;
-
-  public ContinuousTrafficTask(
-    TrackClinicApiClient client,
-    ILogger<TrafficGeneratorService> logger, //bug
-    Action<ScenarioExecutionResultDto> recordScenarioResult) //bug
-  {
-    _client = client;
-    _logger = logger;
-    _recordScenarioResult = recordScenarioResult;
-  }
 
   public bool IsRunning => _cancellationTokenSource != null && !_cancellationTokenSource.IsCancellationRequested;
 
@@ -99,13 +89,13 @@ internal sealed class ContinuousTrafficTask : IContinuousTrafficTask
           try
           {
             var preset = SeededScenarioPreset.CreateRandomInstanceWithConsistentId();
-            var result = await _client.ExecuteScenarioAsync(
+            var result = await client.ExecuteScenarioAsync(
               preset.Artist,
               preset.Song1,
               preset.Song2,
               token);
 
-            _recordScenarioResult(result);
+            trafficMetrics.RecordScenarioResult(trafficLogs, result);
 
             if (delayBetweenScenariosMs > 0)
             {
@@ -118,7 +108,7 @@ internal sealed class ContinuousTrafficTask : IContinuousTrafficTask
           }
           catch (Exception ex)
           {
-            _logger.LogError(ex, "Continuous worker {WorkerId} encountered an error", workerId);
+            logger.LogError(ex, "Continuous worker {WorkerId} encountered an error", workerId);
             try
             {
               await Task.Delay(500, token);

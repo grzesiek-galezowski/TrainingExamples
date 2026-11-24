@@ -16,7 +16,7 @@ public class HomePagePresenter(TrafficGeneratorService trafficService) : IDispos
   public ScenarioExecutionResultDto? LastSingleResult { get; private set; }
   public SeededScenarioPresetDto Preset { get; private set; } = new("Pink Floyd", "Comfortably Numb", "Echoes");
 
-  public TrafficStats Stats => trafficService.GetStats();
+  public TrafficStats Stats => trafficService.GetStats(); //bug this is used like a property but has a side effect inside
   public IReadOnlyList<TrafficLogItem> RecentLogs => trafficService.RecentLogs;
 
   public void Initialize(IStateChangeObserver stateChangeObserver)

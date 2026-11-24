@@ -1,6 +1,6 @@
 namespace DemoUi.Logic;
 
-public class ScenarioStats
+public class AggregatedScenarioCounters
 {
   private long _totalScenarios;
   private long _successfulScenarios;
