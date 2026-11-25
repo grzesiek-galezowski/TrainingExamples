@@ -4,7 +4,7 @@ using DemoUi.Dto;
 
 namespace DemoUi.Logic;
 
-public class TrafficMetrics //bug
+public class TrafficMetrics
 {
   private readonly AggregatedScenarioCounters _aggregatedScenarioCounters = new();
   private readonly ConcurrentQueue<long> _requestTimestamps = new();

@@ -2,7 +2,7 @@ using System.Collections.Concurrent;
 
 namespace DemoUi.Logic;
 
-public class TrafficLogs //bug
+public class TrafficLogs
 {
   private readonly ConcurrentQueue<TrafficLogItem> _logs = new();
   private const int MaxLogCount = 150;
