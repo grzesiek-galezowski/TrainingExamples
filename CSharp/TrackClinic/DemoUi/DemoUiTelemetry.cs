@@ -6,9 +6,7 @@ namespace DemoUi;
 public class DemoUiTelemetry
 {
   public const string ScenariosRootName = "DemoUi.Scenarios";
-  public const string ScenarioActivityName = "scenario.execute";
-  public const string ScenarioStepActivityName = "step.execute";
-  
+
   private readonly ActivitySource _source = new(ScenariosRootName);
 
   public DemoUiActivity StartScenarioStepActivity(int stepNumber, string actionName, HttpMethod method, string fullUrl)
@@ -16,7 +14,7 @@ public class DemoUiTelemetry
     Activity? activity = null;
     try
     {
-      activity = _source.StartActivity(ScenarioStepActivityName, ActivityKind.Client).OrThrow();
+      activity = _source.StartActivity("step.execute", ActivityKind.Client).OrThrow();
       activity.SetTag("step.number", stepNumber);
       activity.SetTag("step.actionName", actionName);
       activity.SetTag("step.httpMethod", method.Method);
@@ -35,7 +33,7 @@ public class DemoUiTelemetry
     Activity? activity = null;
     try
     {
-      activity = _source.StartActivity(ScenarioActivityName, ActivityKind.Client).OrThrow();
+      activity = _source.StartActivity("scenario.execute", ActivityKind.Client).OrThrow();
       activity.SetTag("scenario.artist", artist);
       activity.SetTag("scenario.song1", song1);
       activity.SetTag("scenario.song2", song2);

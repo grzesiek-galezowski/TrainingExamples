@@ -8,7 +8,7 @@ using ServiceBuildingBlocks;
 
 public class Program
 {
-  public static void Main(string[] args)
+  public static async Task Main(string[] args)
   {
     Log.Logger = LoggingConfigurations.ConfigureBootstrapLogger(new LoggerConfiguration());
 
@@ -29,7 +29,7 @@ public class Program
       OpenTelemetryConfiguration.AddTo(
         builder,
         appConfig.OpenTelemetry,
-        [DemoUiTelemetry.ScenariosRootName, DemoUiTelemetry.ScenarioActivityName, DemoUiTelemetry.ScenarioStepActivityName]); //bug needed?
+        [DemoUiTelemetry.ScenariosRootName]);
       HealthChecksConfiguration.AddTo(builder);
 
       builder.Services.AddSingleton(appConfig);
@@ -59,7 +59,7 @@ public class Program
       app.MapRazorComponents<App>()
         .AddInteractiveServerRenderMode();
 
-      app.Run();
+      await app.RunAsync();
     }
     catch (Exception ex) when (ex is not HostAbortedException)
     {
@@ -68,9 +68,7 @@ public class Program
     }
     finally
     {
-      Log.CloseAndFlush();
+      await Log.CloseAndFlushAsync();
     }
-
-// bug
   }
 }

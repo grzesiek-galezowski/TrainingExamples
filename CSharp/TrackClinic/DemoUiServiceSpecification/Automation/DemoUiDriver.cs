@@ -44,7 +44,6 @@ public class DemoUiDriver : IAsyncDisposable
     _trackClinicMock = WireMockServer.Start();
     _inMemorySink = new InMemorySink();
     _webApp = new WebApp(_trackClinicMock.Url.OrThrow(), _keycloakRealmName, _inMemorySink);
-    _webApp.UseKestrel(0); //bug what??
     _client = new Lazy<FlurlClient>(() => new FlurlClient(_webApp.CreateClient()));
   }
 

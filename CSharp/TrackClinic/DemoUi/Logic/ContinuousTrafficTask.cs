@@ -17,7 +17,7 @@ internal sealed class ContinuousTrafficTask(
   : IContinuousTrafficTask
 {
   private CancellationTokenSource? _cancellationTokenSource;
-  private int _activeConcurrency; //bug take it from constructor
+  private int _activeConcurrency;
   private Task? _task;
 
   public bool IsRunning => _cancellationTokenSource != null && !_cancellationTokenSource.IsCancellationRequested;
