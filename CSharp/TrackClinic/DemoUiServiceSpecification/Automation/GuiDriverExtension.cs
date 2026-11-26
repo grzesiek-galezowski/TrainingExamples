@@ -6,35 +6,95 @@ namespace DemoUiServiceSpecification.Automation;
 //bug understand this class
 public class GuiDriverExtension(Func<Uri> appBaseAddress, CancellationToken cancellationToken) //bug
 {
+  private const string ExpectedHeader = "TrackClinic Demo & Traffic Generator";
+
   public async Task<SingleScenarioUiResponse> RunSingleScenario(string artistName, string song1Name, string song2Name)
   {
     using var playwright = await Playwright.CreateAsync();
     await using var browser = await playwright.Chromium.ConnectAsync(SharedPlaywrightInstance.GetConnectionString());
     var page = await browser.NewPageAsync();
 
-    var browserBaseAddress = BrowserReachableBaseAddress(appBaseAddress());
-    await NavigateToPageAndWaitToLoad(page, new Uri(browserBaseAddress, "/").ToString(), "text=TrackClinic Demo & Traffic Generator");
+    await NavigateToPageAndWaitToLoad(page, PageAddress(), $"text={ExpectedHeader}");
     await WaitForInteractiveUi(page);
 
-    var artistInput = page.Locator("label:has-text('Artist Name') + input");
-    var song1Input = page.Locator("label:has-text('Song 1 Title') + input");
-    var song2Input = page.Locator("label:has-text('Song 2 Title') + input");
+    await EnterArtistName(artistName, page);
+    await EnterSong1Name(song1Name, page);
+    await EnterSong2Name(song2Name, page);
 
-    await artistInput.FillAsync(artistName);
-    await song1Input.FillAsync(song1Name);
-    await song2Input.FillAsync(song2Name);
+    await ClickRunSingleScenario(page);
 
-    await page.GetByRole(AriaRole.Button, new PageGetByRoleOptions { Name = "Run Single Scenario" }).ClickAsync();
+    await WaitForAllSingleScenarioResults(page);
 
-    await page.WaitForSelectorAsync("text=Result:");
-    await page.WaitForSelectorAsync("text=Get Song 2");
-
-    var bodyText = await page.InnerTextAsync("body");
+    var bodyText = await ReadPageContent(page);
 
     return new SingleScenarioUiResponse(
-      bodyText.Contains("✔ Succeeded"),
-      bodyText.Contains("✖ Failed"),
+      IsRequestSucceededTextIn(bodyText),
+      IsRequestFailedTextIn(bodyText),
       bodyText);
+  }
+
+  private string PageAddress()
+  {
+    return new Uri(BrowserReachableBaseAddress(appBaseAddress()), "/").ToString();
+  }
+
+  private static async Task<string> ReadPageContent(IPage page)
+  {
+    return await page.InnerTextAsync("body");
+  }
+
+  private static async Task WaitForAllSingleScenarioResults(IPage page)
+  {
+    await page.WaitForSelectorAsync("text=Result:");
+    await page.WaitForSelectorAsync("text=Get Song 2");
+  }
+
+  private static Task ClickRunSingleScenario(IPage page)
+  {
+    return page.GetByRole(AriaRole.Button, new PageGetByRoleOptions { Name = "Run Single Scenario" }).ClickAsync();
+  }
+
+  private static async Task EnterSong2Name(string song2Name, IPage page)
+  {
+    var song2Input = GetPlaceToEnterSong2Title(page);
+    await song2Input.FillAsync(song2Name);
+  }
+
+  private static async Task EnterSong1Name(string song1Name, IPage page)
+  {
+    var song1Input = GetPlaceToEnterSong1Title(page);
+    await song1Input.FillAsync(song1Name);
+  }
+
+  private static async Task EnterArtistName(string artistName, IPage page)
+  {
+    var artistInput = GetPlaceToEnterArtist(page);
+    await artistInput.FillAsync(artistName);
+  }
+
+  private static ILocator GetPlaceToEnterSong2Title(IPage page)
+  {
+    return page.Locator("label:has-text('Song 2 Title') + input");
+  }
+
+  private static ILocator GetPlaceToEnterSong1Title(IPage page)
+  {
+    return page.Locator("label:has-text('Song 1 Title') + input");
+  }
+
+  private static ILocator GetPlaceToEnterArtist(IPage page)
+  {
+    return page.Locator("label:has-text('Artist Name') + input");
+  }
+
+  private static bool IsRequestFailedTextIn(string bodyText)
+  {
+    return bodyText.Contains("✖ Failed");
+  }
+
+  private static bool IsRequestSucceededTextIn(string bodyText)
+  {
+    return bodyText.Contains("✔ Succeeded");
   }
 
   public async Task<string> GetHomePageBodyText()
@@ -46,7 +106,7 @@ public class GuiDriverExtension(Func<Uri> appBaseAddress, CancellationToken canc
     var browserBaseAddress = BrowserReachableBaseAddress(appBaseAddress());
     await NavigateToPageAndWaitToLoad(page, new Uri(browserBaseAddress, "/").ToString(), "text=TrackClinic Demo & Traffic Generator");
 
-    return await page.InnerTextAsync("body");
+    return await ReadPageContent(page);
   }
 
   private static async Task NavigateToPageAndWaitToLoad(IPage page, string url, string selectorToWaitFor)
@@ -67,12 +127,10 @@ public class GuiDriverExtension(Func<Uri> appBaseAddress, CancellationToken canc
 
   private static Uri BrowserReachableBaseAddress(Uri appBaseAddress)
   {
-    var builder = new UriBuilder(appBaseAddress);
-    if (builder.Host is "localhost" or "127.0.0.1")
+    var builder = new UriBuilder(appBaseAddress)
     {
-      builder.Host = "host.docker.internal";
-    }
-
+      Host = "host.docker.internal"
+    };
     return builder.Uri;
   }
 }
