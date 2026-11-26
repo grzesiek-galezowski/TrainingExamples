@@ -1,10 +1,11 @@
+using Flurl.Http;
 using Microsoft.Playwright;
 using ServiceSpecificationBuildingBlocks.Browser;
 
 namespace DemoUiServiceSpecification.Automation;
 
 //bug understand this class
-public class GuiDriverExtension(Func<Uri> appBaseAddress, CancellationToken cancellationToken) //bug
+public class GuiDriverExtension(FlurlClient client, CancellationToken cancellationToken) //bug
 {
   private const string ExpectedHeader = "TrackClinic Demo & Traffic Generator";
 
@@ -35,7 +36,7 @@ public class GuiDriverExtension(Func<Uri> appBaseAddress, CancellationToken canc
 
   private string PageAddress()
   {
-    return new Uri(BrowserReachableBaseAddress(appBaseAddress()), "/").ToString();
+    return new Uri(BrowserReachableBaseAddress(GetAppBaseAddress()), "/").ToString();
   }
 
   private static async Task<string> ReadPageContent(IPage page)
@@ -56,35 +57,20 @@ public class GuiDriverExtension(Func<Uri> appBaseAddress, CancellationToken canc
 
   private static async Task EnterSong2Name(string song2Name, IPage page)
   {
-    var song2Input = GetPlaceToEnterSong2Title(page);
+    var song2Input = page.Locator("label:has-text('Song 2 Title') + input");
     await song2Input.FillAsync(song2Name);
   }
 
   private static async Task EnterSong1Name(string song1Name, IPage page)
   {
-    var song1Input = GetPlaceToEnterSong1Title(page);
+    var song1Input = page.Locator("label:has-text('Song 1 Title') + input");
     await song1Input.FillAsync(song1Name);
   }
 
   private static async Task EnterArtistName(string artistName, IPage page)
   {
-    var artistInput = GetPlaceToEnterArtist(page);
+    var artistInput = page.Locator("label:has-text('Artist Name') + input");
     await artistInput.FillAsync(artistName);
-  }
-
-  private static ILocator GetPlaceToEnterSong2Title(IPage page)
-  {
-    return page.Locator("label:has-text('Song 2 Title') + input");
-  }
-
-  private static ILocator GetPlaceToEnterSong1Title(IPage page)
-  {
-    return page.Locator("label:has-text('Song 1 Title') + input");
-  }
-
-  private static ILocator GetPlaceToEnterArtist(IPage page)
-  {
-    return page.Locator("label:has-text('Artist Name') + input");
   }
 
   private static bool IsRequestFailedTextIn(string bodyText)
@@ -103,7 +89,7 @@ public class GuiDriverExtension(Func<Uri> appBaseAddress, CancellationToken canc
     await using var browser = await playwright.Chromium.ConnectAsync(SharedPlaywrightInstance.GetConnectionString());
     var page = await browser.NewPageAsync();
 
-    var browserBaseAddress = BrowserReachableBaseAddress(appBaseAddress());
+    var browserBaseAddress = BrowserReachableBaseAddress(GetAppBaseAddress());
     await NavigateToPageAndWaitToLoad(page, new Uri(browserBaseAddress, "/").ToString(), "text=TrackClinic Demo & Traffic Generator");
 
     return await ReadPageContent(page);
@@ -133,4 +119,10 @@ public class GuiDriverExtension(Func<Uri> appBaseAddress, CancellationToken canc
     };
     return builder.Uri;
   }
+
+  private Uri GetAppBaseAddress()
+  {
+    return new Uri(client.BaseUrl);
+  }
+
 }
