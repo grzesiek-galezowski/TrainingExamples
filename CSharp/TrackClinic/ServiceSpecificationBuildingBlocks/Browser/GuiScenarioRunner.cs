@@ -4,7 +4,7 @@ public class GuiScenarioRunner(Uri appBaseAddress)
 {
   public Task<string> RunSingleScenario(string artistName, string song1Name, string song2Name)
   {
-    return WithHomePage(async homePage =>
+    return AtHomePage(async homePage =>
     {
       await homePage.EnterArtistName(artistName);
       await homePage.EnterSong1Name(song1Name);
@@ -17,10 +17,10 @@ public class GuiScenarioRunner(Uri appBaseAddress)
 
   public Task<string> GetHomePageBodyText()
   {
-    return WithHomePage(homePage => homePage.ReadPageContent());
+    return AtHomePage(homePage => homePage.ReadPageContent());
   }
 
-  private async Task<string> WithHomePage(Func<HomePageObject, Task<string>> action)
+  private async Task<string> AtHomePage(Func<HomePageObject, Task<string>> action)
   {
     await using var browserEngine = await BrowserEngine.CreateAsync();
     var homePage = await HomePageObject.Create(browserEngine.Browser, PageAddress());
@@ -32,12 +32,9 @@ public class GuiScenarioRunner(Uri appBaseAddress)
 
   private static Uri BrowserReachableBaseAddress(Uri appBaseAddress)
   {
-    var builder = new UriBuilder(appBaseAddress);
-    if (builder.Host is "localhost" or "127.0.0.1")
+    return new UriBuilder(appBaseAddress)
     {
-      builder.Host = "host.docker.internal";
-    }
-
-    return builder.Uri;
+      Host = "host.docker.internal"
+    }.Uri;
   }
 }
