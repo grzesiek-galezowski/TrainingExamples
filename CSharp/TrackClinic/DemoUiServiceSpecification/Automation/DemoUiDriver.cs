@@ -27,7 +27,7 @@ public class DemoUiDriver : IAsyncDisposable
   private int _trackClinicMockPriority = int.MaxValue;
   private readonly TestActivityListener _activityListener = new();
 
-  public GuiDriverExtension Gui => new(_client.Value, _cancellationToken);
+  public GuiDriverExtension Gui => new(_client.Value);
 
   public HealthDriverExtension Health => new(_client.Value, "Healthy", _cancellationToken);
 

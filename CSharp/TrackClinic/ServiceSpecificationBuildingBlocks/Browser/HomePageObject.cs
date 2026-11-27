@@ -1,6 +1,6 @@
 using Microsoft.Playwright;
 
-namespace DemoUiServiceSpecification.Automation;
+namespace ServiceSpecificationBuildingBlocks.Browser;
 
 public class HomePageObject(IPage page, string pageAddress)
 {
