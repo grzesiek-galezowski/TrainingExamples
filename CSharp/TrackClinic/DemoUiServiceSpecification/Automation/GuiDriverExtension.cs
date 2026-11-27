@@ -1,5 +1,4 @@
 using Flurl.Http;
-using Microsoft.Playwright;
 using ServiceSpecificationBuildingBlocks.Browser;
 
 namespace DemoUiServiceSpecification.Automation;
@@ -10,10 +9,9 @@ public class GuiDriverExtension(FlurlClient client, CancellationToken cancellati
 {
   public async Task<SingleScenarioUiTestResponse> RunSingleScenario(string artistName, string song1Name, string song2Name)
   {
-    using var playwright = await Playwright.CreateAsync();
-    await using var browser = await playwright.Chromium.ConnectAsync(SharedPlaywrightInstance.GetConnectionString());
+    await using var browserEngine = await BrowserEngine.CreateAsync();
 
-    var homePage = await HomePageObject.Create(browser, PageAddress());
+    var homePage = await HomePageObject.Create(browserEngine.Browser, PageAddress());
     await homePage.Load();
 
     await homePage.EnterArtistName(artistName);
@@ -30,10 +28,9 @@ public class GuiDriverExtension(FlurlClient client, CancellationToken cancellati
   public async Task<string> GetHomePageBodyText()
   {
     // bug duplication of code from RunSingleScenario, refactor to avoid duplication
-    using var playwright = await Playwright.CreateAsync();
-    await using var browser = await playwright.Chromium.ConnectAsync(SharedPlaywrightInstance.GetConnectionString());
+    await using var browserEngine = await BrowserEngine.CreateAsync();
 
-    var homePageObject = await HomePageObject.Create(browser, PageAddress());
+    var homePageObject = await HomePageObject.Create(browserEngine.Browser, PageAddress());
     await homePageObject.Load();
 
     return await homePageObject.ReadPageContent();

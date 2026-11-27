@@ -81,9 +81,8 @@ public class OperationsDriverExtension(Lazy<FlurlClient> client, string keycloak
 
   public async Task<WebPageResponse> GetScalarUi()
   {
-    using var playwright = await Playwright.CreateAsync();
-    await using var browser = await playwright.Chromium.ConnectAsync(SharedPlaywrightInstance.GetConnectionString());
-    var page = await browser.NewPageAsync();
+    await using var browserEngine = await BrowserEngine.CreateAsync();
+    var page = await browserEngine.Browser.NewPageAsync();
 
     await SetupProxyingRequestsToTestServer(page, "http://localhost/**/*", cancellationToken);
     await NavigateToPageAndWaitToLoad(page, "http://localhost/scalar/v1", "text=TrackClinic API");

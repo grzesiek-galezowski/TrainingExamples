@@ -7,9 +7,8 @@ public class GuiDriverExtension(Uri appBaseAddress)
 {
   public async Task<SingleScenarioUiResponse> RunSingleScenario(string artistName, string song1Name, string song2Name)
   {
-    using var playwright = await Playwright.CreateAsync();
-    await using var browser = await playwright.Chromium.ConnectAsync(SharedPlaywrightInstance.GetConnectionString());
-    var page = await browser.NewPageAsync();
+    await using var browserEngine = await BrowserEngine.CreateAsync();
+    var page = await browserEngine.Browser.NewPageAsync();
 
     var browserBaseAddress = BrowserReachableBaseAddress(appBaseAddress);
     await NavigateToPageAndWaitToLoad(page, new Uri(browserBaseAddress, "/").ToString(), "text=TrackClinic Demo & Traffic Generator");
@@ -35,9 +34,8 @@ public class GuiDriverExtension(Uri appBaseAddress)
 
   public async Task<string> GetHomePageBodyText()
   {
-    using var playwright = await Playwright.CreateAsync();
-    await using var browser = await playwright.Chromium.ConnectAsync(SharedPlaywrightInstance.GetConnectionString());
-    var page = await browser.NewPageAsync();
+    await using var browserEngine = await BrowserEngine.CreateAsync();
+    var page = await browserEngine.Browser.NewPageAsync();
 
     var browserBaseAddress = BrowserReachableBaseAddress(appBaseAddress);
     await NavigateToPageAndWaitToLoad(page, new Uri(browserBaseAddress, "/").ToString(), "text=TrackClinic Demo & Traffic Generator");
