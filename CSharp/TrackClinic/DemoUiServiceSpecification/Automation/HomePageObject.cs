@@ -2,9 +2,10 @@ using Microsoft.Playwright;
 
 namespace DemoUiServiceSpecification.Automation;
 
-//bug clean this up
-public class HomePageObject(IPage page)
+public class HomePageObject(IPage page, string pageAddress)
 {
+  private const string ExpectedHeader = "TrackClinic Demo & Traffic Generator";
+
   public async Task<string> ReadPageContent()
   {
     return await page.InnerTextAsync("body");
@@ -39,23 +40,14 @@ public class HomePageObject(IPage page)
     await artistInput.FillAsync(artistName);
   }
 
-  public bool IsRequestFailedTextIn(string bodyText)
+  public async Task Load()
   {
-    return bodyText.Contains("✖ Failed");
+    await page.GotoAsync(pageAddress);
+    await page.WaitForSelectorAsync($"text={ExpectedHeader}");
+    await WaitForInteractiveUi();
   }
 
-  public bool IsRequestSucceededTextIn(string bodyText)
-  {
-    return bodyText.Contains("✔ Succeeded");
-  }
-
-  public async Task NavigateToPageAndWaitToLoad(string url, string selectorToWaitFor)
-  {
-    await page.GotoAsync(url);
-    await page.WaitForSelectorAsync(selectorToWaitFor);
-  }
-
-  public async Task WaitForInteractiveUi()
+  private async Task WaitForInteractiveUi()
   {
     var firstInput = page.Locator("input.form-input").Nth(0);
     var previousValue = await firstInput.InputValueAsync();
@@ -63,5 +55,10 @@ public class HomePageObject(IPage page)
     await page.WaitForFunctionAsync(
       "(previous) => document.querySelectorAll('input.form-input')[0].value !== previous",
       previousValue);
+  }
+
+  public static async Task<HomePageObject> Create(IBrowser browser, string pageAddress)
+  {
+    return new HomePageObject(await browser.NewPageAsync(), pageAddress);
   }
 }

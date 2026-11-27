@@ -8,50 +8,40 @@ namespace DemoUiServiceSpecification.Automation;
 
 public class GuiDriverExtension(FlurlClient client, CancellationToken cancellationToken) //bug
 {
-  private const string ExpectedHeader = "TrackClinic Demo & Traffic Generator";
-
-  public async Task<SingleScenarioUiResponse> RunSingleScenario(string artistName, string song1Name, string song2Name)
+  public async Task<SingleScenarioUiTestResponse> RunSingleScenario(string artistName, string song1Name, string song2Name)
   {
     using var playwright = await Playwright.CreateAsync();
     await using var browser = await playwright.Chromium.ConnectAsync(SharedPlaywrightInstance.GetConnectionString());
-    var page = await browser.NewPageAsync();
 
-    var homePageObject = new HomePageObject(page);
-    await homePageObject.NavigateToPageAndWaitToLoad(PageAddress(), $"text={ExpectedHeader}");
-    await homePageObject.WaitForInteractiveUi();
+    var homePage = await HomePageObject.Create(browser, PageAddress());
+    await homePage.Load();
 
-    await homePageObject.EnterArtistName(artistName);
-    await homePageObject.EnterSong1Name(song1Name);
-    await homePageObject.EnterSong2Name(song2Name);
+    await homePage.EnterArtistName(artistName);
+    await homePage.EnterSong1Name(song1Name);
+    await homePage.EnterSong2Name(song2Name);
 
-    await homePageObject.ClickRunSingleScenario();
+    await homePage.ClickRunSingleScenario();
 
-    await homePageObject.WaitForAllSingleScenarioResults();
+    await homePage.WaitForAllSingleScenarioResults();
 
-    var bodyText = await homePageObject.ReadPageContent();
-
-    return new SingleScenarioUiResponse(
-      homePageObject.IsRequestSucceededTextIn(bodyText),
-      homePageObject.IsRequestFailedTextIn(bodyText),
-      bodyText);
-  }
-
-  private string PageAddress()
-  {
-    return new Uri(BrowserReachableBaseAddress(GetAppBaseAddress()), "/").ToString();
+    return new SingleScenarioUiTestResponse(await homePage.ReadPageContent());
   }
 
   public async Task<string> GetHomePageBodyText()
   {
+    // bug duplication of code from RunSingleScenario, refactor to avoid duplication
     using var playwright = await Playwright.CreateAsync();
     await using var browser = await playwright.Chromium.ConnectAsync(SharedPlaywrightInstance.GetConnectionString());
-    var page = await browser.NewPageAsync();
 
-    var browserBaseAddress = BrowserReachableBaseAddress(GetAppBaseAddress());
-    await new HomePageObject(page).NavigateToPageAndWaitToLoad(new Uri(browserBaseAddress, "/").ToString(), "text=TrackClinic Demo & Traffic Generator");
+    var homePageObject = await HomePageObject.Create(browser, PageAddress());
+    await homePageObject.Load();
 
-    return await new HomePageObject(page).ReadPageContent();
+    return await homePageObject.ReadPageContent();
   }
+
+  private Uri GetAppBaseAddress() => new(client.BaseUrl);
+
+  private string PageAddress() => new Uri(BrowserReachableBaseAddress(GetAppBaseAddress()), "/").ToString();
 
   private static Uri BrowserReachableBaseAddress(Uri appBaseAddress)
   {
@@ -60,11 +50,6 @@ public class GuiDriverExtension(FlurlClient client, CancellationToken cancellati
       Host = "host.docker.internal"
     };
     return builder.Uri;
-  }
-
-  private Uri GetAppBaseAddress()
-  {
-    return new Uri(client.BaseUrl);
   }
 
 }
