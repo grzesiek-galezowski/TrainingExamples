@@ -27,10 +27,6 @@
     <PackageReference Include="Testcontainers.Playwright" Version="4.16.0" />
   </ItemGroup>
   <ItemGroup>
-    <!-- workaround for R# bug to be fixed in the future -->
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.12.0" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\ServiceSpecificationBuildingBlocks\ServiceSpecificationBuildingBlocks.csproj" />
     <ProjectReference Include="..\TrackClinic\TrackClinic.csproj" />
   </ItemGroup>

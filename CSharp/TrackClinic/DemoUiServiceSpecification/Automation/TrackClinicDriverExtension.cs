@@ -20,7 +20,7 @@ public class TrackClinicDriverExtension(WireMockServer trackClinicMock, int prio
   public void SetupCreateSongToReturnSuccess(string artist)
   {
     var path = $"/api/v1/artists/{Uri.EscapeDataString(artist)}/songs";
-    trackClinicMock //bug add priorities
+    trackClinicMock
       .Given(Request.Create().WithPath(path).UsingPost())
       .AtPriority(priority)
       .RespondWith(Response.Create().WithStatusCode(201).WithBody("created"));
@@ -37,7 +37,7 @@ public class TrackClinicDriverExtension(WireMockServer trackClinicMock, int prio
 
   private IReadOnlyList<string> TrackClinicRequestPaths() =>
     trackClinicMock.LogEntries.Select(x => x.RequestMessage!.Path)
-      .ToImmutableList(); //bug enable warnings as errors nullable
+      .ToImmutableList();
 
   public void ShouldReceiveRequestsInOrder(ImmutableList<string> expectation)
   {

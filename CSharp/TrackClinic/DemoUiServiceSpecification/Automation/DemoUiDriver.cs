@@ -64,7 +64,6 @@ public class DemoUiDriver : IAsyncDisposable
   {
     await SharedKeycloakInstance.ConfigureNewRealm(new TrackClinicKeycloakBootstrap(_keycloakRealmName, _accessTokenLifespan));
     _webApp.StartServer();
-    _webApp.CreateClient(); //bug what??
     await Health.WaitForHealthCheck("/health/live", 10.Seconds());
     await Health.WaitForHealthCheck("/health/ready", 10.Seconds());
   }
@@ -72,10 +71,5 @@ public class DemoUiDriver : IAsyncDisposable
   public async Task<string> RequestMetrics()
   {
     return await _client.Value.Request("/metrics").GetStringAsync(cancellationToken: _cancellationToken);
-  }
-
-  private Uri GetAppBaseAddress()
-  {
-    return new Uri(_client.Value.BaseUrl);
   }
 }

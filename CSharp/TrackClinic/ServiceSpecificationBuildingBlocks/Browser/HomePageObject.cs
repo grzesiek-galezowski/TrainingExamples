@@ -11,7 +11,7 @@ public class HomePageObject(IPage page, string pageAddress)
     return await page.InnerTextAsync("body");
   }
 
-  public async Task WaitForAllSingleScenarioResults()
+  public async Task WaitForSingleScenarioResultToAppear()
   {
     await page.WaitForSelectorAsync("text=Result:");
     await page.WaitForSelectorAsync("text=Get Song 2");

@@ -17,7 +17,7 @@ public class MetricsSpecification
     await driver.Gui.RunSingleScenario(Any.String(), Any.String(), Any.String());
 
     // WHEN
-    var metrics = await driver.RequestMetrics(); //bug metrics response
+    var metrics = await driver.RequestMetrics();
 
     // THEN
     // Prometheus format

@@ -10,7 +10,7 @@ public class GuiScenarioRunner(Uri appBaseAddress)
       await homePage.EnterSong1Name(song1Name);
       await homePage.EnterSong2Name(song2Name);
       await homePage.ClickRunSingleScenario();
-      await homePage.WaitForAllSingleScenarioResults();
+      await homePage.WaitForSingleScenarioResultToAppear();
       return await homePage.ReadPageContent();
     });
   }

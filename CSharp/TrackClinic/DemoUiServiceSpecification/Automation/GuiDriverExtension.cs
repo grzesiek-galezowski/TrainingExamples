@@ -3,8 +3,6 @@ using ServiceSpecificationBuildingBlocks.Browser;
 
 namespace DemoUiServiceSpecification.Automation;
 
-//bug understand this class
-
 public class GuiDriverExtension(FlurlClient client)
 {
   private readonly GuiScenarioRunner _scenarioRunner = new(new Uri(client.BaseUrl));
